@@ -1,0 +1,567 @@
+package com.jsoft.pstExtractor;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Vector;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UISelectMany;
+import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
+import org.apache.myfaces.custom.fileupload.UploadedFile;
+
+import com.jsoft.pst.Appointment;
+import com.jsoft.pst.Contact;
+import com.jsoft.pst.Folder;
+import com.jsoft.pst.IPF;
+import com.jsoft.pst.JournalEntry;
+import com.jsoft.pst.MessageObject;
+import com.jsoft.pst.NotHeapNodeException;
+import com.jsoft.pst.NotPSTFileException;
+import com.jsoft.pst.PST;
+import com.jsoft.pst.StickyNote;
+import com.jsoft.pst.TableContext;
+import com.jsoft.pst.Task;
+import com.jsoft.pst.UnknownClientSignatureException;
+import com.jsoft.pst.UnparseablePropertyContextException;
+import com.jsoft.pst.UnparseableTableContextException;
+
+/**	The ContactFormBean shares the data from the contact upload form with the contact server. */
+@ManagedBean(name = "pstBean")
+@SessionScoped
+public class PSTBean {
+
+	/**	The maximum number of attempts to provide a password permitted. */
+	private static final int MAX_PASSWORD_ATTEMPTS = 3;
+
+	/**	Enumeration of extraction types. */
+	enum ExtractionTypes {
+		APPOINTMENTS,
+		CONTACTS,
+		JOURNAL_ENTRIES,
+		STICKYNOTES,
+		TASKS
+	};
+
+	/**	The resource names for the labels of the check boxes of the various types are not found. */
+	private final static EnumMap<ExtractionTypes, String> LabelResourceName = new EnumMap<ExtractionTypes, String>(ExtractionTypes.class);
+	static {
+		LabelResourceName.put(ExtractionTypes.APPOINTMENTS, "appointments.text");
+		LabelResourceName.put(ExtractionTypes.CONTACTS, "contacts.text");
+		LabelResourceName.put(ExtractionTypes.JOURNAL_ENTRIES, "journalEntries.text");
+		LabelResourceName.put(ExtractionTypes.STICKYNOTES, "stickyNotes.text");
+		LabelResourceName.put(ExtractionTypes.TASKS, "tasks.text");
+	}
+
+	/**	Text resources used by this bean. */
+	private final ResourceBundle rb;
+
+	/**	The actual values selected in the set of check boxes indicating what to extract. */
+	private List<ExtractionTypes> selectedExtractionTypes;
+
+	/**	The names and values of the extraction checkbox. */
+	private SelectItem[] extractionTypeChoices;
+
+	/**	The uploaded PST file. */
+	private UploadedFile uploadedFile;
+
+	/**	The password for the PST file. */
+	private String password;
+
+	/**	The appointments in this PST file. */
+	private MessageObjectCollectionBean<AppointmentBean> appointments;
+
+	/**	The contacts in this PST file. */
+	private MessageObjectCollectionBean<ContactBean> contacts;
+
+	/**	The journal entries in this PST file. */
+	private MessageObjectCollectionBean<JournalEntryBean> journalEntries;
+
+	/**	The sticky notes in this PST file. */
+	private MessageObjectCollectionBean<StickyNoteBean> stickyNotes;
+
+	/**	The tasks in this PST file. */
+	private MessageObjectCollectionBean<TaskBean> tasks;
+
+	/**	The PST file. */
+	private PST pst;
+
+	/**	The number of attempts to provide a password. */
+	private int numPasswordAttempts;
+
+	/**	Create a bean for communication between the form and the servlet. */
+	public PSTBean()
+	{
+		rb = ResourceBundle.getBundle("com.jsoft.pstExtractor.text-resources");
+		SelectItem[] extractionTypeChoices = new SelectItem[ExtractionTypes.values().length];
+		for (ExtractionTypes t : ExtractionTypes.values())
+			extractionTypeChoices[t.ordinal()] = new SelectItem(t, rb.getString(LabelResourceName.get(t)));
+		this.extractionTypeChoices = extractionTypeChoices;
+
+		selectedExtractionTypes = new ArrayList<ExtractionTypes>();
+
+		appointments = new MessageObjectCollectionBean<AppointmentBean>();
+		contacts = new MessageObjectCollectionBean<ContactBean>();
+		journalEntries = new MessageObjectCollectionBean<JournalEntryBean>();
+		stickyNotes = new MessageObjectCollectionBean<StickyNoteBean>();
+		tasks = new MessageObjectCollectionBean<TaskBean>();
+	}
+
+	/**	Add the appointments in the given folder to the list of appointments..
+	*
+	*	@param	folder	The folder from which to harvest appointments.
+	*/
+	private void addAppointments(Folder folder)
+	{
+		FolderBean<AppointmentBean> folderAppointments = new FolderBean<AppointmentBean>();
+		folderAppointments.name = folder.displayName;
+
+		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+			MessageObject mo = contents.next();
+			if (!(mo instanceof Appointment))
+				continue;
+
+			Appointment a = (Appointment)mo;
+			AppointmentBean b = new AppointmentBean();
+			b.title = a.subject;
+			b.start = a.startTime;
+			b.end = a.endTime;
+			folderAppointments.contents.add(b);
+		}
+		appointments.folders.add(folderAppointments);
+
+		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+			addAppointments(folders.next());
+	}
+
+	/**	Add the contacts in the given folder to the list of contacts.
+	*
+	*	@param	folder	The folder from which to harvest contacts.
+	*/
+	private void addContacts(Folder folder, PST pst)
+	{
+		FolderBean<ContactBean> folderContacts = new FolderBean<ContactBean>();
+		folderContacts.name = folder.displayName;
+
+		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+			MessageObject mo = contents.next();
+			if (!(mo instanceof Contact))
+				continue;
+
+			Contact c = (Contact)mo;
+			ContactBean b = new ContactBean();
+			b.name = c.displayName;
+			for (String emailAddress : c.emailAddresses)
+				b.emailAddresses.add(emailAddress);
+			folderContacts.contents.add(b);
+			if (c.homePhone != null)
+				b.telephoneNumbers.add(c.homePhone);
+			if (c.mobilePhone != null)
+				b.telephoneNumbers.add(c.mobilePhone);
+			if (c.businessPhone != null)
+				b.telephoneNumbers.add(c.businessPhone);
+			if (c.otherPhone != null)
+				b.telephoneNumbers.add(c.otherPhone);
+		}
+		contacts.folders.add(folderContacts);
+
+		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+			addContacts(folders.next(), pst);
+	}
+
+	/**	Add the journal entries in the current folder to the list of journal entries.
+	*
+	*	@param	folder	The folder from which to harvest the journal entries.
+	*/
+	private void addJournalEntries(Folder folder, PST pst)
+	throws
+		IOException,
+		NotHeapNodeException,
+		UnknownClientSignatureException,
+		UnparseablePropertyContextException,
+		UnparseableTableContextException
+	{
+		FolderBean<JournalEntryBean> folderJournalEntry = new FolderBean<JournalEntryBean>();
+		folderJournalEntry.name = folder.displayName;
+
+		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+			MessageObject mo = contents.next();
+			if (!(mo instanceof JournalEntry))
+				continue;
+
+			JournalEntry j = (JournalEntry)mo;
+			JournalEntryBean b = new JournalEntryBean();
+			b.title = j.subject;
+			b.note = j.body(j.getMessage(pst.blockBTree, pst));
+			folderJournalEntry.contents.add(b);
+		}
+		journalEntries.folders.add(folderJournalEntry);
+
+		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+			addJournalEntries(folders.next(), pst);
+	}
+
+	/**	Add the sticky notes in the current folder to the list of sticky notes.
+	*
+	*	@param	folder	The folder from which to harvest the sticky notes.
+	*/
+	private void addStickyNotes(Folder folder, PST pst)
+	throws
+		IOException,
+		NotHeapNodeException,
+		UnknownClientSignatureException,
+		UnparseablePropertyContextException,
+		UnparseableTableContextException
+	{
+		FolderBean<StickyNoteBean> folderStickyNotes = new FolderBean<StickyNoteBean>();
+		folderStickyNotes.name = folder.displayName;
+
+		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+			MessageObject mo = contents.next();
+			if (!(mo instanceof StickyNote))
+				continue;
+
+			StickyNote s = (StickyNote)mo;
+			StickyNoteBean b = new StickyNoteBean();
+			b.title = s.subject;
+			b.note = s.body(s.getMessage(pst.blockBTree, pst));
+			folderStickyNotes.contents.add(b);
+		}
+		stickyNotes.folders.add(folderStickyNotes);
+
+		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+			addStickyNotes(folders.next(), pst);
+	}
+
+	/**	Add the tasks in the given folder to the list of tasks.
+	*
+	*	@param	folder	The folder from which to harvest tasks.
+	*/
+	private void addTasks(Folder folder)
+	{
+		FolderBean<TaskBean> folderTasks = new FolderBean<TaskBean>();
+		folderTasks.name = folder.displayName;
+
+		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+			MessageObject mo = contents.next();
+			if (!(mo instanceof Task))
+				continue;
+
+			Task t = (Task)mo;
+			TaskBean b = new TaskBean();
+			b.title = t.subject;
+			b.dueDate = t.dueDate;
+			folderTasks.contents.add(b);
+		}
+		tasks.folders.add(folderTasks);
+
+		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+			addTasks(folders.next());
+	}
+
+	/**	Check password, and process PST file if password is correct.
+	*
+	*	@return	A String indicating the next view.
+	*/
+	public String checkPasswordAndProcess()
+	{
+		++numPasswordAttempts;
+		if ((pst.hasPassword() && password.length() == 0) || (!pst.hasPassword() && password.length() > 0)) {
+			if (numPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
+				reset();
+				return "AccessDenied";
+			}
+	
+			return "ResubmitPassword";
+		}
+
+		return doProcessPST("uploadPasswordForm");
+	}
+
+	/**	Get the required information from a PST file and handle any exceptions encountered during processing.
+	*
+	*	@param	clientDestination	The client component in which to write any error messages.
+	*
+	*	@return	A String indicating the next view
+	*/
+	private String doProcessPST(String clientDestination)
+	{
+		try {
+			processPST();
+			return "Results";
+		} catch (IOException e) {
+			e.printStackTrace(System.out);
+			return "ProcessingProblem";
+		} catch (NotHeapNodeException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (UnknownClientSignatureException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (UnparseablePropertyContextException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (UnparseableTableContextException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		}
+	}
+
+	/**	Get the list of appointments from this PST file.
+	*
+	*	@return	The list of appointments found in this PST file.
+	*/
+	public MessageObjectCollectionBean<AppointmentBean> getAppointments()
+	{
+		return appointments;
+	}
+
+	/**	Get the list of contacts from this PST file.
+	*
+	*	@return	The list of contacts found in this PST file.
+	*/
+	public MessageObjectCollectionBean<ContactBean> getContacts()
+	{
+		return contacts;
+	}
+
+	/**	Get the list of journal entries from this PST file.
+	*
+	*	@return	The list of journal entires found in this PST file.
+	*/
+	public MessageObjectCollectionBean<JournalEntryBean> getJournalEntries()
+	{
+		return journalEntries;
+	}
+
+	/**	Get the array of extraction types choices.
+	*
+	*	@return	The array of extraction types choices.
+	*/
+	public SelectItem[] getExtractionTypeChoices()
+	{
+		return extractionTypeChoices;
+	}
+
+	/**	Retrieve the maximum number of password attempts permitted.
+	*
+	*	@return	The maximum number of password attempts permitted.
+	*
+	*	@see #MAX_PASSWORD_ATTEMPTS
+	*/
+	public int getMaxPasswordAttempts()
+	{
+		return MAX_PASSWORD_ATTEMPTS;
+	}
+
+	/**	Retrieve the number of password attempts so far.
+	*
+	*	@return	The number of password attempts so far.
+	*
+	*	@see #numPasswordAttempts
+	*/
+	public int getNumPasswordAttempts()
+	{
+		return numPasswordAttempts;
+	}
+
+	/**	Retrieve the password.
+	*
+	*	@return	The password for the PST file, if any.
+	*/
+	public String getPassword()
+	{
+		return password;
+	}
+
+	/**	Get the array listing the extraction types selected.
+	*
+	*	@return	An array containing the extraction types selected.
+	*/
+	public List<ExtractionTypes> getSelectedExtractionTypes()
+	{
+		return selectedExtractionTypes;
+	}
+
+	/**	Get the list of sticky notes from this PST file.
+	*
+	*	@return	The list of sticky notes found in this PST file.
+	*/
+	public MessageObjectCollectionBean<StickyNoteBean> getStickyNotes()
+	{
+		return stickyNotes;
+	}
+
+	/**	Get the list of tasks from this PST file.
+	*
+	*	@return	The list of tasks found in this PST file.
+	*/
+	public MessageObjectCollectionBean<TaskBean> getTasks()
+	{
+		return tasks;
+	}
+
+	/**	Retrieve the uploaded file.
+	*
+	*	@return	The uploaded PST file
+	*/
+	public UploadedFile getUploadedFile()
+	{
+		return uploadedFile;
+	}
+
+	/**	Determine whether any results are available.
+	*
+	*	@return	true if a PST file has been processed and is available, false otherwise.
+	*/
+	public boolean isResultAvailable()
+	{
+		return pst != null;
+	}
+
+	/**	Reset form data.
+	*/
+	private void reset()
+	{
+		pst = null;
+		numPasswordAttempts = 0;
+		selectedExtractionTypes = new ArrayList<ExtractionTypes>();
+	}
+
+	/**	Set the password.
+	*
+	*	@param	password	The password for the PST file, if any.
+	*/
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+
+	/**	Set the list of selected extraction types.
+	*
+	*	@param	selectedExtractionTypes	The extraction types selected.
+	*/
+	public void setSelectedExtractionTypes(List<ExtractionTypes> selectedExtractionTypes)
+	{
+		this.selectedExtractionTypes = (ArrayList<ExtractionTypes>)selectedExtractionTypes;
+	}
+
+	/**	Get the required information from a PST file
+	*/
+	private void processPST()
+	throws
+		NotHeapNodeException,
+		UnknownClientSignatureException,
+		UnparseablePropertyContextException,
+		UnparseableTableContextException,
+		java.io.IOException
+	{
+		Folder rootFolder = pst.getFolder(pst.nodeBTree.find(pst.messageStore.rootMailboxEntry.nid));
+		TableContext rootHierarchyTable = new TableContext(rootFolder.nodeHierarchyTable, pst.blockBTree, pst);
+
+		appointments.requested = selectedExtractionTypes.contains(ExtractionTypes.APPOINTMENTS);
+		contacts.requested = selectedExtractionTypes.contains(ExtractionTypes.CONTACTS);
+		journalEntries.requested = selectedExtractionTypes.contains(ExtractionTypes.JOURNAL_ENTRIES);
+		stickyNotes.requested = selectedExtractionTypes.contains(ExtractionTypes.STICKYNOTES);
+		tasks.requested = selectedExtractionTypes.contains(ExtractionTypes.TASKS);
+
+		for (Iterator<Folder> folderIterator = rootFolder.subfolderIterator(); folderIterator.hasNext(); ) {
+			final Folder f = folderIterator.next();
+
+			if (appointments.requested && IPF.isAppointment(f)) {
+				Folder folderTree = Folder.getFolderTree(f.nodeFolderObject, pst.blockBTree, pst.nodeBTree, pst);
+				addAppointments(folderTree);
+			} else if (contacts.requested && IPF.isContact(f)) {
+				Folder folderTree = Folder.getFolderTree(f.nodeFolderObject, pst.blockBTree, pst.nodeBTree, pst);
+				addContacts(folderTree, pst);
+			} else if (journalEntries.requested && IPF.isJournal(f)) {
+				Folder folderTree = Folder.getFolderTree(f.nodeFolderObject, pst.blockBTree, pst.nodeBTree, pst);
+				addJournalEntries(folderTree, pst);
+			} else if (stickyNotes.requested && IPF.isStickyNote(f)) {
+				Folder folderTree = Folder.getFolderTree(f.nodeFolderObject, pst.blockBTree, pst.nodeBTree, pst);
+				addStickyNotes(folderTree, pst);
+			} else if (tasks.requested && IPF.isTask(f)) {
+				Folder folderTree = Folder.getFolderTree(f.nodeFolderObject, pst.blockBTree, pst.nodeBTree, pst);
+				addTasks(folderTree);
+			}
+		}
+	}
+
+	/**	Set the uplaoded PST file.
+	*
+	*	@param	uploadedFile	The uploaded PST file.
+	*/
+	public void setUploadedFile(UploadedFile uploadedFile)
+	{
+		this.uploadedFile = uploadedFile;
+	}
+
+	/**	Process submission from Incorrect Password form.
+	*
+	*	@return	A String indicating the next view.
+	*/
+	public String submitPassword()
+	{
+		if (pst == null) {
+			// Note that this is not an expected workflow.
+			return submitPST();
+		}
+
+		return checkPasswordAndProcess();
+	}
+
+	/**	Process submission from main PST extraction form.
+	*
+	*	@return	A String indicating the next view.
+	*/
+	public String submitPST()
+	{
+		try {
+			InputStream is = uploadedFile.getInputStream();
+
+			if (is instanceof FileInputStream) {
+				try {
+					pst = null;
+					pst = new PST((FileInputStream)is, true);
+					return checkPasswordAndProcess();
+				} catch (IOException e) {
+					// IO Exception creating or reading PST file
+					e.printStackTrace(System.out);
+					return "ProcessingProblem";
+				} catch (NotHeapNodeException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (NotPSTFileException e) {
+					e.printStackTrace(System.out);
+					return "NotPST";
+				} catch (UnknownClientSignatureException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (UnparseablePropertyContextException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (UnparseableTableContextException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				}
+			}
+		} catch (IOException e) {
+			// IO Exception retrieving input stream.
+			e.printStackTrace(System.out);
+			return "ProcessingProblem";
+		}
+
+		// This is an unexpected condition. It can only occur if we raised an uncaught exception.
+		return "ProcessingProblem";
+	}
+}

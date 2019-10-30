@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Remove PST-specific data which is not required for export. -->
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+
+	<xsl:template match="object">
+		<xsl:apply-templates select="object"/>
+	</xsl:template>
+
+	<xsl:template match="*">
+		<xsl:copy-of select="."/>
+	</xsl:template>
+
+	<xsl:template match="object">
+		<xsl:for-each select=".//*">
+			<!-- The java implementation of xsl:choose does not like comments within the choices. The sections below are grouped as follows. -->
+			<!-- Skip internal PST columns -->?
+			<!-- Skip inapplicable columns which, while populated, seem to be an artefact of squeezing contact info into a message table. -->
+			<!-- Skip other pointless columns -->
+			<!-- Display remaining columns as the originally appeared. -->
+			<xsl:choose>
+				<xsl:when test="name() = 'LtpRowVer'"/>
+				<xsl:when test="name() = 'LtpRowID'"/>
+				<xsl:when test="name() = 'SearchKey'"/>
+				<xsl:when test="name() = 'MessageSize'"/>
+				<xsl:when test="name() = 'MessageClassW'"/>
+				<xsl:when test="name() = 'Email1OriginalEntryId'"/>
+				<xsl:when test="name() = 'IconIndex'"/>
+				<xsl:when test="name() = 'SideEffects'"/>
+
+				<xsl:when test="name() = 'MessageDeliveryTime'"/>
+				<xsl:when test="name() = 'Sensitivity'"/>
+				<xsl:when test="name() = 'SentRepresentingNameW'"/>
+				<xsl:when test="name() = 'Importance'"/>
+				<xsl:when test="name() = 'SubjectW'"/>
+				<xsl:when test="name() = 'AutoLog'"/>
+				<xsl:when test="name() = 'MessageFlags'"/>
+				<xsl:when test="name() = 'MessageStatus'"/>
+
+				<xsl:when test="name() = 'Fax1AddressType'"/>
+				<xsl:when test="name() = 'Fax2AddressType'"/>
+				<xsl:when test="name() = 'Fax3AddressType'"/>
+				<xsl:when test="name() = 'CurrentVersion'"/>
+				<xsl:when test="name() = 'Email1AddressType'"/>
+				<xsl:when test="name() = 'AddressBookProviderArrayType'"/>
+
+				<xsl:otherwise>
+					<xsl:copy-of select="."/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:for-each>
+	</xsl:template>
+
+</xsl:stylesheet>

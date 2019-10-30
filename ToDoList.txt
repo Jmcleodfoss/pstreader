@@ -1,0 +1,60 @@
+To Do List
+----------
+- Host project externally (e.g. private repository on bitbucket) (April 16, 2011)
+- Error log level for some of the places where exceptions happen (April 16, 2011)
+- Add remaining required properties for test PST files (April 16, 2011)
+- Add remaining properties not found in test PST files (April 16, 2011)
+- Read in remaining property types (May 3, 2011)
+- Throw exceptions for more unexpected conditions (May 3, 2011)
+
+Done
+----
+- XXBlocks (April 16, 2011)
+	Complete, (April 16, 2011)
+
+- XBlock/XXBlock in property context (April 16, 2011)
+	Complete (April 16, 2011)
+
+- TableContext issue where number of entries expected in an MULTIPLE_INTEGER_32 array is 492, but only 1 is found. (April 16, 2011)
+	Fixed by implementing XXBlock processing (April 16, 2011)
+
+- Rationalize logging (April 16, 2011)
+	Complete (April 16, 2011)
+	
+- Make HeapOnNode.heap private (need to fix BTreeOnHeap) (May 3, 2011)
+	Complete (May 3, 2011)
+
+- Unrecognized node type exceptions in BTreeOnHeap and SubnodeBTree (April 16, 2011)
+	Seems to have been fixed by correcting use of HID blockIndex and index, and using null when HID index is 0 (May 8, 2011)
+
+- TableContext - exception reading TCInfo. (April 16, 2011)
+	Seems to have been fixed by correcting use of HID blockIndex and index, and using null when HID index is 0 (May 8, 2011)
+
+- HeapOnNode.FillLevel - what's it good for? (April 16, 2011)
+	I don't think this is necessary for applications which only read PST files (May 8, 2011)
+
+- Improve speed of HeapOnNode processing (April 16, 2011)
+	This seems to be caused by the time required to display the results, e.g. HeapOnNode spends ~ 10:35 on output. (May 9, 2011)
+
+- HeapOnNode - consilidate SimpleBlock and XBlock/XXBlock handling (May 9, 2011)
+	Complete (June 12, 2011)
+
+- Implement CRC calculation (and use) (April 16, 2011)
+	Complete (August 21, 2011).
+	Note that testing showed a byte-based implementation of the algorithm was faster than the reference version (based on 32-bit integers) and
+	then a version based on 64-bit integers. This also permitted me to ditch 7 of the 8 look-uo tables. For reference, I've store the old version
+	in the history folder.
+
+- Complete javadoc (April 16, 2011)
+	Oof! Completed on November 19, 2011
+
+- PropertyContext - running out of heap space on huge buffer  - need to reduce memory footprint. (April 16, 2011)
+	- Reduced to -Xmx75M by using StringBuilder and new read mechanism (it was -Xmx100M before using StringBuilder, and -Xmx94M 95 after)
+	- Modified to use "proxy" indicating how to read in data from HNID, rather than always reading it in. It is now read on demand. (Naovmber 20, 2011)
+
+- Create ANSI PST file for testing (April 16, 2011)
+	Done and tested (Nov. 24, 2011)
+
+- Create translator for cyclic encoding (need PST file) (April 16, 2011)
+	coded but not tested, August 20, 2011
+	Tested and debugged (Nov. 24, 2011)

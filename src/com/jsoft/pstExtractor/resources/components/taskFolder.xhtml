@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+>
+<head/>
+
+<f:loadBundle basename="com.jsoft.pstExtractor.text-resources" var="res"/>
+
+<body>
+	<composite:interface>
+		<composite:attribute name="folders" required="true"/>
+		<composite:attribute name="rendered" required="false" default="true"/>
+	</composite:interface>
+	
+	<composite:implementation>
+		<t:htmlTag value="h2" rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
+			#{res['tasks.text']}
+		</t:htmlTag>
+		<t:htmlTag value="h2" rendered="#{cc.attrs.rendered and empty cc.attrs.folders}">
+			#{res['noTasks.text']}
+		</t:htmlTag>
+		<h:dataTable value="#{cc.attrs.folders}" var="folder" rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
+			<h:column>
+				<t:htmlTag value="h3">
+					#{folder.name}
+				</t:htmlTag>
+					<h:dataTable value="#{folder.contents}" var="task">
+						<h:column>
+							<f:facet name="header">#{res['tasks.heading.title']}</f:facet>
+							#{task.title}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{res['tasks.heading.dueDate']}</f:facet>
+							#{task.dueDate}
+						</h:column>
+					</h:dataTable>
+			</h:column>
+		</h:dataTable>
+	</composite:implementation>
+</body>
+</html>

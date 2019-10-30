@@ -1,0 +1,43 @@
+package com.jsoft.explorer;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+
+import com.jsoft.swingutil.FilterByExtension;
+
+/**	Handle file open requests. */
+class FileOpenActionListener implements ActionListener {
+
+	/**	The filter used to look for PST files. */
+	static final FilterByExtension fileFilter = new FilterByExtension("Outlook Personal Storage Table file", "pst");
+
+	/**	The FileChooser - keep it as a member variable so we retain directory changes. */
+	JFileChooser fileChooser;
+	
+	/**	Construct the underlying FileChooser and set required filter. */
+	FileOpenActionListener()
+	{
+		fileChooser = new javax.swing.JFileChooser();
+		fileChooser.setFileFilter(fileFilter);
+	}
+
+	/**	Take action to take when File -> Open is selected: show a load file dialog box.
+	*
+	*	@param	e	The menu event which triggers displaying the file open dialog.
+	*/
+	public void actionPerformed(ActionEvent e)
+	{
+		switch(fileChooser.showOpenDialog(pstExplorer.explorer)) {
+		case JFileChooser.CANCEL_OPTION:
+			return;
+
+		case JFileChooser.APPROVE_OPTION:
+			pstExplorer.explorer.openFile(fileChooser.getSelectedFile());
+			return;
+
+		case JFileChooser.ERROR_OPTION:
+			return;
+		}
+	}
+}

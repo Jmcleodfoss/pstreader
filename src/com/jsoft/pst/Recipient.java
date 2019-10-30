@@ -1,0 +1,44 @@
+package com.jsoft.pst;
+
+/**	The Recipient class represents a single entry in the Recipient table.
+*
+*	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
+*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.5.3"
+*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385128(v=office.12).aspx">Recipient Table</a>
+*/
+class Recipient {
+
+	/**	The e-mail address of the recipient. */
+	public final String emailAddress;
+
+	/**	The given (display) name of the recipient. */
+	public final String displayName;
+
+	/**	Construct the Attachment object.
+	*
+	*	@param	tc		The recipient table.
+	*	@param	row		The row in the recipient table to create the Recipient object from.
+	*	@param	fUnicode	A flag indicating whether the underlying PST file is Unicode or ANSI.
+	*/
+	Recipient(TableContext tc, int row, boolean fUnicode)
+	throws
+		NotHeapNodeException,
+		UnknownClientSignatureException,
+		UnparseablePropertyContextException,
+		java.io.IOException
+	{
+		emailAddress = (String)tc.get(row, fUnicode ? PropertyTag.EmailAddressW : PropertyTag.EmailAddress);
+		displayName = (String)tc.get(row, fUnicode ? PropertyTag.DisplayNameW : PropertyTag.DisplayName);
+	}
+
+	/**	Test the Recipient class by iterating through the messages and displaying information about the recipients of each
+	*	message.
+	*
+	*	@param	args	The command line arguments to the test application.
+	*/
+	@com.jsoft.util.Unimplemented(priority = com.jsoft.util.Unimplemented.Priority.LOW)
+	static void main(String[] args)
+	{
+		System.out.println("Not implemented yet.");
+	}
+}

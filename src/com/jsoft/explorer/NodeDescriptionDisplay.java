@@ -1,0 +1,92 @@
+package com.jsoft.explorer;
+
+import javax.swing.JMenuItem;
+
+import com.jsoft.pst.Attachment;
+import com.jsoft.pst.LPTLeaf;
+import com.jsoft.pst.PropertyContext;
+import com.jsoft.swingutil.TreeNodePopupListener;
+
+/**	The NodeDescriptionDisplay displays the the currently-selected node. */
+@SuppressWarnings("serial")
+class NodeDescriptionDisplay extends TreeDescriptionDisplay {
+
+	/**	The AttachmentSavePopupMenu is the popup menu for saving attachments. */
+	private class AttachmentSavePopupMenu extends TreeNodePopupListener {
+
+		/**	Handle attachment file save requests. */
+		private class AttachmentSaveActionListener extends FileSaverMenuItem {
+
+			/**	The property context for the currently selected attachment node, if any. */
+			private PropertyContext pc;
+
+			/**	The attachment object for the currently selected node, if any. */
+			private Attachment attachment;
+	
+			/**	Create the AttachmentSaveActionListener object. */
+			AttachmentSaveActionListener()
+			{
+				pc = null;
+				attachment = null;
+			}
+	
+			/**	{@inheritDoc} */
+			String dialogTitle()
+			{
+				return "Save Attachment " + clickedNode;
+			}
+		
+			/**	{@inheritDoc} */
+			String initialFilenameSuggestion()
+			{
+				final LPTLeaf attachmentNode = (LPTLeaf)clickedNode;
+				pc = pstExplorer.pst().propertyContext(attachmentNode);
+				try {
+					attachment = new com.jsoft.pst.Attachment(attachmentNode, pstExplorer.pst().blockBTree, pstExplorer.pst());
+				} catch (Exception e) {
+					pc = null;
+					return "";
+				}
+				return attachment.name;
+			}
+		
+			/**	{@inheritDoc} */
+			byte[] data()
+			{
+				final byte[] data = attachment.data(pc);
+				attachment = null;
+				pc = null;
+				return data;
+			}
+		}
+
+		/**	Create an FileSaverTreePopupMenu, including the save action listener. */
+		AttachmentSavePopupMenu()
+		{
+			JMenuItem item = new JMenuItem("Save...");
+			item.addActionListener(new AttachmentSaveActionListener());
+			add(item);
+		}
+
+		/**	Is the currently selected node an attachment node?
+		*
+		*	@param	o	The node to check to see whether it is an attachment.
+		*
+		*	@return	true if this node is an attachment, false if it is not an attachmetn
+		*/
+		public boolean lookingFor(Object o)
+		{
+			return ((LPTLeaf)o).nid.isAttachment();
+		}
+	};
+
+	/**	Construct a NodeDescriptionDisplay object.
+	*
+	*	@param	tree	The node tree associated with this description.
+	*/
+	NodeDescriptionDisplay(BTreeJTree tree)
+	{
+		super(tree, new NodeContentsDisplay());
+		tree.addMouseListener(new AttachmentSavePopupMenu());
+	}
+}

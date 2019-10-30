@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+
+	<xsl:template match="/pst">
+		<html>
+			<xsl:apply-templates select="folder"/>
+		</html>
+	</xsl:template>
+
+	<xsl:template match="folder">
+		<h1><xsl:value-of select="folder-name"/></h1>
+		
+		<xsl:for-each select="./object">
+message:
+			<xsl:apply-templates select="."/>
+		</xsl:for-each>
+
+		<xsl:for-each select="./folder">
+child:
+			<xsl:apply-templates select="."/>
+		</xsl:for-each>
+	</xsl:template>
+
+	<xsl:template match="object">
+		<h2><xsl:value-of select="SubjectW"/></h2>
+		<ul>
+		<xsl:for-each select=".//*">
+			<li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li>
+		</xsl:for-each>
+		</ul>
+	</xsl:template>
+
+</xsl:stylesheet>

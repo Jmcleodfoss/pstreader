@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/layout.xhtml"
+>
+
+	<body>
+		<ui:composition template="/templates/layout.xhtml">
+			<ui:define name="heading">
+				#{res['blog.title.text']}
+			</ui:define>
+		
+			<ui:define name="content">
+				<ui:include src="/sections/blog/#{localeBean.getLocalizedFilename('description.xhtml')}"/>
+			</ui:define>
+		</ui:composition>
+	</body>
+
+</html>

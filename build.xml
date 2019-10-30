@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="./ant/ant2html.xsl"?>
+<project	name="MailGrabber"
+		default="dist"
+		basedir="."
+>
+	<description>PST-related libraries, applications, and web services</description>
+
+	<!--	Definitions	-->
+
+	<property name="debug" value="true"/>
+
+	<property name="src.dir" location="src"/>
+	<property name="test.dir" location="test"/>
+
+	<property name="build.dir" location="build"/>
+	<property name="build-obj.dir" location="${build.dir}/obj"/>
+	<property name="build-testobj.dir" location="${build.dir}/testobj"/>
+	<property name="build-dist.dir" location="${build.dir}/lib"/>
+	<property name="build-deploy.dir" location="${build.dir}/war"/>
+	<property name="temp.dir" location="${build.dir}/temp"/>
+	<property name="scripts.subdir" value="resources/js"/>
+	<property name="temp-scripts.dir" location="${temp.dir}/${scripts.subdir}"/>
+
+	<property name="doc.dir" location="doc"/>
+	<property name="doc-client.dir" location="${doc.dir}/client"/>
+	<property name="doc-explorer.dir" location="${doc.dir}/explorer"/>
+	<property name="doc-internal.dir" location="${doc.dir}/internal"/>
+	<property name="doc-localebean.dir" location="${doc.dir}/localebean"/>
+	<property name="doc-pst-extractor.dir" location="${doc.dir}/pst-extractor"/>
+	<property name="doc-support.dir" location="${doc.dir}/support"/>
+	<property name="doc-xml.dir" location="${doc.dir}/xml"/>
+
+	<property name="extlib.dir" location="."/>
+	<property name="extlib.file" location="${extlib.dir}/lib.properties"/>
+	<property file="${extlib.file}"/>
+
+
+	<!-- These values can be set to a timestamp if required by commenting them out here. -->
+
+	<property name="suffix.dist" value=""/>
+	<property name="suffix.deploy" value=""/>
+
+	<!--	Tomcat-related definitions\	-->
+
+	<property name="tomcat-config.dir" location="tomcat"/>
+	<property name="tomcat-local.file" location="${tomcat-config.dir}/local.properties"/>
+	<property file="${tomcat-local.file}"/>
+
+	<taskdef name="deploy"    classname="org.apache.catalina.ant.DeployTask"/>
+	<taskdef name="list"      classname="org.apache.catalina.ant.ListTask"/>
+	<taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask"/>
+	<taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask"/>
+	<taskdef name="roles"     classname="org.apache.catalina.ant.RolesTask"/>
+	<taskdef name="start"     classname="org.apache.catalina.ant.StartTask"/>
+	<taskdef name="stop"      classname="org.apache.catalina.ant.StopTask"/>
+	<taskdef name="undeploy"  classname="org.apache.catalina.ant.UndeployTask"/>
+
+
+	<property name="junit.classpath" value="/Users/james/junit/junit-4.10.jar"/>
+	<path id="junit.classpath">
+		<pathelement location="${junit.jar}"/>
+		<pathelement location="${privileged-accessor.jar}"/>
+		<pathelement location="${build-obj.dir}"/>
+		<pathelement location="${build-testobj.dir}"/>
+	</path>
+
+	<!--	Helpful information	-->
+
+	<target	name="prerequisites" description="List build prerequisites">
+		<echo>
+The PST and utility libraries are self-contained, as is the PST explorer application.
+
+The PST extractor servlet requires the following libraries:
+	Apache commons IO library (${commons-io.jar})
+	Apache commons fileupload library (${commons-fileupload.jar})
+
+Note that the locations of third-party libraries is found in ${extlib.file}
+		</echo>
+	</target>
+
+
+	<!--	Individual Initialization Targets - build	-->
+
+	<target name="init-build" description="Initialization for all non-documentation tasks">
+		<tstamp/>
+
+		<condition property="suffix.dist" value="-${DSTAMP}">
+			<not>
+				<isset property="suffix.dist"/>
+			</not>
+		</condition>
+
+		<property name="localebean.jar" value="LocaleBean${suffix.dist}.jar"/>
+		<property name="pst.jar" value="pst${suffix.dist}.jar"/>
+		<property name="swingutil.jar" value="swingutil${suffix.dist}.jar"/>
+		<property name="util.jar" value="util${suffix.dist}.jar"/>
+
+		<condition property="suffix.deploy" value="-${DSTAMP}">
+			<not>
+				<isset property="suffix.deploy"/>
+			</not>
+		</condition>
+
+		<property name="pst-extractor.deploy" value="pst-extractor${suffix.deploy}.war"/>
+
+		<mkdir dir="${build.dir}"/>
+	</target>
+	
+	<target name="init-compile" description="Set up prerequisites for compilation of all classes" depends="init-build">
+		<mkdir dir="${build-obj.dir}"/>
+		<mkdir dir="${build-testobj.dir}"/>
+	</target>
+
+	<target name="init-dist" description="Set up build prerequisites for distributable" depends="init-build">
+		<mkdir dir="${build-dist.dir}"/>
+	</target>
+	
+	<target name="init-deploy" description="Set up prerequisites for servlet deployment" depends="init-build">
+		<mkdir dir="${build-deploy.dir}"/>
+		<mkdir dir="${temp-scripts.dir}"/>
+	</target>
+	
+
+	<!--	Individual Initialization Targets - documentation	-->
+
+	<target name="init-doc" description="Set up documentation prerequisites">
+		<mkdir dir="${doc.dir}"/>
+	</target>
+
+	<target name="init-doc.client" description="Set up documentation prerequisites for client development">
+		<mkdir dir="${doc-client.dir}"/>
+	</target>
+
+	<target name="init-doc.devel" description="Set up documentation prerequisites for internal development">
+		<mkdir dir="${doc-internal.dir}"/>
+	</target>
+
+	<target name="init-doc.explorer" description="Set up documentation prerequisites for internal development">
+		<mkdir dir="${doc-explorer.dir}"/>
+	</target>
+
+	<target name="init-doc.localebean" description="Set up documentation prerequisites for LocaleBean">
+		<mkdir dir="${doc-localebean.dir}"/>
+	</target>
+
+	<target name="init-doc.support" description="Set up documentation prerequisites for client development (support library)">
+		<mkdir dir="${doc-support.dir}"/>
+	</target>
+
+	<target name="init-doc.pst-extractor" description="Set up documentation prerequisites for PST extractor servlet">
+		<mkdir dir="${doc-pst-extractor.dir}"/>
+	</target>
+
+	<target name="init-doc.xml" description="Set up documentation prerequisites for internal development">
+		<mkdir dir="${doc-xml.dir}"/>
+	</target>
+
+
+	<!--	Aggregated Documentation Initialization Targets	-->
+
+	<target name="init-doc.dist" description="Set up all documentation prerequisites" depends="init-doc.client,init-doc.localebean,init-doc.support"/>
+	<target name="init-doc.apps" description="Set up all documentation prerequisites" depends="init-doc.explorer,init-doc.xml"/>
+	<target name="init-doc.all" description="Set up all documentation prerequisites" depends="init-doc.devel,init-doc.dist,init-doc.apps"/>
+
+
+	<!--	Aggregated Initialization Targets	-->
+
+	<target name="init" description="Perform all initialization tasks" depends="init-compile,init-dist,init-deploy,init-doc.all"/>
+
+
+	<!--	Compilation Tools	-->
+
+	<presetdef name="javac-lib">
+		<javac	srcdir="${src.dir}"
+			destdir="${build-obj.dir}"
+			includeantruntime="false"
+			debug="${debug}"
+		>
+			<include name="${includes}"/>
+			<compilerarg value="-Xlint:all"/>
+		</javac>
+	</presetdef>
+
+	<presetdef name="javac-test">
+		<javac	srcdir="${test.dir}"
+			destdir="${build-testobj.dir}"
+			includeantruntime="false"
+			classpath="${build-obj.dir}:${junit.jar}:${privileged-accessor.jar}"
+			debug="${debug}"
+		>
+			<include name="${includes}"/>
+			<compilerarg value="-Xlint:all"/>
+		</javac>
+	</presetdef>
+
+	<presetdef name="javac-app">
+		<javac srcdir="${src.dir}" destdir="${build-obj.dir}" includeantruntime="false" debug="${debug}">
+			<include name="${includes}"/>
+			<compilerarg value="-Xlint:all"/>
+		</javac>
+	</presetdef>
+
+	<presetdef name="javac-servlet">
+		<javac srcdir="${src.dir}" destdir="${build-obj.dir}" includeantruntime="false" debug="${debug}">
+			<include name="${includes}"/>
+			<classpath path="${servlet-api.jar}:${myfaces-api.jar}"/>
+			<compilerarg value="-Xlint:all"/>
+		</javac>
+	</presetdef>
+
+
+	<!--	Individual Compilation Targets	-->
+
+	<target name="explorer.compile" description="Compile PST Explorer stand-alone application" depends="init-compile">
+		<javac-app includes="com/jsoft/explorer/*.java"/>
+	</target>
+
+	<target name="localebean.compile" description="Compile LocaleBean stand-alone application" depends="init-compile">
+		<javac-servlet includes="com/jsoft/localebean/*.java"/>
+	</target>
+
+	<target name="pst.compile" description="Compile PST manipulation library" depends="init-compile">
+		<javac-lib includes="com/jsoft/pst/*.java"/>
+	</target>
+
+	<target name="pst.test.compile" description="Compile PST manipulation library tests" depends="pst.compile">
+		<javac-test
+			includes="com/jsoft/pst/*.java"
+		/>
+	</target>
+
+	<target name="pst-extractor.compile" description="Compile PST extraction servlet" depends="init-compile">
+		<javac-servlet
+			includes="com/jsoft/pstExtractor/*.java"
+			classpath="${commons-fileupload.jar}:${build-dist.dir}/${pst.jar}:${tomahawk.jar}:${tomahawk-commons-io.jar}"
+		/>
+	</target>
+
+	<target name="swingutil.compile" description="Compile Swing utility library" depends="init-compile">
+		<javac-lib includes="com/jsoft/swingutil/**"/>
+	</target>
+
+	<target name="util.compile" description="Compile local utility library" depends="init-compile">
+		<javac-lib includes="com/jsoft/util/**"/>
+	</target>
+
+	<target name="xml.compile" description="Compile PST to XML applications" depends="init-compile">
+		<javac-app includes="com/jsoft/xml/**"/>
+	</target>
+
+
+	<!--	Aggregated Compilation Targets	-->
+
+	<target name="libs.compile" description="Compile all librariest" depends="pst.compile,localebean.compile,swingutil.compile,util.compile"/>
+	<target name="servlets.compile" description="Compile all servlets" depends="pst-extractor.compile"/>
+	<target name="apps.compile" description="Compile all applications" depends="explorer.compile,xml.compile"/>
+	<target name="compile" description="Compile all source modules" depends="libs.compile,servlets.compile,apps.compile"/>
+
+
+	<!--	JUnit Tests	-->
+
+	<target name="test-pst" depends="pst.test.compile">
+		<junit	fork="yes"
+			haltonfailure="yes"
+		>
+			<test name="com.jsoft.pst.BTreeOnHeapTest"/>
+			<test name="com.jsoft.pst.BlockBTreeTest"/>
+			<test name="com.jsoft.pst.BlockFinderTest"/>
+			<test name="com.jsoft.pst.HeaderTest"/>
+			<test name="com.jsoft.pst.HeapOnNodeTest"/>
+			<test name="com.jsoft.pst.NodeBTreeTest"/>
+			<test name="com.jsoft.pst.NodeFinderTest"/>
+			<test name="com.jsoft.pst.PropertyContextTest"/>
+			<test name="com.jsoft.pst.SimpleBlockTest"/>
+			<test name="com.jsoft.pst.TableContextTest"/>
+			<formatter type="plain" usefile="false"/>
+			<classpath refid="junit.classpath"/>
+		</junit>
+	</target>
+	  
+
+	<!--	Individual Distributable Library Targets	-->
+
+	<target	name="localebean.dist"
+		description="Create the distributable for the LocaleBean"
+		depends="init-dist,localebean.compile"
+	>
+		<jar destfile="${build-dist.dir}/${localebean.jar}" basedir="${build-obj.dir}" includes="com/jsoft/localebean/LocaleBean.class">
+			<metainf file="${src.dir}/com/jsoft/pstExtractor/faces-config.xml"/>
+		</jar>
+	</target>
+
+	<target	name="pst.dist"
+		description="Create the distributable for the PST library"
+		depends="init-dist,pst.compile"
+	>
+		<jar destfile="${build-dist.dir}/${pst.jar}" basedir="${build-obj.dir}" includes="com/jsoft/pst/**"/>
+	</target>
+
+	<target	name="swingutil.dist"
+		description="Create the distributable for the Swing utility library"
+		depends="init-dist,swingutil.compile"
+	>
+		<jar destfile="${build-dist.dir}/${swingutil.jar}" basedir="${build-obj.dir}" includes="com/jsoft/swingutil/**"/>
+	</target>
+
+	<target	name="util.dist"
+		description="Create the distributable for the local utility library"
+		depends="init-dist,util.compile"
+	>
+		<jar destfile="${build-dist.dir}/${util.jar}" basedir="${build-obj.dir}" includes="com/jsoft/util/**"/>
+	</target>
+
+
+	<!--	Aggregated Distributable Library Targets	-->
+
+	<target name="libs" description="Generate the distributable libraries" depends="pst.dist,localebean.dist,swingutil.dist,util.dist"/>
+
+
+	<!--	Third-party libraries used in war files	-->
+
+	<target	name="jquery"
+		description="jQuery for deployment"
+	>
+		<copy	file="${jquery.js}"
+			tofile="${temp-scripts.dir}/jquery.js"
+		/>
+	</target>
+
+
+	<!--	Individual Application Targets	-->
+
+	<target	name="explorer"
+		description="Runnable PST Explorer application"
+		depends="explorer.compile,pst.dist,swingutil.dist,util.dist"
+	>
+		<jar	destfile="${build-dist.dir}/explorer.jar"
+			basedir="${build-obj.dir}"
+			includes="com/jsoft/explorer/**"
+			manifest="${src.dir}/com/jsoft/explorer/manifest"
+		>
+			<zipgroupfileset dir="${build-dist.dir}">
+				<include name="${pst.jar}"/>
+				<include name="${swingutil.jar}"/>
+				<include name="${util.jar}"/>
+			</zipgroupfileset>
+		</jar>
+	</target>
+
+
+	<!--	Individual Deployable Servlet WAR Targets	-->
+
+	<target	name="pst-extractor"
+		description="Create the PST Extraction Servlet"
+		depends="init-deploy,pst.dist,util.dist,pst-extractor.compile,jquery"
+	>
+		<war	destfile="${build-deploy.dir}/${pst-extractor.deploy}"
+			webxml="src/com/jsoft/pstExtractor/web.xml"
+		>
+			<lib dir="${build-dist.dir}">
+				<include name="${pst.jar}"/>
+				<include name="${localebean.jar}"/>
+				<include name="${swingutil.jar}"/>
+				<include name="${util.jar}"/>
+			</lib>
+			<lib file="${commons-beanutils.jar}"/>
+			<lib file="${commons-codec.jar}"/>
+			<lib file="${commons-collections.jar}"/>
+			<lib file="${commons-digester.jar}"/>
+			<lib file="${commons-fileupload.jar}"/>
+			<lib file="${commons-io.jar}"/>
+			<lib file="${commons-logging.jar}"/>
+			<lib file="${myfaces-bundle.jar}"/>
+			<lib file="${tomahawk.jar}"/>
+			<lib file="${el-impl-2.2.jar}"/>
+			<lib file="${jstl.jar}"/>
+			<webinf file="${src.dir}/com/jsoft/pstExtractor/faces-config.xml"/>
+			<classes dir="${build-obj.dir}" includes="com/jsoft/pstExtractor/*.class"/>
+			<classes dir="${src.dir}" includes="com/jsoft/pstExtractor/text-resources.properties"/>
+			<fileset file="${src.dir}/com/jsoft/pstExtractor/index.jsp"/>
+			<fileset dir="${temp.dir}" includes="${scripts.subdir}/jquery.js"/>
+			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="resources/**"/>
+			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="sections/**"/>
+			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="templates/**"/>
+			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="views/**"/>
+		</war>
+	</target>
+
+
+	<!--	Deployment Targets	-->
+
+	<target	name="list-local"
+		description="List deployed web applications on local server"
+	>
+		<list
+			url="${url}"
+			username="${username}"
+			password="${password}"
+		/>
+	</target>
+
+	<target	name="undeploy-local"
+		description="Undeploy web applications on local server"
+	>
+		<undeploy
+			url="${url}"
+			username="${username}"
+			password="${password}"
+			path="/pst-extractor"
+		/>
+	</target>
+
+	<target	name="deploy-local"
+		description="Deploy web applications to local server"
+		depends="pst-extractor"
+	>
+		<deploy
+			url="${url}"
+			username="${username}"
+			password="${password}"
+			path="/pst-extractor"
+			war="file:${build-deploy.dir}/${pst-extractor.deploy}"
+		/>
+	</target>
+
+	<target	name="redeploy-local"
+		description="Redeploy web applications to local server"
+		depends="undeploy-local,deploy-local"
+	/>
+
+	<!--	Aggregated Distributable Targets	-->
+
+	<target name="dist" description="Generate the distributable libraries" depends="libs,explorer,pst-extractor"/>
+
+
+	<!--	Clean-up Targets	-->
+
+	<target name="distclean" description="Remove build temporaries and targets">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<target name="clean" description="Remove temporaries, build targets, etc" depends="distclean">
+		<delete dir="${doc.dir}"/>
+	</target>
+
+
+	<!--	Documentation Tools	-->
+	<presetdef name="jsoft.javadoc" description="javadoc with appropriate project-specific settings">
+		<javadoc sourcepath="${src.dir}" packagenames="${packagenames}" destdir="${destdir}" access="${access}"/>
+	</presetdef>
+
+
+	<!--	Individual Documentation Targets -->
+
+	<target	name="pst.doc-devel"
+		description="Create developer documentation for PST manipulation library"
+		depends="init-doc.devel"
+	>
+		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="com.jsoft.pst.*"/>
+	</target>
+
+	<target	name="pst.doc-client"
+		description="Create user documentation for PST manipulation library"
+		depends="init-doc.client"
+	>
+		<jsoft.javadoc destdir="${doc-client.dir}" access="public" packagenames="com.jsoft.pst.*"/>
+	</target>
+
+	<target	name="swingutil.doc-client"
+		description="Create user documentation for Swing utility library"
+		depends="init-doc.devel"
+	>
+		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="com.jsoft.swingutil.*"/>
+	</target>
+
+	<target	name="swingutil.doc-devel"
+		description="Create developer documentation for Swing utility library"
+		depends="init-doc.client"
+	>
+		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="com.jsoft.swingutil.*"/>
+	</target>
+
+	<target	name="util.doc-client"
+		description="Create user documentation for local utility library"
+		depends="init-doc.devel"
+	>
+		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="com.jsoft.util.*"/>
+	</target>
+
+	<target	name="util.doc-devel"
+		description="Create developer documentation for local utility library"
+		depends="init-doc.client"
+	>
+		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="com.jsoft.util.*"/>
+	</target>
+
+	<target	name="explorer.doc"
+		description="Create documentation for PST Explorer applications"
+		depends="init-doc.explorer"
+	>
+		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="com.jsoft.xml.*"/>
+	</target>
+
+	<target	name="xml.doc"
+		description="Create documentation for XML applications"
+		depends="init-doc.xml"
+	>
+		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="com.jsoft.xml.*"/>
+	</target>
+
+	<target	name="pst-extractor.doc"
+		description="Create documentation for PST extraction servlet application"
+		depends="init-doc.pst-extractor"
+	>
+		<jsoft.javadoc destdir="${doc-pst-extractor.dir}" access="private" packagenames="com.jsoft.pstExtractor.*"/>
+	</target>
+
+
+	<!--	Aggregated Documentation Targets	-->
+
+	<target name="doc-devel" description="Create all developer documentation" depends="pst.doc-devel,swingutil.doc-devel,util.doc-devel"/>
+	<target name="doc-client" description="Create user documentation for PST library" depends="pst.doc-client"/>
+	<target name="doc-support" description="Create user documentation for support libraries" depends="swingutil.doc-client,util.doc-client"/>
+	<target name="doc-application" description="Create all application documentation" depends="explorer.doc,xml.doc"/>
+	<target name="doc-servlet" description="Create all application documentation" depends="pst-extractor.doc"/>
+	<target name="doc" description="Create all documentation" depends="doc-devel,doc-client,doc-support,doc-application,doc-servlet"/>
+
+
+	<!--	All Targets	-->
+
+	<target name="all" depends="dist,doc"/>
+
+
+	<!--	Debug Target	-->
+
+	<target name="debug">
+		<echoproperties/>
+	</target>
+
+</project>

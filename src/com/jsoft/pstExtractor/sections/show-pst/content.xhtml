@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:pst="http://java.sun.com/jsf/composite/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<ui:component>
+		<pst:appointmentFolder folders="#{pstBean.appointments.folders}" rendered="#{pstBean.appointments.requested}"/>
+		<pst:contactFolder folders="#{pstBean.contacts.folders}" rendered="#{pstBean.contacts.requested}"/>
+		<pst:journalEntryFolder folders="#{pstBean.journalEntries.folders}" rendered="#{pstBean.journalEntries.requested}"/>
+		<pst:stickyNoteFolder folders="#{pstBean.stickyNotes.folders}" rendered="#{pstBean.stickyNotes.requested}"/>
+		<pst:taskFolder folders="#{pstBean.tasks.folders}" rendered="#{pstBean.tasks.requested}"/>
+	</ui:component>
+</html>

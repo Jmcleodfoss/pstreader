@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Extract the contents of the Contacts folder from an XML file representing a PST file as an HTML file. -->
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
+
+	<!--html>
+	<body-->
+
+	<xsl:template match="/pst">
+		<html>
+		<body>
+		<h1>Contacts</h1>
+			<xsl:apply-templates select="//folder/object[MessageClassW = 'IPM.Contact']"/>
+		</body>
+		</html>
+	</xsl:template>
+
+	<xsl:template match="//folder/object[MessageClassW = 'IPM.Contact']">
+		<!-- if no DisplayNameW for record, use FileUnderID -->
+		<h2>
+		<xsl:if test="DisplayNameW"><xsl:value-of select="DisplayNameW"/></xsl:if>
+		<xsl:if test="not(DisplayNameW)"><xsl:value-of select="FileUnderID"/></xsl:if>
+		</h2>
+		<ul>
+		<xsl:for-each select="./*">
+				<!-- Skip internal PST columns -->?
+				<!-- Skip inapplicable columns which, while populated, seem to be an artefact of squeezing contact info into a message table. -->
+				<!-- Skip other pointless columns -->
+				<!-- Skip the field we used as title -->
+				<!-- Display remaining columns as an unordered list. -->
+			<xsl:choose>
+				<xsl:when test="name() = 'LtpRowVer'"/>
+				<xsl:when test="name() = 'LtpRowID'"/>
+				<xsl:when test="name() = 'SearchKey'"/>
+				<xsl:when test="name() = 'MessageSize'"/>
+				<xsl:when test="name() = 'MessageClassW'"/>
+				<xsl:when test="name() = 'Email1OriginalEntryId'"/>
+				<xsl:when test="name() = 'IconIndex'"/>
+				<xsl:when test="name() = 'SideEffects'"/>
+				<xsl:when test="name() = 'CurrentVersionName'"/>
+				<xsl:when test="name() = 'AgingDontAgeMe'"/>
+
+				<xsl:when test="name() = 'MessageDeliveryTime'"/>
+				<xsl:when test="name() = 'Sensitivity'"/>
+				<xsl:when test="name() = 'SentRepresentingNameW'"/>
+				<xsl:when test="name() = 'Importance'"/>
+				<xsl:when test="name() = 'SubjectW'"/>
+				<xsl:when test="name() = 'AutoLog'"/>
+				<xsl:when test="name() = 'MessageFlags'"/>
+				<xsl:when test="name() = 'MessageStatus'"/>
+				<xsl:when test="name() = 'SentRepresentingAddressType'"/>
+				<xsl:when test="name() = 'ConversationTopic'"/>
+				<xsl:when test="name() = 'ConversationIndex'"/>
+				<xsl:when test="name() = 'ReadReceiptRequested'"/>
+				<xsl:when test="name() = 'SenderAddressType'"/>
+				<xsl:when test="name() = 'SenderSearchKey'"/>
+				<xsl:when test="name() = 'SentRepresentingEntryID'"/>
+				<xsl:when test="name() = 'SenderEntryID'"/>
+				<xsl:when test="name() = 'SenderName'"/>
+				<xsl:when test="name() = 'NameidStreamGuid'"/>
+				<xsl:when test="name() = 'SentRepresentingEmailAddress'"/>
+				<xsl:when test="name() = 'property-8006-00062004-0000-0000-c000-000000000046'"/>
+				<xsl:when test="name() = 'OriginatorDeliveryReportRequested'"/>
+				<xsl:when test="name() = 'Priority'"/>
+				<xsl:when test="name() = 'SentRepresentingSearchKey'"/>
+				<xsl:when test="name() = 'SenderEntryId'"/>
+				<xsl:when test="name() = 'SenderEmailAddress'"/>
+				<xsl:when test="name() = 'ClientSubmitTime'"/>
+
+				<xsl:when test="name() = 'Fax1AddressType'"/>
+				<xsl:when test="name() = 'Fax2AddressType'"/>
+				<xsl:when test="name() = 'Fax3AddressType'"/>
+				<xsl:when test="name() = 'CurrentVersion'"/>
+				<xsl:when test="name() = 'Email1AddressType'"/>
+				<xsl:when test="name() = 'Email2AddressType'"/>
+				<xsl:when test="name() = 'AddressBookProviderArrayType'"/>
+				<xsl:when test="name() = 'LastModificationTime'"/>
+				<xsl:when test="name() = 'Private'"/>
+				<xsl:when test="name() = 'TaskMode'"/>
+				<xsl:when test="name() = 'ReminderSet_'"/>
+				<xsl:when test="name() = 'ReminderDelta'"/>
+				<xsl:when test="name() = 'DeleteAfterSubmit'"/>
+				<xsl:when test="name() = 'ReminderSignalTime'"/>
+				<xsl:when test="name() = 'propertyID-10090102'"/>
+				<xsl:when test="name() = 'Initials'"/>
+				<xsl:when test="name() = 'InternetCodePage'"/>
+				<xsl:when test="name() = 'ContactCharacterSet'"/>
+
+				<xsl:when test="name() = 'DisplayNameW'"/>
+
+				<xsl:otherwise>
+					<li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:for-each>
+		</ul>
+	</xsl:template>
+
+</xsl:stylesheet>

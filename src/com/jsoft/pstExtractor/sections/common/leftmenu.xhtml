@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<ui:component>
+		<table>
+			<tbody>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Home.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('Home.jsf')"
+						>
+						#{res['leftMenu.home']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/ExtractionForm.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('ExtractionForm.jsf')"
+					>
+						#{res['leftMenu.extractionform']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Results.xhtml' ? '' : 'un'}selected left-menu-#{pstBean.resultAvailable ? '' : 'no'}results"
+						onclick="return onClickLoadNewView('Results.jsf')"
+					>
+						#{res['leftMenu.results']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Help.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('Help.jsf')"
+					>
+						#{res['leftMenu.help']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/FAQ.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('FAQ.jsf')"
+					>
+						#{res['leftMenu.faq']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/About.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('About.jsf')"
+					>
+						#{res['leftMenu.about']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Blog.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('Blog.jsf')"
+					>
+						#{res['leftMenu.blog']}
+					</td>
+				</tr>
+				<tr>
+					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Pricing.xhtml' ? '' : 'un'}selected"
+						onclick="return onClickLoadNewView('Pricing.jsf')"
+					>
+						#{res['leftMenu.pricing']}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ui:component>
+</html>
