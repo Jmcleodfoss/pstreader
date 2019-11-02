@@ -57,6 +57,8 @@
 	<taskdef name="undeploy"  classname="org.apache.catalina.ant.UndeployTask"/>
 
 
+	<!--	JUnit-related definitions	-->
+
 	<property name="junit.classpath" value="/Users/james/junit/junit-4.10.jar"/>
 	<path id="junit.classpath">
 		<pathelement location="${junit.jar}"/>
@@ -95,7 +97,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<property name="pst.jar" value="pst${suffix.dist}.jar"/>
 		<property name="swingutil.jar" value="swingutil${suffix.dist}.jar"/>
 		<property name="util.jar" value="util${suffix.dist}.jar"/>
-
 		<condition property="suffix.deploy" value="-${DSTAMP}">
 			<not>
 				<isset property="suffix.deploy"/>
