@@ -41,21 +41,6 @@
 	<property name="suffix.dist" value=""/>
 	<property name="suffix.deploy" value=""/>
 
-	<!--	Tomcat-related definitions	-->
-
-	<property name="tomcat-config.dir" location="tomcat"/>
-	<property name="tomcat-local.file" location="${tomcat-config.dir}/local.properties"/>
-	<property file="${tomcat-local.file}"/>
-
-	<taskdef name="deploy"    classname="org.apache.catalina.ant.DeployTask"/>
-	<taskdef name="list"      classname="org.apache.catalina.ant.ListTask"/>
-	<taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask"/>
-	<taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask"/>
-	<taskdef name="roles"     classname="org.apache.catalina.ant.RolesTask"/>
-	<taskdef name="start"     classname="org.apache.catalina.ant.StartTask"/>
-	<taskdef name="stop"      classname="org.apache.catalina.ant.StopTask"/>
-	<taskdef name="undeploy"  classname="org.apache.catalina.ant.UndeployTask"/>
-
 
 	<!--	JUnit-related definitions	-->
 
@@ -388,47 +373,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		</war>
 	</target>
 
-
-	<!--	Deployment Targets	-->
-
-	<target	name="list-local"
-		description="List deployed web applications on local server"
-	>
-		<list
-			url="${url}"
-			username="${username}"
-			password="${password}"
-		/>
-	</target>
-
-	<target	name="undeploy-local"
-		description="Undeploy web applications on local server"
-	>
-		<undeploy
-			url="${url}"
-			username="${username}"
-			password="${password}"
-			path="/pst-extractor"
-		/>
-	</target>
-
-	<target	name="deploy-local"
-		description="Deploy web applications to local server"
-		depends="pst-extractor"
-	>
-		<deploy
-			url="${url}"
-			username="${username}"
-			password="${password}"
-			path="/pst-extractor"
-			war="file:${build-deploy.dir}/${pst-extractor.deploy}"
-		/>
-	</target>
-
-	<target	name="redeploy-local"
-		description="Redeploy web applications to local server"
-		depends="undeploy-local,deploy-local"
-	/>
 
 	<!--	Aggregated Distributable Targets	-->
 
