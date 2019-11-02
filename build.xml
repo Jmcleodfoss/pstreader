@@ -41,7 +41,7 @@
 	<property name="suffix.dist" value=""/>
 	<property name="suffix.deploy" value=""/>
 
-	<!--	Tomcat-related definitions\	-->
+	<!--	Tomcat-related definitions	-->
 
 	<property name="tomcat-config.dir" location="tomcat"/>
 	<property name="tomcat-local.file" location="${tomcat-config.dir}/local.properties"/>
