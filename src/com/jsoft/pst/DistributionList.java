@@ -33,7 +33,7 @@ public class DistributionList extends MessageObject {
 		/**	The display name of the distribution list member. */
 		protected String displayName;
 
-		/**	THe e-mail address of the distribution list member. */
+		/**	The e-mail address of the distribution list member. */
 		protected String emailAddress;
 
 		/**	Retrieve the display name of this distribution list entry.
