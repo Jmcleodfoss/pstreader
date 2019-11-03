@@ -9,7 +9,7 @@ import com.jsoft.pst.DistributionList;
 import com.jsoft.pst.PropertyContext;
 import com.jsoft.pst.PST;
 
-/**	The DistributionListDispla class displays a distribution list. */
+/**	The DistributionListDisplay class displays a distribution list. */
 @SuppressWarnings("serial")
 class DistributionListDisplay extends JScrollPane {
 
