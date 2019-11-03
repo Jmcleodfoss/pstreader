@@ -39,7 +39,7 @@ class PSTToXML {
 		pst = new com.jsoft.pst.PST(fn);
 
 		safeXMLNamedProperties = new java.util.HashMap<Short, String>();
-		for (java.util.Iterator iterator = pst.namedPropertiesIterator(); iterator.hasNext(); ) {
+		for (java.util.Iterator<java.util.Map.Entrt<Short, String>> iterator = pst.namedPropertiesIterator(); iterator.hasNext(); ) {
 			@SuppressWarnings("unchecked") java.util.Map.Entry<Short, String> entry = (java.util.Map.Entry<Short, String>)iterator.next();
 			String value = entry.getValue();
 			if (xmlSubstitutes.containsKey(value))
