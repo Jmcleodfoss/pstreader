@@ -251,7 +251,7 @@ class XBlock extends BlockBase {
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 	
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry node = (NBTEntry)iterator.next();
 				if (node.bidData.fInternal) {

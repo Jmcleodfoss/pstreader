@@ -39,13 +39,6 @@ public abstract class LPTLeaf implements BTreeLeaf {
 		bidSubnode = (BID)dc.get(nm_bidSubnode);
 	}
 
-	/**	{@inheritDoc}
-	*/
-	public BTreeNode[] getChildren()
-	{
-		return new BTreeNode[0];
-	}
-
 	/**	{@inheritDoc} */
 	public javax.swing.table.TableModel getNodeTableModel()
 	{
@@ -63,13 +56,6 @@ public abstract class LPTLeaf implements BTreeLeaf {
 	public String getNodeText()
 	{
 		return String.format("%s: 0x%08x", nid.description, nid.nid);
-	}
-
-	/**	{@inheritDoc} */
-	@SuppressWarnings("unchecked")
-	public java.util.Iterator<BTreeNode> iterator()
-	{
-		return new com.jsoft.util.SingleItemIterator<LPTLeaf>(this);
 	}
 
 	/**	Return the B-tree search key for this node.

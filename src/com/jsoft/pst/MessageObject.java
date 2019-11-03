@@ -45,7 +45,7 @@ public class MessageObject {
 		subject = (String)contentsTable.get(messageRow, fUnicode ? PropertyTag.SubjectW : PropertyTag.Subject);
 
 		final int nidMessageObject = (Integer)contentsTable.get(messageRow, PropertyTag.LtpRowId);
-		nodeMessageObject = (NBTEntry)nbt.find(new NID(nidMessageObject));
+		nodeMessageObject = nbt.find(new NID(nidMessageObject));
 	}
 
 	/**	Create a message object of the appropriate derived type.

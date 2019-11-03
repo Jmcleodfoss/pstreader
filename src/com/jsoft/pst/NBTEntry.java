@@ -54,7 +54,7 @@ public class NBTEntry extends LPTLeaf {
 	*	@param	byteBuffer	The data stream from which to read the Node B-tree leaf entry.
 	*	@param	context		The context to use when reading the leaf data.
 	*/
-	NBTEntry(java.nio.ByteBuffer byteBuffer, final PagedBTree.PageContext context)
+	NBTEntry(java.nio.ByteBuffer byteBuffer, final PagedBTree.PageContext<BTree, BTreeLeaf> context)
 	throws
 		java.io.IOException
 	{
@@ -69,7 +69,7 @@ public class NBTEntry extends LPTLeaf {
 	*
 	*	@return	The actual size of a node B-tree leaf node for this file type.
 	*/
-	public int actualSize(final BTree.Context context)
+	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
 		return SIZE_COMMON + (context.unicode() ? SIZE_UNICODE : SIZE_ANSI);
 	}

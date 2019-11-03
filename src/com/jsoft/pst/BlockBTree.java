@@ -15,7 +15,7 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	/**	The BBTContext class provides context for block B-Tree construction. This information is not kept in the tree, but
 	*	passed through in turn to each BlockBTree child constructor call.
 	*/
-	static class BBTContext extends PagedBTree.PageContext<BlockBTree, BBTEntry> {
+	static class BBTContext extends PagedBTree.PageContext<BTree, BTreeLeaf> {
 
 		/**	Constructor the context for building the block B-tree.
 		*
@@ -110,7 +110,7 @@ class BlockBTree extends PagedBTree implements BlockMap {
 
 			System.out.println("Block B-tree\n____________");
 
-			java.util.Iterator iterator = bbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 			while (iterator.hasNext())
 				System.out.println((BBTEntry)iterator.next());
 		} catch (Exception ex) {

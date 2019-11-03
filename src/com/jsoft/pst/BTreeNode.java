@@ -15,25 +15,13 @@ public interface BTreeNode {
 	*
 	*	@return	The size of the entry, including the number of bytes skipped between entries.
 	*/
-	int actualSize(BTree.Context context);
-
-	/**	Retrieve the children of this node, if any.
-	*
-	*	@return: An array containing this node's children.
-	*/
-	BTreeNode[] getChildren();
+	int actualSize(BTree.Context<BTree, BTreeLeaf> context);
 
 	/**	Get a table model which can be used to describe this node.
 	*
 	*	@return	A TableModel describing this node.
 	*/
 	javax.swing.table.TableModel getNodeTableModel();
-
-	/**	Retrieve an iterator through the children of this node, if any.
-	*
-	*	@return	An iterator through the children of this node, or an empty iterator if this is a leaf node.
-	*/
-	java.util.Iterator<BTreeNode> iterator();
 
 	/**	Retrieve text for this node.
 	*

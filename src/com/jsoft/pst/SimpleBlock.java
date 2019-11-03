@@ -8,8 +8,8 @@ package com.jsoft.pst;
 */
 class SimpleBlock extends BlockBase {
 
-	/**	The BlockBase Iterator class is a trivial iterator through the data stream for this one block. */
-	class Iterator implements java.util.Iterator {
+	/**	The BlockBase Iterator class is a trivial iterator the data stream for this one block. */
+	class Iterator implements java.util.Iterator<java.nio.ByteBuffer> {
 
 		/**	The fNext flag indicates whether there is another block. It is true until the block is returned, when it
 		*	becomes false.
@@ -166,7 +166,7 @@ class SimpleBlock extends BlockBase {
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			java.util.Iterator iterator = bbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 			while (iterator.hasNext()) {
 				final BBTEntry entry = (BBTEntry)iterator.next();
 				final SimpleBlock block = new SimpleBlock(entry, pstFile);

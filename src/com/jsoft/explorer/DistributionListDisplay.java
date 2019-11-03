@@ -16,13 +16,13 @@ class DistributionListDisplay extends JScrollPane {
 	/**	The raw data, in bytes and ASCII. */
 
 	/**	The members of the distribution list. */
-	private JList members;
+	private JList<DistributionList.Entry> members;
 
 	/**	Construct the constituent elements of the display. */
 	DistributionListDisplay()
 	{
 		super(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		members = new javax.swing.JList();
+		members = new javax.swing.JList<DistributionList.Entry>();
 		getViewport().add(members);
 	}
 
@@ -35,8 +35,8 @@ class DistributionListDisplay extends JScrollPane {
 	boolean update(DistributionList distributionList, PropertyContext pc, PST pst)
 	{
 		try {
-			DefaultListModel listModel = new DefaultListModel();
-			Iterator memberIterator = distributionList.members(pc, pst.blockBTree, pst.nodeBTree, pst);
+			DefaultListModel<DistributionList.Entry> listModel = new DefaultListModel<DistributionList.Entry>();
+			Iterator<DistributionList.Entry> memberIterator = distributionList.members(pc, pst.blockBTree, pst.nodeBTree, pst);
 			while (memberIterator.hasNext())
 				listModel.addElement(memberIterator.next());
 			members.setModel(listModel);

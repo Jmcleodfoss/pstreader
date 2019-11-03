@@ -81,7 +81,7 @@ public class Message extends MessageObjectWithBody {
 		java.util.Vector<Attachment> attachments = null;
 		if (!nodeMessageObject.bidSubnode.isNull()) {
 			final SubnodeBTree snb = new SubnodeBTree(nodeMessageObject.bidSubnode, bbt, pstFile);
-			for (java.util.Iterator snbIterator = snb.iterator(); snbIterator.hasNext(); ) {
+			for (java.util.Iterator<BTreeNode> snbIterator = snb.iterator(); snbIterator.hasNext(); ) {
 				
 				SLEntry subnode = (SLEntry)snbIterator.next();
 	

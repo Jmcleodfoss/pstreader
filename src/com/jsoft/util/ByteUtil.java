@@ -144,7 +144,7 @@ public class ByteUtil {
 
 		for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; ++i) {
 			byte[] ba = { (byte)i };
-			System.out.printf("%d: 0x%02x %s %s\n", i, (int)i & 0xff, ByteUtil.toHexString((byte)i), ByteUtil.createHexByteString(ba));
+			System.out.printf("%d: 0x%02x %s %s\n", i, i & 0xff, ByteUtil.toHexString((byte)i), ByteUtil.createHexByteString(ba));
 		}
 	}
 }

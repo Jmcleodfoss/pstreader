@@ -18,7 +18,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay {
 	private HexAndTextDisplay rawData;
 
 	/**	The Heap-On-Node, if present. */
-	private JList heapOnNode;
+	private JList<Object> heapOnNode;
 
 	/**	The BTree-on-Heap, if present. */
 	private BTHDisplay bth;
@@ -30,7 +30,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay {
 	NodeContentsDisplay()
 	{
 		rawData = new HexAndTextDisplay();
-		heapOnNode = new JList();
+		heapOnNode = new JList<Object>();
 		bth = new BTHDisplay();
 		lpt = new AppTable();
 	}

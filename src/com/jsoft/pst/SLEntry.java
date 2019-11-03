@@ -49,7 +49,7 @@ class SLEntry extends LPTLeaf {
 	*
 	*	@return	The total size of the sub-node B-tree leaf entry, including padding.
 	*/
-	public int actualSize(final BTree.Context context)
+	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
 		return size(context.pstFile);
 	}

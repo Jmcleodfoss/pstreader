@@ -96,13 +96,13 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 		private int nextChild;
 
 		/**	The iterator for the current child node's leaves. */
-		private java.util.Iterator<BTreeNode> childIterator;
+		private Iterator childIterator;
 
 		/**	Construct a B-tree iterator object. */
 		Iterator()
 		{
 			nextChild = 0;
-			childIterator = nextChild < getChildren().length ? getChildren()[nextChild++].iterator() : noChildrenIterator;
+			childIterator = nextChild < children.length && children[nextChild] instanceof BTree ? ((BTree)children[nextChild++]).iterator() : null;
 		}
 
 		/**	Indicate whether the "next" function will return anything.
@@ -111,10 +111,17 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 		*/
 		public boolean hasNext()
 		{
-			if (childIterator.hasNext())
+			if (childIterator != null && childIterator.hasNext())
 				return true;
 
-			return nextChild < children.length;
+			if (nextChild < children.length) {
+				if (children[nextChild] instanceof BTree)
+					return ((BTree)children[nextChild]).children.length > 0;
+				else
+					return true;
+			}
+
+			return false;
 		}
 
 		/**	Provide the next leaf of the B-tree.
@@ -123,14 +130,18 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 		*/
 		public BTreeNode next()
 		{
-			if (childIterator.hasNext())
+			if (childIterator != null && childIterator.hasNext())
 				return childIterator.next();
 
-			if (nextChild < getChildren().length) {
-				do {
-					childIterator = getChildren()[nextChild++].iterator();
-				} while (!childIterator.hasNext() && nextChild < getChildren().length);
-				return childIterator.next();
+			if (nextChild < children.length) {
+				if (children[nextChild] instanceof BTree) {
+					do {
+						childIterator = ((BTree)children[nextChild++]).iterator();
+					} while (!childIterator.hasNext() && nextChild <children.length);
+					return childIterator.next();
+				} else {
+					return children[nextChild++];
+				}
 			}
 
 			throw new java.util.NoSuchElementException();
@@ -143,10 +154,6 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 			throw new UnsupportedOperationException("remove not suported");
 		}
 	}
-
-	/**	The iterator used if the B-tree is empty. */
-	static private final com.jsoft.util.EmptyIterator<BTreeNode> noChildrenIterator = new com.jsoft.util.EmptyIterator<BTreeNode>();
-
 
 	/**	The children of this B-tree node. The children may be either intermediate nodes, which are themselves B-trees, or leaf
 	*	nodes. */
@@ -161,7 +168,7 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 	*			to this.
 	*	@param	context	Context data used to construct the B-tree
 	*/
-	protected BTree(final long key, Context context)
+	protected BTree(final long key, Context<BTree, BTreeLeaf> context)
 	throws
 		java.io.IOException
 	{
@@ -222,13 +229,6 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 		return ((BTree)parent).children[index];
 	}
 
-	/**	{@inheritDoc}
-	*/
-	public BTreeNode[] getChildren()
-	{
-		return children;
-	}
-
 	/**	Get the number of children of this node.
 	*
 	*	@param	parent	The parent node to return the number of child nodes for.
@@ -274,12 +274,6 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 		};
 
 		return new com.jsoft.swingutil.ReadOnlyTableModel(cells, columnHeadings);
-	}
-
-	/**	{@inheritDoc} */
-	public String getNodeText()
-	{
-		return String.format("0x%08x", key);
 	}
 
 	/**	{@inheritDoc} */
@@ -332,7 +326,7 @@ abstract class BTree extends com.jsoft.swingutil.ReadOnlyTreeModel implements BT
 	int numLeafNodes()
 	{
 		int i = 0;
-		java.util.Iterator iterator = iterator();
+		java.util.Iterator<BTreeNode> iterator = iterator();
 		while (iterator.hasNext()){
 			++i;
 			iterator.next();

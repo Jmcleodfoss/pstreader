@@ -67,7 +67,7 @@ System.out.println(lastPathComponent.getClass().getName() + " - " + lastPathComp
 
 		final BTreeNode node = (BTreeNode)lastPathComponent; 
 		if (contents instanceof BTreeContentsDisplay)
-			((BTreeContentsDisplay)contents).update(node, pstExplorer.explorer.pst());
+			((BTreeContentsDisplay)contents).update(node, pstExplorer.pst());
 		summary.setModel(((BTreeNode)lastPathComponent).getNodeTableModel());
 		setDividerLocation(-1);
 	}

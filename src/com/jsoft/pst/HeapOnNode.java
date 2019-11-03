@@ -6,7 +6,7 @@ package com.jsoft.pst;
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386518(v=office.12).aspx">HN (Heap-on-Node) (MSDN)</a>
 */
-public class HeapOnNode implements javax.swing.ListModel {
+public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	Logger for debugging BTrees */
 	static java.util.logging.Logger logger = Debug.getLogger("com.jsoft.pst.HeapOnNode");
@@ -340,14 +340,14 @@ public class HeapOnNode implements javax.swing.ListModel {
 			if (iBlock == 0) {
 				try {
 					hnhdr = new Header(blockDataStream);
-					offsetData = hnhdr.size;
+					offsetData = Header.size;
 					offsetPageMap = hnhdr.ibHnpm;
 				} catch (NotHeapNodeException e) {
 					break;
 				}
 			} else if (iBlock - 8 % 128 == 0) {
 				final HNBitmapHeader hnbmh = new HNBitmapHeader(blockDataStream);
-				offsetData = hnbmh.size;
+				offsetData = HNBitmapHeader.size;
 				offsetPageMap = hnbmh.ibHnpm;
 			} else {
 				final PageHeader ph = new PageHeader(blockDataStream);
@@ -603,7 +603,7 @@ public class HeapOnNode implements javax.swing.ListModel {
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
 			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry node = (NBTEntry)iterator.next();
 				if (!node.nid.isHeapOnNodeNID())

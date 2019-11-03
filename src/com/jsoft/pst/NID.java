@@ -289,6 +289,16 @@ public class NID implements NodeKey {
 		return o instanceof NID && key == ((NID)o).key;
 	}
 
+	/**	Calculate hashcode.
+	*
+	*	@return	Hashcode for the node ID.
+	*/
+	@Override
+	public int hashCode()
+	{
+		return key;
+	}
+
 	/**	Is this an attachment table NID?
 	*
 	*	@return	true if this NID is an attachment table, false otherwise.

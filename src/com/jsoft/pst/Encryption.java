@@ -226,7 +226,7 @@ class Encryption {
 			final int ofs = fEncrypt ? offsR : offsI;
 
 			for (int i = 0; i < data.length; ++i) {
-				int b = (int)(data[i] & 0xff);
+				int b = (data[i] & 0xff);
 				data[i] = mpbbCrypt[ofs + b];
 			}
 		}
@@ -267,7 +267,7 @@ class Encryption {
 				b = (byte)(b - (w & 0xff)); 
 				data[i] = b; 
  
-				w = (short)++w; 
+				w = ++w; 
 			}
 		}
 	}

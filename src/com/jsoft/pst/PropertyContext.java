@@ -68,7 +68,7 @@ public class PropertyContext {
 		*	@param	entries	The properties in the PropertyContext object.
 		*	@param	namedProperties	The known property names
 		*/
-		TableModel(final Object[] entries, final NameToIDMap namedProperties)
+		TableModel(final java.util.Map.Entry<Integer, Object>[] entries, final NameToIDMap namedProperties)
 		{
 			super(entries, namedProperties);
 		}
@@ -280,7 +280,7 @@ public class PropertyContext {
 	{
 		final SubnodeBTree sbt = node.bidSubnode.key() != 0 ? new SubnodeBTree(node.bidSubnode, bbt, pstFile) : null;
 
-		java.util.Iterator iterator = bth.iterator();
+		java.util.Iterator<BTreeNode> iterator = bth.iterator();
 		while (iterator.hasNext()) {
 			final BTreeOnHeap.LeafRecord lr = (BTreeOnHeap.LeafRecord)iterator.next();
 			java.nio.ByteBuffer bData = PSTFile.makeByteBuffer(lr.data);
@@ -297,9 +297,10 @@ public class PropertyContext {
 	*
 	*	@return	TableModel representation of this property context.
 	*/
+@SuppressWarnings("unchecked") 
 	LPTTableModel tableModel(final NameToIDMap namedProperties)
 	{
-		return new TableModel(properties.entrySet().toArray(), namedProperties);
+		return new TableModel((java.util.Map.Entry<Integer, Object>[])properties.entrySet().toArray(), namedProperties);
 	}
 
 	/**	Are objects of the given property type stored within the tree itself, or in an HID denoted by the leaf element?
@@ -388,7 +389,7 @@ public class PropertyContext {
 
 			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
 
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry node = (NBTEntry)iterator.next();
 				if (node.nid.type == NID.INTERNAL)

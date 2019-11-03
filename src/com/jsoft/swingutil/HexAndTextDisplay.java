@@ -1,19 +1,7 @@
 package com.jsoft.swingutil;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JViewport;
-import javax.swing.SwingUtilities;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
 /**	Display a block of raw data as both hex and ASCII. */
-public class HexAndTextDisplay extends JScrollPane {
+public class HexAndTextDisplay extends javax.swing.JScrollPane {
 
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
@@ -22,7 +10,7 @@ public class HexAndTextDisplay extends JScrollPane {
 	private static final int NUM_COLUMNS = 16;
 
 	/**	The TableModel for hex/text display */
-	private class TableModel extends AbstractTableModel {
+	private class TableModel extends javax.swing.table.AbstractTableModel {
 
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
@@ -42,7 +30,7 @@ public class HexAndTextDisplay extends JScrollPane {
 		*
 		*	@return	The class object for the type displayed in the requested column.
 		*/
-		public java.lang.Class getColumnClass(final int columnIndex)
+		public java.lang.Class<?> getColumnClass(final int columnIndex)
 		{
 			if (columnIndex < NUM_COLUMNS)
 				return String.class;
@@ -149,7 +137,7 @@ public class HexAndTextDisplay extends JScrollPane {
 	}
 
 	/**	This is a special renderer to show label column (column 0) differently (and similarly to the column headers). */
-	private class HeaderColumnCellRenderer implements TableCellRenderer {
+	private class HeaderColumnCellRenderer implements javax.swing.table.TableCellRenderer {
 
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
@@ -165,13 +153,13 @@ public class HexAndTextDisplay extends JScrollPane {
 		*
 		*	@return	The component to use to render the cell.
 		*/
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int rowIndex, int columnIndex)
+		public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus, int rowIndex, int columnIndex)
 		{
-			TableCellRenderer renderer = table.getColumnModel().getColumn(0).getHeaderRenderer();
+			javax.swing.table.TableCellRenderer renderer = table.getColumnModel().getColumn(0).getHeaderRenderer();
 			if (renderer == null)
 				renderer = table.getTableHeader().getDefaultRenderer();
-			Component c = renderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, rowIndex, columnIndex);
-			Font f = c.getFont();
+			java.awt.Component c = renderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, rowIndex, columnIndex);
+			java.awt.Font f = c.getFont();
 			c.setFont(f.deriveFont(f.getSize()+1.0f));
 			return c;
 		}
@@ -181,32 +169,32 @@ public class HexAndTextDisplay extends JScrollPane {
 	private TableModel tableModel;
 
 	/**	The table display object. */
-	private JTable table;
+	private javax.swing.JTable table;
 
 	/**	The row header */
-	private JTable rowHeader;
+	private javax.swing.JTable rowHeader;
 
 	/**	Construct an object to display hex and text values. */
 	public HexAndTextDisplay()
 	{
-		super(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		setBackground(Color.LIGHT_GRAY);
+		super(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		setBackground(java.awt.Color.LIGHT_GRAY);
 
-		table = new JTable();
+		table = new javax.swing.JTable();
 		getViewport().add(table);
-		getViewport().setBackground(Color.LIGHT_GRAY);
+		getViewport().setBackground(java.awt.Color.LIGHT_GRAY);
 		table.getTableHeader().setReorderingAllowed(false);
 
 		tableModel = new TableModel();
 		table.setModel(tableModel);
 		tableModel.addTableModelListener(table);
 
-		rowHeader = new JTable(1, 1);
+		rowHeader = new javax.swing.JTable(1, 1);
 		rowHeader.setVisible(false);
 		setRowHeaderView(rowHeader);
 
-		JViewport rowViewport = getRowHeader();
-		rowViewport.setBackground(Color.LIGHT_GRAY);
+		javax.swing.JViewport rowViewport = getRowHeader();
+		rowViewport.setBackground(java.awt.Color.LIGHT_GRAY);
 		updateRowHeaderViewportWidth();
 	}
 
@@ -216,9 +204,9 @@ public class HexAndTextDisplay extends JScrollPane {
 		final int nRows = rowHeader.getRowCount();
 		final Object contents = nRows == 0 ? null : rowHeader.getValueAt(nRows-1, 0);
 		final String widest = contents == null ? " FFFF  " : ((String)contents + "   ");
-		final int columnWidth = SwingUtilities.computeStringWidth(rowHeader.getFontMetrics(rowHeader.getFont()), widest);
-		JViewport rowViewport = getRowHeader();
-		Dimension d = rowViewport.getViewSize();
+		final int columnWidth = javax.swing.SwingUtilities.computeStringWidth(rowHeader.getFontMetrics(rowHeader.getFont()), widest);
+		javax.swing.JViewport rowViewport = getRowHeader();
+		java.awt.Dimension d = rowViewport.getViewSize();
 		if (d.width != columnWidth) {
 			d.width = columnWidth;
 			rowViewport.setPreferredSize(d);
@@ -235,8 +223,8 @@ public class HexAndTextDisplay extends JScrollPane {
 		rowHeader.setVisible(true);
 		getViewport().doLayout();
 
-		rowHeader = new JTable(tableModel.getRowCount(), 1);
-		TableColumn column = rowHeader.getColumnModel().getColumn(0);
+		rowHeader = new javax.swing.JTable(tableModel.getRowCount(), 1);
+		javax.swing.table.TableColumn column = rowHeader.getColumnModel().getColumn(0);
 		column.setCellRenderer(new HeaderColumnCellRenderer());
 		for (int i = 0; i < tableModel.getRowCount(); ++i)
 			rowHeader.setValueAt(Integer.toHexString(i*NUM_COLUMNS), i, 0);

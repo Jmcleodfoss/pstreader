@@ -582,7 +582,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
 	*/
-	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
+	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
 		java.io.IOException
 	{
@@ -590,7 +590,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		int r = 0;
 
 		while (iterator.hasNext()) {
-			java.nio.ByteBuffer rowStream = (java.nio.ByteBuffer)iterator.next();
+			java.nio.ByteBuffer rowStream = iterator.next();
 			while (rowStream.remaining() >= rowWidth) {
 				if (r >= rows.length)
 					throw new RuntimeException("Too much data for " + rows.length + " rows");
@@ -748,7 +748,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
 			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				NBTEntry nodeDescr = (NBTEntry)iterator.next();
 				if (nodeDescr.nid.type == NID.INTERNAL)

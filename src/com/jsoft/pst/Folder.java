@@ -45,7 +45,7 @@ public class Folder extends com.jsoft.swingutil.ReadOnlyTreeModel implements Tre
 		*/
 		boolean readSubfolders()
 		{
-			return levels != levels.NONE;
+			return levels != Levels.NONE;
 		}
 	}
 
@@ -338,7 +338,7 @@ public class Folder extends com.jsoft.swingutil.ReadOnlyTreeModel implements Tre
 		levelsToRead.decrement();
 		for (int row = 0; row < hierarchyTable.getRowCount(); ++row) {
 			int nidSubfolder = (Integer)hierarchyTable.get(row, PropertyTag.LtpRowId);
-			NBTEntry nodeSubfolder = (NBTEntry)nbt.find(new NID(nidSubfolder));
+			NBTEntry nodeSubfolder = nbt.find(new NID(nidSubfolder));
 			subfolders.add(new Folder(nodeSubfolder, bbt, nbt, pstFile, levelsToRead, fReadContents));
 		}
 		return subfolders;

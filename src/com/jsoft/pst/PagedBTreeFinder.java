@@ -20,7 +20,7 @@ abstract class PagedBTreeFinder {
 		throws
 			java.io.IOException
 		{
-			final PagedBTree.PageContext context = contextFactory(bref, pstFile);
+			final PagedBTree.PageContext<BTree, BTreeLeaf> context = contextFactory(bref, pstFile);
 			java.nio.ByteBuffer entryStream = context.entryDataStream();
 
 			final int numEntries = context.getNumEntries();
@@ -42,7 +42,7 @@ abstract class PagedBTreeFinder {
 				else {
 					PagedBTree.BTEntry entry = new PagedBTree.BTEntry(context, entryStream);
 					children[i] = entry;
-					entrySize = entry.actualSize(context);
+					entrySize = PagedBTree.BTEntry.actualSize(context);
 				}
 				final int skip = context.getEntrySize() - entrySize;
 				if (skip > 0)
@@ -58,7 +58,7 @@ abstract class PagedBTreeFinder {
 		*
 		*	@return	A context suitable for constructing intermediate and leaf nodes.
 		*/
-		protected abstract PagedBTree.PageContext contextFactory(final BREF bref, PSTFile pstFile)
+		protected abstract PagedBTree.PageContext<BTree, BTreeLeaf> contextFactory(final BREF bref, PSTFile pstFile)
 		throws
 			java.io.IOException;
 
@@ -69,7 +69,7 @@ abstract class PagedBTreeFinder {
 		*
 		*	@param	A leaf node for this B-tree.
 		*/
-		protected abstract BTreeLeaf leafNodeFactory(final PagedBTree.PageContext context, java.nio.ByteBuffer entryStream)
+		protected abstract BTreeLeaf leafNodeFactory(final PagedBTree.PageContext<BTree, BTreeLeaf> context, java.nio.ByteBuffer entryStream)
 		throws
 			java.io.IOException;
 	}

@@ -4,7 +4,7 @@ package com.jsoft.pst;
 public class SubnodeBTree extends BTree {
 
 	/**	The BlockContext class contains information about a block being added to the sub-node B-tree. */
-	static class BlockContext extends BTree.Context<SubnodeBTree, SLEntry> {
+	static class BlockContext extends BTree.Context<BTree, BTreeLeaf> {
 
 		private static final String nm_bType = "bType";
 		private static final String nm_cLevel = "cLevel";
@@ -147,7 +147,7 @@ public class SubnodeBTree extends BTree {
 		*	@param	context	The context in which to read the node.
 		*	@param	stream	The data stream from which to read the node information.
 		*/ 
-		SIEntry(final Context context, java.nio.ByteBuffer stream)
+		SIEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer stream)
 		throws
 			java.io.IOException
 		{
@@ -219,9 +219,15 @@ public class SubnodeBTree extends BTree {
 	*
 	*	@param	context	The context in which the sub-node B-tree is being build.
 	*/
-	public int actualSize(final Context context)
+	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
 		return SIEntry.size(context.pstFile);
+	}
+
+	/**	{@InheritDoc} */
+	public String getNodeText()
+	{
+		return String.format("Node 0x%08x", key);
 	}
 
 	/**	Test the SubnodeBTree class by reading in traversing the PST file and displaying all the sub-node B-tree leaves.
@@ -247,7 +253,7 @@ public class SubnodeBTree extends BTree {
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry entry = (NBTEntry)iterator.next();
 				logger.setLevel(logLevel);
@@ -258,7 +264,7 @@ public class SubnodeBTree extends BTree {
 					final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
 					logger.setLevel(originalLevel);
 					System.out.println(sbt);
-					java.util.Iterator sbtIterator = sbt.iterator();
+					java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();
 
 					int i = 0;
 					while (sbtIterator.hasNext()) {

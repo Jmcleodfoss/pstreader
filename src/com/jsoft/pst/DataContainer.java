@@ -99,9 +99,9 @@ class DataContainer extends java.util.IdentityHashMap<String, Object> {
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
-		java.util.Iterator iterator = entrySet().iterator();
+		java.util.Iterator<java.util.Map.Entry<String, Object>> iterator = entrySet().iterator();
 		while (iterator.hasNext()) {
-			java.util.Map.Entry entry = (java.util.Map.Entry)iterator.next();
+			java.util.Map.Entry<String, Object> entry = iterator.next();
 
 			s.append('\n');
 			s.append("\t");

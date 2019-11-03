@@ -105,6 +105,21 @@ class GUID {
 		return true;
 	}
 
+	/**	Calculate hashcode.
+	*
+	*	@return	Hashcode for the guid.
+	*/
+	@Override
+	public int hashCode()
+	{
+		int hashcode = 0;
+		for (int i = 0; i < guid.length; ++i) {
+			hashcode += guid[i];
+		}
+
+		return hashcode;
+	}
+
 	/**	Obtain a string representation of this GUID.
 	*
 	*	@return	A string describing the GUID in PST "Canonical" format (00000000-0000-0000-0000-0000000000).

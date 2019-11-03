@@ -94,7 +94,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			byte[] data()
 			{
 				Attachment attachmentObject = (Attachment)clickedNode;
-				PropertyContext pc = pstExplorer.explorer.pst().propertyContext(attachmentObject.nodeInfo);
+				PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
 				return attachmentObject.data(pc);
 			}
 		}
@@ -312,7 +312,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 
 			updateComponent(attachment, attachmentObject.nodeInfo, "Attachment");
 
-			final com.jsoft.pst.PropertyContext pc = pstExplorer.explorer.pst().propertyContext(attachmentObject.nodeInfo);
+			final com.jsoft.pst.PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
 
 			if (attachmentDisplay != null) {
 				if (attachmentDisplay == attachmentImage)
@@ -338,12 +338,12 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 
 			} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
 
-				attachmentText.setText(new String((byte[])attachmentObject.data(pc)));
+				attachmentText.setText(new String(attachmentObject.data(pc)));
 				attachmentDisplay = attachmentText;
 
 			} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
 
-				attachmentHtml.setText(new String((byte[])attachmentObject.data(pc)));
+				attachmentHtml.setText(new String(attachmentObject.data(pc)));
 				attachmentDisplay = attachmentHtml;
 
 			} else {

@@ -10,7 +10,7 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 	*	sorted alphabetically by property name. Note that this cannot be defined in terms of generics since the underlying
 	*	array it operates on is an array of Object.
 	*/
-	private class Comparator implements java.util.Comparator {
+	private class Comparator implements java.util.Comparator<java.util.Map.Entry<Integer, Object>> {
 
 		/**	The namedProperties object is required to look up the names for the property IDs. */
 		final NameToIDMap namedProperties;
@@ -23,24 +23,24 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 
 		/**	Compare two entries, returning a value to indicate whether the first is less than, equal to, or greater than the second. */
 		@SuppressWarnings("unchecked")
-		public int compare(final Object o1, final Object o2)
+		public int compare(final java.util.Map.Entry<Integer, Object> e1, final java.util.Map.Entry<Integer, Object> e2)
 		{
-			String s1 = namedProperties.name((Integer)((java.util.Map.Entry<Integer, Object>)o1).getKey());
-			String s2 = namedProperties.name((Integer)((java.util.Map.Entry<Integer, Object>)o2).getKey());
+			String s1 = namedProperties.name(e1.getKey());
+			String s2 = namedProperties.name(e2.getKey());
 			return s1.compareTo(s2);
 		}
 
 		/**	Determine whether the two entries are equal. */
 		@SuppressWarnings("unchecked")
-		public boolean equals(final Object o1, final Object o2)
+		public boolean equals(final java.util.Map.Entry<Integer, Object> e1, final java.util.Map.Entry<Integer, Object> e2)
 		{
-			return ((java.util.Map.Entry<Integer, Object>)o1).getKey() == ((java.util.Map.Entry<Integer, Object>)o2).getKey();
+			return e1.getKey() == e2.getKey();
 		}
 	}
 
 	/**	Create the table model with the given ValueDelegate object. */
 	@SuppressWarnings("unchecked")
-	LPTTableModel(final Object[] entries, final NameToIDMap namedProperties)
+	LPTTableModel(final java.util.Map.Entry<Integer, Object>[] entries, final NameToIDMap namedProperties)
 	{
 		super();
 
@@ -48,7 +48,7 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 		setColumnCount(3);
 		java.util.Arrays.sort(entries, new Comparator(namedProperties));
 		for (int i = 0; i < entries.length; ++i) {
-			java.util.Map.Entry<Integer, Object> entry = (java.util.Map.Entry<Integer, Object>)entries[i];
+			java.util.Map.Entry<Integer, Object> entry = entries[i];
 			int key = entry.getKey();
 			setValueAt(Integer.toHexString(key), i, 0);
 			setValueAt(namedProperties.name(key), i, 1);

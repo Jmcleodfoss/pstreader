@@ -9,7 +9,7 @@ public class BTreeOnHeap extends BTree {
 	/**	The BTHContext class provides the context (data, metadata, and current location) for use when reading in a
 	*	B-tree-on-heap structure.
 	*/
-	private static class BTHContext extends Context<BTreeOnHeap, LeafRecord> {
+	private static class BTHContext extends Context<BTree, BTreeLeaf> {
 
 		/**	The heap-on-node containing this B-tree. */
 		private HeapOnNode hon;
@@ -359,16 +359,9 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	{@inheritDoc} */
-		public int actualSize(Context context)
+		public int actualSize(Context<BTree, BTreeLeaf> context)
 		{
 			return entrySize;
-		}
-
-		/**	{@inheritDoc}
-		*/
-		public BTreeNode[] getChildren()
-		{
-			return new BTreeNode[0];
 		}
 
 		/**	{@inheritDoc} */
@@ -381,13 +374,6 @@ public class BTreeOnHeap extends BTree {
 		public String getNodeText()
 		{
 			return String.format("0x%08x (%d, %d): %s", key(), keySize, entrySize, com.jsoft.util.ByteUtil.createHexByteString(data));
-		}
-
-		/**	{@inheritDoc} */
-		@SuppressWarnings("unchecked")
-		public java.util.Iterator<BTreeNode> iterator()
-		{
-			return new com.jsoft.util.SingleItemIterator<LeafRecord>(this);
 		}
 
 		/**	{@inheritDoc} */
@@ -455,7 +441,7 @@ public class BTreeOnHeap extends BTree {
 	*
 	*	@return	The actual size of a B-tree-on-heap object for this B-tree-on-heap.
 	*/
-	public int actualSize(final Context context)
+	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
 		return ((BTHContext)context).header.keySize + HeapOnNode.HID.SIZE;
 	}
@@ -481,6 +467,12 @@ public class BTreeOnHeap extends BTree {
 		return null;
 	}
 
+	/**	{@InheritDoc} */
+	public String getNodeText()
+	{
+		return String.format("0x%08x", key);
+	}
+
 	/**	Test this class by displaying the first B-tree-on-heap in the given PST file.
 	*
 	*	@param	args	The arguments to the test application.
@@ -502,7 +494,7 @@ public class BTreeOnHeap extends BTree {
 
 			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
 
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				NBTEntry node = (NBTEntry)iterator.next();
 				if (!node.nid.isHeapOnNodeNID())

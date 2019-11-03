@@ -22,7 +22,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 		}
 
 		/**	{@inheritDoc} */
-		protected PagedBTree.PageContext contextFactory(final BREF bref, PSTFile pstFile)
+		protected PagedBTree.PageContext<BTree, BTreeLeaf> contextFactory(final BREF bref, PSTFile pstFile)
 		throws
 			java.io.IOException
 		{
@@ -30,7 +30,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 		}
 
 		/**	{@inheritDoc} */
-		protected BTreeLeaf leafNodeFactory(final PagedBTree.PageContext context, java.nio.ByteBuffer entryStream)
+		protected BTreeLeaf leafNodeFactory(final PagedBTree.PageContext<BTree, BTreeLeaf> context, java.nio.ByteBuffer entryStream)
 		throws
 			java.io.IOException
 		{
@@ -91,7 +91,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 
 			int discrepancies = 0;
 			int nids = 0;
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				++nids;
 				final NBTEntry treeEntry = (NBTEntry)iterator.next();

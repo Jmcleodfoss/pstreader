@@ -22,7 +22,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 		}
 
 		/**	{@inheritDoc} */
-		protected PagedBTree.PageContext contextFactory(final BREF bref, PSTFile pstFile)
+		protected PagedBTree.PageContext<BTree, BTreeLeaf> contextFactory(final BREF bref, PSTFile pstFile)
 		throws
 			java.io.IOException
 		{
@@ -30,7 +30,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 		}
 
 		/**	{@inheritDoc} */
-		protected BTreeLeaf leafNodeFactory(final PagedBTree.PageContext context, java.nio.ByteBuffer entryStream)
+		protected BTreeLeaf leafNodeFactory(final PagedBTree.PageContext<BTree, BTreeLeaf> context, java.nio.ByteBuffer entryStream)
 		throws
 			java.io.IOException
 		{
@@ -91,7 +91,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 
 			int discrepancies = 0;
 			int bids = 0;
-			java.util.Iterator iterator = bbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 			while (iterator.hasNext()) {
 				++bids;
 				final BBTEntry treeEntry = (BBTEntry)iterator.next();

@@ -75,7 +75,7 @@ public class XMLOutput {
 	/**	Close an element opened by openElement(String). */
 	public void closeElement()
 	{
-		String name = (String)openElements.pop();
+		String name = openElements.pop();
 		indent();
 		printStream.print("</");
 		printStream.print(name);

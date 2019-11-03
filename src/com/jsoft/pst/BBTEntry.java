@@ -55,7 +55,7 @@ class BBTEntry implements BTreeLeaf {
 	*	@param	entryStream	The stream of data from which to read the entry.
 	*	@param	context		The context used to build the tree. This is not saved in the tree itself.
 	*/
-	BBTEntry(java.nio.ByteBuffer entryStream, final PagedBTree.PageContext context)
+	BBTEntry(java.nio.ByteBuffer entryStream, final PagedBTree.PageContext<BTree, BTreeLeaf> context)
 	throws
 		java.io.IOException
 	{
@@ -72,7 +72,7 @@ class BBTEntry implements BTreeLeaf {
 	*
 	*	@return	The actual size of a block B-tree leaf node for this file type.
 	*/
-	public int actualSize(final BTree.Context context)
+	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
 		return COMMON_SIZE + (context.unicode() ? UNICODE_SIZE : ANSI_SIZE);
 	}
@@ -100,24 +100,10 @@ class BBTEntry implements BTreeLeaf {
 		return bref.bid.key();
 	}
 
-	/**	{@inheritDoc}
-	*/
-	public BTreeNode[] getChildren()
-	{
-		return new BTreeNode[0];
-	}
-
-	/**	{@inheritDoc} */
+	/**	{@InheritDoc} */
 	public String getNodeText()
 	{
 		return String.format("%s - %d bytes", bref.toString(), numBytes);
-	}
-
-	/**	{@inheritDoc} */
-	@SuppressWarnings("unchecked")
-	public java.util.Iterator<BTreeNode> iterator()
-	{
-		return new com.jsoft.util.SingleItemIterator<BBTEntry>(this);
 	}
 
 	/**	{@inheritDoc} */

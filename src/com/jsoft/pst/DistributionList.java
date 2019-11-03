@@ -27,8 +27,8 @@ package com.jsoft.pst;
 */
 public class DistributionList extends MessageObject {
 
-	/**	The Entry interface flags an object as being a distribution list entry. */
-	private static class Entry {
+	/**	The Entry class flags an object as being a distribution list entry. */
+	public static class Entry {
 
 		/**	The display name of the distribution list member. */
 		protected String displayName;

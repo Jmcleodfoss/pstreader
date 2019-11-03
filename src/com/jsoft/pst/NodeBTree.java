@@ -12,7 +12,7 @@ package com.jsoft.pst;
 class NodeBTree extends PagedBTree implements NodeMap {
 
 	/**	The base class of the context used for node B-Tree construction. */
-	protected abstract static class NBTContextBase<I, L> extends PagedBTree.PageContext {
+	protected abstract static class NBTContextBase<I, L> extends PagedBTree.PageContext<BTree, BTreeLeaf> {
 
 		/**	Constructor trivially forwards parameters to the base class' constructor.
 		*
@@ -30,7 +30,7 @@ class NodeBTree extends PagedBTree implements NodeMap {
 	/**	The context for construction of the node B-tree. This holds information required to build the B-tree but which doesn't
 	*	need to be saved in it.
 	*/
-	static class NBTContext extends NBTContextBase<NodeBTree, NBTEntry> {
+	static class NBTContext extends NBTContextBase<BTree, BTreeLeaf> {
 
 		/**	The constructor trivially forwards parameters to the base class' constructor.
 		*
@@ -94,7 +94,7 @@ class NodeBTree extends PagedBTree implements NodeMap {
 	*	@param	bref	The block reference indicating where to read this node B-tree node from.
 	*	@param	context	The context from which to read the node B-tree.
 	*/
-	protected NodeBTree(final long key, final BREF bref, NBTContextBase context)
+	protected NodeBTree(final long key, final BREF bref, NBTContextBase<BTree, BTreeLeaf> context)
 	throws
 		java.io.IOException
 	{
@@ -139,7 +139,7 @@ class NodeBTree extends PagedBTree implements NodeMap {
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
 			System.out.println("Node B-tree\n___________");
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry entry = (NBTEntry)iterator.next();
 				System.out.println(entry);

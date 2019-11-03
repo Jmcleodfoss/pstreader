@@ -8,7 +8,7 @@ public class NodeSubnodeBTree extends NodeBTree {
 	/**	The Context class includes information about the node/sub-node B-Tree. This holds information required to build the
 	*	B-tree but which doesn't need to be saved in it.
 	*/
-	private static class NSNContext extends NBTContextBase<NodeSubnodeBTree, NodeLeafEntry> {
+	private static class NSNContext extends NBTContextBase<BTree, BTreeLeaf> {
 
 		/**	The block B-Tree for this PST file. */
 		final BlockMap bbt;
@@ -81,19 +81,11 @@ public class NodeSubnodeBTree extends NodeBTree {
 			} else {
 				snb = new SubnodeBTree(bidSubnode, context.bbt, context.pstFile);
 				leafNodes = new java.util.Vector<SLEntry>();
-				for (java.util.Iterator iter = snb.iterator(); iter.hasNext(); ) {
+				for (java.util.Iterator<BTreeNode> iter = snb.iterator(); iter.hasNext(); ) {
 					final SLEntry slEntry = (SLEntry)iter.next();
 					leafNodes.add(slEntry);
 				}
 			}
-		}
-
-		/**	{@inheritDoc}
-		*/
-		public BTreeNode[] getChildren()
-		{
-			SLEntry[] array = new SLEntry[leafNodes.size()];
-			return leafNodes.toArray(array);
 		}
 	}
 
@@ -127,7 +119,22 @@ public class NodeSubnodeBTree extends NodeBTree {
 	@Override
 	public int getChildCount(final Object parent)
 	{
-		return ((BTreeNode)parent).getChildren().length;
+		if (parent instanceof BTree) {
+			final BTree bTree = (BTree)parent;
+			if (bTree.children != null)
+				return bTree.children.length;
+		}
+
+		return ((NodeLeafEntry)(parent)).leafNodes.size();
+	}
+
+	/**	{@inheritDoc} */
+	@Override
+	public String getNodeText(final Object value)
+	{
+		if (value instanceof SLEntry)
+			return ((SLEntry)value).toString();
+		return super.getNodeText(value);
 	}
 
 	/**	{@inheritDoc} */
@@ -137,6 +144,12 @@ public class NodeSubnodeBTree extends NodeBTree {
 		if (!super.isLeaf(node))
 			return false;
 
-		return ((BTreeNode)node).getChildren().length == 0;
+		if (node instanceof NodeLeafEntry)
+			return ((NodeLeafEntry)node).leafNodes.size() == 0;
+
+		if (node instanceof SLEntry)
+			return true;
+
+		return false;
 	}
-}
+} 

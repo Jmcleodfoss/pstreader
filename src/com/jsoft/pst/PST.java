@@ -178,7 +178,7 @@ public class PST extends PSTFile {
 	*
 	*	@see	com.jsoft.pst.NameToIDMap
 	*/
-	public java.util.Iterator namedPropertiesIterator()
+	public java.util.Iterator<java.util.Map.Entry<Short, String>> namedPropertiesIterator()
 	{
 		return namedProperties.iterator();
 	}
@@ -189,9 +189,9 @@ public class PST extends PSTFile {
 	*
 	*	@see	NodeBTree
 	*/
-	java.util.Iterator nodeIterator()
+	java.util.Iterator<BTreeNode> nodeIterator()
 	{
-		return nodeIterator();
+		return ((NodeBTree)nodeBTree).iterator();
 	}
 
 	/**	Convenience function to obtain the property context from the given NID
@@ -202,7 +202,7 @@ public class PST extends PSTFile {
 	*
 	*	@see	PropertyContext
 	*/
-	public java.util.Iterator pcPropertyIterator(final int nid)
+	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
 	throws
 		UnparseablePropertyContextException,
 		UnknownClientSignatureException,

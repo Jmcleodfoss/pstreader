@@ -286,7 +286,7 @@ public class NameToIDMap {
 		if (!canonicalIDToNPID.containsKey(canonicalID))
 			return -1;
 		short mappedID = canonicalIDToNPID.get(canonicalID);
-		return (int)(mappedID << 16 | dataType);
+		return (mappedID << 16 | dataType);
 	}
 
 	/**	Obtain an iterator through the named properties.
@@ -307,7 +307,7 @@ public class NameToIDMap {
 	public String name(final short propertyID)
 	{
 		if (propertyID >= PropertyID.NamedPropertyFirst && propertyID <= PropertyID.NamedPropertyLast) {
-			final String name = (String)namedProperties.get(propertyID);
+			final String name = namedProperties.get(propertyID);
 			return name;
 		}
 

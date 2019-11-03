@@ -149,7 +149,7 @@ public abstract class PagedBTree extends BTree {
 		*	@param	context		The context from which to build the B-tree.
 		*	@param	byteBuffer	The data stream from which to read the intermediate B-tree entry.
 		*/ 
-		BTEntry(final Context context, java.nio.ByteBuffer byteBuffer)
+		BTEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer byteBuffer)
 		throws
 			java.io.IOException
 		{
@@ -165,7 +165,7 @@ public abstract class PagedBTree extends BTree {
 		*
 		*	@return	The size of an intermediate node or block B-tree entry.
 		*/
-		public static int actualSize(final Context context)
+		public static int actualSize(final Context<BTree, BTreeLeaf> context)
 		{
 			return context.unicode() ? BTEntry.UNICODE_SIZE : BTEntry.ANSI_SIZE;
 		}
@@ -199,7 +199,7 @@ public abstract class PagedBTree extends BTree {
 	*	@param	bref	The block reference for this page.
 	*	@param	context	The context from which to construct this B-Tree.
 	*/
-	protected PagedBTree(final long key, final BREF bref, final PageContext context)
+	protected PagedBTree(final long key, final BREF bref, final PageContext<BTree, BTreeLeaf> context)
 	throws
 		java.io.IOException
 	{
@@ -213,7 +213,7 @@ public abstract class PagedBTree extends BTree {
 	*
 	*	@return	The size of an intermediate node or block B-tree entry.
 	*/
-	public int actualSize(final Context context)
+	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
 		return BTEntry.actualSize(context);
 	}
@@ -241,7 +241,7 @@ public abstract class PagedBTree extends BTree {
 		pstFile.position(bref.ib.ib);
 		byte[] data = new byte[PAGE_SIZE];
 		pstFile.mbb.get(data);
-		return pstFile.makeByteBuffer(data);
+		return PSTFile.makeByteBuffer(data);
 	}
 
 	/**	{@inheritDoc} */
