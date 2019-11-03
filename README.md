@@ -1,7 +1,7 @@
 # pstreader
 Java library for reading Microsoft Outlook pst and ost files
 
-== Structure of 3rd Party library files ==
+## Structure of 3rd Party library files
 This is temporary until I update this to use Maven. It is captured in the [lib.properties](https://github.com/Jmcleodfoss/pstreader/blob/master/lib.properties) file.
 
 third-party/apache/commons-fileupload/commons-fileupload-1.2.2/lib:
