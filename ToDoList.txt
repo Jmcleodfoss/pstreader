@@ -1,6 +1,6 @@
 To Do List
 ----------
-- Host project externally (e.g. private repository on bitbucket) (April 16, 2011)
+- Update stale Javadoc documentation links
 - Error log level for some of the places where exceptions happen (April 16, 2011)
 - Add remaining required properties for test PST files (April 16, 2011)
 - Add remaining properties not found in test PST files (April 16, 2011)
@@ -9,6 +9,15 @@ To Do List
 
 Done
 ----
+- Change package name to something better than com.jsoft
+	Complete (November 3, 2019)
+
+- Check in changes to compile under new versions of Java
+	Complete (November 3, 2019)
+
+- Host project externally (e.g. private repository on bitbucket) (April 16, 2011)
+	Complete (November 3, 2019)
+
 - XXBlocks (April 16, 2011)
 	Complete, (April 16, 2011)
 
