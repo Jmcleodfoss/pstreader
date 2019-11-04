@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BlockBase class is the base class for both data blocks ({@link SimpleBlock}) and metadata XBLOCK/XXBLOCK ({@link XBlock}) classes.
 *
@@ -9,7 +9,7 @@ package com.jsoft.pst;
 abstract class BlockBase {
 
 	/**	Logger for debugging block classes. */
-	protected static java.util.logging.Logger logger = Debug.getLogger("com.jsoft.pst.BlockBase");
+	protected static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.BlockBase");
 
 	/**	All blocks are a multiple of BASE_BYTES ({@value}) in size. */
 	private static final int BASE_BYTES = 64;
@@ -81,6 +81,6 @@ abstract class BlockBase {
 	@Override
 	public String toString()
 	{
-		return com.jsoft.util.ByteUtil.createHexByteString(data());
+		return io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data());
 	}
 }

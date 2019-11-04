@@ -1,4 +1,4 @@
-package com.jsoft.swingutil;
+package io.github.jmcleodfoss.swingutil;
 
 /**	Filter for extensions (Java 6.0 has this built in). */
 public class FilterByExtension extends javax.swing.filechooser.FileFilter {

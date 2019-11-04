@@ -1,4 +1,4 @@
-package com.jsoft.util;
+package io.github.jmcleodfoss.util;
 
 /**	The OutputSeparator class provides the frill of printing a separator line out for the second and subsequent calls to the emit
 *	function.

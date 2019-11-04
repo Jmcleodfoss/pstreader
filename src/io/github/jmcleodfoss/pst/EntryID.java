@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The EntryID class contains a PST file Entry ID (ENTRYID structure).
 *

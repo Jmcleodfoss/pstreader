@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BREF class is a block reference. Objects of this class may be used to find blocks in a PST file.
 *

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NodeSubnodeBtree provides a B-Tree containing all nodes and subnodes. Note that this requires more information to create
 *	than the node B-Tree without subnodes.

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NameIDToMap class wraps the PropertyContext node NID_NAME_ID_TO_MAP (0x61) to provide names for the properties therein.
 *
@@ -12,7 +12,7 @@ package com.jsoft.pst;
 public class NameToIDMap {
 
 	/**	Logger for class debugging */
-	java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.NameToIDMap");
+	java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NameToIDMap");
 
 	/**	The NameID class contains information about an individual entry in the NID_NAME_ID_TO_MAP node.
 	*
@@ -96,7 +96,7 @@ public class NameToIDMap {
 		*
 		*	@param	guidArray	The raw data from which to create the GUID.
 		*
-		*	@return	A com.jsoft.pst.GUID object corresponding to the passed raw GUID.
+		*	@return	A io.github.jmcleodfoss.pst.GUID object corresponding to the passed raw GUID.
 		*/
 		private GUID guid(final byte[] guidArray)
 		{
@@ -349,14 +349,14 @@ public class NameToIDMap {
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.NameIDToMap pst-filename [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NameIDToMap pst-filename [log-level]");
 			System.out.println("\nNote that log-level applies only to construction of the NameIDToMap object.");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);

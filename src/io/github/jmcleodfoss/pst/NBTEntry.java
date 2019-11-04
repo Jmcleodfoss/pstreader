@@ -1,12 +1,12 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NBTEntry class represents a node B-tree leaf entry.
 *
-*	@see	com.jsoft.pst.BBTEntry
-*	@see	com.jsoft.pst.BTree
-*	@see	com.jsoft.pst.NodeBTree
-*	@see	com.jsoft.pst.PagedBTree
-*	@see	com.jsoft.pst.PagedBTree.BTEntry
+*	@see	io.github.jmcleodfoss.pst.BBTEntry
+*	@see	io.github.jmcleodfoss.pst.BTree
+*	@see	io.github.jmcleodfoss.pst.NodeBTree
+*	@see	io.github.jmcleodfoss.pst.PagedBTree
+*	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608  Section 2.2.2.7.7.4"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385505(v=office.12).aspx">NBTEntry (Leaf NBT Entry) (MSDN)</a>
 */
@@ -85,7 +85,7 @@ public class NBTEntry extends LPTLeaf {
 			new Object[]{"Parent NID", nidParent}
 		};
 
-		return new com.jsoft.swingutil.ReadOnlyTableModel(cells, columnHeadings);
+		return new io.github.jmcleodfoss.swingutil.ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	Obtain a description of a node B-tree leaf node. This is typically used for debugging.

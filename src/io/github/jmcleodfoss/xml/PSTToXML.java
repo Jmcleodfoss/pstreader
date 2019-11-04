@@ -1,9 +1,9 @@
-package com.jsoft.xml;
+package io.github.jmcleodfoss.xml;
 
 /**	The PSTToXML class converts a PST file into an XML file.
 *
 *	<p><strong>Use</strong><p>
-*	<code>java com.jsoft.pst.PSTToXML pst-file.pst</code><p>
+*	<code>java io.github.jmcleodfoss.pst.PSTToXML pst-file.pst</code><p>
 */
 class PSTToXML {
 
@@ -21,7 +21,7 @@ class PSTToXML {
 	private final java.util.HashMap<Short, String> safeXMLNamedProperties;
 
 	/**	The PST file contents. */
-	com.jsoft.pst.PST pst;
+	io.github.jmcleodfoss.pst.PST pst;
 
 	/**	Create a PST to XML translator for the given PST file
 	*
@@ -29,14 +29,14 @@ class PSTToXML {
 	*/
 	public PSTToXML(String fn)
 	throws
-		com.jsoft.pst.NotHeapNodeException,
-		com.jsoft.pst.UnknownClientSignatureException,
-		com.jsoft.pst.UnparseablePropertyContextException,
-		com.jsoft.pst.UnparseableTableContextException,
+		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
+		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,
 		javax.xml.parsers.ParserConfigurationException
 	{
-		pst = new com.jsoft.pst.PST(fn);
+		pst = new io.github.jmcleodfoss.pst.PST(fn);
 
 		safeXMLNamedProperties = new java.util.HashMap<Short, String>();
 		for (java.util.Iterator<java.util.Map.Entrt<Short, String>> iterator = pst.namedPropertiesIterator(); iterator.hasNext(); ) {
@@ -45,7 +45,7 @@ class PSTToXML {
 			if (xmlSubstitutes.containsKey(value))
 				safeXMLNamedProperties.put(entry.getKey(), xmlSubstitutes.get(value));
 			else {
-				String safeTag = com.jsoft.util.XMLOutput.safeXMLElementTag(value);
+				String safeTag = io.github.jmcleodfoss.util.XMLOutput.safeXMLElementTag(value);
 				if (!value.equals(safeTag))
 					safeXMLNamedProperties.put(entry.getKey(), safeTag);
 			}
@@ -59,12 +59,12 @@ class PSTToXML {
 	*	@param	folder	The folder being added.
 	*	@param	pst	The PST object from which the XML document is being constructed.
 	*/
-	private void addFolderContents(com.jsoft.util.XMLOutput xml, com.jsoft.pst.Folder folder, com.jsoft.pst.PST pst)
+	private void addFolderContents(io.github.jmcleodfoss.util.XMLOutput xml, io.github.jmcleodfoss.pst.Folder folder, io.github.jmcleodfoss.pst.PST pst)
 	throws
-		com.jsoft.pst.NotHeapNodeException,
-		com.jsoft.pst.UnknownClientSignatureException,
-		com.jsoft.pst.UnparseablePropertyContextException,
-		com.jsoft.pst.UnparseableTableContextException,
+		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
+		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,
 		java.io.UnsupportedEncodingException
 	{
@@ -72,8 +72,8 @@ class PSTToXML {
 		if (type == null || !folderFilter(type)) {
 			xml.addElement("folder-name", folder.displayName);
 			xml.addElement("folder-type", folder.containerClass);
-			for (java.util.Iterator<com.jsoft.pst.Message> contents = folder.contentsIterator(); contents.hasNext(); ) {
-				com.jsoft.pst.Message message = contents.next();
+			for (java.util.Iterator<io.github.jmcleodfoss.pst.Message> contents = folder.contentsIterator(); contents.hasNext(); ) {
+				io.github.jmcleodfoss.pst.Message message = contents.next();
 	
 				xml.openElement("object");
 				addPropertiesToNode(xml, message.getMessage(pst.blockBTree, pst).iterator(), pst);
@@ -81,8 +81,8 @@ class PSTToXML {
 			}
 		}
 
-		for (java.util.Iterator<com.jsoft.pst.Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); ) {
-			com.jsoft.pst.Folder subfolder = subfolders.next();
+		for (java.util.Iterator<io.github.jmcleodfoss.pst.Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); ) {
+			io.github.jmcleodfoss.pst.Folder subfolder = subfolders.next();
 
 			type = subfolder.containerClass;
 			if (type == null || !folderFilter(type)) {
@@ -99,7 +99,7 @@ class PSTToXML {
 	*	@param	iterator	The property/value iterator to add to the XML document.
 	*	@param	pst		The PST object from which the XML document is being constructed.
 	*/ 
-	private void addPropertiesToNode(com.jsoft.util.XMLOutput xml, java.util.Iterator iterator, com.jsoft.pst.PST pst)
+	private void addPropertiesToNode(io.github.jmcleodfoss.util.XMLOutput xml, java.util.Iterator iterator, io.github.jmcleodfoss.pst.PST pst)
 	throws
 		java.io.UnsupportedEncodingException
 	{
@@ -128,18 +128,18 @@ class PSTToXML {
 	*	@param	propertyName	The name of the property to add.
 	*	@param	element		The value of the property to add.
 	*/
-	private void addPropertyToNode(com.jsoft.util.XMLOutput xml, final String propertyName, final Object element)
+	private void addPropertyToNode(io.github.jmcleodfoss.util.XMLOutput xml, final String propertyName, final Object element)
 	throws
 		java.io.UnsupportedEncodingException
 	{
 		if (element.getClass().isArray()) {
 			if (element instanceof byte[]) {
-				final String s = com.jsoft.util.ByteUtil.createHexByteString((byte[])element);
+				final String s = io.github.jmcleodfoss.util.ByteUtil.createHexByteString((byte[])element);
 				xml.addElement(propertyName, s);
 			} else if (element instanceof String[]) {
 				xml.openElement(propertyName + "-list");
 				for(String item: (String[])element)
-					xml.addElement(propertyName, com.jsoft.util.XMLOutput.safeUTF8String((String)item));
+					xml.addElement(propertyName, io.github.jmcleodfoss.util.XMLOutput.safeUTF8String((String)item));
 				xml.closeElement();
 			} else if (element instanceof Object[]) {
 				xml.openElement(propertyName + "-list");
@@ -160,7 +160,7 @@ class PSTToXML {
 				xml.closeElement();
 			}
 		} else 
-			xml.addElement(propertyName, element instanceof String ? com.jsoft.util.XMLOutput.safeUTF8String((String)element) : element.toString());
+			xml.addElement(propertyName, element instanceof String ? io.github.jmcleodfoss.util.XMLOutput.safeUTF8String((String)element) : element.toString());
 	}
 
 	/**	Output the XML for this object to the given printstream
@@ -169,14 +169,14 @@ class PSTToXML {
 	*/
 	void createXML(java.io.PrintStream printstream)
 	throws
-		com.jsoft.pst.NotHeapNodeException,
-		com.jsoft.pst.UnknownClientSignatureException,
-		com.jsoft.pst.UnparseablePropertyContextException,
-		com.jsoft.pst.UnparseableTableContextException,
+		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
+		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,
 		java.io.UnsupportedEncodingException
 	{
-		com.jsoft.util.XMLOutput xml = new com.jsoft.util.XMLOutput(printstream, true, "UTF-8");
+		io.github.jmcleodfoss.util.XMLOutput xml = new io.github.jmcleodfoss.util.XMLOutput(printstream, true, "UTF-8");
 		xml.openElement("pst");
 		addFolderContents(xml, pst.root, pst);
 		xml.closeElement();
@@ -201,7 +201,7 @@ class PSTToXML {
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.xml.PSTToXML pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.xml.PSTToXML pst-filename");
 			System.exit(1);
 		}
 

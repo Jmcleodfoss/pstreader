@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The DataType class represents data types within a PST file as well as PST file properties.
 *
@@ -80,22 +80,22 @@ abstract class DataType {
 
 	/**	The character encoding used for PST ANSI data.
 	*
-	*	@see	com.jsoft.pst.DataType.StringBase
-	*	@see	com.jsoft.pst.DataType.MultipleString
-	*	@see	com.jsoft.pst.DataType.PSTString
-	*	@see	com.jsoft.pst.DataType#string8Reader
-	*	@see	com.jsoft.pst.DataType#multipleString8Reader
+	*	@see	io.github.jmcleodfoss.pst.DataType.StringBase
+	*	@see	io.github.jmcleodfoss.pst.DataType.MultipleString
+	*	@see	io.github.jmcleodfoss.pst.DataType.PSTString
+	*	@see	io.github.jmcleodfoss.pst.DataType#string8Reader
+	*	@see	io.github.jmcleodfoss.pst.DataType#multipleString8Reader
 	*/
 	private static final String CHARSET_NARROW = new String("iso-8859-1");
 
 	/**	The character encoding used for PST Unicode data.
 	*
 	*
-	*	@see	com.jsoft.pst.DataType.StringBase
-	*	@see	com.jsoft.pst.DataType.PSTString
-	*	@see	com.jsoft.pst.DataType.MultipleString
-	*	@see	com.jsoft.pst.DataType#stringReader
-	*	@see	com.jsoft.pst.DataType#multipleStringReader
+	*	@see	io.github.jmcleodfoss.pst.DataType.StringBase
+	*	@see	io.github.jmcleodfoss.pst.DataType.PSTString
+	*	@see	io.github.jmcleodfoss.pst.DataType.MultipleString
+	*	@see	io.github.jmcleodfoss.pst.DataType#stringReader
+	*	@see	io.github.jmcleodfoss.pst.DataType#multipleStringReader
 	*/
 	private static final String CHARSET_WIDE = new String("UTF-16LE");
 
@@ -156,7 +156,7 @@ abstract class DataType {
 
 	/**	The BIDBase class contains functionality used by both ANSI and Unicode BID description objects.
 	*
-	*	@see	com.jsoft.pst.BID
+	*	@see	io.github.jmcleodfoss.pst.BID
 	*/
 	private abstract static class BIDBase extends SizedObject {
 
@@ -164,8 +164,8 @@ abstract class DataType {
 		*
 		*	@param	size	The number of bytes in this BID type.
 		*
-		*	@see com.jsoft.pst.BID#SIZE_ANSI
-		*	@see com.jsoft.pst.BID#SIZE_UNICODE
+		*	@see io.github.jmcleodfoss.pst.BID#SIZE_ANSI
+		*	@see io.github.jmcleodfoss.pst.BID#SIZE_UNICODE
 		*/
 		private BIDBase(final int size)
 		{
@@ -238,9 +238,9 @@ abstract class DataType {
 	*
 	*	@return	A DataType suitable for reading in BIDs in the appropriate (ANSI or Unicode) file format.
 	*
-	*	@see	com.jsoft.pst.DataType.BIDANSI
-	*	@see	com.jsoft.pst.DataType.BIDUnicode
-	*	@see	com.jsoft.pst.XBlock#XBlock
+	*	@see	io.github.jmcleodfoss.pst.DataType.BIDANSI
+	*	@see	io.github.jmcleodfoss.pst.DataType.BIDUnicode
+	*	@see	io.github.jmcleodfoss.pst.XBlock#XBlock
 	*/
 	static DataType BIDFactory(final boolean fUnicode)
 	{
@@ -249,7 +249,7 @@ abstract class DataType {
 
 	/**	The BREFBase class contains functionality used by both ANSI and Unicode BREF description objects.
 	*
-	*	@see	com.jsoft.pst.BREF
+	*	@see	io.github.jmcleodfoss.pst.BREF
 	*/
 	private abstract static class BREFBase extends SizedObject {
 
@@ -257,8 +257,8 @@ abstract class DataType {
 		*
 		*	@param	size	The number of bytes in this BREF type.
 		*
-		*	@see com.jsoft.pst.BREF#SIZE_ANSI
-		*	@see com.jsoft.pst.BREF#SIZE_UNICODE
+		*	@see io.github.jmcleodfoss.pst.BREF#SIZE_ANSI
+		*	@see io.github.jmcleodfoss.pst.BREF#SIZE_UNICODE
 		*/
 		BREFBase(final int size)
 		{
@@ -350,7 +350,7 @@ abstract class DataType {
 		public String makeString(final Object o)
 		{
 			byte[] a = (byte[])o;
-			return com.jsoft.util.ByteUtil.createHexByteString(a);
+			return io.github.jmcleodfoss.util.ByteUtil.createHexByteString(a);
 		}
 
 		/**	Read in an array of bytes of the given size.
@@ -449,7 +449,7 @@ abstract class DataType {
 
 	/**	The GUID class describes how to read a 16-byte PST GUID in.
 	*
-	*	@see	com.jsoft.pst.GUID
+	*	@see	io.github.jmcleodfoss.pst.GUID
 	*/
 	private static class GUID extends DataType {
 
@@ -467,7 +467,7 @@ abstract class DataType {
 		*/
 		public String makeString(final Object o)
 		{
-			return ((com.jsoft.pst.GUID)o).toString();
+			return ((io.github.jmcleodfoss.pst.GUID)o).toString();
 		}
 
 		/**	Read in a GUID from the data stream.
@@ -478,9 +478,9 @@ abstract class DataType {
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
-			byte arr[] = new byte[com.jsoft.pst.GUID.SIZE];
+			byte arr[] = new byte[io.github.jmcleodfoss.pst.GUID.SIZE];
 			byteBuffer.get(arr);
-			return new com.jsoft.pst.GUID(arr);
+			return new io.github.jmcleodfoss.pst.GUID(arr);
 		}
 
 		/**	Obtain the size of the GUID.
@@ -489,7 +489,7 @@ abstract class DataType {
 		*/
 		public int size()
 		{
-			return com.jsoft.pst.GUID.SIZE;
+			return io.github.jmcleodfoss.pst.GUID.SIZE;
 		}
 	}
 
@@ -499,7 +499,7 @@ abstract class DataType {
 
 	/**	The HID class describes an HID object in a PST file.
 	*
-	*	@see	com.jsoft.pst.HeapOnNode
+	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
 	*/
 	private static class HID extends DataType {
 
@@ -517,7 +517,7 @@ abstract class DataType {
 		*/
 		public String makeString(final Object o)
 		{
-			return ((com.jsoft.pst.HeapOnNode.HID)o).toString();
+			return ((io.github.jmcleodfoss.pst.HeapOnNode.HID)o).toString();
 		}
 
 		/**	Read in an HID from the data stream.
@@ -528,7 +528,7 @@ abstract class DataType {
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
-			return new com.jsoft.pst.HeapOnNode.HID(byteBuffer.getInt());
+			return new io.github.jmcleodfoss.pst.HeapOnNode.HID(byteBuffer.getInt());
 		}
 
 		/**	Obtain the size of the HID in a PST file.
@@ -744,7 +744,7 @@ abstract class DataType {
 					break;
 			if (iFirstList >= arr.length)
 				return "multiple-binary - empty";
-			return "multiple-binary " + com.jsoft.util.ByteUtil.createHexByteString(arr[iFirstList]) + "...";
+			return "multiple-binary " + io.github.jmcleodfoss.util.ByteUtil.createHexByteString(arr[iFirstList]) + "...";
 		}
 
 		/**	Read in a list of binary objects.
@@ -953,7 +953,7 @@ abstract class DataType {
 		*/
 		public String makeString(final Object o)
 		{
-			return ((com.jsoft.pst.NID)o).toString();
+			return ((io.github.jmcleodfoss.pst.NID)o).toString();
 		}
 
 		/**	Read in a NID from the data stream.
@@ -964,7 +964,7 @@ abstract class DataType {
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
-			return new com.jsoft.pst.NID(byteBuffer.getInt());
+			return new io.github.jmcleodfoss.pst.NID(byteBuffer.getInt());
 		}
 
 		/**	Obtain the size of an NID object in a PST file.

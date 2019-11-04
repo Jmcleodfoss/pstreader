@@ -1,4 +1,4 @@
-package com.jsoft.swingutil;
+package io.github.jmcleodfoss.swingutil;
 
 /**	The EmptyTreeModel is a utility class to replace Swing's default tree model so that an empty tree doesn't show anything. */
 public class EmptyTreeModel extends ReadOnlyTreeModel {

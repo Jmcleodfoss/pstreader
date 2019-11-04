@@ -1,8 +1,8 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The UnparseableTableContextException is thrown when the table context cannot be parsed (probably because of an I/O error).
 *
-*	@see	com.jsoft.pst.TableContext
+*	@see	io.github.jmcleodfoss.pst.TableContext
 */
 public class UnparseableTableContextException extends Exception {
 

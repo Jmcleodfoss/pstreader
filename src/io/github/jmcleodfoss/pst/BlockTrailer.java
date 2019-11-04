@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BlockTrailer class describes the BLOCKTRAILER structure at the end of each block.
 *

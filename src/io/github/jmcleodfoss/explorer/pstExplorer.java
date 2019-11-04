@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.EventListenerList;
 
-import com.jsoft.pst.NodeSubnodeBTree;
-import com.jsoft.pst.PST;
+import io.github.jmcleodfoss.pst.NodeSubnodeBTree;
+import io.github.jmcleodfoss.pst.PST;
 
 /**	The pstExplorer class provides a GUI for viewing PST files.
 */
@@ -159,11 +159,11 @@ class pstExplorer extends JFrame {
 	{
 		reset();
 
-		com.jsoft.swingutil.ProgressBar pb = new com.jsoft.swingutil.ProgressBar(this, "Reading PST File") {
+		io.github.jmcleodfoss.swingutil.ProgressBar pb = new io.github.jmcleodfoss.swingutil.ProgressBar(this, "Reading PST File") {
 			public void run()
 			{
 				try {
-					pst = new com.jsoft.pst.PST(file.getAbsolutePath());
+					pst = new io.github.jmcleodfoss.pst.PST(file.getAbsolutePath());
 					nodeSubnodeBTree = new NodeSubnodeBTree(0, pst.header.nbtRoot, pst.blockBTree, pst);
 					setVisible(false);
 				} catch (final Exception e) {
@@ -190,7 +190,7 @@ class pstExplorer extends JFrame {
 	*
 	*	@return	The PST object for the currently loaded file.
 	*/
-	static com.jsoft.pst.PST pst()
+	static io.github.jmcleodfoss.pst.PST pst()
 	{
 		return explorer.pst;
 	}

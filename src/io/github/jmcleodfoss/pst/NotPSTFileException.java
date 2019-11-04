@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NotPSTFileException is thrown when the first four bytes of the file are not the PST flag bytes..
 *

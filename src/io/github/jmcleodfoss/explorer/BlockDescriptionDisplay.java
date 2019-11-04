@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 /**	The BlockDescriptionDisplay displays the currently-selected block. */
 @SuppressWarnings("serial")

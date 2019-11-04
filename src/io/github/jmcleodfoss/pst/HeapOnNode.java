@@ -1,15 +1,15 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The HeapOnNode class represents a heap stored on a node in the node B-Tree.
 *
-*	@see	com.jsoft.pst.BTree
+*	@see	io.github.jmcleodfoss.pst.BTree
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386518(v=office.12).aspx">HN (Heap-on-Node) (MSDN)</a>
 */
 public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	Logger for debugging BTrees */
-	static java.util.logging.Logger logger = Debug.getLogger("com.jsoft.pst.HeapOnNode");
+	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.HeapOnNode");
 
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
 	*
@@ -386,7 +386,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 					heap[iHeap] = new byte[size];
 					dataStreams.get(iBlock).get(heap[iHeap]);
 					if (logger.isLoggable(java.util.logging.Level.FINER))
-						logger.log(java.util.logging.Level.FINER, "HeapOnNode heap block " + iHeap + com.jsoft.util.ByteUtil.createHexByteString(heap[iHeap]));
+						logger.log(java.util.logging.Level.FINER, "HeapOnNode heap block " + iHeap + io.github.jmcleodfoss.util.ByteUtil.createHexByteString(heap[iHeap]));
 				}
 				++iHeap;
 			}
@@ -512,7 +512,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 			s.append('\n');
 			s.append(i);
 			s.append(':');
-			s.append(heap[i] != null ? com.jsoft.util.ByteUtil.createHexByteString(heap[i]) : "empty");
+			s.append(heap[i] != null ? io.github.jmcleodfoss.util.ByteUtil.createHexByteString(heap[i]) : "empty");
 		}
 
 		return s.toString();
@@ -558,7 +558,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	public Object getElementAt(int index)
 	{
 		if (heap[index] != null)
-			return com.jsoft.util.ByteUtil.createHexByteString(heap[index]);
+			return io.github.jmcleodfoss.util.ByteUtil.createHexByteString(heap[index]);
 		return null;
 	}
 
@@ -588,13 +588,13 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.HeapOnNode pst-filename [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.HeapOnNode pst-filename [log-level]");
 			System.out.println("\nNote that log-level applies only to construction of the HeapOnNode object.");
 			System.exit(1);
 		}
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			final java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.HeapOnNode");
+			final java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.HeapOnNode");
 			java.util.logging.Level originalLevel = logger.getLevel();
 			logger.setLevel(logLevel);
 
@@ -602,7 +602,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
+			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry node = (NBTEntry)iterator.next();

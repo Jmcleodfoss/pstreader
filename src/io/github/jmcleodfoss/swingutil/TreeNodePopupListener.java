@@ -1,4 +1,4 @@
-package com.jsoft.swingutil;
+package io.github.jmcleodfoss.swingutil;
 
 /**	The TreeNodePopupListener provides a mechanism allowing a popup listener to be associated with the nodes of a JTree. */
 public class TreeNodePopupListener extends java.awt.event.MouseAdapter {

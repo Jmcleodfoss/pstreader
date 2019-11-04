@@ -1,14 +1,14 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.nio.ByteBuffer;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
 
-import com.jsoft.pst.BTreeNode;
-import com.jsoft.pst.HeapOnNode;
-import com.jsoft.pst.LPTLeaf;
-import com.jsoft.pst.PST;
-import com.jsoft.swingutil.HexAndTextDisplay;
+import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.HeapOnNode;
+import io.github.jmcleodfoss.pst.LPTLeaf;
+import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	The NodeContentsDisplay provides a view of the contents of a node. */
 @SuppressWarnings("serial")

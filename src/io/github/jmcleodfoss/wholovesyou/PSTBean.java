@@ -1,4 +1,4 @@
-package com.jsoft.wholovesyou;
+package io.github.jmcleodfoss.wholovesyou;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -20,21 +20,21 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
-import com.jsoft.pst.Appointment;
-import com.jsoft.pst.Contact;
-import com.jsoft.pst.Folder;
-import com.jsoft.pst.IPF;
-import com.jsoft.pst.JournalEntry;
-import com.jsoft.pst.MessageObject;
-import com.jsoft.pst.NotHeapNodeException;
-import com.jsoft.pst.NotPSTFileException;
-import com.jsoft.pst.PST;
-import com.jsoft.pst.StickyNote;
-import com.jsoft.pst.TableContext;
-import com.jsoft.pst.Task;
-import com.jsoft.pst.UnknownClientSignatureException;
-import com.jsoft.pst.UnparseablePropertyContextException;
-import com.jsoft.pst.UnparseableTableContextException;
+import io.github.jmcleodfoss.pst.Appointment;
+import io.github.jmcleodfoss.pst.Contact;
+import io.github.jmcleodfoss.pst.Folder;
+import io.github.jmcleodfoss.pst.IPF;
+import io.github.jmcleodfoss.pst.JournalEntry;
+import io.github.jmcleodfoss.pst.MessageObject;
+import io.github.jmcleodfoss.pst.NotHeapNodeException;
+import io.github.jmcleodfoss.pst.NotPSTFileException;
+import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.pst.StickyNote;
+import io.github.jmcleodfoss.pst.TableContext;
+import io.github.jmcleodfoss.pst.Task;
+import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
+import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
+import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 
 /**	The ContactFormBean shares the data from the contact upload form with the contact server. */
 @ManagedBean(name = "pstBean")
@@ -62,7 +62,7 @@ public class PSTBean {
 	/**	Create a bean for communication between the form and the servlet. */
 	public PSTBean()
 	{
-		rb = ResourceBundle.getBundle("com.jsoft.pstExtractor.text-resources");
+		rb = ResourceBundle.getBundle("io.github.jmcleodfoss.pstExtractor.text-resources");
 	}
 
 	/**	Get the required information from a PST file and handle any exceptions encountered during processing.

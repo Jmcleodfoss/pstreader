@@ -1,4 +1,4 @@
-package com.jsoft.swingutil;
+package io.github.jmcleodfoss.swingutil;
 
 /**	The ReadOnlyTreeModel abstract class implements trivial versions of functions irrelevant for read-only trees. */
 public abstract class ReadOnlyTreeModel implements javax.swing.tree.TreeModel {

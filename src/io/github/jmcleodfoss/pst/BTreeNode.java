@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BTreeNode interface defines the functions required for intermediate and leaf B-tree nodes.
 *

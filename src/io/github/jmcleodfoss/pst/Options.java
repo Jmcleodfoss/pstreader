@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Options class allows control over some of the behavior of PST file processing. */
 
@@ -13,7 +13,7 @@ class Options {
 	static {
 		/* Anything done here will affect things called by main. */
 		if (fullDebugging) {
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 			logger.setLevel(java.util.logging.Level.FINEST);
 		}
 	}

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BlockMap interface describes classes which allow a block to be found in the block B-tree. */
 interface BlockMap {

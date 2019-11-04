@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The FileFormat class contains the file format (ANSI or Unicode) of the PST file.
 *

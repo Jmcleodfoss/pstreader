@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The SubnodeBTree class represents the B-tree for the sub-nodes of a node B-tree leaf node. */
 public class SubnodeBTree extends BTree {
@@ -237,17 +237,17 @@ public class SubnodeBTree extends BTree {
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava com.jsoft.pst.NodeBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
 			System.exit(1);
 		}
 
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.BTree");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
 			final java.util.logging.Level originalLevel = logger.getLevel();
 
-			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
+			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);

@@ -1,4 +1,4 @@
-package com.jsoft.util;
+package io.github.jmcleodfoss.util;
 
 /**	The EmptyIterator class is an iterator for empty lists. It is useful in some circumstances when one wishes to avoid checking
 *	for null in client code.

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The PSTFile class is a convenience container class used to read later data from the file. */
 public class PSTFile {
@@ -31,7 +31,7 @@ public class PSTFile {
 		mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
 		mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
-		header = new com.jsoft.pst.Header(mbb);
+		header = new io.github.jmcleodfoss.pst.Header(mbb);
 	}
 
 	/**	A convenience method to return the encryption method in the header.

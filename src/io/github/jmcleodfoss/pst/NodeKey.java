@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NodeKey class represents a B-tree node which contains a key.
 */

@@ -1,8 +1,8 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BlockFinder class retrieves blocks from the block B-tree by walking it on disk rather than reading it in all at once.
 *
-*	@see	com.jsoft.pst.BlockBTree
+*	@see	io.github.jmcleodfoss.pst.BlockBTree
 */
 class BlockFinder extends PagedBTreeFinder implements BlockMap {
 
@@ -75,13 +75,13 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava com.jsoft.pst.BlockBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BlockBTree pst-file");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.BTree");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
 			logger.setLevel(logLevel);
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));

@@ -1,11 +1,11 @@
-package com.jsoft.xml;
+package io.github.jmcleodfoss.xml;
 
 /**	The PSTIPFFolderTypeToXML class extracts the contents of a given folder type from a PST file, outputting it is XML.
 *
 *	<p><strong>Use</strong><p>
-*	<code>java com.jsoft.pst.PSTIPFFolderTypeToXML pst-file.pst folder-class-name</code><p>
+*	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML pst-file.pst folder-class-name</code><p>
 *	The list of known folder classes may be found by issuing the command without parameters:
-*	<code>java com.jsoft.pst.PSTIPFFolderTypeToXML</code><p>
+*	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML</code><p>
 **/
 class PSTIPFFolderTypeToXML extends PSTToXML {
 
@@ -19,10 +19,10 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	*/
 	PSTIPFFolderTypeToXML(final String fn, final String includedFolderClass)
 	throws
-		com.jsoft.pst.UnknownClientSignatureException,
-		com.jsoft.pst.NotHeapNodeException,
-		com.jsoft.pst.UnparseablePropertyContextException,
-		com.jsoft.pst.UnparseableTableContextException,
+		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
+		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,
 		javax.xml.parsers.ParserConfigurationException
 	{
@@ -45,7 +45,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	/**	List the known folder types. */
 	private static void listKnownFolderTypes()
 	{
-		for (java.util.Iterator<String> iterator = com.jsoft.pst.IPFFolderClass.iterator(); iterator.hasNext(); )
+		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPFFolderClass.iterator(); iterator.hasNext(); )
 			System.out.printf("\t%s\n", iterator.next());
 	}
 
@@ -56,7 +56,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	public static void main(final String[] args)
 	{
 		if (args.length < 2) {
-			System.out.println("use:\n\tjava com.jsoft.xml.PSTIPFFolderTypeToXML pst-filename folder-type");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML pst-filename folder-type");
 			System.out.println("\nKnown folder types are:");
 			listKnownFolderTypes();
 			System.exit(1);
@@ -65,7 +65,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 		final String filename = args[0];
 		final String folderClass = args[1];
 
-		if (!com.jsoft.pst.IPFFolderClass.contains(folderClass)) {
+		if (!io.github.jmcleodfoss.pst.IPFFolderClass.contains(folderClass)) {
 			System.out.printf("Folder class %s is not recognized. Known folder classes are:\n", folderClass);
 			listKnownFolderTypes();
 			System.exit(1);

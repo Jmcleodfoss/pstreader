@@ -1,6 +1,6 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
-/**	The Debug class provides a local repository for a com.jsoft.util.Debug object, and access to it. */
+/**	The Debug class provides a local repository for a io.github.jmcleodfoss.util.Debug object, and access to it. */
 class Debug {
 
 	/**	Should we log to console? */
@@ -26,7 +26,7 @@ class Debug {
 	}
 
 	/**	Package logger - this governs child loggers. */
-	static final java.util.logging.Logger packageLogger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+	static final java.util.logging.Logger packageLogger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 	static {
 		packageLogger.setUseParentHandlers(false);
 		setupLogger(packageLogger);

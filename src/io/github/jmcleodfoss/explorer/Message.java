@@ -1,13 +1,13 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
-import com.jsoft.pst.MessageObject;
-import com.jsoft.pst.MessageObjectWithBody;
-import com.jsoft.pst.PropertyContext;
-import com.jsoft.pst.StickyNote;
+import io.github.jmcleodfoss.pst.MessageObject;
+import io.github.jmcleodfoss.pst.MessageObjectWithBody;
+import io.github.jmcleodfoss.pst.PropertyContext;
+import io.github.jmcleodfoss.pst.StickyNote;
 
 /**	The Message class exposes some message components. */
 @SuppressWarnings("serial")
@@ -66,10 +66,10 @@ class Message extends NodeContentsDisplay {
 	*/
 	public void update(final MessageObject message, final PropertyContext messagePC)
 	{
-		final boolean fMessage = message instanceof com.jsoft.pst.Message;
+		final boolean fMessage = message instanceof io.github.jmcleodfoss.pst.Message;
 		final boolean fHasBody = message instanceof MessageObjectWithBody;
 
-		final String transportHeaders = fMessage ? ((com.jsoft.pst.Message)message).transportHeaders(messagePC) : null;
+		final String transportHeaders = fMessage ? ((io.github.jmcleodfoss.pst.Message)message).transportHeaders(messagePC) : null;
 		if (transportHeaders != null) {
 			header.setText(transportHeaders);
 			if (indexOfComponent(header) == -1)

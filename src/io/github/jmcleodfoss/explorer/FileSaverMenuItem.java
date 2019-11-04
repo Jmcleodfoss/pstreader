@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 
-import com.jsoft.swingutil.FilterByExtension;
+import io.github.jmcleodfoss.swingutil.FilterByExtension;
 
 /**	The FileSaverMenuItem class implements a generic mechanism for saving files via a submenu menu item.
 */

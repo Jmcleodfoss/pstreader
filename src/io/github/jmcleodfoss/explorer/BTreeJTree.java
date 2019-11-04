@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -9,8 +9,8 @@ import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeSelectionModel;
 
-import com.jsoft.pst.TreeCustomNodeText;
-import com.jsoft.swingutil.EmptyTreeModel;
+import io.github.jmcleodfoss.pst.TreeCustomNodeText;
+import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
 /**	The BTreeJTree provides special handling of JTrees which live in a JScrollPane and use BTree objectss for the tree model. This
 *	class provides some wrappers to allow the underlying tree to be manipulated by client code.
@@ -18,7 +18,7 @@ import com.jsoft.swingutil.EmptyTreeModel;
 @SuppressWarnings("serial")
 class BTreeJTree extends JScrollPane {
 
-	/**	The Tree class is a JTree which gets node names from a com.jsoft.pst.TreeCustomNode object. */
+	/**	The Tree class is a JTree which gets node names from a io.github.jmcleodfoss.pst.TreeCustomNode object. */
 	private class Tree extends JTree {
 
 		/**	Construct a JTree with an EmptyTreeModel. */
@@ -28,7 +28,7 @@ class BTreeJTree extends JScrollPane {
 		}
 
 		/**	Get node text - the PST BTrees use toString for purposes inconsistent with BTree nodes, so this function uses
-		*	the interface provided by com.jsoft.pst.TreeCustomNodeText to get the node label text.
+		*	the interface provided by io.github.jmcleodfoss.pst.TreeCustomNodeText to get the node label text.
 		*
 		*	@param	value		The node of the tree.
 		*	@param	selected	A flag indicating whether the node is selected.

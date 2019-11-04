@@ -1,12 +1,12 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
-import com.jsoft.pst.BTreeNode;
-import com.jsoft.swingutil.HexAndTextDisplay;
+import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	A specialized version of the generic HexAndTextDisplay class which is linked to a JTree. */
 @SuppressWarnings("serial")

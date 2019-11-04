@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The UnknownClientSignatureException exception indicates an unknown client signature was encountered,
 *

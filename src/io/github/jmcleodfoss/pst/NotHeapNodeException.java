@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NotHeapNodeException is thrown when a node does not contain a valid heap-on-node.
 *

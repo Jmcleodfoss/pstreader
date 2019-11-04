@@ -1,12 +1,12 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Task class holds information about a task entry.
 *
-*	@see	com.jsoft.pst.Appointment
-*	@see	com.jsoft.pst.Contact
-*	@see	com.jsoft.pst.JournalEntry
-*	@see	com.jsoft.pst.Message
-*	@see	com.jsoft.pst.StickyNote
+*	@see	io.github.jmcleodfoss.pst.Appointment
+*	@see	io.github.jmcleodfoss.pst.Contact
+*	@see	io.github.jmcleodfoss.pst.JournalEntry
+*	@see	io.github.jmcleodfoss.pst.Message
+*	@see	io.github.jmcleodfoss.pst.StickyNote
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">{MX-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 *	@see	"[MS-OXCXMSG] Message and Attacment Object Protocol Specifications v20101027"

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The IPF holds the list of IPF folder types. */
 public class IPF {

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Recipient class represents a single entry in the Recipient table.
 *
@@ -36,7 +36,7 @@ class Recipient {
 	*
 	*	@param	args	The command line arguments to the test application.
 	*/
-	@com.jsoft.util.Unimplemented(priority = com.jsoft.util.Unimplemented.Priority.LOW)
+	@io.github.jmcleodfoss.util.Unimplemented(priority = io.github.jmcleodfoss.util.Unimplemented.Priority.LOW)
 	static void main(String[] args)
 	{
 		System.out.println("Not implemented yet.");

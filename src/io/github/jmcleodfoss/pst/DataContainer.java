@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The DataContainer class may be used to manage a set up DataDefinition objects, saving all values read in a map member.
 *	It provides utility methods for retrieving various useful types.

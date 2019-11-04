@@ -1,6 +1,6 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
-/**	The PagedBTreeFinder class contains code shared by the {@link com.jsoft.pst.BlockFinder} and {@link com.jsoft.pst.NodeFinder}
+/**	The PagedBTreeFinder class contains code shared by the {@link io.github.jmcleodfoss.pst.BlockFinder} and {@link io.github.jmcleodfoss.pst.NodeFinder}
 *	classes.
 */
 abstract class PagedBTreeFinder {

@@ -1,4 +1,4 @@
-package com.jsoft.swingutil;
+package io.github.jmcleodfoss.swingutil;
 
 /**	The HTMLTableModel class creates an HTML table from a Swing TableModel. */
 public class HTMLTableModel {

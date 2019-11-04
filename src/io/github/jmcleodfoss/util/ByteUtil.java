@@ -1,4 +1,4 @@
-package com.jsoft.util;
+package io.github.jmcleodfoss.util;
 
 /**	The ByteUtil class contains utility functions for dealing with bytes. */
 public class ByteUtil {

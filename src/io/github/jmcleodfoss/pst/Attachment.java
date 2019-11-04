@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Attachment class represents an attachment object within a PST message object. Note that the attachment
 *	{@link PropertyContext} object is not saved, as it can be very large - the anticipated use case requires retrieving the PC,
@@ -136,7 +136,7 @@ public class Attachment {
 	*	}
 	*	</pre>
 	*
-	*	@see	com.jsoft.pst.PST#propertyContext
+	*	@see	io.github.jmcleodfoss.pst.PST#propertyContext
 	*/
 	public final SLEntry nodeInfo;
 
@@ -166,7 +166,7 @@ public class Attachment {
 	}
 
 	/**	Construct the Attachment object using the sub-node B-tree entry {@link SLEntry}, which is available only within the
-	*	{@link com.jsoft.pst} package.
+	*	{@link io.github.jmcleodfoss.pst} package.
 	*
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
@@ -228,7 +228,7 @@ public class Attachment {
 	*
 	*	@param	arg	The command line arguments to the test application.
 	*/
-	@com.jsoft.util.Unimplemented(priority = com.jsoft.util.Unimplemented.Priority.LOW)
+	@io.github.jmcleodfoss.util.Unimplemented(priority = io.github.jmcleodfoss.util.Unimplemented.Priority.LOW)
 	public static void main(final String[] arg)
 	{
 		assert false: "Not implemented yet.";

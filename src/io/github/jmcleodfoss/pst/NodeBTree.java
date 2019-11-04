@@ -1,10 +1,10 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NodeBTree class contains the B-tree of the PST file's nodes.
 *
-*	@see	com.jsoft.pst.NBTEntry
-*	@see	com.jsoft.pst.BlockBTree
-*	@see	com.jsoft.pst.PagedBTree.BTEntry
+*	@see	io.github.jmcleodfoss.pst.NBTEntry
+*	@see	io.github.jmcleodfoss.pst.BlockBTree
+*	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.7.7"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387767(v=office.12).aspx">Node Database (NDB) Layer (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386554(v=office.12).aspx">BTrees (MSDN)</a>
@@ -125,13 +125,13 @@ class NodeBTree extends PagedBTree implements NodeMap {
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava com.jsoft.pst.NodeBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.BTree");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
 			logger.setLevel(logLevel);
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));

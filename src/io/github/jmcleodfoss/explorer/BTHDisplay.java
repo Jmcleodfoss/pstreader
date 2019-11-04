@@ -1,15 +1,15 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import javax.swing.JSplitPane;
 
-import com.jsoft.pst.BTreeNode;
-import com.jsoft.pst.BTreeOnHeap;
-import com.jsoft.pst.HeapOnNode;
-import com.jsoft.pst.PST;
-import com.jsoft.swingutil.EmptyTreeModel;
+import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.BTreeOnHeap;
+import io.github.jmcleodfoss.pst.HeapOnNode;
+import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
 /**	The BTHDisplay class displays the B-tree-on-Heap for a node and the data for the selected node of the B-tree. */
 @SuppressWarnings("serial")

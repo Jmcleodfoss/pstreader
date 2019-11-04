@@ -1,4 +1,4 @@
-package com.jsoft.pstExtractor;
+package io.github.jmcleodfoss.pstExtractor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,9 +1,9 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The PropertyIDByGUID class contains the names of known property IDs which are stored by GUID in the
 *	{@link NameToIDMap Named Properties Store.}
 *
-*	@see	com.jsoft.pst.PropertyID
+*	@see	io.github.jmcleodfoss.pst.PropertyID
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">[MS-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 */

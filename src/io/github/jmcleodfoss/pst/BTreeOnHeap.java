@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BTreeOnHeap class represents a B-tree contained on a heap defined by a node in the node B-tree.
 *
@@ -257,10 +257,10 @@ public class BTreeOnHeap extends BTree {
 			case 1:
 			case 2:
 			case 4:
-				return com.jsoft.util.ByteUtil.makeLongLE(key, keySize);
+				return io.github.jmcleodfoss.util.ByteUtil.makeLongLE(key, keySize);
 
 			default:
-				return com.jsoft.util.ByteUtil.makeLongLE(key, 4);
+				return io.github.jmcleodfoss.util.ByteUtil.makeLongLE(key, 4);
 			}
 		}
 	}
@@ -373,7 +373,7 @@ public class BTreeOnHeap extends BTree {
 		/**	{@inheritDoc} */
 		public String getNodeText()
 		{
-			return String.format("0x%08x (%d, %d): %s", key(), keySize, entrySize, com.jsoft.util.ByteUtil.createHexByteString(data));
+			return String.format("0x%08x (%d, %d): %s", key(), keySize, entrySize, io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data));
 		}
 
 		/**	{@inheritDoc} */
@@ -391,7 +391,7 @@ public class BTreeOnHeap extends BTree {
 		@Override
 		public String toString()
 		{
-			return String.format("key 0x%08x, data %s", key(), com.jsoft.util.ByteUtil.createHexByteString(data));
+			return String.format("key 0x%08x, data %s", key(), io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data));
 		}
 	}
 
@@ -480,19 +480,19 @@ public class BTreeOnHeap extends BTree {
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.BTreeOnHeap pst-filename [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-filename [log-level]");
 			System.out.println("\nNote that log-level applies only to construction of the BtreeOnHeap object.");
 			System.exit(1);
 		}
 		java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-		java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+		java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 
 		try {
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
+			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
 
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {

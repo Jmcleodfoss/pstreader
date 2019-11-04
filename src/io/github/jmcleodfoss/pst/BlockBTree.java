@@ -1,10 +1,10 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BlockBTree class holds the PST file's block B-tree structure, which provides access to all the data blocks in the PST file.
 *
-*	@see	com.jsoft.pst.BBTEntry
-*	@see	com.jsoft.pst.NodeBTree
-*	@see	com.jsoft.pst.PagedBTree.BTEntry
+*	@see	io.github.jmcleodfoss.pst.BBTEntry
+*	@see	io.github.jmcleodfoss.pst.NodeBTree
+*	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 1.3.1.1"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387767(v=office.12).aspx">Node Database (NDB) Layer (MSDN)</a>
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.7.7"
@@ -95,13 +95,13 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava com.jsoft.pst.BlockBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BlockBTree pst-file");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.BTree");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
 			logger.setLevel(logLevel);
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));

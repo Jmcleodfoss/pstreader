@@ -1,9 +1,9 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The PropertyTag class holds the known property tags.
 *
-*	@see	com.jsoft.pst.PropertyID
-*	@see	com.jsoft.pst.PropertyName
+*	@see	io.github.jmcleodfoss.pst.PropertyID
+*	@see	io.github.jmcleodfoss.pst.PropertyName
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">[MS-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 */

@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The MessageObjectWithBody class represents message objects which are expected to have a Body (and possibly a BodyHTML) tag. */
 public class MessageObjectWithBody extends MessageObject {

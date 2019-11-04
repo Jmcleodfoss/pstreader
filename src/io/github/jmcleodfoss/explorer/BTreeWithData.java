@@ -1,11 +1,11 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import javax.swing.JComponent;
 import javax.swing.JSplitPane;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeModel;
 
-import com.jsoft.swingutil.EmptyTreeModel;
+import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
 /**	The BTreeWithData view permits simple display of a B-tree which displays the corresponding data below or to the left in a
 *	JSplitPane.

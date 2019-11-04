@@ -1,4 +1,4 @@
-package com.jsoft.pstExtractor;
+package io.github.jmcleodfoss.pstExtractor;
 
 /**	The StickyNoteBean class represents a PST sticky note.
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the

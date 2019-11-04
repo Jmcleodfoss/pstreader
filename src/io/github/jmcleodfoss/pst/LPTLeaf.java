@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The LPTLeaf class is the base class for node and sub-node B-Tree leaf entries, both of which may be used to create table
 *	contexts.
@@ -49,7 +49,7 @@ public abstract class LPTLeaf implements BTreeLeaf {
 			new Object[]{"Subnode BID", bidSubnode}
 		};
 
-		return new com.jsoft.swingutil.ReadOnlyTableModel(cells, columnHeadings);
+		return new io.github.jmcleodfoss.swingutil.ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	{@inheritDoc} */

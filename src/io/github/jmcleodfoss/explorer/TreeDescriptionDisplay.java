@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.awt.Graphics;
 import javax.swing.JComponent;
@@ -6,7 +6,7 @@ import javax.swing.JSplitPane;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
-import com.jsoft.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.BTreeNode;
 
 /**	The TreeDescriptionDisplay allows a complex description object to be associated with a JTree. */
 @SuppressWarnings("serial")

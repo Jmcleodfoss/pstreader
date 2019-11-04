@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;

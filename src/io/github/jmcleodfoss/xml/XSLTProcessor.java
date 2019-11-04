@@ -1,9 +1,9 @@
-package com.jsoft.xml;
+package io.github.jmcleodfoss.xml;
 
 /**	Perform XSLT Processing.
 *
 *	<p><strong>Use</strong><p>
-*	<code>java com.jsoft.pst.XSLTProcess xslt-file.xml xml-file.xml</code>
+*	<code>java io.github.jmcleodfoss.pst.XSLTProcess xslt-file.xml xml-file.xml</code>
 */
 public class XSLTProcessor {
 

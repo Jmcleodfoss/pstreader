@@ -1,9 +1,9 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Folder class represents a folder within a PST file. Note that sub-folders are loaded as required, rather than on initial
 *	construction of the Folder object for the folder root.
 */
-public class Folder extends com.jsoft.swingutil.ReadOnlyTreeModel implements TreeCustomNodeText, javax.swing.tree.TreeModel {
+public class Folder extends io.github.jmcleodfoss.swingutil.ReadOnlyTreeModel implements TreeCustomNodeText, javax.swing.tree.TreeModel {
 
 	/**	Ths SubfolderLevelsToRead class tells how many sub-levels to read when processing a folder: none, one, or all. */
 	private static class SubfolderLevelsToRead
@@ -391,13 +391,13 @@ public class Folder extends com.jsoft.swingutil.ReadOnlyTreeModel implements Tre
 	public static void main(String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava com.jsoft.pst.Folder pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Folder pst-file");
 			System.exit(1);
 		}
 
 		try {
 			java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.BTree");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
 			logger.setLevel(logLevel);
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));

@@ -1,10 +1,10 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 
-import com.jsoft.swingutil.FilterByExtension;
+import io.github.jmcleodfoss.swingutil.FilterByExtension;
 
 /**	Handle file open requests. */
 class FileOpenActionListener implements ActionListener {

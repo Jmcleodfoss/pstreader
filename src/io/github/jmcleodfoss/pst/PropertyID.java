@@ -1,11 +1,11 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The PropertyID class contains the names of known properties as used in the Property Context and Table Context structures.
 *	Note that in the context of property ID's, a property ID is the high word of the tag, and the data type is the low word.
 *
-*	@see	com.jsoft.pst.PropertyIDByGUID
-*	@see	com.jsoft.pst.PropertyTag
-*	@see	com.jsoft.pst.PropertyTagName
+*	@see	io.github.jmcleodfoss.pst.PropertyIDByGUID
+*	@see	io.github.jmcleodfoss.pst.PropertyTag
+*	@see	io.github.jmcleodfoss.pst.PropertyTagName
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">[MS-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 */

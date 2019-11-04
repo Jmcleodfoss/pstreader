@@ -1,4 +1,4 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import javax.swing.JSplitPane;
 import javax.swing.tree.TreeModel;

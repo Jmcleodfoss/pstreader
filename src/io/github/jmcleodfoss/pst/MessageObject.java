@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The MessageObject class is the base class for all content objects (appointments, contacts, journal entries, messages, etc.)
 *

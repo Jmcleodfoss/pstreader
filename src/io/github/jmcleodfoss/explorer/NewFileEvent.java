@@ -1,8 +1,8 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.util.EventObject;
 
-import com.jsoft.pst.PST;
+import io.github.jmcleodfoss.pst.PST;
 
 /**	This event used to notify objecs which implement the NewFileListener interface that a new file has been loaded. */
 @SuppressWarnings("serial")

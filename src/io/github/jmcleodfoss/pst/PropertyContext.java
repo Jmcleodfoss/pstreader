@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The PropertyContext class contains a PST file property context.
 *
@@ -8,7 +8,7 @@ package com.jsoft.pst;
 public class PropertyContext {
 
 	/**	Logger for class debugging. */
-	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.PropertyContext");
+	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.PropertyContext");
 
 	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on
 	*	demand. */
@@ -175,8 +175,8 @@ public class PropertyContext {
 	*
 	*	@return	A ByteBuffer from which the data may be read.
 	*
-	*	@see	com.jsoft.pst.BTreeOnHeap#getData
-	*	@see	com.jsoft.pst.TableContext#getData
+	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
+	*	@see	io.github.jmcleodfoss.pst.TableContext#getData
 	*/
 	static java.nio.ByteBuffer getData(final int tag, final byte[] data, final HeapOnNode hon)
 	throws
@@ -257,7 +257,7 @@ public class PropertyContext {
 			s.append(", value");
 	
 			if (propertyType == DataType.BINARY)
-				s.append(com.jsoft.util.ByteUtil.createHexByteString((byte[])o));
+				s.append(io.github.jmcleodfoss.util.ByteUtil.createHexByteString((byte[])o));
 			else
 				s.append(o);
 		}
@@ -368,14 +368,14 @@ public class PropertyContext {
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.PropertyContext pst-filename [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.PropertyContext pst-filename [log-level]");
 			System.out.println("\nNote that log-level applies only to construction of the PropertyContext object.");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 			logger.setLevel(logLevel);
 
 			// Suppresing output can dramatically increase the speed of this function, while still showing any exceptions raised.
@@ -387,7 +387,7 @@ public class PropertyContext {
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 			final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
 
-			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
+			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
 
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {

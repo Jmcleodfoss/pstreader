@@ -1,9 +1,9 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Header object is the PST header.
 *
-*	@see	com.jsoft.pst.Encryption
-*	@see	com.jsoft.pst.FileFormat
+*	@see	io.github.jmcleodfoss.pst.Encryption
+*	@see	io.github.jmcleodfoss.pst.FileFormat
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.6"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387474(v=office.12).aspx">Header (MSDN)</a>
 */
@@ -218,12 +218,12 @@ public class Header {
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava com.jsoft.pst.Header pst-file [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Header pst-file [log-level]");
 			System.exit(1);
 		}
 		try {
 			java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 			logger.setLevel(logLevel);
 
 			java.io.File file = new java.io.File(args[0]);

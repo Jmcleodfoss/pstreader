@@ -1,4 +1,4 @@
-package com.jsoft.localebean;
+package io.github.jmcleodfoss.localebean;
 
 import java.io.InputStream;
 import java.io.IOException;

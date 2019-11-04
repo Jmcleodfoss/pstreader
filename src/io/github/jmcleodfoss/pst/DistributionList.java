@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The DistributionList class represents a PST contact distribution list message object. The values set in the constructor are
 *	those which come from the folder Contents Table; retrieval of other fields require that the client provide the message property
@@ -15,9 +15,9 @@ package com.jsoft.pst;
 *	}
 *	</pre>
 *
-*	@see	com.jsoft.pst.Appointment
-*	@see	com.jsoft.pst.Contact
-*	@see	com.jsoft.pst.Message
+*	@see	io.github.jmcleodfoss.pst.Appointment
+*	@see	io.github.jmcleodfoss.pst.Contact
+*	@see	io.github.jmcleodfoss.pst.Message
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">{MX-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 *	@see	"[MS-OXCXMSG] Message and Attacment Object Protocol Specifications v20101027"

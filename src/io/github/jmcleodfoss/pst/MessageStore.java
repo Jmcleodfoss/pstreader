@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The MessageStore class is a (thin) wrapper around the message store PC, with a few convenience functions.
 *

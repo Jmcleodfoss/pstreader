@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The IB class is a byte index into the PST file. The primary purpose of this class is to provide type safety and a useful
 *	version of {@link #toString}

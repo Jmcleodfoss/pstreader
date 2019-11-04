@@ -1,10 +1,10 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.awt.Dimension;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 
-import com.jsoft.swingutil.HexAndTextDisplay;
+import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	Display information about the PST header. */
 @SuppressWarnings("serial")
@@ -49,7 +49,7 @@ class Header extends JSplitPane implements NewFileListener {
 	*/
 	public void fileLoaded(final NewFileEvent e)
 	{
-		final com.jsoft.pst.PST pst = e.pst;
+		final io.github.jmcleodfoss.pst.PST pst = e.pst;
 		rawData.read(pst.read(0, pst.header.size()));
 		table.setValueAt(pst.header.fileFormat, ROW_FILE_FORMAT, COL_VALUE);
 		table.setValueAt(pst.header.encryption, ROW_ENCRYPTION_METHOD, COL_VALUE);

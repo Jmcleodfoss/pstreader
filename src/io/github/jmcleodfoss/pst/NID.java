@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NID class represents a PST file node ID.
 *
@@ -8,7 +8,7 @@ package com.jsoft.pst;
 public class NID implements NodeKey {
 
 	/**	Logger for NID creation. */
-	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.NID");
+	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NID");
 
 	/**	Whether to check for known node types. This should be left disabled, since undocumented node types do occur in PST
 	*	files.
@@ -17,7 +17,7 @@ public class NID implements NodeKey {
 
 	/**	Node type: Heap node.
 	*
-	*	@see	com.jsoft.pst.HeapOnNode
+	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.1"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386694(v=office.12).aspx">HID (MSDN)</a>
 	*/
@@ -32,7 +32,7 @@ public class NID implements NodeKey {
 
 	/**	Node type: Normal folder object (PC).
 	*
-	*	@see	com.jsoft.pst.Folder
+	*	@see	io.github.jmcleodfoss.pst.Folder
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.1"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385548(v=office.12).aspx">Folder Object PC (MSDN)</a>
 	*/
@@ -43,7 +43,7 @@ public class NID implements NodeKey {
 
 	/**	Node type: Normal message object (PC).
 	*
-	*	@see	com.jsoft.pst.Message
+	*	@see	io.github.jmcleodfoss.pst.Message
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.5"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385158(v=office.12).aspx">Message Objects (MSDN)</a>
 	*/
@@ -51,7 +51,7 @@ public class NID implements NodeKey {
 
 	/**	Node type: Attachment object (PC).
 	*
-	*	@see	com.jsoft.pst.Attachment
+	*	@see	io.github.jmcleodfoss.pst.Attachment
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.6.2"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387207(v=office.12).aspx">Attachment Object PC (MSDN)</a>
 	*/
@@ -77,7 +77,7 @@ public class NID implements NodeKey {
 
 	/**	Node type: Hierarchy Table (TC).
 	*
-	*	@see	com.jsoft.pst.Folder
+	*	@see	io.github.jmcleodfoss.pst.Folder
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.4"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386271(v=office.12).aspx">Hierarchy Table (MSDN)</a>
 	*/
@@ -86,7 +86,7 @@ public class NID implements NodeKey {
 	/**	Node type: Contents Table (TC).
 	*
 	*	@see	#NORMAL_MESSAGE
-	*	@see	com.jsoft.pst.Folder
+	*	@see	io.github.jmcleodfoss.pst.Folder
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.5"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386083(v=office.12).aspx">Contents Table (MSDN)</a>
 	*/
@@ -95,7 +95,7 @@ public class NID implements NodeKey {
 	/**	Node type: Folder associated information contents table (TC).
 	*
 	*	@see	#ASSOC_MESSAGE
-	*	@see	com.jsoft.pst.Folder
+	*	@see	io.github.jmcleodfoss.pst.Folder
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.6"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385054(v=office.12).aspx">FAI Contents Table</a>
 	*/
@@ -103,14 +103,14 @@ public class NID implements NodeKey {
 
 	/**	Node type: Contents table of a search folder (TC).
 	*
-	*	@see	com.jsoft.pst.Folder
+	*	@see	io.github.jmcleodfoss.pst.Folder
 	*/
 	static final byte SEARCH_CONTENTS_TABLE = 0x10;
 
 	/**	Node type: Contents table of a search folder (TC).
 	*
 	*	@see	#ATTACHMENT
-	*	@see	com.jsoft.pst.Message
+	*	@see	io.github.jmcleodfoss.pst.Message
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.6.1"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386915(v=office.12).aspx">Attachment Objects</a>
 	*/
@@ -118,8 +118,8 @@ public class NID implements NodeKey {
 
 	/**	Node type: Recipients Table (TC).
 	*
-	*	@see	com.jsoft.pst.Message
-	*	@see	com.jsoft.pst.Recipient
+	*	@see	io.github.jmcleodfoss.pst.Message
+	*	@see	io.github.jmcleodfoss.pst.Recipient
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.5.3"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385128(v=office.12).aspx">Recipient Table (MSDN)</a>
 	*/
@@ -349,7 +349,7 @@ public class NID implements NodeKey {
 	*
 	*	@return	The key for this NID.
 	*
-	*	@see	com.jsoft.pst.NodeBTree
+	*	@see	io.github.jmcleodfoss.pst.NodeBTree
 	*/
 	public long key()
 	{

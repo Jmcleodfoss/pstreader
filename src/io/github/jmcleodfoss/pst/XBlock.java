@@ -1,9 +1,9 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The XBlock class represents the XBlock and XXBlock block containers within a PST file.
 *
-*	@see	com.jsoft.pst.BlockBase
-*	@see	com.jsoft.pst.SimpleBlock
+*	@see	io.github.jmcleodfoss.pst.BlockBase
+*	@see	io.github.jmcleodfoss.pst.SimpleBlock
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, sections 2.2.8.3.2"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386805(v=office.12).aspx">Block Types (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387544(v=office.12).aspx">Data Blocks (MSDN)</a>
@@ -237,14 +237,14 @@ class XBlock extends BlockBase {
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.XBlock pst-filename [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.XBlock pst-filename [log-level]");
 			System.out.println("\nNote that log-level applies only to construction of the NameIDToMap object.");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
 			logger.setLevel(logLevel);
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));

@@ -199,40 +199,40 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 	<!--	Individual Compilation Targets	-->
 
 	<target name="explorer.compile" description="Compile PST Explorer stand-alone application" depends="init-compile">
-		<javac-app includes="com/jsoft/explorer/*.java"/>
+		<javac-app includes="io/github/jmcleodfoss/explorer/*.java"/>
 	</target>
 
 	<target name="localebean.compile" description="Compile LocaleBean stand-alone application" depends="init-compile">
-		<javac-servlet includes="com/jsoft/localebean/*.java"/>
+		<javac-servlet includes="io/github/jmcleodfoss/localebean/*.java"/>
 	</target>
 
 	<target name="pst.compile" description="Compile PST manipulation library" depends="init-compile">
-		<javac-lib includes="com/jsoft/pst/*.java"/>
+		<javac-lib includes="io/github/jmcleodfoss/pst/*.java"/>
 	</target>
 
 	<target name="pst.test.compile" description="Compile PST manipulation library tests" depends="pst.compile">
 		<javac-test
-			includes="com/jsoft/pst/*.java"
+			includes="io/github/jmcleodfoss/pst/*.java"
 		/>
 	</target>
 
 	<target name="pst-extractor.compile" description="Compile PST extraction servlet" depends="init-compile">
 		<javac-servlet
-			includes="com/jsoft/pstExtractor/*.java"
+			includes="io/github/jmcleodfoss/pstExtractor/*.java"
 			classpath="${commons-fileupload.jar}:${build-dist.dir}/${pst.jar}:${tomahawk.jar}:${tomahawk-commons-io.jar}"
 		/>
 	</target>
 
 	<target name="swingutil.compile" description="Compile Swing utility library" depends="init-compile">
-		<javac-lib includes="com/jsoft/swingutil/**"/>
+		<javac-lib includes="io/github/jmcleodfoss/swingutil/**"/>
 	</target>
 
 	<target name="util.compile" description="Compile local utility library" depends="init-compile">
-		<javac-lib includes="com/jsoft/util/**"/>
+		<javac-lib includes="io/github/jmcleodfoss/util/**"/>
 	</target>
 
 	<target name="xml.compile" description="Compile PST to XML applications" depends="init-compile">
-		<javac-app includes="com/jsoft/xml/**"/>
+		<javac-app includes="io/github/jmcleodfoss/xml/**"/>
 	</target>
 
 
@@ -250,16 +250,16 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<junit	fork="yes"
 			haltonfailure="yes"
 		>
-			<test name="com.jsoft.pst.BTreeOnHeapTest"/>
-			<test name="com.jsoft.pst.BlockBTreeTest"/>
-			<test name="com.jsoft.pst.BlockFinderTest"/>
-			<test name="com.jsoft.pst.HeaderTest"/>
-			<test name="com.jsoft.pst.HeapOnNodeTest"/>
-			<test name="com.jsoft.pst.NodeBTreeTest"/>
-			<test name="com.jsoft.pst.NodeFinderTest"/>
-			<test name="com.jsoft.pst.PropertyContextTest"/>
-			<test name="com.jsoft.pst.SimpleBlockTest"/>
-			<test name="com.jsoft.pst.TableContextTest"/>
+			<test name="io.github.jmcleodfoss.pst.BTreeOnHeapTest"/>
+			<test name="io.github.jmcleodfoss.pst.BlockBTreeTest"/>
+			<test name="io.github.jmcleodfoss.pst.BlockFinderTest"/>
+			<test name="io.github.jmcleodfoss.pst.HeaderTest"/>
+			<test name="io.github.jmcleodfoss.pst.HeapOnNodeTest"/>
+			<test name="io.github.jmcleodfoss.pst.NodeBTreeTest"/>
+			<test name="io.github.jmcleodfoss.pst.NodeFinderTest"/>
+			<test name="io.github.jmcleodfoss.pst.PropertyContextTest"/>
+			<test name="io.github.jmcleodfoss.pst.SimpleBlockTest"/>
+			<test name="io.github.jmcleodfoss.pst.TableContextTest"/>
 			<formatter type="plain" usefile="false"/>
 			<classpath refid="junit.classpath"/>
 		</junit>
@@ -272,8 +272,8 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		description="Create the distributable for the LocaleBean"
 		depends="init-dist,localebean.compile"
 	>
-		<jar destfile="${build-dist.dir}/${localebean.jar}" basedir="${build-obj.dir}" includes="com/jsoft/localebean/LocaleBean.class">
-			<metainf file="${src.dir}/com/jsoft/pstExtractor/faces-config.xml"/>
+		<jar destfile="${build-dist.dir}/${localebean.jar}" basedir="${build-obj.dir}" includes="io/github/jmcleodfoss/localebean/LocaleBean.class">
+			<metainf file="${src.dir}/io/github/jmcleodfoss/pstExtractor/faces-config.xml"/>
 		</jar>
 	</target>
 
@@ -281,21 +281,21 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		description="Create the distributable for the PST library"
 		depends="init-dist,pst.compile"
 	>
-		<jar destfile="${build-dist.dir}/${pst.jar}" basedir="${build-obj.dir}" includes="com/jsoft/pst/**"/>
+		<jar destfile="${build-dist.dir}/${pst.jar}" basedir="${build-obj.dir}" includes="io/github/jmcleodfoss/pst/**"/>
 	</target>
 
 	<target	name="swingutil.dist"
 		description="Create the distributable for the Swing utility library"
 		depends="init-dist,swingutil.compile"
 	>
-		<jar destfile="${build-dist.dir}/${swingutil.jar}" basedir="${build-obj.dir}" includes="com/jsoft/swingutil/**"/>
+		<jar destfile="${build-dist.dir}/${swingutil.jar}" basedir="${build-obj.dir}" includes="io/github/jmcleodfoss/swingutil/**"/>
 	</target>
 
 	<target	name="util.dist"
 		description="Create the distributable for the local utility library"
 		depends="init-dist,util.compile"
 	>
-		<jar destfile="${build-dist.dir}/${util.jar}" basedir="${build-obj.dir}" includes="com/jsoft/util/**"/>
+		<jar destfile="${build-dist.dir}/${util.jar}" basedir="${build-obj.dir}" includes="io/github/jmcleodfoss/util/**"/>
 	</target>
 
 
@@ -323,8 +323,8 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 	>
 		<jar	destfile="${build-dist.dir}/explorer.jar"
 			basedir="${build-obj.dir}"
-			includes="com/jsoft/explorer/**"
-			manifest="${src.dir}/com/jsoft/explorer/manifest"
+			includes="io/github/jmcleodfoss/explorer/**"
+			manifest="${src.dir}/io/github/jmcleodfoss/explorer/manifest"
 		>
 			<zipgroupfileset dir="${build-dist.dir}">
 				<include name="${pst.jar}"/>
@@ -342,7 +342,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		depends="init-deploy,pst.dist,util.dist,pst-extractor.compile,jquery"
 	>
 		<war	destfile="${build-deploy.dir}/${pst-extractor.deploy}"
-			webxml="src/com/jsoft/pstExtractor/web.xml"
+			webxml="src/io/github/jmcleodfoss/pstExtractor/web.xml"
 		>
 			<lib dir="${build-dist.dir}">
 				<include name="${pst.jar}"/>
@@ -361,15 +361,15 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 			<lib file="${tomahawk.jar}"/>
 			<lib file="${el-impl-2.2.jar}"/>
 			<lib file="${jstl.jar}"/>
-			<webinf file="${src.dir}/com/jsoft/pstExtractor/faces-config.xml"/>
-			<classes dir="${build-obj.dir}" includes="com/jsoft/pstExtractor/*.class"/>
-			<classes dir="${src.dir}" includes="com/jsoft/pstExtractor/text-resources.properties"/>
-			<fileset file="${src.dir}/com/jsoft/pstExtractor/index.jsp"/>
+			<webinf file="${src.dir}/io/github/jmcleodfoss/pstExtractor/faces-config.xml"/>
+			<classes dir="${build-obj.dir}" includes="io/github/jmcleodfoss/pstExtractor/*.class"/>
+			<classes dir="${src.dir}" includes="io/github/jmcleodfoss/pstExtractor/text-resources.properties"/>
+			<fileset file="${src.dir}/io/github/jmcleodfoss/pstExtractor/index.jsp"/>
 			<fileset dir="${temp.dir}" includes="${scripts.subdir}/jquery.js"/>
-			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="resources/**"/>
-			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="sections/**"/>
-			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="templates/**"/>
-			<fileset dir="${src.dir}/com/jsoft/pstExtractor" includes="views/**"/>
+			<fileset dir="${src.dir}/io/github/jmcleodfoss/pstExtractor" includes="resources/**"/>
+			<fileset dir="${src.dir}/io/github/jmcleodfoss/pstExtractor" includes="sections/**"/>
+			<fileset dir="${src.dir}/io/github/jmcleodfoss/pstExtractor" includes="templates/**"/>
+			<fileset dir="${src.dir}/io/github/jmcleodfoss/pstExtractor" includes="views/**"/>
 		</war>
 	</target>
 
@@ -402,63 +402,63 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		description="Create developer documentation for PST manipulation library"
 		depends="init-doc.devel"
 	>
-		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="com.jsoft.pst.*"/>
+		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="io.github.jmcleodfoss.pst.*"/>
 	</target>
 
 	<target	name="pst.doc-client"
 		description="Create user documentation for PST manipulation library"
 		depends="init-doc.client"
 	>
-		<jsoft.javadoc destdir="${doc-client.dir}" access="public" packagenames="com.jsoft.pst.*"/>
+		<jsoft.javadoc destdir="${doc-client.dir}" access="public" packagenames="io.github.jmcleodfoss.pst.*"/>
 	</target>
 
 	<target	name="swingutil.doc-client"
 		description="Create user documentation for Swing utility library"
 		depends="init-doc.devel"
 	>
-		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="com.jsoft.swingutil.*"/>
+		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="io.github.jmcleodfoss.swingutil.*"/>
 	</target>
 
 	<target	name="swingutil.doc-devel"
 		description="Create developer documentation for Swing utility library"
 		depends="init-doc.client"
 	>
-		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="com.jsoft.swingutil.*"/>
+		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="io.github.jmcleodfoss.swingutil.*"/>
 	</target>
 
 	<target	name="util.doc-client"
 		description="Create user documentation for local utility library"
 		depends="init-doc.devel"
 	>
-		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="com.jsoft.util.*"/>
+		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="io.github.jmcleodfoss.util.*"/>
 	</target>
 
 	<target	name="util.doc-devel"
 		description="Create developer documentation for local utility library"
 		depends="init-doc.client"
 	>
-		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="com.jsoft.util.*"/>
+		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="io.github.jmcleodfoss.util.*"/>
 	</target>
 
 	<target	name="explorer.doc"
 		description="Create documentation for PST Explorer applications"
 		depends="init-doc.explorer"
 	>
-		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="com.jsoft.xml.*"/>
+		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="io.github.jmcleodfoss.xml.*"/>
 	</target>
 
 	<target	name="xml.doc"
 		description="Create documentation for XML applications"
 		depends="init-doc.xml"
 	>
-		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="com.jsoft.xml.*"/>
+		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="io.github.jmcleodfoss.xml.*"/>
 	</target>
 
 	<target	name="pst-extractor.doc"
 		description="Create documentation for PST extraction servlet application"
 		depends="init-doc.pst-extractor"
 	>
-		<jsoft.javadoc destdir="${doc-pst-extractor.dir}" access="private" packagenames="com.jsoft.pstExtractor.*"/>
+		<jsoft.javadoc destdir="${doc-pst-extractor.dir}" access="private" packagenames="io.github.jmcleodfoss.pstExtractor.*"/>
 	</target>
 
 

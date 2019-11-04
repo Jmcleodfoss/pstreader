@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Encryption class handles decryption and encryption of the PST file.
 *

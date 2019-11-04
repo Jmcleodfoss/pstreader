@@ -1,4 +1,4 @@
-package com.jsoft.util;
+package io.github.jmcleodfoss.util;
 
 /**	The Unimplemented annotation flags methods which have not yet been implemented, and member variables which are not yet used.
 */

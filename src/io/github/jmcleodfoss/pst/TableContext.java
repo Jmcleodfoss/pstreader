@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The TableContext class represents a PST Table Context, which is a structure on a B-tree-on-heap. The class itself is not
 *	publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
@@ -12,7 +12,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	private static final long serialVersionUID = 1L;
 
 	/**	Logger for debugging TableContexts */
-	static java.util.logging.Logger logger = Debug.getLogger("com.jsoft.pst.TableContext");
+	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.TableContext");
 
 	/**	The TCInfo class represents the PST file TCINFO structure, and contains table context info for a table context.
 	*
@@ -466,8 +466,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*
 	*	@return	A ByteBuffer form which the data may be read.
 	*
-	*	@see	com.jsoft.pst.BTreeOnHeap#getData
-	*	@see	com.jsoft.pst.PropertyContext#getData
+	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
+	*	@see	io.github.jmcleodfoss.pst.PropertyContext#getData
 	*/
 	static java.nio.ByteBuffer getData(int propertyTag, byte[] data, HeapOnNode hon)
 	throws
@@ -542,7 +542,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	@SuppressWarnings("unchecked")
 	java.util.Iterator<Object> iterator()
 	{
-		return isEmpty() ? com.jsoft.util.EmptyIterator.iterator : new Iterator();
+		return isEmpty() ? io.github.jmcleodfoss.util.EmptyIterator.iterator : new Iterator();
 	}
 
 	/**	Read data for all rows from a block of bytes of raw data. This is used to read HID table contexts.
@@ -621,7 +621,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		byte[] cellExistenceBitmap = (byte[])dc.get(info.rowFields[info.rowFields.length-1].name);
 
 		if (logger.isLoggable(java.util.logging.Level.INFO))
-			logger.log(java.util.logging.Level.INFO, String.format("%d: CEB %s", r, com.jsoft.util.ByteUtil.createHexByteString(cellExistenceBitmap)));
+			logger.log(java.util.logging.Level.INFO, String.format("%d: CEB %s", r, io.github.jmcleodfoss.util.ByteUtil.createHexByteString(cellExistenceBitmap)));
 
 		Object[] row = new Object[numColumns];
 		for (int c = 0; c < numColumns; ++c) {
@@ -717,7 +717,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 				else if (row[c] instanceof Long)
 					s.append("0x" + Long.toHexString((Long)row[c]));
 				else if (row[c] instanceof byte[])
-					s.append(com.jsoft.util.ByteUtil.createHexByteString((byte[])row[c]));
+					s.append(io.github.jmcleodfoss.util.ByteUtil.createHexByteString((byte[])row[c]));
 				else
 					s.append(row[c]);
 			}
@@ -734,7 +734,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.TableContext pst-filename [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.TableContext pst-filename [log-level]");
 			System.out.println("\nNote that log-level applies only to construction of the TableContext object.");
 			System.exit(1);
 		}
@@ -747,7 +747,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			com.jsoft.util.OutputSeparator separator = new com.jsoft.util.OutputSeparator();
+			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				NBTEntry nodeDescr = (NBTEntry)iterator.next();

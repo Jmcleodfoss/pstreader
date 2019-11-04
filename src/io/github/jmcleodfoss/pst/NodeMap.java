@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The NodeMap interface describes classes which allow a node to be found in the node B-tree. */
 public interface NodeMap {

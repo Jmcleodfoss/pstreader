@@ -1,8 +1,8 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The SimpleBlock class represents a leaf data block (i.e. not an XBLOCK or XXBLOCK).
 *
-*	@see	com.jsoft.pst.XBlock
+*	@see	io.github.jmcleodfoss.pst.XBlock
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387148(v=office.12).aspx">Blocks (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387697(v=office.12).aspx">Anatomy of a Block (MSDN)</a>
 */
@@ -108,7 +108,7 @@ class SimpleBlock extends BlockBase {
 			crcCalculated = CRC.crc(PST.makeByteBuffer(data), 0, data.length);
 		encryption.translate(data, (int)(entry.bref.bid.key() & 0xffffffff));
 		if (logger.isLoggable(java.util.logging.Level.FINER))
-			logger.log(java.util.logging.Level.FINER, "decoded data " + com.jsoft.util.ByteUtil.createHexByteString(data));
+			logger.log(java.util.logging.Level.FINER, "decoded data " + io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data));
 
 		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
@@ -155,13 +155,13 @@ class SimpleBlock extends BlockBase {
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava com.jsoft.pst.SimpleBlock");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.SimpleBlock");
 			System.exit(1);
 		}
 
 		try {
 			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("com.jsoft.pst.BlockBase");
+			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BlockBase");
 			logger.setLevel(logLevel);
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));

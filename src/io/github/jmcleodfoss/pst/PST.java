@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The PST class is a convenience collection of entities describing a PST file. */
 public class PST extends PSTFile {
@@ -143,7 +143,7 @@ public class PST extends PSTFile {
 	public HeapOnNode heapOnNode(BID bid)
 	{
 		try {
-			return com.jsoft.pst.HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
+			return io.github.jmcleodfoss.pst.HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
 		} catch (final java.io.IOException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final UnknownClientSignatureException e) {
@@ -165,7 +165,7 @@ public class PST extends PSTFile {
 	*
 	*	@return	A table model for the {@link #namedProperties named properties} of the PST file.
 	*
-	*	@see	com.jsoft.pst.NameToIDMap
+	*	@see	io.github.jmcleodfoss.pst.NameToIDMap
 	*/
 	public javax.swing.table.TableModel namedPropertiesTableModel()
 	{
@@ -176,7 +176,7 @@ public class PST extends PSTFile {
 	*
 	*	@return	An interator through the {@link #namedProperties named properties} of the PST file.
 	*
-	*	@see	com.jsoft.pst.NameToIDMap
+	*	@see	io.github.jmcleodfoss.pst.NameToIDMap
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Short, String>> namedPropertiesIterator()
 	{
@@ -209,8 +209,8 @@ public class PST extends PSTFile {
 		NotHeapNodeException,
 		java.io.IOException
 	{
-		final com.jsoft.pst.NBTEntry nbtEntry = nodeBTree.find(new NID(nid));
-		return new com.jsoft.pst.PropertyContext(nbtEntry, blockBTree, this).iterator();
+		final io.github.jmcleodfoss.pst.NBTEntry nbtEntry = nodeBTree.find(new NID(nid));
+		return new io.github.jmcleodfoss.pst.PropertyContext(nbtEntry, blockBTree, this).iterator();
 	}
 
 	/**	Convenience function to obtain a table model for the property context for the given NID.
@@ -220,7 +220,7 @@ public class PST extends PSTFile {
 	*	@return	A table model containing the property tags, tag names, and values for the property context.
 	*
 	*	@see	PropertyContext
-	*	@see	com.jsoft.pst.PropertyContext.TableModel
+	*	@see	io.github.jmcleodfoss.pst.PropertyContext.TableModel
 	*	@see	#tableModel
 	*/
 	public javax.swing.table.TableModel pcTableModel(LPTLeaf node)
@@ -306,10 +306,10 @@ public class PST extends PSTFile {
 	}
 
 	/**	Obtain a javax.swing.table.TableModel for the table context for the given node and heap-on-node. This function
-	*	calls the {@link com.jsoft.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockBTree, PSTFile) TableContext constructor} which
+	*	calls the {@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockBTree, PSTFile) TableContext constructor} which
 	*	requires the heap-on-node to have already been created and is intended  for use in situations where the heap-on-node
 	*	has already been built; the alternative {@link #tcTableModel(LPTLeaf)} calls the
-	*	{@link com.jsoft.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile) TableContext constructor} constructor which builds the
+	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile) TableContext constructor} constructor which builds the
 	*	heap-on-node itself.
 	*
 	*	@param	node	A node from the node B-tree or a sub-node B-tree containing the TableContext.
@@ -317,9 +317,9 @@ public class PST extends PSTFile {
 	*
 	*	@return	A javax.swing.table.TableModel representation of the table context.
 	*
-	*	@see	com.jsoft.pst.TableContext
+	*	@see	io.github.jmcleodfoss.pst.TableContext
 	*	@see	#tcTableModel(LPTLeaf)
-	*	@see	com.jsoft.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockBTree, PSTFile)
+	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockBTree, PSTFile)
 	*/
 	public javax.swing.table.TableModel tcTableModel(LPTLeaf node, HeapOnNode hon)
 	{
@@ -334,7 +334,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Obtain a javax.swing.table.TableModel for the table context for the given node. This function calls the
-	*	{@link com.jsoft.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile) TableContext constructor} constructor which builds the
+	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile) TableContext constructor} constructor which builds the
 	*	heap-on-node itself; if the heap-on-node for the node has already been created, the alternative function
 	*	{@link #tcTableModel(LPTLeaf, HeapOnNode)} should be used instead.
 	*
@@ -342,9 +342,9 @@ public class PST extends PSTFile {
 	*
 	*	@return	A javax.swing.table.TableModel representation of the table context.
 	*
-	*	@see	com.jsoft.pst.TableContext
+	*	@see	io.github.jmcleodfoss.pst.TableContext
 	*	@see	#tcTableModel(LPTLeaf, HeapOnNode)
-	*	@see	com.jsoft.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile)
+	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile)
 	*/
 	public javax.swing.table.TableModel tcTableModel(LPTLeaf node)
 	{

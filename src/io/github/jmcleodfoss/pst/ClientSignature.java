@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The ClientSignature of a heap-on-node indicates its use.
 *

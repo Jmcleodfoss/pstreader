@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BID class represents a PST file block ID.
 *
@@ -73,8 +73,8 @@ class BID implements NodeKey {
 
 	/**	Retrieve the size of a block ID object (which is different under Unicode and ANSI).
 	*
-	*	@param	format	The FileFormat object as read in from the PST header and stored in the {@link com.jsoft.pst.Header}
-	*			object in the {@link com.jsoft.pst.PSTFile} object.
+	*	@param	format	The FileFormat object as read in from the PST header and stored in the {@link io.github.jmcleodfoss.pst.Header}
+	*			object in the {@link io.github.jmcleodfoss.pst.PSTFile} object.
 	*
 	*	@return	The size of the BID object for the given file format.
 	*

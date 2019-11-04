@@ -1,11 +1,11 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import javax.swing.JMenuItem;
 
-import com.jsoft.pst.Attachment;
-import com.jsoft.pst.LPTLeaf;
-import com.jsoft.pst.PropertyContext;
-import com.jsoft.swingutil.TreeNodePopupListener;
+import io.github.jmcleodfoss.pst.Attachment;
+import io.github.jmcleodfoss.pst.LPTLeaf;
+import io.github.jmcleodfoss.pst.PropertyContext;
+import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 
 /**	The NodeDescriptionDisplay displays the the currently-selected node. */
 @SuppressWarnings("serial")
@@ -42,7 +42,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay {
 				final LPTLeaf attachmentNode = (LPTLeaf)clickedNode;
 				pc = pstExplorer.pst().propertyContext(attachmentNode);
 				try {
-					attachment = new com.jsoft.pst.Attachment(attachmentNode, pstExplorer.pst().blockBTree, pstExplorer.pst());
+					attachment = new io.github.jmcleodfoss.pst.Attachment(attachmentNode, pstExplorer.pst().blockBTree, pstExplorer.pst());
 				} catch (Exception e) {
 					pc = null;
 					return "";

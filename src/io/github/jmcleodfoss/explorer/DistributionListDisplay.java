@@ -1,13 +1,13 @@
-package com.jsoft.explorer;
+package io.github.jmcleodfoss.explorer;
 
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
-import com.jsoft.pst.DistributionList;
-import com.jsoft.pst.PropertyContext;
-import com.jsoft.pst.PST;
+import io.github.jmcleodfoss.pst.DistributionList;
+import io.github.jmcleodfoss.pst.PropertyContext;
+import io.github.jmcleodfoss.pst.PST;
 
 /**	The DistributionListDisplay class displays a distribution list. */
 @SuppressWarnings("serial")

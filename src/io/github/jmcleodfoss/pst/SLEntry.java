@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The SLEntry is a leaf node in the sub-node B-tree.
 *

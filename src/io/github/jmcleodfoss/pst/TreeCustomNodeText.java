@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The TreeCustomNodeText interface provides a library-specific mechanism for obtaining tree node text.
 */

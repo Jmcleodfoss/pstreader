@@ -1,4 +1,4 @@
-package com.jsoft.swingutil;
+package io.github.jmcleodfoss.swingutil;
 
 /**	The ProgressBar is a modal-dialog display of a JProgressBar of indeterminate duration which runs in its own thread.
 *	Clients must override the Runnable.run function to perform any actions to be done while the progress bar is displayed.

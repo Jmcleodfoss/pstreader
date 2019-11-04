@@ -1,4 +1,4 @@
-package com.jsoft.util;
+package io.github.jmcleodfoss.util;
 
 /**	This is a utility class for simple client-managed XML output of strings. */
 public class XMLOutput {

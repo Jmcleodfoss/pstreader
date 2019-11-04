@@ -1,12 +1,12 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The BBTEntry class represents a block B-tree leaf node.
 *
-*	@see	com.jsoft.pst.BTree
-*	@see	com.jsoft.pst.BlockBTree
-*	@see	com.jsoft.pst.NBTEntry
-*	@see	com.jsoft.pst.PagedBTree
-*	@see	com.jsoft.pst.PagedBTree.BTEntry
+*	@see	io.github.jmcleodfoss.pst.BTree
+*	@see	io.github.jmcleodfoss.pst.BlockBTree
+*	@see	io.github.jmcleodfoss.pst.NBTEntry
+*	@see	io.github.jmcleodfoss.pst.PagedBTree
+*	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608 Section 2.2.2.7.7.3"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386084(v=office.12).aspx">BBTEntry (Leaf BBT Entry) (MSDN)</a>
 */
@@ -88,7 +88,7 @@ class BBTEntry implements BTreeLeaf {
 			new Object[]{"Reference Count", refCount}
 		};
 
-		return new com.jsoft.swingutil.ReadOnlyTableModel(cells, columnHeadings);
+		return new io.github.jmcleodfoss.swingutil.ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	Retrieve the key (block ID) for this node.

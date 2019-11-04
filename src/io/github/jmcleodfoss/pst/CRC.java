@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The CRC class contains the CRC calculation mechanism, taken from the MS PST file format description.
 *

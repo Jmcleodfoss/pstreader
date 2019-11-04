@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 @SuppressWarnings("serial")
 class InsufficientMemoryException extends Exception {

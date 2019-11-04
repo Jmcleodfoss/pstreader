@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The UnparseablePropertyContextException is thrown when the property context cannot be parsed (probably because of an I/O error).
 *

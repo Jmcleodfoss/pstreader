@@ -1,4 +1,4 @@
-package com.jsoft.pst;
+package io.github.jmcleodfoss.pst;
 
 /**	The Message class represents a PST e-mail message. The values set in the constructor are those which come from the folder Contents
 *	Table; retrieval of other fields, including the message body, require that the client provide the message property context from
@@ -17,12 +17,12 @@ package com.jsoft.pst;
 *	}
 *	</pre>
 *
-*	@see	com.jsoft.pst.Appointment
-*	@see	com.jsoft.pst.Attachment
-*	@see	com.jsoft.pst.Contact
-*	@see	com.jsoft.pst.Folder
-*	@see	com.jsoft.pst.Recipient
-*	@see	com.jsoft.pst.StickyNote
+*	@see	io.github.jmcleodfoss.pst.Appointment
+*	@see	io.github.jmcleodfoss.pst.Attachment
+*	@see	io.github.jmcleodfoss.pst.Contact
+*	@see	io.github.jmcleodfoss.pst.Folder
+*	@see	io.github.jmcleodfoss.pst.Recipient
+*	@see	io.github.jmcleodfoss.pst.StickyNote
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">{MX-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 *	@see	"[MS-OXCXMSG] Message and Attacment Object Protocol Specifications v20101027"
@@ -230,7 +230,7 @@ public class Message extends MessageObjectWithBody {
 
 	/**	Test the Message class by iterating through the messages.
 	*/
-	@com.jsoft.util.Unimplemented(priority = com.jsoft.util.Unimplemented.Priority.LOW)
+	@io.github.jmcleodfoss.util.Unimplemented(priority = io.github.jmcleodfoss.util.Unimplemented.Priority.LOW)
 	public static void main(final String[] arg)
 	{
 		assert false: "Not implemented.";
