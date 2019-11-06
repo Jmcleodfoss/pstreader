@@ -40,7 +40,7 @@ class PSTToXML {
 
 		safeXMLNamedProperties = new java.util.HashMap<Short, String>();
 		for (java.util.Iterator<java.util.Map.Entry<Short, String>> iterator = pst.namedPropertiesIterator(); iterator.hasNext(); ) {
-			@SuppressWarnings("unchecked") java.util.Map.Entry<Short, String> entry = (java.util.Map.Entry<Short, String>)iterator.next();
+			java.util.Map.Entry<Short, String> entry = iterator.next();
 			String value = entry.getValue();
 			if (xmlSubstitutes.containsKey(value))
 				safeXMLNamedProperties.put(entry.getKey(), xmlSubstitutes.get(value));
@@ -72,8 +72,8 @@ class PSTToXML {
 		if (type == null || !folderFilter(type)) {
 			xml.addElement("folder-name", folder.displayName);
 			xml.addElement("folder-type", folder.containerClass);
-			for (java.util.Iterator<io.github.jmcleodfoss.pst.Message> contents = folder.contentsIterator(); contents.hasNext(); ) {
-				io.github.jmcleodfoss.pst.Message message = contents.next();
+			for (java.util.Iterator<io.github.jmcleodfoss.pst.MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+				io.github.jmcleodfoss.pst.MessageObject message = contents.next();
 	
 				xml.openElement("object");
 				addPropertiesToNode(xml, message.getMessage(pst.blockBTree, pst).iterator(), pst);
@@ -99,18 +99,18 @@ class PSTToXML {
 	*	@param	iterator	The property/value iterator to add to the XML document.
 	*	@param	pst		The PST object from which the XML document is being constructed.
 	*/ 
-	private void addPropertiesToNode(io.github.jmcleodfoss.util.XMLOutput xml, java.util.Iterator iterator, io.github.jmcleodfoss.pst.PST pst)
+	private void addPropertiesToNode(io.github.jmcleodfoss.util.XMLOutput xml, java.util.Iterator<java.util.Map.Entry<Integer, Object>> iterator, io.github.jmcleodfoss.pst.PST pst)
 	throws
 		java.io.UnsupportedEncodingException
 	{
 		while (iterator.hasNext()) {
-			final java.util.Map.Entry keyAndValue = (java.util.Map.Entry)iterator.next();
+			final java.util.Map.Entry<Integer, Object> keyAndValue = iterator.next();
 
 			final Object value = keyAndValue.getValue();
 			if (value == null)
 				continue;
 
-			final Integer tag = (Integer)keyAndValue.getKey();
+			final Integer tag = keyAndValue.getKey();
 			String propertyName = safeXMLNamedProperties.get(tag >>> 16);
 			if (propertyName == null) {
 				int propertyID = tag;
@@ -139,7 +139,7 @@ class PSTToXML {
 			} else if (element instanceof String[]) {
 				xml.openElement(propertyName + "-list");
 				for(String item: (String[])element)
-					xml.addElement(propertyName, io.github.jmcleodfoss.util.XMLOutput.safeUTF8String((String)item));
+					xml.addElement(propertyName, io.github.jmcleodfoss.util.XMLOutput.safeUTF8String(item));
 				xml.closeElement();
 			} else if (element instanceof Object[]) {
 				xml.openElement(propertyName + "-list");
