@@ -9,6 +9,15 @@ package io.github.jmcleodfoss.xml;
 **/
 class PSTIPFFolderTypeToXML extends PSTToXML {
 
+	static final java.util.Map<String, String> knownFolderTypes = new java.util.HashMap<String, String>();
+	static {
+		final int IPFPrefixLength = 4;
+		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPF.iterator(); iterator.hasNext(); ){
+			String folderType = iterator.next();
+			knownFolderTypes.put(folderType.substring(IPFPrefixLength), folderType);
+		}
+	}
+
 	/**	The folder class to emit. */
 	final String includedFolderClass;
 
@@ -21,6 +30,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	throws
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.NotPSTFileException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,
@@ -45,7 +55,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	/**	List the known folder types. */
 	private static void listKnownFolderTypes()
 	{
-		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPFFolderClass.iterator(); iterator.hasNext(); )
+		for (java.util.Iterator<String> iterator = knownFolderTypes.keySet().iterator(); iterator.hasNext(); )
 			System.out.printf("\t%s\n", iterator.next());
 	}
 
@@ -65,14 +75,14 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 		final String filename = args[0];
 		final String folderClass = args[1];
 
-		if (!io.github.jmcleodfoss.pst.IPFFolderClass.contains(folderClass)) {
+		if (!knownFolderTypes.containsKey(folderClass)) {
 			System.out.printf("Folder class %s is not recognized. Known folder classes are:\n", folderClass);
 			listKnownFolderTypes();
 			System.exit(1);
 		}
 
 		try {
-			final PSTIPFFolderTypeToXML pstToXml = new PSTIPFFolderTypeToXML(filename, folderClass);
+			final PSTIPFFolderTypeToXML pstToXml = new PSTIPFFolderTypeToXML(filename, knownFolderTypes.get(folderClass));
 			pstToXml.createXML(System.out);
 		} catch (Exception e) {
 			e.printStackTrace(System.out);

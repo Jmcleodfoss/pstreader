@@ -30,6 +30,7 @@ class PSTToXML {
 	public PSTToXML(String fn)
 	throws
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.NotPSTFileException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
@@ -178,7 +179,7 @@ class PSTToXML {
 	{
 		io.github.jmcleodfoss.util.XMLOutput xml = new io.github.jmcleodfoss.util.XMLOutput(printstream, true, "UTF-8");
 		xml.openElement("pst");
-		addFolderContents(xml, pst.root, pst);
+		addFolderContents(xml, pst.getFolderTree(), pst);
 		xml.closeElement();
 	}
 
