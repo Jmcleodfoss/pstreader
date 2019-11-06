@@ -82,6 +82,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<property name="pst.jar" value="pst${suffix.dist}.jar"/>
 		<property name="swingutil.jar" value="swingutil${suffix.dist}.jar"/>
 		<property name="util.jar" value="util${suffix.dist}.jar"/>
+		<property name="wholovesyou.jar" value="wholovesyou${suffix.dist}.jar"/>
 		<property name="xml.jar" value="xml${suffix.dist}.jar"/>
 		<condition property="suffix.deploy" value="-${DSTAMP}">
 			<not>
@@ -232,6 +233,13 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<javac-lib includes="io/github/jmcleodfoss/util/**"/>
 	</target>
 
+	<target name="wholovesyou.compile" description="Compile WhoLovesYou applications" depends="init-compile">
+		<javac-app
+			includes="io/github/jmcleodfoss/wholovesyou/**"
+			classpath="${myfaces-api.jar}:${tomahawk.jar}:${build-dist.dir}/${pst.jar}"
+		/>
+	</target>
+
 	<target name="xml.compile" description="Compile PST to XML applications" depends="init-compile">
 		<javac-app includes="io/github/jmcleodfoss/xml/**"/>
 	</target>
@@ -241,6 +249,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<target name="libs.compile" description="Compile all librariest" depends="pst.compile,localebean.compile,swingutil.compile,util.compile"/>
 	<target name="servlets.compile" description="Compile all servlets" depends="pst-extractor.compile"/>
+	<!--target name="servlets.compile" description="Compile all servlets" depends="pst-extractor.compile,wholovesyou.compile"/-->
 	<target name="apps.compile" description="Compile all applications" depends="explorer.compile,xml.compile"/>
 	<target name="compile" description="Compile all source modules" depends="libs.compile,servlets.compile,apps.compile"/>
 
@@ -330,6 +339,21 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 			<zipgroupfileset dir="${build-dist.dir}">
 				<include name="${pst.jar}"/>
 				<include name="${swingutil.jar}"/>
+				<include name="${util.jar}"/>
+			</zipgroupfileset>
+		</jar>
+	</target>
+
+	<target	name="wholovesyou"
+		description="Runnable WhoLovesYour application"
+		depends="wholovesyou.compile,pst.dist,util.dist"
+	>
+		<jar	destfile="${build-dist.dir}/${wholovesyou.jar}"
+			basedir="${build-obj.dir}"
+			includes="io/github/jmcleodfoss/wholovesyou/**"
+		>
+			<zipgroupfileset dir="${build-dist.dir}">
+				<include name="${pst.jar}"/>
 				<include name="${util.jar}"/>
 			</zipgroupfileset>
 		</jar>
