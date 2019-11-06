@@ -82,6 +82,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<property name="pst.jar" value="pst${suffix.dist}.jar"/>
 		<property name="swingutil.jar" value="swingutil${suffix.dist}.jar"/>
 		<property name="util.jar" value="util${suffix.dist}.jar"/>
+		<property name="xml.jar" value="xml${suffix.dist}.jar"/>
 		<condition property="suffix.deploy" value="-${DSTAMP}">
 			<not>
 				<isset property="suffix.deploy"/>
@@ -334,6 +335,20 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		</jar>
 	</target>
 
+	<target	name="xml"
+		description="Runnable XML conversion applications"
+		depends="xml.compile,pst.dist,util.dist"
+	>
+		<jar	destfile="${build-dist.dir}/${xml.jar}"
+			basedir="${build-obj.dir}"
+			includes="io/github/jmcleodfoss/xml/**"
+		>
+			<zipgroupfileset dir="${build-dist.dir}">
+				<include name="${pst.jar}"/>
+				<include name="${util.jar}"/>
+			</zipgroupfileset>
+		</jar>
+	</target>
 
 	<!--	Individual Deployable Servlet WAR Targets	-->
 
@@ -376,7 +391,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<!--	Aggregated Distributable Targets	-->
 
-	<target name="dist" description="Generate the distributable libraries" depends="libs,explorer,pst-extractor"/>
+	<target name="dist" description="Generate the distributable libraries" depends="libs,explorer,pst-extractor,xml"/>
 
 
 	<!--	Clean-up Targets	-->
