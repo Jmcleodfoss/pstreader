@@ -290,7 +290,7 @@ public class Folder extends io.github.jmcleodfoss.swingutil.ReadOnlyTreeModel im
 
 	/**	Read in the contents of the given folder.
 	*
-	*	@param	nodeFolderObject	The description of the folder.
+	*	@param	nodeContentsTable	The description of the folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.
@@ -315,7 +315,7 @@ public class Folder extends io.github.jmcleodfoss.swingutil.ReadOnlyTreeModel im
 
 	/**	Read in the sub-folders of the given folder.
 	*
-	*	@param	nodeFolderObject	The description of the folder.
+	*	@param	nodeHierarchyTable	The description of the folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.

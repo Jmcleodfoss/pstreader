@@ -7,7 +7,6 @@ public class MessageObjectWithBody extends MessageObject {
 	*
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	messageRow	The row of the contents table from which to create the message
-	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*/
@@ -30,7 +29,7 @@ public class MessageObjectWithBody extends MessageObject {
 	*
 	*	@see	#bodyHtml
 	*	@see	#getMessage
-	*	@see	#transportHeaders
+	*	@see	Message#transportHeaders
 	*/
 	public String body(final PropertyContext pc)
 	{
@@ -45,7 +44,7 @@ public class MessageObjectWithBody extends MessageObject {
 	*
 	*	@see	#body
 	*	@see	#getMessage
-	*	@see	#transportHeaders
+	*	@see	Message#transportHeaders
 	*/
 	public String bodyHtml(final PropertyContext pc)
 	{

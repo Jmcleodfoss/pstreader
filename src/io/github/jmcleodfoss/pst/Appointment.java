@@ -6,7 +6,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.JournalEntry
 *	@see	io.github.jmcleodfoss.pst.Message
 *	@see	io.github.jmcleodfoss.pst.StickyNote
-*	@see	io.github.jmcleodfoss.pst.Tasks
+*	@see	io.github.jmcleodfoss.pst.Task
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">{MX-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 *	@see	"[MS-OXCXMSG] Message and Attacment Object Protocol Specifications v20101027"

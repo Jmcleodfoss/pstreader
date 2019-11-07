@@ -29,19 +29,19 @@ public class MessageStore {
 
 	/**	The block B-Tree of the underlying PST file.
 	*
-	*	@see	#root
+	*	@see	#rootFolder
 	*/
 	private final BlockMap bbt;
 
 	/**	The node B-Tree of the underlying PST file.
 	*
-	*	@see	#root
+	*	@see	#rootFolder
 	*/
 	private final NodeMap nbt;
 
 	/**	The dat input stream, {@link Header header}, etc, of the underlying PST file.
 	*
-	*	@see	#root
+	*	@see	#rootFolder
 	*/
 	private final PSTFile pstFile;
 

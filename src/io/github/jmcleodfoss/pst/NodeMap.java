@@ -5,7 +5,7 @@ public interface NodeMap {
 
 	/**	Find the node with the given node ID.
 	*
-	*	@param	bid	The node ID of the node to be found.
+	*	@param	nid	The node ID of the node to be found.
 	*
 	*	@return The node for this node ID, if any, or null if the node ID was not found.
 	*/

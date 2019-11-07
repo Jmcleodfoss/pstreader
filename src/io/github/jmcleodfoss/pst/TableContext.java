@@ -460,7 +460,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 	/**	Obtain a ByteBuffer from which the raw data for the given propertyID may be read.
 	*
-	*	@param	propertyID	The property ID of the tag to read.
+	*	@param	propertyTag	The property ID of the tag to read.
 	*	@param	data		The raw data for this cell in the table.
 	*	@param	hon		The heap-on-node in which to look up data stored in an HID.
 	*

@@ -57,7 +57,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 
 	/**	Return the requested block, or null if the block was not found.
 	*
-	*	@param	bid	The block ID of the block to look for.
+	*	@param	nid	The node ID of the node to look for.
 	*
 	*	@return	The node B-tree leaf entry for the requested block ID, or null if the block ID was not found.
 	*/

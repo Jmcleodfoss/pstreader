@@ -467,7 +467,7 @@ public class BTreeOnHeap extends BTree {
 		return null;
 	}
 
-	/**	{@InheritDoc} */
+	/**	{@inheritDoc} */
 	public String getNodeText()
 	{
 		return String.format("0x%08x", key);

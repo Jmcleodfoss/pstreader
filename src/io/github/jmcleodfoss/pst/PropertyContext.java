@@ -154,8 +154,6 @@ public class PropertyContext {
 	*	@param	tag	The tag to look for.
 	*
 	*	@return	The object stored under the given tag.
-	*
-	*	@see	#get(short)
 	*/
 	Object get(final int tag)
 	{

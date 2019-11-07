@@ -60,7 +60,7 @@ abstract class BlockBase {
 	/**	Retrieve the required block specified by BlockBTree leaf entry.
 	*
 	*	@param	entry	The block B-tree entry from which to read the block.
-	*	@param	blockap	The PST file's block B-tree
+	*	@param	bbt	The PST file's block B-tree
 	*	@param	pstFile	The PST file input stream, etc.
 	*
 	*	@return	A BlockBase object from which the data may be retrieved.

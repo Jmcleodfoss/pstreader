@@ -100,7 +100,7 @@ class BBTEntry implements BTreeLeaf {
 		return bref.bid.key();
 	}
 
-	/**	{@InheritDoc} */
+	/**	{@inheritDoc} */
 	public String getNodeText()
 	{
 		return String.format("%s - %d bytes", bref.toString(), numBytes);

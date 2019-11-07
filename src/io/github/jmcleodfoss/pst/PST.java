@@ -306,10 +306,10 @@ public class PST extends PSTFile {
 	}
 
 	/**	Obtain a javax.swing.table.TableModel for the table context for the given node and heap-on-node. This function
-	*	calls the {@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockBTree, PSTFile) TableContext constructor} which
+	*	calls the {@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockMap, PSTFile) TableContext constructor} which
 	*	requires the heap-on-node to have already been created and is intended  for use in situations where the heap-on-node
 	*	has already been built; the alternative {@link #tcTableModel(LPTLeaf)} calls the
-	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile) TableContext constructor} constructor which builds the
+	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockMap, PSTFile) TableContext constructor} constructor which builds the
 	*	heap-on-node itself.
 	*
 	*	@param	node	A node from the node B-tree or a sub-node B-tree containing the TableContext.
@@ -319,7 +319,7 @@ public class PST extends PSTFile {
 	*
 	*	@see	io.github.jmcleodfoss.pst.TableContext
 	*	@see	#tcTableModel(LPTLeaf)
-	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockBTree, PSTFile)
+	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockMap, PSTFile)
 	*/
 	public javax.swing.table.TableModel tcTableModel(LPTLeaf node, HeapOnNode hon)
 	{
@@ -334,7 +334,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Obtain a javax.swing.table.TableModel for the table context for the given node. This function calls the
-	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile) TableContext constructor} constructor which builds the
+	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockMap, PSTFile) TableContext constructor} constructor which builds the
 	*	heap-on-node itself; if the heap-on-node for the node has already been created, the alternative function
 	*	{@link #tcTableModel(LPTLeaf, HeapOnNode)} should be used instead.
 	*
@@ -344,7 +344,7 @@ public class PST extends PSTFile {
 	*
 	*	@see	io.github.jmcleodfoss.pst.TableContext
 	*	@see	#tcTableModel(LPTLeaf, HeapOnNode)
-	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockBTree, PSTFile)
+	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockMap, PSTFile)
 	*/
 	public javax.swing.table.TableModel tcTableModel(LPTLeaf node)
 	{

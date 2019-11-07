@@ -224,7 +224,7 @@ public class SubnodeBTree extends BTree {
 		return SIEntry.size(context.pstFile);
 	}
 
-	/**	{@InheritDoc} */
+	/**	{@inheritDoc} */
 	public String getNodeText()
 	{
 		return String.format("Node 0x%08x", key);

@@ -17,7 +17,7 @@ public class PSTFile {
 
 	/**	Create a FileChannel for the given filename and read in the PST header.
 	*
-	*	@param	fn	The file name of the PST file to read.
+	*	@param	stream	The PST file to read.
 	*/
 	public PSTFile(java.io.FileInputStream stream)
 	throws

@@ -67,7 +67,7 @@ abstract class PagedBTreeFinder {
 		*	@param	context		The B-tree context under which this node should be created.
 		*	@param	entryStream	The data stream from which to read the node record.
 		*
-		*	@param	A leaf node for this B-tree.
+		*	@return	A leaf node for this B-tree.
 		*/
 		protected abstract BTreeLeaf leafNodeFactory(final PagedBTree.PageContext<BTree, BTreeLeaf> context, java.nio.ByteBuffer entryStream)
 		throws
@@ -88,8 +88,8 @@ abstract class PagedBTreeFinder {
 
 	/**	Return the requested block, or null if the block was not found.
 	*
-	*	@param	bid	The block ID of the block to look for.
-	*	@param	bref	The block reference of the B-Tree page block to start searching in.
+	*	@param	keyedItem	The block ID of the block to look for.
+	*	@param	bref		The block reference of the B-Tree page block to start searching in.
 	*
 	*	@return	The Block B-tree leaf entry for the requested block ID, or null if the block ID was not found.
 	*/

@@ -26,7 +26,6 @@ public class MessageObject {
 	*
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	messageRow	The row of the contents table from which to create the message
-	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*	@see	Folder
@@ -51,7 +50,7 @@ public class MessageObject {
 	/**	Create a message object of the appropriate derived type.
 	*
 	*	@param	contentsTable	The containing folder's contents table
-	*	@param	messageRow	The row of the contents table from which to create the message
+	*	@param	row		The row of the contents table from which to create the message
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
@@ -93,9 +92,9 @@ public class MessageObject {
 	*
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*
-	*	@see	#body
-	*	@see	#bodyHtml
-	*	@see	#transportHeaders
+	*	@see	Message#body
+	*	@see	MessageObjectWithBody#bodyHtml
+	*	@see	Message#transportHeaders
 	*/
 	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
 	throws

@@ -80,7 +80,7 @@ class GUID {
 
 	/**	Compare two GUIDs.
 	*
-	*	@param	guid	The other GUID to check.
+	*	@param	o	The other GUID to check.
 	*
 	*	@return	false if the other guid differs from this one, true if it is the same as this one.
 	*/
