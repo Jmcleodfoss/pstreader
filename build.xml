@@ -192,7 +192,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 	<presetdef name="javac-servlet">
 		<javac srcdir="${src.dir}" destdir="${build-obj.dir}" includeantruntime="false" debug="${debug}">
 			<include name="${includes}"/>
-			<classpath path="${servlet-api.jar}:${myfaces-api.jar}"/>
+			<classpath path="${build-dist.dir}/${pst.jar}:${commons-fileupload.jar}:${myfaces-api.jar}:${servlet-api.jar}:${tomahawk.jar}"/>
 			<compilerarg value="-Xlint:all"/>
 		</javac>
 	</presetdef>
@@ -221,7 +221,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 	<target name="pst-extractor.compile" description="Compile PST extraction servlet" depends="init-compile">
 		<javac-servlet
 			includes="io/github/jmcleodfoss/pstExtractor/*.java"
-			classpath="${commons-fileupload.jar}:${build-dist.dir}/${pst.jar}:${tomahawk.jar}:${tomahawk-commons-io.jar}"
 		/>
 	</target>
 
@@ -236,7 +235,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 	<target name="wholovesyou.compile" description="Compile WhoLovesYou applications" depends="init-compile">
 		<javac-servlet
 			includes="io/github/jmcleodfoss/wholovesyou/**"
-			classpath="${myfaces-api.jar}:${tomahawk.jar}:${build-dist.dir}/${pst.jar}"
 		/>
 	</target>
 
