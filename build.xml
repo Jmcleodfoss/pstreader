@@ -495,7 +495,9 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		description="Create documentation for PST extraction servlet application"
 		depends="init-doc.pst-extractor"
 	>
-		<jsoft.javadoc destdir="${doc-pst-extractor.dir}" access="private" packagenames="io.github.jmcleodfoss.pstExtractor.*"/>
+		<jsoft.javadoc destdir="${doc-pst-extractor.dir}" access="private" packagenames="io.github.jmcleodfoss.pstExtractor.*">
+			<classpath path="${commons-fileupload.jar}:${myfaces-api.jar}:${servlet-api.jar}:${tomahawk.jar}"/>
+		</jsoft.javadoc>
 	</target>
 
 
