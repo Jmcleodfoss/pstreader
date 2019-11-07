@@ -7,7 +7,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, sections 2.2.8.3.2"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386805(v=office.12).aspx">Block Types (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387544(v=office.12).aspx">Data Blocks (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385866(v=office.12).aspx">Data Tree (MSDN)</a>
+*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385886(v=office.12).aspx">Data Tree (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386165(v=office.12).aspx">XBLOCK (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385051(v=office.12).aspx">XXBLOCK (MSDN)</a>
 */
