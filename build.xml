@@ -234,7 +234,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 	</target>
 
 	<target name="wholovesyou.compile" description="Compile WhoLovesYou applications" depends="init-compile">
-		<javac-app
+		<javac-servlet
 			includes="io/github/jmcleodfoss/wholovesyou/**"
 			classpath="${myfaces-api.jar}:${tomahawk.jar}:${build-dist.dir}/${pst.jar}"
 		/>
