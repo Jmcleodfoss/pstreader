@@ -174,10 +174,10 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<javac	srcdir="${test.dir}"
 			destdir="${build-testobj.dir}"
 			includeantruntime="false"
-			classpath="${build-obj.dir}:${junit.jar}:${privileged-accessor.jar}"
 			debug="${debug}"
 		>
 			<include name="${includes}"/>
+			<classpath path="${build-obj.dir}:${junit.jar}:${privileged-accessor.jar}"/>
 			<compilerarg value="-Xlint:all"/>
 		</javac>
 	</presetdef>
