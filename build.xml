@@ -22,14 +22,20 @@
 	<property name="scripts.subdir" value="resources/js"/>
 	<property name="temp-scripts.dir" location="${temp.dir}/${scripts.subdir}"/>
 
+	<property name="suffix.doc-all" value="internal"/>
+	<property name="suffix.doc-public" value="client"/>
+
 	<property name="doc.dir" location="doc"/>
-	<property name="doc-client.dir" location="${doc.dir}/client"/>
-	<property name="doc-explorer.dir" location="${doc.dir}/explorer"/>
-	<property name="doc-internal.dir" location="${doc.dir}/internal"/>
-	<property name="doc-localebean.dir" location="${doc.dir}/localebean"/>
-	<property name="doc-pst-extractor.dir" location="${doc.dir}/pst-extractor"/>
-	<property name="doc-support.dir" location="${doc.dir}/support"/>
-	<property name="doc-xml.dir" location="${doc.dir}/xml"/>
+	<property name="doc.pst.all.dir" location="${doc.dir}/pst/${suffix.doc-all}"/>
+	<property name="doc.pst.public.dir" location="${doc.dir}/pst/${suffix.doc-public}"/>
+	<property name="doc.swingutil.all.dir" location="${doc.dir}/swingutil/${suffix.doc-all}"/>
+	<property name="doc.swingutil.public.dir" location="${doc.dir}/swingutil/${suffix.doc-public}"/>
+	<property name="doc.util.all.dir" location="${doc.dir}/util/${suffix.doc-all}"/>
+	<property name="doc.util.public.dir" location="${doc.dir}/util/${suffix.doc-public}"/>
+	<property name="doc.explorer.dir" location="${doc.dir}/explorer"/>
+	<property name="doc.localebean.dir" location="${doc.dir}/localebean"/>
+	<property name="doc.pst-extractor.dir" location="${doc.dir}/pst-extractor"/>
+	<property name="doc.xml.dir" location="${doc.dir}/xml"/>
 
 	<property name="extlib.dir" location="."/>
 	<property name="extlib.file" location="${extlib.dir}/lib.properties"/>
@@ -112,49 +118,105 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<!--	Individual Initialization Targets - documentation	-->
 
-	<target name="init-doc" description="Set up documentation prerequisites">
+	<target name="init-doc-dir" description="Create documentation parent directory">
 		<mkdir dir="${doc.dir}"/>
 	</target>
 
-	<target name="init-doc.client" description="Set up documentation prerequisites for client development">
-		<mkdir dir="${doc-client.dir}"/>
+	<target
+		name="init-doc.pst"
+		description="Create parent directory for pst library documenation (developer and user)"
+		depends="init-doc-dir"
+	/>
+
+	<target
+		name="init-doc.pst.all"
+		description="Create documentation directory for pst library developers (private, protected, and public members)"
+		depends="init-doc.pst"
+	>
+		<mkdir dir="${doc.pst.all.dir}"/>
 	</target>
 
-	<target name="init-doc.devel" description="Set up documentation prerequisites for internal development">
-		<mkdir dir="${doc-internal.dir}"/>
+	<target
+		name="init-doc.pst.public"
+		description="Create documentation directory for pst library users (public members only)"
+		depends="init-doc.pst"
+	>
+		<mkdir dir="${doc.pst.public.dir}"/>
 	</target>
 
-	<target name="init-doc.explorer" description="Set up documentation prerequisites for internal development">
-		<mkdir dir="${doc-explorer.dir}"/>
+	<target
+		name="init-doc.swingutil"
+		description="Create parent directory for swingutil library documenation (developer and user)"
+		depends="init-doc-dir"
+	/>
+
+	<target
+		name="init-doc.swingutil.all"
+		description="Create documentation directory for swingutil library developers (private, protected, and public members)"
+		depends="init-doc.swingutil"
+	>
+		<mkdir dir="${doc.swingutil.all.dir}"/>
 	</target>
 
-	<target name="init-doc.localebean" description="Set up documentation prerequisites for LocaleBean">
-		<mkdir dir="${doc-localebean.dir}"/>
+	<target
+		name="init-doc.swingutil.public"
+		description="Create documentation directory for swingutil library users (public members only)"
+		depends="init-doc.swingutil"
+	>
+		<mkdir dir="${doc.swingutil.public.dir}"/>
 	</target>
 
-	<target name="init-doc.support" description="Set up documentation prerequisites for client development (support library)">
-		<mkdir dir="${doc-support.dir}"/>
+	<target
+		name="init-doc.util"
+		description="Create parent directory for util library documenation (developer and user)"
+		depends="init-doc-dir"
+	/>
+
+	<target
+		name="init-doc.util.all"
+		description="Create documentation directory for util library developers (private, protected, and public members)"
+		depends="init-doc.util"
+	>
+		<mkdir dir="${doc.util.all.dir}"/>
 	</target>
 
-	<target name="init-doc.pst-extractor" description="Set up documentation prerequisites for PST extractor servlet">
-		<mkdir dir="${doc-pst-extractor.dir}"/>
+	<target
+		name="init-doc.util.public"
+		description="Create documentation directory for util library users (public members only)"
+		depends="init-doc.util"
+	>
+		<mkdir dir="${doc.util.public.dir}"/>
 	</target>
 
-	<target name="init-doc.xml" description="Set up documentation prerequisites for internal development">
-		<mkdir dir="${doc-xml.dir}"/>
+	<target name="init-doc.explorer" description="Create documentation directory for explorer application" depends="init-doc-dir">
+		<mkdir dir="${doc.explorer.dir}"/>
+	</target>
+
+	<target name="init-doc.localebean" description="Create documentation directory for LocaleBean" depends="init-doc-dir">
+		<mkdir dir="${doc.localebean.dir}"/>
+	</target>
+
+	<target name="init-doc.pst-extractor" description="Create documentation directory for PST extractor servlet" depends="init-doc-dir">
+		<mkdir dir="${doc.pst-extractor.dir}"/>
+	</target>
+
+	<target name="init-doc.xml" description="Create documentation directory XML exporter" depends="init-doc-dir">
+		<mkdir dir="${doc.xml.dir}"/>
 	</target>
 
 
 	<!--	Aggregated Documentation Initialization Targets	-->
 
-	<target name="init-doc.dist" description="Set up all documentation prerequisites" depends="init-doc.client,init-doc.localebean,init-doc.support"/>
-	<target name="init-doc.apps" description="Set up all documentation prerequisites" depends="init-doc.explorer,init-doc.xml"/>
-	<target name="init-doc.all" description="Set up all documentation prerequisites" depends="init-doc.devel,init-doc.dist,init-doc.apps"/>
+	<target name="init-doc.all" description="Create all developer documentation directories" depends="init-doc.pst.all,init-doc.swingutil.all,init-doc.util.all"/>
+	<target name="init-doc.public" description="Create all user documentation directories" depends="init-doc.pst.public,init-doc.swingutil.public,init-doc.util.public"/>
+	<target name="init-doc.apps" description="Create all application documentation directories" depends="init-doc.explorer,init-doc.xml"/>
+	<target name="init-doc.servlets" description="Create all servlet documentation directories" depends="init-doc.pst-extractor"/>
+	<target name="init-doc" description="Set up all documentation prerequisites" depends="init-doc.all,init-doc.public,init-doc.apps,init-doc.servlets"/>
 
 
 	<!--	Aggregated Initialization Targets	-->
 
-	<target name="init" description="Perform all initialization tasks" depends="init-compile,init-dist,init-deploy,init-doc.all"/>
+	<target name="init" description="Perform all initialization tasks" depends="init-compile,init-dist,init-deploy,init-doc"/>
 
 
 	<!--	Compilation Tools	-->
@@ -437,65 +499,65 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<target	name="pst.doc-devel"
 		description="Create developer documentation for PST manipulation library"
-		depends="init-doc.devel"
+		depends="init-doc.pst.all"
 	>
-		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="io.github.jmcleodfoss.pst.*"/>
+		<jsoft.javadoc destdir="${doc.pst.all.dir}" access="private" packagenames="io.github.jmcleodfoss.pst.*"/>
 	</target>
 
 	<target	name="pst.doc-client"
 		description="Create user documentation for PST manipulation library"
-		depends="init-doc.client"
+		depends="init-doc.pst.public"
 	>
-		<jsoft.javadoc destdir="${doc-client.dir}" access="public" packagenames="io.github.jmcleodfoss.pst.*"/>
-	</target>
-
-	<target	name="swingutil.doc-client"
-		description="Create user documentation for Swing utility library"
-		depends="init-doc.devel"
-	>
-		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="io.github.jmcleodfoss.swingutil.*"/>
+		<jsoft.javadoc destdir="${doc.pst.public.dir}" access="public" packagenames="io.github.jmcleodfoss.pst.*"/>
 	</target>
 
 	<target	name="swingutil.doc-devel"
 		description="Create developer documentation for Swing utility library"
-		depends="init-doc.client"
+		depends="init-doc.swingutil.all"
 	>
-		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="io.github.jmcleodfoss.swingutil.*"/>
+		<jsoft.javadoc destdir="${doc.swingutil.all.dir}" access="private" packagenames="io.github.jmcleodfoss.swingutil.*"/>
 	</target>
 
-	<target	name="util.doc-client"
-		description="Create user documentation for local utility library"
-		depends="init-doc.devel"
+	<target	name="swingutil.doc-client"
+		description="Create user documentation for Swing utility library"
+		depends="init-doc.swingutil.public"
 	>
-		<jsoft.javadoc destdir="${doc-internal.dir}" access="private" packagenames="io.github.jmcleodfoss.util.*"/>
+		<jsoft.javadoc destdir="${doc.swingutil.public.dir}" access="public" packagenames="io.github.jmcleodfoss.swingutil.*"/>
 	</target>
 
 	<target	name="util.doc-devel"
-		description="Create developer documentation for local utility library"
-		depends="init-doc.client"
+		description="Create user documentation for local utility library"
+		depends="init-doc.util.all"
 	>
-		<jsoft.javadoc destdir="${doc-support.dir}" access="private" packagenames="io.github.jmcleodfoss.util.*"/>
+		<jsoft.javadoc destdir="${doc.util.all.dir}" access="private" packagenames="io.github.jmcleodfoss.util.*"/>
+	</target>
+
+	<target	name="util.doc-client"
+		description="Create developer documentation for local utility library"
+		depends="init-doc.util.public"
+	>
+		<jsoft.javadoc destdir="${doc.util.public.dir}" access="public" packagenames="io.github.jmcleodfoss.util.*"/>
 	</target>
 
 	<target	name="explorer.doc"
 		description="Create documentation for PST Explorer applications"
 		depends="init-doc.explorer"
 	>
-		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="io.github.jmcleodfoss.xml.*"/>
+		<jsoft.javadoc destdir="${doc.xml.dir}" access="private" packagenames="io.github.jmcleodfoss.xml.*"/>
 	</target>
 
 	<target	name="xml.doc"
 		description="Create documentation for XML applications"
 		depends="init-doc.xml"
 	>
-		<jsoft.javadoc destdir="${doc-xml.dir}" access="private" packagenames="io.github.jmcleodfoss.xml.*"/>
+		<jsoft.javadoc destdir="${doc.xml.dir}" access="private" packagenames="io.github.jmcleodfoss.xml.*"/>
 	</target>
 
 	<target	name="pst-extractor.doc"
 		description="Create documentation for PST extraction servlet application"
 		depends="init-doc.pst-extractor"
 	>
-		<jsoft.javadoc destdir="${doc-pst-extractor.dir}" access="private" packagenames="io.github.jmcleodfoss.pstExtractor.*">
+		<jsoft.javadoc destdir="${doc.pst-extractor.dir}" access="private" packagenames="io.github.jmcleodfoss.pstExtractor.*">
 			<classpath path="${commons-fileupload.jar}:${myfaces-api.jar}:${servlet-api.jar}:${tomahawk.jar}"/>
 		</jsoft.javadoc>
 	</target>
@@ -503,12 +565,11 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<!--	Aggregated Documentation Targets	-->
 
-	<target name="doc-devel" description="Create all developer documentation" depends="pst.doc-devel,swingutil.doc-devel,util.doc-devel"/>
-	<target name="doc-client" description="Create user documentation for PST library" depends="pst.doc-client"/>
-	<target name="doc-support" description="Create user documentation for support libraries" depends="swingutil.doc-client,util.doc-client"/>
+	<target name="doc-devel" description="Create developer documentation for all libraries" depends="pst.doc-devel,swingutil.doc-devel,util.doc-devel"/>
+	<target name="doc-client" description="Create user documentation for all libraries" depends="pst.doc-client,swingutil.doc-client,util.doc-client"/>
 	<target name="doc-application" description="Create all application documentation" depends="explorer.doc,xml.doc"/>
-	<target name="doc-servlet" description="Create all application documentation" depends="pst-extractor.doc"/>
-	<target name="doc" description="Create all documentation" depends="doc-devel,doc-client,doc-support,doc-application,doc-servlet"/>
+	<target name="doc-servlet" description="Create all servlet documentation" depends="pst-extractor.doc"/>
+	<target name="doc" description="Create all documentation" depends="doc-devel,doc-client,doc-application,doc-servlet"/>
 
 
 	<!--	All Targets	-->
