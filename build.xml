@@ -33,7 +33,6 @@
 	<property name="doc.util.all.dir" location="${doc.dir}/util/${suffix.doc-all}"/>
 	<property name="doc.util.public.dir" location="${doc.dir}/util/${suffix.doc-public}"/>
 	<property name="doc.explorer.dir" location="${doc.dir}/explorer"/>
-	<property name="doc.localebean.dir" location="${doc.dir}/localebean"/>
 	<property name="doc.pst-extractor.dir" location="${doc.dir}/pst-extractor"/>
 	<property name="doc.xml.dir" location="${doc.dir}/xml"/>
 
@@ -84,7 +83,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 			</not>
 		</condition>
 
-		<property name="localebean.jar" value="LocaleBean${suffix.dist}.jar"/>
 		<property name="pst.jar" value="pst${suffix.dist}.jar"/>
 		<property name="swingutil.jar" value="swingutil${suffix.dist}.jar"/>
 		<property name="util.jar" value="util${suffix.dist}.jar"/>
@@ -192,10 +190,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<mkdir dir="${doc.explorer.dir}"/>
 	</target>
 
-	<target name="init-doc.localebean" description="Create documentation directory for LocaleBean" depends="init-doc-dir">
-		<mkdir dir="${doc.localebean.dir}"/>
-	</target>
-
 	<target name="init-doc.pst-extractor" description="Create documentation directory for PST extractor servlet" depends="init-doc-dir">
 		<mkdir dir="${doc.pst-extractor.dir}"/>
 	</target>
@@ -266,10 +260,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<javac-app includes="io/github/jmcleodfoss/explorer/*.java"/>
 	</target>
 
-	<target name="localebean.compile" description="Compile LocaleBean stand-alone application" depends="init-compile">
-		<javac-servlet includes="io/github/jmcleodfoss/localebean/*.java"/>
-	</target>
-
 	<target name="pst.compile" description="Compile PST manipulation library" depends="init-compile">
 		<javac-lib includes="io/github/jmcleodfoss/pst/*.java"/>
 	</target>
@@ -307,7 +297,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<!--	Aggregated Compilation Targets	-->
 
-	<target name="libs.compile" description="Compile all librariest" depends="pst.compile,localebean.compile,swingutil.compile,util.compile"/>
+	<target name="libs.compile" description="Compile all librariest" depends="pst.compile,swingutil.compile,util.compile"/>
 	<target name="servlets.compile" description="Compile all servlets" depends="pst-extractor.compile"/>
 	<!--target name="servlets.compile" description="Compile all servlets" depends="pst-extractor.compile,wholovesyou.compile"/-->
 	<target name="apps.compile" description="Compile all applications" depends="explorer.compile,xml.compile"/>
@@ -338,15 +328,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<!--	Individual Distributable Library Targets	-->
 
-	<target	name="localebean.dist"
-		description="Create the distributable for the LocaleBean"
-		depends="init-dist,localebean.compile"
-	>
-		<jar destfile="${build-dist.dir}/${localebean.jar}" basedir="${build-obj.dir}" includes="io/github/jmcleodfoss/localebean/LocaleBean.class">
-			<metainf file="${src.dir}/io/github/jmcleodfoss/pstExtractor/faces-config.xml"/>
-		</jar>
-	</target>
-
 	<target	name="pst.dist"
 		description="Create the distributable for the PST library"
 		depends="init-dist,pst.compile"
@@ -371,7 +352,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<!--	Aggregated Distributable Library Targets	-->
 
-	<target name="libs" description="Generate the distributable libraries" depends="pst.dist,localebean.dist,swingutil.dist,util.dist"/>
+	<target name="libs" description="Generate the distributable libraries" depends="pst.dist,swingutil.dist,util.dist"/>
 
 
 	<!--	Third-party libraries used in war files	-->
@@ -445,7 +426,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		>
 			<lib dir="${build-dist.dir}">
 				<include name="${pst.jar}"/>
-				<include name="${localebean.jar}"/>
 				<include name="${swingutil.jar}"/>
 				<include name="${util.jar}"/>
 			</lib>
