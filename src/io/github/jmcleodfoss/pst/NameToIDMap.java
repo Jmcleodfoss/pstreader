@@ -78,7 +78,7 @@ public class NameToIDMap {
 
 			final short fStringAndGuid = entryStream.getShort();
 			fString = (fStringAndGuid & 0x0001) != 0;
-			guidIndex = (short)((fStringAndGuid >> 1) & 0x7fff);
+			guidIndex = (short)(fStringAndGuid >>> 1);
 
 			propertyIndex = entryStream.getShort();
 
@@ -237,7 +237,7 @@ public class NameToIDMap {
 		java.util.HashMap<Short, Short> canonicalIDToNPID = new java.util.HashMap<Short, Short>();
 		while (entryStream.remaining() > 0) {
 			final NameID nameID = new NameID(entryStream, guidRaw, stringStream);
-			short id = (short)(PropertyID.NamedPropertyFirst + nameID.propertyIndex);
+			short id = (short)(PropertyID.NamedPropertyFirst | nameID.propertyIndex);
 			if (nameID.fString)
 				namedProperties.put(id, nameID.name);
 			else {
