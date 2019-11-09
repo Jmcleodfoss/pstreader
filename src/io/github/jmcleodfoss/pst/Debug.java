@@ -1,6 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The Debug class provides a local repository for a io.github.jmcleodfoss.util.Debug object, and access to it. */
+/**	The Debug class provides rudimentary logging for calls within the library. */
 class Debug {
 
 	/**	Should we log to console? */
