@@ -7,11 +7,11 @@ A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.
 
 ### util Library
 A utility library used by pst.jar primarily for:
-* To create a hexadecimal strings from an array of bytes ultimately for display, e.g. io.github.jmcleodfoss.pst.BlockBase.toString() (BlockBase.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BlockBase.java]
-* To annotate unimplemented functionality, e.g. io.github.jmcleodfoss.pst.Attachment.main(String[]) in (Attachment.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/Attachment.java]
-* To construct longs from byte, e.g. io.github.jmcleodfoss.BTreeOnHeap.pst.RecordBase.key() in (BTreeOnHeap.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BTreeOnHeap.java]
-* To create an appropriately-formatted separator for text output, e.g. io.github.jmcleod.pst.BTreeOnHeap.main(String[]) in (BTreeOnHeap.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BTreeOnHeap.java]
-* To provide a trivial iterator for iterating through zero items, e.g. io.github.jmcleod.pst.TableContext.iterator() in (TableContext.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/TableContext.java]
+* To create a hexadecimal strings from an array of bytes ultimately for display, e.g. io.github.jmcleodfoss.pst.BlockBase.toString() [BlockBase.java](https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BlockBase.java)
+* To annotate unimplemented functionality, e.g. io.github.jmcleodfoss.pst.Attachment.main(String[]) in [Attachment.java](https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/Attachment.java)
+* To construct longs from byte, e.g. io.github.jmcleodfoss.BTreeOnHeap.pst.RecordBase.key() in [BTreeOnHeap.java](https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BTreeOnHeap.java)
+* To create an appropriately-formatted separator for text output, e.g. io.github.jmcleod.pst.BTreeOnHeap.main(String[]) in [BTreeOnHeap.java](https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BTreeOnHeap.java)
+* To provide a trivial iterator for iterating through zero items, e.g. io.github.jmcleod.pst.TableContext.iterator() in [TableContext.java](https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/TableContext.java)
 Time will tell whether this will be broken out into a completely separate libary or merged into pst.jar
 
 ### swingutil Library
