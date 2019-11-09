@@ -1,5 +1,44 @@
 # pstreader
-Java library for reading Microsoft Outlook pst and ost files
+Java library for reading Microsoft Outlook pst and ost files.
+
+## Contents
+### pst Library
+A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.pst) File Format](https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/141923d5-15ab-4ef1-a524-6dce75aae546).
+
+### util Library
+A utility library used by pst.jar primarily for:
+* To create a hexadecimal strings from an array of bytes ultimately for display, e.g. io.github.jmcleodfoss.pst.BlockBase.toString() (BlockBase.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BlockBase.java]
+* To annotate unimplemented functionality, e.g. io.github.jmcleodfoss.pst.Attachment.main(String[]) in (Attachment.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/Attachment.java]
+* To construct longs from byte, e.g. io.github.jmcleodfoss.BTreeOnHeap.pst.RecordBase.key() in (BTreeOnHeap.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BTreeOnHeap.java]
+* To create an appropriately-formatted separator for text output, e.g. io.github.jmcleod.pst.BTreeOnHeap.main(String[]) in (BTreeOnHeap.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/BTreeOnHeap.java]
+* To provide a trivial iterator for iterating through zero items, e.g. io.github.jmcleod.pst.TableContext.iterator() in (TableContext.java)[https://github.com/Jmcleodfoss/pstreader/blob/master/src/io/github/jmcleodfoss/pst/TableContext.java]
+Time will tell whether this will be broken out into a completely separate libary or merged into pst.jar
+
+### swingutil Library
+A library of useful Java Swing functions used by the pst library. It is separate because I wanted the pst library to be as independent of Swing as possibly, but still able to be used by Swing applications.
+
+### Explorer Application
+A stand-alone example application for browsing PST files
+
+### pstExtractor Web Servlet
+A servlet which allows you to upload a file and then browse through it
+
+### WhoLovesYou Web Servlet (under construction)
+A servlet which allows you to upload a file and then returns all senders who have sent an e-mail where you are the only recipient, ordered by the number of e-mails from that sender.
+
+### XML Utilitys
+These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java.
+#### PSTIPFolderTypeToXML
+Extract data matching a given folder type from a PST file to an XML file
+`java -jar xml.jar io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML <pst-filename> <IPF Folder type, one of {Appointment, Contact, Journal, StickyNote, Task, Note}>`
+
+#### PSTToXML
+Extract contents of a PST file to an XML file
+`java -jar xml.jar io.github.jmcleodfoss.xml.PSTToXML <pst-filename>`
+
+### XSLTProcessor
+Java native XSLT transformer
+`java -jar xml.jar io.github.jmcleodfoss.xml.XSLTProcessor <xslt-file> <xml-file>`
 
 ## Structure of 3rd Party library files
 This is temporary until I update this to use Maven. It is captured in the [lib.properties](https://github.com/Jmcleodfoss/pstreader/blob/master/lib.properties) file.
