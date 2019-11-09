@@ -112,7 +112,7 @@ class PSTToXML {
 				continue;
 
 			final Integer tag = keyAndValue.getKey();
-			String propertyName = safeXMLNamedProperties.get(tag >>> 16);
+			String propertyName = safeXMLNamedProperties.get((short)(tag >> 16));
 			if (propertyName == null) {
 				int propertyID = tag;
 				propertyName = pst.propertyName(propertyID);
