@@ -183,7 +183,7 @@ public class Header {
 	@Override
 	public String toString()
 	{
-		return String.format("Format %s, Encoding %s, BBT BID 0x%08x IB 0x%08x, NBT BID 0x%08x IB 0x%08x\n", fileFormat, encryption, bbtRoot.bid.bid, bbtRoot.ib.ib, nbtRoot.bid.bid, nbtRoot.ib.ib); 
+		return String.format("Format %s, Encoding %s, BBT BID 0x%08x IB 0x%08x, NBT BID 0x%08x IB 0x%08x", fileFormat, encryption, bbtRoot.bid.bid, bbtRoot.ib.ib, nbtRoot.bid.bid, nbtRoot.ib.ib);
 	}
 
 	/**	Ensure that the file's magic number is correct for a PST file.
