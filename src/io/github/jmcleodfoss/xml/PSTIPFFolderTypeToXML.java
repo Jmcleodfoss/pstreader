@@ -49,7 +49,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	@Override
 	protected boolean folderFilter(final String type)
 	{
-		return type.equals(includedFolderClass);
+		return !type.equals(includedFolderClass);
 	}
 
 	/**	List the known folder types. */
