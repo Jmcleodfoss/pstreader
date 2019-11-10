@@ -27,18 +27,19 @@ A servlet which allows you to upload a file and then browse through it
 A servlet which allows you to upload a file and then returns all senders who have sent an e-mail where you are the only recipient, ordered by the number of e-mails from that sender.
 
 ### XML Utilitys
-These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java.
+These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java. The xml.jar package is self-contained; it includes the contents of pst.jar, swingutil.jar, and util.jar libraries.
+
 #### PSTIPFolderTypeToXML
 Extract data matching a given folder type from a PST file to an XML file
-`java -jar xml.jar io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML <pst-filename> <IPF Folder type, one of {Appointment, Contact, Journal, StickyNote, Task, Note}>`
+`java -cp xml.jar io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML <pst-filename> <IPF Folder type, one of {Appointment, Contact, Journal, StickyNote, Task, Note}>`
 
 #### PSTToXML
 Extract contents of a PST file to an XML file
-`java -jar xml.jar io.github.jmcleodfoss.xml.PSTToXML <pst-filename>`
+`java -cp xml.jar io.github.jmcleodfoss.xml.PSTToXML <pst-filename>`
 
 ### XSLTProcessor
 Java native XSLT transformer
-`java -jar xml.jar io.github.jmcleodfoss.xml.XSLTProcessor <xslt-file> <xml-file>`
+`java -cp xml.jar io.github.jmcleodfoss.xml.XSLTProcessor <xslt-file> <xml-file>`
 
 ## Structure of 3rd Party library files
 This is temporary until I update this to use Maven. It is captured in the [lib.properties](https://github.com/Jmcleodfoss/pstreader/blob/master/lib.properties) file.
