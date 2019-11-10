@@ -24,7 +24,7 @@
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
-				<!-- Skip internal PST columns -->?
+				<!-- Skip internal PST columns -->
 				<!-- Skip inapplicable columns which, while populated, seem to be an artefact of squeezing contact info into a message table. -->
 				<!-- Skip other pointless columns -->
 				<!-- Skip the field we used as title -->
