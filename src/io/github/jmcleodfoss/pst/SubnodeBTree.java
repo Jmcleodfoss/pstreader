@@ -274,7 +274,7 @@ public class SubnodeBTree extends BTree {
 						if (bbtEntry != null) {
 							System.out.printf("%d: %s; %s\n", i, sbtEntry.toString(), bbtEntry.toString());
 							final SimpleBlock b = new SimpleBlock(bbtEntry, pstFile);
-							System.out.println("block: " + b + "\n");
+							System.out.println("block: " + b);
 						} else {
 							System.out.printf("%d: %s; no block B-tree entry", i, sbtEntry.toString());
 						}
