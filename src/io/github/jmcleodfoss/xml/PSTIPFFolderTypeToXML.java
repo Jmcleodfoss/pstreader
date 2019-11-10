@@ -14,7 +14,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 		final int IPFPrefixLength = 4;
 		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPF.iterator(); iterator.hasNext(); ){
 			String folderType = iterator.next();
-			knownFolderTypes.put(folderType.substring(IPFPrefixLength), folderType);
+			knownFolderTypes.put(folderType.substring(IPFPrefixLength).toLowerCase(), folderType);
 		}
 	}
 

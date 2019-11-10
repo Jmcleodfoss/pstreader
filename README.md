@@ -31,7 +31,7 @@ These are all in the xml.jar package. To run them, it is necessary to specify th
 
 #### PSTIPFolderTypeToXML
 Extract data matching a given folder type from a PST file to an XML file
-`java -cp xml.jar io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML <pst-filename> <IPF Folder type, one of {Appointment, Contact, Journal, StickyNote, Task, Note}>`
+`java -cp xml.jar io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML <pst-filename> <IPF Folder type, one of {appointment, contact, journal, stickynote, task, note}>`
 
 #### PSTToXML
 Extract contents of a PST file to an XML file
