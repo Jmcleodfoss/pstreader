@@ -370,7 +370,7 @@ public class Folder extends io.github.jmcleodfoss.swingutil.ReadOnlyTreeModel im
 		}
 
 		for (int i = 0; i < contents.size(); ++i) {
-			MessageObject m = contents.get(i);;
+			MessageObject m = contents.get(i);
 			System.out.println(m);
 		}
 	}

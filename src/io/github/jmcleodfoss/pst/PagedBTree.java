@@ -155,7 +155,7 @@ public abstract class PagedBTree extends BTree {
 		{
 			DataContainer dc = new DataContainer();
 			dc.read(byteBuffer, context.unicode() ? unicode_fields : ansi_fields);
-			key = context.unicode() ? (Long)dc.get(nm_btKey) : (long)(Integer)dc.get(nm_btKey);;
+			key = context.unicode() ? (Long)dc.get(nm_btKey) : (long)(Integer)dc.get(nm_btKey);
 			bref = (BREF)dc.get(nm_bref);
 		}
 

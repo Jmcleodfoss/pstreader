@@ -102,7 +102,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 			for (int i = 0; i < numColumns; ++i) {
 				if (storedInHNID(columnDescription[i])){
 					rowFields[i] = new DataDefinition(fieldName(i), DataType.hidReader, true);
-					hnidTypes[i] = DataType.definitionFactory(columnDescription[i].propertyType());;
+					hnidTypes[i] = DataType.definitionFactory(columnDescription[i].propertyType());
 				} else
 					rowFields[i] = new DataDefinition(fieldName(i), DataType.definitionFactory(columnDescription[i].propertyType()), true);
 			}

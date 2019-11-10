@@ -194,7 +194,7 @@ public class Header {
 	throws
 		NotPSTFileException
 	{
-		final int verify_dwMagic = 0x4e444221;;
+		final int verify_dwMagic = 0x4e444221;
 		if (verify_dwMagic != (Integer)dc.get(nm_dwMagic))
 			throw new NotPSTFileException();
 	}
