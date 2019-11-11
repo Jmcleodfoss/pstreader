@@ -88,7 +88,7 @@ class BBTEntry implements BTreeLeaf {
 			new Object[]{"Reference Count", refCount}
 		};
 
-		return new io.github.jmcleodfoss.swingutil.ReadOnlyTableModel(cells, columnHeadings);
+		return new io.github.jmcleodfoss.pst.ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	Retrieve the key (block ID) for this node.

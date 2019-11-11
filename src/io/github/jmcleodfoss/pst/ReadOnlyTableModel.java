@@ -1,4 +1,4 @@
-package io.github.jmcleodfoss.swingutil;
+package io.github.jmcleodfoss.pst;
 
 /**	The ReadOnlyTableModel is a version of DefaultTableModel which does not permit cells to be edited. */
 public class ReadOnlyTableModel extends javax.swing.table.DefaultTableModel {

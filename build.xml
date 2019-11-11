@@ -402,7 +402,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 
 	<target	name="xml"
 		description="Runnable XML conversion applications"
-		depends="xml.compile,pst.dist,swingutil.dist,util.dist"
+		depends="xml.compile,pst.dist,util.dist"
 	>
 		<jar	destfile="${build-dist.dir}/${xml.jar}"
 			basedir="${build-obj.dir}"
@@ -410,7 +410,6 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		>
 			<zipgroupfileset dir="${build-dist.dir}">
 				<include name="${pst.jar}"/>
-				<include name="${swingutil.jar}"/>
 				<include name="${util.jar}"/>
 			</zipgroupfileset>
 		</jar>

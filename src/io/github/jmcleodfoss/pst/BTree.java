@@ -1,7 +1,7 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BTree class is the base for the block, node, heap-on-node, and sub-node B-tree classes. */
-abstract class BTree extends io.github.jmcleodfoss.swingutil.ReadOnlyTreeModel implements BTreeNode, TreeCustomNodeText {
+abstract class BTree extends io.github.jmcleodfoss.pst.ReadOnlyTreeModel implements BTreeNode, TreeCustomNodeText {
 
 	/**	Logger for debugging BTree-derived classes */
 	protected static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.BTree");
@@ -273,7 +273,7 @@ abstract class BTree extends io.github.jmcleodfoss.swingutil.ReadOnlyTreeModel i
 			new Object[]{"Key", key()},
 		};
 
-		return new io.github.jmcleodfoss.swingutil.ReadOnlyTableModel(cells, columnHeadings);
+		return new io.github.jmcleodfoss.pst.ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	{@inheritDoc} */
