@@ -1,4 +1,4 @@
-package io.github.jmcleodfoss.util;
+package io.github.jmcleodfoss.pst;
 
 /**	The OutputSeparator class provides the frill of printing a separator line out for the second and subsequent calls to the emit
 *	function.

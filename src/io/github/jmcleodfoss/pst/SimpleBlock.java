@@ -108,7 +108,7 @@ class SimpleBlock extends BlockBase {
 			crcCalculated = CRC.crc(PST.makeByteBuffer(data), 0, data.length);
 		encryption.translate(data, (int)(entry.bref.bid.key() & 0xffffffff));
 		if (logger.isLoggable(java.util.logging.Level.FINER))
-			logger.log(java.util.logging.Level.FINER, "decoded data " + io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data));
+			logger.log(java.util.logging.Level.FINER, "decoded data " + ByteUtil.createHexByteString(data));
 
 		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);

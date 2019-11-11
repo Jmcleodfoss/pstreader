@@ -81,6 +81,6 @@ abstract class BlockBase {
 	@Override
 	public String toString()
 	{
-		return io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data());
+		return ByteUtil.createHexByteString(data());
 	}
 }

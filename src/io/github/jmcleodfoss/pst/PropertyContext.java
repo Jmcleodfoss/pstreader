@@ -255,7 +255,7 @@ public class PropertyContext {
 			s.append(", value");
 	
 			if (propertyType == DataType.BINARY)
-				s.append(io.github.jmcleodfoss.util.ByteUtil.createHexByteString((byte[])o));
+				s.append(ByteUtil.createHexByteString((byte[])o));
 			else
 				s.append(o);
 		}
@@ -385,7 +385,7 @@ public class PropertyContext {
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 			final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
 
-			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
+			OutputSeparator separator = new OutputSeparator();
 
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {

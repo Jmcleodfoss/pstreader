@@ -386,7 +386,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 					heap[iHeap] = new byte[size];
 					dataStreams.get(iBlock).get(heap[iHeap]);
 					if (logger.isLoggable(java.util.logging.Level.FINER))
-						logger.log(java.util.logging.Level.FINER, "HeapOnNode heap block " + iHeap + io.github.jmcleodfoss.util.ByteUtil.createHexByteString(heap[iHeap]));
+						logger.log(java.util.logging.Level.FINER, "HeapOnNode heap block " + iHeap + ByteUtil.createHexByteString(heap[iHeap]));
 				}
 				++iHeap;
 			}
@@ -512,7 +512,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 			s.append('\n');
 			s.append(i);
 			s.append(':');
-			s.append(heap[i] != null ? io.github.jmcleodfoss.util.ByteUtil.createHexByteString(heap[i]) : "empty");
+			s.append(heap[i] != null ? ByteUtil.createHexByteString(heap[i]) : "empty");
 		}
 
 		return s.toString();
@@ -558,7 +558,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	public Object getElementAt(int index)
 	{
 		if (heap[index] != null)
-			return io.github.jmcleodfoss.util.ByteUtil.createHexByteString(heap[index]);
+			return ByteUtil.createHexByteString(heap[index]);
 		return null;
 	}
 
@@ -602,7 +602,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
+			OutputSeparator separator = new OutputSeparator();
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry node = (NBTEntry)iterator.next();

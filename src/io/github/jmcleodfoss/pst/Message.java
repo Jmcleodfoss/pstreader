@@ -230,7 +230,7 @@ public class Message extends MessageObjectWithBody {
 
 	/**	Test the Message class by iterating through the messages.
 	*/
-	@io.github.jmcleodfoss.util.Unimplemented(priority = io.github.jmcleodfoss.util.Unimplemented.Priority.LOW)
+	@Unimplemented(priority = Unimplemented.Priority.LOW)
 	public static void main(final String[] arg)
 	{
 		assert false: "Not implemented.";

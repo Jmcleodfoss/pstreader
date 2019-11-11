@@ -350,7 +350,7 @@ abstract class DataType {
 		public String makeString(final Object o)
 		{
 			byte[] a = (byte[])o;
-			return io.github.jmcleodfoss.util.ByteUtil.createHexByteString(a);
+			return ByteUtil.createHexByteString(a);
 		}
 
 		/**	Read in an array of bytes of the given size.
@@ -744,7 +744,7 @@ abstract class DataType {
 					break;
 			if (iFirstList >= arr.length)
 				return "multiple-binary - empty";
-			return "multiple-binary " + io.github.jmcleodfoss.util.ByteUtil.createHexByteString(arr[iFirstList]) + "...";
+			return "multiple-binary " + ByteUtil.createHexByteString(arr[iFirstList]) + "...";
 		}
 
 		/**	Read in a list of binary objects.

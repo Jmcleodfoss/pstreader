@@ -542,7 +542,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	@SuppressWarnings("unchecked")
 	java.util.Iterator<Object> iterator()
 	{
-		return isEmpty() ? io.github.jmcleodfoss.util.EmptyIterator.iterator : new Iterator();
+		return isEmpty() ? EmptyIterator.iterator : new Iterator();
 	}
 
 	/**	Read data for all rows from a block of bytes of raw data. This is used to read HID table contexts.
@@ -621,7 +621,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		byte[] cellExistenceBitmap = (byte[])dc.get(info.rowFields[info.rowFields.length-1].name);
 
 		if (logger.isLoggable(java.util.logging.Level.INFO))
-			logger.log(java.util.logging.Level.INFO, String.format("%d: CEB %s", r, io.github.jmcleodfoss.util.ByteUtil.createHexByteString(cellExistenceBitmap)));
+			logger.log(java.util.logging.Level.INFO, String.format("%d: CEB %s", r, ByteUtil.createHexByteString(cellExistenceBitmap)));
 
 		Object[] row = new Object[numColumns];
 		for (int c = 0; c < numColumns; ++c) {
@@ -717,7 +717,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 				else if (row[c] instanceof Long)
 					s.append("0x" + Long.toHexString((Long)row[c]));
 				else if (row[c] instanceof byte[])
-					s.append(io.github.jmcleodfoss.util.ByteUtil.createHexByteString((byte[])row[c]));
+					s.append(ByteUtil.createHexByteString((byte[])row[c]));
 				else
 					s.append(row[c]);
 			}
@@ -747,7 +747,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
+			OutputSeparator separator = new OutputSeparator();
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				NBTEntry nodeDescr = (NBTEntry)iterator.next();

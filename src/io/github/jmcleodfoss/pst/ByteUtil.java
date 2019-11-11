@@ -1,4 +1,4 @@
-package io.github.jmcleodfoss.util;
+package io.github.jmcleodfoss.pst;
 
 /**	The ByteUtil class contains utility functions for dealing with bytes. */
 public class ByteUtil {

@@ -86,7 +86,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 				return " ";
 
 			if (columnIndex < NUM_COLUMNS)
-				return io.github.jmcleodfoss.util.ByteUtil.toHexString(data[i]);
+				return io.github.jmcleodfoss.pst.ByteUtil.toHexString(data[i]);
 
 			if (data[i] < 0x20 || data[i] >= 0x80)
 				return new Character('.');

@@ -257,10 +257,10 @@ public class BTreeOnHeap extends BTree {
 			case 1:
 			case 2:
 			case 4:
-				return io.github.jmcleodfoss.util.ByteUtil.makeLongLE(key, keySize);
+				return ByteUtil.makeLongLE(key, keySize);
 
 			default:
-				return io.github.jmcleodfoss.util.ByteUtil.makeLongLE(key, 4);
+				return ByteUtil.makeLongLE(key, 4);
 			}
 		}
 	}
@@ -373,7 +373,7 @@ public class BTreeOnHeap extends BTree {
 		/**	{@inheritDoc} */
 		public String getNodeText()
 		{
-			return String.format("0x%08x (%d, %d): %s", key(), keySize, entrySize, io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data));
+			return String.format("0x%08x (%d, %d): %s", key(), keySize, entrySize, ByteUtil.createHexByteString(data));
 		}
 
 		/**	{@inheritDoc} */
@@ -391,7 +391,7 @@ public class BTreeOnHeap extends BTree {
 		@Override
 		public String toString()
 		{
-			return String.format("key 0x%08x, data %s", key(), io.github.jmcleodfoss.util.ByteUtil.createHexByteString(data));
+			return String.format("key 0x%08x, data %s", key(), ByteUtil.createHexByteString(data));
 		}
 	}
 
@@ -492,7 +492,7 @@ public class BTreeOnHeap extends BTree {
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
+			OutputSeparator separator = new OutputSeparator();
 
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {

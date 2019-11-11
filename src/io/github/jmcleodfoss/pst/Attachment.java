@@ -228,7 +228,7 @@ public class Attachment {
 	*
 	*	@param	arg	The command line arguments to the test application.
 	*/
-	@io.github.jmcleodfoss.util.Unimplemented(priority = io.github.jmcleodfoss.util.Unimplemented.Priority.LOW)
+	@Unimplemented(priority = Unimplemented.Priority.LOW)
 	public static void main(final String[] arg)
 	{
 		assert false: "Not implemented yet.";

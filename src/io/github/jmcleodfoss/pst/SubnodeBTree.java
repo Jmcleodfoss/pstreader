@@ -247,7 +247,7 @@ public class SubnodeBTree extends BTree {
 			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
 			final java.util.logging.Level originalLevel = logger.getLevel();
 
-			io.github.jmcleodfoss.util.OutputSeparator separator = new io.github.jmcleodfoss.util.OutputSeparator();
+			OutputSeparator separator = new OutputSeparator();
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);

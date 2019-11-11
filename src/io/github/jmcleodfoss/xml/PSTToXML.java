@@ -135,7 +135,7 @@ class PSTToXML {
 	{
 		if (element.getClass().isArray()) {
 			if (element instanceof byte[]) {
-				final String s = io.github.jmcleodfoss.util.ByteUtil.createHexByteString((byte[])element);
+				final String s = io.github.jmcleodfoss.pst.ByteUtil.createHexByteString((byte[])element);
 				xml.addElement(propertyName, s);
 			} else if (element instanceof String[]) {
 				xml.openElement(propertyName + "-list");

@@ -36,7 +36,7 @@ class Recipient {
 	*
 	*	@param	args	The command line arguments to the test application.
 	*/
-	@io.github.jmcleodfoss.util.Unimplemented(priority = io.github.jmcleodfoss.util.Unimplemented.Priority.LOW)
+	@Unimplemented(priority = Unimplemented.Priority.LOW)
 	static void main(String[] args)
 	{
 		System.out.println("Not implemented yet.");
