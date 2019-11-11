@@ -85,7 +85,7 @@ public class NBTEntry extends LPTLeaf {
 			new Object[]{"Parent NID", nidParent}
 		};
 
-		return new io.github.jmcleodfoss.pst.ReadOnlyTableModel(cells, columnHeadings);
+		return new ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	Obtain a description of a node B-tree leaf node. This is typically used for debugging.

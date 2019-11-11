@@ -49,7 +49,7 @@ public abstract class LPTLeaf implements BTreeLeaf {
 			new Object[]{"Subnode BID", bidSubnode}
 		};
 
-		return new io.github.jmcleodfoss.pst.ReadOnlyTableModel(cells, columnHeadings);
+		return new ReadOnlyTableModel(cells, columnHeadings);
 	}
 
 	/**	{@inheritDoc} */
