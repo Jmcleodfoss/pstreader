@@ -357,15 +357,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		if (info.columnDescription.length == 0)
 			return;
 
-		// The cell existence bitmap is not saved.
-		int numColumns = info.columnDescription.length - 1;
-
 		SubnodeBTree sbt = nodeDescr.bidSubnode.isNull() ? null : new SubnodeBTree(nodeDescr.bidSubnode, bbt, pstFile);
 		if (info.hnidRows.type == NID.HID) {
 			if (hon.heapData(info.hnidRows).length != expectedSize())
 				throw new UnparseableTableContextException("Not enough bytes for row data: found " + hon.heapData(info.hnidRows).length + ", expected " + expectedSize());
 
-			readRows(hon, numColumns, hon.heapData(info.hnidRows), sbt, bbt, pstFile);
+			readRows(hon, info.columnDescription.length, hon.heapData(info.hnidRows), sbt, bbt, pstFile);
 		} else if (info.hnidRows.type == NID.LTP) {
 			SLEntry slEntry = (SLEntry)sbt.find(info.hnidRows.key());
 			assert slEntry != null;
@@ -374,7 +371,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 			assert bbtEntry != null;
 
 			BlockBase b = BlockBase.read(bbtEntry, bbt, pstFile);
-			readRows(hon, numColumns, b.iterator(), sbt, bbt, pstFile);
+			readRows(hon, info.columnDescription.length, b.iterator(), sbt, bbt, pstFile);
 		} else {
 			assert false: "Unknown HNID node type " + info.hnidRows;
 		}
