@@ -863,6 +863,64 @@ abstract class DataType {
 	/**	The reader/display manipulator for lists of 32-bit integers. */
 	private static final MultipleInteger32 multipleInteger32Reader = new MultipleInteger32();
 
+	/**	The MultipleInteger64 class describes how to read in multiple 64-bit integers from a PST file. */
+	private static class MultipleInteger64 extends DataType {
+
+		/**	Create a reader/display manipulator for a list of 64-bit integers. */
+		private MultipleInteger64()
+		{
+			super();
+		}
+
+		/**	Create a String representation of a list of Long values.
+		*
+		*	@param	o	The list of Integer values to display.
+		*
+		*	@return	A String representation of the given list of Integer values.
+		*/
+		public String makeString(final Object o)
+		{
+			StringBuilder s = new StringBuilder();
+			for (long i : (long[])o) {
+				if (s.length() > 0)
+					s.append(',');
+				s.append(Long.toHexString(i));
+			}
+			return s.toString();
+//			return "multiple-integer64 " + o.toString();
+		}
+
+		/**	Read in a list of 64-bit integers.
+		*
+		*	@param	byteBuffer	The incoming data stream from which to read the list of 64-bit integers.
+		*
+		*	@return	An array containing the integers read in, as an array of Long values.
+		*
+		*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
+		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+		*/
+		public Object read(java.nio.ByteBuffer byteBuffer)
+		{
+			final int count = byteBuffer.remaining()/(Long.SIZE/Byte.SIZE);
+			long[] arr = new long[count];
+			java.nio.LongBuffer al = byteBuffer.asLongBuffer();
+			al.get(arr);
+			return arr;
+		}
+
+		/**	Obtain the size of the multiple 64-bit integer object list in the PST file.
+		*
+		*	@return	The size of a single 64-bit integer value.
+		*/
+		public int size()
+		{
+			return Long.SIZE/Byte.SIZE;
+		}
+	}
+
+	/**	The reader/display manipulator for lists of 64-bit integers. */
+	private static final MultipleInteger64 multipleInteger64Reader = new MultipleInteger64();
+
 	/**	The MultipleString class describes how to read in a list of character strings from a PST file. */
 	private static class MultipleString extends StringBase {
 
@@ -1245,6 +1303,7 @@ abstract class DataType {
 	*	@see	#integer64Reader
 	*	@see	#multipleBinaryReader
 	*	@see	#multipleInteger32Reader
+	*	@see	#multipleInteger64Reader
 	*	@see	#multipleStringReader
 	*	@see	#string8Reader
 	*	@see	#stringReader
@@ -1310,6 +1369,9 @@ abstract class DataType {
 		case MULTIPLE_FLOATING_TIME:
 			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
 
+		case MULTIPLE_INTEGER_64:
+			return multipleInteger64Reader;
+
 		case MULTIPLE_STRING_8:
 			return multipleString8Reader;
 
@@ -1323,7 +1385,7 @@ abstract class DataType {
 			return multipleBinaryReader;
 
 		default:
-			throw new RuntimeException("Invalid Property Type " + Integer.toHexString(propertyType));
+			throw new RuntimeException("Invalid Property Type" + Integer.toHexString(propertyType));
 			
 		}
 	}
