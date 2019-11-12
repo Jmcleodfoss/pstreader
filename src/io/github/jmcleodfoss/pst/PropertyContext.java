@@ -238,7 +238,7 @@ public class PropertyContext {
 			return new PSTDataPointer(propertyType, bbtEntry, bbt, pstFile);
 		}
 
-		// This seems to usually mean the HID is 0x00000000, and I think it makes sense to treat this as null, since this is either an array of objects or a binary object or string..
+		// This seems to usually mean the HID is 0x00000000, and I think it makes sense to treat this as null, since this is either an array of objects or a binary object or string.
 		if (!hon.validHID(hnid))
 			return null;
 

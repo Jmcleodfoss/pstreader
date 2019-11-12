@@ -125,7 +125,7 @@ public class PST extends PSTFile {
 
 	/**	Determine whether this PST file requires a password.
 	*
-	*	@return	true if the PST file is password-protected, false if it is not password-protected..
+	*	@return	true if the PST file is password-protected, false if it is not password-protected.
 	*
 	*	@see	#checkPassword
 	*/

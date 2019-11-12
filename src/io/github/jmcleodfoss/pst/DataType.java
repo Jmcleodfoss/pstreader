@@ -425,7 +425,7 @@ abstract class DataType {
 
 		/**	Read in a 64-bit floating-point value.
 		*
-		*	@param	byteBuffer	The incoming data stream to read from..
+		*	@param	byteBuffer	The incoming data stream to read from.
 		*
 		*	@return	A Double object corresponding to the value read in.
 		*/

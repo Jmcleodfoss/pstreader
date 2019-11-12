@@ -92,7 +92,7 @@ public class MessageStore {
 
 	/**	Determine whether this PST file requires a password.
 	*
-	*	@return	true if the PST file is password-protected, false if it is not password-protected..
+	*	@return	true if the PST file is password-protected, false if it is not password-protected.
 	*
 	*	@see	#passwordHashed
 	*	@see	#checkPassword
