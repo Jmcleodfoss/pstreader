@@ -617,6 +617,13 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 						final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 						System.out.println("HeapOnNode\n----------\n" + hon);
+
+					} catch (final NotHeapNodeException e) {
+						logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
+						e.printStackTrace(System.out);
+					} catch (final UnknownClientSignatureException e) {
+						logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
+						e.printStackTrace(System.out);
 					} catch (Exception e) {
 						logger.log(java.util.logging.Level.INFO, e + "\nnode " + node + "\nbid(data) " + dataBlock);
 						e.printStackTrace(System.out);
