@@ -427,8 +427,8 @@ public class PropertyContext {
 					e.printStackTrace(System.out);
 				}
 			}
-		} catch (final Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

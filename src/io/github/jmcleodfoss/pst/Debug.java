@@ -13,7 +13,7 @@ class Debug {
 	static {
 		try {
 			diagOutputStream = new java.io.FileOutputStream(logFilename);
-		} catch (java.io.FileNotFoundException e) {
+		} catch (final java.io.FileNotFoundException e) {
 			e.printStackTrace(System.out);
 			System.exit(1);
 		}

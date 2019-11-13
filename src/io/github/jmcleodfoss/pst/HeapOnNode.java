@@ -624,7 +624,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 					} catch (final UnknownClientSignatureException e) {
 						logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
 						e.printStackTrace(System.out);
-					} catch (Exception e) {
+					} catch (final Exception e) {
 						logger.log(java.util.logging.Level.INFO, e + "\nnode " + node + "\nbid(data) " + dataBlock);
 						e.printStackTrace(System.out);
 						System.out.println("node " + node);
@@ -633,8 +633,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 					}
 				}
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

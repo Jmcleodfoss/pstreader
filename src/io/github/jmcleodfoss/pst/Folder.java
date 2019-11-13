@@ -408,8 +408,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 			Folder root = messageStore.rootFolder();
 			root.show("");
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

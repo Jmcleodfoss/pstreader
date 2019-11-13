@@ -370,7 +370,7 @@ public class NameToIDMap {
 
 			for (Object key : keyArray)
 				System.out.printf("0x%04x=%s\n", key, nameToIDMap.namedProperties.get((Short)key));
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}
 	}

@@ -113,8 +113,8 @@ class BlockBTree extends PagedBTree implements BlockMap {
 			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 			while (iterator.hasNext())
 				System.out.println((BBTEntry)iterator.next());
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

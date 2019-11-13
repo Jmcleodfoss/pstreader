@@ -172,8 +172,8 @@ class SimpleBlock extends BlockBase {
 				final SimpleBlock block = new SimpleBlock(entry, pstFile);
 				System.out.println(entry + ": " + block);
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

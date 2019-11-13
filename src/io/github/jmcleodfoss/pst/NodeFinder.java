@@ -103,8 +103,8 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 				System.out.printf("Success: all %d NIDs found\n", nids);
 			else
 				System.out.printf("Failure: %d out of %d NIDs not found\n", discrepancies, nids);
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

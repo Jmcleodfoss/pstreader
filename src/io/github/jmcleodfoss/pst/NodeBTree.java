@@ -144,8 +144,8 @@ class NodeBTree extends PagedBTree implements NodeMap {
 				final NBTEntry entry = (NBTEntry)iterator.next();
 				System.out.println(entry);
 			}
-		} catch (final Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

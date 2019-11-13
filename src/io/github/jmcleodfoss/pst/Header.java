@@ -234,8 +234,8 @@ public class Header {
 
 			Header header = new Header(mbb);
 			System.out.println(header);
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

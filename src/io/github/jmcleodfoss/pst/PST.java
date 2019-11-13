@@ -105,7 +105,7 @@ public class PST extends PSTFile {
 	{
 		try {
 			return Folder.getFolder(nodeFolder, blockBTree, nodeBTree, (PSTFile)this);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			return null;
 		}
 	}
@@ -118,7 +118,7 @@ public class PST extends PSTFile {
 	{
 		try {
 			return messageStore.rootFolder();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			return null;
 		}
 	}

@@ -1180,7 +1180,7 @@ abstract class DataType {
 			try {
 				final java.text.SimpleDateFormat PST_BASE_FORMAT = new java.text.SimpleDateFormat("MMMM dd, yyyy");
 				return PST_BASE_FORMAT.parse("January 1, 1601");
-			} catch (java.text.ParseException e) {
+			} catch (final java.text.ParseException e) {
 				e.printStackTrace(System.out);
 				System.exit(1);
 			}

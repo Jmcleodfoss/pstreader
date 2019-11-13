@@ -281,8 +281,8 @@ public class SubnodeBTree extends BTree {
 					}
 				}
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

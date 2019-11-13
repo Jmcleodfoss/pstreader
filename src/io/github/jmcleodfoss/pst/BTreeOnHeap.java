@@ -516,7 +516,7 @@ public class BTreeOnHeap extends BTree {
 							separator.emit(System.out);
 							System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
 							bth.outputString(System.out, new StringBuilder("bth: "));
-						} catch (Exception e) {
+						} catch (final Exception e) {
 							e.printStackTrace(System.out);
 							System.out.print("node " + node);
 							System.out.print("dataBlock " + dataBlock);
@@ -532,8 +532,8 @@ public class BTreeOnHeap extends BTree {
 					}
 				}
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace(System.out);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
 		}
 	}
 }

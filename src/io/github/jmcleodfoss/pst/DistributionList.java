@@ -160,7 +160,7 @@ public class DistributionList extends MessageObject {
 				PropertyContext pc = entryID.propertyContext(bbt, nbt, pstFile);
 				displayName = (String)pc.get(PropertyTag.DisplayNameW);
 				emailAddress = (String)pc.get(email1AddressPropertyID);
-			} catch (Exception e) {
+			} catch (final Exception e) {
 			}
 		}
 	}

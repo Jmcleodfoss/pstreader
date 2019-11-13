@@ -265,7 +265,7 @@ class XBlock extends BlockBase {
 				}
 			}
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}
 	}
