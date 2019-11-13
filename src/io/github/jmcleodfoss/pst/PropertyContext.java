@@ -421,8 +421,10 @@ public class PropertyContext {
 					}
 				} catch (final NotHeapNodeException e) {
 					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
+					e.printStackTrace(System.out);
 				} catch (final UnknownClientSignatureException e) {
 					logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
+					e.printStackTrace(System.out);
 				}
 			}
 		} catch (final Exception ex) {
