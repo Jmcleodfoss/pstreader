@@ -342,7 +342,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 					hnhdr = new Header(blockDataStream);
 					offsetData = Header.size;
 					offsetPageMap = hnhdr.ibHnpm;
-				} catch (NotHeapNodeException e) {
+				} catch (final NotHeapNodeException e) {
 					break;
 				}
 			} else if (iBlock - 8 % 128 == 0) {
@@ -616,7 +616,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 						System.out.println("Node " + node + "\ndataBlock " + dataBlock);
 
 						final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-
 						System.out.println("HeapOnNode\n----------\n" + hon);
 					} catch (Exception e) {
 						logger.log(java.util.logging.Level.INFO, e + "\nnode " + node + "\nbid(data) " + dataBlock);

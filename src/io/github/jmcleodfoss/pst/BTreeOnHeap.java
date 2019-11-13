@@ -523,10 +523,12 @@ public class BTreeOnHeap extends BTree {
 							System.out.print("hon " + hon);
 							throw e;
 						}
-					} catch (NotHeapNodeException e) {
+					} catch (final NotHeapNodeException e) {
 						logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
-					} catch (UnknownClientSignatureException e) {
+						e.printStackTrace(System.out);
+					} catch (final UnknownClientSignatureException e) {
 						logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
+						e.printStackTrace(System.out);
 					}
 				}
 			}

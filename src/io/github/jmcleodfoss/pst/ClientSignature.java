@@ -142,7 +142,7 @@ class ClientSignature {
 	{
 		try {
 			return new ClientSignature(signature);
-		} catch (UnknownClientSignatureException e) {
+		} catch (final UnknownClientSignatureException e) {
 			e.printStackTrace(System.out);
 			System.exit(1);
 			return null;

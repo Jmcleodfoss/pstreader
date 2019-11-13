@@ -777,13 +777,13 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 									tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
 							}
 						}
-					} catch (NotHeapNodeException e) {
+					} catch (final NotHeapNodeException e) {
 						// This is expected; we have no way to find out whether a node contains a heap-on-node until we start reading it.
 						continue;
-					} catch (UnknownClientSignatureException e) {
+					} catch (final UnknownClientSignatureException e) {
 						logger.log(java.util.logging.Level.WARNING, nodeDescr + "\n\t" + e.toString());
 						e.printStackTrace(System.out);
-					} catch (UnparseableTableContextException e) {
+					} catch (final UnparseableTableContextException e) {
 						logger.log(java.util.logging.Level.WARNING, nodeDescr + "\n]t" + e.toString());
 						e.printStackTrace(System.out);
 					}
