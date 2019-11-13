@@ -622,7 +622,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 						e.printStackTrace(System.out);
 						System.out.println("node " + node);
 						System.out.println("dataBlock " + dataBlock);
-						System.exit(1);
 					}
 				}
 			}
