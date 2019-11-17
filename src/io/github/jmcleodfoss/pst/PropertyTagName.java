@@ -39,7 +39,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.MessageClassW, "MessageClassW");
 		names.put(PropertyTag.CalendarType, "CalendarType");
 		names.put(PropertyTag.OriginatorDeliveryReportRequested, "OriginatorDeliveryReportRequested");
-		names.put(PropertyTag.ApposhortmentMessageClass, "ApposhortmentMessageClass");
+		names.put(PropertyTag.AppointmentMessageClass, "AppointmentMessageClass");
 		names.put(PropertyTag.Priority, "Priority");
 		names.put(PropertyTag.OldLocation, "OldLocation");
 		names.put(PropertyTag.ReadReceiptRequested, "ReadReceiptRequested");
@@ -80,7 +80,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.OriginalSentRepresentingSearchKey, "OriginalSentRepresentingSearchKey");
 		names.put(PropertyTag.StartDate, "StartDate");
 		names.put(PropertyTag.EndDate, "EndDate");
-		names.put(PropertyTag.OwnerApposhortmentId, "OwnerApposhortmentId");
+		names.put(PropertyTag.OwnerAppointmentId, "OwnerAppointmentId");
 		names.put(PropertyTag.ResponseRequested, "ResponseRequested");
 		names.put(PropertyTag.SentRepresentingAddressType, "SentRepresentingAddressType");
 		names.put(PropertyTag.SentRepresentingAddressTypeW, "SentRepresentingAddressTypeW");
@@ -193,7 +193,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.Subfolders, "Subfolders");
 		names.put(PropertyTag.ContainerClass, "ContainerClass");
 		names.put(PropertyTag.ContainerClassW, "ContainerClassW");
-		names.put(PropertyTag.IpmApposhortmentEntryId, "IpmApposhortmentEntryId");
+		names.put(PropertyTag.IpmAppointmentEntryId, "IpmAppointmentEntryId");
 		names.put(PropertyTag.IpmContactEntryId, "IpmContactEntryId");
 		names.put(PropertyTag.IpmJournalEntryId, "IpmJournalEntryId");
 		names.put(PropertyTag.IpmNoteEntryId, "IpmNoteEntryId");

@@ -37,7 +37,7 @@ public class PropertyID {
 	static final short MessageClass = 0x001a;
 	static final short CalendarType = 0x001c;
 	static final short OriginatorDeliveryReportRequested = 0x0023;
-	static final short ApposhortmentMessageClass = 0x0024;
+	static final short AppointmentMessageClass = 0x0024;
 	static final short Priority = 0x0026;
 	static final short OldLocation = 0x0028;
 	static final short ReadReceiptRequested = 0x0029;
@@ -74,7 +74,7 @@ public class PropertyID {
 	static final short OriginalSentRepresentingSearchKey = 0x005f;
 	static final short StartDate = 0x0060;
 	static final short EndDate = 0x0061;
-	static final short OwnerApposhortmentId = 0x0062;
+	static final short OwnerAppointmentId = 0x0062;
 	static final short ResponseRequested = 0x0063;
 	static final short SentRepresentingAddressType = 0x0064;
 	static final short SentRepresentingEmailAddress = 0x0065;
@@ -168,7 +168,7 @@ public class PropertyID {
 	static final short ContentUnreadCount = 0x3603;
 	static final short Subfolders = 0x360a;
 	static final short ContainerClass = 0x3613;
-	static final short IpmApposhortmentEntryId = 0x36d0;
+	static final short IpmAppointmentEntryId = 0x36d0;
 	static final short IpmContactEntryId = 0x36d1;
 	static final short IpmJournalEntryId = 0x36d2;
 	static final short IpmNoteEntryId = 0x36d3;

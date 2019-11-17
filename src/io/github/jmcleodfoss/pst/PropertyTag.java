@@ -36,7 +36,7 @@ public class PropertyTag {
 	public static final int MessageClassW = makeTag(PropertyID.MessageClass, DataType.STRING);
 	public static final int CalendarType = makeTag(PropertyID.CalendarType, DataType.INTEGER_32);
 	public static final int OriginatorDeliveryReportRequested = makeTag(PropertyID.OriginatorDeliveryReportRequested, DataType.BOOLEAN);
-	public static final int ApposhortmentMessageClass = makeTag(PropertyID.ApposhortmentMessageClass, DataType.STRING);
+	public static final int AppointmentMessageClass = makeTag(PropertyID.AppointmentMessageClass, DataType.STRING);
 	public static final int Priority = makeTag(PropertyID.Priority, DataType.INTEGER_32);
 	public static final int OldLocation = makeTag(PropertyID.OldLocation, DataType.STRING);
 	public static final int ReadReceiptRequested = makeTag(PropertyID.ReadReceiptRequested, DataType.BOOLEAN);
@@ -77,7 +77,7 @@ public class PropertyTag {
 	public static final int OriginalSentRepresentingSearchKey = makeTag(PropertyID.OriginalSentRepresentingSearchKey, DataType.BINARY);
 	public static final int StartDate = makeTag(PropertyID.StartDate, DataType.TIME);
 	public static final int EndDate = makeTag(PropertyID.EndDate, DataType.TIME);
-	public static final int OwnerApposhortmentId = makeTag(PropertyID.OwnerApposhortmentId, DataType.INTEGER_32);
+	public static final int OwnerAppointmentId = makeTag(PropertyID.OwnerAppointmentId, DataType.INTEGER_32);
 	public static final int ResponseRequested = makeTag(PropertyID.ResponseRequested, DataType.BOOLEAN);
 	public static final int SentRepresentingAddressType = makeTag(PropertyID.SentRepresentingAddressType, DataType.STRING_8);
 	public static final int SentRepresentingAddressTypeW = makeTag(PropertyID.SentRepresentingAddressType, DataType.STRING);
@@ -192,7 +192,7 @@ public class PropertyTag {
 	public static final int Subfolders = makeTag(PropertyID.Subfolders, DataType.BOOLEAN);
 	public static final int ContainerClass = makeTag(PropertyID.ContainerClass, DataType.STRING_8);
 	public static final int ContainerClassW = makeTag(PropertyID.ContainerClass, DataType.STRING);
-	public static final int IpmApposhortmentEntryId = makeTag(PropertyID.IpmApposhortmentEntryId, DataType.BINARY);
+	public static final int IpmAppointmentEntryId = makeTag(PropertyID.IpmAppointmentEntryId, DataType.BINARY);
 	public static final int IpmContactEntryId = makeTag(PropertyID.IpmContactEntryId, DataType.BINARY);
 	public static final int IpmJournalEntryId = makeTag(PropertyID.IpmJournalEntryId, DataType.BINARY);
 	public static final int IpmNoteEntryId = makeTag(PropertyID.IpmNoteEntryId, DataType.BINARY);
