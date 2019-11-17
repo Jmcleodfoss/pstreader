@@ -17,33 +17,33 @@ public class PropertyTagName {
 		names.put(PropertyTag.AlternateRecipientAllowed, "AlternateRecipientAllowed");
 		names.put(PropertyTag.NameidStreamEntry, "NameidStreamEntry");
 		names.put(PropertyTag.NameidStreamString, "NameidStreamString");
-		names.put(PropertyTag.LidIsRecurring, "LidIsRecurring");
-		names.put(PropertyTag.LidRequiredAttendees, "LidRequiredAttendees");
-		names.put(PropertyTag.LidOptionalAttendees, "LidOptionalAttendees");
-		names.put(PropertyTag.LidResourceAttendees, "LidResourceAttendees");
-		names.put(PropertyTag.LidDelegateMail, "LidDelegateMail");
-		names.put(PropertyTag.LidIsException, "LidIsException");
-		names.put(PropertyTag.LidTimeZone, "LidTimeZone");
-		names.put(PropertyTag.LidStartRecurrenceDate, "StartRecurrenceDate");
-		names.put(PropertyTag.LidStartRecurrenceTime, "StartRecurrenceTime");
+		names.put(PropertyTag.IsRecurring, "IsRecurring");
+		names.put(PropertyTag.RequiredAttendees, "RequiredAttendees");
+		names.put(PropertyTag.OptionalAttendees, "OptionalAttendees");
+		names.put(PropertyTag.ResourceAttendees, "ResourceAttendees");
+		names.put(PropertyTag.DelegateMail, "DelegateMail");
+		names.put(PropertyTag.IsException, "IsException");
+		names.put(PropertyTag.TimeZone, "TimeZone");
+		names.put(PropertyTag.StartRecurrenceDate, "StartRecurrenceDate");
+		names.put(PropertyTag.StartRecurrenceTime, "StartRecurrenceTime");
 		names.put(PropertyTag.DeferredDeliveryTime, "DeferredDeliveryTime");
-		names.put(PropertyTag.LidEndRecurrenceTime, "LidEndRecurrenceTime");
-		names.put(PropertyTag.LidDayInterval, "DayInterval");
-		names.put(PropertyTag.LidMonthInterval, "MonthInterval");
-		names.put(PropertyTag.LidWeekInterval, "WeekInterval");
-		names.put(PropertyTag.LidYearInterval, "FInvited");
+		names.put(PropertyTag.EndRecurrenceTime, "EndRecurrenceTime");
+		names.put(PropertyTag.DayInterval, "DayInterval");
+		names.put(PropertyTag.MonthInterval, "MonthInterval");
+		names.put(PropertyTag.WeekInterval, "WeekInterval");
+		names.put(PropertyTag.YearInterval, "FInvited");
 		names.put(PropertyTag.ExpiryTime, "ExpiryTime");
 		names.put(PropertyTag.Importance, "Importance");
-		names.put(PropertyTag.LidOldRecurrenceType, "LidOldRecurrenceType");
+		names.put(PropertyTag.OldRecurrenceType, "OldRecurrenceType");
 		names.put(PropertyTag.MessageClass, "MessageClass");
 		names.put(PropertyTag.MessageClassW, "MessageClassW");
-		names.put(PropertyTag.LidCalendarType, "LidCalendarType");
+		names.put(PropertyTag.CalendarType, "CalendarType");
 		names.put(PropertyTag.OriginatorDeliveryReportRequested, "OriginatorDeliveryReportRequested");
-		names.put(PropertyTag.LidApposhortmentMessageClass, "LidApposhortmentMessageClass");
+		names.put(PropertyTag.ApposhortmentMessageClass, "ApposhortmentMessageClass");
 		names.put(PropertyTag.Priority, "Priority");
-		names.put(PropertyTag.LidOldLocation, "LidOldLocation");
+		names.put(PropertyTag.OldLocation, "OldLocation");
 		names.put(PropertyTag.ReadReceiptRequested, "ReadReceiptRequested");
-		names.put(PropertyTag.LidOldWhenEndWhole, "OldWhenEndWhole");
+		names.put(PropertyTag.OldWhenEndWhole, "OldWhenEndWhole");
 		names.put(PropertyTag.RecipientReassignmentProhibited, "RecipientReassignmentProhibited");
 		names.put(PropertyTag.OriginalSensitivity, "OriginalSensitivity");
 		names.put(PropertyTag.ReplyTime, "ReplyTime");
@@ -380,7 +380,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.AttachContactPhoto, "AttachContactPhoto");
 
 		// There is an ambiguity with these names.
-		// How can one distinguish e.g. AddressBookManagerDistinguishedName 0x8005001f and PidLidFileUnder 0x8005001f? Both
+		// How can one distinguish e.g. AddressBookManagerDistinguishedName 0x8005001f and FileUnder 0x8005001f? Both
 		// are address book related.
 		names.put(PropertyTag.AddressBookFolderPathname, "AddressBookFolderPathname");
 		names.put(PropertyTag.AddressBookManagerDistinguishedName, "AddressBookManagerDistinguishedName");
