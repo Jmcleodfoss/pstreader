@@ -54,7 +54,7 @@ public class PropertyID {
 	static final short SentRepresentingEntryId = 0x0041;
 	static final short SentRepresentingName = 0x0042;
 	static final short ReceivedRepresentingEntryId = 0x0043;
-	static final short ReceivedRepresentingName  = 0x0044;
+	static final short ReceivedRepresentingName = 0x0044;
 	static final short ReadReceiptEntryId = 0x0046;
 	static final short MessageSubmissionId = 0x0047;
 	static final short OriginalSubject = 0x0049;
@@ -129,7 +129,7 @@ public class PropertyID {
 	static final short RtfSyncBodyCrc = 0x1006;
 	static final short RtfSyncBodyCount = 0x1007;
 	static final short RtfSyncBodyTag = 0x1008;
-	static final short RtfCompressed  = 0x1009;
+	static final short RtfCompressed = 0x1009;
 	static final short RtfSyncPrefixCount = 0x1010;
 	static final short RtfSyncTrailingCount = 0x1011;
 	static final short BodyHtml = 0x1013;
@@ -245,7 +245,7 @@ public class PropertyID {
 	static final short OtherAddressPostalCode = 0x3a61;
 	static final short OtherAddressStateOrProvince = 0x3a62;
 	static final short OtherAddressStreet = 0x3a63;
-	static final short OtherAddressPostOfficeBox  = 0x3a64;
+	static final short OtherAddressPostOfficeBox = 0x3a64;
 	static final short InternetCodepage = 0x3fde;
 	static final short MessageLocaleId = 0x3ff1;
 	static final short CreatorName = 0x3ff8;
