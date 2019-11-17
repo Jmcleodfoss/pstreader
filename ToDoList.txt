@@ -3,7 +3,6 @@ To Do List
 - Update to use Maven
 - Complete WhoLovesYou servlet
 - Error log level for some of the places where exceptions happen (April 16, 2011)
-- Add remaining required properties for test PST files (April 16, 2011)
 - Add remaining properties not found in test PST files (April 16, 2011)
 - Read in remaining property types (May 3, 2011)
 	- Floating 32
@@ -22,6 +21,8 @@ To Do List
 
 Done
 ----
+- Add remaining required properties for test PST files (April 16, 2011)
+	Complete (November 17, 2019)
 - Update stale Javadoc documentation links
 	Complete (November 6, 2019)
 
