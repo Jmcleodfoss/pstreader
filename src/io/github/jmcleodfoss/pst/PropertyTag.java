@@ -136,6 +136,8 @@ public class PropertyTag {
 	public static final int PrimarySendAccountW = makeTag(PropertyID.PrimarySendAccount, DataType.STRING);
 	public static final int NextSendAcct = makeTag(PropertyID.NextSendAcct, DataType.STRING_8);
 	public static final int NextSendAcctW = makeTag(PropertyID.NextSendAcct, DataType.STRING);
+	public static final int ToDoItemFlags = makeTag(PropertyID.ToDoItemFlags, DataType.INTEGER_32);
+	public static final int SwappedToDoStore = makeTag(PropertyID.SwappedToDoStore, DataType.BINARY);
 	public static final int RecordKey = makeTag(PropertyID.RecordKey, DataType.BINARY);
 	public static final int ObjectType = makeTag(PropertyID.ObjectType, DataType.INTEGER_32);
 	public static final int EntryId = makeTag(PropertyID.EntryId, DataType.BINARY);

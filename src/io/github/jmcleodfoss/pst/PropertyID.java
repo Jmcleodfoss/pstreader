@@ -119,6 +119,8 @@ public class PropertyID {
 	static final short InternetArticleNumber = 0x0e23;
 	static final short PrimarySendAccount = 0x0e28;
 	static final short NextSendAcct = 0x0e29;
+	static final short ToDoItemFlags = 0x0e2b;
+	static final short SwappedToDoStore = 0x0e2c;
 	static final short RecordKey = 0x0ff9;
 	static final short ObjectType = 0x0ffe;
 	static final short EntryId = 0x0fff;

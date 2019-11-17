@@ -137,6 +137,8 @@ public class PropertyTagName {
 		names.put(PropertyTag.InternetArticleNumber, "InternetArticleNumber");
 		names.put(PropertyTag.PrimarySendAccount, "PrimarySendAccount");
 		names.put(PropertyTag.NextSendAcct, "NextSendAcct");
+		names.put(PropertyTag.ToDoItemFlags, "ToDoItemFlags");
+		names.put(PropertyID.SwappedToDoStore, "SwappedToDoStore");
 		names.put(PropertyTag.RecordKey, "RecordKey");
 		names.put(PropertyTag.ObjectType, "ObjectType");
 		names.put(PropertyTag.EntryId, "EntryId");
