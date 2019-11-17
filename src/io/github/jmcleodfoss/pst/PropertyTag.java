@@ -285,7 +285,9 @@ public class PropertyTag {
 	public static final int CompanyNameW = makeTag(PropertyID.CompanyName, DataType.STRING);
 	public static final int Title = makeTag(PropertyID.Title, DataType.STRING);
 	public static final int DepartmentName = makeTag(PropertyID.DepartmentName, DataType.STRING);
-	public static final int Business2TelephoneNumbers = makeTag(PropertyID.Business2TelephoneNumbers, DataType.MULTIPLE_STRING);
+	public static final int Business2TelephoneNumber = makeTag(PropertyID.Business2TelephoneNumber, DataType.STRING);
+	public static final int Business2TelephoneNumberW = makeTag(PropertyID.Business2TelephoneNumber, DataType.STRING_8);
+	public static final int Business2TelephoneNumbers = makeTag(PropertyID.Business2TelephoneNumber, DataType.MULTIPLE_STRING);
 	public static final int MobileTelephoneNumber = makeTag(PropertyID.MobileTelephoneNumber, DataType.STRING_8);
 	public static final int MobileTelephoneNumberW = makeTag(PropertyID.MobileTelephoneNumber, DataType.STRING);
 	public static final int OtherTelephoneNumber = makeTag(PropertyID.OtherTelephoneNumber, DataType.STRING_8);
@@ -300,7 +302,9 @@ public class PropertyTag {
 	public static final int StateOrProvince = makeTag(PropertyID.StateOrProvince, DataType.STRING);
 	public static final int StreetAddress = makeTag(PropertyID.StreetAddress, DataType.STRING);
 	public static final int PostalCode = makeTag(PropertyID.PostalCode, DataType.STRING);
-	public static final int Home2TelephoneNumbers = makeTag(PropertyID.Home2TelephoneNumbers, DataType.MULTIPLE_STRING);
+	public static final int Home2TelephoneNumber = makeTag(PropertyID.Home2TelephoneNumber, DataType.STRING);
+	public static final int Home2TelephoneNumberW = makeTag(PropertyID.Home2TelephoneNumber, DataType.STRING_8);
+	public static final int Home2TelephoneNumbers = makeTag(PropertyID.Home2TelephoneNumber, DataType.MULTIPLE_STRING);
 	public static final int SendRichInfo = makeTag(PropertyID.SendRichInfo, DataType.BOOLEAN);
 	public static final int Birthday = makeTag(PropertyID.Birthday, DataType.TIME);
 	public static final int MiddleName = makeTag(PropertyID.MiddleName, DataType.STRING_8);

@@ -253,6 +253,8 @@ public class PropertyTagName {
 		names.put(PropertyTag.CompanyNameW, "CompanyNameW");
 		names.put(PropertyTag.Title, "Title");
 		names.put(PropertyTag.DepartmentName, "DepartmentName");
+		names.put(PropertyTag.Business2TelephoneNumber, "Business2TelephoneNumber");
+		names.put(PropertyTag.Business2TelephoneNumberW, "Business2TelephoneNumberW");
 		names.put(PropertyTag.Business2TelephoneNumbers, "Business2TelephoneNumbers");
 		names.put(PropertyTag.MobileTelephoneNumber, "MobileTelephoneNumber");
 		names.put(PropertyTag.MobileTelephoneNumberW, "MobileTelephoneNumberW");
@@ -268,6 +270,8 @@ public class PropertyTagName {
 		names.put(PropertyTag.StateOrProvince, "StateOrProvince");
 		names.put(PropertyTag.StreetAddress, "StreetAddress");
 		names.put(PropertyTag.PostalCode, "PostalCode");
+		names.put(PropertyTag.Home2TelephoneNumber, "Home2TelephoneNumber");
+		names.put(PropertyTag.Home2TelephoneNumberW, "Home2TelephoneNumberW");
 		names.put(PropertyTag.Home2TelephoneNumbers, "Home2TelephoneNumbers");
 		names.put(PropertyTag.SendRichInfo, "SendRichInfo");
 		names.put(PropertyTag.Birthday, "Birthday");

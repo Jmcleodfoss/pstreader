@@ -216,7 +216,7 @@ public class PropertyID {
 	static final short CompanyName = 0x3a16;
 	static final short Title = 0x3a17;
 	static final short DepartmentName = 0x3a18;
-	static final short Business2TelephoneNumbers = 0x3a1b;
+	static final short Business2TelephoneNumber = 0x3a1b;
 	static final short MobileTelephoneNumber = 0x3a1c;
 	static final short OtherTelephoneNumber = 0x3a1f;
 	static final short PrimaryFaxNumber = 0x3a23;
@@ -227,7 +227,7 @@ public class PropertyID {
 	static final short StateOrProvince = 0x3a28;
 	static final short StreetAddress = 0x3a29;
 	static final short PostalCode = 0x3a2a;
-	static final short Home2TelephoneNumbers = 0x3a2f;
+	static final short Home2TelephoneNumber = 0x3a2f;
 	static final short SendRichInfo = 0x3a40;
 	static final short Birthday = 0x3a42;
 	static final short MiddleName = 0x3a44;
