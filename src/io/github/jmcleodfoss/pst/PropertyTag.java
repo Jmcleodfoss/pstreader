@@ -311,9 +311,9 @@ public class PropertyTag {
 	public static final int StateOrProvince = makeTag(PropertyID.StateOrProvince, DataType.STRING);
 	public static final int StreetAddress = makeTag(PropertyID.StreetAddress, DataType.STRING);
 	public static final int PostalCode = makeTag(PropertyID.PostalCode, DataType.STRING);
-	public static final int TelexNumber = makeTag(PropertyID.PostalCode, DataType.STRING);
-	public static final int TelexNumberW = makeTag(PropertyID.PostalCode, DataType.STRING_8);
-	public static final int TelexNumberNspi = makeTag(PropertyID.PostalCode, DataType.MULTIPLE_BINARY);
+	public static final int TelexNumber = makeTag(PropertyID.TelexNumber, DataType.STRING);
+	public static final int TelexNumberW = makeTag(PropertyID.TelexNumber, DataType.STRING_8);
+	public static final int TelexNumberNspi = makeTag(PropertyID.TelexNumber, DataType.MULTIPLE_BINARY);
 	public static final int IsdnNumber = makeTag(PropertyID.IsdnNumber, DataType.STRING);
 	public static final int IsdnNumberW = makeTag(PropertyID.IsdnNumber, DataType.STRING_8);
 	public static final int AssistantTelephoneNumber = makeTag(PropertyID.AssistantTelephoneNumber, DataType.STRING);
