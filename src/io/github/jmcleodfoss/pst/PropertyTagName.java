@@ -51,6 +51,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.Subject, "Subject");
 		names.put(PropertyTag.SubjectW, "SubjectW");
 		names.put(PropertyTag.ClientSubmitTime, "ClientSubmitTime");
+		names.put(PropertyTag.ReportName, "ReportName");
 		names.put(PropertyTag.SentRepresentingSearchKey, "SentRepresentingSearchKey");
 		names.put(PropertyTag.ReceivedByEntryId, "ReceivedByEntryId");
 		names.put(PropertyTag.ReceivedByName, "ReceivedByName");
@@ -234,6 +235,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.DisplayType, "DisplayType");
 		names.put(PropertyTag.SevenBitDisplayName, "7BitDisplayName");
 		names.put(PropertyTag.Account, "Account");
+		names.put(PropertyTag.CallbackTelephoneNumber, "CallbackTelephoneNumber");
 		names.put(PropertyTag.Generation, "Generation");
 		names.put(PropertyTag.GivenName, "GivenName");
 		names.put(PropertyTag.GivenNameW, "GivenNameW");
@@ -253,13 +255,20 @@ public class PropertyTagName {
 		names.put(PropertyTag.CompanyNameW, "CompanyNameW");
 		names.put(PropertyTag.Title, "Title");
 		names.put(PropertyTag.DepartmentName, "DepartmentName");
+		names.put(PropertyTag.PrimaryTelephoneNumber, "DepartmentName");
 		names.put(PropertyTag.Business2TelephoneNumber, "Business2TelephoneNumber");
 		names.put(PropertyTag.Business2TelephoneNumberW, "Business2TelephoneNumberW");
 		names.put(PropertyTag.Business2TelephoneNumbers, "Business2TelephoneNumbers");
 		names.put(PropertyTag.MobileTelephoneNumber, "MobileTelephoneNumber");
 		names.put(PropertyTag.MobileTelephoneNumberW, "MobileTelephoneNumberW");
+		names.put(PropertyTag.RadioTelephoneNumber, "RadioTelephoneNumber");
+		names.put(PropertyTag.RadioTelephoneNumberW, "RadioTelephoneNumberW");
+		names.put(PropertyTag.CarTelephoneNumber, "CarTelephoneNumber");
+		names.put(PropertyTag.CarTelephoneNumberW, "CarTelephoneNumberW");
 		names.put(PropertyTag.OtherTelephoneNumber, "OtherTelephoneNumber");
 		names.put(PropertyTag.OtherTelephoneNumberW, "OtherTelephoneNumberW");
+		names.put(PropertyTag.PagerTelephoneNumber, "PagerTelephoneNumber");
+		names.put(PropertyTag.PagerTelephoneNumberW, "PagerTelephoneNumberW");
 		names.put(PropertyTag.PrimaryFaxNumber, "PrimaryFaxNumber");
 		names.put(PropertyTag.BusinessFaxNumber, "BusinessFaxNumber");
 		names.put(PropertyTag.BusinessFaxNumberW, "BusinessFaxNumberW");
@@ -270,6 +279,13 @@ public class PropertyTagName {
 		names.put(PropertyTag.StateOrProvince, "StateOrProvince");
 		names.put(PropertyTag.StreetAddress, "StreetAddress");
 		names.put(PropertyTag.PostalCode, "PostalCode");
+		names.put(PropertyTag.TelexNumber, "TelexNumber");
+		names.put(PropertyTag.TelexNumberW, "TelexNumberW");
+		names.put(PropertyTag.TelexNumberNspi, "TelexNumberNspi");
+		names.put(PropertyTag.IsdnNumber, "IsdnNumber");
+		names.put(PropertyTag.IsdnNumberW, "IsdnNumberW");
+		names.put(PropertyTag.AssistantTelephoneNumber, "AssistantTelephoneNumber");
+		names.put(PropertyTag.AssistantTelephoneNumberW, "AssistantTelephoneNumberW");
 		names.put(PropertyTag.Home2TelephoneNumber, "Home2TelephoneNumber");
 		names.put(PropertyTag.Home2TelephoneNumberW, "Home2TelephoneNumberW");
 		names.put(PropertyTag.Home2TelephoneNumbers, "Home2TelephoneNumbers");
@@ -279,7 +295,9 @@ public class PropertyTagName {
 		names.put(PropertyTag.MiddleNameW, "MiddleNameW");
 		names.put(PropertyTag.DisplayNamePrefix, "DisplayNamePrefix");
 		names.put(PropertyTag.SpouseName, "SpouseName");
+		names.put(PropertyTag.TelecommunicationsDeviceForDeafTelephoneNumber, "TelecommunicationsDeviceForDeafTelephoneNumber");
 		names.put(PropertyTag.BusinessHomePage, "BusinessHomePage");
+		names.put(PropertyTag.CompanyTelephoneNumber, "CompanyTelephoneNumber");
 		names.put(PropertyTag.HomeAddressCity, "HomeAddressCity");
 		names.put(PropertyTag.HomeAddressCountry, "HomeAddressCountry");
 		names.put(PropertyTag.HomeAddressPostalCode, "HomeAddressPostalCode");
@@ -292,6 +310,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.OtherAddressStateOrProvince, "OtherAddressStateOrProvince");
 		names.put(PropertyTag.OtherAddressStreet, "OtherAddressStreet");
 		names.put(PropertyTag.OtherAddressPostOfficeBox, "OtherAddressPostOfficeBox");
+		names.put(PropertyTag.SendInternetEncoding, "SendInternetEncoding");
 		names.put(PropertyTag.InternetCodepage, "InternetCodepage");
 		names.put(PropertyTag.MessageLocaleId, "MessageLocaleId");
 		names.put(PropertyTag.CreatorName, "CreatorName");
@@ -328,6 +347,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.SenderTelephoneNumber, "SenderTelephoneNumber");
 		names.put(PropertyTag.SendOutlookRecallReport, "SendOutlookRecallReport");
 		names.put(PropertyTag.FaxNumberOfPages, "FaxNumberOfPages");
+		names.put(PropertyTag.OfflineAddressBookDistinguishedName, "OfflineAddressBookDistinguishedName");
 		names.put(PropertyTag.OfflineAddressBookTuncatedProperties, "OfflineAddressBookTuncatedProperties");
 		names.put(PropertyTag.CallId, "CallId");
 		names.put(PropertyTag.OfflineAddressBookLanguageId, "OfflineAddressBookLanguageId");

@@ -48,6 +48,7 @@ public class PropertyID {
 	static final short Sensitivity = 0x0036;
 	static final short SubjectW = 0x0037;
 	static final short ClientSubmitTime = 0x0039;
+	static final short ReportName = 0x003a;
 	static final short SentRepresentingSearchKey = 0x003b;
 	static final short ReceivedByEntryId = 0x003f;
 	static final short ReceivedByName = 0x0040;
@@ -203,6 +204,7 @@ public class PropertyID {
 	static final short DisplayType = 0x3900;
 	static final short SevenBitDisplayName = 0x39ff;
 	static final short Account = 0x3a00;
+	static final short CallbackTelephoneNumber = 0x3a02;
 	static final short Generation = 0x3a05;
 	static final short GivenName = 0x3a06;
 	static final short BusinessTelephoneNumber = 0x3a08;
@@ -216,9 +218,13 @@ public class PropertyID {
 	static final short CompanyName = 0x3a16;
 	static final short Title = 0x3a17;
 	static final short DepartmentName = 0x3a18;
+	static final short PrimaryTelephoneNumber = 0x3a1a;
 	static final short Business2TelephoneNumber = 0x3a1b;
 	static final short MobileTelephoneNumber = 0x3a1c;
+	static final short RadioTelephoneNumber = 0x3a1d;
+	static final short CarTelephoneNumber = 0x3a1e;
 	static final short OtherTelephoneNumber = 0x3a1f;
+	static final short PagerTelephoneNumber = 0x3a21;
 	static final short PrimaryFaxNumber = 0x3a23;
 	static final short BusinessFaxNumber = 0x3a24;
 	static final short HomeFaxNumber = 0x3a25;
@@ -227,13 +233,18 @@ public class PropertyID {
 	static final short StateOrProvince = 0x3a28;
 	static final short StreetAddress = 0x3a29;
 	static final short PostalCode = 0x3a2a;
+	static final short TelexNumber = 0x3a2c;
+	static final short IsdnNumber = 0x3a2d;
+	static final short AssistantTelephoneNumber = 0x3a2e;
 	static final short Home2TelephoneNumber = 0x3a2f;
 	static final short SendRichInfo = 0x3a40;
 	static final short Birthday = 0x3a42;
 	static final short MiddleName = 0x3a44;
 	static final short DisplayNamePrefix = 0x3a45;
 	static final short SpouseName = 0x3a48;
+	static final short TelecommunicationsDeviceForDeafTelephoneNumber = 0x3a4b;
 	static final short BusinessHomePage = 0x3a51;
+	static final short CompanyTelephoneNumber = 0x3a57;
 	static final short HomeAddressCity = 0x3a59;
 	static final short HomeAddressCountry = 0x3a5a;
 	static final short HomeAddressPostalCode = 0x3a5b;
@@ -246,6 +257,7 @@ public class PropertyID {
 	static final short OtherAddressStateOrProvince = 0x3a62;
 	static final short OtherAddressStreet = 0x3a63;
 	static final short OtherAddressPostOfficeBox = 0x3a64;
+	static final short SendInternetEncoding = 0x3a71;
 	static final short InternetCodepage = 0x3fde;
 	static final short MessageLocaleId = 0x3ff1;
 	static final short CreatorName = 0x3ff8;
@@ -282,6 +294,7 @@ public class PropertyID {
 	static final short SenderTelephoneNumber = 0x6802;
 	static final short SendOutlookRecallReport = 0x6803;
 	static final short FaxNumberOfPages = 0x6804;
+	static final short OfflineAddressBookDistinguishedName = 0x6804;
 	static final short OfflineAddressBookTuncatedProperties = 0x6805;
 	static final short CallId = 0x6806;
 	static final short OfflineAddressBookLanguageId = 0x6807;
