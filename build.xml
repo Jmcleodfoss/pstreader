@@ -407,11 +407,7 @@ Note that the locations of third-party libraries is found in ${extlib.file}
 		<jar	destfile="${build-dist.dir}/${xml.jar}"
 			basedir="${build-obj.dir}"
 			includes="io/github/jmcleodfoss/xml/**"
-		>
-			<zipgroupfileset dir="${build-dist.dir}">
-				<include name="${pst.jar}"/>
-			</zipgroupfileset>
-		</jar>
+		/>
 	</target>
 
 	<!--	Individual Deployable Servlet WAR Targets	-->
