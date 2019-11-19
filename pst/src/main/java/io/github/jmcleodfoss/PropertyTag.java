@@ -48,8 +48,8 @@ public class PropertyTag {
 	public static final int OriginalSensitivity = makeTag(PropertyID.OriginalSensitivity, DataType.INTEGER_32);
 	public static final int ReplyTime = makeTag(PropertyID.ReplyTime, DataType.TIME);
 	public static final int Sensitivity = makeTag(PropertyID.Sensitivity, DataType.INTEGER_32);
-	public static final int Subject = makeTag(PropertyID.SubjectW, DataType.STRING_8);
-	public static final int SubjectW = makeTag(PropertyID.SubjectW, DataType.STRING);
+	public static final int Subject = makeTag(PropertyID.Subject, DataType.STRING_8);
+	public static final int SubjectW = makeTag(PropertyID.Subject, DataType.STRING);
 	public static final int ClientSubmitTime = makeTag(PropertyID.ClientSubmitTime, DataType.TIME);
 	public static final int ReportName = makeTag(PropertyID.ReportName, DataType.STRING);
 	public static final int SentRepresentingSearchKey = makeTag(PropertyID.SentRepresentingSearchKey, DataType.BINARY);

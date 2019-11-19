@@ -51,7 +51,7 @@ public class PropertyID {
 	static final short OriginalSensitivity = 0x002e;
 	static final short ReplyTime = 0x0030;
 	static final short Sensitivity = 0x0036;
-	static final short SubjectW = 0x0037;
+	static final short Subject = 0x0037;
 	static final short ClientSubmitTime = 0x0039;
 	static final short ReportName = 0x003a;
 	static final short SentRepresentingSearchKey = 0x003b;
