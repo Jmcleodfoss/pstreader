@@ -11,11 +11,16 @@ package io.github.jmcleodfoss.pst;
 */
 public class PropertyID {
 
+	// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
 	static final short NameidBucketCount = 0x0001;
 	static final short NameidStreamGuid = 0x0002;
-	static final short AlternateRecipientAllowed = 0x0002;
 	static final short NameidStreamEntry = 0x0003;
 	static final short NameidStreamString = 0x0004;
+	static final short NameToIdMapBucketFirst = 0x1000;
+	static final short NameToIdMapBucketLast = 0x2fff;
+
+	// Properties (Long Ids and Tags)
+	static final short AlternateRecipientAllowed = 0x0002;
 	static final short IsRecurring = 0x0005;
 	static final short RequiredAttendees = 0x0006;
 	static final short OptionalAttendees = 0x0007;
@@ -124,9 +129,6 @@ public class PropertyID {
 	static final short RecordKey = 0x0ff9;
 	static final short ObjectType = 0x0ffe;
 	static final short EntryId = 0x0fff;
-
-	static final short NameToIdMapBucketFirst = 0x1000;
-	static final short NameToIdMapBucketLast = 0x2fff;
 
 	static final short Body = 0x1000;
 	static final short RtfSyncBodyCrc = 0x1006;
