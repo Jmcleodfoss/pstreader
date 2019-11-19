@@ -19,7 +19,7 @@ declare stats=$results_dir/stats.txt
 # Jar files
 declare pst_jar=pst/target/pst-1.0-SNAPSHOT.jar
 declare xml_jar=$lib_dir/xml.jar
-declare util_jar=$lib_dir/util.jar
+declare util_jar=util/util-1.0-SNAPSHOT.jar
 
 CheckPrerequisite() {
 	which "$1" > /dev/null
