@@ -9,11 +9,14 @@ package io.github.jmcleodfoss.pst;
 */
 public class PropertyTag {
 
+	// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
 	public static final int NameidBucketCount = makeTag(PropertyID.NameidBucketCount, DataType.INTEGER_32);
 	public static final int NameidStreamGuid = makeTag(PropertyID.NameidStreamGuid, DataType.BINARY);
-	public static final int AlternateRecipientAllowed = makeTag(PropertyID.AlternateRecipientAllowed, DataType.BOOLEAN);
 	public static final int NameidStreamEntry = makeTag(PropertyID.NameidStreamEntry, DataType.BINARY);
 	public static final int NameidStreamString = makeTag(PropertyID.NameidStreamString, DataType.BINARY);
+
+	// Properties (Long Ids and Tags)
+	public static final int AlternateRecipientAllowed = makeTag(PropertyID.AlternateRecipientAllowed, DataType.BOOLEAN);
 	public static final int IsRecurring = makeTag(PropertyID.IsRecurring, DataType.BOOLEAN);
 	public static final int RequiredAttendees = makeTag(PropertyID.RequiredAttendees, DataType.STRING);
 	public static final int OptionalAttendees = makeTag(PropertyID.OptionalAttendees, DataType.STRING);

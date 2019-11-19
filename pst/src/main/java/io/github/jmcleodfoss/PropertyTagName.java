@@ -12,11 +12,14 @@ public class PropertyTagName {
 	/**	The named properties, stored by ID. */
 	static final java.util.HashMap<Integer, String> names = new java.util.HashMap<Integer, String>();
 	static {
+		// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
 		names.put(PropertyTag.NameidBucketCount, "NameidBucketCount");
 		names.put(PropertyTag.NameidStreamGuid, "NameidStreamGuid");
-		names.put(PropertyTag.AlternateRecipientAllowed, "AlternateRecipientAllowed");
 		names.put(PropertyTag.NameidStreamEntry, "NameidStreamEntry");
 		names.put(PropertyTag.NameidStreamString, "NameidStreamString");
+
+		// Properties (Long Ids and Tags)
+		names.put(PropertyTag.AlternateRecipientAllowed, "AlternateRecipientAllowed");
 		names.put(PropertyTag.IsRecurring, "IsRecurring");
 		names.put(PropertyTag.RequiredAttendees, "RequiredAttendees");
 		names.put(PropertyTag.OptionalAttendees, "OptionalAttendees");
