@@ -17,7 +17,7 @@ declare lib_dir=build/lib
 declare stats=$results_dir/stats.txt
 
 # Jar files
-declare pst_jar=$lib_dir/pst.jar
+declare pst_jar=pst/target/pst-1.0-SNAPSHOT.jar
 declare xml_jar=$lib_dir/xml.jar
 declare util_jar=$lib_dir/util.jar
 
