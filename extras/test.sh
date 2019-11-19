@@ -5,20 +5,18 @@
 # Run as:
 # 	extras/test.sh
 #
-# jar files to be tested are $lib_dir
 # results are placed in $results_dir
 
 # Locations used
 declare input_dir=test-pst-files
 declare results_dir=test-output
-declare lib_dir=build/lib
 
 # Output file for tracking / timing
 declare stats=$results_dir/stats.txt
 
 # Jar files
 declare pst_jar=pst/target/pst-1.0-SNAPSHOT.jar
-declare xml_jar=swingutil/xml-1.0-SNAPSHOT.jar
+declare xml_jar=xml/xml-1.0-SNAPSHOT.jar
 declare util_jar=util/util-1.0-SNAPSHOT.jar
 
 CheckPrerequisite() {
