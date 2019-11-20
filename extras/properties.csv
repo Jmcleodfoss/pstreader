@@ -300,7 +300,7 @@ PidLidSingleBodyICal,0x0000827b,PtypBoolean,0x000b
 PidLidSmartNoAttach,0x00008514,PtypBoolean,0x000b
 PidLidSpamOriginalFolder,0x0000859c,PtypBinary,0x0102
 PidLidStartRecurrenceDate,0x0000000d,PtypInteger32,0x0003
-PidLidStartRecurrenceTime,0x00000010,PtypInteger32,0x0003
+PidLidStartRecurrenceTime,0x0000000e,PtypInteger32,0x0003
 PidLidTaskAcceptanceState,0x0000812a,PtypInteger32,0x0003
 PidLidTaskAccepted,0x00008108,PtypBoolean,0x000b
 PidLidTaskActualEffort,0x00008110,PtypInteger32,0x0003
