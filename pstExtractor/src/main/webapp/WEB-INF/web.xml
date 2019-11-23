@@ -55,12 +55,6 @@
 		<servlet-name>Faces Servlet</servlet-name>
 	</filter-mapping>
 
-	<filter-mapping>
-		<filter-name>MyFacesExtensionsFilter</filter-name>
-		<url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
-		<url-pattern>*.jsf</url-pattern>
-	</filter-mapping>
-
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -71,15 +65,5 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-
-	<!--servlet>
-		<servlet-name>PST Contact Extraction Servlet</servlet-name>
-		<servlet-class>com.jsoft.contactServer.ContactServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>PST Contact Extraction Servlet</servlet-name>
-		<url-pattern>/extract</url-pattern>
-	</servlet-mapping-->
 
 </web-app>
