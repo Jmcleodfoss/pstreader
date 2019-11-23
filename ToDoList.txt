@@ -5,18 +5,18 @@ To Do List
 - Error log level for some of the places where exceptions happen (April 16, 2011)
 - Add remaining properties not found in test PST files (April 16, 2011)
 - Read in remaining property types (May 3, 2011)
-	- Floating 32
-	- Currency
-	- Floating Time
-	- Error Code
+	- Floating 32 (Does not appear in any documented property, not needed - Nov. 23, 2019)
+	- Currency (Does not appear in any documented property, not needed - Nov. 23, 2019)
+	- Floating Time (Does not appear in any documented property, not needed - Nov. 23, 2019)
+	- Error Code (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Server ID
 	- Restriction
 	- Rule Action
 	- Multiple Integer 32 (Done Nov. 12, 2019)
-	- Multiple Floating 32
-	- Multiple Floating 64
-	- Multiple Floating Time
-	- Multiple GUID
+	- Multiple Floating 32 (Does not appear in any documented property, not needed - Nov. 23, 2019)
+	- Multiple Floating 64 (Does not appear in any documented property, not needed - Nov. 23, 2019)
+	- Multiple Floating Time (Does not appear in any documented property, not needed - Nov. 23, 2019)
+	- Multiple GUID (Does not appear in any documented property, not needed - Nov. 23, 2019)
 - Throw exceptions for more unexpected conditions (May 3, 2011)
 
 Done
