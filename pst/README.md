@@ -1,7 +1,7 @@
 # pst
 A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.pst) File Format](https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/141923d5-15ab-4ef1-a524-6dce75aae546).
 
-== Example
+## Example
 
 It really helps to understand the structure of the PST file as described in the reference above when using this library, but here is a quick not-quite-java example.
 
@@ -30,16 +30,16 @@ It really helps to understand the structure of the PST file as described in the 
 
 For some more concrete examples, see [explorer](../explorer/README.md), a Swing application and [pstExtractor](../pstExtractor/README.md), a JSF-based web application.
 
-== Documentation
+## Documentation
 
 The library is fully Javadoc'd (link tbd).
 
-== Executable Classes
+## Executable Classes
 The following modules can process pst files directly via their main functions for exploratory and testing purposes.
 
 The file [extras/test.sh](../../extras/test.sh) runs most of these tests on any pst files located in the directory pst/test-pst-files.
 
-=== BlockBTree.java
+### BlockBTree.java
     java -cp xml.jar io.github.jmcleod.pst.BlockBTree pst-file
 
 Display the block B-tree for the pst file, showing the following for each node:
@@ -50,7 +50,7 @@ Display the block B-tree for the pst file, showing the following for each node:
 * Block size
 * Block reference count
 
-==== Output
+#### Output
 > Block B-tree
 > ____________
 > BID key 0x00000004 0x00000001, IB 5800 bytes 108 ref count 205
@@ -58,14 +58,14 @@ Display the block B-tree for the pst file, showing the following for each node:
 > BID key 0x0000000c 0x00000003, IB 5980 bytes 172 ref count 190
 > ...
 
-=== BlockFinder.java
+### BlockFinder.java
     java -cp xml.jar io.github.jmcleod.pst.BlockFinder pst-file
 
 Confirm all block B-tree entries expected are found, or report discrepancies. 
-==== Output
+#### Output
 > Success: all 74011 BIDs found
 
-=== BTreeOnHeap.java
+### BTreeOnHeap.java
     java -cp xml.jar io.github.jmcleod.pst.BTreeOnHeap pst-file
 
 Traverse the pst heap, showing:
@@ -82,7 +82,7 @@ Traverse the pst heap, showing:
 ** The child's node key
 ** The child node's data
 
-==== Output
+#### Output
 > Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > BTreeOnHeap
 > ----------
@@ -106,12 +106,12 @@ Traverse the pst heap, showing:
 > bth:    key 0x000067ff, data 03 00 00 00 00 00
 > ...
 
-=== Folder.java
+### Folder.java
     java -cp xml.jar io.github.jmcleod.pst.Folder pst-file
 
 Go recursively through all the folders and display each item's subject and date received/created.
 
-==== Output
+#### Output
 > Top of Personal Folders
 > |-Deleted Items
 > Subject for message #1 (Fri Jun 13 12:10:26 EDT 2008)
@@ -123,12 +123,12 @@ Go recursively through all the folders and display each item's subject and date 
 > Subject for message #6 (Wed Jun 27 22:13:57 EDT 2007)
 > ...
 
-=== GUID.java
+### GUID.java
     java -cp xml.jar io.github.jmcleod.pst.GUID pst-file
 
 Display the PST GUIDs (these are fixed and defined in the PST file reference given above)
 
-==== Output
+#### Output
 > Name GUID
 >            ____ ____
 >            Null 00000000-0000-0000-0000-000000000000
@@ -142,7 +142,7 @@ Display the PST GUIDs (these are fixed and defined in the PST file reference giv
 >            MAPI 00020328-0000-0000-c000-000000000046
 >        Internal c1843281-8505-d011-b290-00aa003cf676
 
-=== Header.java
+### Header.java
     java -cp xml.jar io.github.jmcleod.pst.Header pst-file
 
 Show the pst file's header information, including:
@@ -152,13 +152,13 @@ Show the pst file's header information, including:
 * The block ID and block index of the root of the block B-tree
 * The block ID and block index of the root of the node B-tree
 
-==== Output
+#### Output
 > Format Unicode, Encoding Permute, BBT BID 0x0011d482 IB 0x17c42600, NBT BID 0x0011d480 IB 0x17c41a00
 
-=== HeapOnNode.java
+### HeapOnNode.java
     java -cp xml.jar io.github.jmcleod.pst.HeapOnNode pst-file
 
-==== Output
+#### Output
 > Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > dataBlock BID key 0x01d5416c 0x0075505b, IB 168a2a00 bytes 444 ref count 2
 > HeapOnNode
@@ -179,12 +179,12 @@ Show the pst file's header information, including:
 > 12:00 00 00 00 E8 23 EA 11 66 05 98 41 90 E3 21 F2 7C 97 0A 7D 43 41 09 00
 > ...
 
-=== NameToIDMap.java
+### NameToIDMap.java
     java -cp xml.jar io.github.jmcleod.pst.NameToIDMap pst-file
 
 Show the named properties and their names or GUIDs.
 
-==== Output
+#### Output
 > 0x8000=content-class
 > 0x8001=ReminderSet
 > 0x8002=Recurring
@@ -195,7 +195,7 @@ Show the named properties and their names or GUIDs.
 > 0x8007=SmartNoAttach
 > ...
 
-=== NodeBTree.java
+### NodeBTree.java
     java -cp xml.jar io.github.jmcleod.pst.NodeBTree pst-file
 
 Display the entire node B-tree, for each entry showing:
@@ -206,25 +206,25 @@ Display the entire node B-tree, for each entry showing:
 * The subnode block key and ID
 * The parent node ID
 * The heap node index
-==== Output
+#### Output
 > ___________
 > NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > NID 0x00000061: Internal node index 0x00000003, BID(data) key 0x01d5b1de 0x00756c77 (internal), BID(subnode) key 0x01d5b1ee 0x00756c7b (internal) Parent NID 0x00000000: Heap node index 0x00000000
 > NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x00754b50, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000122: Normal Folder node index 0x00000009
 > ...
 
-=== NodeFinder.java
+### NodeFinder.java
     java -cp xml.jar io.github.jmcleod.pst.NodeFinder pst-file
 
 Confirm all node B-tree entries expected are found, or report discrepancies. 
-==== Output
+#### Output
 Success: all 8497 NIDs found
 
-=== PropertyContext.java
+### PropertyContext.java
     java -cp xml.jar io.github.jmcleod.pst.PropertyContext pst-file
 
 Show the properties associated with each node in the node B-tree.
-==== Output
+#### Output
 > Node NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x00754b50, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000122: Normal Folder node index 0x00000009, 122
 > PropertyContext
 > ---------------
@@ -245,28 +245,28 @@ Show the properties associated with each node in the node B-tree.
 > 0x3001001f DisplayNameW "null"
 > ...
 
-=== SimpleBlock.java
+### SimpleBlock.java
     java -cp xml.jar io.github.jmcleod.pst.SimpleBlock pst-file
 
-==== Output
+#### Output
 > BID key 0x00000004 0x00000001, IB 5800 bytes 108 ref count 205: 62 00 EC 7C 40 00 00 00 00 00 00 00 B5 04 04 00 00 00 00 00 7C 07 18 00 18 00 19 00 1A 00 20 00 00 00 00 00 00 00 00 00 00 00 1F 00 01 30 08 00 04 02 03 00 02 36 0C 00 04 03 03 00 03 36 10 00 04 04 0B 00 0A 36 18 00 01 05 1F 00 13 36 14 00 04 06 03 00 F2 67 00 00 04 00 03 00 F3 67 04 00 04 01 02 00 00 00 0C 00 14 00 62 00
 > BID key 0x00000008 0x00000002, IB 5880 bytes 180 ref count 8: AA 00 EC 7C 40 00 00 00 00 00 00 00 B5 04 04 00 00 00 00 00 7C 10 3C 00 3C 00 3E 00 40 00 20 00 00 00 00 00 00 00 00 00 00 00 03 00 17 00 14 00 04 05 1F 00 1A 00 0C 00 04 03 03 00 36 00 34 00 04 0E 1F 00 37 00 1C 00 04 07 1F 00 42 00 18 00 04 06 0B 00 57 00 3C 00 01 0C 0B 00 58 00 3D 00 01 0D 1F 00 03 0E 30 00 04 0B 1F 00 04 0E 2C 00 04 0A 40 00 06 0E 20 00 08 08 03 00 07 0E 10 00 04 04 03 00 08 0E 28 00 04 09 03 00 17 0E 08 00 04 02 03 00 97 10 38 00 04 0F 03 00 F2 67 00 00 04 00 03 00 F3 67 04 00 04 01 02 00 00 00 0C 00 14 00 AA 00
 > ...
 
-=== SubnodeBTree.java
+### SubnodeBTree.java
     java -cp xml.jar io.github.jmcleod.pst.SubnodeBTree pst-file
 
-==== Output
+#### Output
 > Subnode BTree for NID 0x00000061: Internal node index 0x00000003, BID(data) key 0x01d5b1de 0x00756c77 (internal), BID(subnode) key 0x01d5b1ee 0x00756c7b (internal) Parent NID 0x00000000: Heap node index 0x00000000
 > key 0x0000831f, 2 children
 > 1: NID 0x0000831f: LTP node index 0x00000418, BID(data) key 0x01d5b1e4 0x00756c79, BID(subnode) key 0x00000000 0x00000000; BID key 0x01d5b1e4 0x00756c79, IB 169e9800 bytes 5824 ref count 2
 > block: 00 00 00 00 07 00 ...
 > ...
 
-=== TableContext.java
+### TableContext.java
     java -cp xml.jar io.github.jmcleod.pst.TableContext pst-file
 
-==== Output
+#### Output
 > Node NID 0x0000012d: Hierarchy Table node index 0x00000009, BID(data) key 0x01d53d84 0x00754f61, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > TableContext
 > ------------
@@ -294,10 +294,10 @@ Show the properties associated with each node in the node B-tree.
 > Subfolders: empty
 > ...
 
-=== XBlock.java
+### XBlock.java
     java -cp xml.jar io.github.jmcleod.pst.XBlock pst-file
 
-==== Output
+#### Output
 > 8600 bytes in 2 data blocks:
 > key 0x01d5b1e8 0x00756c7a
 > key 0x01d5b1e0 0x00756c78
