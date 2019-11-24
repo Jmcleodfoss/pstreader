@@ -12,6 +12,7 @@ See [util library README](util/README.md)
 
 ### swingutil Library
 A library of useful Java Swing functions used by the pst library. It is separate because I wanted the pst library to be as independent of Swing as possibly, but still able to be used by Swing applications.
+See [swingutil library README](swingutil/README.md)
 
 ### Explorer Application
 A stand-alone example application for browsing PST files
