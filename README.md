@@ -8,6 +8,7 @@ See [pst Library README](pst/README.md)
 
 ### util Library
 A utility library for with some useful functions used by related applications.
+See [util library README](util/README.md)
 
 ### swingutil Library
 A library of useful Java Swing functions used by the pst library. It is separate because I wanted the pst library to be as independent of Swing as possibly, but still able to be used by Swing applications.
