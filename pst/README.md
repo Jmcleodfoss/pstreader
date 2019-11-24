@@ -85,7 +85,7 @@ Traverse the pst heap, showing:
 #### Output
 > Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > BTreeOnHeap
-> ----------
+> \-\-\-\-\-\-\-\-\-\-
 > key 0x00000e34, 16 children
 > bth:    key 0x00000e34, 16 children
 > bth:    key 0x00000e34, data 02 01 80 01 00 00
@@ -162,7 +162,7 @@ Show the pst file's header information, including:
 > Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > dataBlock BID key 0x01d5416c 0x0075505b, IB 168a2a00 bytes 444 ref count 2
 > HeapOnNode
-> ----------
+> \-\-\-\-\-\-\-\-\-\-
 > Property Context User Root HID type 0 block index 0 index 1 ib 412
 > 0:B5 02 06 00 40 00 00 00
 > 1:34 0E 02 01 80 01 00 00 38 0E 03 00 00 00 00 00 F9 0F 02 01 60 00 00 00 01 30 1F 00 80 00 00 00 16 34 02 01 A0 01 00 00 DF 35 03 00 FF 00 00 00 E0 35 02 01 A0 00 00 00 E2 35 02 01 E0 00 00 00 E3 35 02 01 C0 00 00 00 E4 35 02 01 00 01 00 00 E5 35 02 01 20 01 00 00 E6 35 02 01 40 01 00 00 E7 35 02 01 60 01 00 00 33 66 0B 00 01 00 00 00 FA 66 03 00 0D 00 0E 00 FF 67 03 00 00 00 00 00
@@ -227,7 +227,7 @@ Show the properties associated with each node in the node B-tree.
 #### Output
 > Node NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x00754b50, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000122: Normal Folder node index 0x00000009, 122
 > PropertyContext
-> ---------------
+> \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-
 > 
 > 0x36030003 ContentUnreadCount "0"
 > 0x36020003 ContentCount "0"
