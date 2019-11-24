@@ -656,7 +656,7 @@ PidTagCustomerId,0x3a4a,PtypString,0x001f
 PidTagDamBackPatched,0x6647,PtypBoolean,0x000b
 PidTagDamOriginalEntryId,0x6646,PtypBinary,0x0102
 PidTagDefaultPostMessageClass,0x36e5,PtypString,0x001f
-PidTagDeferredActionMessageOriginalEstimate,0x6741,PtypServerId,0x00fb
+PidTagDeferredActionMessageOriginalEntryId,0x6741,PtypServerId,0x00fb
 PidTagDeferredDeliveryTime,0x000f,PtypTime,0x0040
 PidTagDeferredSendNumber,0x3feb,PtypInteger32,0x0003
 PidTagDeferredSen,0x3fef,PtypTime,0x0040
