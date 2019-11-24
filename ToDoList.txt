@@ -1,25 +1,31 @@
 To Do List
 ----------
+- Fix pst library test functions (provide some mechanism to indicate where test PST files are)
 - Complete WhoLovesYou servlet
 - Error log level for some of the places where exceptions happen (April 16, 2011)
 - Add remaining properties not found in test PST files (April 16, 2011)
+- Acquire test pst file containing a Server ID property (PidTagDeferredActionMessageOriginalEntryId,PTagSentMailSvrEID), and implement reading in Server ID (November 24, 2019)
+- Acquire test pst file containing a Restriction property (PidTagRuleCondition), and implement reading in Server ID (November 24, 2019)
+- Acquire test pst file containing a Rule property (PidTagRuleActions), and implement reading in Server ID (November 24, 2019)
+- Throw exceptions for more unexpected conditions (May 3, 2011)
+
+Done
+----
 - Read in remaining property types (May 3, 2011)
 	- Floating 32 (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Currency (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Floating Time (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Error Code (Does not appear in any documented property, not needed - Nov. 23, 2019)
-	- Server ID
-	- Restriction
-	- Rule Action
+	- Server ID (Only occurs in two properties, and never in my test PST files. No way to test, don't implement for now - Nov. 24, 2019)
+	- Restriction (Only occurs in one property, and never in my test PST files. No way to test, don't implement for now - Nov. 24, 2019)
+	- Rule Action (Only occurs in one property, and never in my test PST files. No way to test, don't implement for now - Nov. 24, 2019)
 	- Multiple Integer 32 (Done Nov. 12, 2019)
 	- Multiple Floating 32 (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Multiple Floating 64 (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Multiple Floating Time (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Multiple GUID (Does not appear in any documented property, not needed - Nov. 23, 2019)
-- Throw exceptions for more unexpected conditions (May 3, 2011)
+	Completed all testable types. Added specific ToDos for three types which might actually occur in PST files. (November 24, 2019)
 
-Done
-----
 - Update to use Maven
 	Complete (November 23, 2019)
 
