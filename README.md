@@ -4,6 +4,7 @@ Java library for reading Microsoft Outlook pst and ost files.
 ## Contents
 ### pst Library
 A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.pst) File Format](https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/141923d5-15ab-4ef1-a524-6dce75aae546).
+See [pst Library README](pst/README.md)
 
 ### util Library
 A utility library for with some useful functions used by related applications.
