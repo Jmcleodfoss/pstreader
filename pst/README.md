@@ -2,7 +2,6 @@
 A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.pst) File Format](https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/141923d5-15ab-4ef1-a524-6dce75aae546).
 
 ## Example
-
 It really helps to understand the structure of the PST file as described in the reference above when using this library, but here is a quick not-quite-java example.
 
     import io.github.jmcleodfoss.pst.*
@@ -31,7 +30,6 @@ It really helps to understand the structure of the PST file as described in the 
 For some more concrete examples, see [explorer](../explorer/README.md), a Swing application and [pstExtractor](../pstExtractor/README.md), a JSF-based web application.
 
 ## Documentation
-
 The library is fully Javadoc'd (link tbd).
 
 ## Executable Classes
@@ -52,7 +50,7 @@ Display the block B-tree for the pst file, showing the following for each node:
 
 #### Output
 > Block B-tree
-> ____________
+> \_\_\_\_\_\_\_\_\_\_\_\_
 > BID key 0x00000004 0x00000001, IB 5800 bytes 108 ref count 205
 > BID key 0x00000008 0x00000002, IB 5880 bytes 180 ref count 8
 > BID key 0x0000000c 0x00000003, IB 5980 bytes 172 ref count 190
@@ -62,23 +60,22 @@ Display the block B-tree for the pst file, showing the following for each node:
     java -cp xml.jar io.github.jmcleod.pst.BlockFinder pst-file
 
 Confirm all block B-tree entries expected are found, or report discrepancies. 
+
 #### Output
 > Success: all 74011 BIDs found
 
 ### BTreeOnHeap.java
     java -cp xml.jar io.github.jmcleod.pst.BTreeOnHeap pst-file
 
-Traverse the pst heap, showing:
+Traverse the pst heap B-tree, showing:
 * The node ID
 * Whether the block is "internal", i.e. metadata, or user data
 * The node index
-* The block ID key and node index
-* The sub-node block ID key and node index
-* The parent node ID
-* The heap node's index
-* The key for the node
-* The number of children the node has
-* Information about each child, including
+* The block ID key and node index for this node's data B-tree
+* The block ID key and node index for this node's sub-node B-tree
+* The parent node ID and index
+* The node's key and number of children 
+* Information about each child node:
 ** The child's node key
 ** The child node's data
 
@@ -126,7 +123,7 @@ Go recursively through all the folders and display each item's subject and date 
 ### GUID.java
     java -cp xml.jar io.github.jmcleod.pst.GUID pst-file
 
-Display the PST GUIDs (these are fixed and defined in the PST file reference given above)
+Display the PST GUIDs (these are fixed and defined in the PST file reference given above, so this should be the same for all PST files).
 
 #### Output
 > Name GUID
@@ -158,6 +155,15 @@ Show the pst file's header information, including:
 ### HeapOnNode.java
     java -cp xml.jar io.github.jmcleod.pst.HeapOnNode pst-file
 
+Traverse the PST's heap, showing info for each node:
+* Node ID, type, and index
+* Block key and index for the node's data block
+* Block key and index for the node's sub-node B-tree
+* The parent node ID, type, and index
+* The data block's ID, index, byte index into the PST file, size, and reference count
+* Info about the data block (type, heap ID, block index, index, and byte index into the PST file)
+* The contents of this node's heap as it appears in each data block
+
 #### Output
 > Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > dataBlock BID key 0x01d5416c 0x0075505b, IB 168a2a00 bytes 444 ref count 2
@@ -182,7 +188,7 @@ Show the pst file's header information, including:
 ### NameToIDMap.java
     java -cp xml.jar io.github.jmcleod.pst.NameToIDMap pst-file
 
-Show the named properties and their names or GUIDs.
+Show the named property IDs and their names or GUIDs (the order and contents depends on the history of the PST file).
 
 #### Output
 > 0x8000=content-class
@@ -202,12 +208,11 @@ Display the entire node B-tree, for each entry showing:
 * The node ID
 * Whether the node is internal (metadata) or user data
 * The node index
-* The data block key and ID
-* The subnode block key and ID
-* The parent node ID
-* The heap node index
+* The key and ID for this node's data block
+* The key and ID for this node's sub-node B-tree
+* This node's parent node ID and index
 #### Output
-> ___________
+> \_\_\_\_\_\_\_\_\_\_\_
 > NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > NID 0x00000061: Internal node index 0x00000003, BID(data) key 0x01d5b1de 0x00756c77 (internal), BID(subnode) key 0x01d5b1ee 0x00756c7b (internal) Parent NID 0x00000000: Heap node index 0x00000000
 > NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x00754b50, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000122: Normal Folder node index 0x00000009
@@ -217,13 +222,21 @@ Display the entire node B-tree, for each entry showing:
     java -cp xml.jar io.github.jmcleod.pst.NodeFinder pst-file
 
 Confirm all node B-tree entries expected are found, or report discrepancies. 
+
 #### Output
 Success: all 8497 NIDs found
 
 ### PropertyContext.java
     java -cp xml.jar io.github.jmcleod.pst.PropertyContext pst-file
 
-Show the properties associated with each node in the node B-tree.
+Show the property names and values associated with each node in the node B-tree.
+* The node ID
+* The folder type and index
+* The key and index for this node's data block
+* The key and index for this node's sub-node B-tree
+* The parent node ID, type, and index, and parent's child node IDs
+* All properties and values for this node (only simple types are shown; complex types and arrays are given as internal pointers)
+
 #### Output
 > Node NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x00754b50, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000122: Normal Folder node index 0x00000009, 122
 > PropertyContext
@@ -248,6 +261,13 @@ Show the properties associated with each node in the node B-tree.
 ### SimpleBlock.java
     java -cp xml.jar io.github.jmcleod.pst.SimpleBlock pst-file
 
+Show the block B-tree contents. For each block, show:
+* The block ID key and index
+* The byte index (index into the PST file) for this block
+* The block size in bytes
+* The block's reference count
+* The block data in hex
+
 #### Output
 > BID key 0x00000004 0x00000001, IB 5800 bytes 108 ref count 205: 62 00 EC 7C 40 00 00 00 00 00 00 00 B5 04 04 00 00 00 00 00 7C 07 18 00 18 00 19 00 1A 00 20 00 00 00 00 00 00 00 00 00 00 00 1F 00 01 30 08 00 04 02 03 00 02 36 0C 00 04 03 03 00 03 36 10 00 04 04 0B 00 0A 36 18 00 01 05 1F 00 13 36 14 00 04 06 03 00 F2 67 00 00 04 00 03 00 F3 67 04 00 04 01 02 00 00 00 0C 00 14 00 62 00
 > BID key 0x00000008 0x00000002, IB 5880 bytes 180 ref count 8: AA 00 EC 7C 40 00 00 00 00 00 00 00 B5 04 04 00 00 00 00 00 7C 10 3C 00 3C 00 3E 00 40 00 20 00 00 00 00 00 00 00 00 00 00 00 03 00 17 00 14 00 04 05 1F 00 1A 00 0C 00 04 03 03 00 36 00 34 00 04 0E 1F 00 37 00 1C 00 04 07 1F 00 42 00 18 00 04 06 0B 00 57 00 3C 00 01 0C 0B 00 58 00 3D 00 01 0D 1F 00 03 0E 30 00 04 0B 1F 00 04 0E 2C 00 04 0A 40 00 06 0E 20 00 08 08 03 00 07 0E 10 00 04 04 03 00 08 0E 28 00 04 09 03 00 17 0E 08 00 04 02 03 00 97 10 38 00 04 0F 03 00 F2 67 00 00 04 00 03 00 F3 67 04 00 04 01 02 00 00 00 0C 00 14 00 AA 00
@@ -255,6 +275,15 @@ Show the properties associated with each node in the node B-tree.
 
 ### SubnodeBTree.java
     java -cp xml.jar io.github.jmcleod.pst.SubnodeBTree pst-file
+
+Show information about each node in the subnode B-tree. For each node, show:
+* The node ID
+* Whether the node is internal (metadata) or user data
+* The node index
+* The block ID key, Index, and type (internal/metadata or user data) for the data block for this node
+* The block ID key, Index, and type for the sub-node B-tree for this node
+* The parent node ID of this node
+* This node's index on the heap
 
 #### Output
 > Subnode BTree for NID 0x00000061: Internal node index 0x00000003, BID(data) key 0x01d5b1de 0x00756c77 (internal), BID(subnode) key 0x01d5b1ee 0x00756c7b (internal) Parent NID 0x00000000: Heap node index 0x00000000
@@ -265,6 +294,15 @@ Show the properties associated with each node in the node B-tree.
 
 ### TableContext.java
     java -cp xml.jar io.github.jmcleod.pst.TableContext pst-file
+
+Show information about the data associated with each node in the node B-Tree:
+* The node ID
+* The node type
+* The node index
+* The block ID key and index for this node's data
+* The block ID key and index for this node's sub-node B-tree
+* The parent node ID and index
+* The tags, property names, offsets, widths, types, and index for each field in this node. 
 
 #### Output
 > Node NID 0x0000012d: Hierarchy Table node index 0x00000009, BID(data) key 0x01d53d84 0x00754f61, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
@@ -297,6 +335,11 @@ Show the properties associated with each node in the node B-tree.
 ### XBlock.java
     java -cp xml.jar io.github.jmcleod.pst.XBlock pst-file
 
+Traverse the node B-tree, giving the structure of each node:
+* The node size
+* The number of data blocks in the node
+* The block key and index for each data block
+
 #### Output
 > 8600 bytes in 2 data blocks:
 > key 0x01d5b1e8 0x00756c7a
@@ -305,3 +348,4 @@ Show the properties associated with each node in the node B-tree.
 > key 0x01d5d9ec 0x0075767b
 > key 0x01d5d9fc 0x0075767f
 > key 0x01d5d280 0x007574a0
+> ...
