@@ -5,6 +5,21 @@
 	<artifactId>util</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>util</name>
-	<url>http://maven.apache.org</url>
+	<name>${project.groupId}:{$project.artifactId}</name>
+	<description>A utility library used by at least one of the pst library demo applications.</description>
+	<url>https://io.github.com/Jmcleodfoss/pst</url>
+
+	<licenses>
+		<license>
+			<name>The MIT Licence</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>James McLeod</name>
+			<email>jmcleodfoss@gmail.com</email>
+			<organizationUrl>https://io.github.com/Jmcleodfoss/pst</organizationUrl>
+		</developer>
 </project>
