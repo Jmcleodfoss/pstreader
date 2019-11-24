@@ -269,7 +269,7 @@ Show the properties associated with each node in the node B-tree.
 #### Output
 > Node NID 0x0000012d: Hierarchy Table node index 0x00000009, BID(data) key 0x01d53d84 0x00754f61, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 > TableContext
-> ------------
+> \-\-\-\-\-\-\-\-\-\-\-\-
 > hidRowIndex type 0 block index 0 index 1 columns 9 hnidRows type 0 block index 0 index 4
 >         tag 0x67f20003 (LtpRowId) offset into row 0 width 4 CEB index 0
 >         tag 0x67f30003 (LtpRowVer) offset into row 4 width 4 CEB index 1
