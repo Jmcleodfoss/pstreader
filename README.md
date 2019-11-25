@@ -23,17 +23,6 @@ A servlet which allows you to upload a file and then browse through it
 ### WhoLovesYou Web Servlet (under construction)
 A servlet which allows you to upload a file and then returns all senders who have sent an e-mail where you are the only recipient, ordered by the number of e-mails from that sender.
 
-### XML Utilitys
-These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java. The xml.jar package is self-contained; it includes the contents of pst.jar, swingutil.jar, and util.jar libraries.
-
-#### PSTIPFolderTypeToXML
-Extract data matching a given folder type from a PST file to an XML file
-`java -cp xml.jar io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML <pst-filename> <IPF Folder type, one of {appointment, contact, journal, stickynote, task, note}>`
-
-#### PSTToXML
-Extract contents of a PST file to an XML file
-`java -cp xml.jar io.github.jmcleodfoss.xml.PSTToXML <pst-filename>`
-
-### XSLTProcessor
-Java native XSLT transformer
-`java -cp xml.jar io.github.jmcleodfoss.xml.XSLTProcessor <xslt-file> <xml-file>`
+### XML Utilities
+These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java.
+See [xml library README](xml/README.md)
