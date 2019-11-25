@@ -7,7 +7,7 @@ I will deprecate any of these I can find replacements for in active development/
 A substitute for Swing's default tree model for use when the tree is empty. Based on [io.github.jmcleodfoss.pst.ReadOnlyTreeModel](../pst/src/main/java/io/github/jmcleodfoss/ReadOnlyTreeModel.java).
 
 ## FilterByExtension.java
-Convenience wrapper for filtering files by extension for a javax.swing.JFileChooser. Java 6 has this natively.
+Convenience wrapper for filtering files by extension for a javax.swing.JFileChooser. Java 6 has this natively as [javax.swing.filechooser.FileNameExtensionFilter](https://docs.oracle.com/javase/7/docs/api/javax/swing/filechooser/FileNameExtensionFilter.html)
 
 ## HexAndTextDisplay.java
 Display data in a javax.swing.JScrollPane as both hexadecimal byte values and as text.

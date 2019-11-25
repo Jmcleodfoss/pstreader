@@ -1,6 +1,10 @@
 package io.github.jmcleodfoss.swingutil;
 
-/**	Filter for extensions (Java 6.0 has this built in). */
+/**	Filter for extensions (Java 6.0 has this built in). 
+ *	@deprecated
+ *	This is superseded by <a href="https://docs.oracle.com/javase/7/docs/api/javax/swing/filechooser/FileNameExtensionFilter.html">javax.swing.filechooser.FileNameExtensionFilter</a>
+ */
+@Deprecated
 public class FilterByExtension extends javax.swing.filechooser.FileFilter {
 
 	/**	The extensions to accept. */
