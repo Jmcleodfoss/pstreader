@@ -5,8 +5,16 @@
 	<artifactId>localebean</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>localebean</name>
-	<url>http://maven.apache.org</url>
+	<name>${project.groupId}:{$project.artifactId}</name>
+	<description>Simplistic localization for JSF by filename.</description>
+	<url>https://io.github.com/Jmcleodfoss/pst</url>
+
+	<licenses>
+		<license>
+			<name>The MIT Licence</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
 
 	<dependencies>
 		<dependency>
