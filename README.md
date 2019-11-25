@@ -15,7 +15,7 @@ A utility library for with some useful functions used by related applications.
 See [util library README](util/README.md)
 
 ### XML Utilities
-These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java.
+These are all in the xml.jar package.
 See [xml library README](xml/README.md)
 
 ### Explorer Application
