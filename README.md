@@ -22,6 +22,7 @@ A servlet which allows you to upload a file and then browse through it
 
 ### WhoLovesYou Web Servlet (under construction)
 A servlet which allows you to upload a file and then returns all senders who have sent an e-mail where you are the only recipient, ordered by the number of e-mails from that sender.
+See [wholovesyou README](wholovesyou/README.md)
 
 ### XML Utilities
 These are all in the xml.jar package. To run them, it is necessary to specify the class and arguments when invoking Java.
