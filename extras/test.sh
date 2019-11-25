@@ -15,9 +15,18 @@ declare results_dir=test-output
 declare stats=$results_dir/stats.txt
 
 # Jar files
-declare pst_jar=pst/target/pst-1.0-SNAPSHOT.jar
-declare xml_jar=xml/xml-1.0-SNAPSHOT.jar
-declare util_jar=util/util-1.0-SNAPSHOT.jar
+
+if [ $OS = "Windows_NT" ]; then
+	declare pst_jar=pst\\target\\pst-1.0-SNAPSHOT.jar
+	declare xml_jar=xml\\target\\xml-1.0-SNAPSHOT.jar
+	declare util_jar=util\\target\\util-1.0-SNAPSHOT.jar
+	declare dir_delim=";"
+else
+	declare pst_jar=pst/target/pst-1.0-SNAPSHOT.jar
+	declare xml_jar=xml/target/xml-1.0-SNAPSHOT.jar
+	declare util_jar=util/target/util-1.0-SNAPSHOT.jar
+	declare dir_delim=":"
+fi
 
 CheckPrerequisite() {
 	which "$1" > /dev/null
@@ -43,7 +52,7 @@ TestModule() {
 	declare output=$(GetTestDirectory "$1")/${class#io/github/jmcleodfoss/*/*}.out
 	echo "
 "`date +%H:%M:%S`": starting $class test" >> $stats
-	java $optionsi -cp "$cp" $class "$@" > "$output"
+	java $options -cp "$cp" $class "$@" > "$output"
 	echo `date +%H:%M:%S`": done $class test" >> $stats
 }
 
@@ -73,13 +82,13 @@ TestPSTFile() {
 	TestModule $pst_jar io/github/jmcleodfoss/pst/TableContext "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/XBlock "$pst"
 
-	TestModule "$xml_jar;$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" contact
+	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" contact
 	if [ $xsltproc_found ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML.xml"
 		xsltproc xslt/pst_contacts_to_html.xml "$output_dir/PSTIPFFolderTypeToXML.xml" > "$output_dir/contacts.html"
 	fi
 
-	TestModule "$xml_jar;$util_jar" io/github/jmcleodfoss/xml/PSTToXML "$pst"
+	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTToXML "$pst"
 	if [ $xsltproc_found ]; then
 		mv "$output_dir/PSTToXML.out" "$output_dir/PSTToXML.xml"
 		xsltproc xslt/psttohtml.xml "$output_dir/PSTToXML.xml" > "$output_dir/pst.html"
