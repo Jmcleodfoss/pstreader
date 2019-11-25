@@ -6,6 +6,10 @@ Java library for reading Microsoft Outlook pst and ost files.
 A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.pst) File Format](https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/141923d5-15ab-4ef1-a524-6dce75aae546).
 See [pst Library README](pst/README.md)
 
+### LocaleBean
+A bean for localization of Java Server Faces web applications.
+See [localebean READM](localebean/README.md)
+
 ### swingutil Library
 A library of useful Java Swing functions used by the pst library. It is separate because I wanted the pst library to be as independent of Swing as possibly, but still able to be used by Swing applications.
 See [swingutil library README](swingutil/README.md)
