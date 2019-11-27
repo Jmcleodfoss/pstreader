@@ -1,20 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.github.jmcleodfoss</groupId>
 	<artifactId>xml</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
 	<name>${project.groupId}:{$project.artifactId}</name>
 	<description>A library for simplistic XML processing.</description>
-	<url>https://io.github.com/Jmcleodfoss/pst</url>
 
-	<licenses>
-		<license>
-			<name>The MIT Licence</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
+	<parent>
+		<groupId>io.github.jmcleodfoss</groupId>
+		<artifactId>pst-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 
 	<dependencies>
 		<dependency>
