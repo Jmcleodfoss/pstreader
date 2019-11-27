@@ -1,6 +1,5 @@
 To Do List
 ----------
-- Fix pst library test functions (provide some mechanism to indicate where test PST files are)
 - Error log level for some of the places where exceptions happen (April 16, 2011)
 - Add remaining properties not found in test PST files (April 16, 2011)
 - Acquire test pst file containing a Server ID property (PidTagDeferredActionMessageOriginalEntryId,PTagSentMailSvrEID), and implement reading in Server ID (November 24, 2019)
@@ -10,6 +9,9 @@ To Do List
 
 Done
 ----
+- Fix pst library test functions (provide some mechanism to indicate where test PST files are)
+	Complete (November 27, 2019) - set working directory in pom.xml
+
 - Read in remaining property types (May 3, 2011)
 	- Floating 32 (Does not appear in any documented property, not needed - Nov. 23, 2019)
 	- Currency (Does not appear in any documented property, not needed - Nov. 23, 2019)
