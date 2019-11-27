@@ -18,6 +18,9 @@ public class PSTFile {
 	/**	Create a FileChannel for the given filename and read in the PST header.
 	*
 	*	@param	stream	The PST file to read.
+	*
+	*	@throws NotPSTFileException	The input stream does not contain a PST file.
+	* 	@throws java.io.IOException	There was an I/O error reading the input stream.
 	*/
 	public PSTFile(java.io.FileInputStream stream)
 	throws
@@ -69,7 +72,10 @@ public class PSTFile {
 		return java.nio.ByteBuffer.wrap(data).asReadOnlyBuffer();
 	}
 
-	/**	Close the PSTFile file. */
+	/**	Close the PSTFile file.
+	*
+	* 	@throws java.io.IOException	There was a problem closing the file.
+	*/
 	public void close()
 	throws
 		java.io.IOException

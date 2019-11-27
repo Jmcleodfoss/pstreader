@@ -56,6 +56,12 @@ public class MessageStore {
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file input data stream, {@link Header header}, etc.
+	*
+	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the message store was not recognized.
+	*	@throws NotHeapNodeException			A node which was not a heap node was found while creating the message store.
+	*	@throws UnparseablePropertyContextException	The property context could not be interpreted.
+	*	@throws UnparseableTableContextException	The table context could not be interpreted.
+	*	@throws java.io.IOException			The PST file could not be read.
 	*/
 	public MessageStore(final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
@@ -104,7 +110,13 @@ public class MessageStore {
 
 	/**	Get the PST root folder, which contains all PST subfolders and messages.
 	*
-	*	return	The root folder of the PST file, as a Folder object.
+	*	@return	The root folder of the PST file, as a Folder object.
+	*
+	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the root folder was not recognized.
+	*	@throws NotHeapNodeException			A node which was not a heap node was found while reading the root folder.
+	*	@throws UnparseablePropertyContextException	The property context could not be interpreted.
+	*	@throws UnparseableTableContextException	The table context could not be interpreted.
+	*	@throws java.io.IOException			The PST file could not be read.
 	*/
 	public Folder rootFolder()
 	throws
@@ -120,6 +132,8 @@ public class MessageStore {
 	/**	Obtain a javax.swing.table.TableModel describing the message store.
 	*
 	*	@param	namedProperties	The named properties for this PST file.
+	*
+	*	@return	A javax.swing.tableTableModel containing the named properties.
 	*/
 	public javax.swing.table.TableModel tableModel(final NameToIDMap namedProperties)
 	{

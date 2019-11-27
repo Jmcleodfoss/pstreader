@@ -316,6 +316,11 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	nodeDescr	Description of the node as found in the block or sub-node B-tree.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
+	*
+	* 	@throws	NotHeapNodeException			The leaf is not a heap node
+	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
+	* 	@throws UnparseableTableContextException	The table content could not be interpreted
+	* 	@throws java.io.IOException			There was an I/O error reading the table.
 	*/
 	public TableContext(LPTLeaf nodeDescr, BlockMap bbt, PSTFile pstFile)
 	throws
@@ -334,6 +339,10 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	hon		The heap-on-node on which this table context is defined.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
+	*
+	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
+	* 	@throws UnparseableTableContextException	The table content could not be interpreted
+	* 	@throws java.io.IOException			There was an I/O error reading the table.
 	*/
 	TableContext(LPTLeaf nodeDescr, HeapOnNode hon, BlockMap bbt, PSTFile pstFile)
 	throws

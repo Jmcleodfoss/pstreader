@@ -18,6 +18,13 @@ public class PST extends PSTFile {
 	/**	Create a "large footprint" PST object from the given filename.
 	*
 	*	@param	fn		The file name of the PST file to read.
+	*
+	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
+	*	@throws NotPSTFileException			The file is not a PST file.
+	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
+	*	@throws UnparseablePropertyContextException	A property context block could not be read.
+	*	@throws UnparseableTableContextException	A table context block could not be read.
+	*	@throws java.io.IOException			There was an I/O error reading the file.
 	*/
 	public PST(final String fn)
 	throws
@@ -38,6 +45,13 @@ public class PST extends PSTFile {
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
+	*
+	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
+	*	@throws NotPSTFileException			The file is not a PST file.
+	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
+	*	@throws UnparseablePropertyContextException	A property context block could not be read.
+	*	@throws UnparseableTableContextException	A table context block could not be read.
+	*	@throws java.io.IOException			There was an I/O error reading the file.
 	*/
 	public PST(final String fn, boolean fSmallFootprint)
 	throws
@@ -58,6 +72,13 @@ public class PST extends PSTFile {
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
+	*
+	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
+	*	@throws NotPSTFileException			The file is not a PST file.
+	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
+	*	@throws UnparseablePropertyContextException	A property context block could not be read.
+	*	@throws UnparseableTableContextException	A table context block could not be read.
+	*	@throws java.io.IOException			There was an I/O error reading the file.
 	*/
 	public PST(final java.io.FileInputStream fis, boolean fSmallFootprint)
 	throws
@@ -200,6 +221,11 @@ public class PST extends PSTFile {
 	*
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
 	*
+	* 	@throws UnparseablePropertyContextException	The property context for the node is bad
+	* 	@throws UnknownClientSignatureException		An unrecognized client signature was found in the node.
+	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
+	*	@throws java.io.IOException			There was a problem reading the property context.
+	*
 	*	@see	PropertyContext
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
@@ -220,7 +246,7 @@ public class PST extends PSTFile {
 	*	@return	A table model containing the property tags, tag names, and values for the property context.
 	*
 	*	@see	PropertyContext
-	*	@see	io.github.jmcleodfoss.pst.PropertyContext.TableModel
+	*	@see	LPTTableModel PropertyContext.tableModel(final NameToIDMap)
 	*	@see	#tableModel
 	*/
 	public javax.swing.table.TableModel pcTableModel(LPTLeaf node)
@@ -255,6 +281,8 @@ public class PST extends PSTFile {
 	*	@param	nid	A node ID in the node B-tree.
 	*
 	*	@return	The property context from the given node.
+	*
+	* 	@throws	java.io.IOException	There was a problem reading the property context table in this node
 	*
 	*	@see	#propertyContext(LPTLeaf)
 	*/

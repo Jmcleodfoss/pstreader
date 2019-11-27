@@ -483,6 +483,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	*	@param	pstFile	The PST file's data stream, etc.
 	*
 	*	@return	The heap-on-node found at the given block ID.
+	*
+	*	@throws UnknownClientSignatureException	An unknown client signature was found in one of the blocks in the heap.
+	*	@throws NotHeapNodeException		A node which was not a heap node was found while trying to build the heap.
+	*	@throws java.io.IOException		There was a problem reading the PST file.
 	*/
 	public static HeapOnNode makeHeapOnNode(BID bid, BlockMap bbt, PSTFile pstFile)
 	throws

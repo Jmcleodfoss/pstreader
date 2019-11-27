@@ -207,6 +207,8 @@ public class SubnodeBTree extends BTree {
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
 	*
+	* 	@throws java.io.IOException			There was an I/O error reading the sub-node B-tree.
+	*
 	*/
 	public SubnodeBTree(final BID bid, final BlockMap bbt, PSTFile pstFile)
 	throws

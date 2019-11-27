@@ -19,6 +19,8 @@ public @interface Unimplemented {
 	/**	The priority member indicates the priority with which the specific function should be implemented.
 	*
 	*	@see	Priority
+	*
+	*	@return	The default Priority
 	*/
 	Priority priority() default Priority.MODERATE;
 }

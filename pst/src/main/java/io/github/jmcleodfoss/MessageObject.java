@@ -95,6 +95,12 @@ public class MessageObject {
 	*	@see	Message#body
 	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	Message#transportHeaders
+	*
+	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws UnparseablePropertyContextException	The property context for this message could not be interpreted.
+	*	@throws UnparseableTableContextException	The table context for this message could not be interpreted.
+	*	@throws java.io.IOException			The PST file could not be read.
 	*/
 	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
 	throws

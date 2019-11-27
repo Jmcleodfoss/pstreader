@@ -59,6 +59,8 @@ public abstract class PagedBTree extends BTree {
 		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
+		*
+		*	@throws java.io.IOException	There was a problem reading the page context.
 		*/
 		protected PageContext(BREF bref, PSTFile pstFile)
 		throws
@@ -198,6 +200,8 @@ public abstract class PagedBTree extends BTree {
 	*	@param	key	The key for this node.
 	*	@param	bref	The block reference for this page.
 	*	@param	context	The context from which to construct this B-Tree.
+	*
+	*	@throws java.io.IOException	There was a problem reading the B-tree.
 	*/
 	protected PagedBTree(final long key, final BREF bref, final PageContext<BTree, BTreeLeaf> context)
 	throws

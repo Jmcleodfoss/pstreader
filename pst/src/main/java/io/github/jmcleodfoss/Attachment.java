@@ -154,6 +154,11 @@ public class Attachment {
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file input stream, etc.
+	*
+	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws UnparseablePropertyContextException	The property context for this attachement could not be interpreted.
+	*	@throws java.io.IOException			The PST file could not be read.
 	*/
 	public Attachment(final LPTLeaf nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
@@ -171,6 +176,11 @@ public class Attachment {
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file input stream, etc.
+	*
+	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws UnparseablePropertyContextException	The property context for this attachement could not be interpreted.
+	*	@throws java.io.IOException			The PST file could not be read.
 	*/
 	Attachment(final SLEntry nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws

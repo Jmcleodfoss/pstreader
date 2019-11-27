@@ -89,12 +89,14 @@ public class NodeSubnodeBTree extends NodeBTree {
 		}
 	}
 
-	/**	Create a node & subnode B-Tree from the given key, block reference, block BTree, and PSTfile.
+	/**	Create a node &amp; subnode B-Tree from the given key, block reference, block BTree, and PSTfile.
 	*
 	*	@param	key	The key for this node. All sub-nodes are guaranteed to have keys greater than or equal to this key.
 	*	@param	bref	The block reference for this node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
+	*
+	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
 	*/
 	public NodeSubnodeBTree(final long key, final BREF bref, final BlockMap bbt, PSTFile pstFile)
 	throws

@@ -46,6 +46,8 @@ public class OutputSeparator {
 	*	output the separator, followed by a newline.
 	*
 	*	@param	stream	The java.io.OutputStream to which the separator should be written.
+	*
+	*	@throws java.io.IOException	There was a problem writing the separator to the output stream.
 	*/
 	public void emit(java.io.OutputStream stream)
 	throws

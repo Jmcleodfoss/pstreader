@@ -174,6 +174,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	pstFile			The PST file input stream, etc.
 	*
 	*	@return	A folder and its immediate descendents.
+	*
+	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folders.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
+	*	@throws UnparseablePropertyContextException	The property context could not be read.
+	*	@throws UnparseableTableContextException	The table context could not be read.
+	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
 	public static Folder getFolder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
@@ -194,6 +200,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	pstFile			The PST file input stream, etc.
 	*
 	*	@return	A folder and all its immediate descendents.
+	*
+	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folder tree.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
+	*	@throws UnparseablePropertyContextException	The property context could not be read.
+	*	@throws UnparseableTableContextException	The table context could not be read.
+	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
 	public static Folder getFolderTree(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
@@ -296,6 +308,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.
 	*
 	*	@return	A vector of the message contents.
+	*
+	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
+	*	@throws UnparseablePropertyContextException	The property context could not be read.
+	*	@throws UnparseableTableContextException	The table context could not be read.
+	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
 	public static java.util.Vector<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
@@ -323,6 +341,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
 	*
 	*	@return	A vector of subfolders.
+	*
+	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
+	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
+	*	@throws UnparseablePropertyContextException	The property context could not be read.
+	*	@throws UnparseableTableContextException	The table context could not be read.
+	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
 	public static java.util.Vector<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws

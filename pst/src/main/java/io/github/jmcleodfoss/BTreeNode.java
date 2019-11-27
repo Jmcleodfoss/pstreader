@@ -41,6 +41,8 @@ public interface BTreeNode {
 	*	@param	pstFile	The PST file's input data stream, header, etc.
 	*
 	*	@return	A ByteBuffer containing the data for this leaf node of a B-tree.
+	*
+	*	@throws java.io.IOException	The PST file could not be read.
 	*/
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws

@@ -26,6 +26,8 @@ public abstract class LPTLeaf implements BTreeLeaf {
 	*
 	*	@param	byteBuffer	The input data stream from which to read the leaf object.
 	*	@param	fields		The descriptions of the fields to be read.
+	*
+	* 	@throws java.io.IOException	The PST file could not be read.
 	*/
 	protected LPTLeaf(java.nio.ByteBuffer byteBuffer, final DataDefinition[]... fields)
 	throws

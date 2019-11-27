@@ -221,6 +221,8 @@ public class DistributionList extends MessageObject {
 	*	@param	pstFile	The PST file's data stream, header, etc.
 	*
 	*	@return	The list of members, as an array of strings.
+	*
+	*	@throws java.io.IOException	The distribution list contents could not be read.
 	*/
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws

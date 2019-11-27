@@ -31,6 +31,8 @@ public class BTreeOnHeap extends BTree {
 		*
 		*	@param	hon	The heap-on-node on which this B-tree-on-heap is built.
 		*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
+		*
+		*	@throws java.io.IOException	The PST file could not be read.
 		*/
 		private BTHContext(final HeapOnNode hon, PSTFile pstFile)
 		throws
@@ -44,6 +46,8 @@ public class BTreeOnHeap extends BTree {
 		*	@param	hon	The heap-on-node on which this B-tree-on-heap is built.
 		*	@param	hid	The heap ID of the root of the B-tree-on-heap.
 		*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
+		*
+		*	@throws java.io.IOException	The header could not be read from the PST file.
 		*/
 		private BTHContext(final HeapOnNode hon, final HeapOnNode.HID hid, PSTFile pstFile)
 		throws
@@ -413,6 +417,8 @@ public class BTreeOnHeap extends BTree {
 	*
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
+	*
+	*	@throws java.io.IOException	The PST file could not be read.
 	*/
 	public BTreeOnHeap(final HeapOnNode hon, PSTFile pstFile)
 	throws
@@ -450,6 +456,10 @@ public class BTreeOnHeap extends BTree {
 	*
 	*	@param	o	The node to retrieve the data for.
 	*	@param	hon	The heap-on-node from which the B-tree-on-heap is being built.
+	*
+	*	@return	A read-only ByteBuffer containing the data in the leaf node.
+	*
+	*	@throws java.io.UnsupportedEncodingException	The PST file could not be read.
 	*/
 	public static java.nio.ByteBuffer getData(final Object o, final HeapOnNode hon)
 	throws

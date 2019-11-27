@@ -229,6 +229,8 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Test the Message class by iterating through the messages.
+	*
+	* 	@param arg	The command line arguments
 	*/
 	@Unimplemented(priority = Unimplemented.Priority.LOW)
 	public static void main(final String[] arg)

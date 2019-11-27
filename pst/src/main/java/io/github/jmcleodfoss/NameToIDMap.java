@@ -214,6 +214,11 @@ public class NameToIDMap {
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's input data stream, header, etc.
+	*
+	*	@throws UnknownClientSignatureException		The client signature for the block was not recognized.
+	*	@throws NotHeapNodeException			A node which is not a heap node was found.
+	*	@throws UnparseablePropertyContextException	The property context could not be parsed.
+	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
 	public NameToIDMap(final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws

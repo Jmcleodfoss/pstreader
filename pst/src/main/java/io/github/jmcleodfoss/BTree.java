@@ -20,6 +20,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		*
 		*	@param	pstFile	The PST {@link Header}, data stream, etc.
 		*	@param	fields	The data fields to read in.
+		*
+		*	@throws java.io.IOException	There was a problem reading the PST file.
 		*/
 		protected Context(PSTFile pstFile, final DataDefinition[]... fields)
 		throws
@@ -35,6 +37,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		/**	Obtain a data stream from which entries may be read.
 		*
 		*	@return	A ByteBuffer object from which leaf and node entries may be read.
+		*
+		*	@throws java.io.IOException	There was a problem reading the PST file.
 		*/
 		protected abstract java.nio.ByteBuffer entryDataStream()
 		throws
