@@ -40,11 +40,6 @@
 		</dependency>
 	</dependencies>
 
-	<properties>
-		<!-- Need to pass a file path to most tests. Reenable when this is done. -->
-		<skipTests>true</skipTests>
-	</properties>
-
 	<scm>
 		<connection>scm:git:git://github.com/pstreader/pst.git</connection>
 		<developerConnection>scm:git:ssh://github.com/pstreader/pst.git</developerConnection>
@@ -61,6 +56,16 @@
 
 	<build>
 		<plugins>
+			<!-- Over-ride the default surefire configuration to set the working directory for tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M4</version>
+				<configuration>
+					<workingDirectory>../test-pst-files</workingDirectory>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
