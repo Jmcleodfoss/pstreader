@@ -56,7 +56,7 @@ abstract public class FileSaverMenuItem implements ActionListener {
 	*/
 	abstract byte[] data();
 
-	/**	Action to take when File -> Open is selected. Note that this is called after the TreeSelectionListener which updates
+	/**	Action to take when File / Open is selected. Note that this is called after the TreeSelectionListener which updates
 	*	the Node content display.
 	*
 	*	@param	e	The event which triggered this action.
