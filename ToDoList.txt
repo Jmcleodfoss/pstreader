@@ -1,7 +1,6 @@
 To Do List
 ----------
 - Fix pst library test functions (provide some mechanism to indicate where test PST files are)
-- Complete WhoLovesYou servlet
 - Error log level for some of the places where exceptions happen (April 16, 2011)
 - Add remaining properties not found in test PST files (April 16, 2011)
 - Acquire test pst file containing a Server ID property (PidTagDeferredActionMessageOriginalEntryId,PTagSentMailSvrEID), and implement reading in Server ID (November 24, 2019)
