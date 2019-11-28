@@ -68,9 +68,9 @@ public class PropertyContext {
 		*	@param	entries	The properties in the PropertyContext object.
 		*	@param	namedProperties	The known property names
 		*/
-		TableModel(final java.util.Map.Entry<Integer, Object>[] entries, final NameToIDMap namedProperties)
+		TableModel(final java.util.Map<Integer, Object> properties, final NameToIDMap namedProperties)
 		{
-			super(entries, namedProperties);
+			super(properties, namedProperties);
 		}
 	
 		/**	Retrieve the string representation of the value.
@@ -298,7 +298,7 @@ public class PropertyContext {
 @SuppressWarnings("unchecked") 
 	LPTTableModel tableModel(final NameToIDMap namedProperties)
 	{
-		return new TableModel((java.util.Map.Entry<Integer, Object>[])properties.entrySet().toArray(), namedProperties);
+		return new TableModel(properties, namedProperties);
 	}
 
 	/**	Are objects of the given property type stored within the tree itself, or in an HID denoted by the leaf element?
