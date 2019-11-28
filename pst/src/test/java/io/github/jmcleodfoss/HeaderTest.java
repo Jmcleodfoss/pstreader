@@ -58,7 +58,7 @@ public class HeaderTest extends TestFrame {
 		NoSuchMethodException,
 		Throwable
 	{
-		test(new File("arc"));
+		test(new File("truncated-in-header.bin"));
 	}
 
 	@Test(expected = NotPSTFileException.class) public void notPST()
@@ -73,7 +73,7 @@ public class HeaderTest extends TestFrame {
 		NoSuchMethodException,
 		Throwable
 	{
-		test(new File("build.xml"));
+		test(new File("not-a-pst-file.txt"));
 	}
 
 	protected void test(File file)

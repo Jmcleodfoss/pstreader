@@ -1,0 +1,4 @@
+This is not a pst file. It is a text file. It has some filler to extend it to where the test will not throw a java.nio.BufferUnderflowException.
+The BufferUnderflowException is thrown when calculating the CRC there are not enough bytes to read it in. We need to get up to 516 bytes. That's actually a lot of filler.
+I don't know if I can do it. It will certainly get repetitive. Repetitive. So repetitive. Oh well, being repetitive is my job. That's a lesson I learned from Bart Simpson.
+Well, I think I am almost there. Let's try it and find out.
