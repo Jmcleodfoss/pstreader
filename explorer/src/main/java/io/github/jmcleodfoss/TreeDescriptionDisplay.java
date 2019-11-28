@@ -62,7 +62,6 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	public void valueChanged(final TreeSelectionEvent e)
 	{
 		final Object lastPathComponent = e.getPath().getLastPathComponent();
-System.out.println(lastPathComponent.getClass().getName() + " - " + lastPathComponent);
 		assert lastPathComponent instanceof BTreeNode;
 
 		final BTreeNode node = (BTreeNode)lastPathComponent; 
