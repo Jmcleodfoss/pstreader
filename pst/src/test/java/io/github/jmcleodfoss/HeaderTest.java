@@ -31,21 +31,6 @@ public class HeaderTest extends TestFrame {
 		test(ExtensionFileFilter.pstFileFilter);
 	}
 
-	@Test(expected = InsufficientMemoryException.class) public void longPst()
-	throws
-		BufferUnderflowException,
-		FileNotFoundException,
-		IllegalAccessException,
-		InsufficientMemoryException,
-		InstantiationException,
-		IOException,
-		NotPSTFileException,
-		NoSuchMethodException,
-		Throwable
-	{
-		test(new ExtensionFileFilter("longpst"));
-	}
-
 	@Test(expected = BufferUnderflowException.class) public void shorterThanHeader()
 	throws
 		BufferUnderflowException,
