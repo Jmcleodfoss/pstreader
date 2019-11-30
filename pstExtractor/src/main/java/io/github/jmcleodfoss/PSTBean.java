@@ -28,6 +28,9 @@ import io.github.jmcleodfoss.pst.JournalEntry;
 import io.github.jmcleodfoss.pst.MessageObject;
 import io.github.jmcleodfoss.pst.NotHeapNodeException;
 import io.github.jmcleodfoss.pst.NotPSTFileException;
+import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
+import io.github.jmcleodfoss.pst.NotTableContextNodeException;
+import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.StickyNote;
 import io.github.jmcleodfoss.pst.TableContext;
@@ -187,6 +190,9 @@ public class PSTBean {
 	throws
 		IOException,
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException
@@ -219,6 +225,9 @@ public class PSTBean {
 	throws
 		IOException,
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException
@@ -303,6 +312,15 @@ public class PSTBean {
 			e.printStackTrace(System.out);
 			return "ProcessingProblem";
 		} catch (NotHeapNodeException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (NotPropertyContextNodeException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (NotTableContextNodeException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (NullDataBlockException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
 		} catch (UnknownClientSignatureException e) {
@@ -461,6 +479,9 @@ public class PSTBean {
 	private void processPST()
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -544,6 +565,12 @@ public class PSTBean {
 				} catch (NotPSTFileException e) {
 					e.printStackTrace(System.out);
 					return "NotPST";
+				} catch (NotPropertyContextNodeException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (NullDataBlockException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
 				} catch (UnknownClientSignatureException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
