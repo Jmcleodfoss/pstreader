@@ -58,6 +58,7 @@ public class PropertyContextTest extends TestFrame {
 				if (dataBlock == null)
 					continue;
 
+				// We can continue processing if any of the exceptions below are caught.
 				try {
 					new PropertyContext(node, bbt, pstFile);
 				} catch (final NotHeapNodeException e) {
