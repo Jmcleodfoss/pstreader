@@ -56,6 +56,19 @@
 	</dependencies>
 
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>LocalTomcatServer</server>
+					<path>/${project.artifactId}-${project.version}</path>
+				</configuration>
+			</plugin>
+		</plugins>
+
 		<!-- Temporarily specify location of this so we can compare war file contents without changing source code.
 		     To be fixed later.
 		-->
