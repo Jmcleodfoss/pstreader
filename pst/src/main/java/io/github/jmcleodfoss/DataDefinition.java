@@ -69,11 +69,8 @@ class DataDefinition {
 		final boolean f_debug = logger.isLoggable(java.util.logging.Level.FINER);
 		if (description.fSave || f_debug) {
 			logger.log(java.util.logging.Level.FINEST, (description.fSave ? "read" : "skip") + " " + description);
-//System.out.printf("need " + description + ", avail " + byteBuffer.remaining());
 			final Object value = description.description.read(byteBuffer);
 			logger.log(java.util.logging.Level.FINER, (description.fSave ? "read" : "skip") + " " + description.name + ": " + description.description.makeString(value));
-//System.out.println(" ==> " + description.description.makeString(value));
-//System.out.println(description.fSave ? "read" : "skip") + " " + description.name + ": " + description.description.makeString(value));
 			if (description.fSave)
 				data.put(description.name, value);
 		} else {
