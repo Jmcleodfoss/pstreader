@@ -338,13 +338,9 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 			int offsetData;
 			int offsetPageMap;
 			if (iBlock == 0) {
-				try {
-					hnhdr = new Header(blockDataStream);
-					offsetData = Header.size;
-					offsetPageMap = hnhdr.ibHnpm;
-				} catch (final NotHeapNodeException e) {
-					break;
-				}
+				hnhdr = new Header(blockDataStream);
+				offsetData = Header.size;
+				offsetPageMap = hnhdr.ibHnpm;
 			} else if (iBlock - 8 % 128 == 0) {
 				final HNBitmapHeader hnbmh = new HNBitmapHeader(blockDataStream);
 				offsetData = HNBitmapHeader.size;
