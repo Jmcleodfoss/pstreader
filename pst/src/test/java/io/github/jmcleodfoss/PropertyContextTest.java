@@ -62,13 +62,9 @@ public class PropertyContextTest extends TestFrame {
 				try {
 					new PropertyContext(node, bbt, pstFile);
 				} catch (final NotHeapNodeException e) {
-					e.printStackTrace(System.out);
 				} catch (final NotPropertyContextNodeException e) {
-					e.printStackTrace(System.out);
 				} catch (final NullDataBlockException e) {
-					e.printStackTrace(System.out);
 				} catch (final UnknownClientSignatureException e) {
-					e.printStackTrace(System.out);
 				}
 			}
 		} catch (IOException e) {
