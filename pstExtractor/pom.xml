@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>pstExtractor</artifactId>
 	<packaging>war</packaging>
-	<name>pstExtractor</name>
+	<name>${project.groupId}:{$project.artifactId}</name>
 
 	<parent>
 		<groupId>io.github.jmcleodfoss</groupId>
