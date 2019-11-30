@@ -48,7 +48,7 @@ public class PropertyContextTest extends TestFrame {
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 			final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
 
-			java.util.Iterator iterator = nbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry node = (NBTEntry)iterator.next();
 				if (node.nid.type == NID.INTERNAL)
