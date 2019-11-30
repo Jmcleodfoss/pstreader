@@ -29,6 +29,9 @@ public class EntryID {
 	*/
 	Folder folder(BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnparseablePropertyContextException,
 		UnknownClientSignatureException,
 		NotHeapNodeException,
@@ -48,6 +51,8 @@ public class EntryID {
 	*/
 	PropertyContext propertyContext(BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnparseablePropertyContextException,
 		UnknownClientSignatureException,
 		NotHeapNodeException,

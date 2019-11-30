@@ -85,6 +85,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	private Folder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -176,6 +179,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@return	A folder and its immediate descendents.
 	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folders.
+	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
+	*	@throws	NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
+	*	@throws	NullDataBlockException			A null data block was found when building a property context.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnparseablePropertyContextException	The property context could not be read.
 	*	@throws UnparseableTableContextException	The table context could not be read.
@@ -184,6 +190,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public static Folder getFolder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -202,6 +211,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@return	A folder and all its immediate descendents.
 	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folder tree.
+	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
+	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
+	*	@throws NullDataBlockException			A null data block was found when building a property context.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnparseablePropertyContextException	The property context could not be read.
 	*	@throws UnparseableTableContextException	The table context could not be read.
@@ -210,6 +222,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public static Folder getFolderTree(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -310,6 +325,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@return	A vector of the message contents.
 	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
+	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
+	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
+	*	@throws NullDataBlockException			A null data block was found when building a property context.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnparseablePropertyContextException	The property context could not be read.
 	*	@throws UnparseableTableContextException	The table context could not be read.
@@ -318,6 +336,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public static java.util.Vector<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -343,6 +364,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@return	A vector of subfolders.
 	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
+	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
+	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
+	*	@throws NullDataBlockException			A null data block was found when building a property context.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnparseablePropertyContextException	The property context could not be read.
 	*	@throws UnparseableTableContextException	The table context could not be read.
@@ -351,6 +375,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public static java.util.Vector<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,

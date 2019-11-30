@@ -118,6 +118,8 @@ public class PropertyContext {
 		UnparseablePropertyContextException,
 		UnknownClientSignatureException,
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		java.io.IOException
 	{
 		this();
@@ -127,11 +129,11 @@ public class PropertyContext {
 
 		BBTEntry dataBlock = bbt.find(node.bidData);
 		if (dataBlock == null)
-			throw new RuntimeException("Data block for node " + node + " is null");
+			throw new NullDataBlockException(node);
 
 		HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 		if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
-			throw new RuntimeException("Heap-on-Node for node " + node + " is not a property context.");
+			throw new NotPropertyContextNodeException(node, hon.clientSignature());
 
 		BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
 

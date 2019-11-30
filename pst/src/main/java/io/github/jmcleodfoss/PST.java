@@ -21,6 +21,8 @@ public class PST extends PSTFile {
 	*
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
+	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnparseablePropertyContextException	A property context block could not be read.
 	*	@throws UnparseableTableContextException	A table context block could not be read.
@@ -30,6 +32,8 @@ public class PST extends PSTFile {
 	throws
 		NotHeapNodeException,
 		NotPSTFileException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -48,6 +52,8 @@ public class PST extends PSTFile {
 	*
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
+	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnparseablePropertyContextException	A property context block could not be read.
 	*	@throws UnparseableTableContextException	A table context block could not be read.
@@ -57,6 +63,8 @@ public class PST extends PSTFile {
 	throws
 		NotHeapNodeException,
 		NotPSTFileException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -75,6 +83,8 @@ public class PST extends PSTFile {
 	*
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
+	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws	NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnparseablePropertyContextException	A property context block could not be read.
 	*	@throws UnparseableTableContextException	A table context block could not be read.
@@ -84,6 +94,8 @@ public class PST extends PSTFile {
 	throws
 		NotHeapNodeException,
 		NotPSTFileException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -221,6 +233,8 @@ public class PST extends PSTFile {
 	*
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
 	*
+	* 	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	* 	@throws	NullDataBlockException			A null data block was found while building a property context.
 	* 	@throws UnparseablePropertyContextException	The property context for the node is bad
 	* 	@throws UnknownClientSignatureException		An unrecognized client signature was found in the node.
 	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
@@ -230,6 +244,8 @@ public class PST extends PSTFile {
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
 	throws
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnparseablePropertyContextException,
 		UnknownClientSignatureException,
 		NotHeapNodeException,
@@ -268,6 +284,8 @@ public class PST extends PSTFile {
 		try {
 			return new PropertyContext(node, blockBTree, this);
 		} catch (final NotHeapNodeException e) {
+		} catch (final NotPropertyContextNodeException e) {
+		} catch (final NullDataBlockException e) {
 		} catch (final UnknownClientSignatureException e) {
 		} catch (final UnparseablePropertyContextException e) {
 		} catch (final java.io.IOException e) {
@@ -353,6 +371,7 @@ public class PST extends PSTFile {
 	{
 		try {
 			return new TableContext(node, hon, blockBTree, this);
+		} catch (final NotTableContextNodeException e) {
 		} catch (final UnknownClientSignatureException e) {
 		} catch (final UnparseableTableContextException e) {
 		} catch (final java.io.IOException e) {
@@ -379,6 +398,7 @@ public class PST extends PSTFile {
 		try {
 			return new TableContext(node, blockBTree, this);
 		} catch (final NotHeapNodeException e) {
+		} catch (final NotTableContextNodeException e) {
 		} catch (final UnknownClientSignatureException e) {
 		} catch (final UnparseableTableContextException e) {
 		} catch (final java.io.IOException e) {

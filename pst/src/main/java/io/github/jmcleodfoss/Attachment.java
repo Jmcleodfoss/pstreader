@@ -156,6 +156,8 @@ public class Attachment {
 	*	@param	pstFile		The PST file input stream, etc.
 	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
+	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
+	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
 	*	@throws UnparseablePropertyContextException	The property context for this attachement could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
@@ -163,6 +165,8 @@ public class Attachment {
 	public Attachment(final LPTLeaf nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		java.io.IOException
@@ -178,6 +182,8 @@ public class Attachment {
 	*	@param	pstFile		The PST file input stream, etc.
 	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
+	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
+	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
 	*	@throws UnparseablePropertyContextException	The property context for this attachement could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
@@ -185,6 +191,8 @@ public class Attachment {
 	Attachment(final SLEntry nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		java.io.IOException

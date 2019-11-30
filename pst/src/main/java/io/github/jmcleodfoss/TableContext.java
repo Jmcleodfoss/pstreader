@@ -76,6 +76,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		@SuppressWarnings("unchecked")
 		private TCInfo(java.nio.ByteBuffer stream)
 		throws
+			NotTableContextNodeException,
 			UnknownClientSignatureException,
 			java.io.IOException
 		{
@@ -84,7 +85,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 			ClientSignature clientSignature = new ClientSignature((Byte)dc.get(nm_bType));
 			if (!clientSignature.equals(ClientSignature.TableContext))
-				throw new RuntimeException("Invalid client signature for table context.");
+				throw new NotTableContextNodeException(clientSignature);
 
 			int numColumns = dc.getUInt8(nm_cCols);
 			columnDescription = new TColDescr[numColumns];
@@ -318,6 +319,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	pstFile		The PST file data stream, header, etc.
 	*
 	* 	@throws	NotHeapNodeException			The leaf is not a heap node
+	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
 	* 	@throws UnparseableTableContextException	The table content could not be interpreted
 	* 	@throws java.io.IOException			There was an I/O error reading the table.
@@ -325,6 +327,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	public TableContext(LPTLeaf nodeDescr, BlockMap bbt, PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotTableContextNodeException,
 		UnknownClientSignatureException,
 		UnparseableTableContextException,
 		java.io.IOException
@@ -340,12 +343,14 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
 	*
+	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
 	* 	@throws UnparseableTableContextException	The table content could not be interpreted
 	* 	@throws java.io.IOException			There was an I/O error reading the table.
 	*/
 	TableContext(LPTLeaf nodeDescr, HeapOnNode hon, BlockMap bbt, PSTFile pstFile)
 	throws
+		NotTableContextNodeException,
 		UnknownClientSignatureException,
 		UnparseableTableContextException,
 		java.io.IOException

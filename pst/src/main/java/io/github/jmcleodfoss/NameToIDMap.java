@@ -217,6 +217,8 @@ public class NameToIDMap {
 	*
 	*	@throws UnknownClientSignatureException		The client signature for the block was not recognized.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found.
+	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnparseablePropertyContextException	The property context could not be parsed.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
@@ -224,6 +226,8 @@ public class NameToIDMap {
 	throws
 		UnknownClientSignatureException,
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{

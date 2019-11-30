@@ -66,6 +66,9 @@ public class Message extends MessageObjectWithBody {
 	Message(final TableContext contentsTable, final int messageRow, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -158,6 +161,9 @@ public class Message extends MessageObjectWithBody {
 	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,

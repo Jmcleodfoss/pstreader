@@ -59,6 +59,9 @@ public class MessageObject {
 	static MessageObject factory(TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
@@ -97,6 +100,9 @@ public class MessageObject {
 	*	@see	Message#transportHeaders
 	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
+	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
+	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building the table context.
+	*	@throws NullDataBlockException			A null data block was found when building the property context.
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
 	*	@throws UnparseablePropertyContextException	The property context for this message could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context for this message could not be interpreted.
@@ -105,6 +111,9 @@ public class MessageObject {
 	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NotTableContextNodeException,
+		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,

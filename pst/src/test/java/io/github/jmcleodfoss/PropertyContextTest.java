@@ -59,12 +59,15 @@ public class PropertyContextTest extends TestFrame {
 					continue;
 
 				try {
-					final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-					if (!hon.containsData() || !hon.clientSignature().equals(ClientSignature.PropertyContext))
-						continue;
 					new PropertyContext(node, bbt, pstFile);
 				} catch (final NotHeapNodeException e) {
+					e.printStackTrace(System.out);
+				} catch (final NotPropertyContextNodeException e) {
+					e.printStackTrace(System.out);
+				} catch (final NullDataBlockException e) {
+					e.printStackTrace(System.out);
 				} catch (final UnknownClientSignatureException e) {
+					e.printStackTrace(System.out);
 				}
 			}
 		} catch (IOException e) {
