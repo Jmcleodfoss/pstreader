@@ -109,7 +109,6 @@ public class NameToIDMap {
 				return GUID.PS_MAPI;
 			if (guidIndex == GUID_INDEX_PUBLIC_STRINGS)
 				return GUID.PS_PUBLIC_STRINGS;
-			assert guidIndex == GUID_INDEX_GUID;
 
 			final int offset = (guidIndex - 3) * 16;
 
