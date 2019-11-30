@@ -9,8 +9,7 @@ A text file which is definitely not a pst file, used by io.github.jmcleodfoss.ps
 The first few dozen bytes of a valid pst file, used by io.github.jmcleodfoss.pst.HeaderTest in the test hierarchy.
 
 # Test files you must provide
-## large-outlook-file.pst
-A pst file large enough to incur an out-of-memory error when run by the test framework. Used by io.github.jmcleod.pst.HeaderTest in the test hierarchy.
+TBD
 
 # Suggestions
 * Only valid pst files should have the extension "pst" otherwise extras/test.sh will run all tests on them pointlessly
