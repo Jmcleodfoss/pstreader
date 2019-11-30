@@ -57,20 +57,20 @@ public class MessageStore {
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file input data stream, {@link Header header}, etc.
 	*
-	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the message store was not recognized.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found while creating the message store.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
+	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the message store was not recognized.
 	*	@throws UnparseablePropertyContextException	The property context could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
 	*/
 	public MessageStore(final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
-		UnknownClientSignatureException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		java.io.IOException
@@ -119,8 +119,8 @@ public class MessageStore {
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building a table context.
 	* 	@throws NullDataBlockException			A null data block was found while building a property context.
-	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the root folder was not recognized.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found while reading the root folder.
+	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the root folder was not recognized.
 	*	@throws UnparseablePropertyContextException	The property context could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
@@ -130,8 +130,8 @@ public class MessageStore {
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
-		UnknownClientSignatureException,
 		NotHeapNodeException,
+		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		java.io.IOException

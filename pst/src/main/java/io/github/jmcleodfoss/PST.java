@@ -233,22 +233,22 @@ public class PST extends PSTFile {
 	*
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
 	*
+	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
 	* 	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	* 	@throws	NullDataBlockException			A null data block was found while building a property context.
-	* 	@throws UnparseablePropertyContextException	The property context for the node is bad
 	* 	@throws UnknownClientSignatureException		An unrecognized client signature was found in the node.
-	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
+	* 	@throws UnparseablePropertyContextException	The property context for the node is bad
 	*	@throws java.io.IOException			There was a problem reading the property context.
 	*
 	*	@see	PropertyContext
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
 	throws
+		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
-		UnparseablePropertyContextException,
 		UnknownClientSignatureException,
-		NotHeapNodeException,
+		UnparseablePropertyContextException,
 		java.io.IOException
 	{
 		final io.github.jmcleodfoss.pst.NBTEntry nbtEntry = nodeBTree.find(new NID(nid));

@@ -134,8 +134,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		*/
 		private HNBitmapHeader(java.nio.ByteBuffer stream)
 		throws
-//			UnknownClientSignatureException,
-//			NotHeapNodeException,
 			java.io.IOException
 		{
 			DataContainer dc = new DataContainer();
@@ -187,8 +185,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		*/
 		private Header(java.nio.ByteBuffer stream)
 		throws
-			UnknownClientSignatureException,
 			NotHeapNodeException,
+			UnknownClientSignatureException,
 			java.io.IOException
 		{
 			DataContainer dc = new DataContainer();
@@ -315,8 +313,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	*/
 	HeapOnNode(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
-		UnknownClientSignatureException,
 		NotHeapNodeException,
+		UnknownClientSignatureException,
 		java.io.IOException
 	{
 		final BlockBase blocks = BlockBase.read(entry, bbt, pstFile);
@@ -464,8 +462,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	*/
 	static HeapOnNode makeHeapOnNode(NID nid, BlockMap bbt, NodeBTree nbt, PSTFile pstFile)
 	throws
-		UnknownClientSignatureException,
 		NotHeapNodeException,
+		UnknownClientSignatureException,
 		java.io.IOException
 	{
 		NBTEntry node = nbt.find(nid);
@@ -480,14 +478,14 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	*
 	*	@return	The heap-on-node found at the given block ID.
 	*
-	*	@throws UnknownClientSignatureException	An unknown client signature was found in one of the blocks in the heap.
 	*	@throws NotHeapNodeException		A node which was not a heap node was found while trying to build the heap.
+	*	@throws UnknownClientSignatureException	An unknown client signature was found in one of the blocks in the heap.
 	*	@throws java.io.IOException		There was a problem reading the PST file.
 	*/
 	public static HeapOnNode makeHeapOnNode(BID bid, BlockMap bbt, PSTFile pstFile)
 	throws
-		UnknownClientSignatureException,
 		NotHeapNodeException,
+		UnknownClientSignatureException,
 		java.io.IOException
 	{
 		BBTEntry dataBlock = bbt.find(bid);
