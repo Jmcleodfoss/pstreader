@@ -400,13 +400,7 @@ public class PropertyContext {
 					continue;
 
 				try {
-					final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-					if (!hon.containsData() || !hon.clientSignature().equals(ClientSignature.PropertyContext))
-						continue;
-					final BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
-
-					final PropertyContext pc = new PropertyContext();
-					pc.read(node, hon, bth, bbt, pstFile);
+					final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
 
 					if (fShowOutput) {
 						separator.emit(System.out);
@@ -423,6 +417,12 @@ public class PropertyContext {
 					}
 				} catch (final NotHeapNodeException e) {
 					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
+					e.printStackTrace(System.out);
+				} catch (final NotPropertyContextNodeException e) {
+					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
+					e.printStackTrace(System.out);
+				} catch (final NullDataBlockException e) {
+					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
 					e.printStackTrace(System.out);
 				} catch (final UnknownClientSignatureException e) {
 					logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
