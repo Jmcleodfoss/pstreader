@@ -1,5 +1,5 @@
 # pstreader
-Java library for reading Microsoft Outlook pst and ost files.
+Java library for reading Microsoft Outlook pst and ost files, with ancillary libraries, a Swing application, and a servlet.
 
 ## Contents
 ### pst Library
@@ -8,7 +8,7 @@ See [pst Library README](pst/README.md)
 
 ### LocaleBean
 A bean for localization of Java Server Faces web applications.
-See [localebean READM](localebean/README.md)
+See [localebean README](localebean/README.md)
 
 ### swingutil Library
 A library of useful Java Swing functions used by the pst library. It is separate because I wanted the pst library to be as independent of Swing as possibly, but still able to be used by Swing applications.
