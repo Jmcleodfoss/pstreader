@@ -31,6 +31,9 @@ class PSTToXML {
 	throws
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
 		io.github.jmcleodfoss.pst.NotPSTFileException,
+		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
+		io.github.jmcleodfoss.pst.NotTableContextNodeException,
+		io.github.jmcleodfoss.pst.NullDataBlockException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
@@ -63,6 +66,9 @@ class PSTToXML {
 	private void addFolderContents(io.github.jmcleodfoss.util.XMLOutput xml, io.github.jmcleodfoss.pst.Folder folder, io.github.jmcleodfoss.pst.PST pst)
 	throws
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
+		io.github.jmcleodfoss.pst.NotTableContextNodeException,
+		io.github.jmcleodfoss.pst.NullDataBlockException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
@@ -171,6 +177,9 @@ class PSTToXML {
 	void createXML(java.io.PrintStream printstream)
 	throws
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
+		io.github.jmcleodfoss.pst.NotTableContextNodeException,
+		io.github.jmcleodfoss.pst.NullDataBlockException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
