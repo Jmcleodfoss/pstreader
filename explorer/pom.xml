@@ -54,6 +54,7 @@
 							<mainClass>io.github.jmcleodfoss.explorer.pstExplorer</mainClass>
 						</manifest>
 					</archive>
+					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
 			</plugin>
 		</plugins>
