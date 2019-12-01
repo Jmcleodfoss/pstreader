@@ -68,18 +68,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
-		<!-- Temporarily specify location of this so we can compare war file contents without changing source code.
-		     To be fixed later.
-		-->
-		<resources>
-			<resource>
-				<targetPath>io/github/jmcleodfoss/pstExtractor</targetPath>
-				<directory>${basedir}/src/main/java/io/github/jmcleodfoss</directory>
-				<includes>
-					<include>text-resources.properties</include>
-				</includes>
-			</resource>
-		</resources>
 	</build>
 </project>

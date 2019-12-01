@@ -105,7 +105,7 @@ public class PSTBean {
 	/**	Create a bean for communication between the form and the servlet. */
 	public PSTBean()
 	{
-		rb = ResourceBundle.getBundle("io.github.jmcleodfoss.pstExtractor.text-resources");
+		rb = ResourceBundle.getBundle("text-resources");
 		SelectItem[] extractionTypeChoices = new SelectItem[ExtractionTypes.values().length];
 		for (ExtractionTypes t : ExtractionTypes.values())
 			extractionTypeChoices[t.ordinal()] = new SelectItem(t, rb.getString(LabelResourceName.get(t)));
