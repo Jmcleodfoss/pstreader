@@ -13,6 +13,7 @@
 		<module>pstExtractor</module>
 		<module>swingutil</module>
 		<module>util</module>
+		<module>xml</module>
 	</modules>
 
 	<licenses>
