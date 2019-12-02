@@ -23,6 +23,13 @@
 		</developer>
 	</developers>
 
+	<scm>
+		<connection>scm:git:git://github.com/jmcleodfoss/pstreader.git</connection>
+		<developerConnection>scm:git:ssh://github.com/jmcleodfoss/pstreader.git</developerConnection>
+		<url>https://github.com/pstreader</url>
+	</scm>
+
+
 	<profiles>
 		<profile>
 			<!-- Do all included modules by default -->

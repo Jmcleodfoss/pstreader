@@ -28,12 +28,6 @@
 		</dependency>
 	</dependencies>
 
-	<scm>
-		<connection>scm:git:git://github.com/pstreader/pst.git</connection>
-		<developerConnection>scm:git:ssh://github.com/pstreader/pst.git</developerConnection>
-		<url>https://github.com/pstreader/pst/tree/master</url>
-	</scm>
-
 	<build>
 		<plugins>
 			<!-- Over-ride the default surefire configuration to set the working directory for tests -->
