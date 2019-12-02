@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>util</artifactId>
 	<packaging>jar</packaging>
-	<name>${project.groupId}:{$project.artifactId}</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A utility library used by at least one of the pst library demo applications.</description>
 	<url>https://io.github.com/Jmcleodfoss/pst</url>
 

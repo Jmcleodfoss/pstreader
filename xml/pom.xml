@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>xml</artifactId>
 	<packaging>jar</packaging>
-	<name>${project.groupId}:{$project.artifactId}</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A library for simplistic XML processing.</description>
 
 	<parent>

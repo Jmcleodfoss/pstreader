@@ -4,7 +4,7 @@
 
 	<artifactId>explorer</artifactId>
 	<packaging>jar</packaging>
-	<name>${project.groupId}:{$project.artifactId}</name>
+	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Swing-based PST file reader</description>
 
 	<parent>
