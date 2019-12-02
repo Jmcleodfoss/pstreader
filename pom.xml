@@ -71,7 +71,6 @@
 				</snapshotRepository>
 			</distributionManagement>
 
-
 			<build>
 				<plugins>
 					<plugin>
