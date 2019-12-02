@@ -6,6 +6,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<url>https://io.github.com/Jmcleodfoss/pst</url>
+	<description>Library for reading pst files, and some ancillary libraries, a Swing app, and a JSF web app.</description>
 
 	<licenses>
 		<license>
