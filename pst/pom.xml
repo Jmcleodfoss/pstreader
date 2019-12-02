@@ -34,14 +34,6 @@
 		<url>https://github.com/pstreader/pst/tree/master</url>
 	</scm>
 
-	<!-- Deploy to Maven Central via ossrh -->
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-
 	<build>
 		<plugins>
 			<!-- Over-ride the default surefire configuration to set the working directory for tests -->

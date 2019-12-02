@@ -56,6 +56,15 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 
+			<!-- Deploy to Maven Central via ossrh -->
+			<distributionManagement>
+				<snapshotRepository>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+			</distributionManagement>
+
+
 			<build>
 				<plugins>
 					<plugin>
