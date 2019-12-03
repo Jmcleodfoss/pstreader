@@ -169,9 +169,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		*/
 		static boolean storedInHNID(TColDescr cd)
 		{
-			assert cd.width <= 4;
-
-			if (cd.width == 4)
+			if (cd.width <= 4)
 				return storedInHID(cd.propertyType());
 
 			return false;
