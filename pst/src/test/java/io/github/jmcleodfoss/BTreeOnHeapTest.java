@@ -61,6 +61,7 @@ public class BTreeOnHeapTest extends TestFrame {
 						continue;
 	
 					new BTreeOnHeap(hon, pstFile);
+				} catch (NotHeapNodeException e) {
 				} catch (UnknownClientSignatureException e) {
 				}
 			}
