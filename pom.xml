@@ -57,6 +57,8 @@
 			<modules>
 				<module>pst</module>
 				<module>explorer</module>
+				<module>util</module>
+				<module>swingutil</module>
 			</modules>
 
 			<activation>
