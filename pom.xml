@@ -19,14 +19,18 @@
 		<developer>
 			<name>James McLeod</name>
 			<email>jmcleodfoss@gmail.com</email>
-			<organizationUrl>https://io.github.com/Jmcleodfoss/pst</organizationUrl>
+			<organizationUrl>https://io.github.com/Jmcleodfoss/pstreader</organizationUrl>
 		</developer>
 	</developers>
 
+	<properties>
+		<project.scm.id>github</project.scm.id>
+	</properties>
+
 	<scm>
-		<connection>scm:git:git://github.com/jmcleodfoss/pstreader.git</connection>
-		<developerConnection>scm:git:ssh://github.com/jmcleodfoss/pstreader.git</developerConnection>
-		<url>https://github.com/pstreader</url>
+		<connection>scm:git:https://github.com/Jmcleodfoss/pstreader.git</connection>
+		<developerConnection>scm:git:https://github.com/jmcleodfoss/pstreader.git</developerConnection>
+		<url>https://github.com/Jmcleodfoss/pstreader</url>
 	</scm>
 
 
