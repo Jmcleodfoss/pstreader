@@ -400,6 +400,11 @@ public class PropertyContext {
 					continue;
 
 				try {
+					// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
+					HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+					if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
+						continue;
+
 					final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
 
 					if (fShowOutput) {
@@ -417,9 +422,6 @@ public class PropertyContext {
 					}
 				} catch (final NotHeapNodeException e) {
 					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
-					e.printStackTrace(System.out);
-				} catch (final NotPropertyContextNodeException e) {
-					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
 					e.printStackTrace(System.out);
 				} catch (final NullDataBlockException e) {
 					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid property context node");

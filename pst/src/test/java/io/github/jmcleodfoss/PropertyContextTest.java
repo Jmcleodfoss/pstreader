@@ -60,9 +60,13 @@ public class PropertyContextTest extends TestFrame {
 
 				// We can continue processing if any of the exceptions below are caught.
 				try {
+					// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
+					HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+					if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
+						continue;
+
 					new PropertyContext(node, bbt, pstFile);
 				} catch (final NotHeapNodeException e) {
-				} catch (final NotPropertyContextNodeException e) {
 				} catch (final NullDataBlockException e) {
 				} catch (final UnknownClientSignatureException e) {
 				}
