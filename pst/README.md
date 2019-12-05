@@ -1,5 +1,10 @@
 # pst
 A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.pst) File Format](https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/141923d5-15ab-4ef1-a524-6dce75aae546).
+See
+* [pst Library README](pst/README.md)
+* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst)
+* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.0.0/pom)
+* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.0.0/)
 
 ## Example
 It really helps to understand the structure of the PST file as described in the reference above when using this library, but here is a quick not-quite-java example.

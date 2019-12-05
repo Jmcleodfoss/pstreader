@@ -2,6 +2,11 @@
 A Swing application for looking at PST files on any platform that supports Java.
 
 The PST library is a memory hog; you may need to increase the available heap to read some PST files.
+See
+* [explorer README](explorer/README.md)
+* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer)
+* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.0.0/pom)
+* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.0.0/)
 
 ## Windows cmd
     java -cp target\explorer-1.0-SNAPSHOT.jar [pst-file]
