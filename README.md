@@ -33,7 +33,7 @@ See
 
 ### XML Utilities
 These are all in the xml.jar package.
-See [xml library README](xml/README.md)
+See [xml library README](xml/README.md).
 Note: this artifact is not in Maven Central so its Javadoc is not publicly available.
 
 ### Explorer Application
@@ -46,5 +46,5 @@ See
 
 ### pstExtractor Web Servlet
 A servlet which allows you to upload a file and then browse through it
-See [pstExtractor README](pstExtractor/README.md)
+See [pstExtractor README](pstExtractor/README.md).
 Note: this artifact is not in Maven Central so its Javadoc is not publicly available.
