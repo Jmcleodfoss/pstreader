@@ -14,17 +14,19 @@ declare results_dir=test-output
 # Output file for tracking / timing
 declare stats=$results_dir/stats.txt
 
+declare version=1.0.1-SNAPSHOT
+
 # Jar files
 
 if [ $OS = "Windows_NT" ]; then
-	declare pst_jar=pst\\target\\pst-1.0-SNAPSHOT.jar
-	declare xml_jar=xml\\target\\xml-1.0-SNAPSHOT.jar
-	declare util_jar=util\\target\\util-1.0-SNAPSHOT.jar
+	declare pst_jar=pst\\target\\pst-$version.jar
+	declare xml_jar=xml\\target\\xml-$version.jar
+	declare util_jar=util\\target\\util-$version.jar
 	declare dir_delim=";"
 else
-	declare pst_jar=pst/target/pst-1.0-SNAPSHOT.jar
-	declare xml_jar=xml/target/xml-1.0-SNAPSHOT.jar
-	declare util_jar=util/target/util-1.0-SNAPSHOT.jar
+	declare pst_jar=pst/target/pst-$version.jar
+	declare xml_jar=xml/target/xml-$version.jar
+	declare util_jar=util/target/util-$version.jar
 	declare dir_delim=":"
 fi
 
