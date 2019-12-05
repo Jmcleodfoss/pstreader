@@ -5,6 +5,7 @@
 	<artifactId>pst-parent</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
 	<url>https://io.github.com/Jmcleodfoss/pst</url>
 	<description>Library for reading pst files, and some ancillary libraries, a Swing app, and a JSF web app.</description>
 
