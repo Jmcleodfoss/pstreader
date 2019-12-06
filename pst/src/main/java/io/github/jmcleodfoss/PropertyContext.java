@@ -421,8 +421,7 @@ public class PropertyContext {
 						}
 					}
 				} catch (final NotHeapNodeException e) {
-					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
-					e.printStackTrace(System.out);
+					// Not every node in the block B-tree is a heap node, so this is benign.
 				} catch (final NullDataBlockException e) {
 					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
 					e.printStackTrace(System.out);

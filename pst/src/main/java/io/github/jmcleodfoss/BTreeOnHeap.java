@@ -534,8 +534,7 @@ public class BTreeOnHeap extends BTree {
 							throw e;
 						}
 					} catch (final NotHeapNodeException e) {
-						logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid heap node");
-						e.printStackTrace(System.out);
+						// Not every node in the block B-tree is a heap node, so this is benign.
 					} catch (final UnknownClientSignatureException e) {
 						logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
 						e.printStackTrace(System.out);

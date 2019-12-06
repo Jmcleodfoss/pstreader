@@ -615,6 +615,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 						final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 						System.out.println("HeapOnNode\n----------\n" + hon);
+					} catch (final NotHeapNodeException e) {
+						// Not every node in the block B-tree is a heap node, so this is benign.
 					} catch (final Exception e) {
 						logger.log(java.util.logging.Level.INFO, e + "\nnode " + node + "\nbid(data) " + dataBlock);
 						e.printStackTrace(System.out);
