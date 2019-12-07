@@ -150,6 +150,7 @@ public class PSTBean {
 	/**	Add the contacts in the given folder to the list of contacts.
 	*
 	*	@param	folder	The folder from which to harvest contacts.
+	*	@param	pst	The pst file to read the folder data from.
 	*/
 	private void addContacts(Folder folder, PST pst)
 	{
@@ -184,7 +185,17 @@ public class PSTBean {
 
 	/**	Add the journal entries in the current folder to the list of journal entries.
 	*
-	*	@param	folder	The folder from which to harvest the journal entries.
+	* 	@param	folder	The folder from which to harvest the journal entries.
+	* 	@param	pst	The pst file from which to read the journal entries' data.
+	*
+	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the journal entries.
+	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the journal entries. 
+	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the journal entries.
+	*	@throws	NullDataBlockException			A null data block was found when reading the journal entries.
+	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the journal entries.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the journal entries.
+	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the journal entries.
+	*	@throws java.io.IOException			An I/O error was encoutnered while reading the journal entries.
 	*/
 	private void addJournalEntries(Folder folder, PST pst)
 	throws
@@ -220,6 +231,16 @@ public class PSTBean {
 	/**	Add the sticky notes in the current folder to the list of sticky notes.
 	*
 	*	@param	folder	The folder from which to harvest the sticky notes.
+	*	@param	pst	The pst file from which to read the sticky notes data.
+	*
+	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the sticky notes.
+	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the sticky notes. 
+	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the sticky notes.
+	*	@throws	NullDataBlockException			A null data block was found when reading the sticky notes.
+	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the sticky notes.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the sticky notes.
+	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the sticky notes.
+	*	@throws java.io.IOException			An I/O error was encoutnered while reading the sticky notes.
 	*/
 	private void addStickyNotes(Folder folder, PST pst)
 	throws
@@ -475,6 +496,15 @@ public class PSTBean {
 	}
 
 	/**	Get the required information from a PST file
+	*
+	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
+	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the pst file.
+	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
+	*	@throws	NullDataBlockException			A null data block was found when reading the pst file.
+	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the pst file.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
+	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
+	*	@throws java.io.IOException			An I/O error was encoutnered while reading the pst file.
 	*/
 	private void processPST()
 	throws
