@@ -122,11 +122,11 @@ public class PropertyContext {
 	*/
 	PropertyContext(final LPTLeaf node, final BlockMap bbt, PSTFile pstFile)
 	throws
-		UnparseablePropertyContextException,
-		UnknownClientSignatureException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		UnparseablePropertyContextException,
+		UnknownClientSignatureException,
 		java.io.IOException
 	{
 		this();
