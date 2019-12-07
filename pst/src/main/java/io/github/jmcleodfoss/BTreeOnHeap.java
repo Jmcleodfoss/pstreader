@@ -66,6 +66,8 @@ public class BTreeOnHeap extends BTree {
 		*	@param	hid		The heap ID of the root of the B-tree-on-heap.
 		*	@param	newLevel	The level of this entry in the B-tree (0 = leaf node)
 		*	@param	context		The B-tree-in-heap construction context to use when building the next node.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading the B-tree header context.
 		*/
 		private BTHContext(final HeapOnNode.HID hid, final int newLevel, BTHContext context)
 		throws
@@ -146,6 +148,8 @@ public class BTreeOnHeap extends BTree {
 		*	@param	hid	The heap-on-node index of the next level nod of the B-tree
 		*
 		*	@return	A new BTHContect object for use when reading the next child node of this node.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading the B-tree header context.
 		*/
 		private BTHContext nextLevelContextFactory(final HeapOnNode.HID hid)
 		throws
@@ -191,6 +195,8 @@ public class BTreeOnHeap extends BTree {
 		/**	Read in B-tree-on-heap header information.
 		*
 		*	@param	stream	The input stream from which to read the B-tree-on-heap header data.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading the B-tree header.
 		*/
 		Header(java.nio.ByteBuffer stream)
 		throws
@@ -238,6 +244,8 @@ public class BTreeOnHeap extends BTree {
 		*	@param	stream	The input stream from which to read the BTH data.
 		*	@param	keySize	The size of the key object in this B-tree-on-heap.
 		*	@param	fields	The fields to read in when constructing the node.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading in the B-tree.
 		*/
 		RecordBase(java.nio.ByteBuffer stream, byte keySize, DataDefinition[] fields)
 		throws
@@ -285,6 +293,8 @@ public class BTreeOnHeap extends BTree {
 		/**	Return the field definitions required to read in an intermediate record from the input stream.
 		*
 		*	@param	keySize	The size of the key values in this B-tree-on-heap.
+		*
+		*	@return	The field definitions for the record being read.
 		*/
 		private static DataDefinition[] fieldDefinitions(final byte keySize)
 		{
@@ -433,6 +443,8 @@ public class BTreeOnHeap extends BTree {
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	hid	The index of heap-on-node which points to the B-tree-on-heap's root.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading this B-tree.
 	*/
 	BTreeOnHeap(final HeapOnNode hon, final HeapOnNode.HID hid, PSTFile pstFile)
 	throws
