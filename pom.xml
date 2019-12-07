@@ -56,6 +56,41 @@
 		</profile>
 
 		<profile>
+			<!-- Developer (private + protected + public) Javadoc -->
+			<id>dev-doc</id>
+
+			<modules>
+				<module>explorer</module>
+				<module>localeBean</module>
+				<module>pst</module>
+				<module>pstExtractor</module>
+				<module>swingutil</module>
+				<module>util</module>
+				<module>xml</module>
+			</modules>
+
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.1.1</version>
+						<configuration>
+							<show>private</show>
+							<help>false</help>
+							<reportOutputDirectory>${project.reporting.outputDirectory}</reportOutputDirectory>
+							<destDir>javadoc-dev</destDir>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
 			<!-- Deploy to maven central via ossrh for the main library and the explorer application -->
 			<id>deploy-ossrh</id>
 
@@ -179,6 +214,15 @@
 				<version>3.0.0-M4</version>
 				<configuration>
 					<trimStackTrace>false</trimStackTrace>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<show>public</show>
 				</configuration>
 			</plugin>
 		</plugins>
