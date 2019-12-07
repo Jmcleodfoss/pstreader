@@ -14,7 +14,7 @@ class Recipient {
 	/**	The given (display) name of the recipient. */
 	public final String displayName;
 
-	/**	Construct the Attachment object.
+	/**	Construct the Recipient object.
 	*
 	*	@param	tc		The recipient table.
 	*	@param	row		The row in the recipient table to create the Recipient object from.

@@ -22,7 +22,7 @@ public class Task extends MessageObject {
 	/**	The due date of the tasj in UTC. */
 	public final java.util.Date dueDate;
 
-	/**	Create a message object for the given row in the folder contents table.
+	/**	Create a task for the given row in the folder contents table.
 	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row	The row of the contents table from which to create the appointment.
