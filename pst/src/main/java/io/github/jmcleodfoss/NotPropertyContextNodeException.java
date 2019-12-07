@@ -11,8 +11,8 @@ public class NotPropertyContextNodeException extends Exception {
 
 	/**	Create a NotPropertyContextException from the given description.
  	*
- 	* 	param node	The node with the unexpected client signature.
- 	* 	param cs	The node's client signature.
+ 	* 	@param node	The node with the unexpected client signature.
+ 	* 	@param cs	The node's client signature.
  	*/
 	NotPropertyContextNodeException(final LPTLeaf node, ClientSignature cs)
 	{

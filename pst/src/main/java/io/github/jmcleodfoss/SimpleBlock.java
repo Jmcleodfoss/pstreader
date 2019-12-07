@@ -61,6 +61,8 @@ class SimpleBlock extends BlockBase {
 	*
 	*	@param	entry	The block B-tree leaf entry describing the block.
 	*	@param	pstFile	The PST file's header, input data stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*/
 	SimpleBlock(final BBTEntry entry, PSTFile pstFile)
 	throws
@@ -75,6 +77,8 @@ class SimpleBlock extends BlockBase {
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	encryption	The encryption method to use to decrypt the data.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*
 	*	@see	SubnodeBTree.BlockContext
 	*/
@@ -92,6 +96,8 @@ class SimpleBlock extends BlockBase {
 	*	@param	blockSize	The size of the block (including the {@link BlockTrailer BLOCKTRAILER})
 	*	@param	encryption	The encryption method to use to decrypt the data.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*/
 	SimpleBlock(final BBTEntry entry, final int blockSize, final Encryption encryption, PSTFile pstFile)
 	throws
@@ -140,6 +146,10 @@ class SimpleBlock extends BlockBase {
 	*
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
+	*
+	*	@return	The data block for the requested block B-tree entry.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered when reading the block data.
 	*/
 	static SimpleBlock read(final BBTEntry entry, PSTFile pstFile)
 	throws

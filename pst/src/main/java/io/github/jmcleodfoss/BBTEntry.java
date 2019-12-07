@@ -54,6 +54,8 @@ class BBTEntry implements BTreeLeaf {
 	*
 	*	@param	entryStream	The stream of data from which to read the entry.
 	*	@param	context		The context used to build the tree. This is not saved in the tree itself.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this block B-tree node.
 	*/
 	BBTEntry(java.nio.ByteBuffer entryStream, final PagedBTree.PageContext<BTree, BTreeLeaf> context)
 	throws

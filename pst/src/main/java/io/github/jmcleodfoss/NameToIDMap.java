@@ -69,6 +69,8 @@ public class NameToIDMap {
 		*	@param	entryStream	The data stream from which to read the named ID information.
 		*	@param	guidArray	The GUID as read from the GUID stream.
 		*	@param	stringStream	The data stream from which to read the property name.
+		*
+		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		NameID(java.nio.ByteBuffer entryStream, final byte[] guidArray, java.nio.ByteBuffer stringStream)
 		throws
@@ -120,6 +122,8 @@ public class NameToIDMap {
 		*	@param	stringStream	The input data stream from which to read the property name.
 		*
 		*	@return	The next name in the stream of property names.
+		*
+		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		private String name(java.nio.ByteBuffer stringStream)
 		throws

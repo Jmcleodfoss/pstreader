@@ -21,6 +21,8 @@ class BlockBTree extends PagedBTree implements BlockMap {
 		*
 		*	@param	bref	The block reference for the current node of the block B-tree under construction.
 		*	@param	pstFile	The PST file's input stream, header, etc.
+		*
+		*	@throws	java.io.IOException	An I/O error was encoutered while reading in the block B-tree context.
 		*/
 		BBTContext(final BREF bref, final PSTFile pstFile)
 		throws
@@ -47,6 +49,8 @@ class BlockBTree extends PagedBTree implements BlockMap {
 		/**	Create a leaf block B-tree entry using data read in from the input stream.
 		*
 		*	@param	entryStream	The data stream from which to read the intermediate block data information.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading in the node.
 		*/
 		@Override
 		protected BBTEntry leafNodeFactory(java.nio.ByteBuffer entryStream)
@@ -62,6 +66,8 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	*	@param	key	The key of this node. The keys of all children of this node will be greater than or equal to this value.
 	*	@param	bref	The block reference from which to read the data for this node.
 	*	@param	pstFile	The PST file header, input stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the block B-tree.
 	*
 	*/
 	BlockBTree(final long key, final BREF bref, PSTFile pstFile)

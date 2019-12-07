@@ -138,6 +138,9 @@ public class Header {
 	/**	Read in the header data and save the fields we need for later.
 	*
 	*	@param	byteBuffer	The data stream from which to read the PST header.
+	*
+	*	@throws	NotPSTFileException	This is not a pst file.
+	*	@throws	java.io.IOException	An I/O error was encountered when reading the pst header.
 	*/
 	Header(java.nio.ByteBuffer byteBuffer)
 	throws
@@ -189,6 +192,8 @@ public class Header {
 	/**	Ensure that the file's magic number is correct for a PST file.
 	*
 	*	@param	dc	The DataContainer object holding the values read in from the header.
+	*
+	*	@throws	NotPSTFileException	The magic number for this file is not that for a pst file.
 	*/
 	private void validate_dwMagic(final DataContainer dc)
 	throws

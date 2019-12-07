@@ -95,6 +95,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		*	@param	blockIndex	The block index (starting from 0) containing the HID.
 		*	@param	index		The index within the block to the heap entry containing the HID.
 		*
+		* 	@return	The HID for the given block index and index.
+		*
 		*	@see	#BTreeOnHeapRoot
 		*/
 		private static HID factory(int blockIndex, int index)
@@ -131,6 +133,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		/**	Build a heap-on-node bitmap header object from the input data stream.
 		*
 		*	@param	stream	The input data stream from which to read the HNBITMAPHDR object.
+		*
+		* 	@throws	java.io.IOException	There was an I/O error reading the heap node bitmap header.
 		*/
 		private HNBitmapHeader(java.nio.ByteBuffer stream)
 		throws
@@ -182,6 +186,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		/**	Build a heap-on-node header object from the input data stream.
 		*
 		*	@param	stream	The data stream from which to read the HNHDR object.
+		*
+		* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the heap.
+		* 	@throws	UnknownClientSignatureException	A node with an unrecognized client signature was found while building the heap.
+		* 	@throws java.io.IOException	An I/O error was encountered while trying to build the heap.
 		*/
 		private Header(java.nio.ByteBuffer stream)
 		throws
@@ -237,6 +245,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		/**	Construct a PageMap object from the input datastream.
 		*
 		*	@param	stream	The data stream from which to read the HNPAGEMAP object.
+		*
+		* 	@throws	java.io.IOException	There was an I/O error while reading the data for the page map.
 		*/
 		private PageMap(java.nio.ByteBuffer stream)
 		throws
@@ -285,7 +295,12 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		/**	The offset from the begining of the block to the PageMap. */
 		private final int ibHnpm;
 
-		/**	Create a PageHeader object from the input data stream. */
+		/**	Create a PageHeader object from the input data stream.
+		*
+		* 	@param	stream	The stream to read the page header from.
+		*
+		* 	@throws	java.io.IOException	An I/O exception was encountered while reading the data for the page header. 
+ 		*/
 		private PageHeader(java.nio.ByteBuffer stream)
 		throws
 			java.io.IOException
@@ -310,6 +325,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	*	@param	entry	The entry from the block B-tree from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file {@link Header}, data stream, etc.
+	*
+	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the heap.
+	* 	@throws	UnknownClientSignatureException	A node with an unrecognized client signature was found while building the heap.
+	* 	@throws java.io.IOException	An I/O error was encountered while trying to build the heap.
 	*/
 	HeapOnNode(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
@@ -459,6 +478,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	*	@param	pstFile	The PST file's data stream, etc.
 	*
 	*	@return	The heap-on-node found at the given node ID.
+	*
+	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while building the heap.
+	* 	@throws	UnknownClientSignatureException	An unrecognized client signature was found while building the heap.
+	* 	@throws java.io.IOException	An I/O exception was found while reading the data to build the heap.
 	*/
 	static HeapOnNode makeHeapOnNode(NID nid, BlockMap bbt, NodeBTree nbt, PSTFile pstFile)
 	throws

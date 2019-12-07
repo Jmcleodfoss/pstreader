@@ -9,6 +9,12 @@ public class MessageObjectWithBody extends MessageObject {
 	*	@param	messageRow	The row of the contents table from which to create the message
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*
+	*	@throws	NotHeapNodeException	A heap which was not a node heap was found while building the message object / body.
+	*	@throws UnknownClientSignatureException	An unknown client signature was encountered while building the message object / body.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while building the message object / body.
+	*	@throws UnparseableTableContextException	A bad / corrupt table context block was found while building the message object / body.
+	*	@throws	java.io.IOException	An I/O error was encounted while reading in the data for the message object / body.
 	*/
 	MessageObjectWithBody(final TableContext contentsTable, final int messageRow, final NodeMap nbt, final PSTFile pstFile)
 	throws

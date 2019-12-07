@@ -5,7 +5,7 @@ package io.github.jmcleodfoss.pst;
 */
 abstract class PagedBTreeFinder {
 
-	/**	The BTreePage class holds information about paged (block & node) B-trees. */
+	/**	The BTreePage class holds information about paged (block &amp; node) B-trees. */
 	protected abstract class BTreePage {
 
 		/**	The children (BTEntry or BBTEntry/NBTEntry) of this BTreePage */
@@ -15,6 +15,8 @@ abstract class PagedBTreeFinder {
 		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered when reading the data for the B-tree page.
 		*/
 		protected BTreePage(final BREF bref, PSTFile pstFile)
 		throws
@@ -57,6 +59,8 @@ abstract class PagedBTreeFinder {
 		*	@param	pstFile	The PST file data stream, header, etc.
 		*
 		*	@return	A context suitable for constructing intermediate and leaf nodes.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading in the B-tree page context.
 		*/
 		protected abstract PagedBTree.PageContext<BTree, BTreeLeaf> contextFactory(final BREF bref, PSTFile pstFile)
 		throws
@@ -68,6 +72,8 @@ abstract class PagedBTreeFinder {
 		*	@param	entryStream	The data stream from which to read the node record.
 		*
 		*	@return	A leaf node for this B-tree.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered while reading in the B-tree node.
 		*/
 		protected abstract BTreeLeaf leafNodeFactory(final PagedBTree.PageContext<BTree, BTreeLeaf> context, java.nio.ByteBuffer entryStream)
 		throws
@@ -92,6 +98,8 @@ abstract class PagedBTreeFinder {
 	*	@param	bref		The block reference of the B-Tree page block to start searching in.
 	*
 	*	@return	The Block B-tree leaf entry for the requested block ID, or null if the block ID was not found.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the node.
 	*/
 	protected BTreeLeaf find(final NodeKey keyedItem, final BREF bref)
 	throws
@@ -125,6 +133,8 @@ abstract class PagedBTreeFinder {
 	*	@param	bref	The block reference of the B-tree page block to start searching in.
 	*
 	*	@return	The BTreePage for this block reference.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the B-tree page.
 	*/
 	protected abstract BTreePage bTreePageFactory(BREF bref)
 	throws

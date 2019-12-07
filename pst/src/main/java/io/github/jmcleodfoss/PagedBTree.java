@@ -45,6 +45,8 @@ public abstract class PagedBTree extends BTree {
 		*
 		*	@return	The passed in pstFile object, for use as a parameter to the constructor.
 		*
+		*	@throws	java.io.IOException	An I/O error was encountered when seeking the new position in the file.
+		*
 		*	@see	PageContext
 		*/
 		private static PSTFile gotoPage(final BREF bref, PSTFile pstFile)
@@ -60,7 +62,7 @@ public abstract class PagedBTree extends BTree {
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
 		*
-		*	@throws java.io.IOException	There was a problem reading the page context.
+		*	@throws java.io.IOException	An I/O error was encountered while either seeking the page context's position in the file or while reading the page context data.
 		*/
 		protected PageContext(BREF bref, PSTFile pstFile)
 		throws
@@ -150,6 +152,8 @@ public abstract class PagedBTree extends BTree {
 		*
 		*	@param	context		The context from which to build the B-tree.
 		*	@param	byteBuffer	The data stream from which to read the intermediate B-tree entry.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this B-tree entry.
 		*/ 
 		BTEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer byteBuffer)
 		throws

@@ -61,6 +61,8 @@ class DataDefinition {
 	*	@param	description	The description of how to read in the field.
 	*	@param	byteBuffer	The input data stream from which to read the field.
 	*	@param	data		The location in which to store the field.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the requested data.
 	*/
 	static void read(final DataDefinition description, java.nio.ByteBuffer byteBuffer, java.util.IdentityHashMap<String, Object> data)
 	throws

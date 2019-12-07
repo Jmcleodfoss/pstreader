@@ -65,6 +65,12 @@ public class Appointment extends MessageObject {
 	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*
+	*	@throws	NotHeapNodeException			A node which is not a heap node was found while reading the appointment.
+	*	@throws	UnknownClientSignatureException		An unknown client signature was found while reading the appointment.
+	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while reading the appointment.
+	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while reading the appointment.
+	*	@throws	java.io.IOException			An I/O error was encountered while reading the appointment.
 	*/
 	Appointment(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws

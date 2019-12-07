@@ -26,6 +26,15 @@ public class EntryID {
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
 	*
 	*	@return	The folder object for this EntryID's {@link #nid}.
+	*
+	*	@throws	NotHeapNodeException			A node which is not a heap node was found while creating the folder.
+	*	@throws	NotPropertyContextNodeException		A node in this folder's B-tree does not contain a property context when it was expected to.
+	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
+	*	@throws	NullDataBlockException			A null data block was encountered while building the folder.
+	*	@throws UnknownClientSignatureException		An unknown client signature was encountered while building the folder.
+	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was encountered.
+	*	@throws	UnparseableTableContextException	A bad / corrupt table context was encountered.
+	*	@throws	java.io.IOException			An I/O problem was encountered while reading the data for folder.
 	*/
 	Folder folder(BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
@@ -48,6 +57,14 @@ public class EntryID {
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
 	*
 	*	@return	The message object for this EntryID's {@link #nid}.
+	*
+	*	@throws	NotHeapNodeException			A node which is not a heap node was found while building the property context for this node.
+	*	@throws	NotPropertyContextNodeException		The node does not contain a property context.
+	*	@throws	NullDataBlockException			A null data block was encountered while building the property context.
+	*	@throws UnknownClientSignatureException		An unknown client signature was encountered while building the property context.
+	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was encountered.
+	*	@throws	UnparseableTableContextException	A bad / corrupt table context was encountered.
+	*	@throws	java.io.IOException			An I/O problem was encountered while reading the data for the property context.
 	*/
 	PropertyContext propertyContext(BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws

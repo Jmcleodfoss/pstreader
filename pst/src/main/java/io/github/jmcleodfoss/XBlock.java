@@ -80,6 +80,8 @@ class XBlock extends BlockBase {
 	*	@param	entry	The block B-tree entry describing the root of this XBLOCK/XXBLOCK tree structure.
 	*	@param	bbt	The PST file's block B-tree (required to find the child blocks).
 	*	@param	pstFile	The PST file's input stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O exception was encountered when reading the XBLOCK / XXBLOCK data.
 	*/
 	XBlock(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
@@ -172,6 +174,8 @@ class XBlock extends BlockBase {
 	*	@param	pstFile		The underlying PST file's data stream, header, etc.
 	*
 	*	@return	A vector of SimpleBlock objects.
+	*
+	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XBlocks.
 	*/
 	static java.util.Vector<SimpleBlock> readXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
 	throws
@@ -195,6 +199,8 @@ class XBlock extends BlockBase {
 	*	@param	pstFile		The underlying PST file's data stream, header, etc.
 	*
 	*	@return	A vector of XBlock objects.
+	*
+	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XXBlocks.
 	*/
 	static java.util.Vector<XBlock> readXXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
 	throws

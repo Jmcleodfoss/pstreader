@@ -117,6 +117,8 @@ abstract class DataType {
 	*	@param	byteBuffer	The incoming data stream from which to read the object.
 	*
 	*	@return	The object read from the data stream.
+	*
+	*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 	*/
 	public abstract Object read(java.nio.ByteBuffer byteBuffer)
 	throws
@@ -924,7 +926,10 @@ abstract class DataType {
 	/**	The MultipleString class describes how to read in a list of character strings from a PST file. */
 	private static class MultipleString extends StringBase {
 
-		/**	Create a manipulator for reading and displaying lists of PST-file strings. */
+		/**	Create a manipulator for reading and displaying lists of PST-file strings.
+		*
+		*	@param	dataType	The type of the string (i.e. wide or narrow).
+		*/
 		private MultipleString(final short dataType)
 		{
 			super(dataType);
@@ -946,6 +951,8 @@ abstract class DataType {
 		*	@param	byteBuffer	The incoming data stream from which to read the list of character strings.
 		*
 		*	@return	An array containing the character strings read in, as an array of Strings.
+		*
+		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*
 		*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
 		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
@@ -1144,6 +1151,8 @@ abstract class DataType {
 		*	@param	byteBuffer	The incoming data stream from which to read the data.
 		*
 		*	@return	A String corresponding to the Boolean read in from the data stream.
+		*
+		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		throws
@@ -1174,7 +1183,10 @@ abstract class DataType {
 		/**	The format to use when converting time objects to strings. */
 		private static final java.text.SimpleDateFormat OUTPUT_FORMAT = new java.text.SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
 
-		/**	Initialize the base time; exit on exception. */
+		/**	Initialize the base time; exit on exception.
+		*
+		*	@return	A Date object for the base time used by PST files.
+		*/
 		private static java.util.Date initBaseTime()
 		{
 			try {

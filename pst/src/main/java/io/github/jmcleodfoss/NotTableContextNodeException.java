@@ -11,7 +11,7 @@ public class NotTableContextNodeException extends Exception {
 
 	/**	Create a NotTableContextException from the given description.
  	*
- 	* 	param cs	The node's client signature.
+ 	* 	@param cs	The node's client signature.
  	*/
 	NotTableContextNodeException(ClientSignature cs)
 	{

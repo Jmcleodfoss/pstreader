@@ -33,6 +33,8 @@ abstract class BlockBase {
 	*
 	*	@param	numBytes	The number of data bytes in the block.
 	*	@param	pstFile		The PST file input data stream, {@link Header}, etc
+	*
+	*	@return	The size of the block with padding given the target size in bytes.
 	*/
 	protected static int blockSize(final int numBytes, final PSTFile pstFile)
 	{
@@ -64,6 +66,8 @@ abstract class BlockBase {
 	*	@param	pstFile	The PST file input stream, etc.
 	*
 	*	@return	A BlockBase object from which the data may be retrieved.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the requested block.
 	*
 	*	@see	#data
 	*/

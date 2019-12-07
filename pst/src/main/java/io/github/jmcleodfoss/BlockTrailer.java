@@ -42,6 +42,8 @@ class BlockTrailer {
 	/**	Create a BlockTrailer object from the current position in the input datastream.
 	*
 	*	@param	pstFile	The PST file's header, input stream, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encoutered while reading in the block trailer.
 	*/
 	BlockTrailer(PSTFile pstFile)
 	throws

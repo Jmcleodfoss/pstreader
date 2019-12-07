@@ -11,7 +11,7 @@ public class NullDataBlockException extends Exception {
 
 	/**	Create a NullDataBlockException for the given node.
  	*
- 	* 	param node	The node with the null data block.
+ 	* 	@param node	The node with the null data block.
  	*/
 	NullDataBlockException(final LPTLeaf node)
 	{

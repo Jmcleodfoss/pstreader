@@ -58,6 +58,8 @@ class DataContainer extends java.util.IdentityHashMap<String, Object> {
 	*
 	*	@param	byteBuffer	The input stream from which to read the data.
 	*	@param	description	The list of descriptions of data to be read.
+	*
+	*	@throws	java.io.IOException	An I/O problem was encountered while reading in the requested data.
 	*/
 	void read(java.nio.ByteBuffer byteBuffer, final DataDefinition... description)
 	throws
@@ -71,6 +73,8 @@ class DataContainer extends java.util.IdentityHashMap<String, Object> {
 	*
 	*	@param	byteBuffer	The input stream from which to read the data.
 	*	@param	description	The list of descriptions of data to be read.
+	*
+	*	@throws	java.io.IOException	An I/O problem was encountered while reading in the requested data.
 	*/
 	void read(java.nio.ByteBuffer byteBuffer, final DataDefinition[]... description)
 	throws

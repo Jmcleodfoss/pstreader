@@ -6,7 +6,11 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 
-	/**	Create the table model with the given ValueDelegate object. */
+	/**	Create the table model with the given ValueDelegate object.\
+	*
+	*	@param	properties	The list of properties for this table row
+	*	@param	namedProperties	The list of named properties for this PST file
+	*/
 	@SuppressWarnings("unchecked")
 	LPTTableModel(final java.util.Map<Integer, Object> properties, final NameToIDMap namedProperties)
 	{

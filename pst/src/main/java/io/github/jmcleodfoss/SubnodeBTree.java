@@ -36,6 +36,8 @@ public class SubnodeBTree extends BTree {
 		*	@param	bid	The block ID of the root of the sub-node B-tree.
 		*	@param	bbt	The PST file's block B-tree.
 		*	@param	pstFile	The PST file's data stream, header, etc.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this node's block context.
 		*/
 		BlockContext(final BID bid, final BlockMap bbt, PSTFile pstFile)
 		throws
@@ -146,6 +148,8 @@ public class SubnodeBTree extends BTree {
 		*
 		*	@param	context	The context in which to read the node.
 		*	@param	stream	The data stream from which to read the node information.
+		*
+		*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this node.
 		*/ 
 		SIEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer stream)
 		throws
@@ -193,6 +197,8 @@ public class SubnodeBTree extends BTree {
 	*
 	*	@param	key	The key for this node in the sub-node B-tree.
 	*	@param	context	The context to use when building the sub-node B-tree.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this sub-node B-tree.
 	*/
 	private SubnodeBTree(final long key, final BlockContext context)
 	throws

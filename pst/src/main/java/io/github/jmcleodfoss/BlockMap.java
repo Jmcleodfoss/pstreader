@@ -8,6 +8,8 @@ interface BlockMap {
 	*	@param	bid	The block ID of the block to be found.
 	*
 	*	@return The block for this block ID, if any, or null if the block ID was not found.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in ths requested block.
 	*/
 	BBTEntry find(final BID bid)
 	throws

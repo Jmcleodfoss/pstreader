@@ -53,6 +53,8 @@ public class NBTEntry extends LPTLeaf {
 	*
 	*	@param	byteBuffer	The data stream from which to read the Node B-tree leaf entry.
 	*	@param	context		The context to use when reading the leaf data.
+	*
+	* 	@throws	java.io.IOException	An I/O error was encountered while reading in the node's data.
 	*/
 	NBTEntry(java.nio.ByteBuffer byteBuffer, final PagedBTree.PageContext<BTree, BTreeLeaf> context)
 	throws

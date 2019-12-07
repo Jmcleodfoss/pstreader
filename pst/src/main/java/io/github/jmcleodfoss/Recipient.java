@@ -19,6 +19,11 @@ class Recipient {
 	*	@param	tc		The recipient table.
 	*	@param	row		The row in the recipient table to create the Recipient object from.
 	*	@param	fUnicode	A flag indicating whether the underlying PST file is Unicode or ANSI.
+	*
+	*	@throws	NotHeapNodeException			A node which is not a heap node was found when reading in the data for this recipient.
+	*	@throws	UnknownClientSignatureException		An unknown client signature was found while building the recipient.
+	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building the recipient.
+	*	@throws	java.io.IOException			An I/O error was encoutered while reading the data for the recipient.
 	*/
 	Recipient(TableContext tc, int row, boolean fUnicode)
 	throws

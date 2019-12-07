@@ -72,6 +72,10 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		/**	Create a TCInfo object by reading in the required information from the data inputstream.
 		*
 		*	@param	stream	The input data stream from which to read the TCINFO structure.
+		*
+		*	@throws	NotTableContextNodeException	A node which is not a table context node was found while building the table context information object.
+		*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
+		*	@throws java.io.IOException		An I/O exception was encountered while reading the data for the table context information obkect.
 		*/
 		@SuppressWarnings("unchecked")
 		private TCInfo(java.nio.ByteBuffer stream)
@@ -229,6 +233,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		/**	Create a TColDescr object from date read in from the input datastream.
 		*
 		*	@param	stream	The input data stream from which to read the column description.
+		*
+		*	@throws	java.io.IOException	An I/O error was encounted while reading the data for this column description.
 		*/
 		private TColDescr(java.nio.ByteBuffer stream)
 		throws
@@ -475,6 +481,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*
 	*	@return	A ByteBuffer form which the data may be read.
 	*
+	*	@throws	java.io.UnsupportedEncodingException	An unsupported text encouding was found while reading in a String for this table.
+	*
 	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
 	*	@see	io.github.jmcleodfoss.pst.PropertyContext#getData
 	*/
@@ -562,6 +570,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, byte[] data, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
@@ -590,6 +600,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
@@ -619,6 +631,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	pstFile		The PST file input data stream, header, etc.
 	*
 	*	@return	The data in the row given by rowStream, parsed into the appropriate PST data types.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this table context row.
 	*/
 	private Object[] readRow(java.nio.ByteBuffer rowStream, int numColumns, int r, SubnodeBTree sbt, BlockMap bbt, HeapOnNode hon, PSTFile pstFile)
 	throws

@@ -59,6 +59,8 @@ class ClientSignature {
 	/**	Construct a ClientSignature object from a client signature read in from disk.
 	*
 	*	@param	signature	The signature of this heap.
+	*
+	*	@throws	UnknownClientSignatureException	The client signature was not recognized.
 	*/
 	ClientSignature(byte signature)
 	throws
@@ -94,6 +96,8 @@ class ClientSignature {
 	*	@param	signature	The client signature byte as read from the Heap-on-Node header.
 	*
 	*	@return	A string describing the client signature.
+	*
+	*	@throws	UnknownClientSignatureException	The client signature was not recognized.
 	*/
 	static private String description(byte signature)
 	throws

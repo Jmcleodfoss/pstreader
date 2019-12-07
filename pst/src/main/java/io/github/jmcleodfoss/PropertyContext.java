@@ -65,7 +65,7 @@ public class PropertyContext {
 	
 		/**	Create the table model.
 		*
-		*	@param	entries	The properties in the PropertyContext object.
+		*	@param	properties	The properties in the PropertyContext object.
 		*	@param	namedProperties	The known property names
 		*/
 		TableModel(final java.util.Map<Integer, Object> properties, final NameToIDMap namedProperties)
@@ -112,6 +112,13 @@ public class PropertyContext {
 	*	@param	node	The node containing the property context.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
+	*
+	*	@throws	NotHeapNodeException			A node which was not a heap node was found while bulding the property context.
+	*	@throws	NotPropertyContextNodeException		A node which is not part of a property context was found while building the property context.
+	*	@throws	NullDataBlockException			A null data block was found while building the property context.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while building the property context.
+	*	@throws	UnknownClientSignatureException		An unknown client signature was found while building the property context.
+	*	@throws	java.io.IOException			An I/O error was encountered while reading in the data for the property context.
 	*/
 	PropertyContext(final LPTLeaf node, final BlockMap bbt, PSTFile pstFile)
 	throws
@@ -175,6 +182,8 @@ public class PropertyContext {
 	*
 	*	@return	A ByteBuffer from which the data may be read.
 	*
+	*	@throws	java.io.UnsupportedEncodingException	An unsupported text encoding was found when reading in String data for this property.
+	*
 	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
 	*	@see	io.github.jmcleodfoss.pst.TableContext#getData
 	*/
@@ -215,6 +224,9 @@ public class PropertyContext {
 	*	@param	hon		The heap-on-node containing the property context
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, etc.
+	*
+	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context node was encountered while reading this property.
+	*	@throws java.io.IOException			An I/O exception was encoutered while reading this property.
 	*
 	*	@return	The object read in.
 	*/
@@ -272,6 +284,9 @@ public class PropertyContext {
 	*	@param	bth	The B-tree-on-heap containing the heap-on-node.
 	*	@param	bbt	The PST file block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
+	*
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while reading the property context.
+	*	@throws	java.io.IOException			An I/O error was encountered while reading in the data for the property context.
 	*/
 	private void read(final LPTLeaf node, final HeapOnNode hon, final BTreeOnHeap bth, final BlockMap bbt, PSTFile pstFile)
 	throws

@@ -67,6 +67,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		*	@param	byteBuffer	The data stream from which to read the intermediate node information.
 		*
 		*	@return	A B-tree object containing the entry and all its children.
+		*
+		*	@throws	java.io.IOException	An I/O exception was encountered while reading a non-leaf node.
 		*/
 		protected abstract I intermediateNodeFactory(java.nio.ByteBuffer byteBuffer)
 		throws
@@ -77,6 +79,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		*	@param	byteBuffer	The data stream from which to read the leaf node information.
 		*
 		*	@return	A leaf node object containing the leaf data.
+		*
+		*	@throws	java.io.IOException	An I/O exception was encountered while reading a leaf node.
 		*/
 		protected abstract L leafNodeFactory(java.nio.ByteBuffer byteBuffer)
 		throws
@@ -171,6 +175,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*	@param	key	The key for this node of the B-tree. All child nodes are guaranteed to have keys greater than or equal
 	*			to this.
 	*	@param	context	Context data used to construct the B-tree
+	*
+	*	@throws	java.io.IOException	An I/O error was encoutnered while reading the B-tree.
 	*/
 	protected BTree(final long key, Context<BTree, BTreeLeaf> context)
 	throws

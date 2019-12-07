@@ -98,6 +98,8 @@ public class DistributionList extends MessageObject {
 		/**	Construct a OneOffEntry object from the data in the given ByteBuffer.
 		*
 		*	@param	byteBuffer	The ByteBuffer from which to read the data
+		*
+	*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book entry.
 		*/
 		OneOffEntry(java.nio.ByteBuffer byteBuffer)
 		throws
@@ -147,6 +149,8 @@ public class DistributionList extends MessageObject {
 		*	@param	bbt		The block B-tree for this PST file.
 		*	@param	nbt		The node B-tree for this PST file.
 		*	@param	pstFile		The PST file's data stream, header information, etc.
+		*
+		*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book entry.
 		*/
 		AddressBookEntry(java.nio.ByteBuffer byteBuffer, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 		throws
@@ -181,6 +185,12 @@ public class DistributionList extends MessageObject {
 	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*
+	*	@throws NotHeapNodeException			A node which is not a heap node was encountered while reading in the data for the distribution list.
+	*	@throws UnknownClientSignatureException		An unknown client signature was encountered while reading in the data for the distribution list.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found while reading in the data for the distribution list.
+	*	@throws UnparseableTableContextException	A bad / corrupt table context was found while reading in the data for the distribution list.
+	*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book.
 	*/
 	DistributionList(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws

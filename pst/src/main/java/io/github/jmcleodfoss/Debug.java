@@ -33,7 +33,12 @@ class Debug {
 		packageLogger.setLevel(java.util.logging.Level.OFF);
 	}
 
-	/**	Get a logger. This is a wrapper around java.utilo.logging.Logger.getLogger(); using it to obtaina logger ensures that packageLogger is appropriately initialized. */
+	/**	Get a logger. This is a wrapper around java.utilo.logging.Logger.getLogger(); using it to obtaina logger ensures that packageLogger is appropriately initialized.
+	*
+	*	@param	name	The name of the logger to use.
+	*
+	*	@return	The logger with the requested name.
+	*/
 	static java.util.logging.Logger getLogger(final String name)
 	{
 		java.util.logging.Logger logger = java.util.logging.Logger.getLogger(name);

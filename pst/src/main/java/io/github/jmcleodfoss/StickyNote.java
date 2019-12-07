@@ -25,6 +25,12 @@ public class StickyNote extends MessageObjectWithBody {
 	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*
+	*	@throws	NotHeapNodeException			A node which is not a heap node was found while building this sticky note.
+	*	@throws	UnknownClientSignatureException		An unknown client signature was found while building this sticky note.
+	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building this sticky note.
+	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building this sticky note.
+	*	@throws java.io.IOException			An I/O error was encountered when reading the data for this sticky note.
 	*/
 	StickyNote(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws

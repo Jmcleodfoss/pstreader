@@ -28,6 +28,13 @@ public class MessageObject {
 	*	@param	messageRow	The row of the contents table from which to create the message
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*
+	* 	@throws	NotHeapNodeException			A node which was not a heap node was found while building the message object.
+	* 	@throws	UnknownClientSignatureException		A block with an unrecognized client signature was found while building the message object.
+	* 	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building the message object
+	* 	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building the message object
+	* 	@throws java.io.IOException			An I/O exception was encountered while reading the data for the message object.
+	*
 	*	@see	Folder
 	*	@see	Attachment
 	*	@see	Recipient
@@ -55,6 +62,16 @@ public class MessageObject {
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*
+	*	@return	The message object found at the given row of the content table.
+	*
+	* 	@throws	NotHeapNodeException			A node which was not a heap node was found while building the message object.
+	* 	@throws	NotPropertyContextNodeException		A node which was expected to be a property context node was found to be something else.
+	* 	@throws	NotTableContextNodeException		A node which was expected to be a table context node was found to be something else.
+	*	@throws	NullDataBlockException			A null data block was encountered while building the message object.
+	* 	@throws	UnknownClientSignatureException		A block with an unrecognized client signature was found while building the message object.
+	* 	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building the message object
+	* 	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building the message object
+	* 	@throws java.io.IOException			An I/O exception was encountered while reading the data for the message object.
 	*/
 	static MessageObject factory(TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
@@ -95,10 +112,6 @@ public class MessageObject {
 	*
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*
-	*	@see	Message#body
-	*	@see	MessageObjectWithBody#bodyHtml
-	*	@see	Message#transportHeaders
-	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building the table context.
@@ -107,6 +120,10 @@ public class MessageObject {
 	*	@throws UnparseablePropertyContextException	The property context for this message could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context for this message could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
+	*
+	*	@see	Message#body
+	*	@see	MessageObjectWithBody#bodyHtml
+	*	@see	Message#transportHeaders
 	*/
 	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
 	throws

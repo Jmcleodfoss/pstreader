@@ -49,6 +49,8 @@ public class PSTFile {
 	/**	A convenience method to move to the given point in the PST file.
 	*
 	*	@param	position	The location in the PST file to move the mapped byte buffer pointer to.
+	*
+	*	@throws	java.io.IOException	An I/O error was encountered while trying to move to the requested location in the file.
 	*/
 	void position(final long position)
 	throws

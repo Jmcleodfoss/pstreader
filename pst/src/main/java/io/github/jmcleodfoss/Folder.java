@@ -81,6 +81,15 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
+	*
+	*	@throws	NotHeapNodeException			node which is not a heap node was found while reading the folder data.
+	*	@throws NotPropertyContextNodeException		A node which does not hold a property context was found where a property context node was expected.
+	*	@throws NotTableContextNodeException		A node which does not hold a table context was found where a table context node was expected.
+	*	@throws	NullDataBlockException			A null data block was found while reading the folder data.
+	*	@throws UnknownClientSignatureException		An unknown client signature was found while reading the folder data.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found while reading the folder data.
+	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while reading the folder data.
+	*	@throws java.io.IOException			An I/O exception was encountered while reading the folder data.
 	*/
 	private Folder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
@@ -405,6 +414,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	</pre>
 	*
 	*	@param	prefix	The text with which to prefix the lines for the current tree.
+	*
+	*	@throws	NotHeapNodeException			node which is not a heap node was found while reading a sub-folder's data.
+	*	@throws UnknownClientSignatureException		An unknown client signature was found while reading a sub-folder's data.
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found while reading a sub-folder's data.
+	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while reading a sub-folder's data.
+	*	@throws java.io.IOException			An I/O exception was encountered while reading a sub-folder's data.
 	*/
 	private void show(String prefix)
 	throws

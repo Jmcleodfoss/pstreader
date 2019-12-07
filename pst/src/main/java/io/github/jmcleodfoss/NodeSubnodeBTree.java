@@ -18,6 +18,8 @@ public class NodeSubnodeBTree extends NodeBTree {
 		*	@param	bref	The block reference for the node/sub-node node currently under construction.
 		*	@param	bbt	The PS file's block B-tree.
 		*	@param	pstFile	The PST file's data stream, header, etc.
+		*
+		*	@throws	java.io.IOException	The data for the node sub-node B-tree context could not be read.
 		*/
 		protected NSNContext(final BREF bref, final BlockMap bbt, PSTFile pstFile)
 		throws
@@ -69,6 +71,8 @@ public class NodeSubnodeBTree extends NodeBTree {
 		*
 		*	@param	context		The context from which to build this node.
 		*	@param	byteBuffer	The data stream from which to read this node.
+		*
+		*	@throws	java.io.IOException	The data for the leaf node could not be read.
 		*/
 		protected NodeLeafEntry(final NSNContext context, java.nio.ByteBuffer byteBuffer)
 		throws

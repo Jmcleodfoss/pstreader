@@ -6,13 +6,15 @@ package io.github.jmcleodfoss.pst;
 */
 class BlockFinder extends PagedBTreeFinder implements BlockMap {
 
-	/**	The BTreePage class holds information about paged (block & node) B-trees. */
+	/**	The BTreePage class holds information about paged (block &amp; node) B-trees. */
 	private class BTreePage extends PagedBTreeFinder.BTreePage {
 
 		/**	Create a BTreePage object form the given pstFile and bref.
 		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
+		*
+		*	@throws	java.io.IOException	An I/O error was encoutered while reading in the B-tree.
 		*/
 		private BTreePage(final BREF bref, PSTFile pstFile)
 		throws

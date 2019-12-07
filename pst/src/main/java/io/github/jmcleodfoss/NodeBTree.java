@@ -18,6 +18,8 @@ class NodeBTree extends PagedBTree implements NodeMap {
 		*
 		*	@param	bref	The block reference for the node B-tree node being built.
 		*	@param	pstFile	The PST data stream, header, etc.
+		*
+		*	@throws	java.io.IOException	The data for the context information could not be read.
 		*/
 		NBTContextBase(final BREF bref, PSTFile pstFile)
 		throws
@@ -36,6 +38,8 @@ class NodeBTree extends PagedBTree implements NodeMap {
 		*
 		*	@param	bref	The block reference for the node B-tree node being built.
 		*	@param	pstFile	The PST data stream, header, etc.
+		*
+		*	@throws	java.io.IOException	The data for the context information could not be read.
 		*/
 		NBTContext(final BREF bref, PSTFile pstFile)
 		throws
@@ -80,6 +84,8 @@ class NodeBTree extends PagedBTree implements NodeMap {
 	*	@param	key	The key for this node. All child node keys are greater than or equal to this key.
 	*	@param	bref	The block reference indicating where to read this node B-tree node from.
 	*	@param	pstFile	The PST file's data stream, header, etc.
+	*
+	*	@throws	java.io.IOException	The data for the node B-tree could not be read.
 	*/
 	NodeBTree(final long key, final BREF bref, PSTFile pstFile)
 	throws
@@ -93,6 +99,8 @@ class NodeBTree extends PagedBTree implements NodeMap {
 	*	@param	key	The key for this node. All child node keys are greater than or equal to this key.
 	*	@param	bref	The block reference indicating where to read this node B-tree node from.
 	*	@param	context	The context from which to read the node B-tree.
+	*
+	*	@throws	java.io.IOException	The data for the node B-tree could not be read.
 	*/
 	protected NodeBTree(final long key, final BREF bref, NBTContextBase<BTree, BTreeLeaf> context)
 	throws
