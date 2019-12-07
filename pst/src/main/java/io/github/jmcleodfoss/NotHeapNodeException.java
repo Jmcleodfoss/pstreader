@@ -11,10 +11,13 @@ public class NotHeapNodeException extends Exception {
 
 	/**	Create a NotHeapNodeException from the given description.
 	*
-	*	@param	s	More info about the unexpected node. 
+	*	@param	blockSignature	The block signature found (HeapOnNode.HNBitmapHeader.HN_SIGNATURE was expected)
+	*
+	*	@see	io.github.jmcleodfoss.pst.HeapOnNode.Header#HN_SIGNATURE
+	*	@see	io.github.jmcleodfoss.pst.HeapOnNode.Header#Header
 	*/
-	NotHeapNodeException(final String s)
+	NotHeapNodeException(final byte blockSignature)
 	{
-		super(s);
+		super("Bad block signature " + Integer.toHexString((int)blockSignature & 0xff));
 	}
 }

@@ -202,7 +202,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 			ibHnpm = 0x0000ffff & (Short)dc.get(nm_ibHnpm);
 			byte blockSignature = (Byte)dc.get(nm_bSig);
 			if (blockSignature != HN_SIGNATURE)
-				throw new NotHeapNodeException("Bad block signature " + Integer.toHexString((int)blockSignature & 0xff));
+				throw new NotHeapNodeException(blockSignature);
 			
 			clientSignature = new ClientSignature((Byte)dc.get(nm_bClientSig));
 			hidUserRoot = new HID((Integer)dc.get(nm_hidUserRoot));
