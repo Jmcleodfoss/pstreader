@@ -82,7 +82,10 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 			tree.addTreeSelectionListener((TreeSelectionListener)dataView);
 	}
 
-	/**	Get the tree model from the PST file for this client. */
+	/**	Get the tree model from the PST file for this client.
+	*
+	*	@return	An EmptyTreeModel.
+	*/
 	TreeModel treeModel()
 	{
 		return EmptyTreeModel.model;

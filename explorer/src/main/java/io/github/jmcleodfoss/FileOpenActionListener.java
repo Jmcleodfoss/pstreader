@@ -22,7 +22,7 @@ class FileOpenActionListener implements ActionListener {
 		fileChooser.setFileFilter(fileFilter);
 	}
 
-	/**	Take action to take when File -> Open is selected: show a load file dialog box.
+	/**	Take action to take when File -&gt; Open is selected: show a load file dialog box.
 	*
 	*	@param	e	The menu event which triggers displaying the file open dialog.
 	*/

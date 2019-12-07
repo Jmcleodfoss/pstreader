@@ -31,6 +31,8 @@ class DistributionListDisplay extends JScrollPane {
 	*	@param	distributionList	The distribution list to display.
 	*	@param	pc			The property context of the distribution list object.
 	*	@param	pst			The PST object for the PST file being displayed.
+	*
+	*	@return	true if the update was successful, false if the update failed (because an exception was thrown and eaten).
 	*/
 	boolean update(DistributionList distributionList, PropertyContext pc, PST pst)
 	{

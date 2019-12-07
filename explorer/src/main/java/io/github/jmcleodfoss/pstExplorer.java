@@ -63,7 +63,10 @@ class pstExplorer extends JFrame {
 	/**	The PST folder tree. */
 	private FolderTree folderTab;
 
-	/**	Create the singleton pstExplorer object. */
+	/**	Create the singleton pstExplorer object.
+	*
+	*	@param	args	If any arguments are passed attempt to open the last argument as a PST file.
+	*/
 	pstExplorer(String[] args)
 	{
 		super("PST Explorer");
