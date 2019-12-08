@@ -105,6 +105,15 @@ class pstExplorer extends JFrame {
 				}
 		});
 
+		item = new JMenuItem("Exit");
+		menu.add(item);
+		item.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e)
+				{
+					dispose();
+				}
+		});
+
 		tabbedPane = new javax.swing.JTabbedPane();
 		this.add(tabbedPane);
 
@@ -131,6 +140,7 @@ class pstExplorer extends JFrame {
 		addNewFileListener(folderTab);
 
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		if (args.length > 0)
 			openFile(new File(args[args.length-1]));
