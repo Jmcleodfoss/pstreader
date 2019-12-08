@@ -3,7 +3,7 @@ package io.github.jmcleodfoss.xml;
 /**	The PSTToXML class converts a PST file into an XML file.
 *
 *	<p><strong>Use</strong><p>
-*	<code>java io.github.jmcleodfoss.pst.PSTToXML pst-file.pst</code><p>
+*	<code>java io.github.jmcleodfoss.pst.PSTToXML pst-file.pst</code>
 */
 class PSTToXML {
 
@@ -26,6 +26,16 @@ class PSTToXML {
 	/**	Create a PST to XML translator for the given PST file
 	*
 	*	@param	fn	The filename of the PST file to translate.
+	*
+	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.NotPSTFileException			The named file is not a pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
+	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
 	*/
 	public PSTToXML(String fn)
 	throws
@@ -37,8 +47,7 @@ class PSTToXML {
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
-		java.io.IOException,
-		javax.xml.parsers.ParserConfigurationException
+		java.io.IOException
 	{
 		pst = new io.github.jmcleodfoss.pst.PST(fn);
 
@@ -62,6 +71,16 @@ class PSTToXML {
 	*	@param	xml	The XML document being constructed.
 	*	@param	folder	The folder being added.
 	*	@param	pst	The PST object from which the XML document is being constructed.
+	*
+	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
+	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
+	*	@throws	java.io.UnsupportedEncodingException				An unsupported encoding was found while reading a string in the pst file.
 	*/
 	private void addFolderContents(io.github.jmcleodfoss.util.XMLOutput xml, io.github.jmcleodfoss.pst.Folder folder, io.github.jmcleodfoss.pst.PST pst)
 	throws
@@ -105,6 +124,8 @@ class PSTToXML {
 	*	@param	xml		The XML document being constructed.
 	*	@param	iterator	The property/value iterator to add to the XML document.
 	*	@param	pst		The PST object from which the XML document is being constructed.
+	*
+	*	@throws	java.io.UnsupportedEncodingException				An unsupported encoding was found while reading a string in the pst file.
 	*/ 
 	private void addPropertiesToNode(io.github.jmcleodfoss.util.XMLOutput xml, java.util.Iterator<java.util.Map.Entry<Integer, Object>> iterator, io.github.jmcleodfoss.pst.PST pst)
 	throws
@@ -134,6 +155,8 @@ class PSTToXML {
 	*	@param	xml		The XML document being constructed.
 	*	@param	propertyName	The name of the property to add.
 	*	@param	element		The value of the property to add.
+	*
+	*	@throws	java.io.UnsupportedEncodingException				An unsupported encoding was found while reading a string in the pst file.
 	*/
 	private void addPropertyToNode(io.github.jmcleodfoss.util.XMLOutput xml, final String propertyName, final Object element)
 	throws
@@ -173,6 +196,16 @@ class PSTToXML {
 	/**	Output the XML for this object to the given printstream
 	*
 	*	@param	printstream	The printstream to which the XML file should be written as it is built.
+	*
+	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
+	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
+	*	@throws	java.io.UnsupportedEncodingException				An unsupported encoding was found while reading a string in the pst file.
 	*/
 	void createXML(java.io.PrintStream printstream)
 	throws

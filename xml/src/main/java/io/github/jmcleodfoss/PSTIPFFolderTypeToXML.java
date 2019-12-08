@@ -5,7 +5,7 @@ package io.github.jmcleodfoss.xml;
 *	<p><strong>Use</strong><p>
 *	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML pst-file.pst folder-class-name</code><p>
 *	The list of known folder classes may be found by issuing the command without parameters:
-*	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML</code><p>
+*	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML</code>
 **/
 class PSTIPFFolderTypeToXML extends PSTToXML {
 
@@ -25,6 +25,16 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	*
 	*	@param	fn			The file name of the PST file to process.
 	*	@param	includedFolderClass	The folder class to extract.
+	*
+	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.NotPSTFileException			The named file is not a pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
+	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
 	*/
 	PSTIPFFolderTypeToXML(final String fn, final String includedFolderClass)
 	throws
@@ -36,8 +46,8 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 		io.github.jmcleodfoss.pst.NullDataBlockException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
-		java.io.IOException,
-		javax.xml.parsers.ParserConfigurationException
+		java.io.IOException//,
+//		javax.xml.parsers.ParserConfigurationException
 	{
 		super(fn);
 		this.includedFolderClass = includedFolderClass;
