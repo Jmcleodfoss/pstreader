@@ -7,15 +7,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFileChooser;
-
-import io.github.jmcleodfoss.swingutil.FilterByExtension;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**	The FileSaverMenuItem class implements a generic mechanism for saving files via a submenu menu item.
 */
 abstract public class FileSaverMenuItem implements ActionListener {
 
 	/**	The extensions permitted by the save dialog. */
-	final FilterByExtension[] extensionFilters;
+	final FileNameExtensionFilter[] extensionFilters;
 
 	/**	Construct a FileSaveMenuItem with no extension filters. */
 	FileSaverMenuItem()
@@ -27,7 +26,7 @@ abstract public class FileSaverMenuItem implements ActionListener {
 	*
 	*	@param	extensionFilters	A list of filters indicating extensions accepted in the dialog box.
 	*/
-	FileSaverMenuItem(FilterByExtension[] extensionFilters)
+	FileSaverMenuItem(FileNameExtensionFilter[] extensionFilters)
 	{
 		this.extensionFilters = extensionFilters;
 	}

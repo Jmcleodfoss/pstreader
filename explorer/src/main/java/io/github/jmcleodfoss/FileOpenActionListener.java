@@ -3,14 +3,13 @@ package io.github.jmcleodfoss.explorer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
-
-import io.github.jmcleodfoss.swingutil.FilterByExtension;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**	Handle file open requests. */
 class FileOpenActionListener implements ActionListener {
 
 	/**	The filter used to look for PST files. */
-	static final FilterByExtension fileFilter = new FilterByExtension("Outlook Personal Storage Table file", "pst");
+	static final FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Outlook Personal Storage Table file", "pst");
 
 	/**	The FileChooser - keep it as a member variable so we retain directory changes. */
 	JFileChooser fileChooser;
