@@ -448,5 +448,18 @@ public class PropertyTagName {
 
 		return String.format("propertyTag-%08x", tag);
 	}
+
+	/** Test by emitting all saved names.
+	*
+	*	@param	args	Unused
+	*/
+	public static void main(String[] args)
+	{
+		java.util.Iterator<Integer> keys = names.keySet().iterator();
+		while (keys.hasNext()) {
+			final Integer key = keys.next();
+			System.out.printf("0x%08x %s\n", key, names.get(key));
+		}
+	}
 }
 
