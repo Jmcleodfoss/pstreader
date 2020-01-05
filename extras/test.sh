@@ -58,6 +58,20 @@ TestModule() {
 	echo `date +%H:%M:%S`": done $class test" >> $stats
 }
 
+TestPSTIndependentModule() {
+	declare cp=$1
+	shift
+	declare class=$1
+	shift
+
+	declare output=$results_dir/${class#io.github.jmcleodfoss.*.*}.out
+	echo "
+"`date +%H:%M:%S`": starting $class test" >> $stats
+echo "java $options -cp $cp $class $@ > $output"
+	java $options -cp "$cp" $class "$@" > "$output"
+	echo `date +%H:%M:%S`": done $class test" >> $stats
+}
+
 TestPSTFile() {
 	declare pst="$1"
 	declare output_dir=$(GetTestDirectory "$pst")
@@ -73,7 +87,6 @@ TestPSTFile() {
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BlockBTree "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BTreeOnHeap "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Folder "$pst"
-	TestModule $pst_jar io/github/jmcleodfoss/pst/GUID "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Header "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/HeapOnNode "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/NameToIDMap "$pst"
@@ -109,6 +122,11 @@ fi
 
 echo "Starting tests at " `date +%H:%M:%S` > $stats
 
+# Tests which have the same output for all pst files.
+TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.GUID
+TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.PropertyTagName
+
+# Tests done on each pst file
 for pst in "$input_dir"/*.pst; do
 	TestPSTFile "$pst"
 done
