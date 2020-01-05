@@ -608,7 +608,7 @@ PidTagAttachTag,0x370a,PtypBinary,0x0102
 PidTagAttachTransportName,0x370c,PtypString,0x001f
 PidTagAttributeHidden,0x10f4,PtypBoolean,0x000b
 PidTagAttributeReadOnly,0x10f6,PtypBoolean,0x000b
-PidTagAutoForwardComment,0x000b,PtypString,0x001f
+PidTagAutoForwardComment,0x0004,PtypString,0x001f
 PidTagAutoForwarded,0x0005,PtypBoolean,0x000b
 PidTagAutoResponseSuppress,0x3fdf,PtypInteger32,0x0003
 PidTagBirthday,0x3a42,PtypTime,0x0040
