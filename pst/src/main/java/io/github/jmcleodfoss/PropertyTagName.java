@@ -20,6 +20,7 @@ public class PropertyTagName {
 
 		// Properties (Long Ids and Tags)
 		names.put(PropertyTag.AlternateRecipientAllowed, "AlternateRecipientAllowed");
+		names.put(PropertyTag.AutoForwardComment, "AutoForwardComment");
 		names.put(PropertyTag.IsRecurring, "IsRecurring");
 		names.put(PropertyTag.RequiredAttendees, "RequiredAttendees");
 		names.put(PropertyTag.OptionalAttendees, "OptionalAttendees");
@@ -67,6 +68,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.ReadReceiptEntryId, "ReadReceiptEntryId");
 		names.put(PropertyTag.MessageSubmissionId, "MessageSubmissionId");
 		names.put(PropertyTag.OriginalSubject, "OriginalSubject");
+		names.put(PropertyTag.OriginalAuthorName, "OriginalAuthorName");
 		names.put(PropertyTag.OriginalSubmitTime, "OriginalSubmitTime");
 		names.put(PropertyTag.ReplyRecipientEntries, "ReplyRecipientEntries");
 		names.put(PropertyTag.ReplyRecipientNames, "ReplyRecipientNames");
@@ -107,7 +109,9 @@ public class PropertyTagName {
 		names.put(PropertyTag.TransportMessageHeadersW, "TransportMessageHeadersW");
 		names.put(PropertyTag.TnefCorrelationKey, "TnefCorrelationKey");
 		names.put(PropertyTag.ReportDisposition, "ReportDisposition");
+		names.put(PropertyTag.ReportDispositionW, "ReportDispositionW");
 		names.put(PropertyTag.ReportDispositionMode, "ReportDispositionMode");
+		names.put(PropertyTag.ReportDispositionModeW, "ReportDispositionModeW");
 		names.put(PropertyTag.ReportOriginalSender, "ReportOriginalSender");
 		names.put(PropertyTag.ReportDispositionToNames, "ReportDispositionToNames");
 		names.put(PropertyTag.ReportDispositionToEmailAddresses, "ReportDispositionToEmailAddresses");
@@ -139,8 +143,11 @@ public class PropertyTagName {
 		names.put(PropertyTag.AttachmentSize, "AttachmentSize");
 		names.put(PropertyTag.InternetArticleNumber, "InternetArticleNumber");
 		names.put(PropertyTag.PrimarySendAccount, "PrimarySendAccount");
+		names.put(PropertyTag.PrimarySendAccountW, "PrimarySendAccountW");
 		names.put(PropertyTag.NextSendAcct, "NextSendAcct");
+		names.put(PropertyTag.NextSendAcctW, "NextSendAcctW");
 		names.put(PropertyTag.ToDoItemFlags, "ToDoItemFlags");
+		names.put(PropertyTag.TrustSender, "TrustSender");
 		names.put(PropertyTag.SwappedToDoStore, "SwappedToDoStore");
 		names.put(PropertyTag.RecordKey, "RecordKey");
 		names.put(PropertyTag.ObjectType, "ObjectType");
@@ -160,19 +167,23 @@ public class PropertyTagName {
 		names.put(PropertyTag.InternetMessageId, "InternetMessageId");
 		names.put(PropertyTag.InternetMessageIdW, "InternetMessageIdW");
 		names.put(PropertyTag.InternetOrganization, "InternetOrganization");
+		names.put(PropertyTag.InternetReferences, "InternetReferences");
 		names.put(PropertyTag.InReplyToId, "InReplyToId");
 		names.put(PropertyTag.InReplyToIdW, "InReplyToIdW");
+		names.put(PropertyTag.ListUnsubscribe, "ListUnsubscribe");
 		names.put(PropertyTag.OriginalMessageId, "OriginalMessageId");
 		names.put(PropertyTag.OriginalMessageIdW, "OriginalMessageIdW");
 		names.put(PropertyTag.IconIndex, "IconIndex");
 		names.put(PropertyTag.LastVerbExecuted , "LastVerbExecuted ");
 		names.put(PropertyTag.LastVerbExecutionTime, "LastVerbExecutionTime");
 		names.put(PropertyTag.FlagStatus, "FlagStatus");
+		names.put(PropertyTag.FlagCompleteTime, "FlagCompleteTime");
 		names.put(PropertyTag.FollowupIcon, "FollowupIcon");
 		names.put(PropertyTag.BlockStatus, "BlockStatus");
 		names.put(PropertyTag.ItemTemporaryFlags, "ItemTemporaryFlags");
 		names.put(PropertyTag.ConflictItems, "ConflictItems");
 		names.put(PropertyTag.AttributeHidden, "AttributeHidden");
+		names.put(PropertyTag.AttributeReadOnly, "AttributeReadOnly");
 
 		names.put(PropertyTag.RowId, "RowId");
 		names.put(PropertyTag.AddressType, "AddressType");
@@ -206,6 +217,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.RemindersOnlineEntryId, "RemindersOnlineEntryId");
 		names.put(PropertyTag.IpmDraftsEntryId, "IpmDraftsEntryId");
 		names.put(PropertyTag.AdditionalRenEntryIds, "AdditionalRenEntryIds");
+		names.put(PropertyTag.AdditionalRenEntryIdsEx, "AdditionalRenEntryIdsEx");
 		names.put(PropertyTag.ExtendedFolderFlags, "ExtendedFolderFlags");
 		names.put(PropertyTag.OrdinalMost, "OrdinalMost");
 		names.put(PropertyTag.FreeBusyEntryIds, "FreeBusyEntryIds");
@@ -244,6 +256,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.Generation, "Generation");
 		names.put(PropertyTag.GivenName, "GivenName");
 		names.put(PropertyTag.GivenNameW, "GivenNameW");
+		names.put(PropertyTag.GovernmentIdNumber, "GovernmentIdNumber");
 		names.put(PropertyTag.BusinessTelephoneNumber, "BusinessTelephoneNumber");
 		names.put(PropertyTag.BusinessTelephoneNumberW, "BusinessTelephoneNumberW");
 		names.put(PropertyTag.HomeTelephoneNumber, "HomeTelephoneNumber");
@@ -252,6 +265,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.Keyword, "Keyword");
 		names.put(PropertyTag.Language, "Language");
 		names.put(PropertyTag.Location, "Location");
+		names.put(PropertyTag.OrganizationalIdNumber, "OrganizationalIdNumber");
 		names.put(PropertyTag.Surname, "Surname");
 		names.put(PropertyTag.SurnameW, "SurnameW");
 		names.put(PropertyTag.PostalAddress, "PostalAddress");
@@ -260,6 +274,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.CompanyNameW, "CompanyNameW");
 		names.put(PropertyTag.Title, "Title");
 		names.put(PropertyTag.DepartmentName, "DepartmentName");
+		names.put(PropertyTag.OfficeLocation, "OfficeLocation");
 		names.put(PropertyTag.PrimaryTelephoneNumber, "DepartmentName");
 		names.put(PropertyTag.Business2TelephoneNumber, "Business2TelephoneNumber");
 		names.put(PropertyTag.Business2TelephoneNumberW, "Business2TelephoneNumberW");
@@ -294,13 +309,24 @@ public class PropertyTagName {
 		names.put(PropertyTag.Home2TelephoneNumber, "Home2TelephoneNumber");
 		names.put(PropertyTag.Home2TelephoneNumberW, "Home2TelephoneNumberW");
 		names.put(PropertyTag.Home2TelephoneNumbers, "Home2TelephoneNumbers");
+		names.put(PropertyTag.Assistant, "Assistant");
 		names.put(PropertyTag.SendRichInfo, "SendRichInfo");
 		names.put(PropertyTag.Birthday, "Birthday");
+		names.put(PropertyTag.Hobbies, "Hobbies");
 		names.put(PropertyTag.MiddleName, "MiddleName");
 		names.put(PropertyTag.MiddleNameW, "MiddleNameW");
 		names.put(PropertyTag.DisplayNamePrefix, "DisplayNamePrefix");
+		names.put(PropertyTag.Profession, "Profession");
+		names.put(PropertyTag.ReferredByName, "ReferredByName");
 		names.put(PropertyTag.SpouseName, "SpouseName");
+		names.put(PropertyTag.ComputerNetworkName, "ComputerNetworkName");
+		names.put(PropertyTag.CustomerId, "CustomerId");
 		names.put(PropertyTag.TelecommunicationsDeviceForDeafTelephoneNumber, "TelecommunicationsDeviceForDeafTelephoneNumber");
+		names.put(PropertyTag.FtpSite, "FtpSite");
+		names.put(PropertyTag.Gender, "Gender");
+		names.put(PropertyTag.ManagerName, "ManagerName");
+		names.put(PropertyTag.NickName, "NickName");
+		names.put(PropertyTag.PersonalHomePage, "PersonalHomePage");
 		names.put(PropertyTag.BusinessHomePage, "BusinessHomePage");
 		names.put(PropertyTag.CompanyTelephoneNumber, "CompanyTelephoneNumber");
 		names.put(PropertyTag.HomeAddressCity, "HomeAddressCity");
@@ -376,6 +402,9 @@ public class PropertyTagName {
 		names.put(PropertyTag.ViewDescriptorViewFolder, "ViewDescriptorViewFolder");
 		names.put(PropertyTag.ViewDescriptorName, "ViewDescriptorName");
 		names.put(PropertyTag.ViewDescriptorVersion, "ViewDescriptorVersion");
+		names.put(PropertyTag.RoamingDatatypes, "RoamingDatatypes");
+		names.put(PropertyTag.RoamingDictionary, "RoamingDictionary");
+		names.put(PropertyTag.RoamingXmlStream, "RoamingXmlStream");
 		names.put(PropertyTag.Processed, "Processed");
 		names.put(PropertyTag.AttachmentLinkId, "AttachmentLinkId");
 		names.put(PropertyTag.ExceptionStartTime, "ExceptionStartTime");
@@ -420,3 +449,4 @@ public class PropertyTagName {
 		return String.format("propertyTag-%08x", tag);
 	}
 }
+

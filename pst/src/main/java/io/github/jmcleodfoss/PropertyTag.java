@@ -17,6 +17,7 @@ public class PropertyTag {
 
 	// Properties (Long Ids and Tags)
 	public static final int AlternateRecipientAllowed = makeTag(PropertyID.AlternateRecipientAllowed, DataType.BOOLEAN);
+	public static final int AutoForwardComment = makeTag(PropertyID.AutoForwardComment, DataType.STRING);
 	public static final int IsRecurring = makeTag(PropertyID.IsRecurring, DataType.BOOLEAN);
 	public static final int RequiredAttendees = makeTag(PropertyID.RequiredAttendees, DataType.STRING);
 	public static final int OptionalAttendees = makeTag(PropertyID.OptionalAttendees, DataType.STRING);
@@ -64,6 +65,7 @@ public class PropertyTag {
 	public static final int ReadReceiptEntryId = makeTag(PropertyID.ReadReceiptEntryId, DataType.BINARY);
 	public static final int MessageSubmissionId = makeTag(PropertyID.MessageSubmissionId, DataType.BINARY);
 	public static final int OriginalSubject = makeTag(PropertyID.OriginalSubject, DataType.STRING);
+	public static final int OriginalAuthorName = makeTag(PropertyID.OriginalAuthorName, DataType.STRING);
 	public static final int OriginalSubmitTime = makeTag(PropertyID.OriginalSubmitTime, DataType.TIME);
 	public static final int ReplyRecipientEntries = makeTag(PropertyID.ReplyRecipientEntries, DataType.BINARY);
 	public static final int ReplyRecipientNames = makeTag(PropertyID.ReplyRecipientNames, DataType.STRING_8);
@@ -104,7 +106,9 @@ public class PropertyTag {
 	public static final int TransportMessageHeadersW = makeTag(PropertyID.TransportMessageHeaders, DataType.STRING);
 	public static final int TnefCorrelationKey = makeTag(PropertyID.TnefCorrelationKey, DataType.BINARY);
 	public static final int ReportDisposition = makeTag(PropertyID.ReportDisposition, DataType.STRING_8);
+	public static final int ReportDispositionW = makeTag(PropertyID.ReportDisposition, DataType.STRING);
 	public static final int ReportDispositionMode = makeTag(PropertyID.ReportDispositionMode, DataType.STRING_8);
+	public static final int ReportDispositionModeW = makeTag(PropertyID.ReportDispositionMode, DataType.STRING);
 	public static final int ReportOriginalSender = makeTag(PropertyID.ReportOriginalSender, DataType.STRING_8);
 	public static final int ReportDispositionToNames = makeTag(PropertyID.ReportDispositionToNames, DataType.STRING_8);
 	public static final int ReportDispositionToEmailAddresses = makeTag(PropertyID.ReportDispositionToEmailAddresses, DataType.STRING_8);
@@ -141,6 +145,7 @@ public class PropertyTag {
 	public static final int NextSendAcctW = makeTag(PropertyID.NextSendAcct, DataType.STRING);
 	public static final int ToDoItemFlags = makeTag(PropertyID.ToDoItemFlags, DataType.INTEGER_32);
 	public static final int SwappedToDoStore = makeTag(PropertyID.SwappedToDoStore, DataType.BINARY);
+	public static final int TrustSender = makeTag(PropertyID.TrustSender, DataType.INTEGER_32);
 	public static final int RecordKey = makeTag(PropertyID.RecordKey, DataType.BINARY);
 	public static final int ObjectType = makeTag(PropertyID.ObjectType, DataType.INTEGER_32);
 	public static final int EntryId = makeTag(PropertyID.EntryId, DataType.BINARY);
@@ -159,19 +164,23 @@ public class PropertyTag {
 	public static final int InternetMessageId = makeTag(PropertyID.InternetMessageId, DataType.STRING_8);
 	public static final int InternetMessageIdW = makeTag(PropertyID.InternetMessageId, DataType.STRING);
 	public static final int InternetOrganization = makeTag(PropertyID.InternetOrganization, DataType.STRING);
+	public static final int InternetReferences = makeTag(PropertyID.InternetReferences, DataType.STRING);
 	public static final int InReplyToId = makeTag(PropertyID.InReplyToId, DataType.STRING_8);
 	public static final int InReplyToIdW = makeTag(PropertyID.InReplyToId, DataType.STRING);
+	public static final int ListUnsubscribe = makeTag(PropertyID.ListUnsubscribe, DataType.STRING);
 	public static final int OriginalMessageId = makeTag(PropertyID.OriginalMessageId, DataType.STRING_8);
 	public static final int OriginalMessageIdW = makeTag(PropertyID.OriginalMessageId, DataType.STRING);
 	public static final int IconIndex = makeTag(PropertyID.IconIndex, DataType.INTEGER_32);
 	public static final int LastVerbExecuted  = makeTag(PropertyID.LastVerbExecuted , DataType.INTEGER_32);
 	public static final int LastVerbExecutionTime = makeTag(PropertyID.LastVerbExecutionTime, DataType.TIME);
 	public static final int FlagStatus = makeTag(PropertyID.FlagStatus, DataType.INTEGER_32);
+	public static final int FlagCompleteTime = makeTag(PropertyID.FlagCompleteTime, DataType.TIME);
 	public static final int FollowupIcon = makeTag(PropertyID.FollowupIcon, DataType.INTEGER_32);
 	public static final int BlockStatus = makeTag(PropertyID.BlockStatus, DataType.INTEGER_32);
 	public static final int ItemTemporaryFlags = makeTag(PropertyID.ItemTemporaryFlags, DataType.INTEGER_32);
 	public static final int ConflictItems = makeTag(PropertyID.ConflictItems, DataType.MULTIPLE_BINARY);
 	public static final int AttributeHidden = makeTag(PropertyID.AttributeHidden, DataType.BOOLEAN);
+	public static final int AttributeReadOnly = makeTag(PropertyID.AttributeReadOnly, DataType.BOOLEAN);
 
 	public static final int RowId = makeTag(PropertyID.RowId, DataType.INTEGER_32);
 	public static final int AddressType = makeTag(PropertyID.AddressType, DataType.STRING);
@@ -205,6 +214,7 @@ public class PropertyTag {
 	public static final int RemindersOnlineEntryId = makeTag(PropertyID.RemindersOnlineEntryId, DataType.BINARY);
 	public static final int IpmDraftsEntryId = makeTag(PropertyID.IpmDraftsEntryId, DataType.BINARY);
 	public static final int AdditionalRenEntryIds = makeTag(PropertyID.AdditionalRenEntryIds, DataType.MULTIPLE_BINARY);
+	public static final int AdditionalRenEntryIdsEx = makeTag(PropertyID.AdditionalRenEntryIdsEx, DataType.BINARY);
 	public static final int ExtendedFolderFlags = makeTag(PropertyID.ExtendedFolderFlags, DataType.BINARY);
 	public static final int OrdinalMost = makeTag(PropertyID.OrdinalMost, DataType.INTEGER_32);
 	public static final int FreeBusyEntryIds = makeTag(PropertyID.FreeBusyEntryIds, DataType.MULTIPLE_BINARY);
@@ -276,6 +286,7 @@ public class PropertyTag {
 	public static final int Generation = makeTag(PropertyID.Generation, DataType.STRING);
 	public static final int GivenName = makeTag(PropertyID.GivenName, DataType.STRING_8);
 	public static final int GivenNameW = makeTag(PropertyID.GivenName, DataType.STRING);
+	public static final int GovernmentIdNumber = makeTag(PropertyID.GovernmentIdNumber, DataType.STRING);
 	public static final int BusinessTelephoneNumber = makeTag(PropertyID.BusinessTelephoneNumber, DataType.STRING_8);
 	public static final int BusinessTelephoneNumberW = makeTag(PropertyID.BusinessTelephoneNumber, DataType.STRING);
 	public static final int HomeTelephoneNumber = makeTag(PropertyID.HomeTelephoneNumber, DataType.STRING_8);
@@ -284,6 +295,7 @@ public class PropertyTag {
 	public static final int Keyword = makeTag(PropertyID.Keyword, DataType.STRING);
 	public static final int Language = makeTag(PropertyID.Language, DataType.STRING);
 	public static final int Location = makeTag(PropertyID.Location, DataType.STRING);
+	public static final int OrganizationalIdNumber = makeTag(PropertyID.OrganizationalIdNumber, DataType.STRING);
 	public static final int Surname = makeTag(PropertyID.Surname, DataType.STRING_8);
 	public static final int SurnameW = makeTag(PropertyID.Surname, DataType.STRING);
 	public static final int PostalAddress = makeTag(PropertyID.PostalAddress, DataType.STRING_8);
@@ -292,6 +304,7 @@ public class PropertyTag {
 	public static final int CompanyNameW = makeTag(PropertyID.CompanyName, DataType.STRING);
 	public static final int Title = makeTag(PropertyID.Title, DataType.STRING);
 	public static final int DepartmentName = makeTag(PropertyID.DepartmentName, DataType.STRING);
+	public static final int OfficeLocation = makeTag(PropertyID.OfficeLocation, DataType.STRING);
 	public static final int PrimaryTelephoneNumber = makeTag(PropertyID.PrimaryTelephoneNumber, DataType.STRING);
 	public static final int Business2TelephoneNumber = makeTag(PropertyID.Business2TelephoneNumber, DataType.STRING);
 	public static final int Business2TelephoneNumberW = makeTag(PropertyID.Business2TelephoneNumber, DataType.STRING_8);
@@ -326,14 +339,25 @@ public class PropertyTag {
 	public static final int Home2TelephoneNumber = makeTag(PropertyID.Home2TelephoneNumber, DataType.STRING);
 	public static final int Home2TelephoneNumberW = makeTag(PropertyID.Home2TelephoneNumber, DataType.STRING_8);
 	public static final int Home2TelephoneNumbers = makeTag(PropertyID.Home2TelephoneNumber, DataType.MULTIPLE_STRING);
+	public static final int Assistant = makeTag(PropertyID.Assistant, DataType.STRING);
 	public static final int SendRichInfo = makeTag(PropertyID.SendRichInfo, DataType.BOOLEAN);
 	public static final int Birthday = makeTag(PropertyID.Birthday, DataType.TIME);
+	public static final int Hobbies = makeTag(PropertyID.Hobbies, DataType.STRING);
 	public static final int MiddleName = makeTag(PropertyID.MiddleName, DataType.STRING_8);
 	public static final int MiddleNameW = makeTag(PropertyID.MiddleName, DataType.STRING);
 	public static final int DisplayNamePrefix = makeTag(PropertyID.DisplayNamePrefix, DataType.STRING);
+	public static final int Profession = makeTag(PropertyID.Profession, DataType.STRING);
+	public static final int ReferredByName = makeTag(PropertyID.ReferredByName, DataType.STRING);
 	public static final int SpouseName = makeTag(PropertyID.SpouseName, DataType.STRING);
+	public static final int ComputerNetworkName = makeTag(PropertyID.ComputerNetworkName, DataType.STRING);
+	public static final int CustomerId = makeTag(PropertyID.CustomerId, DataType.STRING);
 	public static final int TelecommunicationsDeviceForDeafTelephoneNumber = makeTag(PropertyID.TelecommunicationsDeviceForDeafTelephoneNumber, DataType.STRING);
 	public static final int TelecommunicationsDeviceForDeafTelephoneNumberW = makeTag(PropertyID.TelecommunicationsDeviceForDeafTelephoneNumber, DataType.STRING_8);
+	public static final int FtpSite = makeTag(PropertyID.FtpSite, DataType.STRING);
+	public static final int Gender = makeTag(PropertyID.Gender, DataType.INTEGER_16);
+	public static final int ManagerName = makeTag(PropertyID.ManagerName, DataType.STRING);
+	public static final int NickName = makeTag(PropertyID.NickName, DataType.STRING);
+	public static final int PersonalHomePage = makeTag(PropertyID.PersonalHomePage, DataType.STRING);
 	public static final int BusinessHomePage = makeTag(PropertyID.BusinessHomePage, DataType.STRING);
 	public static final int CompanyTelephoneNumber = makeTag(PropertyID.CompanyTelephoneNumber, DataType.STRING);
 	public static final int CompanyTelephoneNumberW = makeTag(PropertyID.CompanyTelephoneNumber, DataType.STRING_8);
@@ -410,6 +434,9 @@ public class PropertyTag {
 	public static final int ViewDescriptorViewFolder = makeTag(PropertyID.ViewDescriptorViewFolder, DataType.BINARY);
 	public static final int ViewDescriptorName = makeTag(PropertyID.ViewDescriptorName, DataType.STRING);
 	public static final int ViewDescriptorVersion = makeTag(PropertyID.ViewDescriptorVersion, DataType.INTEGER_32);
+	public static final int RoamingDatatypes = makeTag(PropertyID.RoamingDatatypes, DataType.INTEGER_32);
+	public static final int RoamingDictionary = makeTag(PropertyID.RoamingDictionary, DataType.BINARY);
+	public static final int RoamingXmlStream = makeTag(PropertyID.RoamingXmlStream, DataType.BINARY);
 	public static final int Processed = makeTag(PropertyID.Processed, DataType.BOOLEAN);
 	public static final int AttachmentLinkId = makeTag(PropertyID.AttachmentLinkId, DataType.INTEGER_32);
 	public static final int ExceptionStartTime = makeTag(PropertyID.ExceptionStartTime, DataType.TIME);

@@ -21,6 +21,7 @@ public class PropertyID {
 
 	// Properties (Long Ids and Tags)
 	static final short AlternateRecipientAllowed = 0x0002;
+	static final short AutoForwardComment = 0x0004;
 	static final short IsRecurring = 0x0005;
 	static final short RequiredAttendees = 0x0006;
 	static final short OptionalAttendees = 0x0007;
@@ -64,6 +65,7 @@ public class PropertyID {
 	static final short ReadReceiptEntryId = 0x0046;
 	static final short MessageSubmissionId = 0x0047;
 	static final short OriginalSubject = 0x0049;
+	static final short OriginalAuthorName = 0x004d;
 	static final short OriginalSubmitTime = 0x004e;
 	static final short ReplyRecipientEntries = 0x004f;
 	static final short ReplyRecipientNames = 0x0050;
@@ -126,6 +128,7 @@ public class PropertyID {
 	static final short NextSendAcct = 0x0e29;
 	static final short ToDoItemFlags = 0x0e2b;
 	static final short SwappedToDoStore = 0x0e2c;
+	static final short TrustSender = 0x0e79;
 	static final short RecordKey = 0x0ff9;
 	static final short ObjectType = 0x0ffe;
 	static final short EntryId = 0x0fff;
@@ -140,17 +143,21 @@ public class PropertyID {
 	static final short BodyHtml = 0x1013;
 	static final short InternetMessageId = 0x1035;
 	static final short InternetOrganization = 0x1037;
+	static final short InternetReferences = 0x1039;
 	static final short InReplyToId = 0x1042; 
+	static final short ListUnsubscribe = 0x1045;
 	static final short OriginalMessageId = 0x1046;
 	static final short IconIndex = 0x1080;
 	static final short LastVerbExecuted = 0x1081;
 	static final short LastVerbExecutionTime = 0x1082;
 	static final short FlagStatus = 0x1090;
+	static final short FlagCompleteTime = 0x1091;
 	static final short FollowupIcon = 0x1095;
 	static final short BlockStatus = 0x1096;
 	static final short ItemTemporaryFlags = 0x1097;
 	static final short ConflictItems = 0x1098;
 	static final short AttributeHidden = 0x10f4;
+	static final short AttributeReadOnly = 0x10f6;
 
 	static final short RowId = 0x3000;
 	static final short DisplayNameW = 0x3001;
@@ -180,6 +187,7 @@ public class PropertyID {
 	static final short RemindersOnlineEntryId = 0x36d5;
 	static final short IpmDraftsEntryId = 0x36d7;
 	static final short AdditionalRenEntryIds = 0x36d8;
+	static final short AdditionalRenEntryIdsEx = 0x36d9;
 	static final short ExtendedFolderFlags = 0x36da;
 	static final short OrdinalMost = 0x36e2;
 	static final short FreeBusyEntryIds = 0x36e4;
@@ -211,17 +219,20 @@ public class PropertyID {
 	static final short CallbackTelephoneNumber = 0x3a02;
 	static final short Generation = 0x3a05;
 	static final short GivenName = 0x3a06;
+	static final short GovernmentIdNumber = 0x3a07;
 	static final short BusinessTelephoneNumber = 0x3a08;
 	static final short HomeTelephoneNumber = 0x3a09;
 	static final short Initials = 0x3a0a;
 	static final short Keyword = 0x3a0b;
 	static final short Language = 0x3a0c;
 	static final short Location = 0x3a0d;
+	static final short OrganizationalIdNumber = 0x3a10;
 	static final short Surname = 0x3a11;
 	static final short PostalAddress = 0x3a15;
 	static final short CompanyName = 0x3a16;
 	static final short Title = 0x3a17;
 	static final short DepartmentName = 0x3a18;
+	static final short OfficeLocation = 0x3a19;
 	static final short PrimaryTelephoneNumber = 0x3a1a;
 	static final short Business2TelephoneNumber = 0x3a1b;
 	static final short MobileTelephoneNumber = 0x3a1c;
@@ -241,12 +252,23 @@ public class PropertyID {
 	static final short IsdnNumber = 0x3a2d;
 	static final short AssistantTelephoneNumber = 0x3a2e;
 	static final short Home2TelephoneNumber = 0x3a2f;
+	static final short Assistant = 0x3a30;
 	static final short SendRichInfo = 0x3a40;
 	static final short Birthday = 0x3a42;
+	static final short Hobbies = 0x3a43;
 	static final short MiddleName = 0x3a44;
 	static final short DisplayNamePrefix = 0x3a45;
+	static final short Profession = 0x3a46;
+	static final short ReferredByName = 0x3a47;
 	static final short SpouseName = 0x3a48;
+	static final short ComputerNetworkName = 0x3a49;
+	static final short CustomerId = 0x3a4a;
 	static final short TelecommunicationsDeviceForDeafTelephoneNumber = 0x3a4b;
+	static final short FtpSite = 0x3a4c;
+	static final short Gender = 0x3a4d;
+	static final short ManagerName = 0x3a4e;
+	static final short NickName = 0x3a4f;
+	static final short PersonalHomePage = 0x3a50;
 	static final short BusinessHomePage = 0x3a51;
 	static final short CompanyTelephoneNumber = 0x3a57;
 	static final short HomeAddressCity = 0x3a59;
@@ -322,6 +344,9 @@ public class PropertyID {
 	static final short ViewDescriptorViewFolder = 0x7005;
 	static final short ViewDescriptorName = 0x7006;
 	static final short ViewDescriptorVersion = 0x7007;
+	static final short RoamingDatatypes = 0x7c06;
+	static final short RoamingDictionary = 0x7c07;
+	static final short RoamingXmlStream = 0x7c08;
 	static final short Processed = 0x7d01;
 	static final short AttachmentLinkId = 0x7ffa;
 	static final short ExceptionStartTime = 0x7ffb;
