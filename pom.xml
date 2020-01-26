@@ -42,7 +42,7 @@
 
 			<modules>
 				<module>explorer</module>
-				<module>localeBean</module>
+				<module>localebean</module>
 				<module>pst</module>
 				<module>pstExtractor</module>
 				<module>swingutil</module>
