@@ -35,3 +35,6 @@ diag.txt
 
 # PST files
 *.pst
+
+# My .gitconfig file with the correct e-mail address
+.gitconfig
