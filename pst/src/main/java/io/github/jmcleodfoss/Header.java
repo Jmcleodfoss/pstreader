@@ -70,7 +70,7 @@ public class Header {
 		new DataDefinition("rgbReserved3", new DataType.SizedByteArray(32))
 	};
 
-	/**	Size of the heeader block in ANSI files */
+	/**	Size of the header block in Unicode files */
 	private static final int SIZE_UNICODE = DataDefinition.size(common_fields) + DataDefinition.size(unicode_fields); 
 
 	// Not tested - no data available
