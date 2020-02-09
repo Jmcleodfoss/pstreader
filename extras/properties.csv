@@ -686,7 +686,7 @@ PidTagExchangeNTSecurityDescriptor,0x0e84,PtypBinary,0x0102
 PidTagExpiryNumber,0x3fed,PtypInteger32,0x0003
 PidTagExpiryTime,0x0015,PtypTime,0x0040
 PidTagExpiryUnits,0x3fee,PtypInteger32,0x0003
-PidTaxExtendedFolderFlags,0x36da,PtypBinary,0x0102
+PidTagExtendedFolderFlags,0x36da,PtypBinary,0x0102
 PidTagExtendedRuleMessageActions,0x0e99,PtypBinary,0x0102
 PidTagExtendedRuleMessageCondition,0x0e9a,PtypBinary,0x0102
 PidTagExtendedRuleSizeLimit,0x0e9b,PtypInteger32,0x0003
