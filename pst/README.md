@@ -35,7 +35,7 @@ It really helps to understand the structure of the PST file as described in the 
 For some more concrete examples, see [explorer](../explorer/README.md), a Swing application and [pstExtractor](../pstExtractor/README.md), a JSF-based web application.
 
 ## Documentation
-The library is fully Javadoc'd (link tbd).
+The library is fully Javadoc'd](https://javadoc.io/doc/io.github.jmcleodfoss/pst)
 
 ## Executable Classes
 The following modules can process pst files directly via their main functions for exploratory and testing purposes.
