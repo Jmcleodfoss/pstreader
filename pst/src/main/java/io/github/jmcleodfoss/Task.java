@@ -19,7 +19,7 @@ public class Task extends MessageObject {
 	/**	The property ID under which to look up the TaskDueDate property. */
 	private static int TaskDueDateID = -1;
 
-	/**	The due date of the tasj in UTC. */
+	/**	The due date of the task in UTC. */
 	public final java.util.Date dueDate;
 
 	/**	Create a task for the given row in the folder contents table.

@@ -10,7 +10,7 @@ package io.github.jmcleodfoss.pst;
 *	// given the contents table object contentsTable and the PST object pst:
 *
 *	Contact contact = new Contact(contentsTable, 0, pst.blockBTree, pst.nodeBTree, pst);
-*	System.out.printf("contact: %s e-mail %s\n", contact.subject, message.messageDeliveryTime);
+*	System.out.printf("contact: %s email %s\n", contact.subject, message.messageDeliveryTime);
 *
 *	PropertyContext contactPC = contact.getMessageObject(pst.blockBTree, pst);
 *	System.out.printf("body %s\n", message.body(messagePC);
@@ -31,7 +31,7 @@ package io.github.jmcleodfoss.pst;
 */
 public class Contact extends MessageObject {
 
-	/**	The tags under which to look up the e-mail addresses. */
+	/**	The tags under which to look up the email addresses. */
 	private static final int[] emailAddressPropertyIDLookup = {
 		PropertyTag.Email1EmailAddress,
 		PropertyTag.Email2EmailAddress,

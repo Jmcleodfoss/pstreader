@@ -1,6 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The Message class represents a PST e-mail message. The values set in the constructor are those which come from the folder Contents
+/**	The Message class represents a PST email message. The values set in the constructor are those which come from the folder Contents
 *	Table; retrieval of other fields, including the message body, require that the client provide the message property context from
 *	which the fields may be extracted.
 *
@@ -41,7 +41,7 @@ public class Message extends MessageObjectWithBody {
 	/**	The recipient table node information. */
 	public final SLEntry nodeRecipientTable;
 
-	/**	The sender's name or e-mail address as given in the folder Contents table. */
+	/**	The sender's name or email address as given in the folder Contents table. */
 	public final String sentRepresentingName;
 
 	/**	The message deliver time. */
@@ -143,7 +143,7 @@ public class Message extends MessageObjectWithBody {
 		return attachments.get(index);
 	}
 
-	/**	Return an interator over the message's attachments.
+	/**	Return an iterator over the message's attachments.
 	*
 	*	@return	An iterator object which may be used to go through the message attachments.
 	*
@@ -217,7 +217,7 @@ public class Message extends MessageObjectWithBody {
 		return recipients.get(index);
 	}
 
-	/**	Return a string describing the e-mail.
+	/**	Return a string describing the email.
 	*
 	*	@return	A string describing the message.
 	*/

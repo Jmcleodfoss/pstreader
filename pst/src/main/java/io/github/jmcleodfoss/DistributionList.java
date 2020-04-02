@@ -45,9 +45,9 @@ public class DistributionList extends MessageObject {
 			return displayName;
 		}
 
-		/**	Retrieve the e-mail address of this distribution list entry.
+		/**	Retrieve the email address of this distribution list entry.
 		*
-		*	@return	The e-mail address for this distribution list entry.
+		*	@return	The email address for this distribution list entry.
 		*/
 		public String emailAddress()
 		{
