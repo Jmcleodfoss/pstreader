@@ -989,7 +989,7 @@ abstract class DataType {
 					continue;
 				byte[] data = new byte[size];
 				byteBuffer.get(data);
-				arr[iDest] = new String(data, charset);
+				arr[iDest++] = new String(data, charset);
 			}
 			return arr;
 		}
