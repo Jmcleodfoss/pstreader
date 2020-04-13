@@ -659,7 +659,7 @@ PidTagDefaultPostMessageClass,0x36e5,PtypString,0x001f
 PidTagDeferredActionMessageOriginalEntryId,0x6741,PtypServerId,0x00fb
 PidTagDeferredDeliveryTime,0x000f,PtypTime,0x0040
 PidTagDeferredSendNumber,0x3feb,PtypInteger32,0x0003
-PidTagDeferredSen,0x3fef,PtypTime,0x0040
+PidTagDeferredSendTime,0x3fef,PtypTime,0x0040
 PidTagDeferredSendUnits,0x3fec,PtypInteger32,0x0003
 PidTagDelegatedByRule,0x3fe3,PtypBoolean,0x000b
 PidTagDelegateFlags,0x686b,PtypMultipleInteger32,0x1003
