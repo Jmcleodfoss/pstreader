@@ -170,7 +170,7 @@ class GUID {
 		System.out.printf(format, "Common", PS_COMMON);
 		System.out.printf(format, "Address", PS_ADDRESS);
 		System.out.printf(format, "Appointment", PS_APPOINTMENT);
-		System.out.printf(format, "MEETING", PS_MEETING);
+		System.out.printf(format, "Meeting", PS_MEETING);
 		System.out.printf(format, "Task", PS_TASK);
 		System.out.printf(format, "Note", PS_NOTE);
 		System.out.printf(format, "MAPI", PS_MAPI);
