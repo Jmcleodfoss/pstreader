@@ -585,7 +585,7 @@ PidTagAttachContentBase,0x3711,PtypString,0x001f
 PidTagAttachContentId,0x3712,PtypString,0x001f
 PidTagAttachContentLocation,0x3713,PtypString,0x001f
 PidTagAttachDataBinary,0x3701,PtypBinary,0x0102
-PidTagAttachDataBinary,0x3701,PtypObject,0x000d
+PidTagAttachDataBinaryObject,0x3701,PtypObject,0x000d
 PidTagAttachEncoding,0x3702,PtypBinary,0x0102
 PidTagAttachExtension,0x3703,PtypString,0x001f
 PidTagAttachFilename,0x3704,PtypString,0x001f
