@@ -81,14 +81,15 @@ PidLidContactUserField3,0x00008051,PtypString,0x001f
 PidLidContactUserField4,0x00008552,PtypString,0x001f
 PidLidConversationActionLas,0x000085ca,PtypTime,0x0040
 PidLidConversationActionMaxDeliveryTime,0x000085c8,PtypTime,0x0040
-PidLidConversationActionMoveFolderEid,0x000085c6,PtypBinary,0x0102
 PidLidConversationActionMove,0x000085c7,PtypBinary,0x0102
+PidLidConversationActionMoveFolderEid,0x000085c6,PtypBinary,0x0102
 PidLidConversationActionVersion,0x000085cb,PtypInteger32,0x0003
 PidLidConversationProcessed,0x000085c9,PtypInteger32,0x0003
 PidLidCurrentVersion,0x00008552,PtypInteger32,0x0003
 PidLidCurrentVersionName,0x00008554,PtypString,0x001f
 PidLidDayInterval,0x00000011,PtypInteger16,0x0002
 PidLidDayOfMonth,0x00001000,PtypBoolean,0x000b
+PidLidDelegateMail,0x00000009,PTypBoolean,0x000b
 PidLidDepartment,0x00008010,PtypString,0x001f
 PidLidDirectory,0x00008242,PtypString,0x001f
 PidLidDistribution,0x0000804c,PtypInteger32,0x0003
@@ -184,7 +185,7 @@ PidLidNoteHeight,0x00008b03,PtypInteger32,0x0003
 PidLidNoteWidth,0x00008b02,PtypInteger32,0x0003
 PidLidNoteX,0x00008b04,PtypInteger32,0x0003
 PidLidNoteY,0x00008b05,PtypInteger32,0x0003
-PidLidOccurences,0x00001005,PtypInteger32,0x0003
+PidLidOccurrences,0x00001005,PtypInteger32,0x0003
 PidLidOldLocation,0x00000028,PtypString,0x001f
 PidLidOldRecurrenceType,0x00000018,PtypInteger16,0x0002
 PidLidOldWhenEndWhole,0x0000002a,PtypTime,0x0040
@@ -204,8 +205,8 @@ PidLidPostRssChannel,0x00008904,PtypString,0x001f
 PidLidPostRssChannelLink,0x00008900,PtypString,0x001f
 PidLidPostRssItemGuid,0x00008903,PtypString,0x001f
 PidLidPostRssItemHash,0x00008902,PtypInteger32,0x0003
-PidLidPostRSSItemLink,0x00008901,PtypString,0x001f
-PidLidPostRSSItemXml,0x00008905,PtypString,0x001f
+PidLidPostRssItemLink,0x00008901,PtypString,0x001f
+PidLidPostRssItemXml,0x00008905,PtypString,0x001f
 PidLidPostRssSubscription,0x00008906,PtypString,0x001f
 PidLidPrivate,0x00008506,PtypBoolean,0x000b
 PidLidPromptSendUpdate,0x00008045,PtypBoolean,0x000b
@@ -309,7 +310,7 @@ PidLidTaskAssigners,0x00008117,PtypBinary,0x0102
 PidLidTaskComplete,0x0000811c,PtypBoolean,0x000b
 PidLidTaskCustomFlags,0x00008139,PtypInteger32,0x0003
 PidLidTaskDateCompleted,0x0000810f,PtypTime,0x0040
-PidLidTaskDeadOccurence,0x00008109,PtypBoolean,0x000b
+PidLidTaskDeadOccurrence,0x00008109,PtypBoolean,0x000b
 PidLidTaskDueDate,0x00008105,PtypTime,0x0040
 PidLidTaskEstimatedEffort,0x00008111,PtypInteger32,0x0003
 PidLidTaskFCreator,0x0000811e,PtypBoolean,0x000b
@@ -319,7 +320,7 @@ PidLidTaskGlobalId,0x00008519,PtypBinary,0x0102
 PidLidTaskHistory,0x0000811a,PtypInteger32,0x0003
 PidLidTaskLastDelegate,0x00008125,PtypString,0x001f
 PidLidTaskLastUpdate,0x00008115,PtypTime,0x0040
-PidLidTaskLastUpdate,0x00008122,PtypString,0x001f
+PidLidTaskLastUser,0x00008122,PtypString,0x001f
 PidLidTaskMode,0x00008518,PtypInteger32,0x0003
 PidLidTaskMultipleRecipients,0x00008120,PtypInteger32,0x0003
 PidLidTaskNoCompute,0x00008124,PtypBoolean,0x000b
@@ -529,11 +530,12 @@ PidTagAddressBookExtensionAttribute2,0x802e,PtypString,0x001f
 PidTagAddressBookExtensionAttribute3,0x802f,PtypString,0x001f
 PidTagAddressBookExtensionAttribute4,0x8030,PtypString,0x001f
 PidTagAddressBookExtensionAttribute5,0x8031,PtypString,0x001f
+PidTagAddressBookExtensionAttribute6,0x8032,PtypString,0x001f
 PidTagAddressBookExtensionAttribute7,0x8033,PtypString,0x001f
 PidTagAddressBookExtensionAttribute8,0x8034,PtypString,0x001f
 PidTagAddressBookExtensionAttribute9,0x8035,PtypString,0x001f
 PidTagAddressBookFolderPathname,0x8004,PtypString,0x001f
-PidTagAddressBookHierarchichalChildDepartments,0x8c9a,PtypEmbeddedTable,0x000d
+PidTagAddressBookHierarchicalChildDepartments,0x8c9a,PtypEmbeddedTable,0x000d
 PidTagAddressBookHierarchicalDepartme,0x8c97,PtypEmbeddedTable,0x000d
 PidTagAddressBookHierarchicalIsHierarchicalG,0x8cdd,PtypBoolean,0x000b
 PidTagAddressBookHierarchicalParentDepartment,0x8c99,PtypEmbeddedTable,0x000d
@@ -585,7 +587,7 @@ PidTagAttachContentBase,0x3711,PtypString,0x001f
 PidTagAttachContentId,0x3712,PtypString,0x001f
 PidTagAttachContentLocation,0x3713,PtypString,0x001f
 PidTagAttachDataBinary,0x3701,PtypBinary,0x0102
-PidTagAttachDataBinaryObject,0x3701,PtypObject,0x000d
+PidTagAttachDataObject,0x3701,PtypObject,0x000d
 PidTagAttachEncoding,0x3702,PtypBinary,0x0102
 PidTagAttachExtension,0x3703,PtypString,0x001f
 PidTagAttachFilename,0x3704,PtypString,0x001f
@@ -695,8 +697,8 @@ PidTagFlagCompleteTime,0x1091,PtypTime,0x0040
 PidTagFlagStatus,0x1090,PtypInteger32,0x0003
 PidTagFlatUrlName,0x670e,PtypString,0x001f
 PidTagFolderAssociatedContents,0x3610,PtypObject,0x000d
-PidTagFolderId,0x6748,PtypInteger64,0x0014
 PidTagFolderFlags,0x66a8,PtypInteger32,0x0003
+PidTagFolderId,0x6748,PtypInteger64,0x0014
 PidTagFolderType,0x3601,PtypInteger32,0x0003
 PidTagFollowupIcon,0x1095,PtypInteger32,0x0003
 PidTagFreeBusyCountMonths,0x6869,PtypInteger32,0x0003
@@ -882,8 +884,8 @@ PidTagReadReceiptRequested,0x0029,PtypBoolean,0x000b
 PidTagReadReceiptSearchKey,0x0053,PtypBinary,0x0102
 PidTagReadReceiptSmtpAddress,0x5d05,PtypString,0x001f
 PidTagReceiptTime,0x002a,PtypTime,0x0040
-PidTagReceivedByAddressType,0x0075,PtypString,0x001f
 PidTagReceivedBy,0x0076,PtypString,0x001f
+PidTagReceivedByAddressType,0x0075,PtypString,0x001f
 PidTagReceivedByEntryId,0x003f,PtypBinary,0x0102
 PidTagReceivedByName,0x0040,PtypString,0x001f
 PidTagReceivedBySearchKey,0x0051,PtypBinary,0x0102
