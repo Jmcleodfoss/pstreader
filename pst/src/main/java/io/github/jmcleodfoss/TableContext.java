@@ -228,7 +228,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		private final int width;
 
 		/**	The cell existence bitmap. */
-		private final byte cellExistenceBitmapIndex;
+		private final int cellExistenceBitmapIndex;
 
 		/**	Create a TColDescr object from date read in from the input datastream.
 		*
@@ -245,7 +245,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 			tag = (Integer)dc.get(nm_tag);
 			columnOffset = (Short)dc.get(nm_ibData);
 			width = dc.getUInt8(nm_cbData);
-			cellExistenceBitmapIndex = (Byte)dc.get(nm_iBit); 
+			cellExistenceBitmapIndex = (int)(0xff & (Byte)dc.get(nm_iBit)); 
 		}
 
 		/**	Get the data type for this column description tag.
