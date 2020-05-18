@@ -98,7 +98,7 @@ class PropertyIDByGUID {
 
 		put(PropertyID.TaskStatus, GUID.PS_TASK, "TaskStatus");
 		put(PropertyID.PercentComplete, GUID.PS_TASK, "PercentComplete");
-		put(PropertyID.TeamTask , GUID.PS_TASK, "TeamTask ");
+		put(PropertyID.TeamTask , GUID.PS_TASK, "TeamTask");
 		put(PropertyID.TaskStartDate, GUID.PS_TASK, "TaskStartDate");
 		put(PropertyID.TaskDueDate, GUID.PS_TASK, "TaskDueDate");
 		put(PropertyID.TaskResetReminder, GUID.PS_TASK, "TaskResetReminder");
@@ -194,7 +194,7 @@ class PropertyIDByGUID {
 
 		put(PropertyID.ReminderDelta, GUID.PS_COMMON, "ReminderDelta");
 		put(PropertyID.ReminderTime, GUID.PS_COMMON, "ReminderTime");
-		put(PropertyID.ReminderSet , GUID.PS_COMMON, "ReminderSet ");
+		put(PropertyID.ReminderSet , GUID.PS_COMMON, "ReminderSet");
 		put(PropertyID.Private, GUID.PS_COMMON, "Private");
 		put(PropertyID.AgingDontAgeMe, GUID.PS_COMMON, "AgingDontAgeMe");
 		put(PropertyID.SideEffects, GUID.PS_COMMON, "SideEffects");
@@ -218,7 +218,7 @@ class PropertyIDByGUID {
 		put(PropertyID.Billing, GUID.PS_COMMON, "Billing");
 		put(PropertyID.NonSendableTo, GUID.PS_COMMON, "NonSendableTo");
 		put(PropertyID.NonSendToTrackStatus, GUID.PS_COMMON, "NonSendToTrackStatus");
-		put(PropertyID.NonSendCcTrackStatus , GUID.PS_COMMON, "NonSendCcTrackStatus ");
+		put(PropertyID.NonSendCcTrackStatus , GUID.PS_COMMON, "NonSendCcTrackStatus");
 		put(PropertyID.NonSendBccTrackStatus, GUID.PS_COMMON, "NonSendBccTrackStatus");
 		put(PropertyID.Contacts, GUID.PS_COMMON, "Contacts");
 		put(PropertyID.CurrentVersion, GUID.PS_COMMON, "CurrentVersion");

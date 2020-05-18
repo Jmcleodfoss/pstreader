@@ -153,10 +153,10 @@ public class PropertyTag {
 	public static final int Body = makeTag(PropertyID.Body, DataType.STRING_8);
 	public static final int BodyW = makeTag(PropertyID.Body, DataType.STRING);
 	public static final int RtfSyncBodyCrc = makeTag(PropertyID.RtfSyncBodyCrc, DataType.INTEGER_32);
-	public static final int RtfSyncBodyCount = makeTag(PropertyID.RtfSyncBodyCount , DataType.INTEGER_32);
+	public static final int RtfSyncBodyCount = makeTag(PropertyID.RtfSyncBodyCount, DataType.INTEGER_32);
 	public static final int RtfSyncBodyTag = makeTag(PropertyID.RtfSyncBodyTag, DataType.STRING);
 	public static final int RtfSyncBodyTagW = makeTag(PropertyID.RtfSyncBodyTag, DataType.STRING_8);
-	public static final int RtfCompressed  = makeTag(PropertyID.RtfCompressed , DataType.BINARY);
+	public static final int RtfCompressed = makeTag(PropertyID.RtfCompressed, DataType.BINARY);
 	public static final int RtfSyncPrefixCount = makeTag(PropertyID.RtfSyncPrefixCount, DataType.INTEGER_32);
 	public static final int RtfSyncTrailingCount = makeTag(PropertyID.RtfSyncTrailingCount, DataType.INTEGER_32);
 	public static final int BodyHtml = makeTag(PropertyID.BodyHtml, DataType.STRING_8);
@@ -171,7 +171,7 @@ public class PropertyTag {
 	public static final int OriginalMessageId = makeTag(PropertyID.OriginalMessageId, DataType.STRING_8);
 	public static final int OriginalMessageIdW = makeTag(PropertyID.OriginalMessageId, DataType.STRING);
 	public static final int IconIndex = makeTag(PropertyID.IconIndex, DataType.INTEGER_32);
-	public static final int LastVerbExecuted  = makeTag(PropertyID.LastVerbExecuted , DataType.INTEGER_32);
+	public static final int LastVerbExecuted = makeTag(PropertyID.LastVerbExecuted, DataType.INTEGER_32);
 	public static final int LastVerbExecutionTime = makeTag(PropertyID.LastVerbExecutionTime, DataType.TIME);
 	public static final int FlagStatus = makeTag(PropertyID.FlagStatus, DataType.INTEGER_32);
 	public static final int FlagCompleteTime = makeTag(PropertyID.FlagCompleteTime, DataType.TIME);
@@ -525,7 +525,7 @@ public class PropertyTag {
 
 	public static final int TaskStatus = makeTag(PropertyID.TaskStatus, DataType.INTEGER_32);
 	public static final int PercentComplete = makeTag(PropertyID.PercentComplete, DataType.FLOATING_64);
-	public static final int TeamTask  = makeTag(PropertyID.TeamTask , DataType.BOOLEAN);
+	public static final int TeamTask = makeTag(PropertyID.TeamTask, DataType.BOOLEAN);
 	public static final int TaskStartDate = makeTag(PropertyID.TaskStartDate, DataType.TIME);
 	public static final int TaskDueDate = makeTag(PropertyID.TaskDueDate, DataType.TIME);
 	public static final int TaskResetReminder = makeTag(PropertyID.TaskResetReminder, DataType.BOOLEAN);
@@ -622,7 +622,7 @@ public class PropertyTag {
 
 	public static final int ReminderDelta = makeTag(PropertyID.ReminderDelta, DataType.INTEGER_32);
 	public static final int ReminderTime = makeTag(PropertyID.ReminderTime, DataType.TIME);
-	public static final int ReminderSet  = makeTag(PropertyID.ReminderSet , DataType.BOOLEAN);
+	public static final int ReminderSet = makeTag(PropertyID.ReminderSet, DataType.BOOLEAN);
 	public static final int Private = makeTag(PropertyID.Private, DataType.BOOLEAN);
 	public static final int AgingDontAgeMe = makeTag(PropertyID.AgingDontAgeMe, DataType.BOOLEAN);
 	public static final int SideEffects = makeTag(PropertyID.SideEffects, DataType.INTEGER_32);
@@ -646,7 +646,7 @@ public class PropertyTag {
 	public static final int Billing = makeTag(PropertyID.Billing, DataType.STRING);
 	public static final int NonSendableTo = makeTag(PropertyID.NonSendableTo, DataType.STRING);
 	public static final int NonSendToTrackStatus = makeTag(PropertyID.NonSendToTrackStatus, DataType.MULTIPLE_INTEGER_32);
-	public static final int NonSendCcTrackStatus  = makeTag(PropertyID.NonSendCcTrackStatus , DataType.MULTIPLE_INTEGER_32);
+	public static final int NonSendCcTrackStatus = makeTag(PropertyID.NonSendCcTrackStatus, DataType.MULTIPLE_INTEGER_32);
 	public static final int NonSendBccTrackStatus = makeTag(PropertyID.NonSendBccTrackStatus, DataType.MULTIPLE_INTEGER_32);
 	public static final int Contacts = makeTag(PropertyID.Contacts, DataType.MULTIPLE_STRING);
 	public static final int CurrentVersion = makeTag(PropertyID.CurrentVersion, DataType.INTEGER_32);

@@ -156,10 +156,10 @@ public class PropertyTagName {
 		names.put(PropertyTag.Body, "Body");
 		names.put(PropertyTag.BodyW, "BodyW");
 		names.put(PropertyTag.RtfSyncBodyCrc, "RtfSyncBodyCrc");
-		names.put(PropertyTag.RtfSyncBodyCount , "RtfSyncBodyCount ");
+		names.put(PropertyTag.RtfSyncBodyCount , "RtfSyncBodyCount");
 		names.put(PropertyTag.RtfSyncBodyTag, "RtfSyncBodyTag");
 		names.put(PropertyTag.RtfSyncBodyTagW, "RtfSyncBodyTagW");
-		names.put(PropertyTag.RtfCompressed, "RtfCompressed ");
+		names.put(PropertyTag.RtfCompressed, "RtfCompressed");
 		names.put(PropertyTag.RtfSyncPrefixCount, "RtfSyncPrefixCount");
 		names.put(PropertyTag.RtfSyncTrailingCount, "RtfSyncTrailingCount");
 		names.put(PropertyTag.BodyHtml, "BodyHtml");
@@ -174,7 +174,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.OriginalMessageId, "OriginalMessageId");
 		names.put(PropertyTag.OriginalMessageIdW, "OriginalMessageIdW");
 		names.put(PropertyTag.IconIndex, "IconIndex");
-		names.put(PropertyTag.LastVerbExecuted , "LastVerbExecuted ");
+		names.put(PropertyTag.LastVerbExecuted , "LastVerbExecuted");
 		names.put(PropertyTag.LastVerbExecutionTime, "LastVerbExecutionTime");
 		names.put(PropertyTag.FlagStatus, "FlagStatus");
 		names.put(PropertyTag.FlagCompleteTime, "FlagCompleteTime");
