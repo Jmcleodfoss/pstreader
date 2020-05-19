@@ -104,7 +104,6 @@ public class PropertyTagName {
 		names.put(PropertyTag.ReceivedByEmailAddress, "ReceivedByEmailAddress");
 		names.put(PropertyTag.ReceivedByEmailAddressW, "ReceivedByEmailAddressW");
 		names.put(PropertyTag.ReceivedRepresentingAddressType, "ReceivedRepresentingAddressType");
-		names.put(PropertyTag.RemoteHeaderLoc, "RemoteHeaderLoc");
 		names.put(PropertyTag.TransportMessageHeaders, "TransportMessageHeaders");
 		names.put(PropertyTag.TransportMessageHeadersW, "TransportMessageHeadersW");
 		names.put(PropertyTag.TnefCorrelationKey, "TnefCorrelationKey");
@@ -140,7 +139,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.Responsibility, "Responsibility");
 		names.put(PropertyTag.SubmitFlags, "SubmitFlags");
 		names.put(PropertyTag.MessageStatus, "MessageStatus");
-		names.put(PropertyTag.AttachmentSize, "AttachmentSize");
+		names.put(PropertyTag.AttachSize, "AttachSize");
 		names.put(PropertyTag.InternetArticleNumber, "InternetArticleNumber");
 		names.put(PropertyTag.PrimarySendAccount, "PrimarySendAccount");
 		names.put(PropertyTag.PrimarySendAccountW, "PrimarySendAccountW");
@@ -242,7 +241,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.AttachLongPathnameW, "AttachLongFilenameW");
 		names.put(PropertyTag.AttachMimeTag, "AttachMimeTag");
 		names.put(PropertyTag.AttachMimeTagW, "AttachMimeTagW");
-		names.put(PropertyTag.AttachAdditionalInfo, "AttachAdditionalInfo");
+		names.put(PropertyTag.AttachAdditionalInformation, "AttachAdditionalInformation");
 		names.put(PropertyTag.AttachContentBase, "AttachContentBase");
 		names.put(PropertyTag.AttachContentId, "AttachContentId");
 		names.put(PropertyTag.AttachContentLocation, "AttachContentLocation");
@@ -250,7 +249,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.AttachPayloadProviderGuidString, "AttachPayloadProviderGuidString");
 		names.put(PropertyTag.AttachPayloadClass, "AttachPayloadClass");
 		names.put(PropertyTag.DisplayType, "DisplayType");
-		names.put(PropertyTag.SevenBitDisplayName, "7BitDisplayName");
+		names.put(PropertyTag.AddressBookDisplayNamePrintable, "AddressBookDisplayNamePrintable");
 		names.put(PropertyTag.Account, "Account");
 		names.put(PropertyTag.CallbackTelephoneNumber, "CallbackTelephoneNumber");
 		names.put(PropertyTag.Generation, "Generation");
@@ -325,10 +324,10 @@ public class PropertyTagName {
 		names.put(PropertyTag.FtpSite, "FtpSite");
 		names.put(PropertyTag.Gender, "Gender");
 		names.put(PropertyTag.ManagerName, "ManagerName");
-		names.put(PropertyTag.NickName, "NickName");
+		names.put(PropertyTag.Nickname, "Nickname");
 		names.put(PropertyTag.PersonalHomePage, "PersonalHomePage");
 		names.put(PropertyTag.BusinessHomePage, "BusinessHomePage");
-		names.put(PropertyTag.CompanyTelephoneNumber, "CompanyTelephoneNumber");
+		names.put(PropertyTag.CompanyMainTelephoneNumber, "CompanyMainTelephoneNumber");
 		names.put(PropertyTag.HomeAddressCity, "HomeAddressCity");
 		names.put(PropertyTag.HomeAddressCountry, "HomeAddressCountry");
 		names.put(PropertyTag.HomeAddressPostalCode, "HomeAddressPostalCode");
@@ -368,7 +367,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.PstLrNoRestrictions, "PstLrNoRestrictions");
 		names.put(PropertyTag.PstHiddenCount, "PstHiddenCount");
 		names.put(PropertyTag.PstHiddenUnread, "PstHiddenUnread");
-		names.put(PropertyTag.FolderId, "FolderId");
+		names.put(PropertyTag.FolderId32, "FolderId32");
 		names.put(PropertyTag.LtpParentNid, "LtpParentNid");
 		names.put(PropertyTag.LtpRowId, "LtpRowId");
 		names.put(PropertyTag.LtpRowVer, "LtpRowVer");
@@ -379,7 +378,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.SendOutlookRecallReport, "SendOutlookRecallReport");
 		names.put(PropertyTag.FaxNumberOfPages, "FaxNumberOfPages");
 		names.put(PropertyTag.OfflineAddressBookDistinguishedName, "OfflineAddressBookDistinguishedName");
-		names.put(PropertyTag.OfflineAddressBookTuncatedProperties, "OfflineAddressBookTuncatedProperties");
+		names.put(PropertyTag.OfflineAddressBookTruncatedProperties, "OfflineAddressBookTruncatedProperties");
 		names.put(PropertyTag.CallId, "CallId");
 		names.put(PropertyTag.OfflineAddressBookLanguageId, "OfflineAddressBookLanguageId");
 		names.put(PropertyTag.OfflineAddressBookFileType, "OfflineAddressBookFileType");
@@ -392,7 +391,7 @@ public class PropertyTagName {
 		names.put(PropertyTag.ScheduleInfoDontMailDelegates, "ScheduleInfoDontMailDelegates");
 		names.put(PropertyTag.SearchFolderDefinition, "SearchFolderDefinition");
 		names.put(PropertyTag.SearchFolderStorageType, "SearchFolderStorageType");
-		names.put(PropertyTag.SearchFolder, "SearchFolder");
+		names.put(PropertyTag.SearchFolderTag, "SearchFolderTag");
 		names.put(PropertyTag.SearchFolderEfpFlags, "SearchFolderEfpFlags");
 		names.put(PropertyTag.ScheduleInfoMonthsAway, "ScheduleInfoMonthsAway");
 		names.put(PropertyTag.ScheduleInfoFreeBusyAway, "ScheduleInfoFreeBusyAway");
@@ -411,14 +410,14 @@ public class PropertyTagName {
 		names.put(PropertyTag.ExceptionEndTime, "ExceptionEndTime");
 		names.put(PropertyTag.AttachmentFlags, "AttachmentFlags");
 		names.put(PropertyTag.AttachmentHidden, "AttachmentHidden");
-		names.put(PropertyTag.AttachContactPhoto, "AttachContactPhoto");
+		names.put(PropertyTag.AttachmentContactPhoto, "AttachmentContactPhoto");
 
 		// There is an ambiguity with these names.
 		// How can one distinguish e.g. AddressBookManagerDistinguishedName 0x8005001f and FileUnder 0x8005001f? Both
 		// are address book related.
 		names.put(PropertyTag.AddressBookFolderPathname, "AddressBookFolderPathname");
 		names.put(PropertyTag.AddressBookManagerDistinguishedName, "AddressBookManagerDistinguishedName");
-		names.put(PropertyTag.AddressBookIsMemberOfDistributionList, "AddressBookIsMemberOfDistributionList");
+		names.put(PropertyTag.AddressBookIsMemberOfDistributionListNspi, "AddressBookIsMemberOfDistributionListNspi");
 		names.put(PropertyTag.AddressBookMember, "AddressBookMember");
 	}
 

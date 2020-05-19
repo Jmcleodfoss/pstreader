@@ -139,7 +139,7 @@ class PropertyIDByGUID {
 		put(PropertyID.AppointmentAuxiliaryFlags, GUID.PSETID_APPOINTMENT, "AppointmentAuxiliaryFlags");
 		put(PropertyID.AppointmentLocation, GUID.PSETID_APPOINTMENT, "Location");
 		put(PropertyID.ForwardInstance, GUID.PSETID_APPOINTMENT, "ForwardInstance");
-		put(PropertyID.MeetingWorkspaceURL, GUID.PSETID_APPOINTMENT, "MeetingWorkspaceURL");
+		put(PropertyID.MeetingWorkspaceUrl, GUID.PSETID_APPOINTMENT, "MeetingWorkspaceUrl");
 		put(PropertyID.AppointmentStartWhole, GUID.PSETID_APPOINTMENT, "AppointmentStartWhole");
 		put(PropertyID.AppointmentEndWhole, GUID.PSETID_APPOINTMENT, "AppointmentEndWhole");
 		put(PropertyID.AppointmentStartTime, GUID.PSETID_APPOINTMENT, "AppointmentStartTime");
@@ -158,7 +158,7 @@ class PropertyIDByGUID {
 		put(PropertyID.AppointmentUpdateTime, GUID.PSETID_APPOINTMENT, "AppointmentUpdateTime");
 		put(PropertyID.ExceptionReplaceTime, GUID.PSETID_APPOINTMENT, "ExceptionReplaceTime");
 		put(PropertyID.FInvited, GUID.PSETID_APPOINTMENT, "FInvited");
-		put(PropertyID.ExceptionalAttendees, GUID.PSETID_APPOINTMENT, "ExceptionalAttendees");
+		put(PropertyID.FExceptionalAttendees, GUID.PSETID_APPOINTMENT, "FExceptionalAttendees");
 		put(PropertyID.OwnerName, GUID.PSETID_APPOINTMENT, "OwnerName");
 		put(PropertyID.AppointmentReplyName, GUID.PSETID_APPOINTMENT, "AppointmentReplyName");
 		put(PropertyID.RecurrenceType, GUID.PSETID_APPOINTMENT, "RecurrenceType");
@@ -169,7 +169,7 @@ class PropertyIDByGUID {
 		put(PropertyID.ClipEnd, GUID.PSETID_APPOINTMENT, "ClipEnd");
 		put(PropertyID.OriginalStoreEntryId, GUID.PSETID_APPOINTMENT, "OriginalStoreEntryId");
 		put(PropertyID.AllAttendeesString, GUID.PSETID_APPOINTMENT, "AllAttendeesString");
-		put(PropertyID.AutoFillAppointment, GUID.PSETID_APPOINTMENT, "AutoFillAppointment");
+		put(PropertyID.AutoFillLocation, GUID.PSETID_APPOINTMENT, "AutoFillLocation");
 		put(PropertyID.ToAttendeesString, GUID.PSETID_APPOINTMENT, "ToAttendeesString");
 		put(PropertyID.CcAttendeesString, GUID.PSETID_APPOINTMENT, "CcAttendeesString");
 		put(PropertyID.TrustRecipientHighlights, GUID.PSETID_APPOINTMENT, "TrustRecipientHighlights");
@@ -180,7 +180,7 @@ class PropertyIDByGUID {
 		put(PropertyID.AutoStartCheck, GUID.PSETID_APPOINTMENT, "AutoStartCheck");
 		put(PropertyID.AllowExternalCheck, GUID.PSETID_APPOINTMENT, "AllowExternalCheck");
 		put(PropertyID.CollaborateDoc, GUID.PSETID_APPOINTMENT, "CollaborateDoc");
-		put(PropertyID.NetShowURL, GUID.PSETID_APPOINTMENT, "NetShowURL");
+		put(PropertyID.NetShowUrl, GUID.PSETID_APPOINTMENT, "NetShowUrl");
 		put(PropertyID.OnlinePassword, GUID.PSETID_APPOINTMENT, "OnlinePassword");
 		put(PropertyID.AppointmentProposedStartWhole, GUID.PSETID_APPOINTMENT, "AppointmentProposedStartWhole");
 		put(PropertyID.AppointmentProposedEndWhole, GUID.PSETID_APPOINTMENT, "AppointmentProposedEndWhole");
@@ -232,6 +232,9 @@ class PropertyIDByGUID {
 		put(PropertyID.ContactLinkName, GUID.PSETID_COMMON, "ContactLinkName");
 		put(PropertyID.SpamOriginalFolder, GUID.PSETID_COMMON, "SpamOriginalFolder");
 		put(PropertyID.ValidFlagStringProof, GUID.PSETID_COMMON, "ValidFlagStringProof");
+
+		put(PropertyID.IsRecurring, GUID.PSETID_MEETING, "IsRecurring");
+		put(PropertyID.OldWhenEndWhole, GUID.PSETID_MEETING, "OldWhenEndWhole");
 
 		put(PropertyID.NoteColor, GUID.PSETID_NOTE, "NoteColor");
 		put(PropertyID.NoteWidth, GUID.PSETID_NOTE, "NoteWidth");

@@ -95,7 +95,6 @@ public class PropertyID {
 	static final short ReceivedByAddressType = 0x0075;
 	static final short ReceivedByEmailAddress = 0x0076;
 	static final short ReceivedRepresentingAddressType = 0x0077;
-	static final short RemoteHeaderLoc = 0x0078;
 	static final short TransportMessageHeaders = 0x007d;
 	static final short TnefCorrelationKey = 0x007f;
 	static final short ReportDisposition = 0x0080;
@@ -122,7 +121,7 @@ public class PropertyID {
 	static final short Responsibility = 0x0e0f;
 	static final short SubmitFlags = 0x0e14;
 	static final short MessageStatus = 0x0e17;
-	static final short AttachmentSize = 0x0e20;
+	static final short AttachSize = 0x0e20;
 	static final short InternetArticleNumber = 0x0e23;
 	static final short PrimarySendAccount = 0x0e28;
 	static final short NextSendAcct = 0x0e29;
@@ -206,7 +205,7 @@ public class PropertyID {
 	static final short AttachTransportName = 0x370c;
 	static final short AttachLongPathname = 0x370d;
 	static final short AttachMimeTag = 0x370e;
-	static final short AttachAdditionalInfo = 0x370f;
+	static final short AttachAdditionalInformation = 0x370f;
 	static final short AttachContentBase = 0x3711;
 	static final short AttachContentId = 0x3712;
 	static final short AttachContentLocation = 0x3713;
@@ -214,7 +213,7 @@ public class PropertyID {
 	static final short AttachPayloadProviderGuidString = 0x3719;
 	static final short AttachPayloadClass = 0x371a;
 	static final short DisplayType = 0x3900;
-	static final short SevenBitDisplayName = 0x39ff;
+	static final short AddressBookDisplayNamePrintable = 0x39ff;
 	static final short Account = 0x3a00;
 	static final short CallbackTelephoneNumber = 0x3a02;
 	static final short Generation = 0x3a05;
@@ -267,10 +266,10 @@ public class PropertyID {
 	static final short FtpSite = 0x3a4c;
 	static final short Gender = 0x3a4d;
 	static final short ManagerName = 0x3a4e;
-	static final short NickName = 0x3a4f;
+	static final short Nickname = 0x3a4f;
 	static final short PersonalHomePage = 0x3a50;
 	static final short BusinessHomePage = 0x3a51;
-	static final short CompanyTelephoneNumber = 0x3a57;
+	static final short CompanyMainTelephoneNumber = 0x3a57;
 	static final short HomeAddressCity = 0x3a59;
 	static final short HomeAddressCountry = 0x3a5a;
 	static final short HomeAddressPostalCode = 0x3a5b;
@@ -310,7 +309,7 @@ public class PropertyID {
 	static final short PstLrNoRestrictions = 0x6633;
 	static final short PstHiddenCount = 0x6635;
 	static final short PstHiddenUnread = 0x6636;
-	static final short FolderId = 0x6748;
+	static final short FolderId32 = 0x6748;
 	static final short LtpParentNid = 0x67f1;
 	static final short LtpRowId = 0x67f2;
 	static final short LtpRowVer = 0x67f3;
@@ -321,7 +320,7 @@ public class PropertyID {
 	static final short SendOutlookRecallReport = 0x6803;
 	static final short FaxNumberOfPages = 0x6804;
 	static final short OfflineAddressBookDistinguishedName = 0x6804;
-	static final short OfflineAddressBookTuncatedProperties = 0x6805;
+	static final short OfflineAddressBookTruncatedProperties = 0x6805;
 	static final short CallId = 0x6806;
 	static final short OfflineAddressBookLanguageId = 0x6807;
 	static final short OfflineAddressBookFileType = 0x6808;
@@ -334,7 +333,7 @@ public class PropertyID {
 	static final short ScheduleInfoDontMailDelegates = 0x6843;
 	static final short SearchFolderDefinition = 0x6845;
 	static final short SearchFolderStorageType = 0x6846;
-	static final short SearchFolder = 0x6847;
+	static final short SearchFolderTag = 0x6847;
 	static final short SearchFolderEfpFlags = 0x6848;
 	static final short ScheduleInfoMonthsAway = 0x6855;
 	static final short ScheduleInfoFreeBusyAway = 0x6856;
@@ -353,18 +352,18 @@ public class PropertyID {
 	static final short ExceptionEndTime = 0x7ffc;
 	static final short AttachmentFlags = 0x7ffd;
 	static final short AttachmentHidden = 0x7ffe;
-	static final short AttachContactPhoto = 0x7fff;
+	static final short AttachmentContactPhoto = 0x7fff;
 
 
 	static final short NamedPropertyFirst = (short)0x8000;
 	static final short NamedPropertyLast = (short)0x8fff;
 	static final short AddressBookFolderPathname = (short)0x8004;
 	static final short AddressBookManagerDistinguishedName = (short)0x8005;
-	static final short FileUnderId = (short)0x8005;
+	static final short FileUnderId = (short)0x8006;
 	static final short AddressBookHomeMessageDatabase = (short)0x8006;
 	static final short AddressBookHomeMessageTransferAgent = (short)0x8007;
 	static final short ContactItemData = (short)0x8007;
-	static final short AddressBookIsMemberOfDistributionList = (short)0x8008;
+	static final short AddressBookIsMemberOfDistributionListNspi = (short)0x8008;
 	static final short TcvConstLongOne = (short)0x8008;
 	static final short AddressBookMember = (short)0x8009;
 	static final short ReferredBy = (short)0x800e;
@@ -477,7 +476,7 @@ public class PropertyID {
 	static final short FExceptionalBody = (short)0x8206;
 	static final short AppointmentAuxiliaryFlags = (short)0x8207;
 	static final short AppointmentLocation = (short)0x8208;
-	static final short MeetingWorkspaceURL = (short)0x8209;
+	static final short MeetingWorkspaceUrl = (short)0x8209;
 	static final short ForwardInstance = (short)0x820a;
 	static final short AppointmentStartWhole = (short)0x820d;
 	static final short AppointmentEndWhole = (short)0x820e;
@@ -497,7 +496,7 @@ public class PropertyID {
 	static final short AppointmentUpdateTime = (short)0x8226;
 	static final short ExceptionReplaceTime = (short)0x8228;
 	static final short FInvited = (short)0x8229;
-	static final short ExceptionalAttendees = (short)0x822b;
+	static final short FExceptionalAttendees = (short)0x822b;
 	static final short OwnerName = (short)0x822e;
 	static final short AppointmentReplyName = (short)0x8230;
 	static final short RecurrenceType = (short)0x8231;
@@ -508,7 +507,7 @@ public class PropertyID {
 	static final short ClipEnd = (short)0x8236;
 	static final short OriginalStoreEntryId = (short)0x8237;
 	static final short AllAttendeesString = (short)0x8238;
-	static final short AutoFillAppointment = (short)0x823a;
+	static final short AutoFillLocation = (short)0x823a;
 	static final short ToAttendeesString = (short)0x823b;
 	static final short CcAttendeesString = (short)0x823c;
 	static final short TrustRecipientHighlights = (short)0x823e;
@@ -519,7 +518,7 @@ public class PropertyID {
 	static final short AutoStartCheck = (short)0x8244;
 	static final short AllowExternalCheck = (short)0x8246;
 	static final short CollaborateDoc = (short)0x8247;
-	static final short NetShowURL = (short)0x8248;
+	static final short NetShowUrl = (short)0x8248;
 	static final short OnlinePassword = (short)0x8249;
 	static final short AppointmentProposedStartWhole = (short)0x8250;
 	static final short AppointmentProposedEndWhole = (short)0x8251;
