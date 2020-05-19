@@ -570,7 +570,7 @@ public class PropertyTag {
 	public static final int AppointmentStartWhole = makeTag(PropertyID.AppointmentStartWhole, DataType.TIME);
 	public static final int AppointmentEndWhole = makeTag(PropertyID.AppointmentEndWhole, DataType.TIME);
 	public static final int AppointmentStartTime = makeTag(PropertyID.AppointmentStartTime, DataType.TIME);
-	public static final int AppointmentEndType = makeTag(PropertyID.AppointmentEndType, DataType.TIME);
+	public static final int AppointmentEndTime = makeTag(PropertyID.AppointmentEndTime, DataType.TIME);
 	public static final int AppointmentEndDate = makeTag(PropertyID.AppointmentEndDate, DataType.TIME);
 	public static final int AppointmentStartDate = makeTag(PropertyID.AppointmentStartDate, DataType.TIME);
 	public static final int AppointmentDuration = makeTag(PropertyID.AppointmentDuration, DataType.INTEGER_32);

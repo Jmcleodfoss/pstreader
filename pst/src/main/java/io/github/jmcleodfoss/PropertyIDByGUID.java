@@ -143,7 +143,7 @@ class PropertyIDByGUID {
 		put(PropertyID.AppointmentStartWhole, GUID.PSETID_APPOINTMENT, "AppointmentStartWhole");
 		put(PropertyID.AppointmentEndWhole, GUID.PSETID_APPOINTMENT, "AppointmentEndWhole");
 		put(PropertyID.AppointmentStartTime, GUID.PSETID_APPOINTMENT, "AppointmentStartTime");
-		put(PropertyID.AppointmentEndType, GUID.PSETID_APPOINTMENT, "AppointmentEndType");
+		put(PropertyID.AppointmentEndTime, GUID.PSETID_APPOINTMENT, "AppointmentEndTime");
 		put(PropertyID.AppointmentEndDate, GUID.PSETID_APPOINTMENT, "AppointmentEndDate");
 		put(PropertyID.AppointmentStartDate, GUID.PSETID_APPOINTMENT, "AppointmentStartDate");
 		put(PropertyID.AppointmentDuration, GUID.PSETID_APPOINTMENT, "AppointmentDuration");

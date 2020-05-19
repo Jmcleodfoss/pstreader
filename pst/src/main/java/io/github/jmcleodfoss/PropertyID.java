@@ -482,7 +482,7 @@ public class PropertyID {
 	static final short AppointmentStartWhole = (short)0x820d;
 	static final short AppointmentEndWhole = (short)0x820e;
 	static final short AppointmentStartTime = (short)0x820f;
-	static final short AppointmentEndType = (short)0x8210;
+	static final short AppointmentEndTime = (short)0x8210;
 	static final short AppointmentEndDate = (short)0x8211;
 	static final short AppointmentStartDate = (short)0x8212;
 	static final short AppointmentDuration = (short)0x8213;
