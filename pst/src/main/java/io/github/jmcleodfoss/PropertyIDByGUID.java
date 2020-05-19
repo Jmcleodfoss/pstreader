@@ -7,6 +7,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">[MS-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 */
+@Deprecated
 class PropertyIDByGUID {
 
 	/**	The StringByGUID class holds the mapping of GUIDs to property names for a given property ID. Note that the

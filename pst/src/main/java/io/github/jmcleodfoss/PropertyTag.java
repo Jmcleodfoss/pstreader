@@ -7,6 +7,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">[MS-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 */
+@Deprecated
 public class PropertyTag {
 
 	// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
