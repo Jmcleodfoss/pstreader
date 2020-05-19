@@ -56,6 +56,13 @@ sort -t , -k 2 properties.csv | sed '
 
 cat << END_FOOTER >> PropertyTags.java
 
+	static String name(int tag)
+	{
+		if (tags.keySet().contains(tag))
+			return tags.get(tag);
+		return String.format("propertyTag-%08x", tag);
+	}
+
 	public static void main(String[] args)
 	{
 		java.util.Iterator<Integer> iter = PropertyTags.tags.keySet().iterator();
