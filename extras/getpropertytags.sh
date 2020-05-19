@@ -14,17 +14,16 @@ package io.github.jmcleodfoss.pst;
 
 public class PropertyTags
 {
-
 	// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
-	static final short NameidBucketCount = 0x0001;
-	static final short NameidStreamGuid = 0x0002;
-	static final short NameidStreamEntry = 0x0003;
-	static final short NameidStreamString = 0x0004;
-	static final short NameToIdMapBucketFirst = 0x1000;
-	static final short NameToIdMapBucketLast = 0x2fff;
+	static final int NameidBucketCount = 0x0001;
+	static final int NameidStreamGuid = 0x00020102;
+	static final int NameidStreamEntry = 0x00030102;
+	static final int NameidStreamString = 0x00040102;
+	static final int NameToIdMapBucketFirst = 0x1000;
+	static final int NameToIdMapBucketLast = 0x2fff;
 
-	static final short NamedPropertyFirst = (short)0x8000;
-	static final short NamedPropertyLast = (short)0x8fff;
+	static final int NamedPropertyFirst = (short)0x8000;
+	static final int NamedPropertyLast = (short)0x8fff;
 
 END_HEADER
 sort -t , -k 2 properties.csv | sed '
@@ -35,6 +34,12 @@ sort -t , -k 2 properties.csv | sed '
 	static final java.util.HashMap<Integer, String> tags = new java.util.HashMap<Integer, String>();
 		i\
 	static {
+		i\
+		tags.put(NameidStreamGuid, "Named Property GUID Stream");
+		i\
+		tags.put(NameidStreamEntry, "Named Property Entry Stream");
+		i\
+		tags.put(NameidStreamString, "Named Property String Stream");
 		g
 		a\
 	}
