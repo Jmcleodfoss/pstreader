@@ -12,7 +12,7 @@ public class MessageStore {
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.3.1"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386088(v=office.12).aspx">Minimum Set of Required Properties (MSDN)</a>
 	*/
-	private static final int PROPID_ROOT_ENTRY_ID = PropertyTag.IpmSubTreeEntryId;
+	private static final int PROPID_ROOT_ENTRY_ID = PropertyTags.IpmSubTreeEntryId;
 
 	/**	The tag for the password field.
 	*
@@ -22,7 +22,7 @@ public class MessageStore {
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.3.3"
 	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385916(v=office.12).aspx">PST Password Security (MSDN)</a>
 	*/
-	private static final int PROPID_PASSWORD = PropertyTag.LtpPstPassword;
+	private static final int PROPID_PASSWORD = PropertyTags.LtpPstPassword;
 
 	/**	The actual message store PC. */
 	private final PropertyContext messageStore;

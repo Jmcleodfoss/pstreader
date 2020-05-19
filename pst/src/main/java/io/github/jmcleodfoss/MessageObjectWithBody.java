@@ -39,7 +39,7 @@ public class MessageObjectWithBody extends MessageObject {
 	*/
 	public String body(final PropertyContext pc)
 	{
-		return (String)pc.get(fUnicode ? PropertyTag.BodyW : PropertyTag.Body);
+		return (String)pc.get(fUnicode ? PropertyTags.BodyW : PropertyTags.Body);
 	}
 
 	/**	Extract the HTML message body from the message object property context.
@@ -55,10 +55,10 @@ public class MessageObjectWithBody extends MessageObject {
 	public String bodyHtml(final PropertyContext pc)
 	{
 		if (fUnicode) {
-			final byte[] htmlData = (byte[])pc.get(PropertyTag.BodyHtmlW);
+			final byte[] htmlData = (byte[])pc.get(PropertyTags.BodyHtmlW);
 			return htmlData == null ? null : new String(htmlData);
 		}
 
-		return (String)pc.get(PropertyTag.BodyHtml);
+		return (String)pc.get(PropertyTags.BodyHtml);
 	}
 }

@@ -32,8 +32,8 @@ class Recipient {
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
-		emailAddress = (String)tc.get(row, fUnicode ? PropertyTag.EmailAddressW : PropertyTag.EmailAddress);
-		displayName = (String)tc.get(row, fUnicode ? PropertyTag.DisplayNameW : PropertyTag.DisplayName);
+		emailAddress = (String)tc.get(row, fUnicode ? PropertyTags.EmailAddressW : PropertyTags.EmailAddress);
+		displayName = (String)tc.get(row, fUnicode ? PropertyTags.DisplayNameW : PropertyTags.DisplayName);
 	}
 
 	/**	Test the Recipient class by iterating through the messages and displaying information about the recipients of each

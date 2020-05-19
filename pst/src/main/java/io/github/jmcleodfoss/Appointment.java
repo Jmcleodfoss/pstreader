@@ -106,12 +106,12 @@ public class Appointment extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		AppointmentStartWholePropertyID = namedProperties.id(PropertyTag.AppointmentStartWhole);
-		AppointmentEndWholePropertyID = namedProperties.id(PropertyTag.AppointmentEndWhole);
-		AppointmentDurationPropertyID = namedProperties.id(PropertyTag.AppointmentDuration);
-		RecurrencePatternPropertyID = namedProperties.id(PropertyTag.RecurrencePattern);
-		RecurringPropertyID = namedProperties.id(PropertyTag.Recurring);
-		RecurrenceTypePropertyID = namedProperties.id(PropertyID.RecurrenceType);
-		ReminderDeltaPropertyID = namedProperties.id(PropertyID.ReminderDelta);
+		AppointmentStartWholePropertyID = namedProperties.id(PropertyLIDs.AppointmentStartWhole);
+		AppointmentEndWholePropertyID = namedProperties.id(PropertyLIDs.AppointmentEndWhole);
+		AppointmentDurationPropertyID = namedProperties.id(PropertyLIDs.AppointmentDuration);
+		RecurrencePatternPropertyID = namedProperties.id(PropertyLIDs.RecurrencePattern);
+		RecurringPropertyID = namedProperties.id(PropertyLIDs.Recurring);
+		RecurrenceTypePropertyID = namedProperties.id(PropertyLIDs.RecurrenceType);
+		ReminderDeltaPropertyID = namedProperties.id(PropertyLIDs.ReminderDelta);
 	}
 }

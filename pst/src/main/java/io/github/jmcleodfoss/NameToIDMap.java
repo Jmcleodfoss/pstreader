@@ -237,30 +237,23 @@ public class NameToIDMap {
 		final PropertyContext pc = new PropertyContext(nbt.find(NID.NID_NAME_TO_ID_MAP), bbt, pstFile);
 		logger.log(java.util.logging.Level.FINER, "Name to ID Map\n______________\n" + pc.toString());
 
-		final byte[] entryRaw = getBinaryProperty(pc, PropertyTag.NameidStreamEntry);
+		final byte[] entryRaw = getBinaryProperty(pc, PropertyTags.NameidStreamEntry);
 		java.nio.ByteBuffer entryStream = PSTFile.makeByteBuffer(entryRaw);
 
-		final byte[] stringRaw = getBinaryProperty(pc, PropertyTag.NameidStreamString);
+		final byte[] stringRaw = getBinaryProperty(pc, PropertyTags.NameidStreamString);
 		java.nio.ByteBuffer stringStream = PSTFile.makeByteBuffer(stringRaw);
 
-		final byte[] guidRaw = getBinaryProperty(pc, PropertyTag.NameidStreamGuid);
+		final byte[] guidRaw = getBinaryProperty(pc, PropertyTags.NameidStreamGuid);
 
 		java.util.HashMap<Short, String> namedProperties = new java.util.HashMap<Short, String>();
 		java.util.HashMap<Short, Short> canonicalIDToNPID = new java.util.HashMap<Short, Short>();
 		while (entryStream.remaining() > 0) {
 			final NameID nameID = new NameID(entryStream, guidRaw, stringStream);
-			short id = (short)(PropertyID.NamedPropertyFirst | nameID.propertyIndex);
+			short id = (short)(PropertyTags.NamedPropertyFirst | nameID.propertyIndex);
 			if (nameID.fString)
 				namedProperties.put(id, nameID.name);
 			else {
-				String name;
-
-				if (PropertyIDByGUID.containsKey((short)nameID.propertyID, nameID.guid))
-					name = PropertyIDByGUID.name((short)nameID.propertyID, nameID.guid);
-				else 
-					name = Integer.toHexString(nameID.propertyID & 0xffff) + "-" + nameID.guid.toString();
-
-				namedProperties.put(id, name);
+				namedProperties.put(id, PropertyLIDs.name(nameID.propertyID, nameID.guid));
 				canonicalIDToNPID.put((short)nameID.propertyID, id);
 			}
 		}
@@ -279,9 +272,9 @@ public class NameToIDMap {
 	{
 		final Object o = pc.get(propertyTag);
 		if (o == null)
-			throw new RuntimeException("Could not find " + PropertyTagName.name(propertyTag));
+			throw new RuntimeException("Could not find " + PropertyTags.name(propertyTag));
 		final byte[] arr = (byte[])o;
-		logger.log(java.util.logging.Level.INFO, PropertyTagName.name(propertyTag) + " (" + arr.length + " bytes): ", arr);
+		logger.log(java.util.logging.Level.INFO, PropertyTags.name(propertyTag) + " (" + arr.length + " bytes): ", arr);
 		return arr;
 	}
 
@@ -318,7 +311,7 @@ public class NameToIDMap {
 	*/
 	public String name(final short propertyID)
 	{
-		if (propertyID >= PropertyID.NamedPropertyFirst && propertyID <= PropertyID.NamedPropertyLast) {
+		if (propertyID >= PropertyTags.NamedPropertyFirst && propertyID <= PropertyTags.NamedPropertyLast) {
 			final String name = namedProperties.get(propertyID);
 			return name;
 		}
@@ -339,10 +332,10 @@ public class NameToIDMap {
 		if (name != null)
 			return name;
 
-		if (propertyID >= PropertyID.NamedPropertyFirst && propertyID <= PropertyID.NamedPropertyLast)
+		if (propertyID >= PropertyTags.NamedPropertyFirst && propertyID <= PropertyTags.NamedPropertyLast)
 			return String.format("namedPropertyID-%08x", propertyTag);
 
-		return PropertyTagName.name(propertyTag);
+		return PropertyTags.name(propertyTag);
 	}
 
 	/**	Retrieve a table model suitable for displaying the information in this class in a table.

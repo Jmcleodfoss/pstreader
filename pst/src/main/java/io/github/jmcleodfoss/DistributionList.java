@@ -162,7 +162,7 @@ public class DistributionList extends MessageObject {
 			EntryID entryID = new EntryID(rawData);
 			try {
 				PropertyContext pc = entryID.propertyContext(bbt, nbt, pstFile);
-				displayName = (String)pc.get(PropertyTag.DisplayNameW);
+				displayName = (String)pc.get(PropertyTags.DisplayNameW);
 				emailAddress = (String)pc.get(email1AddressPropertyID);
 			} catch (final Exception e) {
 			}
@@ -209,10 +209,10 @@ public class DistributionList extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		email1AddressPropertyID = namedProperties.id(PropertyTag.Email1EmailAddress);
+		email1AddressPropertyID = namedProperties.id(PropertyLIDs.Email1EmailAddress);
 
-		distributionListMembersPropertyID = namedProperties.id(PropertyTag.DistributionListMembers);
-		distributionListOneOffMembersPropertyID = namedProperties.id(PropertyTag.DistributionListOneOffMembers);
+		distributionListMembersPropertyID = namedProperties.id(PropertyLIDs.DistributionListMembers);
+		distributionListOneOffMembersPropertyID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers);
 	}
 
 	static final String nm_ProviderUID = "ProviderUID";

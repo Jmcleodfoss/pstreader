@@ -85,8 +85,8 @@ public class Message extends MessageObjectWithBody {
 	{
 		super(contentsTable, messageRow, nbt, pstFile);
 
-		messageDeliveryTime = (java.util.Date)contentsTable.get(messageRow, PropertyTag.MessageDeliveryTime);
-		sentRepresentingName = (String)contentsTable.get(messageRow, PropertyTag.SentRepresentingNameW);
+		messageDeliveryTime = (java.util.Date)contentsTable.get(messageRow, PropertyTags.MessageDeliveryTime);
+		sentRepresentingName = (String)contentsTable.get(messageRow, PropertyTags.SentRepresentingNameW);
 
 		SLEntry nodeAttachmentTable = null;
 		SLEntry nodeRecipientTable = null;
@@ -109,7 +109,7 @@ public class Message extends MessageObjectWithBody {
 
 					attachments = new java.util.Vector<Attachment>(tcAttachments.getRowCount());
 					for (int i = 0; i < tcAttachments.getRowCount(); ++i) {
-						final SLEntry nodeAttachmentPC = (SLEntry)snb.find((Integer)tcAttachments.get(i, PropertyTag.LtpRowId));
+						final SLEntry nodeAttachmentPC = (SLEntry)snb.find((Integer)tcAttachments.get(i, PropertyTags.LtpRowId));
 						assert nodeAttachmentPC != null;
 						attachments.add(new Attachment(nodeAttachmentPC, bbt, pstFile));
 					}
@@ -120,7 +120,7 @@ public class Message extends MessageObjectWithBody {
 		this.nodeAttachmentTable = nodeAttachmentTable;
 		this.attachments = (attachments != null) ? attachments : new java.util.Vector<Attachment>(0);
 
-		int messageFlags = (Integer)contentsTable.get(messageRow, PropertyTag.MessageFlags);
+		int messageFlags = (Integer)contentsTable.get(messageRow, PropertyTags.MessageFlags);
 		assert (nodeAttachmentTable == null) == ((messageFlags & MSG_FLAG_ATTACHMENT) == 0);
 
 		this.nodeRecipientTable = nodeRecipientTable;
@@ -240,7 +240,7 @@ public class Message extends MessageObjectWithBody {
 	*/
 	public String transportHeaders(final PropertyContext pc)
 	{
-		return (String)pc.get(PropertyTag.TransportMessageHeaders);
+		return (String)pc.get(PropertyTags.TransportMessageHeaders);
 	}
 
 	/**	Test the Message class by iterating through the messages.

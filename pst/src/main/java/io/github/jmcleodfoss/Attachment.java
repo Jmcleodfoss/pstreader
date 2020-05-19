@@ -200,32 +200,32 @@ public class Attachment {
 		this.nodeInfo = nodeInfo;
 
 		final PropertyContext pc = new PropertyContext(nodeInfo, bbt, pstFile);
-		final int attachMethod = (Integer)pc.get(PropertyTag.AttachMethod);
+		final int attachMethod = (Integer)pc.get(PropertyTags.AttachMethod);
 		int propidData = -1;
 		switch (attachMethod) {
 		case AF_NONE:
 			break;
 	
 		case AF_BY_VALUE:
-			propidData = PropertyTag.AttachDataBinary;
+			propidData = PropertyTags.AttachDataBinary;
 			break;
 	
 		case AF_BY_REFERENCE:
 		case AF_BY_REFERENCE_ONLY:
-			propidData = PropertyTag.AttachLongPathname;
+			propidData = PropertyTags.AttachLongPathname;
 			break;
 
 		case AF_EMBEDDED_MESSAGE:
 		case AF_STORAGE:
-			propidData = PropertyTag.AttachDataObject;
+			propidData = PropertyTags.AttachDataObject;
 			break;
 		}
 		this.propidData = propidData;
 
-		int tagAttachmentFilename = pstFile.unicode() ? PropertyTag.AttachFilenameW : PropertyTag.AttachFilename;
+		int tagAttachmentFilename = pstFile.unicode() ? PropertyTags.AttachFilenameW : PropertyTags.AttachFilename;
 		name = pc.containsKey(tagAttachmentFilename) ? (String)pc.get(tagAttachmentFilename) : "unnamed-attachment";
-		extension = (String)pc.get(PropertyTag.AttachExtension);
-		final String mimeType = (String)pc.get(pstFile.unicode() ? PropertyTag.AttachMimeTagW : PropertyTag.AttachMimeTag);
+		extension = (String)pc.get(PropertyTags.AttachExtension);
+		final String mimeType = (String)pc.get(pstFile.unicode() ? PropertyTags.AttachMimeTagW : PropertyTags.AttachMimeTag);
 		this.mimeType = mimeType == null ? "" : mimeType.toLowerCase();
 	}
 

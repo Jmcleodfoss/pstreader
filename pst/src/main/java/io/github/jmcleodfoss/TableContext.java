@@ -264,7 +264,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		@Override
 		public String toString()
 		{
-			String propertyName = PropertyTagName.name(tag);
+			String propertyName = PropertyTags.name(tag);
 			return String.format("tag 0x%08x (%s) offset into row %d width %d CEB index %d", tag, propertyName, columnOffset, width, cellExistenceBitmapIndex);
 		}
 	}
@@ -470,7 +470,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*/
 	public String getColumnName(int column)
 	{
-		return PropertyTagName.name(info.columnDescription[column].tag);
+		return PropertyTags.name(info.columnDescription[column].tag);
 	}
 
 	/**	Obtain a ByteBuffer from which the raw data for the given propertyID may be read.
@@ -728,7 +728,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		for (Object[] row : rows) {
 			if (row != null)
 			for (int c = 0; c < row.length; ++c) {
-				s.append("\n" + PropertyTagName.name(info.columnDescription[c].tag) + ": ");
+				s.append("\n" + PropertyTags.name(info.columnDescription[c].tag) + ": ");
 				if (row[c] == null)
 					s.append("empty");
 				else if (row[c] instanceof Byte)

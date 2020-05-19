@@ -361,7 +361,7 @@ public class PropertyContext {
 			s.append("0x");
 			s.append(Integer.toHexString(propertyTag));
 			s.append(' ');
-			s.append(PropertyTagName.name(propertyTag));
+			s.append(PropertyTags.name(propertyTag));
 			s.append(' ');
 			Object o = entry.getValue();
 			if (o == null)

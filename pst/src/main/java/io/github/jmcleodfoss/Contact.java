@@ -33,9 +33,9 @@ public class Contact extends MessageObject {
 
 	/**	The tags under which to look up the email addresses. */
 	private static final int[] emailAddressPropertyIDLookup = {
-		PropertyTag.Email1EmailAddress,
-		PropertyTag.Email2EmailAddress,
-		PropertyTag.Email3EmailAddress
+		PropertyLIDs.Email1EmailAddress,
+		PropertyLIDs.Email2EmailAddress,
+		PropertyLIDs.Email3EmailAddress
 	};
 
 	/**	The property ID of the "Email 1 Address" property. */
@@ -104,25 +104,25 @@ public class Contact extends MessageObject {
 	{
 		super(contentsTable, row, nbt, pstFile);
 
-		String name = (String)contentsTable.get(row, fUnicode ? PropertyTag.DisplayNameW : PropertyTag.DisplayName);
+		String name = (String)contentsTable.get(row, fUnicode ? PropertyTags.DisplayNameW : PropertyTags.DisplayName);
 		if (name == null)
-			name = (String)contentsTable.get(row, fUnicode ? PropertyTag.CompanyNameW : PropertyTag.CompanyName);
+			name = (String)contentsTable.get(row, fUnicode ? PropertyTags.CompanyNameW : PropertyTags.CompanyName);
 		if (name == null)
 			name = subject;
 		if (name == null)
-			name = (String)contentsTable.get(row, fUnicode ? PropertyTag.ConversationTopicW : PropertyTag.ConversationTopic);
+			name = (String)contentsTable.get(row, fUnicode ? PropertyTags.ConversationTopicW : PropertyTags.ConversationTopic);
 		displayName = name;
-		givenName = (String)contentsTable.get(row, fUnicode ? PropertyTag.GivenNameW : PropertyTag.GivenName);
-		middleName = (String)contentsTable.get(row, fUnicode ? PropertyTag.MiddleNameW : PropertyTag.MiddleName);
-		surname = (String)contentsTable.get(row, fUnicode ? PropertyTag.SurnameW : PropertyTag.Surname);
-		homePhone = (String)contentsTable.get(row, fUnicode ? PropertyTag.HomeTelephoneNumberW : PropertyTag.HomeTelephoneNumber);
-		homeFax = (String)contentsTable.get(row, fUnicode ? PropertyTag.HomeFaxNumberW : PropertyTag.HomeFaxNumberW);
-		mobilePhone = (String)contentsTable.get(row, fUnicode ? PropertyTag.MobileTelephoneNumberW : PropertyTag.MobileTelephoneNumber);
-		businessPhone = (String)contentsTable.get(row, fUnicode ? PropertyTag.BusinessTelephoneNumberW : PropertyTag.BusinessTelephoneNumber);
-		businessFax = (String)contentsTable.get(row, fUnicode ? PropertyTag.BusinessFaxNumberW : PropertyTag.BusinessFaxNumber);
-		postalAddress = (String)contentsTable.get(row, fUnicode ? PropertyTag.PostalAddressW : PropertyTag.PostalAddress);
-		companyName = (String)contentsTable.get(row, fUnicode ? PropertyTag.CompanyNameW : PropertyTag.CompanyName);
-		otherPhone = (String)contentsTable.get(row, fUnicode ? PropertyTag.OtherTelephoneNumberW : PropertyTag.OtherTelephoneNumber);
+		givenName = (String)contentsTable.get(row, fUnicode ? PropertyTags.GivenNameW : PropertyTags.GivenName);
+		middleName = (String)contentsTable.get(row, fUnicode ? PropertyTags.MiddleNameW : PropertyTags.MiddleName);
+		surname = (String)contentsTable.get(row, fUnicode ? PropertyTags.SurnameW : PropertyTags.Surname);
+		homePhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.HomeTelephoneNumberW : PropertyTags.HomeTelephoneNumber);
+		homeFax = (String)contentsTable.get(row, fUnicode ? PropertyTags.HomeFaxNumberW : PropertyTags.HomeFaxNumberW);
+		mobilePhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.MobileTelephoneNumberW : PropertyTags.MobileTelephoneNumber);
+		businessPhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.BusinessTelephoneNumberW : PropertyTags.BusinessTelephoneNumber);
+		businessFax = (String)contentsTable.get(row, fUnicode ? PropertyTags.BusinessFaxNumberW : PropertyTags.BusinessFaxNumber);
+		postalAddress = (String)contentsTable.get(row, fUnicode ? PropertyTags.PostalAddressW : PropertyTags.PostalAddress);
+		companyName = (String)contentsTable.get(row, fUnicode ? PropertyTags.CompanyNameW : PropertyTags.CompanyName);
+		otherPhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.OtherTelephoneNumberW : PropertyTags.OtherTelephoneNumber);
 
 		emailAddresses = new java.util.ArrayList<String>(3);
 		for (int propId : emailAddressPropertyIDs) {

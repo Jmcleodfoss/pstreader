@@ -48,9 +48,9 @@ public class MessageObject {
 		java.io.IOException
 	{
 		fUnicode = pstFile.unicode();
-		subject = (String)contentsTable.get(messageRow, fUnicode ? PropertyTag.SubjectW : PropertyTag.Subject);
+		subject = (String)contentsTable.get(messageRow, fUnicode ? PropertyTags.SubjectW : PropertyTags.Subject);
 
-		final int nidMessageObject = (Integer)contentsTable.get(messageRow, PropertyTag.LtpRowId);
+		final int nidMessageObject = (Integer)contentsTable.get(messageRow, PropertyTags.LtpRowId);
 		nodeMessageObject = nbt.find(new NID(nidMessageObject));
 	}
 
@@ -84,7 +84,7 @@ public class MessageObject {
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		final String messageType = (String)contentsTable.get(row, pstFile.unicode() ? PropertyTag.MessageClassW : PropertyTag.MessageClass);
+		final String messageType = (String)contentsTable.get(row, pstFile.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
 
 		if (IPM.isAppointment(messageType))
 			return new Appointment(contentsTable, row, bbt, nbt, pstFile);

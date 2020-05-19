@@ -105,10 +105,10 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		this.nodeFolderObject = nodeFolderObject;
 		PropertyContext folderObject = new PropertyContext(nodeFolderObject, bbt, pstFile);
 
-		displayName = (String)folderObject.get(pstFile.unicode() ? PropertyTag.DisplayNameW : PropertyTag.DisplayName);
-		containerClass = (String)folderObject.get(pstFile.unicode() ? PropertyTag.ContainerClassW : PropertyTag.ContainerClass);
+		displayName = (String)folderObject.get(pstFile.unicode() ? PropertyTags.DisplayNameW : PropertyTags.DisplayName);
+		containerClass = (String)folderObject.get(pstFile.unicode() ? PropertyTags.ContainerClassW : PropertyTags.ContainerClass);
 
-		if ((Boolean)folderObject.get(PropertyTag.Subfolders) && levelsToRead.readSubfolders()) {
+		if ((Boolean)folderObject.get(PropertyTags.Subfolders) && levelsToRead.readSubfolders()) {
 			NID nidHierarchyTable = new NID(nodeFolderObject.nid, NID.HIERARCHY_TABLE);
 			nodeHierarchyTable = nbt.find(nidHierarchyTable);
 			subfolders = readSubfolders(nodeHierarchyTable, bbt, nbt, pstFile, levelsToRead, fReadContents);
@@ -117,7 +117,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			subfolders = new java.util.Vector<Folder>();
 		}
 
-		if ((Integer)folderObject.get(PropertyTag.ContentCount) > 0 && fReadContents) {
+		if ((Integer)folderObject.get(PropertyTags.ContentCount) > 0 && fReadContents) {
 			NID nidContentsTable = new NID(nodeFolderObject.nid, NID.CONTENTS_TABLE);
 			nodeContentsTable = nbt.find(nidContentsTable);
 			contents = readContents(nodeContentsTable, bbt, nbt, pstFile);
@@ -397,7 +397,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		java.util.Vector<Folder> subfolders = new java.util.Vector<Folder>(hierarchyTable.getRowCount());
 		levelsToRead.decrement();
 		for (int row = 0; row < hierarchyTable.getRowCount(); ++row) {
-			int nidSubfolder = (Integer)hierarchyTable.get(row, PropertyTag.LtpRowId);
+			int nidSubfolder = (Integer)hierarchyTable.get(row, PropertyTags.LtpRowId);
 			NBTEntry nodeSubfolder = nbt.find(new NID(nidSubfolder));
 			subfolders.add(new Folder(nodeSubfolder, bbt, nbt, pstFile, levelsToRead, fReadContents));
 		}
