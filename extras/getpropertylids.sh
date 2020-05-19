@@ -60,6 +60,13 @@ sort -t , -k 2 properties.csv | sed '
 
 cat << END_FOOTER >> PropertyLIDs.java
 
+	static String name(int lid, GUID guid)
+	{
+		if (lids.containsKey(lid) && guids.containsKey(lid) && guid.equals(guids.get(lid)))
+			return PropertyLIDs.lids.get(lid);
+		return String.format("PropertyLID-%08x:%s", lid, guid.toString());
+	}
+
 	public static void main(String[] args)
 	{
 		java.util.Iterator<Integer> iter = PropertyLIDs.lids.keySet().iterator();
