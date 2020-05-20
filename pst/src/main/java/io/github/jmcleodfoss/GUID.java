@@ -52,6 +52,7 @@ class GUID {
 	*	Documented:	6ED8DA90-450B-101B-98DA-00AA003F1305
 	*	Observed:	6ED8DA90-0B45-101B-98DA-00AA003F1305
 	*	The observed value is the one we use; the other is commented out as a reminder
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
 	*/
 	static final GUID PSETID_MEETING = createGUID(new byte[]{0x6E, (byte)0xD8, (byte)0xDA, (byte)0x90, 0x0B, 0x45, 0x1B, 0x10, (byte)0x98, (byte)0xDA, 0x00, (byte)0xAA, 0x00, 0x3F, 0x13, 0x05});
 //	static final GUID PSETID_MEETING = createGUID(new byte[]{0x6E, (byte)0xD8, (byte)0xDA, (byte)0x90, 0x45, 0x0B, 0x1B, 0x10, (byte)0x98, (byte)0xDA, 0x00, (byte)0xAA, 0x00, 0x3F, 0x13, 0x05});
