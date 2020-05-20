@@ -262,6 +262,7 @@ class GUID {
 		System.out.printf(format, "Common", PSETID_COMMON);
 		System.out.printf(format, "Address", PSETID_ADDRESS);
 		System.out.printf(format, "Appointment", PSETID_APPOINTMENT);
+		System.out.printf(format, "Calendar Assistant", PSETID_CALENDAR_ASSISTANT);
 		System.out.printf(format, "Meeting", PSETID_MEETING);
 		System.out.printf(format, "Journal", PSETID_LOG);
 		System.out.printf(format, "Messaging", PSETID_MESSAGING);
@@ -273,6 +274,7 @@ class GUID {
 		System.out.printf(format, "Sharing", PSETID_SHARING);
 		System.out.printf(format, "XML Extracted Entities", PSETID_XML_EXTRACTED_ENTITIES);
 		System.out.printf(format, "Attachment", PSETID_ATTACHMENT);
+		System.out.printf(format, "PostRss", PSETID_POST_RSS);
 		System.out.printf(format, "Internal", PS_INTERNAL);
 	}
 }
