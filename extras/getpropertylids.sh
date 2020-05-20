@@ -64,7 +64,7 @@ cat << END_FOOTER >> PropertyLIDs.java
 	{
 		if (lids.containsKey(lid) && guids.containsKey(lid) && guid.equals(guids.get(lid)))
 			return PropertyLIDs.lids.get(lid);
-		return String.format("PropertyLID-%08x:%s", lid, guid.toString());
+		return String.format("LID-%08x (%s)", lid, GUID.name(guid));
 	}
 
 	public static void main(String[] args)
