@@ -173,6 +173,7 @@ class GUID {
 				arr[12], arr[13], arr[14], arr[15] };
 		return new GUID(arr2);
 	}
+
 	/** Compare two GUIDs.
 	*	@param	o	The other GUID to check.
 	*	@return	false if the other guid differs from this one, true if it is the same as this one.
