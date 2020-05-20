@@ -5,6 +5,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386696(v=office.12).aspx">Calculated Properties (MSDN)</a>
 *	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026 section 1.3.2"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/gg318108.aspx">Commonly Used Property Sets (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+*	@see	<a href="https://github.com/Jmcleodfoss/pstreader/blob/master/pst/src/main/java/io/github/jmcleodfoss/GUID.java">Original version in pstreader</a>
 */
 class GUID {
 
@@ -18,19 +20,27 @@ class GUID {
 	static final GUID PS_NULL = createGUID(new byte[]{0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00});
 	static { names.put(PS_NULL, "uninitialized"); }
 
-	/** The public strings property set GUID */
+	/** The public strings property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PS_PUBLIC_STRINGS = createGUID(new byte[]{0x00, 0x02, 0x03, 0x29, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PS_PUBLIC_STRINGS, "PS_PUBLIC_STRINGS"); }
 
-	/** The common property set GUID */
+	/** The common property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_COMMON = createGUID(new byte[]{0x00, 0x06, 0x20, 0x08, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_COMMON, "PSETID_COMMON"); }
 
-	/** The address property set GUID */
+	/** The address property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_ADDRESS = createGUID(new byte[]{0x00, 0x06, 0x20, 0x04, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_ADDRESS, "PSETID_ADDRESS"); }
 
-	/** The appointment property set GUID */
+	/** The appointment property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_APPOINTMENT = createGUID(new byte[]{0x00, 0x06, 0x20, 0x02, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_APPOINTMENT, "PSETID_APPOINTMENT"); }
 
@@ -47,43 +57,63 @@ class GUID {
 //	static final GUID PSETID_MEETING = createGUID(new byte[]{0x6E, (byte)0xD8, (byte)0xDA, (byte)0x90, 0x45, 0x0B, 0x1B, 0x10, (byte)0x98, (byte)0xDA, 0x00, (byte)0xAA, 0x00, 0x3F, 0x13, 0x05});
 	static { names.put(PSETID_MEETING, "PSETID_MEETING"); }
 
-	/** The journal property set GUID */
+	/** The journal property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_LOG = createGUID(new byte[]{0x00, 0x06, 0x20, 0x0a, 0x00, 0x00, 0x00, 0x00, (byte)0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_LOG, "PSETID_LOG"); }
 
-	/** The messaging property set GUID */
+	/** The messaging property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_MESSAGING = createGUID(new byte[]{0x41, (byte)0xf2, (byte)0x8f, 0x13, (byte)0x83, (byte)0xf4, 0x41, 0x14, (byte)0xa5, (byte)0x84, (byte)0xee, (byte)0xdb, 0x5a, 0x6b, 0x0b, (byte)0xff});
 	static { names.put(PSETID_MESSAGING, "PSETID_MESSAGING"); }
 
-	/** The sticky notes property set GUID */
+	/** The sticky notes property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_NOTE = createGUID(new byte[]{0x00, 0x06, 0x20, 0x0E, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_NOTE, "PSETID_NOTE"); }
 
-	/** The task property set GUID */
+	/** The task property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_TASK = createGUID(new byte[]{0x00, 0x06, 0x20, 0x03, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_TASK, "PSETID__TASK"); }
 
-	/** The Unified Messaging property set GUID */
+	/** The Unified Messaging property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_UNIFIED_MESSAGING = createGUID(new byte[]{0x44, 0x42, (byte)0x85, (byte)0x8e, (byte)0xa9, (byte)0xe3, 0x4e, (byte)0x80, (byte)0xb9, 0x00, 0x31, (byte)0x7a, 0x21, 0x0c, (byte)0xc1, 0x5b});
 	static { names.put(PSETID_UNIFIED_MESSAGING, "PSETID_UNIFIED_MESSAGING"); }
 
-	/** The MAPI property set GUID */
+	/** The MAPI property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PS_MAPI = createGUID(new byte[]{0x00, 0x02, 0x03, 0x28, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PS_MAPI, "PS_MAPI"); }
 
-	/** The Air Sync property set GUID */
+	/** The Air Sync property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_AIRSYNC = createGUID(new byte[]{0x71, 0x03, 0x55, 0x49, 0x07, 0x39, 0x4d, (byte)0xcb, (byte)0x91, 0x63, 0x00, (byte)0xf0, 0x58, 0x0d, (byte)0xbb, (byte)0xdf});
 	static { names.put(PSETID_AIRSYNC, "PSETID_AIRSYNC"); }
 
-	/** The Sharing property set GUID */
+	/** The Sharing property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_SHARING = createGUID(new byte[]{0x00, 0x06, 0x20, 0x40, 0x00, 0x00, 0x00, 0x00, (byte)0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46});
 	static { names.put(PSETID_SHARING, "PSETID_SHARING"); }
 
-	/** The XML Extracted Entities property set GUID */
+	/** The XML Extracted Entities property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_XML_EXTRACTED_ENTITIES = createGUID(new byte[]{0x23, 0x23, (byte)0x96, 0x08, 0x68, 0x5d, 0x47, 0x32, (byte)0x9c, 0x55, 0x4c, (byte)0x95, (byte)0xcb, 0x4e, (byte)0x8e, 0x33});
 	static { names.put(PSETID_XML_EXTRACTED_ENTITIES, "PSETID_XML_EXTRACTED_ENTITIES"); }
 
-	/** The attchement property set GUID */
+	/** The attachment property set GUID
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PSETID_ATTACHMENT = createGUID(new byte[]{(byte)0x96, 0x35, 0x7f, 0x7f, 0x59, (byte)0xe1, 0x47, (byte)0xd0, (byte)0x99, (byte)0xa7, 0x46, 0x51, 0x5c, 0x18, 0x3b, 0x54});
 	static { names.put(PSETID_ATTACHMENT, "PSETID_ATTACHMENT"); }
 
@@ -95,7 +125,9 @@ class GUID {
 	static final GUID PS_INTERNAL = createGUID(new byte[]{(byte)0xc1, (byte)0x84, 0x32, (byte)0x81, (byte)0x85, 0x05, (byte)0xd0, 0x11, (byte)0xb2, (byte)0x90, 0x00, (byte)0xaa, 0x00, 0x3c, (byte)0xf6, (byte)0x76});
 	// Don't track the name for this until we have something more precise
 
-	/** The ProviderUID for a one-off recipient in a distribution list. */
+	/** The ProviderUID for a one-off recipient in a distribution list.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
+	*/
 	static final GUID PROVIDER_UID_ONE_OFF = createGUID(new byte[]{(byte)0x81, (byte)0x2b, (byte)0x1f, (byte)0xa4, (byte)0xbe, (byte)0xa3, (byte)0x10, (byte)0x19, (byte)0x9d, (byte)0x6e, (byte)0x00, (byte)0xdd, (byte)0x01, (byte)0x0f, (byte)0x54, (byte)0x02});
 	// Don't track the name for this until we have something more precise
 
