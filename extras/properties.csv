@@ -73,20 +73,20 @@ PidLidContactCharacterSet,0x00008023,PtypInteger32,0x0003,PSETID_Address,0006200
 PidLidContactItemData,0x00008007,PtypMultipleInteger32,0x1003,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactLinkedGlobalAddressListEntryId,0x000080e2,PtypBinary,0x0102,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactLinkEntry,0x00008585,PtypBinary,0x0102,PSETID_Common,00062008-0000-0000-C000-000000000046
-PidLidContactLinkGALLinkState,0x000080e5,PtypMultipleBinary,0x1102,PSETID_Address,00062004-0000-0000-C000-000000000046
+PidLidContactLinkLinkRejectHistory,0x000080e5,PtypMultipleBinary,0x1102,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactLinkGlobalAddressListLinkId,0x000080e8,PtypGuid,0x0048,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactLinkGlobalAddressListLinkState,0x000080e6,PtypInteger32,0x0003,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactLinkName,0x00008586,PtypString,0x001f,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidContactLinkSearchKey,0x00008584,PtypBinary,0x0102,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidContacts,0x0000853a,PtypMultipleString,0x101f,PSETID_Common,00062008-0000-0000-C000-000000000046
-PidLidContactSMPTAddressCache,0x000080e3,PtypMultipleString,0x101f,PSETID_Address,00062004-0000-0000-C000-000000000046
+PidLidContactLinkSMTPAddressCache,0x000080e3,PtypMultipleString,0x101f,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactUserField1,0x0000804f,PtypString,0x001f,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactUserField2,0x00008050,PtypString,0x001f,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactUserField3,0x00008051,PtypString,0x001f,PSETID_Address,00062004-0000-0000-C000-000000000046
 PidLidContactUserField4,0x00008052,PtypString,0x001f,PSETID_Address,00062004-0000-0000-C000-000000000046
-PidLidConversationActionLas,0x000085ca,PtypTime,0x0040,PSETID_Common,00062008-0000-0000-C000-000000000046
+PidLidConversationActionLastAppliedTime,0x000085ca,PtypTime,0x0040,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidConversationActionMaxDeliveryTime,0x000085c8,PtypTime,0x0040,PSETID_Common,00062008-0000-0000-C000-000000000046
-PidLidConversationActionMove,0x000085c7,PtypBinary,0x0102,PSETID_Common,00062008-0000-0000-C000-000000000046
+PidLidConversationActionMoveStoreEid,0x000085c7,PtypBinary,0x0102,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidConversationActionMoveFolderEid,0x000085c6,PtypBinary,0x0102,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidConversationActionVersion,0x000085cb,PtypInteger32,0x0003,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidConversationProcessed,0x000085c9,PtypInteger32,0x0003,PSETID_Common,00062008-0000-0000-C000-000000000046
@@ -308,7 +308,7 @@ PidLidSharingWebUrl,0x00008596,PtypString,0x001f,PSETID_Common,00062008-0000-000
 PidLidSharingWorkingHoursDays,0x00008a42,PtypInteger32,0x0003,PSETID_Sharing,00062040-0000-0000-C000-000000000046
 PidLidSharingWorkingHoursEnd,0x00008a41,PtypTime,0x0040,PSETID_Sharing,00062040-0000-0000-C000-000000000046
 PidLidSharingWorkingHoursStart,0x00008a40,PtypTime,0x0040,PSETID_Sharing,00062040-0000-0000-C000-000000000046
-PidLidSharingWorkingHoursTime,0x00008a43,PtypeBinary,0x0102,PSETID_Sharing,00062040-0000-0000-C000-000000000046
+PidLidSharingWorkingHoursTimeZone,0x00008a43,PtypeBinary,0x0102,PSETID_Sharing,00062040-0000-0000-C000-000000000046
 PidLidSideEffects,0x00008510,PtypInteger32,0x0003,PSETID_Common,00062008-0000-0000-C000-000000000046
 PidLidSingleBodyICal,0x0000827b,PtypBoolean,0x000b,PSETID_Appointment,00062002-0000-0000-C000-000000000046
 PidLidSingleInvite,0x0000000b,PtypBoolean,0x000b,PSETID_Meeting,6ED8DA90-450B-101B-98DA-00AA003F1305
@@ -552,7 +552,7 @@ PidTagAddressBookExtensionAttribute8,0x8034,PtypString,0x001f,,
 PidTagAddressBookExtensionAttribute9,0x8035,PtypString,0x001f,,
 PidTagAddressBookFolderPathname,0x8004,PtypString,0x001f,,
 PidTagAddressBookHierarchicalChildDepartments,0x8c9a,PtypEmbeddedTable,0x000d,,
-PidTagAddressBookHierarchicalDepartme,0x8c97,PtypEmbeddedTable,0x000d,,
+PidTagAddressBookHierarchicalDepartmentMembers,0x8c97,PtypEmbeddedTable,0x000d,,
 PidTagAddressBookHierarchicalIsHierarchicalG,0x8cdd,PtypBoolean,0x000b,,
 PidTagAddressBookHierarchicalParentDepartment,0x8c99,PtypEmbeddedTable,0x000d,,
 PidTagAddressBookHierarchicalRootDepartment,0x8c98,PtypString8,0x001e,,
@@ -583,7 +583,7 @@ PidTagAddressBookProxyAddresses,0x800f,PtypMultipleString,0x101f,,
 PidTagAddressBookPublicDelegates,0x8015,PtypEmbeddedTable,0x000d,,
 PidTagAddressBookReports,0x800e,PtypEmbeddedTable,0x000d,,
 PidTagAddressBookRoomCapacity,0x0807,PtypInteger32,0x0003,,
-PidTagAddressBookRoomCon,0x8c96,PtypMultipleString,0x101f,,
+PidTagAddressBookRoomContainers,0x8c96,PtypMultipleString,0x101f,,
 PidTagAddressBookRoomDescription,0x0809,PtypString,0x001f,,
 PidTagAddressBookSenderHintTranslations,0x8cac,PtypMultipleString,0x101f,,
 PidTagAddressBookSeniorityIndex,0x8ca0,PtypInteger32,0x0003,,
@@ -662,7 +662,7 @@ PidTagCarTelephoneNumberW,0x3a1e,PtypString,0x001f,,
 PidTagCdoRecurrenceid,0x10c5,PtypTime,0x0040,,
 PidTagChangeKey,0x65e2,PtypBinary,0x0102,,
 PidTagChangeNumber,0x67a4,PtypInteger64,0x0014,,
-PidTagChildren,0x3a58,PtypMultipleString,0x101f,,
+PidTagChildrensNames,0x3a58,PtypMultipleString,0x101f,,
 PidTagClientActions,0x6645,PtypBinary,0x0102,,
 PidTagClientSubmitTime,0x0039,PtypTime,0x0040,,
 PidTagCodePageId,0x66c3,PtypInteger32,0x0003,,
@@ -764,7 +764,7 @@ PidTagGeneration,0x3a05,PtypString,0x001f,,
 PidTagGivenName,0x3a06,PtypString8,0x001e,,
 PidTagGivenNameW,0x3a06,PtypString,0x001f,,
 PidTagGovernmentIdNumber,0x3a07,PtypString,0x001f,,
-PidTagHasAttach,0x0e1b,PtypBoolean,0x000b,,
+PidTagHasAttachments,0x0e1b,PtypBoolean,0x000b,,
 PidTagHasDeferredActionMessages,0x3fea,PtypBoolean,0x000b,,
 PidTagHasNamedProperties,0x664a,PtypBoolean,0x000b,,
 PidTagHasRules,0x663a,PtypBoolean,0x000b,,
@@ -1040,7 +1040,7 @@ PidTagRights,0x6639,PtypInteger32,0x0003,,
 PidTagRoamingDatatypes,0x7c06,PtypInteger32,0x0003,,
 PidTagRoamingDictionary,0x7c07,PtypBinary,0x0102,,
 PidTagRoamingXmlStream,0x7c08,PtypBinary,0x0102,,
-PidTagRowId,0x3000,PtypInteger32,0x0003,,
+PidTagRowid,0x3000,PtypInteger32,0x0003,,
 PidTagRowType,0x0ff5,PtypInteger32,0x0003,,
 PidTagRtfCompressed,0x1009,PtypBinary,0x0102,,
 PidTagRtfInSync,0x0e1f,PtypBoolean,0x000b,,
@@ -1075,7 +1075,7 @@ PidTagRuleUserFlags,0x6678,PtypInteger32,0x0003,,
 PidTagRwRulesStream,0x6802,PtypBinary,0x0102,,
 PidTagScheduleInfoAppointmentTombstone,0x686a,PtypBinary,0x0102,,
 PidTagScheduleInfoAutoAcceptAppointments,0x686d,PtypBoolean,0x000b,,
-PidTagScheduleInfoDe,0x6845,PtypMultipleBinary,0x1102,,
+PidTagScheduleInfoDelegateEntryIds,0x6845,PtypMultipleBinary,0x1102,,
 PidTagScheduleInfoDelegateNames,0x6844,PtypMultipleString,0x101f,,
 PidTagScheduleInfoDelegateNamesW,0x684a,PtypMultipeleString,0x101f,,
 PidTagScheduleInfoDelegatorWantsCopy,0x6842,PtypBoolean,0x000b,,
@@ -1091,7 +1091,7 @@ PidTagScheduleInfoFreeBusyTentative,0x6852,PtypMultipleBinary,0x1102,,
 PidTagScheduleInfoMonthsAway,0x6855,PtypMultipleInteger32,0x1003,,
 PidTagScheduleInfoMonthsBusy,0x6853,PtypMultipleInteger32,0x1003,,
 PidTagScheduleInfoMonthsMerged,0x684f,PtypMultipleInteger32,0x1003,,
-PidTagScheduleInfoMonthsTentat,0x6851,PtypMultipleInteger32,0x1003,,
+PidTagScheduleInfoMonthsTentative,0x6851,PtypMultipleInteger32,0x1003,,
 PidTagScheduleInfoResourceType,0x6841,PtypInteger32,0x0003,,
 PidTagSchedulePlusFreeBusyEntryId,0x6622,PtypBinary,0x0102,,
 PidTagScriptData,0x0004,PtypBinary,0x0102,,
