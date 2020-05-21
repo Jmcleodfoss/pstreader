@@ -438,8 +438,8 @@ PidNameDavUid,n/a,PtypString,0x001f,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-00
 PidNameDocumentParts,n/a,PtypMultipleString,0x101f,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
 PidNameEditTime,n/a,PtypString,0x001f,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
 PidNameExchangeIntendedBusyStatus,n/a,PtypString,0x001f,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
-PidNameExchangeJunkEmailM,n/a,PtypInteger32,0x0003,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
-PidNameExchangeModifyExceptionS,n/a,PtypBinary,0x0102,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
+PidNameExchangeJunkEmailMoveStamp,n/a,PtypInteger32,0x0003,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
+PidNameExchangeModifyExceptionStructure,n/a,PtypBinary,0x0102,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
 PidNameExchangeNoModifyExceptions,n/a,PtypBoolean,0x000b,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
 PidNameExchangePatternEnd,n/a,PtypTime,0x0040,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
 PidNameExchangePatternStart,n/a,PtypTime,0x0040,PS_PUBLIC_STRINGS,00020329-0000-0000-C000-000000000046
@@ -553,7 +553,7 @@ PidTagAddressBookExtensionAttribute9,0x8035,PtypString,0x001f,,
 PidTagAddressBookFolderPathname,0x8004,PtypString,0x001f,,
 PidTagAddressBookHierarchicalChildDepartments,0x8c9a,PtypEmbeddedTable,0x000d,,
 PidTagAddressBookHierarchicalDepartmentMembers,0x8c97,PtypEmbeddedTable,0x000d,,
-PidTagAddressBookHierarchicalIsHierarchicalG,0x8cdd,PtypBoolean,0x000b,,
+PidTagAddressBookHierarchicalIsHierarchicalGroup,0x8cdd,PtypBoolean,0x000b,,
 PidTagAddressBookHierarchicalParentDepartment,0x8c99,PtypEmbeddedTable,0x000d,,
 PidTagAddressBookHierarchicalRootDepartment,0x8c98,PtypString8,0x001e,,
 PidTagAddressBookHierarchicalShowInDepartments,0x8c94,PtypEmbeddedTable,0x000d,,
@@ -1138,7 +1138,7 @@ PidTagSentRepresentingNameW,0x0042,PtypString,0x001f,,
 PidTagSentRepresentingSearchKey,0x003b,PtypBinary,0x0102,,
 PidTagSentRepresentingSimpleDisplayName,0x4031,PtypString,0x001f,,
 PidTagSentRepresentingSmtpAddress,0x5d02,PtypString,0x001f,,
-PidTagSerializedReplidG,0x6638,PtypBinary,0x0102,,
+PidTagSerializedReplidGuidMap,0x6638,PtypBinary,0x0102,,
 PidTagSmtpAddress,0x39fe,PtypString,0x001f,,
 PidTagSortLocaleId,0x6705,PtypInteger32,0x0003,,
 PidTagSourceKey,0x65e0,PtypBinary,0x0102,,
