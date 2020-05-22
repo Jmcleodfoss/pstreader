@@ -43,6 +43,11 @@ sort -t , -k 2 properties.csv | sed '
 	/PSETID_Sharing/s//GUID.PSETID_SHARING/
 	/PSETID_Task/s//GUID.PSETID_TASK/
 
+	# This LID is listed in versions 1.04, 1.05, and 1.06 of the OX-PROPS document and nothing later. Given its unusual definition
+	# (value "17" when all other values are 4-byte hex values, and PSETID "GUID_PKMDocDummaryInformation" which is not used anywhere else,
+	# we ll ignore it for now.
+	/PidLidPKMDocSummaryInformation17/d
+
 	/^PidLid\([^,]*\),0x\([^,]*\),\([^,]*\),0x\([^,]*\),\([^,]*\),\(.*\)$/{
 		s//\	\	public static final int \1 = 0x\2;\
 \	\	lids.put(\1, "\1");\
