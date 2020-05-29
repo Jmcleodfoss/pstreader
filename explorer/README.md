@@ -5,8 +5,6 @@ The PST library is a memory hog; you may need to increase the available heap to 
 See
 * [explorer README](explorer/README.md)
 * [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer)
-* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.0.0/pom)
-* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.0.0/)
 
 ## Windows cmd
     java -cp target\explorer-1.0-SNAPSHOT.jar [pst-file]
@@ -39,3 +37,16 @@ The Explorer application lets you explore a pst file from several conceptual lev
       * The B-Tree in the heap for the folder for the folder associated data
       * The table context for the folder associated data
 
+# Versions
+## 1.0.0
+Initial version.
+* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer/1.0.0/index.html)
+* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.0.0/pom)
+* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.0.0/)
+
+## 1.1.0
+* Targets Java 11
+* Uses Version 1.1.0 of pst library
+* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer/1.1.0/index.html)
+* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.1.0/pom)
+* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.1.0/)

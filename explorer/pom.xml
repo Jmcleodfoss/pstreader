@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>explorer</artifactId>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Swing-based PST file reader</description>
@@ -10,7 +11,7 @@
 	<parent>
 		<groupId>io.github.jmcleodfoss</groupId>
 		<artifactId>pst-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.1.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -18,17 +19,17 @@
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>pst</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>swingutil</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>util</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.1.0</version>
 		</dependency>
 	</dependencies>
 

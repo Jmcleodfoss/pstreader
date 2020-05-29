@@ -3,8 +3,6 @@ A library for reading PST files, based on [[MS-PST]: Outlook Personal Folders (.
 See
 * [pst Library README](pst/README.md)
 * [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst)
-* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.0.0/pom)
-* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.0.0/)
 
 ## Example
 It really helps to understand the structure of the PST file as described in the reference above when using this library, but here is a quick not-quite-java example.
@@ -354,3 +352,18 @@ Traverse the node B-tree, giving the structure of each node:
     key 0x01d5d9fc 0x0075767f
     key 0x01d5d280 0x007574a0
     ...
+
+# Versions
+## 1.0.0
+Initial version.
+* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst/1.0.0/index.html)
+* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.0.0/pom)
+* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.0.0/)
+
+## 1.1.0
+* Targets Java 11
+* Fixes Bug #1, Bug #2, Bug #3
+* Includes all known tags and LIDs
+* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst/1.1.0/index.html)
+* [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.1.0/pom)
+* [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.1.0/)
