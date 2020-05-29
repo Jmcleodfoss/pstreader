@@ -120,6 +120,8 @@ public class XMLOutput {
 			case '/': dest.append("_sl_"); break;
 			case '{': dest.append("_lbr_"); break;
 			case '}': dest.append("_rbr_"); break;
+			case '(': dest.append("_lpar_"); break;
+			case ')': dest.append("_rpar_"); break;
 			case ' ': dest.append("_"); break;
 			default: dest.append(c); break;
 			}
