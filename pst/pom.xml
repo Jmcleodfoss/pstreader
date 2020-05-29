@@ -41,4 +41,32 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<show>public</show>
+					<additionalDependencies>
+						<additionalDependency>
+							<groupId>junit</groupId>
+							<artifactId>junit</artifactId>
+							<version>4.11</version>
+							<scope>test</scope>
+						</additionalDependency>
+
+						<additionalDependency>
+							<groupId>com.e-movimento.tinytools</groupId>
+							<artifactId>privilegedaccessor</artifactId>
+							<version>1.2.2</version>
+							<scope>test</scope>
+						</additionalDependency>
+					</additionalDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
