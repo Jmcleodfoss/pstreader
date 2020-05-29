@@ -128,10 +128,13 @@
 			<id>deploy-ossrh</id>
 
 			<modules>
-				<module>pst</module>
 				<module>explorer</module>
-				<module>util</module>
+				<!-- Skip localebean, which is only used by pstExtractor -->
+				<module>pst</module>
+				<!-- Skip pstExtractor web app, which is of limited use. -->
 				<module>swingutil</module>
+				<module>util</module>
+				<module>xml</module>
 			</modules>
 
 			<activation>
