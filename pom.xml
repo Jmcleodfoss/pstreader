@@ -6,7 +6,7 @@
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
-	<url>https://io.github.com/Jmcleodfoss/pst</url>
+	<url>https://io.github.com/Jmcleodfoss/pstreader</url>
 	<description>Library for reading pst files, and some ancillary libraries, a Swing app, and a JSF web app.</description>
 
 	<licenses>
@@ -20,7 +20,7 @@
 		<developer>
 			<name>James McLeod</name>
 			<email>jmcleodfoss@gmail.com</email>
-			<organizationUrl>https://io.github.com/Jmcleodfoss/pstreader</organizationUrl>
+			<organizationUrl>https://io.github.com/Jmcleodfoss</organizationUrl>
 		</developer>
 	</developers>
 
@@ -34,7 +34,6 @@
 		<developerConnection>scm:git:https://github.com/jmcleodfoss/pstreader.git</developerConnection>
 		<url>https://github.com/Jmcleodfoss/pstreader</url>
 	</scm>
-
 
 	<profiles>
 		<profile>
