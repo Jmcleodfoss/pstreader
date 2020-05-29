@@ -258,6 +258,7 @@
 				<configuration>
 					<compilerArgs>
 						<arg>-Xlint:deprecation</arg>
+						<arg>-Xlint:unchecked</arg>
 					</compilerArgs>
 					<source>11</source>
 					<target>11</target>
