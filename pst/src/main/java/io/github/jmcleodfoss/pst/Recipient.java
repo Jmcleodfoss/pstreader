@@ -35,15 +35,4 @@ class Recipient {
 		emailAddress = (String)tc.get(row, fUnicode ? PropertyTags.EmailAddressW : PropertyTags.EmailAddress);
 		displayName = (String)tc.get(row, fUnicode ? PropertyTags.DisplayNameW : PropertyTags.DisplayName);
 	}
-
-	/**	Test the Recipient class by iterating through the messages and displaying information about the recipients of each
-	*	message.
-	*
-	*	@param	args	The command line arguments to the test application.
-	*/
-	@Unimplemented(priority = Unimplemented.Priority.LOW)
-	static void main(String[] args)
-	{
-		System.out.println("Not implemented yet.");
-	}
 }
