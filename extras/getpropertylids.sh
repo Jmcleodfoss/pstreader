@@ -52,7 +52,7 @@ sort -t , -k 2 properties.csv | sed '
 	/PidLidPKMDocSummaryInformation17/d
 
 	/^PidLid\([^,]*\),0x\([^,]*\),\([^,]*\),0x\([^,]*\),\([^,]*\),\(.*\)$/{
-		s//\	\	public static final int \1 = 0x\2;\
+		s//\	public static final int \1 = 0x\2;\
 \	\	lids.put(\1, "\1");\
 \	\	guids.put(\1, \5);/
 		P
