@@ -14,7 +14,7 @@ package io.github.jmcleodfoss.pst;
 
 public class PropertyLIDs
 {
-	// Sentinel value which can be used for property tags which are uninitialized and have to be looked up.
+	// Sentinel value which can be used for property LIDs which are uninitialized and have to be looked up as Named Properties.
 	static final int UNKNOWN = 0xffffffff;
 
 END_HEADER
