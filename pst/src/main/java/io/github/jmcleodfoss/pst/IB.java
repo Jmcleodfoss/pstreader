@@ -7,10 +7,10 @@ package io.github.jmcleodfoss.pst;
 */
 class IB {
 
-	/**	The size of an IB object in ANSI files. */
+	/**	The size of an IB object in ANSI files. @see BREF#SIZE_ANSI */
 	static final int SIZE_ANSI = 4;
 
-	/**	The size of an IB object in Unicode files. */
+	/**	The size of an IB object in Unicode files. @see BREF#SIZE_UNICODE */
 	static final int SIZE_UNICODE = 8;
 
 	/**	The byte index (offset) into the PST file. */
