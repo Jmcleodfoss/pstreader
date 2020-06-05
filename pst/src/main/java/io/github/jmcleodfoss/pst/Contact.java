@@ -146,6 +146,6 @@ public class Contact extends MessageObject {
 	static void initConstants(NameToIDMap namedProperties)
 	{
 		for (int i = 0; i < emailAddressLIDLookup.length; ++i)
-			emailAddressLIDs[i] = namedProperties.id(emailAddressLIDLookup[i]);
+			emailAddressLIDs[i] = namedProperties.id(emailAddressLIDLookup[i], DataType.STRING);
 	}
 }

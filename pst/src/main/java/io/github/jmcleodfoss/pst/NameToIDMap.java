@@ -281,16 +281,15 @@ public class NameToIDMap {
 	/**	Get the ID of a property named property list given its canonical tag.
 	*
 	*	@param	canonicalId	The canonical tag of the property.
+	*	@param	dataType	The type of the data (this is known a priori if this function is called)
 	*
 	*	@return	The tag under which this property is stored in this PST file, if found, otherwise, -1.
 	*/
-	public int id(int tag)
+	public int id(int canonicalId, int dataType)
 	{
-		short canonicalID = (short)(tag >>> 16);
-		short dataType = (short)(tag & 0xffff);
-		if (!canonicalIDToNPID.containsKey(canonicalID))
+		if (!canonicalIDToNPID.containsKey(canonicalId))
 			return -1;
-		int mappedID = canonicalIDToNPID.get(canonicalID);
+		int mappedID = canonicalIDToNPID.get(canonicalId);
 		return (mappedID << 16 | dataType);
 	}
 

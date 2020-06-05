@@ -52,6 +52,6 @@ public class Task extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		TaskDueDateLID = namedProperties.id(PropertyLIDs.TaskDueDate);
+		TaskDueDateLID = namedProperties.id(PropertyLIDs.TaskDueDate, DataType.TIME);
 	}
 }

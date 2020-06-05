@@ -135,10 +135,10 @@ public class DistributionList extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		email1AddressLID = namedProperties.id(PropertyLIDs.Email1EmailAddress);
+		email1AddressLID = namedProperties.id(PropertyLIDs.Email1EmailAddress, DataType.STRING);
 
-		distributionListMembersLID = namedProperties.id(PropertyLIDs.DistributionListMembers);
-		distributionListOneOffMembersLID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers);
+		distributionListMembersLID = namedProperties.id(PropertyLIDs.DistributionListMembers, DataType.MULTIPLE_BINARY);
+		distributionListOneOffMembersLID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers, DataType.MULTIPLE_BINARY);
 	}
 
 	/**	Extract the list of members from the message object property context.
