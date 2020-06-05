@@ -2,9 +2,8 @@ package io.github.jmcleodfoss.pst;
 
 /**	The Recipient class represents a single entry in the Recipient table.
 *
-*	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.5.3"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385128(v=office.12).aspx">Recipient Table</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/f6ab1613-aefe-447d-a49c-18217230b148">[MX-OXPROPS]: Exchange Server Protocols Master Property List</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0e6d7ebd-c850-4772-ba9d-f5a642c9ff85">[MS-PST}: Outlook Personal Folders (.pst) files, Section 2.4.5.3: Recipient Table: Message Objects</a>
 */
 class Recipient {
 
