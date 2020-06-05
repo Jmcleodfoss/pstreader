@@ -171,7 +171,7 @@ public class NameToIDMap {
 			setRowCount(keyArray.length);
 			setColumnCount(2);
 			for (int i = 0; i < keyArray.length; ++i) {
-				short key = (Short)keyArray[i];
+				int key = (Integer)keyArray[i];
 				setValueAt(Integer.toHexString(key & 0x0000ffff), i, 0);
 				setValueAt(namedProperties.name(key), i, 1);
 			}
@@ -207,10 +207,10 @@ public class NameToIDMap {
 	}
 
 	/**	The list of named properties. Note that there will be only of of these per PST file. */
-	private final java.util.HashMap<Short, String> namedProperties;
+	private final java.util.HashMap<Integer, String> namedProperties;
 
 	/**	The reverse look-up of canonical ID's to mapped ID's. */
-	private final java.util.HashMap<Short, Short> canonicalIDToNPID;
+	private final java.util.HashMap<Integer, Integer> canonicalIDToNPID;
 
 	/**	Construct a NameIDToMap object from the given node and block database and PST file object.
 	*
@@ -245,16 +245,16 @@ public class NameToIDMap {
 
 		final byte[] guidRaw = getBinaryProperty(pc, PropertyTags.NameidStreamGuid);
 
-		java.util.HashMap<Short, String> namedProperties = new java.util.HashMap<Short, String>();
-		java.util.HashMap<Short, Short> canonicalIDToNPID = new java.util.HashMap<Short, Short>();
+		java.util.HashMap<Integer, String> namedProperties = new java.util.HashMap<Integer, String>();
+		java.util.HashMap<Integer, Integer> canonicalIDToNPID = new java.util.HashMap<Integer, Integer>();
 		while (entryStream.remaining() > 0) {
 			final NameID nameID = new NameID(entryStream, guidRaw, stringStream);
-			short id = (short)(PropertyTags.NamedPropertyFirst | nameID.propertyIndex);
+			int id = 0xffff & (PropertyTags.NamedPropertyFirst | nameID.propertyIndex);
 			if (nameID.fString)
 				namedProperties.put(id, nameID.name);
 			else {
 				namedProperties.put(id, PropertyLIDs.name(nameID.propertyID, nameID.guid));
-				canonicalIDToNPID.put((short)nameID.propertyID, id);
+				canonicalIDToNPID.put(nameID.propertyID, id);
 			}
 		}
 		this.namedProperties = namedProperties;
@@ -280,7 +280,7 @@ public class NameToIDMap {
 
 	/**	Get the ID of a property named property list given its canonical tag.
 	*
-	*	@param	tag	The canonical tag of the property.
+	*	@param	canonicalId	The canonical tag of the property.
 	*
 	*	@return	The tag under which this property is stored in this PST file, if found, otherwise, -1.
 	*/
@@ -290,7 +290,7 @@ public class NameToIDMap {
 		short dataType = (short)(tag & 0xffff);
 		if (!canonicalIDToNPID.containsKey(canonicalID))
 			return -1;
-		short mappedID = canonicalIDToNPID.get(canonicalID);
+		int mappedID = canonicalIDToNPID.get(canonicalID);
 		return (mappedID << 16 | dataType);
 	}
 
@@ -298,7 +298,7 @@ public class NameToIDMap {
 	*
 	*	@return	An iterator which may be used to go through the named properties in the list.
 	*/
-	public java.util.Iterator<java.util.Map.Entry<Short, String>> iterator()
+	public java.util.Iterator<java.util.Map.Entry<Integer, String>> iterator()
 	{
 		return namedProperties.entrySet().iterator();
 	}

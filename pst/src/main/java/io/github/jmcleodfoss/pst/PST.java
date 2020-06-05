@@ -211,7 +211,7 @@ public class PST extends PSTFile {
 	*
 	*	@see	io.github.jmcleodfoss.pst.NameToIDMap
 	*/
-	public java.util.Iterator<java.util.Map.Entry<Short, String>> namedPropertiesIterator()
+	public java.util.Iterator<java.util.Map.Entry<Integer, String>> namedPropertiesIterator()
 	{
 		return namedProperties.iterator();
 	}
