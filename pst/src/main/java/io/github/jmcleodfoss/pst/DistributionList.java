@@ -36,36 +36,54 @@ public class DistributionList extends MessageObject {
 	static final String nm_ProviderUID = "ProviderUID";
 
 	/**	The descriptions of the data common to all distribution list entries. */
-	private static final DataDefinition[] distributionListCommonFields = new DataDefinition[] {
+	private static final DataDefinition[] DISTRIBUTION_LIST_COMMON_FIELDS = new DataDefinition[] {
 		new DataDefinition("flags", DataType.integer32Reader, false),
 		new DataDefinition(nm_ProviderUID, DataType.definitionFactory(DataType.GUID), true)
+	};
+
+	private static final String nm_EntryID = "entryID";
+
+	/**	The fields comprising the one-off entry data. */
+	private static final DataDefinition ADDRESS_BOOK_ENTRY_FIELDS[] = new DataDefinition[] {
+		new DataDefinition("skip", new DataType.SizedByteArray(1), false),
+		new DataDefinition(nm_EntryID, new DataType.SizedByteArray(24), true)
+	};
+
+	/**	When this bit is set in the second flag byte, the strings for the display name, address type, and e-mail
+	*	address are stored in Unicode and delimited by double-NULs; when this bit is cleared, the strings are stored in
+	*	ANSI and delimited by single NULs.
+	*/
+	private static final short FLAG_U_MASK = 0x80;
+
+	private static final String nm_Version = "wVersion";
+	private static final String nm_Flags1 = "bitmapFlag1";
+	private static final String nm_Flags2 = "bitmapFlag2";
+	private static final String nm_StringData = "stringData";
+
+	/**	The fields comprising the one-off entry data. */
+	private static final DataDefinition[] ONE_OFF_ENTRY_FIELDS = new DataDefinition[] {
+		new DataDefinition(nm_Version, DataType.integer16Reader, false),
+		new DataDefinition(nm_Flags1, DataType.integer8Reader, false),
+		new DataDefinition(nm_Flags2, DataType.integer8Reader, true),
 	};
 
 	/**	The Entry class flags an object as being a distribution list entry. */
 	public static class Entry {
 
 		/**	The display name of the distribution list member. */
-		protected String displayName;
+		public final String displayName;
 
 		/**	The e-mail address of the distribution list member. */
-		protected String emailAddress;
+		public final String emailAddress;
 
-		/**	Retrieve the display name of this distribution list entry.
-		*
-		*	@return	The display name for this distribution list entry.
+		/**	Create an Entry object
+		*	@param	displayName	The display name for the distribution list
+		*	@param	emailAddress	The email address for the distribution list
 		*/
-		public String displayName()
+		private Entry(String displayName, String emailAddress)
 		{
-			return displayName;
-		}
-
-		/**	Retrieve the email address of this distribution list entry.
-		*
-		*	@return	The email address for this distribution list entry.
-		*/
-		public String emailAddress()
-		{
-			return emailAddress;
+			this.displayName = displayName;
+			this.emailAddress = emailAddress;
 		}
 
 		/**	Create a String describing the distribution list entry.
@@ -83,103 +101,6 @@ public class DistributionList extends MessageObject {
 				s.append(')');
 			}
 			return s.toString();
-		}
-	}
-
-	/**	The OneOffEntry class describes a "one-off" entry in a distribution list, i.e. an entry which is not stored in the
-	*	PST contact files.
-	*/
-	private static class OneOffEntry extends Entry {
-
-		/**	When this bit is set in the second flag byte, the strings for the display name, address type, and e-mail
-		*	address are stored in Unicode and delimited by double-NULs; when this bit is cleared, the strings are stored in
-		*	ANSI and delimited by single NULs.
-		*/
-		private static final short FLAG_U_MASK = 0x80;
-	
-		private static final String nm_Version = "wVersion";
-		private static final String nm_Flags1 = "bitmapFlag1";
-		private static final String nm_Flags2 = "bitmapFlag2";
-		private static final String nm_StringData = "stringData";
-
-		/**	The fields comprising the one-off entry data. */
-		private static final DataDefinition[] fields = new DataDefinition[] {
-			new DataDefinition(nm_Version, DataType.integer16Reader, false),
-			new DataDefinition(nm_Flags1, DataType.integer8Reader, false),
-			new DataDefinition(nm_Flags2, DataType.integer8Reader, true),
-		};
-
-		/**	Construct a OneOffEntry object from the data in the given ByteBuffer.
-		*
-		*	@param	byteBuffer	The ByteBuffer from which to read the data
-		*
-		*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book entry.
-		*/
-		OneOffEntry(java.nio.ByteBuffer byteBuffer)
-		throws
-			java.io.IOException
-		{
-			DataContainer dc = new DataContainer();
-
-			dc.read(byteBuffer, fields);
-			byte flags = (Byte)dc.get(nm_Flags2);
-			boolean fUnicode = (flags & FLAG_U_MASK) != 0;
-
-			DataDefinition d = new DataDefinition(nm_StringData, DataType.definitionFactory(fUnicode ? DataType.STRING : DataType.STRING_8), true);
-			dc.read(byteBuffer, d);
-
-			String s = (String)dc.get(nm_StringData);
-
-			int ofs = 0;
-			displayName = s.substring(ofs, ofs = s.indexOf(0, ofs));
-			if (fUnicode)
-				++ofs;
-
-			// Skip the address type
-			ofs = s.indexOf(0, ofs);
-			if (fUnicode)
-				++ofs;
-
-			emailAddress = s.substring(ofs, ofs = s.indexOf(0, ofs));
-		}
-	}
-
-	/**	The AddressBookEntry class holds information about a distribution list member which is stored in the PST file's
-	*	contacts.
-	*/
-	private static class AddressBookEntry extends Entry {
-
-		private static final String nm_EntryID = "entryID";
-
-		/**	The fields comprising the one-off entry data. */
-		private static final DataDefinition d[] = new DataDefinition[] {
-			new DataDefinition("skip", new DataType.SizedByteArray(1), false),
-			new DataDefinition(nm_EntryID, new DataType.SizedByteArray(24), true)
-		};
-
-		/**	Extract and save the relevant information from the contact PC for this contact.
-		*
-		*	@param	byteBuffer	The data from which to read the entry ID.
-		*	@param	bbt		The block B-tree for this PST file.
-		*	@param	nbt		The node B-tree for this PST file.
-		*	@param	pstFile		The PST file's data stream, header information, etc.
-		*
-		*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book entry.
-		*/
-		AddressBookEntry(java.nio.ByteBuffer byteBuffer, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
-		throws
-			java.io.IOException
-		{
-			DataContainer dc = new DataContainer();
-			dc.read(byteBuffer, d);
-			byte[] rawData = (byte[])dc.get(nm_EntryID);
-			EntryID entryID = new EntryID(rawData);
-			try {
-				PropertyContext pc = entryID.propertyContext(bbt, nbt, pstFile);
-				displayName = (String)pc.get(PropertyTags.DisplayNameW);
-				emailAddress = (String)pc.get(email1AddressLID);
-			} catch (final Exception e) {
-			}
 		}
 	}
 
@@ -233,7 +154,13 @@ public class DistributionList extends MessageObject {
 	*/
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
-		java.io.IOException
+		java.io.IOException,
+		io.github.jmcleodfoss.pst.NotHeapNodeException,
+		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
+		io.github.jmcleodfoss.pst.NullDataBlockException,
+		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
+		io.github.jmcleodfoss.pst.UnparseableTableContextException,
+		io.github.jmcleodfoss.pst.UnknownClientSignatureException
 	{
 		final Object o = pc.get(distributionListMembersLID);
 		if (o == null)
@@ -244,14 +171,41 @@ public class DistributionList extends MessageObject {
 		DataContainer dc = new DataContainer();
 		for (int i = 0; i < multipleBinary.length; ++i) {
 			java.nio.ByteBuffer byteBuffer = PSTFile.makeByteBuffer(multipleBinary[i]);
-			dc.read(byteBuffer, distributionListCommonFields);
+			dc.read(byteBuffer, DISTRIBUTION_LIST_COMMON_FIELDS);
 			GUID providerUID = (GUID)dc.get(nm_ProviderUID);
-			if (providerUID.equals(GUID.PROVIDER_UID_ONE_OFF))
-				entries.add(new OneOffEntry(byteBuffer));
-			else
-				entries.add(new AddressBookEntry(byteBuffer, bbt, nbt, pstFile));
+			if (providerUID.equals(GUID.PROVIDER_UID_ONE_OFF)){
+				dc.read(byteBuffer, ONE_OFF_ENTRY_FIELDS);
+
+				final byte flags = (Byte)dc.get(nm_Flags2);
+				final boolean fUnicode = (flags & FLAG_U_MASK) != 0;
+
+				final DataDefinition d = new DataDefinition(nm_StringData, DataType.definitionFactory(fUnicode ? DataType.STRING : DataType.STRING_8), true);
+				dc.read(byteBuffer, d);
+
+				final String s = (String)dc.get(nm_StringData);
+
+				int ofs = 0;
+				final String displayName = s.substring(ofs, ofs = s.indexOf(0, ofs));
+				if (fUnicode)
+					++ofs;
+
+				// Skip the address type
+				ofs = s.indexOf(0, ofs);
+				if (fUnicode)
+					++ofs;
+
+				final String emailAddress = s.substring(ofs, ofs = s.indexOf(0, ofs));
+
+				entries.add(new Entry(displayName, emailAddress));
+			} else {
+				dc.read(byteBuffer, ADDRESS_BOOK_ENTRY_FIELDS);
+				byte[] rawData = (byte[])dc.get(nm_EntryID);
+				final EntryID entryID = new EntryID(rawData);
+				final PropertyContext pcEntry = entryID.propertyContext(bbt, nbt, pstFile);
+				entries.add(new Entry((String)pcEntry.get(PropertyTags.DisplayNameW), (String)pcEntry.get(email1AddressLID)));
+			}
 		}
-		
+
 		return entries.iterator();
 	}
 }
