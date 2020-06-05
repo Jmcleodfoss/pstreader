@@ -50,10 +50,10 @@ public class Appointment extends MessageObject {
 	public final boolean fRecurring;
 
 	/**	The recurrence type. */
-	int recurrenceType;
+	public final int recurrenceType;
 
 	/**	How long before the appointment time to provide a reminder. */
-	int reminderDelta;
+	public final int reminderDelta;
 
 	/**	Create a message object for the given row in the folder contents table.
 	*
