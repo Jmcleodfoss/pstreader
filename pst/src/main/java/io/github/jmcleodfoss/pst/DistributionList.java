@@ -108,7 +108,7 @@ public class DistributionList extends MessageObject {
 		*
 		*	@param	byteBuffer	The ByteBuffer from which to read the data
 		*
-	*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book entry.
+		*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book entry.
 		*/
 		OneOffEntry(java.nio.ByteBuffer byteBuffer)
 		throws
