@@ -101,12 +101,12 @@ public class Appointment extends MessageObject {
 	*
 	*	@param	namedProperties	The list of named properties.
 	*/
-	static void initConstants(NameToIDMap namedProperties)
+	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)
 	{
 		AppointmentStartWholeLID = namedProperties.id(PropertyLIDs.AppointmentStartWhole, DataType.TIME);
 		AppointmentEndWholeLID = namedProperties.id(PropertyLIDs.AppointmentEndWhole, DataType.TIME);
 		AppointmentDurationLID = namedProperties.id(PropertyLIDs.AppointmentDuration, DataType.INTEGER_32);
-		RecurrencePatternLID = namedProperties.id(PropertyLIDs.RecurrencePattern, DataType.STRING);
+		RecurrencePatternLID = namedProperties.id(PropertyLIDs.RecurrencePattern, fUnicode ? DataType.STRING : DataType.STRING_8);
 		RecurringLID = namedProperties.id(PropertyLIDs.Recurring, DataType.BOOLEAN);
 		RecurrenceTypeLID = namedProperties.id(PropertyLIDs.RecurrenceType, DataType.INTEGER_32);
 		ReminderDeltaLID = namedProperties.id(PropertyLIDs.ReminderDelta, DataType.INTEGER_32);

@@ -133,9 +133,9 @@ public class DistributionList extends MessageObject {
 	*
 	*	@param	namedProperties	The list of named properties.
 	*/
-	static void initConstants(NameToIDMap namedProperties)
+	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)
 	{
-		email1AddressLID = namedProperties.id(PropertyLIDs.Email1EmailAddress, DataType.STRING);
+		email1AddressLID = namedProperties.id(PropertyLIDs.Email1EmailAddress, fUnicode ? DataType.STRING : DataType.STRING_8);
 
 		distributionListMembersLID = namedProperties.id(PropertyLIDs.DistributionListMembers, DataType.MULTIPLE_BINARY);
 		distributionListOneOffMembersLID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers, DataType.MULTIPLE_BINARY);

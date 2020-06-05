@@ -143,9 +143,9 @@ public class Contact extends MessageObject {
 	*
 	*	@param	namedProperties	The list of named properties.
 	*/
-	static void initConstants(NameToIDMap namedProperties)
+	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)
 	{
 		for (int i = 0; i < emailAddressLIDLookup.length; ++i)
-			emailAddressLIDs[i] = namedProperties.id(emailAddressLIDLookup[i], DataType.STRING);
+			emailAddressLIDs[i] = namedProperties.id(emailAddressLIDLookup[i], fUnicode ? DataType.STRING : DataType.STRING_8);
 	}
 }

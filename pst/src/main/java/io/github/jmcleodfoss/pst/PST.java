@@ -109,9 +109,9 @@ public class PST extends PSTFile {
 		namedProperties = new NameToIDMap(blockBTree, nodeBTree, this);
 		messageStore = new MessageStore(blockBTree, nodeBTree, this);
 
-		Appointment.initConstants(namedProperties);
-		Contact.initConstants(namedProperties);
-		DistributionList.initConstants(namedProperties);
+		Appointment.initConstants(namedProperties, unicode());
+		Contact.initConstants(namedProperties, unicode());
+		DistributionList.initConstants(namedProperties, unicode());
 		Task.initConstants(namedProperties);
 	}
 
