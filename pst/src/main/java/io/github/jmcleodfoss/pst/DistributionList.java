@@ -33,6 +33,14 @@ public class DistributionList extends MessageObject {
 	/**	The property ID of the "Email 1 Address" property. */
 	private static int email1AddressLID = PropertyLIDs.UNKNOWN;
 
+	static final String nm_ProviderUID = "ProviderUID";
+
+	/**	The descriptions of the data common to all distribution list entries. */
+	private static final DataDefinition[] distributionListCommonFields = new DataDefinition[] {
+		new DataDefinition("flags", DataType.integer32Reader, false),
+		new DataDefinition(nm_ProviderUID, DataType.definitionFactory(DataType.GUID), true)
+	};
+
 	/**	The Entry class flags an object as being a distribution list entry. */
 	public static class Entry {
 
@@ -87,7 +95,7 @@ public class DistributionList extends MessageObject {
 		*	address are stored in Unicode and delimited by double-NULs; when this bit is cleared, the strings are stored in
 		*	ANSI and delimited by single NULs.
 		*/
-		private static short FLAG_U_MASK = 0x80;
+		private static final short FLAG_U_MASK = 0x80;
 	
 		private static final String nm_Version = "wVersion";
 		private static final String nm_Flags1 = "bitmapFlag1";
@@ -211,14 +219,6 @@ public class DistributionList extends MessageObject {
 		distributionListMembersLID = namedProperties.id(PropertyLIDs.DistributionListMembers);
 		distributionListOneOffMembersLID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers);
 	}
-
-	static final String nm_ProviderUID = "ProviderUID";
-
-	/**	The descriptions of the data common to all distribution list entries. */
-	private static final DataDefinition[] distributionListCommonFields = new DataDefinition[] {
-		new DataDefinition("flags", DataType.integer32Reader, false),
-		new DataDefinition(nm_ProviderUID, DataType.definitionFactory(DataType.GUID), true)
-	};
 
 	/**	Extract the list of members from the message object property context.
 	*
