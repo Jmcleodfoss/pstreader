@@ -27,6 +27,15 @@ package io.github.jmcleodfoss.pst;
 */
 public class DistributionList extends MessageObject {
 
+	/**	The property ID of the DistributionListMembers property. */
+	private static int distributionListMembersLID = PropertyLIDs.UNKNOWN;
+
+	/**	The property ID of the DistributionListOneOffMembers property. */
+	private static int distributionListOneOffMembersLID = PropertyLIDs.UNKNOWN;
+
+	/**	The property ID of the "Email 1 Address" property. */
+	private static int email1AddressLID = PropertyLIDs.UNKNOWN;
+
 	/**	The Entry class flags an object as being a distribution list entry. */
 	public static class Entry {
 
@@ -168,15 +177,6 @@ public class DistributionList extends MessageObject {
 			}
 		}
 	}
-
-	/**	The property ID of the DistributionListMembers property. */
-	private static int distributionListMembersLID = PropertyLIDs.UNKNOWN;
-
-	/**	The property ID of the DistributionListOneOffMembers property. */
-	private static int distributionListOneOffMembersLID = PropertyLIDs.UNKNOWN;
-
-	/**	The property ID of the "Email 1 Address" property. */
-	private static int email1AddressLID = PropertyLIDs.UNKNOWN;
 
 	/**	Create a distribution list object for the given row in the folder contents table.
 	*
