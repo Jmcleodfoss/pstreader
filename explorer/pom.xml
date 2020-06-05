@@ -75,19 +75,19 @@
 						<additionalDependency>
 							<groupId>io.github.jmcleodfoss</groupId>
 							<artifactId>pst</artifactId>
-							<version>1.0.1-SNAPSHOT</version>
+							<version>1.1.1-SNAPSHOT</version>
 						</additionalDependency>
 
 						<additionalDependency>
 							<groupId>io.github.jmcleodfoss</groupId>
 							<artifactId>swingutil</artifactId>
-							<version>1.0.1-SNAPSHOT</version>
+							<version>1.1.1-SNAPSHOT</version>
 						</additionalDependency>
 
 						<additionalDependency>
 							<groupId>io.github.jmcleodfoss</groupId>
 							<artifactId>util</artifactId>
-							<version>1.0.1-SNAPSHOT</version>
+							<version>1.1.1-SNAPSHOT</version>
 						</additionalDependency>
 					</additionalDependencies>
 				</configuration>
