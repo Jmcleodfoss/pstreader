@@ -14,6 +14,9 @@ package io.github.jmcleodfoss.pst;
 
 public class PropertyTags
 {
+	// Sentinel value which can be used for property tags which are uninitialized and have to be looked up.
+	static final int UNKNOWN = 0xffffffff;
+
 	// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
 	static final int NameidBucketCount = 0x0001;
 	static final int NameidStreamGuid = 0x00020102;

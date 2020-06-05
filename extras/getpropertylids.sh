@@ -14,6 +14,9 @@ package io.github.jmcleodfoss.pst;
 
 public class PropertyLIDs
 {
+	// Sentinel value which can be used for property tags which are uninitialized and have to be looked up.
+	static final int UNKNOWN = 0xffffffff;
+
 END_HEADER
 sort -t , -k 2 properties.csv | sed '
 	${
