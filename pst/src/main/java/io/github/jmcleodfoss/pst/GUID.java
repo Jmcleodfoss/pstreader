@@ -129,7 +129,7 @@ class GUID {
 	/** The ProviderUID for a one-off recipient in a distribution list.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
 	*/
-	static final GUID PROVIDER_UID_ONE_OFF = createGUID(new byte[]{(byte)0x81, (byte)0x2b, (byte)0x1f, (byte)0xa4, (byte)0xbe, (byte)0xa3, (byte)0x10, (byte)0x19, (byte)0x9d, (byte)0x6e, (byte)0x00, (byte)0xdd, (byte)0x01, (byte)0x0f, (byte)0x54, (byte)0x02});
+	static final GUID PROVIDER_UID_ONE_OFF = createGUID(new byte[]{(byte)0xa4, (byte)0x1f, (byte)0x2b, (byte)0x81, (byte)0xbe, (byte)0xa3, (byte)0x10, (byte)0x19, (byte)0x9d, (byte)0x6e, (byte)0x00, (byte)0xdd, (byte)0x01, (byte)0x0f, (byte)0x54, (byte)0x02});
 
 	/** The actual GUID */
 	final byte[] guid;
