@@ -1,4 +1,3 @@
-
 PidLidAddressBookHomeMessageDatabase,0x00008006,PtypString,0x001f,PS_Internal,C1843281-8505-D011-B290-00AA003CF676
 PidLidAddressBookHomeMessageTransferAgent,0x00008007,PtypString,0x001f,PS_Internal,C1843281-8505-D011-B290-00AA003CF676
 PidLidAddressBookMember,0x00008009,PtypMultipleString,0x101f,PS_Internal,C1843281-8505-D011-B290-00AA003CF676
