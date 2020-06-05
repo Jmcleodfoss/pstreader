@@ -17,7 +17,7 @@ package io.github.jmcleodfoss.pst;
 public class Task extends MessageObject {
 
 	/**	The property ID under which to look up the TaskDueDate property. */
-	private static int TaskDueDateID = -1;
+	private static int TaskDueDateLID = PropertyLIDs.UNKNOWN;
 
 	/**	The due date of the task in UTC. */
 	public final java.util.Date dueDate;
@@ -46,7 +46,7 @@ public class Task extends MessageObject {
 	{
 		super(contentsTable, row, nbt, pstFile);
 
-		dueDate = (java.util.Date)contentsTable.get(row, TaskDueDateID);
+		dueDate = (java.util.Date)contentsTable.get(row, TaskDueDateLID);
 	}
 
 	/**	Save named property IDs for IDs of interest.
@@ -55,6 +55,6 @@ public class Task extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		TaskDueDateID = namedProperties.id(PropertyLIDs.TaskDueDate);
+		TaskDueDateLID = namedProperties.id(PropertyLIDs.TaskDueDate);
 	}
 }

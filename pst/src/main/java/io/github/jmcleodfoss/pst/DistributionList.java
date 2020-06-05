@@ -163,20 +163,20 @@ public class DistributionList extends MessageObject {
 			try {
 				PropertyContext pc = entryID.propertyContext(bbt, nbt, pstFile);
 				displayName = (String)pc.get(PropertyTags.DisplayNameW);
-				emailAddress = (String)pc.get(email1AddressPropertyID);
+				emailAddress = (String)pc.get(email1AddressLID);
 			} catch (final Exception e) {
 			}
 		}
 	}
 
 	/**	The property ID of the DistributionListMembers property. */
-	private static int distributionListMembersPropertyID = -1;
+	private static int distributionListMembersLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID of the DistributionListOneOffMembers property. */
-	private static int distributionListOneOffMembersPropertyID = -1;
+	private static int distributionListOneOffMembersLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID of the "Email 1 Address" property. */
-	private static int email1AddressPropertyID = -1;
+	private static int email1AddressLID = PropertyLIDs.UNKNOWN;
 
 	/**	Create a distribution list object for the given row in the folder contents table.
 	*
@@ -209,10 +209,10 @@ public class DistributionList extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		email1AddressPropertyID = namedProperties.id(PropertyLIDs.Email1EmailAddress);
+		email1AddressLID = namedProperties.id(PropertyLIDs.Email1EmailAddress);
 
-		distributionListMembersPropertyID = namedProperties.id(PropertyLIDs.DistributionListMembers);
-		distributionListOneOffMembersPropertyID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers);
+		distributionListMembersLID = namedProperties.id(PropertyLIDs.DistributionListMembers);
+		distributionListOneOffMembersLID = namedProperties.id(PropertyLIDs.DistributionListOneOffMembers);
 	}
 
 	static final String nm_ProviderUID = "ProviderUID";
@@ -238,7 +238,7 @@ public class DistributionList extends MessageObject {
 	throws
 		java.io.IOException
 	{
-		final Object o = pc.get(distributionListMembersPropertyID);
+		final Object o = pc.get(distributionListMembersLID);
 		if (o == null)
 			return null;
 		final byte[][] multipleBinary = (byte[][])o;

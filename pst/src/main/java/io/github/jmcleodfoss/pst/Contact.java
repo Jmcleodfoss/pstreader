@@ -32,14 +32,14 @@ package io.github.jmcleodfoss.pst;
 public class Contact extends MessageObject {
 
 	/**	The tags under which to look up the email addresses. */
-	private static final int[] emailAddressPropertyIDLookup = {
+	private static final int[] emailAddressLIDLookup = {
 		PropertyLIDs.Email1EmailAddress,
 		PropertyLIDs.Email2EmailAddress,
 		PropertyLIDs.Email3EmailAddress
 	};
 
 	/**	The property ID of the "Email 1 Address" property. */
-	private static int[] emailAddressPropertyIDs = { -1, -1, -1};
+	private static int[] emailAddressLIDs = { PropertyLIDs.UNKNOWN, PropertyLIDs.UNKNOWN, PropertyLIDs.UNKNOWN};
 
 	/**	The display name for the contact. */
 	public final String displayName;
@@ -125,7 +125,7 @@ public class Contact extends MessageObject {
 		otherPhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.OtherTelephoneNumberW : PropertyTags.OtherTelephoneNumber);
 
 		emailAddresses = new java.util.ArrayList<String>(3);
-		for (int propId : emailAddressPropertyIDs) {
+		for (int propId : emailAddressLIDs) {
 			String emailAddress = (String)contentsTable.get(row, propId);
 			if (emailAddress != null)
 				emailAddresses.add(emailAddress);
@@ -148,7 +148,7 @@ public class Contact extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		for (int i = 0; i < emailAddressPropertyIDLookup.length; ++i)
-			emailAddressPropertyIDs[i] = namedProperties.id(emailAddressPropertyIDLookup[i]);
+		for (int i = 0; i < emailAddressLIDLookup.length; ++i)
+			emailAddressLIDs[i] = namedProperties.id(emailAddressLIDLookup[i]);
 	}
 }

@@ -17,25 +17,25 @@ package io.github.jmcleodfoss.pst;
 public class Appointment extends MessageObject {
 
 	/**	The property ID under which to look up the AppointmentStartWhole property. */
-	private static int AppointmentStartWholePropertyID = -1;
+	private static int AppointmentStartWholeLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID under which to look up the AppointmentEndWhole property. */
-	private static int AppointmentEndWholePropertyID = -1;
+	private static int AppointmentEndWholeLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID under which to look up the AppointmentDuration property. */
-	private static int AppointmentDurationPropertyID = -1;
+	private static int AppointmentDurationLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID under which to look up the RecurrencePattern property. */
-	private static int RecurrencePatternPropertyID = -1;
+	private static int RecurrencePatternLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID under which to look up the Recurring property. */
-	private static int RecurringPropertyID = -1;
+	private static int RecurringLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID under which to look up the RecurrenceType property. */
-	private static int RecurrenceTypePropertyID = -1;
+	private static int RecurrenceTypeLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID under which to look up the ReminderDelta property. */
-	private static int ReminderDeltaPropertyID = -1;
+	private static int ReminderDeltaLID = PropertyLIDs.UNKNOWN;
 
 	/**	The start time of the appointment in UTC. */
 	public final java.util.Date startTime;
@@ -82,21 +82,21 @@ public class Appointment extends MessageObject {
 	{
 		super(contentsTable, row, nbt, pstFile);
 
-		startTime = (java.util.Date)contentsTable.get(row, AppointmentStartWholePropertyID);
-		endTime = (java.util.Date)contentsTable.get(row, AppointmentEndWholePropertyID);
+		startTime = (java.util.Date)contentsTable.get(row, AppointmentStartWholeLID);
+		endTime = (java.util.Date)contentsTable.get(row, AppointmentEndWholeLID);
 
-		Object o = contentsTable.get(row, AppointmentDurationPropertyID);
+		Object o = contentsTable.get(row, AppointmentDurationLID);
 		duration = o == null ? 0 : (Integer)o;
 
-		recurrencePattern = (String)contentsTable.get(row, RecurrencePatternPropertyID);
+		recurrencePattern = (String)contentsTable.get(row, RecurrencePatternLID);
 
-		o = contentsTable.get(row, RecurringPropertyID);
+		o = contentsTable.get(row, RecurringLID);
 		fRecurring = o == null ? false : (Boolean)o;
 
-		o = contentsTable.get(row, RecurrenceTypePropertyID);
+		o = contentsTable.get(row, RecurrenceTypeLID);
 		recurrenceType = o == null ? 0 : (Integer)o;
 
-		o = contentsTable.get(row, ReminderDeltaPropertyID);
+		o = contentsTable.get(row, ReminderDeltaLID);
 		reminderDelta = o == null ? 0 : (Integer)o;
 	}
 
@@ -106,12 +106,12 @@ public class Appointment extends MessageObject {
 	*/
 	static void initConstants(NameToIDMap namedProperties)
 	{
-		AppointmentStartWholePropertyID = namedProperties.id(PropertyLIDs.AppointmentStartWhole);
-		AppointmentEndWholePropertyID = namedProperties.id(PropertyLIDs.AppointmentEndWhole);
-		AppointmentDurationPropertyID = namedProperties.id(PropertyLIDs.AppointmentDuration);
-		RecurrencePatternPropertyID = namedProperties.id(PropertyLIDs.RecurrencePattern);
-		RecurringPropertyID = namedProperties.id(PropertyLIDs.Recurring);
-		RecurrenceTypePropertyID = namedProperties.id(PropertyLIDs.RecurrenceType);
-		ReminderDeltaPropertyID = namedProperties.id(PropertyLIDs.ReminderDelta);
+		AppointmentStartWholeLID = namedProperties.id(PropertyLIDs.AppointmentStartWhole);
+		AppointmentEndWholeLID = namedProperties.id(PropertyLIDs.AppointmentEndWhole);
+		AppointmentDurationLID = namedProperties.id(PropertyLIDs.AppointmentDuration);
+		RecurrencePatternLID = namedProperties.id(PropertyLIDs.RecurrencePattern);
+		RecurringLID = namedProperties.id(PropertyLIDs.Recurring);
+		RecurrenceTypeLID = namedProperties.id(PropertyLIDs.RecurrenceType);
+		ReminderDeltaLID = namedProperties.id(PropertyLIDs.ReminderDelta);
 	}
 }
