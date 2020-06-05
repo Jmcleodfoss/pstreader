@@ -3,8 +3,7 @@ package io.github.jmcleodfoss.pst;
 /**	The IB class is a byte index into the PST file. The primary purpose of this class is to provide type safety and a useful
 *	version of {@link #toString}
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.3"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386553(v=office.12).aspx">IB (Byte Index) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/7d53d413-b492-4483-b624-4e2fa2a08cf3">MS PST: Outlook Personal Folders (.pst) File Format, Section 2.2.2.3: IB (Byte Index)</a>
 */
 class IB {
 
