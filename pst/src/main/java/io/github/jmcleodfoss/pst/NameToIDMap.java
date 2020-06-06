@@ -302,22 +302,6 @@ public class NameToIDMap {
 		return namedProperties.entrySet().iterator();
 	}
 
-	/**	Retrieve the name of the given property ID.
-	*
-	*	@param	propertyID	The property ID to retrieve the name of.
-	*
-	*	@return	The name for this id, if found, or null if it is not known.
-	*/
-	public String name(final short propertyID)
-	{
-		if (propertyID >= PropertyTags.NamedPropertyFirst && propertyID <= PropertyTags.NamedPropertyLast) {
-			final String name = namedProperties.get(propertyID);
-			return name;
-		}
-
-		return null;
-	}
-
 	/**	Retrieve the name for the given property tag.
 	*
 	*	@param	propertyTag	The tag of the property ID + data type to retrieve.
@@ -326,13 +310,8 @@ public class NameToIDMap {
 	*/
 	public String name(final int propertyTag)
 	{
-		final short propertyID = (short)(propertyTag >>> 16);
-		final String name = name(propertyID);
-		if (name != null)
-			return name;
-
-		if (propertyID >= PropertyTags.NamedPropertyFirst && propertyID <= PropertyTags.NamedPropertyLast)
-			return String.format("namedPropertyID-%08x", propertyTag);
+		if (namedProperties.containsKey(propertyTag))
+			return namedProperties.get(propertyTag);
 
 		return PropertyTags.name(propertyTag);
 	}
