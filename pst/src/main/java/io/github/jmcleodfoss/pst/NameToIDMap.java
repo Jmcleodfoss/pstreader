@@ -310,10 +310,21 @@ public class NameToIDMap {
 	*/
 	public String name(final int propertyTag)
 	{
-		if (namedProperties.containsKey(propertyTag))
-			return namedProperties.get(propertyTag);
+		if (PropertyTags.tags.containsKey(propertyTag))
+			return PropertyTags.tags.get(propertyTag);
 
-		return PropertyTags.name(propertyTag);
+		int propertyId = propertyTag;
+		if ((propertyTag & 0xffff0000) != 0) {
+			// Were we passed a property ID + data type> Convert to a pure property ID abd check for named properties
+			propertyId = (propertyTag >>> 16);
+		}
+
+		if (propertyId >= PropertyTags.NamedPropertyFirst && propertyId <= PropertyTags.NamedPropertyLast){
+			if (namedProperties.containsKey(propertyId))
+				return namedProperties.get(propertyId);
+		}
+
+		return String.format("propertyTag-%08x", propertyTag);
 	}
 
 	/**	Retrieve a table model suitable for displaying the information in this class in a table.
