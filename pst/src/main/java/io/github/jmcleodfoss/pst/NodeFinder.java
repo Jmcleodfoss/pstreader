@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The NodeFinder class retrieves blocks from the block B-tree by walking it on disk rather than reading it in all at once.
-*
 *	@see	io.github.jmcleodfoss.pst.NodeBTree
 */
 class NodeFinder extends PagedBTreeFinder implements NodeMap {
@@ -10,10 +9,8 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 	private class BTreePage extends PagedBTreeFinder.BTreePage {
 
 		/**	Create a BTreePage object form the given pstFile and bref.
-		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*
 		*	@throws	java.io.IOException	THe data for the B-tree page could not be read.
 		*/
 		private BTreePage(final BREF bref, PSTFile pstFile)
@@ -41,7 +38,6 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 	}
 
 	/**	Construct a NodeFinder object.
-	*
 	*	@param	pstFile	The PST file data stream, header, etc.
 	*/
 	NodeFinder(PSTFile pstFile)
@@ -58,9 +54,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 	}
 
 	/**	Return the requested block, or null if the block was not found.
-	*
 	*	@param	nid	The node ID of the node to look for.
-	*
 	*	@return	The node B-tree leaf entry for the requested block ID, or null if the block ID was not found.
 	*/
 	public NBTEntry find(final NID nid)
@@ -71,7 +65,6 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap {
 	}
 
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)

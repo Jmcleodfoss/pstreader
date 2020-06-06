@@ -55,11 +55,9 @@ public class NameToIDMap {
 		final GUID guid;
 
 		/**	Construct a NameID object from raw data.
-		*
 		*	@param	entryStream	The data stream from which to read the named ID information.
 		*	@param	guidArray	The GUID as read from the GUID stream.
 		*	@param	stringStream	The data stream from which to read the property name.
-		*
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		NameID(java.nio.ByteBuffer entryStream, final byte[] guidArray, java.nio.ByteBuffer stringStream)
@@ -85,9 +83,7 @@ public class NameToIDMap {
 
 		/**	Create the property set GUID from the array of GUIDs.
 		*	Throw an exception if this NameID object does not have a GUID property set identifier.
-		*
 		*	@param	guidArray	The raw data from which to create the GUID.
-		*
 		*	@return	A io.github.jmcleodfoss.pst.GUID object corresponding to the passed raw GUID.
 		*/
 		private GUID guid(final byte[] guidArray)
@@ -108,11 +104,8 @@ public class NameToIDMap {
 		}
 
 		/**	Retrieve the property name from the array of names. Throw an exception if this NameID object does not have a name.
-		*
 		*	@param	stringStream	The input data stream from which to read the property name.
-		*
 		*	@return	The next name in the stream of property names.
-		*
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		private String name(java.nio.ByteBuffer stringStream)
@@ -132,7 +125,6 @@ public class NameToIDMap {
 		}
 
 		/**	Create a string representation of this object (typically used for debugging).
-		*
 		*	@return	A string describing this named property ID.
 		*/
 		@Override
@@ -149,7 +141,6 @@ public class NameToIDMap {
 		private static final long serialVersionUID = 1L;
 	
 		/**	Create the table model.
-		*
 		*	@param	namedProperties	The map of named property IDs and values.
 		*/
 		TableModel(final NameToIDMap namedProperties)
@@ -168,9 +159,7 @@ public class NameToIDMap {
 		}
 	
 		/**	Provide the header the given column.
-		*
 		*	@param	column	The index of the column to retrieve the header for.
-		*
 		*	@return	The name of the given column.
 		*/
 		public String getColumnName(final int column)
@@ -184,10 +173,8 @@ public class NameToIDMap {
 		}
 
 		/**	No cells are editable.
-		*
 		*	@param	row	The row index of the cell to retrieve the value of.
 		*	@param	column	The column index of the cell to retrieve the value of.
-		*
 		*	@return	false, always.
 		*/
 		public boolean isCellEditable(final int row, final int column)
@@ -203,11 +190,9 @@ public class NameToIDMap {
 	private final java.util.HashMap<Integer, Integer> canonicalIDToNPID;
 
 	/**	Construct a NameIDToMap object from the given node and block database and PST file object.
-	*
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's input data stream, header, etc.
-	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was found.
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
@@ -252,10 +237,8 @@ public class NameToIDMap {
 	}
 
 	/**	Retrieve the bytes corresponding to the given property ID.
-	*
 	*	@param	pc		The property context containing the named property list.
 	*	@param	propertyTag	The property ID to retrieve.
-	*
 	*	@return	The raw data saved for this property ID.
 	*/
 	byte[] getBinaryProperty(final PropertyContext pc, final int propertyTag)
@@ -269,10 +252,8 @@ public class NameToIDMap {
 	}
 
 	/**	Get the ID of a property named property list given its canonical tag.
-	*
 	*	@param	canonicalId	The canonical tag of the property.
 	*	@param	dataType	The type of the data (this is known a priori if this function is called)
-	*
 	*	@return	The tag under which this property is stored in this PST file, if found, otherwise, -1.
 	*/
 	public int id(int canonicalId, int dataType)
@@ -284,7 +265,6 @@ public class NameToIDMap {
 	}
 
 	/**	Obtain an iterator through the named properties.
-	*
 	*	@return	An iterator which may be used to go through the named properties in the list.
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, String>> iterator()
@@ -293,9 +273,7 @@ public class NameToIDMap {
 	}
 
 	/**	Retrieve the name for the given property tag.
-	*
 	*	@param	propertyTag	The tag of the property ID + data type to retrieve.
-	*
 	*	@return	The name for this tag, if found, and a generic name based on the property Tag if not found.
 	*/
 	public String name(final int propertyTag)
@@ -318,7 +296,6 @@ public class NameToIDMap {
 	}
 
 	/**	Retrieve a table model suitable for displaying the information in this class in a table.
-	*
 	*	@return	A javax.swing.table.TableModel suitable for displaying the data in this NameToIDMap object.
 	*/
 	public javax.swing.table.TableModel tableModel()
@@ -327,7 +304,6 @@ public class NameToIDMap {
 	}
 
 	/**	Test the NameIDToMap class by reading the Named Properties map in and displaying the mapping.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)
