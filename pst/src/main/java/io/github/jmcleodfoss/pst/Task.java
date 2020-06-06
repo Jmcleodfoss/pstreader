@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The Task class holds information about a task entry.
-*
 *	@see	io.github.jmcleodfoss.pst.Appointment
 *	@see	io.github.jmcleodfoss.pst.Contact
 *	@see	io.github.jmcleodfoss.pst.JournalEntry
@@ -20,12 +19,10 @@ public class Task extends MessageObject {
 	public final java.util.Date dueDate;
 
 	/**	Create a task for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row	The row of the contents table from which to create the appointment.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@throws	NotHeapNodeException			A node which is not a heap node was encountered while reading this task.
 	*	@throws	UnknownClientSignatureException		An unknown client signature was found while reading this task.
 	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while reading this task.
@@ -46,7 +43,6 @@ public class Task extends MessageObject {
 	}
 
 	/**	Save named property IDs for IDs of interest.
-	*
 	*	@param	namedProperties	The list of named properties.
 	*/
 	static void initConstants(NameToIDMap namedProperties)

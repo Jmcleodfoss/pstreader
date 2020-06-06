@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The Appointment class holds information about a calendar entry.
-*
 *	@see	io.github.jmcleodfoss.pst.Contact
 *	@see	io.github.jmcleodfoss.pst.JournalEntry
 *	@see	io.github.jmcleodfoss.pst.Message
@@ -56,12 +55,10 @@ public class Appointment extends MessageObject {
 	public final int reminderDelta;
 
 	/**	Create a message object for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row	The row of the contents table from which to create the appointment.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@throws	NotHeapNodeException			A node which is not a heap node was found while reading the appointment.
 	*	@throws	UnknownClientSignatureException		An unknown client signature was found while reading the appointment.
 	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while reading the appointment.
@@ -97,7 +94,6 @@ public class Appointment extends MessageObject {
 	}
 
 	/**	Save named property IDs for IDs of interest.
-	*
 	*	@param	namedProperties	The list of named properties.
 	*/
 	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)

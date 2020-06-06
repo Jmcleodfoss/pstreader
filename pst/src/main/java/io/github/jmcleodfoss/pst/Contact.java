@@ -3,7 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The Contact class represents a PST contact message object. The values set in the constructor are those which come from the
 *	folder Contents Table; retrieval of other fields require that the client provide the message property context from which the
 *	fields may be extracted.
-*
 *	An example of the expected use case is:
 *	<pre>
 *	{@code
@@ -16,7 +15,6 @@ package io.github.jmcleodfoss.pst;
 *	System.out.printf("body %s\n", message.body(messagePC);
 *	}
 *	</pre>
-*
 *	@see	io.github.jmcleodfoss.pst.Appointment
 *	@see	io.github.jmcleodfoss.pst.JournalEntry
 *	@see	io.github.jmcleodfoss.pst.Message
@@ -78,12 +76,10 @@ public class Contact extends MessageObject {
 	public final java.util.List<String> emailAddresses;
 	
 	/**	Create a Contact for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@throws	NotHeapNodeException			A node which is not a heap node was found while reading the contact data.
 	*	@throws	UnknownClientSignatureException		An unknown client signature was encoutered while reading the contact data.
 	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while readind the contact data.
@@ -129,7 +125,6 @@ public class Contact extends MessageObject {
 	}
 
 	/**	Return a string describing the contact.
-	*
 	*	@return	A string describing the contact.
 	*/
 	@Override
@@ -139,7 +134,6 @@ public class Contact extends MessageObject {
 	}
 
 	/**	Save named property IDs for IDs of interest.
-	*
 	*	@param	namedProperties	The list of named properties.
 	*/
 	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)

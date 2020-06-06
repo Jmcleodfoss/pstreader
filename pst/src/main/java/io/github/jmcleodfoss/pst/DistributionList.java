@@ -3,7 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The DistributionList class represents a PST contact distribution list message object. The values set in the constructor are
 *	those which come from the folder Contents Table; retrieval of other fields require that the client provide the message property
 *	context from which the fields may be extracted.
-*
 *	An example of the expected use case is:
 *	<pre>
 *	{@code
@@ -14,7 +13,6 @@ package io.github.jmcleodfoss.pst;
 *	PropertyContext distributionListPC = distributionList.getMessageObject(pst.blockBTree, pst);
 *	}
 *	</pre>
-*
 *	@see	io.github.jmcleodfoss.pst.Appointment
 *	@see	io.github.jmcleodfoss.pst.Contact
 *	@see	io.github.jmcleodfoss.pst.Message
@@ -87,7 +85,6 @@ public class DistributionList extends MessageObject {
 		}
 
 		/**	Create a String describing the distribution list entry.
-		*
 		*	@return	A String describing the one-off distribution list entry.
 		*/
 		@Override
@@ -105,12 +102,10 @@ public class DistributionList extends MessageObject {
 	}
 
 	/**	Create a distribution list object for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was encountered while reading in the data for the distribution list.
 	*	@throws UnknownClientSignatureException		An unknown client signature was encountered while reading in the data for the distribution list.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found while reading in the data for the distribution list.
@@ -129,7 +124,6 @@ public class DistributionList extends MessageObject {
 	}
 
 	/**	Save named property IDs for IDs of interest.
-	*
 	*	@param	namedProperties	The list of named properties.
 	*/
 	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)
@@ -141,14 +135,11 @@ public class DistributionList extends MessageObject {
 	}
 
 	/**	Extract the list of members from the message object property context.
-	*
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree
 	*	@param	pstFile	The PST file's data stream, header, etc.
-	*
 	*	@return	The list of members, as an array of strings.
-	*
 	*	@throws java.io.IOException	The distribution list contents could not be read.
 	*/
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
