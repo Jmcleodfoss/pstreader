@@ -195,7 +195,7 @@ public class Attachment {
 
 		final PropertyContext pc = new PropertyContext(nodeInfo, bbt, pstFile);
 		final int attachMethod = (Integer)pc.get(PropertyTags.AttachMethod);
-		int propidData = -1;
+		int propidData = PropertyTags.UNKNOWN;
 		switch (attachMethod) {
 		case AF_NONE:
 			break;
