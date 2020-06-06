@@ -19,7 +19,6 @@ public class JournalEntry extends MessageObjectWithBody {
 	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
-	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*
@@ -29,7 +28,7 @@ public class JournalEntry extends MessageObjectWithBody {
 	* 	@throws	UnparseableTableContextException	The table context for the journal entry was not parseable and is probably corrupt.
 	* 	@throws	java.io.IOException	An I/O exception was encountered while reading the data for the journal entry.
 	*/
-	JournalEntry(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
+	JournalEntry(final TableContext contentsTable, final int row, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
 		UnknownClientSignatureException,

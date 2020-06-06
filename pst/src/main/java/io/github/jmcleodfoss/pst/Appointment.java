@@ -59,7 +59,6 @@ public class Appointment extends MessageObject {
 	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row	The row of the contents table from which to create the appointment.
-	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*
@@ -69,7 +68,7 @@ public class Appointment extends MessageObject {
 	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while reading the appointment.
 	*	@throws	java.io.IOException			An I/O error was encountered while reading the appointment.
 	*/
-	Appointment(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
+	Appointment(final TableContext contentsTable, final int row, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
 		UnknownClientSignatureException,

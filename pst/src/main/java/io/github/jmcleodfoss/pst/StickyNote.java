@@ -20,7 +20,6 @@ public class StickyNote extends MessageObjectWithBody {
 	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
-	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*
@@ -30,7 +29,7 @@ public class StickyNote extends MessageObjectWithBody {
 	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building this sticky note.
 	*	@throws java.io.IOException			An I/O error was encountered when reading the data for this sticky note.
 	*/
-	StickyNote(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
+	StickyNote(final TableContext contentsTable, final int row, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
 		UnknownClientSignatureException,

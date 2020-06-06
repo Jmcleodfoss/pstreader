@@ -23,7 +23,6 @@ public class Task extends MessageObject {
 	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row	The row of the contents table from which to create the appointment.
-	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*
@@ -33,7 +32,7 @@ public class Task extends MessageObject {
 	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while reading this task.
 	*	@throws	java.io.IOException			An I/O error was encountered when reading the data for this task.
 	*/
-	Task(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
+	Task(final TableContext contentsTable, final int row, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
 		UnknownClientSignatureException,

@@ -87,20 +87,19 @@ public class MessageObject {
 		final String messageType = (String)contentsTable.get(row, pstFile.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
 
 		if (IPM.isAppointment(messageType))
-			return new Appointment(contentsTable, row, bbt, nbt, pstFile);
+			return new Appointment(contentsTable, row, nbt, pstFile);
 
 		if (IPM.isContact(messageType))
-			return new Contact(contentsTable, row, bbt, nbt, pstFile);
+			return new Contact(contentsTable, row, nbt, pstFile);
 
 		if (IPM.isDistributionList(messageType))
-			return new DistributionList(contentsTable, row, bbt, nbt, pstFile);
+			return new DistributionList(contentsTable, row, nbt, pstFile);
 
 		if (IPM.isStickyNote(messageType))
-			return new StickyNote(contentsTable, row, bbt, nbt, pstFile);
+			return new StickyNote(contentsTable, row, nbt, pstFile);
 
 		if (IPM.isTask(messageType))
-			return new Task(contentsTable, row, bbt, nbt, pstFile);
-
+			return new Task(contentsTable, row, nbt, pstFile);
 
 		return new Message(contentsTable, row, bbt, nbt, pstFile);
 	}

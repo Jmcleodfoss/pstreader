@@ -108,7 +108,6 @@ public class DistributionList extends MessageObject {
 	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
-	*	@param	bbt		The PST file's block B-Tree.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*
@@ -118,7 +117,7 @@ public class DistributionList extends MessageObject {
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found while reading in the data for the distribution list.
 	*	@throws	java.io.IOException	An I/O problem was encoutered when reading in the address book.
 	*/
-	DistributionList(final TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
+	DistributionList(final TableContext contentsTable, final int row, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
 		UnknownClientSignatureException,
