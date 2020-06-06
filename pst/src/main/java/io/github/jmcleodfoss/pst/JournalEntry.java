@@ -1,6 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The JournalEntry class represents a PST sticky note message object. The values set in the constructor are those which come from the
+/**	The JournalEntry class represents a PST journal entry message object. The values set in the constructor are those which come from the
 *	folder Contents Table; retrieval of other fields require that the client provide the message property context from which the
 *	fields may be extracted.
 *
