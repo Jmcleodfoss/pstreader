@@ -25,8 +25,8 @@ public class PropertyTags
 	static final int NameToIdMapBucketFirst = 0x1000;
 	static final int NameToIdMapBucketLast = 0x2fff;
 
-	static final int NamedPropertyFirst = (short)0x8000;
-	static final int NamedPropertyLast = (short)0x8fff;
+	static final int NamedPropertyFirst = 0x8000;
+	static final int NamedPropertyLast = 0x8fff;
 
 END_HEADER
 sort -t , -k 2 properties.csv | sed '
