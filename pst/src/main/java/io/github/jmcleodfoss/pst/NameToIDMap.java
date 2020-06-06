@@ -152,7 +152,7 @@ public class NameToIDMap {
 		}
 	}
 
-	/**	This is an implementation of javax.swing.TableModel which may be used the name/property map. */
+	/**	This is an implementation of javax.swing.TableModel which may be used to display the name/property map. */
 	public class TableModel extends javax.swing.table.DefaultTableModel {
 
 		/**	The serialVersionUID is required because the base class is serializable. */
