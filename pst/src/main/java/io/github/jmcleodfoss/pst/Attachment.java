@@ -18,20 +18,16 @@ package io.github.jmcleodfoss.pst;
 *	}
 *	</pre>
 *
-*	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">{MX-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
-*	@see	"[MS-OXCMSG] Message and Attachment Object Protocol Specification v20101027"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/cc463900(v=EXCHG.80).aspx">[MS-OXCMSG]: Message and Attachment Object Protocol Specification (MSDN)</a>
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.6"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385914(v=office.12).aspx">Attachment Objects (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/f6ab1613-aefe-447d-a49c-18217230b148">MX-OXPROPS: Exchange Server Protocols Master Property List</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/7fd7ec40-deec-4c06-9493-1bc06b349682">MS-OXCMSG: Message and Attachment Object Protocol Specification</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/46eb4828-c6a5-420d-a137-9ee36df317c1">MS-PST: Outlook Personal Folder (.pst) File Format Section 2.4.6: Attachment Objects</a>
 */
 public class Attachment {
 
 	/**	Attachment Flag value: The attachment has not yet been created (the file contains a placeholder but no attachment
 	*	data). Per the MC-OXCXMSG document, its value is {@value}.
 	*
-	*	@see	"[MS-OXCXMSG] Message and Attachment Object Protocol Specifications v20101027, Section 2.2.2.9"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157901(v=exchg.80).aspx">PidTagAttachMethod Property (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_BY_VALUE
 	*	@see	#AF_BY_REFERENCE
 	*	@see	#AF_BY_REFERENCE_ONLY
@@ -45,8 +41,7 @@ public class Attachment {
 	/**	Attachment Flag value: The attachment is stored in the AttachDataBinary field. Per the MC-OXCXMSG document, its value
 	*	is {@value}.
 	*
-	*	@see	"[MS-OXCXMSG] Message and Attachment Object Protocol Specifications v20101027, Section 2.2.2.9"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157901(v=exchg.80).aspx">PidTagAttachMethod Property (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
 	*	@see	#AF_BY_REFERENCE
 	*	@see	#AF_BY_REFERENCE_ONLY
@@ -60,6 +55,7 @@ public class Attachment {
 	/**	Attachment Flag value: The attachment is stored in the AttachLongPathname for recipients with access to the shared drive
 	*	on which it is stored. Per the MC-OXCXMSG document, its value is {@value}.
 	*
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
 	*	@see	#AF_BY_VALUE
 	*	@see	#AF_BY_REFERENCE_ONLY
@@ -73,8 +69,7 @@ public class Attachment {
 	/**	Attachment Flag value: The AttachLongPathname contains a fully-qualified path to the attachment. Per the MC-OXCXMSG
 	*	document, its value is {@value}.
 	*
-	*	@see	"[MS-OXCXMSG] Message and Attachment Object Protocol Specifications v20101027, Section 2.2.2.9"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157901(v=exchg.80).aspx">PidTagAttachMethod Property (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
 	*	@see	#AF_BY_VALUE
 	*	@see	#AF_BY_REFERENCE
@@ -87,8 +82,7 @@ public class Attachment {
 
 	/**	Attachment Flag value: The attachment is an embedded message. Per the MC-OXCXMSG document, its value is {@value}.
 	*
-	*	@see	"[MS-OXCXMSG] Message and Attachment Object Protocol Specifications v20101027, Section 2.2.2.9"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157901(v=exchg.80).aspx">PidTagAttachMethod Property (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
 	*	@see	#AF_BY_VALUE
 	*	@see	#AF_BY_REFERENCE
@@ -102,8 +96,7 @@ public class Attachment {
 	/**	The Attachment Flag value: attachment is an application-specific object. Per the MC-OXCXMSG document, its value
 	*	is {@value}.
 	*
-	*	@see	"[MS-OXCXMSG] Message and Attachment Object Protocol Specifications v20101027, Section 2.2.2.9"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157901(v=exchg.80).aspx">PidTagAttachMethod Property (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
 	*	@see	#AF_BY_VALUE
 	*	@see	#AF_BY_REFERENCE
@@ -117,6 +110,7 @@ public class Attachment {
 	/**	The property ID under which the attachment data is stored. Note that, typically, the attachment data is much larger 
 	*	than the metadata.
 	*
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG: Message and Attachment Object Protocol Specifications, Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
 	*	@see	#AF_BY_VALUE
 	*	@see	#AF_BY_REFERENCE
