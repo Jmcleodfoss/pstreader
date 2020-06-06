@@ -33,7 +33,7 @@ class ClientSignature {
 	/**	The use of this client signature is not documented. */
 	private static final byte RESERVED6 = (byte)0xcc;
 
-	/**	Provide a BTH type fo external comparison. */
+	/**	Provide a BTH type for external comparison. */
 	static final ClientSignature BTH = factory(BTREE_ON_HEAP);
 
 	/**	Provide a TABLE_CONTEXT type for external comparison.
