@@ -236,14 +236,48 @@ public class Attachment {
 		return (byte[])pc.get(propidData);
 	}
 
-	/**	Test the Attachment class by iterating through the messages and displaying information about each attachment.
-	*
-	*	@param	arg	The command line arguments to the test application.
+	/**	Loop through folder's subfolders and message objects looking for attachments. Used only for testing Used only for testing
+	*	@param	folder	The folder to process
+	*	@see	#main
 	*/
-	@Unimplemented(priority = Unimplemented.Priority.LOW)
-	public static void main(final String[] arg)
+	private static void findFolderAttachments(Folder folder, PST pst)
 	{
-		assert false: "Not implemented yet.";
-		System.out.println("Not implemented yet.");
+		for (java.util.Iterator<MessageObject> msgIterator = folder.contentsIterator(); msgIterator.hasNext(); ){
+			MessageObject msg = msgIterator.next();
+			if (msg instanceof Message){
+				boolean subjectShown = false;
+				for (java.util.Iterator<Attachment> attachmentIterator = ((Message)msg).attachmentIterator(); attachmentIterator.hasNext(); ){
+					Attachment attachment = attachmentIterator.next();
+					PropertyContext pcAttachment = pst.propertyContext(attachment.nodeInfo);
+					byte[] data = attachment.data(pcAttachment);
+					if (!subjectShown){
+						System.out.println(folder.getNodeText(msg));
+						subjectShown = true;
+					}
+					System.out.printf("\tattachment %s mime-type %s size %d\n", attachment.name, attachment.mimeType, data == null ? 0 : data.length);
+				}
+			}
+		}
+
+		for (java.util.Iterator<Folder> folderIterator = folder.subfolderIterator(); folderIterator.hasNext(); )
+			findFolderAttachments(folderIterator.next(), pst);
+	}
+
+	/**	Test the Attachment class by iterating through the messages and displaying information about each attachment.
+	*	@param	arg	The file to show the attachment information for.
+	*/
+	public static void main(final String[] args)
+	{
+		if (args.length < 1) {
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-filename");
+			System.exit(1);
+		}
+
+		try {
+			PST pst = new PST(new java.io.FileInputStream(args[0]), false);
+			findFolderAttachments(pst.getFolderTree(), pst);
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
+		}
 	}
 }

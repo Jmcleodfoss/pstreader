@@ -84,6 +84,7 @@ TestPSTFile() {
 	#options="-Xmx2g -Xms2g"
 	options=""
 
+	TestModule $pst_jar io/github/jmcleodfoss/pst/Attachment "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BlockBTree "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BTreeOnHeap "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Folder "$pst"
