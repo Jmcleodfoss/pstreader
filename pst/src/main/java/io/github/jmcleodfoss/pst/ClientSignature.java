@@ -1,9 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The ClientSignature of a heap-on-node indicates its use.
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.2"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386518(v=office.12).aspx">Heap-on-Node (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386774(v=office.12).aspx">HNHDR (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/77ce49a3-3772-4d8d-bb2c-2f7520a238a6">MS-PST: Outlook Personal Folders (.pst) File Format, section 2.3.1.2: Heap-on-Node</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST: Outlook Personal Folders (.pst) File Format, section 2.3.1.2: HNHDR</a>
 */
 class ClientSignature {
 
