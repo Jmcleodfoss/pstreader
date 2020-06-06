@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The ClientSignature of a heap-on-node indicates its use.
-*
 *	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.2"
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386518(v=office.12).aspx">Heap-on-Node (MSDN)</a>
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386774(v=office.12).aspx">HNHDR (MSDN)</a>
@@ -39,13 +38,11 @@ class ClientSignature {
 	static final ClientSignature BTH = factory(BTREE_ON_HEAP);
 
 	/**	Provide a TABLE_CONTEXT type for external comparison.
-	*
 	*	@see	HeapOnNode#isTableContext
 	*/
 	static final ClientSignature TableContext = factory(TABLE_CONTEXT);
 
 	/**	Provide a PROPERTY_CONTEXT type for external comparison.
-	*
 	*	@see	HeapOnNode#isPropertyContext
 	*/
 	static final ClientSignature PropertyContext = factory(PROPERTY_CONTEXT);
@@ -57,9 +54,7 @@ class ClientSignature {
 	private final String description;
 
 	/**	Construct a ClientSignature object from a client signature read in from disk.
-	*
 	*	@param	signature	The signature of this heap.
-	*
 	*	@throws	UnknownClientSignatureException	The client signature was not recognized.
 	*/
 	ClientSignature(byte signature)
@@ -71,9 +66,7 @@ class ClientSignature {
 	}
 
 	/**	Compare two ClientSignature objects for equality.
-	*
 	*	@param	comp	The ClientSignature object to compare this ClientSignature to.
-	*
 	*	@return	true if the signature members of the two objects are the same, false otherwise.
 	*/
 	public boolean equals(ClientSignature comp)
@@ -82,7 +75,6 @@ class ClientSignature {
 	}
 
 	/**	Provide a description of the client signature.
-	*
 	*	@return	The description of this client signature.
 	*/
 	@Override
@@ -92,11 +84,8 @@ class ClientSignature {
 	}
 
 	/**	Create the description for this client signature, throwing an exception if it is unknown.
-	*
 	*	@param	signature	The client signature byte as read from the Heap-on-Node header.
-	*
 	*	@return	A string describing the client signature.
-	*
 	*	@throws	UnknownClientSignatureException	The client signature was not recognized.
 	*/
 	static private String description(byte signature)
@@ -137,9 +126,7 @@ class ClientSignature {
 	}
 
 	/**	Create a ClientSignature object of a known good type.
-	*
 	*	@param	signature	The signature of the ClientSignature object to create.
-	*
 	*	@return	A ClientSignature object with the given signature.
 	*/
 	static private ClientSignature factory(byte signature)
