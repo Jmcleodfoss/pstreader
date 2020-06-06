@@ -95,6 +95,9 @@ public class MessageObject {
 		if (IPM.isDistributionList(messageType))
 			return new DistributionList(contentsTable, row, nbt, pstFile);
 
+		if (IPM.isJournalEntry(messageType))
+			return new JournalEntry(contentsTable, row, nbt, pstFile);
+
 		if (IPM.isStickyNote(messageType))
 			return new StickyNote(contentsTable, row, nbt, pstFile);
 
