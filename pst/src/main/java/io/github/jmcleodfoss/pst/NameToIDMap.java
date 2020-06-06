@@ -1,13 +1,9 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The NameIDToMap class wraps the PropertyContext node NID_NAME_ID_TO_MAP (0x61) to provide names for the properties therein.
-*
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.2.2"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386230(v=office.12).aspx">Named Properties (MSDN)</a>
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.7"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387733(v=office.12).aspx">Named Property Lookup Map (MSDN)</a>
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.5"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386696(v=office.12).aspx">Calculated Properties (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/60003704-dfa6-476f-b782-ce8bb52a2df3">MS-PST: Outlook Personal Folders (.pst) File Format, Section 2.4.2.2: Named Properties</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e17e195d-0454-4b9b-b398-c9127a26a678">MS-PST: Outlook Personal Folders (.pst) File Format, Section 2.4.7" Named Property Lookup Map</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/86dd69f7-8bef-48f3-abab-671b54e00976">MS-PST: Outlook Personal Folders (.pst) File Format, Section 2.5: Calculated Properties</a>
 */
 public class NameToIDMap {
 
@@ -15,9 +11,7 @@ public class NameToIDMap {
 	java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NameToIDMap");
 
 	/**	The NameID class contains information about an individual entry in the NID_NAME_ID_TO_MAP node.
-	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.7.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385127(v=office.12).aspx">NAMEID (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0d6b4781-92c5-4d49-b24b-b783557098d1">MS-PST: Outlook Personal Folders (.pst) File Format, Section 2.4.7.1: NAMEID</a>
 	*/
 	private static class NameID {
 
@@ -25,16 +19,12 @@ public class NameToIDMap {
 		private static final short GUID_INDEX_NONE = 0;
 
 		/**	GUID index (type) {@value}: GUID in PS_MAPI.
-		*
-		*	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026 section 1.3.2"
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee219487.aspx">Commonly Used Property Sets (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS: Exchange Server Protocols Master Property List, Section 1.3.2: Commonly Used Property Sets (MSDN)</a>
 		*/
 		private static final short GUID_INDEX_MAPI = 1;
 
 		/**	GUID index (type) {@value}: GUID is in PS_PUBLIC_STRINGS.
-		*
-		*	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026 section 1.3.2"
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee219487.aspx">Commonly Used Property Sets (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS: Exchange Server Protocols Master Property List, Section 1.3.2: Commonly Used Property Sets (MSDN)</a>
 		*/
 		private static final short GUID_INDEX_PUBLIC_STRINGS = 2;
 
