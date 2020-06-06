@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BREF class is a block reference. Objects of this class may be used to find blocks in a PST file.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/844a5ebf-488a-45fd-8fce-92a84d8e24a3"> MS-PST: Outlook Personal Folders (.pst) File Format, section 2.2.2.4: BREF</a>
 */
 class BREF {
@@ -19,7 +18,6 @@ class BREF {
 	final IB ib;
 
 	/**	Create a BREF object the given BID and IB.
-	*
 	*	@param	bid	The block ID of this BREF.
 	*	@param	ib	The block index of this BREF.
 	*/
@@ -30,7 +28,6 @@ class BREF {
 	}
 
 	/**	Describe a BREF object.
-	*
 	*	@return	A string represnetation of this BREF object.
 	*/
 	@Override
