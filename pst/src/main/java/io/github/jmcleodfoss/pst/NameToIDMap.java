@@ -288,7 +288,7 @@ public class NameToIDMap {
 	public int id(int canonicalId, int dataType)
 	{
 		if (!canonicalIDToNPID.containsKey(canonicalId))
-			return -1;
+			return PropertyLIDs.UNKNOWN;
 		int mappedID = canonicalIDToNPID.get(canonicalId);
 		return (mappedID << 16 | dataType);
 	}
