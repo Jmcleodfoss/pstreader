@@ -2,8 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The SLEntry is a leaf node in the sub-node B-tree.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608  Section 2.2.2.8.3.3.1.1"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386695(v=office.12).aspx">SLEntry (Leaf Block Entry) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85c4d943-0779-43c5-bd98-61dc9bb5dfd6">MS-PST Section 2.2.2.8.3.3.1.1: SLEntry (Leaf Block Entry)</a>
 */
 class SLEntry extends LPTLeaf {
 

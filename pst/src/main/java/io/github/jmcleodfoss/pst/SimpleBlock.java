@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The SimpleBlock class represents a leaf data block (i.e. not an XBLOCK or XXBLOCK).
 *
 *	@see	io.github.jmcleodfoss.pst.XBlock
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387148(v=office.12).aspx">Blocks (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387697(v=office.12).aspx">Anatomy of a Block (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
 */
 class SimpleBlock extends BlockBase {
 

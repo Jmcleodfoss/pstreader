@@ -2,8 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The NID class represents a PST file node ID.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.1"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385251(v=office.12).aspx">NID (Node ID) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/18d7644e-cb33-4e11-95c0-34d8a84fbff6">MS-PST Section 2.2.2.1: NID (Node ID)</a>
 */
 public class NID implements NodeKey {
 
@@ -18,23 +17,20 @@ public class NID implements NodeKey {
 	/**	Node type: Heap node.
 	*
 	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386694(v=office.12).aspx">HID (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
 	*/
 	static final byte HID = 0x00;
 
 	/**	Node type: Internal node.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385012(v=office.12).aspx">Special Internal NIDs (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0510ece4-6853-4bef-8cc8-8df3468e3ff1">MS-PST Section 2.4.1: Special Internal NIDs</a>
 	*/
 	static final byte INTERNAL = 0x01;
 
 	/**	Node type: Normal folder object (PC).
 	*
 	*	@see	io.github.jmcleodfoss.pst.Folder
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385548(v=office.12).aspx">Folder Object PC (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/2cdb6e46-61b9-4426-af1e-e0c7bd889293">MS-PST Section 2.4.4.1: Folder Object PC</a>
 	*/
 	static final byte NORMAL_FOLDER = 0x02;
 
@@ -44,16 +40,14 @@ public class NID implements NodeKey {
 	/**	Node type: Normal message object (PC).
 	*
 	*	@see	io.github.jmcleodfoss.pst.Message
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.5"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385158(v=office.12).aspx">Message Objects (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1042af37-aaa4-4edc-bffd-90a1ede24188">MS-PST Section 2.4.5: Message Objects</a>
 	*/
 	static final byte NORMAL_MESSAGE = 0x04;
 
 	/**	Node type: Attachment object (PC).
 	*
 	*	@see	io.github.jmcleodfoss.pst.Attachment
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.6.2"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387207(v=office.12).aspx">Attachment Object PC (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/af7dcc38-920d-4f93-ae9e-a58e00d223b9">MS-PST Section 2.4.6.2: Attachment Object PC</a>
 	*/
 	static final byte ATTACHMENT = 0x05;
 
@@ -78,8 +72,7 @@ public class NID implements NodeKey {
 	/**	Node type: Hierarchy Table (TC).
 	*
 	*	@see	io.github.jmcleodfoss.pst.Folder
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.4"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386271(v=office.12).aspx">Hierarchy Table (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/63a983fc-6d5b-4573-aa4c-2858116c0f73">MS-PST Section 2.4.4.4: Hierarchy Table</a>
 	*/
 	static final byte HIERARCHY_TABLE = 0x0d;
 
@@ -87,8 +80,7 @@ public class NID implements NodeKey {
 	*
 	*	@see	#NORMAL_MESSAGE
 	*	@see	io.github.jmcleodfoss.pst.Folder
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.5"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386083(v=office.12).aspx">Contents Table (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/53148bd2-69f3-442a-947c-1d8b88f4abf9">MS-PST Section 2.4.4.5: Contents Table</a>
 	*/
 	static final byte CONTENTS_TABLE = 0x0e;
 
@@ -96,8 +88,7 @@ public class NID implements NodeKey {
 	*
 	*	@see	#ASSOC_MESSAGE
 	*	@see	io.github.jmcleodfoss.pst.Folder
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.4.6"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385054(v=office.12).aspx">FAI Contents Table</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/080c4dcf-d942-4e22-b616-dde6effa51e2">MS-PST Section 2.4.4.6: FAI Contents Table</a>
 	*/
 	static final byte ASSOC_CONTENTS_TABLE = 0x0f;
 
@@ -111,8 +102,7 @@ public class NID implements NodeKey {
 	*
 	*	@see	#ATTACHMENT
 	*	@see	io.github.jmcleodfoss.pst.Message
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.6.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386915(v=office.12).aspx">Attachment Objects</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9770fee7-a353-4f55-9046-4f9ef9e9d4a0">MS-PST Section 2.4.6.1: Attachment Objects</a>
 	*/
 	static final byte ATTACHMENT_TABLE = 0x11;
 
@@ -120,8 +110,7 @@ public class NID implements NodeKey {
 	*
 	*	@see	io.github.jmcleodfoss.pst.Message
 	*	@see	io.github.jmcleodfoss.pst.Recipient
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.5.3"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385128(v=office.12).aspx">Recipient Table (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0e6d7ebd-c850-4772-ba9d-f5a642c9ff85">MS-PST Section 2.4.5.3: Recipient Table</a>
 	*/
 	static final byte RECIPIENT_TABLE = 0x12;
 
@@ -133,15 +122,13 @@ public class NID implements NodeKey {
 
 	/**	Special NID: The Message Store PC contains general PST file settings.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.3"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387186(v=office.12).aspx">Message Store</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/aa0539bd-e7bf-4cec-8bde-0b87c2a86baf">MS-PST Section 2.4.3: Message Store</a>
 	*/
 	static final NID NID_MESSAGE_STORE = new NID(NID.INTERNAL, 0x0001);
 
 	/**	Special NID: The Name to ID Map PC contains the descriptions of the named properties.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.7"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387733(v=office.12).aspx"></a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e17e195d-0454-4b9b-b398-c9127a26a678">MS-PST Section 2.4.7: Named Property Lookup Map</a>
 	*/
 	static final NID NID_NAME_TO_ID_MAP = new NID(NID.INTERNAL, 0x0003);
 

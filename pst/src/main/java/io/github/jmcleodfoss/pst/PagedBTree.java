@@ -2,8 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The PagedBTree class is the base class for B-trees stored on pages within the PST file (i.e. the Node and Block B-trees).
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.7.7.1"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385991(v=office.12).aspx">BTPAGE (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/4f0cd8e7-c2d0-4975-90a4-d417cfca77f8">MS-PST Section 2.2.2.7.7.1: BTPAGE</a>
 */
 public abstract class PagedBTree extends BTree {
 
@@ -112,7 +111,7 @@ public abstract class PagedBTree extends BTree {
 
 	/**	The BTEntry class is an intermediate node in the B-trees stored in pages within the PST file.
 	*
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387350(v=office.12).aspx">BTEntry (Intermediate Entries) (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/bc8052a3-f300-4022-be31-f0f408fffca0">MS-PST Section 2.2.2.7.7.2: BTEntry (Intermediate Entries)</a>
 	*	@see	BBTEntry
 	*	@see	NBTEntry
 	*/

@@ -4,12 +4,11 @@ package io.github.jmcleodfoss.pst;
 *
 *	@see	io.github.jmcleodfoss.pst.BlockBase
 *	@see	io.github.jmcleodfoss.pst.SimpleBlock
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, sections 2.2.8.3.2"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386805(v=office.12).aspx">Block Types (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387544(v=office.12).aspx">Data Blocks (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385886(v=office.12).aspx">Data Tree (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386165(v=office.12).aspx">XBLOCK (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385051(v=office.12).aspx">XXBLOCK (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8f34ce81-7a04-4a31-ba48-e05543daa77f">MS-PST Section 2.2.2.8.3: Block Types</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/d0e6fbaf-00e3-4d4d-bea8-8ab3cdb4fde6">MS-PST Section 2.2.2.8.3.1: Data Blocks</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45688317-46fb-4038-9ed3-b845d80bdabb">MS-PST Section 2.2.2.8.3.2: Data Tree</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5b7a6935-e83d-4917-9f62-6ce3707f09e0">MS-PST Section 2.2.2.8.3.2.1: XBLOCK</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/061b6ac4-d1da-468c-b75d-0303a0a8f468">MS-PST Section 2.2.2.8.3.2.2: XXBLOCK</a>
 */
 class XBlock extends BlockBase {
 

@@ -197,8 +197,7 @@ class Encryption {
 
 	/**	The TranslatePermute translater is used for the {@link #NOB_CRYPT_PERMUTE} encryption type.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, sections 5.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386229(v=office.12).aspx">Permutative Encoding (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5faf4800-645d-49d1-9457-2ac40eb467bd">MS-PST Section 5.1: Permutative Encoding</a>
 	*	@see	TranslaterNone
 	*	@see	TranslaterCyclic
 	*/
@@ -235,7 +234,7 @@ class Encryption {
 	/**	The TranslateCyclic translater is used for the {@link #NOB_CRYPT_CYCLIC} encryption type.
 	*
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, sections 5.2"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386960(v=office.12).aspx">Permutative Encoding (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9979fc01-0a3e-496f-900f-a6a867951f23">MS-PST Section 5.2: Cyclic Encoding</a>
 	*	@see	TranslaterNone
 	*	@see	TranslaterPermute
 	*/
@@ -247,7 +246,7 @@ class Encryption {
 		*	@param	key	This parameter is used during encoding and decoding. It should be the lower DWORD of the block ID
 		*			of the block being translated.
 		*
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386960(v=office.12).aspx">Cyclic Encoding (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9979fc01-0a3e-496f-900f-a6a867951f23">MS-PST Section 5.2: Cyclic Encoding</a>
 		*/
 		public void translate(byte[] data, long key)
 		{

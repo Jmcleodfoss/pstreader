@@ -7,8 +7,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.NodeBTree
 *	@see	io.github.jmcleodfoss.pst.PagedBTree
 *	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608  Section 2.2.2.7.7.4"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385505(v=office.12).aspx">NBTEntry (Leaf NBT Entry) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/28fb2116-0998-4485-9844-9711b95603ba">MS-PST Section 2.2.2.7.7.4: NBTEntry (Leaf NBT Entry)</a>
 */
 public class NBTEntry extends LPTLeaf {
 

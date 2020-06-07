@@ -5,9 +5,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.NBTEntry
 *	@see	io.github.jmcleodfoss.pst.BlockBTree
 *	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.7.7"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387767(v=office.12).aspx">Node Database (NDB) Layer (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386554(v=office.12).aspx">BTrees (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e4efaad0-1876-446e-9d34-bb921588f924">MS-PST Section 1.3.1.1: Node Database (NDB) Layer</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/7d759bcb-7864-480c-8746-f6af913ab085">MS-PST Section 2.2.2.7.7: BTrees</a>
 */
 class NodeBTree extends PagedBTree implements NodeMap {
 

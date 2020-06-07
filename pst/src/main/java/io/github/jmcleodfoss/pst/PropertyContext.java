@@ -2,8 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The PropertyContext class contains a PST file property context.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.3"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385509(v=office.12).aspx">Property Context (PC) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/294c83c6-ff92-42f5-b6b6-876c29fa9737">MS-PST Section 2.3.3: Property Context (PC)</a>
 */
 public class PropertyContext {
 

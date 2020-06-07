@@ -1,10 +1,9 @@
 package io.github.jmcleodfoss.pst;
 
 /** The GUID class holds a PST GUID.
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.5"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386696(v=office.12).aspx">Calculated Properties (MSDN)</a>
-*	@see	"[MS-OXPROPS] Exchange Server Protocols Master Property List v20101026 section 1.3.2"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/gg318108.aspx">Commonly Used Property Sets (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/86dd69f7-8bef-48f3-abab-671b54e00976">MS-PST Section 2.5: Calculated Properties</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/commonly-used-property-sets">MAPI Commonly Used Property Sets</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commonly Used Property Sets</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
 *	@see	<a href="https://github.com/Jmcleodfoss/pstreader/blob/master/pst/src/main/java/io/github/jmcleodfoss/GUID.java">Original version in pstreader</a>
 */

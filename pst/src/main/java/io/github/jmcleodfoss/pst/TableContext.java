@@ -3,8 +3,7 @@ package io.github.jmcleodfoss.pst;
 /**	The TableContext class represents a PST Table Context, which is a structure on a B-tree-on-heap. The class itself is not
 *	publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.4"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386198(v=office.12).aspx">Table Context (TC) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5e48be0d-a75a-4918-a277-50408ff96740">MS-PST Section 2.3.4: Table Context (TC)</a>
 */
 public class TableContext extends javax.swing.table.AbstractTableModel {
 
@@ -16,8 +15,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 	/**	The TCInfo class represents the PST file TCINFO structure, and contains table context info for a table context.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.4.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385913(v=office.12).aspx">TCINFO (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45b3a0c5-d6d6-4e02-aebf-13766ff693f0">MS-PST Section 2.3.4.1: TCINFO</a>
 	*/
 	private static class TCInfo {
 
@@ -182,8 +180,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 	/**	The TColDescr class holds a single table column description object.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.4.2"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385755(v=office.12).aspx">TCINFO (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/3a2f63cf-bb40-4559-910c-e55ec43d9cbb">MS-PST Section 2.3.4.2: TCOLDESC</a>
 	*/
 	static class TColDescr {
 
