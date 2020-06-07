@@ -2,10 +2,8 @@ package io.github.jmcleodfoss.pst;
 
 /**	The DataType class represents data types within a PST file as well as PST file properties.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608 Section 2.1.1"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385331(v=office.12).aspx">Data Types (MSDN)</a>
-*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1d61ee78-4466-4141-8276-f45153484619">MS-PST Section 2.1.1: Data Types</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 */
 abstract class DataType {
 	static final short UNSPECIFIED = 0x0000;
@@ -755,8 +753,7 @@ abstract class DataType {
 		*
 		*	@return	An array containing the binary objects read in, as an array of bytes.
 		*
-		*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
@@ -840,8 +837,7 @@ abstract class DataType {
 		*
 		*	@return	An array containing the integers read in, as an array of Integer values.
 		*
-		*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
@@ -898,8 +894,7 @@ abstract class DataType {
 		*
 		*	@return	An array containing the integers read in, as an array of Long values.
 		*
-		*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
@@ -954,8 +949,7 @@ abstract class DataType {
 		*
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*
-		*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
-		*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		throws
@@ -1172,8 +1166,7 @@ abstract class DataType {
 
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
 	*
-	*	@see	"[MS-OXDATA] Data Structures v20101026, Section 2.11.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ee157583.aspx">Property Data Types (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 	*/
 	private static class Time extends DataType {
 
