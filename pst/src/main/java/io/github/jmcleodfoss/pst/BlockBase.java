@@ -2,9 +2,9 @@ package io.github.jmcleodfoss.pst;
 
 /**	The BlockBase class is the base class for both data blocks ({@link SimpleBlock}) and metadata XBLOCK/XXBLOCK ({@link XBlock}) classes.
 *
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386805(v=office.12).aspx">Block Types (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387544(v=office.12).aspx">Data Blocks (MSDN)</a>
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385886(v=office.12).aspx">Data Tree (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8f34ce81-7a04-4a31-ba48-e05543daa77f">MS-PST Section 2.2.2.8.3: Block Types</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/d0e6fbaf-00e3-4d4d-bea8-8ab3cdb4fde6">MS-PST Section 2.2.2.8.3.1: Data Blocks</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45688317-46fb-4038-9ed3-b845d80bdabb">MS-PST Section 2.2.8.3.2: Data Tree</a>
 */
 abstract class BlockBase {
 

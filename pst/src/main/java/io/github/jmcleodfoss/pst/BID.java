@@ -2,8 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The BID class represents a PST file block ID.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.2"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387585(v=office.12).aspx">BID (Block ID) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/d3155aa1-ccdd-4dee-a0a9-5363ccca5352">MS-PST Section 2.2.2.2: BID (Block ID)</a>
 */
 class BID implements NodeKey {
 
