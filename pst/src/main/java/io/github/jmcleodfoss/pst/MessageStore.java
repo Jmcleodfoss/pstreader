@@ -17,7 +17,7 @@ public class MessageStore {
 	*	@see	#passwordHashed
 	*	@see	#checkPassword
 	*	@see	#hasPassword
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/48468b1e-cc81-4e2b-82a7-9bf61adc948e">MS-PST Section 2.4.3.3: PST Password Security (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/48468b1e-cc81-4e2b-82a7-9bf61adc948e">MS-PST Section 2.4.3.3: PST Password Security</a>
 	*/
 	private static final int PROPID_PASSWORD = PropertyTags.LtpPstPassword;
 
