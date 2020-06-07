@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BlockTrailer class describes the BLOCKTRAILER structure at the end of each block.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a14943ef-70c2-403f-898c-5bc3747117e1">MS-PST Section 2.2.2.8: BLOCKTRAILER</a>
 */
 class BlockTrailer {
@@ -39,9 +38,7 @@ class BlockTrailer {
 	final int crc;
 
 	/**	Create a BlockTrailer object from the current position in the input datastream.
-	*
 	*	@param	pstFile	The PST file's header, input stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encoutered while reading in the block trailer.
 	*/
 	BlockTrailer(PSTFile pstFile)
@@ -54,9 +51,7 @@ class BlockTrailer {
 	}
 
 	/**	Return the size of the BLOCKTRAILER, which is different under Unicode and ANSI file formats.
-	*
 	*	@param	pstFile	The PST file's Header object, etc.
-	*
 	*	@return	The size, in bytes, of the BLOCKTRAILER object in the PST file.
 	*/
 	static int size(PSTFile pstFile)

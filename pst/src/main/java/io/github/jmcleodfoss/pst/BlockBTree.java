@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BlockBTree class holds the PST file's block B-tree structure, which provides access to all the data blocks in the PST file.
-*
 *	@see	io.github.jmcleodfoss.pst.BBTEntry
 *	@see	io.github.jmcleodfoss.pst.NodeBTree
 *	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
@@ -16,10 +15,8 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	static class BBTContext extends PagedBTree.PageContext<BTree, BTreeLeaf> {
 
 		/**	Constructor the context for building the block B-tree.
-		*
 		*	@param	bref	The block reference for the current node of the block B-tree under construction.
 		*	@param	pstFile	The PST file's input stream, header, etc.
-		*
 		*	@throws	java.io.IOException	An I/O error was encoutered while reading in the block B-tree context.
 		*/
 		BBTContext(final BREF bref, final PSTFile pstFile)
@@ -30,9 +27,7 @@ class BlockBTree extends PagedBTree implements BlockMap {
 		}
 
 		/**	Create an intermediate block B-tree entry using data read in from the input stream.
-		*
 		*	@param	entryStream	The data stream from which to read the intermediate block data information.
-		*
 		*	@return	A BlockBTree object representing the intermediate block B-tree node.
 		*/
 		@Override
@@ -45,9 +40,7 @@ class BlockBTree extends PagedBTree implements BlockMap {
 		}
 	
 		/**	Create a leaf block B-tree entry using data read in from the input stream.
-		*
 		*	@param	entryStream	The data stream from which to read the intermediate block data information.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered while reading in the node.
 		*/
 		@Override
@@ -60,11 +53,9 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	}
 
 	/**	Create a block B-tree node. This constructor is called when constructing both root and leaf nodes.
-	*
 	*	@param	key	The key of this node. The keys of all children of this node will be greater than or equal to this value.
 	*	@param	bref	The block reference from which to read the data for this node.
 	*	@param	pstFile	The PST file header, input stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the block B-tree.
 	*
 	*/
@@ -76,9 +67,7 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	}
 
 	/**	Convenience wrapper function to find a block ID in the block B-tree.
-	*
 	*	@param	bid	The block ID to find in the block B-tree.
-	*
 	*	@return	The leaf block B-tree entry indicating where the given block lies.
 	*/
 	public BBTEntry find(final BID bid)
@@ -93,7 +82,6 @@ class BlockBTree extends PagedBTree implements BlockMap {
 	}
 
 	/**	Test this class by reading in the block B-Tree and printing it.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)

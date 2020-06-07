@@ -17,10 +17,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		protected PSTFile pstFile;
 
 		/**	The base class constructor reads any metadata requested and saves the input stream and file format.
-		*
 		*	@param	pstFile	The PST {@link Header}, data stream, etc.
 		*	@param	fields	The data fields to read in.
-		*
 		*	@throws java.io.IOException	There was a problem reading the PST file.
 		*/
 		protected Context(PSTFile pstFile, final DataDefinition[]... fields)
@@ -35,9 +33,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		}
 
 		/**	Obtain a data stream from which entries may be read.
-		*
 		*	@return	A ByteBuffer object from which leaf and node entries may be read.
-		*
 		*	@throws java.io.IOException	There was a problem reading the PST file.
 		*/
 		protected abstract java.nio.ByteBuffer entryDataStream()
@@ -45,29 +41,23 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			java.io.IOException;
 
 		/**	Determine whether the current node is a leaf node or an intermediate node.
-		*
 		*	@return	true if the current node is a leaf node, false if it is an intermediate node.
 		*/
 		protected abstract boolean isLeafNode();
 
 		/**	Obtain the size of an entry and ignored padding bytes in the input stream.
-		*
 		*	@return	The size of an entry in type of B-Tree
 		*/
 		protected abstract int getEntrySize();
 
 		/**	Obtain the number of entries which can be read from the input stream.
-		*
 		*	@return	The number of entries available in the input entry stream.
 		*/
 		protected abstract int getNumEntries();
 
 		/**	Create an intermediate node from the data stream.
-		*
 		*	@param	byteBuffer	The data stream from which to read the intermediate node information.
-		*
 		*	@return	A B-tree object containing the entry and all its children.
-		*
 		*	@throws	java.io.IOException	An I/O exception was encountered while reading a non-leaf node.
 		*/
 		protected abstract I intermediateNodeFactory(java.nio.ByteBuffer byteBuffer)
@@ -75,11 +65,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			java.io.IOException;
 
 		/**	Create a leaf node from the data stream.
-		*
 		*	@param	byteBuffer	The data stream from which to read the leaf node information.
-		*
 		*	@return	A leaf node object containing the leaf data.
-		*
 		*	@throws	java.io.IOException	An I/O exception was encountered while reading a leaf node.
 		*/
 		protected abstract L leafNodeFactory(java.nio.ByteBuffer byteBuffer)
@@ -87,7 +74,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			java.io.IOException;
 	
 		/**	Convenience method to provide file format.
-		*
 		*	@return	true if the PST file being processed is a Unicode PST file, false if it is ANSE.
 		*/
 		protected boolean unicode()
@@ -96,8 +82,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		}
 	}
 
-	/**	The Iterator class allows iteration through the leaves of the B-tree.
-	*/
+	/**	The Iterator class allows iteration through the leaves of the B-tree. */
 	private class Iterator implements java.util.Iterator<BTreeNode> {
 
 		/**	The index of the next child to return the leaf of. */
@@ -114,7 +99,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		}
 
 		/**	Indicate whether the "next" function will return anything.
-		*
 		*	@return	true if there is another leaf to return, false otherwise.
 		*/
 		public boolean hasNext()
@@ -133,7 +117,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		}
 
 		/**	Provide the next leaf of the B-tree.
-		*
 		*	@return	The next leaf of the B-tree.
 		*/
 		public BTreeNode next()
@@ -155,27 +138,22 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			throw new java.util.NoSuchElementException();
 		}
 
-		/**	The remove function is not supported.
-		*/
+		/**	The remove function is not supported. */
 		public void remove()
 		{
 			throw new UnsupportedOperationException("remove not suported");
 		}
 	}
 
-	/**	The children of this B-tree node. The children may be either intermediate nodes, which are themselves B-trees, or leaf
-	*	nodes. */
+	/**	The children of this B-tree node. The children may be either intermediate nodes, which are themselves B-trees, or leaf nodes. */
 	protected final BTreeNode[] children;
 
 	/**	The key of this node is guaranteed to be the smallest key of any of its children. */
 	protected final long key;
 
 	/**	Create a B-tree using the given context.
-	*
-	*	@param	key	The key for this node of the B-tree. All child nodes are guaranteed to have keys greater than or equal
-	*			to this.
+	*	@param	key	The key for this node of the B-tree. All child nodes are guaranteed to have keys greater than or equal to this.
 	*	@param	context	Context data used to construct the B-tree
-	*
 	*	@throws	java.io.IOException	An I/O error was encoutnered while reading the B-tree.
 	*/
 	protected BTree(final long key, Context<BTree, BTreeLeaf> context)
@@ -205,9 +183,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Retrieve the data the given key in the B-tree, or null if the key is missing.
-	*
 	*	@param	key	The key to look for in the B-tree.
-	*
 	*	@return	The B-tree leaf node containing key, if any, otherwise, null.
 	*/
 	BTreeLeaf find(final long key)
@@ -228,10 +204,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Obtain the given child of this node.
-	*
 	*	@param	parent	The parent node to return the child of.
 	*	@param	index	The number of the child to return.
-	*
 	*	@return	The requested child node of the given parent node.
 	*/
 	public Object getChild(final Object parent, final int index)
@@ -240,9 +214,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Get the number of children of this node.
-	*
 	*	@param	parent	The parent node to return the number of child nodes for.
-	*
 	*	@return	The number of children of the given parent node.
 	*/
 	public int getChildCount(final Object parent)
@@ -257,10 +229,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Get the index of this child node in the given node.
-	*
 	*	@param	parent	The parent to search for child.
 	*	@param	child	The child node to look for in parent.
-	*
 	*	@return	The index of the given child in the given parent node, or -1 if it is not a child of parent.
 	*/
 	public int getIndexOfChild(final Object parent, final Object child)
@@ -293,7 +263,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Get the root of the tree.
-	*
 	*	@return	The root of this B-tree.
 	*/
 	public Object getRoot()
@@ -302,9 +271,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Is the given node a leaf node?
-	*
 	*	@param	node	The node to check for leafiness.
-	*
 	*	@return	true if node is a leaf node, false if it is an intermediate node.
 	*/
 	public boolean isLeaf(final Object node)
@@ -315,7 +282,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Provide an iterator over the leaves of the B-tree.
-	*
 	*	@return	An iterator over the leaves of the B-tree.
 	*/
 	public Iterator iterator()
@@ -330,7 +296,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Obtain the number of leaf nodes in the B-tree.
-	*
 	*	@return	The number of leaf nodes in this B-tree.
 	*/
 	int numLeafNodes()
@@ -348,7 +313,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	/**	Output this B-tree to the given stream.
 	*	Each printed line begins with the String prefix, followed by a number of tabs which increases by one for each level
 	*	This function is necessary because there can occasionally be too much information in a B-tree to use toString.
-	*
 	*	@param	out	The PrintStream object to write the tree to.
 	*	@param	prefix	The prefix to use when printing this node.
 	*/
@@ -377,7 +341,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	Provide a String which contains some information about this node. This is typically used for debugging.
-	*
 	*	@return	A string describing this B-tree.
 	*/
 	@Override

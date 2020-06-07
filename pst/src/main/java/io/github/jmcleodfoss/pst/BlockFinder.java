@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BlockFinder class retrieves blocks from the block B-tree by walking it on disk rather than reading it in all at once.
-*
 *	@see	io.github.jmcleodfoss.pst.BlockBTree
 */
 class BlockFinder extends PagedBTreeFinder implements BlockMap {
@@ -10,10 +9,8 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 	private class BTreePage extends PagedBTreeFinder.BTreePage {
 
 		/**	Create a BTreePage object form the given pstFile and bref.
-		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*
 		*	@throws	java.io.IOException	An I/O error was encoutered while reading in the B-tree.
 		*/
 		private BTreePage(final BREF bref, PSTFile pstFile)
@@ -41,7 +38,6 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 	}
 
 	/**	Construct a BlockFinder object.
-	*
 	*	@param	pstFile	The PST file data stream, header, etc.
 	*/
 	BlockFinder(PSTFile pstFile)
@@ -58,9 +54,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 	}
 
 	/**	Return the requested block, or null if the block was not found.
-	*
 	*	@param	bid	The block ID of the block to look for.
-	*
 	*	@return	The Block B-tree leaf entry for the requested block ID, or null if the block ID was not found.
 	*/
 	public BBTEntry find(final BID bid)
@@ -71,7 +65,6 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap {
 	}
 
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)

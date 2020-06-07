@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BBTEntry class represents a block B-tree leaf node.
-*
 *	@see	io.github.jmcleodfoss.pst.BTree
 *	@see	io.github.jmcleodfoss.pst.BlockBTree
 *	@see	io.github.jmcleodfoss.pst.NBTEntry
@@ -50,10 +49,8 @@ class BBTEntry implements BTreeLeaf {
 	private final int refCount;
 
 	/**	Create a block B-tree leaf entry from data read in from the input datastream.
-	*
 	*	@param	entryStream	The stream of data from which to read the entry.
 	*	@param	context		The context used to build the tree. This is not saved in the tree itself.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this block B-tree node.
 	*/
 	BBTEntry(java.nio.ByteBuffer entryStream, final PagedBTree.PageContext<BTree, BTreeLeaf> context)
@@ -68,9 +65,7 @@ class BBTEntry implements BTreeLeaf {
 	}
 
 	/**	Obtain the actual size of a block B-tree leaf node as read in from the input datastream.
-	*
 	*	@param	context	The context to use to find the size (this function uses only the file format information.)
-	*
 	*	@return	The actual size of a block B-tree leaf node for this file type.
 	*/
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
@@ -93,7 +88,6 @@ class BBTEntry implements BTreeLeaf {
 	}
 
 	/**	Retrieve the key (block ID) for this node.
-	*
 	*	@return	The {@link BID} key for the block indicated by this leaf entry in the block B-tree.
 	*/
 	public long key()
@@ -119,7 +113,6 @@ class BBTEntry implements BTreeLeaf {
 	}
 
 	/**	Provide a description of a block B-tree leaf node (typically used for debugging).
-	*
 	*	@return	A string describing this object.
 	*/
 	@Override

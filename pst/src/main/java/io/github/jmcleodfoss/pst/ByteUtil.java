@@ -27,9 +27,7 @@ public class ByteUtil {
 	};
 
 	/**	Create a String representing a single byte in hexadecimal.
-	*
 	*	@param	b	The byte to convert to a hexadecimal string.
-	*
 	*	@return	The hexadecimal String corresponding to the given byte.
 	*/
 	public static String toHexString(final byte b)
@@ -41,9 +39,7 @@ public class ByteUtil {
 	}
 
 	/**	Create a string representation expressing the given sequence of bytes in hexadecimal.
-	*
 	*	@param	bytes	The bytes to convert to a String of hexadecimal values.
-	*
 	*	@return	The String containing the hexadecimal representation of the given bytes.
 	*/
 	public static String createHexByteString(final byte[] bytes)
@@ -60,10 +56,8 @@ public class ByteUtil {
 
 
 	/**	Create a signed long from the first "n" bytes of the given array, ordered from MSB to LSB
-	*
 	*	@param	rawData	The bytes to make the long value from.
 	*	@param	n	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
-	*
 	*	@return	A long value corresponding to the given array of bytes as a big-endian value.
 	*/
 	public static long makeLongBE(final byte[] rawData, int n)
@@ -80,9 +74,7 @@ public class ByteUtil {
 	}
 
 	/**	Create a signed long from the given array of up to eight bytes, ordered from MSB to LSB.
-	*
 	*	@param	rawData	The bytes to make the long value from.
-	*
 	*	@return	A long value corresponding to the given array of bytes as a big-endian value.
 	*/
 	public static long makeLongBE(byte[] rawData)
@@ -91,10 +83,8 @@ public class ByteUtil {
 	}
 
 	/**	Create a signed long from the first "n" bytes of the given array, ordered from LSB to MSB.
-	*
 	*	@param	rawData	The bytes to make the long value from.
 	*	@param	n	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
-	*
 	*	@return	A long value corresponding to the given array of bytes as a little-endian value.
 	*/
 	public static long makeLongLE(byte[] rawData, int n)
@@ -110,9 +100,7 @@ public class ByteUtil {
 	}
 
 	/**	Create a signed long from the given array of bytes, ordered from LSB to MSB.
-	*
 	*	@param	rawData	The bytes to make the long value from.
-	*
 	*	@return	A long value corresponding to the given array of bytes as a little-endian value.
 	*/
 	public static long makeLongLE(byte[] rawData)
@@ -121,7 +109,6 @@ public class ByteUtil {
 	}
 
 	/**	This is a simplistic test for some of the functions in this class.
-	*
 	*	@param	args	The command line arguments passed to the test application (ignored).
 	*/
 	public static void main(String[] args)

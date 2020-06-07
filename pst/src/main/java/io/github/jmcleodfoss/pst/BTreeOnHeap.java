@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The BTreeOnHeap class represents a B-tree contained on a heap defined by a node in the node B-tree.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/2dd1a95a-c8b1-4ac5-87d1-10cb8de64053">MS-PST Section 2.3.2: BTree-on-Heap (BTH)</a>
 */
 public class BTreeOnHeap extends BTree {
@@ -28,10 +27,8 @@ public class BTreeOnHeap extends BTree {
 
 		/**	Construct a BTHContext object representing the root of the B-tree-on-heap structure, where the root index is the
 		*	first entry in the heap-on-node.
-		*
 		*	@param	hon	The heap-on-node on which this B-tree-on-heap is built.
 		*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
-		*
 		*	@throws java.io.IOException	The PST file could not be read.
 		*/
 		private BTHContext(final HeapOnNode hon, PSTFile pstFile)
@@ -42,11 +39,9 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Construct a BTHContext object representing the root of the B-tree-on-heap structure where the root is provided.
-		*
 		*	@param	hon	The heap-on-node on which this B-tree-on-heap is built.
 		*	@param	hid	The heap ID of the root of the B-tree-on-heap.
 		*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
-		*
 		*	@throws java.io.IOException	The header could not be read from the PST file.
 		*/
 		private BTHContext(final HeapOnNode hon, final HeapOnNode.HID hid, PSTFile pstFile)
@@ -62,11 +57,9 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Construct a BTHContext object representing the level below the passed in context for a B-tree-on-heap structure.
-		*
 		*	@param	hid		The heap ID of the root of the B-tree-on-heap.
 		*	@param	newLevel	The level of this entry in the B-tree (0 = leaf node)
 		*	@param	context		The B-tree-in-heap construction context to use when building the next node.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered while reading the B-tree header context.
 		*/
 		private BTHContext(final HeapOnNode.HID hid, final int newLevel, BTHContext context)
@@ -83,7 +76,6 @@ public class BTreeOnHeap extends BTree {
 
 		/**	The stream of data from which to read the intermediate or leaf node data.
 		*	For the B-tree-on-heap structure, this is a stream created from an entry in the heap.
-		*
 		*	@return	{@inheritDoc}
 		*/
 		@Override
@@ -95,7 +87,6 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	The size of a single entry in the B-tree-on-heap structure. Note that the size depends on values in the BTH header.
-		*
 		*	@return	{@inheritDoc}
 		*/
 		@Override
@@ -105,7 +96,6 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Obtain The number of entries contained within in this heap index.
-		*
 		*	@return	{@inheritDoc}
 		*/
 		@Override
@@ -144,11 +134,8 @@ public class BTreeOnHeap extends BTree {
 		}
 	
 		/**	Create a context object for use when reading the next level of the B-tree.
-		*
 		*	@param	hid	The heap-on-node index of the next level nod of the B-tree
-		*
 		*	@return	A new BTHContect object for use when reading the next child node of this node.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered while reading the B-tree header context.
 		*/
 		private BTHContext nextLevelContextFactory(final HeapOnNode.HID hid)
@@ -159,8 +146,7 @@ public class BTreeOnHeap extends BTree {
 		}
 	}
 
-	/**	The header of a B-tree-on-heap structure.
-	*/
+	/**	The header of a B-tree-on-heap structure. */
 	private static class Header {
 
 		private static final String nm_bType = "bType";
@@ -193,9 +179,7 @@ public class BTreeOnHeap extends BTree {
 		final HeapOnNode.HID hidRoot;
 
 		/**	Read in B-tree-on-heap header information.
-		*
 		*	@param	stream	The input stream from which to read the B-tree-on-heap header data.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered while reading the B-tree header.
 		*/
 		Header(java.nio.ByteBuffer stream)
@@ -211,7 +195,6 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Obtain a description of the BTH header. This is typically used for debugging.
-		*
 		*	@return	A string describing this object.
 		*/
 		@Override
@@ -240,11 +223,9 @@ public class BTreeOnHeap extends BTree {
 
 		/**	The constructor for the RecordBase class reads in the given fields from the datastream, and saves the key and
 		*	the key and data sizes.
-		*
 		*	@param	stream	The input stream from which to read the BTH data.
 		*	@param	keySize	The size of the key object in this B-tree-on-heap.
 		*	@param	fields	The fields to read in when constructing the node.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered while reading in the B-tree.
 		*/
 		RecordBase(java.nio.ByteBuffer stream, byte keySize, DataDefinition[] fields)
@@ -260,7 +241,6 @@ public class BTreeOnHeap extends BTree {
 
 		/**	Return the key for this node. Note that as the key size depends on the data in the B-tree, this value is
 		*	determined based on the key length.
-		*
 		*	@return	key	The key for this B-tree-on-heap node entry.
 		*/
 		public long key()
@@ -291,9 +271,7 @@ public class BTreeOnHeap extends BTree {
 		HeapOnNode.HID hidNextLevel;
 
 		/**	Return the field definitions required to read in an intermediate record from the input stream.
-		*
 		*	@param	keySize	The size of the key values in this B-tree-on-heap.
-		*
 		*	@return	The field definitions for the record being read.
 		*/
 		private static DataDefinition[] fieldDefinitions(final byte keySize)
@@ -308,7 +286,6 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Create an intermediate node record with data read from the input stream.
-		*
 		*	@param	stream	{@inheritDoc}
 		*	@param	keySize	{@inheritDoc}
 		*/
@@ -322,7 +299,6 @@ public class BTreeOnHeap extends BTree {
 
 		/**	Provide a description of an intermediate node in the B-tree-on-heap structure. This is typically used for
 		*	debugging.
-		*
 		*	@return	A string describing the intermediate node record.
 		*/
 		@Override
@@ -341,10 +317,8 @@ public class BTreeOnHeap extends BTree {
 		final byte[] data;
 
 		/**	Return the field definitions required to read in a leaf record from the input stream.
-		*
 		*	@param	keySize		The size of the key object in this B-tree-on-heap.
 		*	@param	dataSize	The size of the data object in this B-tree-on-heap.
-		*
 		*	@return	The DataDefinition array which should be read in to obtain a B-tree-on-heap leaf entry.
 		*/
 		private static DataDefinition[] fieldDefinitions(final byte keySize, final byte dataSize)
@@ -358,7 +332,6 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Create a leaf record with data read out of the input stream.
-		*
 		*	@param	stream		{@inheritDoc}
 		*	@param	keySize		{@inheritDoc}
 		*	@param	dataSize	The size of the data object in this B-tree-on-heap.
@@ -399,7 +372,6 @@ public class BTreeOnHeap extends BTree {
 		}
 
 		/**	Provide a description of a leaf node in the B-tree-on-heap structure. This is typically used for debugging.
-		*
 		*	@return	A string describing the B-tree-on-heap leaf record.
 		*/
 		@Override
@@ -411,7 +383,6 @@ public class BTreeOnHeap extends BTree {
 
 	/**	Construct a B-tree-on-heap structure with the given key from the given context. This function may be called for the root 
 	*	and for intermediate nodes in the B-tree.
-	*
 	*	@param	key	{@inheritDoc}
 	*	@param	context	{@inheritDoc}
 	*/
@@ -424,10 +395,8 @@ public class BTreeOnHeap extends BTree {
 
 	/**	Construct a B-tree-on-heap structure with from the given heap-on-node structure and PST file object. This function is 
 	*	intended to create the root of the B-tree.
-	*
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
-	*
 	*	@throws java.io.IOException	The PST file could not be read.
 	*/
 	public BTreeOnHeap(final HeapOnNode hon, PSTFile pstFile)
@@ -439,11 +408,9 @@ public class BTreeOnHeap extends BTree {
 
 	/**	Construct a B-tree-on-heap structure with from the given heap-on-node structure and PST file object using a specified
 	*	heap ID. This function is intended to create the root of the B-tree.
-	*
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	hid	The index of heap-on-node which points to the B-tree-on-heap's root.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading this B-tree.
 	*/
 	BTreeOnHeap(final HeapOnNode hon, final HeapOnNode.HID hid, PSTFile pstFile)
@@ -454,9 +421,7 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	Obtain the actual size of the B-tree-on-heap object.
-	*
 	*	@param	context	The context from which to create the B-tree-on-heap.
-	*
 	*	@return	The actual size of a B-tree-on-heap object for this B-tree-on-heap.
 	*/
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
@@ -465,12 +430,9 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	Obtain data for the given leaf node, or null if the given object is not a leaf node.
-	*
 	*	@param	o	The node to retrieve the data for.
 	*	@param	hon	The heap-on-node from which the B-tree-on-heap is being built.
-	*
 	*	@return	A read-only ByteBuffer containing the data in the leaf node.
-	*
 	*	@throws java.io.UnsupportedEncodingException	The PST file could not be read.
 	*/
 	public static java.nio.ByteBuffer getData(final Object o, final HeapOnNode hon)
@@ -496,7 +458,6 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	Test this class by displaying the first B-tree-on-heap in the given PST file.
-	*
 	*	@param	args	The arguments to the test application.
 	*/
 	public static void main(String[] args)
