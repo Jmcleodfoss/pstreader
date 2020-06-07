@@ -2,7 +2,8 @@ package io.github.jmcleodfoss.pst;
 
 /**	The EntryID class contains a PST file Entry ID (ENTRYID structure).
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.4"
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9378e8b9-7b6a-45bf-a51a-f21daf24d9ce">MS-PST Section 2.4.3.2: Mapping between EntryID and NID</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/57e8bcbf-11d0-40fe-8833-5558bb9c0c89">MS-OXCDATA Section 2.2: EntryID and Related Types</a>
 */
 public class EntryID {
 

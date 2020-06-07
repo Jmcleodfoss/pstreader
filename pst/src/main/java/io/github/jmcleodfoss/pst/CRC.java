@@ -2,7 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The CRC class contains the CRC calculation mechanism, taken from the MS PST file format description.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 5.3"
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/39c35207-130f-4d83-96f8-2b311a285a8f">MS-PST Section 5.3: CRC Calculation</a>
 */
 class CRC {
 
