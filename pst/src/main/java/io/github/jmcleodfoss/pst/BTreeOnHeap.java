@@ -2,7 +2,7 @@ package io.github.jmcleodfoss.pst;
 
 /**	The BTreeOnHeap class represents a B-tree contained on a heap defined by a node in the node B-tree.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608"
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/2dd1a95a-c8b1-4ac5-87d1-10cb8de64053">MS-PST Section 2.3.2: BTree-on-Heap (BTH)</a>
 */
 public class BTreeOnHeap extends BTree {
 
