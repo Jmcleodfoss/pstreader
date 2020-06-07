@@ -35,10 +35,6 @@ public class Header {
 	private static final DataDefinition[] unicode_fields = {
 		new DataDefinition("bidUnused", new DataType.SizedByteArray(8)),
 		new DataDefinition("bidNextP", new DataType.SizedByteArray(8)),
-
-		// There is conflicting information about whether this is here
-		// Section 2.2.2.6 says it is, but Section 3.2 suggests it isn't
-//			new DataDefinition("bidNextB", 8),
 		new DataDefinition("dwUnique", new DataType.SizedByteArray(4)),
 		new DataDefinition("rgnid", new DataType.SizedByteArray(128)),
 		new DataDefinition("qwUnused", new DataType.SizedByteArray(8)),
