@@ -2,15 +2,13 @@ package io.github.jmcleodfoss.pst;
 
 /**	The MessageStore class is a (thin) wrapper around the message store PC, with a few convenience functions.
 *
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.3"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387186(v=office.12).aspx">Message Store (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/aa0539bd-e7bf-4cec-8bde-0b87c2a86baf">MS-PST Section 2.4.3: Message Store</a>
 */
 public class MessageStore {
 
 	/**	The tag for the the root node of the PST file.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.3.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386088(v=office.12).aspx">Minimum Set of Required Properties (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5493a0eb-0356-4e88-b4f5-0433ce0a93fa">MS-PST Section 2.4.3.1: Minimum Set of Required Properties</a>
 	*/
 	private static final int PROPID_ROOT_ENTRY_ID = PropertyTags.IpmSubTreeEntryId;
 
@@ -19,8 +17,7 @@ public class MessageStore {
 	*	@see	#passwordHashed
 	*	@see	#checkPassword
 	*	@see	#hasPassword
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.4.3.3"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385916(v=office.12).aspx">PST Password Security (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/48468b1e-cc81-4e2b-82a7-9bf61adc948e">MS-PST Section 2.4.3.3: PST Password Security (MSDN)</a>
 	*/
 	private static final int PROPID_PASSWORD = PropertyTags.LtpPstPassword;
 

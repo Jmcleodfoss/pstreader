@@ -3,8 +3,7 @@ package io.github.jmcleodfoss.pst;
 /**	The HeapOnNode class represents a heap stored on a node in the node B-Tree.
 *
 *	@see	io.github.jmcleodfoss.pst.BTree
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386518(v=office.12).aspx">HN (Heap-on-Node) (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/77ce49a3-3772-4d8d-bb2c-2f7520a238a6">MS-PST Section 2.3.1: HN (Heap-on-Node)</a>
 */
 public class HeapOnNode implements javax.swing.ListModel<Object> {
 
@@ -13,8 +12,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.1"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386694(v=office.12).aspx">HNBITMAPHDR (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
 	*/
 	static class HID extends NID {
 
@@ -107,8 +105,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	The HNBitmapHeader class occurs the eighth block, and every 128 blocks thereafter (8, 136, 264, etc)
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.4"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386632(v=office.12).aspx">HNBITMAPHDR (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/822e2327-b29d-4ec4-91be-45637a438d40">MS-PST Section 2.3.1.4: HNBITMAPHDR</a>
 	*/
 	static class HNBitmapHeader {
 
@@ -148,8 +145,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	The Header class represents the header of a heap-on-node structure.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.2"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386774(v=office.12).aspx">HNHDR (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.2: HNHDR</a>
 	*/
 	static class Header {
 
@@ -221,8 +217,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	The PageMap contains the page information found at end of each heap page.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.5"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff385507(v=office.12).aspx">HNHDR (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.5: HNHPAGEMAP</a>
 	*/
 	private static class PageMap {
 
@@ -279,8 +274,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 	/**	The PageHeader contains the information found at the beginning of the 2nd-7th, 9th-15th, etc pages making up the heap-on-node structure.
 	*
-	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.3.1.3"
-	*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff386962(v=office.12).aspx">HNPAGEHDR (MSDN)</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9c34ecf8-36bc-45a1-a2df-ee35c6dc840a">MS-PST Section 2.3.1.3: HNPAGEHDR</a>
 	*/
 	private static class PageHeader {
 

@@ -4,8 +4,7 @@ package io.github.jmcleodfoss.pst;
 *
 *	@see	io.github.jmcleodfoss.pst.Encryption
 *	@see	io.github.jmcleodfoss.pst.FileFormat
-*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, section 2.2.2.6"
-*	@see	<a href="http://msdn.microsoft.com/en-us/library/ff387474(v=office.12).aspx">Header (MSDN)</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
 */
 public class Header {
 
