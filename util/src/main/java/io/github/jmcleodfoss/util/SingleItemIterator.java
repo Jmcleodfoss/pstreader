@@ -17,7 +17,6 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object> {
 	}
 
 	/**	Determine if there is another item to return.
-	*
 	*	@return	true if the data hasn't been returned, false if it has.
 	*/
 	public boolean hasNext()
@@ -26,7 +25,6 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object> {
 	}
 
 	/**	Retrieve the data.
-	*
 	*	@return	The data for the single item in the list.
 	*/
 	public T next()

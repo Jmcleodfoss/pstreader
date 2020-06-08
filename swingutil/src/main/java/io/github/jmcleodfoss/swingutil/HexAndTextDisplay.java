@@ -25,9 +25,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Get the class used by the requested column.
-		*
 		*	@param	columnIndex	The index of the column to return the class of.
-		*
 		*	@return	The class object for the type displayed in the requested column.
 		*/
 		public java.lang.Class<?> getColumnClass(final int columnIndex)
@@ -42,7 +40,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Get the number of columns in the table.
-		*
 		*	@return	The number of columns in the display.
 		*/
 		public int getColumnCount()
@@ -51,9 +48,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Get the name of the requested column.
-		*
 		*	@param	columnIndex	The index of the column to get the name for.
-		*
 		*	@return	The name of the requested column.
 		*/
 		public String getColumnName(final int columnIndex)
@@ -62,7 +57,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Get the number of rows in the table.
-		*
 		*	@return	The number of rows in the table.
 		*/
 		public int getRowCount()
@@ -73,10 +67,8 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Get the value of the given cell.
-		*
 		*	@param	rowIndex	The index of the row of the cell to return the contents of.
 		*	@param	columnIndex	The index of the column of the cell to return the contents of.
-		*
 		*	@return	The contents of the requested cell.
 		*/
 		public Object getValueAt(final int rowIndex, final int columnIndex)
@@ -95,10 +87,8 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Is this cell editable? THe answer is always no, as this application is read-only.
-		*
 		*	@param	rowIndex	The index of the row of the cell to check.
 		*	@param	columnIndex	The index of the column of the cell to check.
-		*
 		*	@return	false, always, as this is a read-only display.
 		*/
 		public boolean isCellEditable(final int rowIndex, final int columnIndex)
@@ -107,7 +97,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Set the given cell to the new value. Note that this is not supported!
-		*
 		*	@param	valueAt		The new value of the cell.
 		*	@param	rowIndex	The index of the row of the cell to set.
 		*	@param	columnIndex	The index of the column of the cell to set.
@@ -118,7 +107,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		}
 
 		/**	Read in a new block.
-		*
 		*	@param	byteBuffer	The data stream from which to read the new data. 
 		*/
 		private void read(java.nio.ByteBuffer byteBuffer)
@@ -143,14 +131,12 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 		private static final long serialVersionUID = 1L;
 
 		/**	Render the cell using the table header renderer.
-		*
 		*	@param	table		The table whose cells are being rendered.
 		*	@param	value		The value of the cell to render.
 		*	@param	isSelected	A flag indicating whether the cell being rendered is selected.
 		*	@param	hasFocus	A flag indicating whether the cell being rendered has keyboard focus.
 		*	@param	rowIndex	The row of the cell being rendered.
 		*	@param	columnIndex	The column of the cell being rendered.
-		*
 		*	@return	The component to use to render the cell.
 		*/
 		public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus, int rowIndex, int columnIndex)
@@ -214,7 +200,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane {
 	}
 
 	/**	Read and display the data.
-	*
 	*	@param	byteBuffer	The data stream from which to obtain the bytes to display.
 	*/
 	public void read(java.nio.ByteBuffer byteBuffer)

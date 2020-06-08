@@ -26,7 +26,6 @@ public class ContactBean {
 	}
 
 	/**	Retrieve the name of the contact.
-	*
 	*	@return The name of the contact.
 	*/
 	public String getName()
@@ -35,7 +34,6 @@ public class ContactBean {
 	}
 
 	/**	Retrieve the contact's e-mail addresses.
-	*
 	*	@return	A list of e-mail addresses for this contact.
 	*/
 	public List<String> getEmailAddresses()
@@ -44,7 +42,6 @@ public class ContactBean {
 	}
 
 	/**	Retrieve the contact's telephone numbers.
-	*
 	*	@return	A list of telephone numbers for this contact.
 	*/
 	public List<String> getTelephoneNumbers()

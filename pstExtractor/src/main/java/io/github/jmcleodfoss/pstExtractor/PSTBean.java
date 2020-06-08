@@ -121,7 +121,6 @@ public class PSTBean {
 	}
 
 	/**	Add the appointments in the given folder to the list of appointments..
-	*
 	*	@param	folder	The folder from which to harvest appointments.
 	*/
 	private void addAppointments(Folder folder)
@@ -148,7 +147,6 @@ public class PSTBean {
 	}
 
 	/**	Add the contacts in the given folder to the list of contacts.
-	*
 	*	@param	folder	The folder from which to harvest contacts.
 	*	@param	pst	The pst file to read the folder data from.
 	*/
@@ -184,10 +182,8 @@ public class PSTBean {
 	}
 
 	/**	Add the journal entries in the current folder to the list of journal entries.
-	*
 	* 	@param	folder	The folder from which to harvest the journal entries.
 	* 	@param	pst	The pst file from which to read the journal entries' data.
-	*
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the journal entries.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the journal entries. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the journal entries.
@@ -229,10 +225,8 @@ public class PSTBean {
 	}
 
 	/**	Add the sticky notes in the current folder to the list of sticky notes.
-	*
 	*	@param	folder	The folder from which to harvest the sticky notes.
 	*	@param	pst	The pst file from which to read the sticky notes data.
-	*
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the sticky notes.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the sticky notes. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the sticky notes.
@@ -274,7 +268,6 @@ public class PSTBean {
 	}
 
 	/**	Add the tasks in the given folder to the list of tasks.
-	*
 	*	@param	folder	The folder from which to harvest tasks.
 	*/
 	private void addTasks(Folder folder)
@@ -300,7 +293,6 @@ public class PSTBean {
 	}
 
 	/**	Check password, and process PST file if password is correct.
-	*
 	*	@return	A String indicating the next view.
 	*/
 	public String checkPasswordAndProcess()
@@ -319,9 +311,7 @@ public class PSTBean {
 	}
 
 	/**	Get the required information from a PST file and handle any exceptions encountered during processing.
-	*
 	*	@param	clientDestination	The client component in which to write any error messages.
-	*
 	*	@return	A String indicating the next view
 	*/
 	private String doProcessPST(String clientDestination)
@@ -357,7 +347,6 @@ public class PSTBean {
 	}
 
 	/**	Get the list of appointments from this PST file.
-	*
 	*	@return	The list of appointments found in this PST file.
 	*/
 	public MessageObjectCollectionBean<AppointmentBean> getAppointments()
@@ -366,7 +355,6 @@ public class PSTBean {
 	}
 
 	/**	Get the list of contacts from this PST file.
-	*
 	*	@return	The list of contacts found in this PST file.
 	*/
 	public MessageObjectCollectionBean<ContactBean> getContacts()
@@ -375,7 +363,6 @@ public class PSTBean {
 	}
 
 	/**	Get the list of journal entries from this PST file.
-	*
 	*	@return	The list of journal entires found in this PST file.
 	*/
 	public MessageObjectCollectionBean<JournalEntryBean> getJournalEntries()
@@ -384,7 +371,6 @@ public class PSTBean {
 	}
 
 	/**	Get the array of extraction types choices.
-	*
 	*	@return	The array of extraction types choices.
 	*/
 	public SelectItem[] getExtractionTypeChoices()
@@ -393,9 +379,7 @@ public class PSTBean {
 	}
 
 	/**	Retrieve the maximum number of password attempts permitted.
-	*
 	*	@return	The maximum number of password attempts permitted.
-	*
 	*	@see #MAX_PASSWORD_ATTEMPTS
 	*/
 	public int getMaxPasswordAttempts()
@@ -404,9 +388,7 @@ public class PSTBean {
 	}
 
 	/**	Retrieve the number of password attempts so far.
-	*
 	*	@return	The number of password attempts so far.
-	*
 	*	@see #numPasswordAttempts
 	*/
 	public int getNumPasswordAttempts()
@@ -415,7 +397,6 @@ public class PSTBean {
 	}
 
 	/**	Retrieve the password.
-	*
 	*	@return	The password for the PST file, if any.
 	*/
 	public String getPassword()
@@ -424,7 +405,6 @@ public class PSTBean {
 	}
 
 	/**	Get the array listing the extraction types selected.
-	*
 	*	@return	An array containing the extraction types selected.
 	*/
 	public List<ExtractionTypes> getSelectedExtractionTypes()
@@ -433,7 +413,6 @@ public class PSTBean {
 	}
 
 	/**	Get the list of sticky notes from this PST file.
-	*
 	*	@return	The list of sticky notes found in this PST file.
 	*/
 	public MessageObjectCollectionBean<StickyNoteBean> getStickyNotes()
@@ -442,7 +421,6 @@ public class PSTBean {
 	}
 
 	/**	Get the list of tasks from this PST file.
-	*
 	*	@return	The list of tasks found in this PST file.
 	*/
 	public MessageObjectCollectionBean<TaskBean> getTasks()
@@ -451,7 +429,6 @@ public class PSTBean {
 	}
 
 	/**	Retrieve the uploaded file.
-	*
 	*	@return	The uploaded PST file
 	*/
 	public UploadedFile getUploadedFile()
@@ -460,7 +437,6 @@ public class PSTBean {
 	}
 
 	/**	Determine whether any results are available.
-	*
 	*	@return	true if a PST file has been processed and is available, false otherwise.
 	*/
 	public boolean isResultAvailable()
@@ -478,7 +454,6 @@ public class PSTBean {
 	}
 
 	/**	Set the password.
-	*
 	*	@param	password	The password for the PST file, if any.
 	*/
 	public void setPassword(String password)
@@ -487,7 +462,6 @@ public class PSTBean {
 	}
 
 	/**	Set the list of selected extraction types.
-	*
 	*	@param	selectedExtractionTypes	The extraction types selected.
 	*/
 	public void setSelectedExtractionTypes(List<ExtractionTypes> selectedExtractionTypes)
@@ -496,7 +470,6 @@ public class PSTBean {
 	}
 
 	/**	Get the required information from a PST file
-	*
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
@@ -549,7 +522,6 @@ public class PSTBean {
 	}
 
 	/**	Set the uplaoded PST file.
-	*
 	*	@param	uploadedFile	The uploaded PST file.
 	*/
 	public void setUploadedFile(UploadedFile uploadedFile)
@@ -558,7 +530,6 @@ public class PSTBean {
 	}
 
 	/**	Process submission from Incorrect Password form.
-	*
 	*	@return	A String indicating the next view.
 	*/
 	public String submitPassword()
@@ -572,7 +543,6 @@ public class PSTBean {
 	}
 
 	/**	Process submission from main PST extraction form.
-	*
 	*	@return	A String indicating the next view.
 	*/
 	public String submitPST()

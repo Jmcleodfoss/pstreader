@@ -4,9 +4,7 @@ package io.github.jmcleodfoss.swingutil;
 public class HTMLTableModel {
 
 	/**	Create an HTML table from a Swing TableModel.
-	*
 	*	@param	tm	The Swing TableModel to convert to HTML.
-	*
 	*	@return	A String containing the HTML table.
 	*/
 	public static String html(javax.swing.table.TableModel tm)

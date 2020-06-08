@@ -18,7 +18,6 @@ public class JournalEntryBean {
 	}
 
 	/**	Retrieve the title of the journal entry.
-	*
 	*	@return	The title of the journal entry message object.
 	*/
 	public String getTitle()
@@ -27,7 +26,6 @@ public class JournalEntryBean {
 	}
 
 	/**	Return the body of the journal entry.
-	*
 	*	@return	The body of the journal entry message object.
 	*/
 	public String getNote()

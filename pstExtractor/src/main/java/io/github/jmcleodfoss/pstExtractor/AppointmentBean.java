@@ -28,7 +28,6 @@ public class AppointmentBean {
 	Date end;
 
 	/**	Retrieve the ending date and time for this appointment.
-	*
 	*	@return	The end date and time for this appointment.
 	*/
 	public String getEnd()
@@ -37,7 +36,6 @@ public class AppointmentBean {
 	}
 
 	/**	Retrieve the starting date and time for this appointment.
-	*
 	*	@return	The start date and time for this appointment.
 	*/
 	public String getStart()
@@ -46,7 +44,6 @@ public class AppointmentBean {
 	}
 
 	/**	Retrieve the title for this appointment.
-	*
 	*	@return	The title for this appointment.
 	*/
 	public String getTitle()

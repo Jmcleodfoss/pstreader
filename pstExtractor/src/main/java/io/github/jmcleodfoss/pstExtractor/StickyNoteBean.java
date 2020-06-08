@@ -18,7 +18,6 @@ public class StickyNoteBean {
 	}
 
 	/**	Retrieve the title of the sticky note.
-	*
 	*	@return	The title of the sticky note message object.
 	*/
 	public String getTitle()
@@ -27,7 +26,6 @@ public class StickyNoteBean {
 	}
 
 	/**	Return the body of the sticky note.
-	*
 	*	@return	The body of the sticky note message object.
 	*/
 	public String getNote()

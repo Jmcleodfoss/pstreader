@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.xml;
 
 /**	The PSTIPFFolderTypeToXML class extracts the contents of a given folder type from a PST file, outputting it is XML.
-*
 *	<p><strong>Use</strong><p>
 *	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML pst-file.pst folder-class-name</code><p>
 *	The list of known folder classes may be found by issuing the command without parameters:
@@ -22,10 +21,8 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	final String includedFolderClass;
 
 	/**	Construct an object to extract folders of the given class from the PST file with the given name.
-	*
 	*	@param	fn			The file name of the PST file to process.
 	*	@param	includedFolderClass	The folder class to extract.
-	*
 	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
 	*	@throws	io.github.jmcleodfoss.pst.NotPSTFileException			The named file is not a pst file.
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
@@ -54,9 +51,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	}
 
 	/**	Emit folders only of the desired type.
-	*
 	*	@param	type	The folder class of the folder currently being processed.
-	*
 	*	@return	true if folders with this class should be emitted, false if they should not
 	*/
 	@Override
@@ -73,7 +68,6 @@ class PSTIPFFolderTypeToXML extends PSTToXML {
 	}
 
 	/**	Extract the contents of any folders of the given type.
-	*
 	*	@param	args	The command line arguments to the application.
 	*/
 	public static void main(final String[] args)

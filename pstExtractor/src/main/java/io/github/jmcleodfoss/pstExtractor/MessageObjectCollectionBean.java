@@ -22,7 +22,6 @@ public class MessageObjectCollectionBean<B> {
 	}
 
 	/**	Retrieve the list of folders from this collection of message object containers.
-	*
 	*	@return	The list of folders associated with this type of message object.
 	*/
 	public List<FolderBean<B>> getFolders()
@@ -32,7 +31,6 @@ public class MessageObjectCollectionBean<B> {
 
 	/**	Determine whether message objects of this type were requested. This suppression of output for unrequested message
 	*	object types.
-	*
 	*	@return	true if there was a request for this type of message object, false if there was no request.
 	*/
 	public boolean isRequested()

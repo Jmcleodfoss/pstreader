@@ -16,7 +16,6 @@ abstract public class ProgressBar extends javax.swing.JDialog implements Runnabl
 
 	/**	Construct a dialog box holding a progress bar, centered in the owner frame which is displayed automatically on
 	*	construction.
-	*
 	*	@param	owner	The containing Frame for the ProgressBar dialog box.
 	*	@param	title	The title of the ProgressBar dialog box
 	*/
@@ -27,7 +26,6 @@ abstract public class ProgressBar extends javax.swing.JDialog implements Runnabl
 
 	/**	Construct a dialog box holding a progress bar, centered in the owner frame which is displayed automatically if required
 	*	on construction.
-	*
 	*	@param	owner		The containing Frame for the ProgressBar dialog box.
 	*	@param	title		The title of the ProgressBar dialog box
 	*	@param	fAutoStart	A flag indicating whether the progress bar should be displayed automatically, or later by

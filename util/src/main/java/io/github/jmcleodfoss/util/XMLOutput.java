@@ -11,7 +11,6 @@ public class XMLOutput {
 
 	/**	Construct an XMLOutput object which writes to printStream, showing the XML declaration if showDeclaration is true, and
 	*	using the given encoding, if non-null.
-	*
 	*	@param	printStream	The PrintStream to which the XML should be written.
 	*	@param	showDeclaration	This determines whether the XML declaration should be written, for example, "UTF-8".
 	*	@param	encoding	This indicates the XML encoding.
@@ -40,7 +39,6 @@ public class XMLOutput {
 	}
 
 	/**	Add an empty element.
-	*
 	*	@param	name	The name of the empty element to add.
 	*/
 	public void addElement(final String name)
@@ -52,7 +50,6 @@ public class XMLOutput {
 	}
 
 	/**	Add an element containing a single string value.
-	*
 	*	@param	name	The element name.
 	*	@param	value	The element value.
 	*/
@@ -84,7 +81,6 @@ public class XMLOutput {
 	}
 
 	/**	Open element which may contain children.
-	*
 	*	@param	name	The name of the element to add.
 	*/
 	public void openElement(String name)
@@ -99,9 +95,7 @@ public class XMLOutput {
 	}
 
 	/**	Replace invalid characters in an element tag with valid ones.
-	*
 	*	@param	string	The String to replace the invalid characters in.
-	*
 	*	@return	A translated version of string, with the invalid characters [:/{} " replaced with sequences of alphabetic
 	*		characters
 	*/
@@ -131,9 +125,7 @@ public class XMLOutput {
 	}
 
 	/**	Replace non-UTF8 sequences with corresponding hexadecimal XML entities.
-	*
 	*	@param	string	The string to encode.
-	*
 	*	@return	The original string, with non-printable characters replaced with XML entities.
 	*/
 	public static String safeUTF8String(String string)

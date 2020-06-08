@@ -14,7 +14,6 @@ public class FilterByExtension extends javax.swing.filechooser.FileFilter {
 	private final String descr;
 
 	/**	Create a filter by extension.
-	*
 	*	@param	descr		The description of the file type.
 	*	@param	extensions	The list of extensions to accept.
 	*/
@@ -27,9 +26,7 @@ public class FilterByExtension extends javax.swing.filechooser.FileFilter {
 	}
 
 	/**	Is the given file passed by the filter?
-	*
 	*	@param	file	The file to check to see if its extension is contained in the list of filters.
-	*
 	*	@return	true if the given file's extension is in the list of extensions, false otherwise.
 	*/
 	public boolean accept(java.io.File file)
@@ -52,7 +49,6 @@ public class FilterByExtension extends javax.swing.filechooser.FileFilter {
 	}
 
 	/**	Return the description of the file type.
-	*
 	*	@return	A description of the file type this filter applies to.
 	*/
 	public String getDescription()

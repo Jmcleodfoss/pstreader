@@ -24,7 +24,6 @@ public class FolderBean<B> {
 	}
 
 	/**	Retrieve the name of the folder.
-	*
 	*	@return	The name of the folder.
 	*/
 	public String getName()
@@ -33,7 +32,6 @@ public class FolderBean<B> {
 	}
 
 	/**	Retrieve the contents of the folder.
-	*
 	*	@return	The folder contents.
 	*/
 	public List<B> getContents()

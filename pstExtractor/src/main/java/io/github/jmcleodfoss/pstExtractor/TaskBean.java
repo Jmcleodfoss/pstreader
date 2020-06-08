@@ -25,7 +25,6 @@ public class TaskBean {
 	Date dueDate;
 
 	/**	Retrieve the due date and time for this task.
-	*
 	*	@return	The due date and time for this task.
 	*/
 	public String getDueDate()
@@ -34,7 +33,6 @@ public class TaskBean {
 	}
 
 	/**	Retrieve the title for this task.
-	*
 	*	@return	The title for this task.
 	*/
 	public String getTitle()
