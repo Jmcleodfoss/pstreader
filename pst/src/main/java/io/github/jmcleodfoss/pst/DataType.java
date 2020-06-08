@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The DataType class represents data types within a PST file as well as PST file properties.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1d61ee78-4466-4141-8276-f45153484619">MS-PST Section 2.1.1: Data Types</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 */
@@ -77,7 +76,6 @@ abstract class DataType {
 	}
 
 	/**	The character encoding used for PST ANSI data.
-	*
 	*	@see	io.github.jmcleodfoss.pst.DataType.StringBase
 	*	@see	io.github.jmcleodfoss.pst.DataType.MultipleString
 	*	@see	io.github.jmcleodfoss.pst.DataType.PSTString
@@ -87,8 +85,6 @@ abstract class DataType {
 	private static final String CHARSET_NARROW = new String("iso-8859-1");
 
 	/**	The character encoding used for PST Unicode data.
-	*
-	*
 	*	@see	io.github.jmcleodfoss.pst.DataType.StringBase
 	*	@see	io.github.jmcleodfoss.pst.DataType.PSTString
 	*	@see	io.github.jmcleodfoss.pst.DataType.MultipleString
@@ -103,19 +99,14 @@ abstract class DataType {
 	}
 
 	/**	Create a String describing an object of the type read in by this class.
-	*
 	*	@param	o	The object to create a String representation of.
-	*
 	*	@return	A String describing the object.
 	*/
 	public abstract String makeString(final Object o);
 
 	/**	Read in an object of the target type.
-	*
 	*	@param	byteBuffer	The incoming data stream from which to read the object.
-	*
 	*	@return	The object read from the data stream.
-	*
 	*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 	*/
 	public abstract Object read(java.nio.ByteBuffer byteBuffer)
@@ -123,7 +114,6 @@ abstract class DataType {
 		java.io.UnsupportedEncodingException;
 
 	/**	Get the size of the object read in in this class.
-	*
 	*	@return	The size, in bytes, of the object read in by this class, if fixed (constant), otherwise 0.
 	*/
 	public abstract int size();
@@ -135,7 +125,6 @@ abstract class DataType {
 		protected final int size;
 
 		/**	Construct foundation for a manipulator of an object with known size.
-		*
 		*	@param	size	The number of bytes in this object.
 		*/
 		private SizedObject(final int size)
@@ -145,7 +134,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of this object in the PST file.
-		*
 		*	@return	The size of this object in the PST file, in bytes.
 		*/
 		public int size()
@@ -155,15 +143,12 @@ abstract class DataType {
 	}
 
 	/**	The BIDBase class contains functionality used by both ANSI and Unicode BID description objects.
-	*
 	*	@see	io.github.jmcleodfoss.pst.BID
 	*/
 	private abstract static class BIDBase extends SizedObject {
 
 		/**	Construct a generic BID reader object.
-		*
 		*	@param	size	The number of bytes in this BID type.
-		*
 		*	@see io.github.jmcleodfoss.pst.BID#SIZE_ANSI
 		*	@see io.github.jmcleodfoss.pst.BID#SIZE_UNICODE
 		*/
@@ -173,9 +158,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of the given BID object.
-		*
 		*	@param	o A BID to return a String representation of.
-		*
 		*	@return	A String describing this BID object.
 		*/
 		public String makeString(final Object o)
@@ -194,9 +177,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an ANSI BID object.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the ANSI BID object.
-		*
 		*	@return	The BID object read from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -218,9 +199,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a Unicode BID object.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the Unicode BID object.
-		*
 		*	@return	The BID object read from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -233,11 +212,8 @@ abstract class DataType {
 	static final BIDUnicode bidUnicodeReader = new BIDUnicode();
 
 	/**	Return an object for reading a BID for the given file type.
-	*
 	*	@param	fUnicode	A flag indicating whether the current PST file is Unicode or ANSI.
-	*
 	*	@return	A DataType suitable for reading in BIDs in the appropriate (ANSI or Unicode) file format.
-	*
 	*	@see	io.github.jmcleodfoss.pst.DataType.BIDANSI
 	*	@see	io.github.jmcleodfoss.pst.DataType.BIDUnicode
 	*	@see	io.github.jmcleodfoss.pst.XBlock#XBlock
@@ -248,15 +224,12 @@ abstract class DataType {
 	}
 
 	/**	The BREFBase class contains functionality used by both ANSI and Unicode BREF description objects.
-	*
 	*	@see	io.github.jmcleodfoss.pst.BREF
 	*/
 	private abstract static class BREFBase extends SizedObject {
 
 		/**	Construct a generic BREF reader object.
-		*
 		*	@param	size	The number of bytes in this BREF type.
-		*
 		*	@see io.github.jmcleodfoss.pst.BREF#SIZE_ANSI
 		*	@see io.github.jmcleodfoss.pst.BREF#SIZE_UNICODE
 		*/
@@ -266,9 +239,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of the given BREF object.
-		*
 		*	@param	o	A BREF to return a String representation of.
-		*
 		*	@return	A String describing this BREF object.
 		*/
 		public String makeString(final Object o)
@@ -287,9 +258,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a Unicode BID object.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the ANSI BREF object.
-		*
 		*	@return	The BREF object read from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -313,9 +282,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a Unicode BREF object.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the Unicode BREF object.
-		*
 		*	@return	The BREF object read from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -333,7 +300,6 @@ abstract class DataType {
 	static class SizedByteArray extends SizedObject {
 
 		/**	Create a reader/display manipulator for an array of bytes of known size.
-		*
 		*	@param	size	The number of bytes in the array.
 		*/
 		public SizedByteArray(final int size)
@@ -342,9 +308,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String describing a array of bytes.
-		*
 		*	@param	o	The array of bytes to display.
-		*
 		*	@return	A String showing the bytes in the array in hexadecimal.
 		*/
 		public String makeString(final Object o)
@@ -354,10 +318,8 @@ abstract class DataType {
 		}
 
 		/**	Read in an array of bytes of the given size.
-		*
 		*	@param	byteBuffer	The incoming data stream to read from. Note that this is entirely consumed.
 		*	@param	size		The number of bytes to read in
-		*
 		*	@return	The array of bytes read in from the incoming data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer, final int size)
@@ -368,9 +330,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an array of bytes.
-		*
 		*	@param	byteBuffer	The incoming data stream to read from. Note that this is entirely consumed.
-		*
 		*	@return	The array of bytes read in from the incoming data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -389,9 +349,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an array of bytes.
-		*
 		*	@param	byteBuffer	The incoming data stream to read from. Note that this is entirely consumed.
-		*
 		*	@return	The array of bytes read in from the incoming data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -413,9 +371,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String describing a byte array.
-		*
 		*	@param	o	The value to display.
-		*
 		*	@return	A String representing the 64-bit floating-point number.
 		*/
 		public String makeString(final Object o)
@@ -424,9 +380,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a 64-bit floating-point value.
-		*
 		*	@param	byteBuffer	The incoming data stream to read from.
-		*
 		*	@return	A Double object corresponding to the value read in.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -435,7 +389,6 @@ abstract class DataType {
 		}
 
 		/**	The size of the object in the PST file.
-		*
 		*	@return	The size of the 64-bit floating object in the PST file, in bytes.
 		*/
 		public int size()
@@ -448,7 +401,6 @@ abstract class DataType {
 	private static final Floating64 floating64Reader = new Floating64();
 
 	/**	The GUID class describes how to read a 16-byte PST GUID in.
-	*
 	*	@see	io.github.jmcleodfoss.pst.GUID
 	*/
 	private static class GUID extends DataType {
@@ -460,9 +412,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String from the passed GUID object.
-		*
 		*	@param	o	The GUID object to print out.
-		*
 		*	@return	A String representation of the GUID object.
 		*/
 		public String makeString(final Object o)
@@ -471,9 +421,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a GUID from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the GUID.
-		*
 		*	@return	The GUID object read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -484,7 +432,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of the GUID.
-		*
 		*	@return	The size of the GUID object in the PST file, in bytes.
 		*/
 		public int size()
@@ -498,7 +445,6 @@ abstract class DataType {
 	private static final GUID guidReader = new GUID();
 
 	/**	The HID class describes an HID object in a PST file.
-	*
 	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
 	*/
 	private static class HID extends DataType {
@@ -510,9 +456,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String from the passed HID object.
-		*
 		*	@param	o	The HID object to display.
-		*
 		*	@return	A String representation of the HID object.
 		*/
 		public String makeString(final Object o)
@@ -521,9 +465,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an HID from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the HID.
-		*
 		*	@return	The HID object read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -532,7 +474,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of the HID in a PST file.
-		*
 		*	@return	The size of the HID object in the PST file, in bytes.
 		*/
 		public int size()
@@ -554,9 +495,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String from the passed Byte object.
-		*
 		*	@param	o	The Byte object to display.
-		*
 		*	@return	A String representation of the Byte object (in hexadecimal).
 		*/
 		public String makeString(final Object o)
@@ -565,9 +504,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an 8-bit integer from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the 8-bit integer.
-		*
 		*	@return	A Byte object corresponding to the 8-bit integer read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -576,7 +513,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of an 8-bit integer in a PST file.
-		*
 		*	@return	The size of an 8-bit integer in the PST file, in bytes.
 		*/
 		public int size()
@@ -598,9 +534,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String from the passed Short object.
-		*
 		*	@param	o	The Short object to display.
-		*
 		*	@return	A String representation of the Short object (in hexadecimal).
 		*/
 		public String makeString(final Object o)
@@ -609,9 +543,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a 16-bit integer from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the 16-bit integer.
-		*
 		*	@return	A Short object corresponding to the 16-bit integer read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -620,7 +552,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of a 16-bit integer.
-		*
 		*	@return	The size of a 16-bit integer in the PST file, in bytes.
 		*/
 		public int size()
@@ -642,9 +573,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String from the passed Integer object.
-		*
 		*	@param	o	The Integer object to display.
-		*
 		*	@return	A String representation of the Integer object (in hexadecimal).
 		*/
 		public String makeString(final Object o)
@@ -653,9 +582,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a 32-bit integer from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the 32-bit integer.
-		*
 		*	@return	An Integer object corresponding to the 32-bit integer read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -664,7 +591,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of a 32-bit integer in a PST file.
-		*
 		*	@return	The size of a 32-bit integer in the PST file, in bytes.
 		*/
 		public int size()
@@ -686,9 +612,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String from the passed Long object.
-		*
 		*	@param	o	The Long object to display.
-		*
 		*	@return	A String representation of the Long object (in hexadecimal).
 		*/
 		public String makeString(final Object o)
@@ -697,9 +621,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a 64-bit integer from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the 64-bit integer.
-		*
 		*	@return	A Long object corresponding to the 64-bit integer read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -708,7 +630,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of a 64-bit integer in a PST file.
-		*
 		*	@return	The size of a 64-bit integer in the PST file, in bytes.
 		*/
 		public int size()
@@ -730,9 +651,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a list of binary object.
-		*
 		*	@param	o	The list of binary object to display.
-		*
 		*	@return	A String representation of the given list of binary objects.
 		*/
 		public String makeString(final Object o)
@@ -748,11 +667,8 @@ abstract class DataType {
 		}
 
 		/**	Read in a list of binary objects.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the list of binary objects.
-		*
 		*	@return	An array containing the binary objects read in, as an array of bytes.
-		*
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -792,7 +708,6 @@ abstract class DataType {
 
 		/**	Obtain the size of the multiple binary object list in the PST file. Note that since this is of unknown size,
 		*	0 is returned.
-		*
 		*	@return	0, since the size of the multiple binary object is unknown in the DataType context.
 		*/
 		public int size()
@@ -814,9 +729,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a list of Integer values.
-		*
 		*	@param	o	The list of Integer values to display.
-		*
 		*	@return	A String representation of the given list of Integer values.
 		*/
 		public String makeString(final Object o)
@@ -832,11 +745,8 @@ abstract class DataType {
 		}
 
 		/**	Read in a list of 32-bit integers.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the list of 32-bit integers.
-		*
 		*	@return	An array containing the integers read in, as an array of Integer values.
-		*
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -849,7 +759,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of the multiple 32-bit integer object list in the PST file.
-		*
 		*	@return	The size of a single 32-bit integer value.
 		*/
 		public int size()
@@ -871,9 +780,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a list of Long values.
-		*
 		*	@param	o	The list of Integer values to display.
-		*
 		*	@return	A String representation of the given list of Integer values.
 		*/
 		public String makeString(final Object o)
@@ -889,11 +796,8 @@ abstract class DataType {
 		}
 
 		/**	Read in a list of 64-bit integers.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the list of 64-bit integers.
-		*
 		*	@return	An array containing the integers read in, as an array of Long values.
-		*
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -906,7 +810,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of the multiple 64-bit integer object list in the PST file.
-		*
 		*	@return	The size of a single 64-bit integer value.
 		*/
 		public int size()
@@ -922,7 +825,6 @@ abstract class DataType {
 	private static class MultipleString extends StringBase {
 
 		/**	Create a manipulator for reading and displaying lists of PST-file strings.
-		*
 		*	@param	dataType	The type of the string (i.e. wide or narrow).
 		*/
 		private MultipleString(final short dataType)
@@ -931,9 +833,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a list of Strings.
-		*
 		*	@param	o	The list of Strings to display.
-		*
 		*	@return	A String representation of the given list of Strings.
 		*/
 		public String makeString(final Object o)
@@ -942,13 +842,9 @@ abstract class DataType {
 		}
 
 		/**	Read in a list of strings.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the list of character strings.
-		*
 		*	@return	An array containing the character strings read in, as an array of Strings.
-		*
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
-		*
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -1005,9 +901,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of an NID.
-		*
 		*	@param	o	The NID object to display.
-		*
 		*	@return	A String representation of the given NID.
 		*/
 		public String makeString(final Object o)
@@ -1016,9 +910,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a NID from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the NID.
-		*
 		*	@return	An NID object corresponding to the NID value read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -1027,7 +919,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of an NID object in a PST file.
-		*
 		*	@return	The size of an NID in the PST file, in bytes.
 		*/
 		public int size()
@@ -1049,9 +940,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a Boolean
-		*
 		*	@param	o	The Boolean to display.
-		*
 		*	@return	A String representation of the given Boolean value.
 		*/
 		public String makeString(final Object o)
@@ -1060,9 +949,7 @@ abstract class DataType {
 		}
 
 		/**	Read in a Boolean from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the Boolean value.
-		*
 		*	@return	A Boolean object corresponding to the Boolean read in from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -1071,7 +958,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size of a Boolean object in a PST file.
-		*
 		*	@return	The size of an Boolean value in the PST file, in bytes.
 		*/
 		public int size()
@@ -1090,9 +976,7 @@ abstract class DataType {
 		protected final String charset;
 
 		/**	Create a manipulator for string objects.
-		*
 		*	@param	dataType	The actual data type.
-		*
 		*	@see	#STRING
 		*	@see	#STRING_8
 		*/
@@ -1105,7 +989,6 @@ abstract class DataType {
 
 		/**	Obtain the size of the string object or list in the PST file. Note that since this is of unknown size,
 		*	0 is returned.
-		*
 		*	@return	0, since the size of a string is unknown in the DataType context.
 		*/
 		public int size()
@@ -1118,9 +1001,7 @@ abstract class DataType {
 	private static class PSTString extends StringBase {
 
 		/**	Create a manipulator for string objects.
-		*
 		*	@param	dataType	The actual data type.
-		*
 		*	@see	#STRING
 		*	@see	#STRING_8
 		*/
@@ -1130,9 +1011,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a String (to be consistent with other data types).
-		*
 		*	@param	o	The String to display.
-		*
 		*	@return	The given String.
 		*/
 		public String makeString(final Object o)
@@ -1141,11 +1020,8 @@ abstract class DataType {
 		}
 
 		/**	Read in a String from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the data.
-		*
 		*	@return	A String corresponding to the Boolean read in from the data stream.
-		*
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -1165,7 +1041,6 @@ abstract class DataType {
 	private static final PSTString string8Reader = new PSTString(STRING_8); 
 
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 	*/
 	private static class Time extends DataType {
@@ -1177,7 +1052,6 @@ abstract class DataType {
 		private static final java.text.SimpleDateFormat OUTPUT_FORMAT = new java.text.SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
 
 		/**	Initialize the base time; exit on exception.
-		*
 		*	@return	A Date object for the base time used by PST files.
 		*/
 		private static java.util.Date initBaseTime()
@@ -1199,11 +1073,8 @@ abstract class DataType {
 		}
 
 		/**	Create a String representation of a Date.
-		*
 		*	@param	o	The Date to display.
-		*
 		*	@return	A String representation of the given object, formatted according to {@link #OUTPUT_FORMAT}.
-		*
 		*	@see	#OUTPUT_FORMAT
 		*/
 		public String makeString(final Object o)
@@ -1212,9 +1083,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an MS time from the data stream.
-		*
 		*	@param	byteBuffer	The incoming data stream from which to read the time.
-		*
 		*	@return	A Java Date object corresponding to the MS time read from the data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -1226,7 +1095,6 @@ abstract class DataType {
 		}
 
 		/**	Obtain the size in bytes of an MS time object in a PST file.
-		*
 		*	@return	The size of an MS time object in a PST file.
 		*/
 		public int size()
@@ -1243,7 +1111,6 @@ abstract class DataType {
 	static class SizedInt16Array extends SizedObject {
 
 		/**	Create a reader/display manipulator for an array of 16-bit integers of known size.
-		*
 		*	@param	size	The number of 16-bit integers in the array.
 		*/
 		public SizedInt16Array(final int size)
@@ -1252,9 +1119,7 @@ abstract class DataType {
 		}
 
 		/**	Create a String describing an array of shorts array.
-		*
 		*	@param	o	The array of shorts to display.
-		*
 		*	@return	A String showing the shorts in the array.
 		*/
 		public String makeString(final Object o)
@@ -1270,9 +1135,7 @@ abstract class DataType {
 		}
 
 		/**	Read in an array of 16-bit integers of the predetermined size.
-		*
 		*	@param	byteBuffer	The incoming data stream to read from.
-		*
 		*	@return	The array of shorts read in from the incoming data stream.
 		*/
 		public Object read(java.nio.ByteBuffer byteBuffer)
@@ -1284,7 +1147,6 @@ abstract class DataType {
 		}
 
 		/**	Return the size of the array of 16-bit integers.
-		*
 		*	@return	The size of the array of 16-bit integers in the PST file.
 		*/
 		public int size()
@@ -1294,11 +1156,8 @@ abstract class DataType {
 	}
 
 	/**	Create a object for reading data of given property type, with the given size if required.
-	*
 	*	@param	propertyType	The property type to obtain a reader/display manipulator for.
-	*
 	*	@return	A reader/display manipulator for the given type.
-	*
 	*	@see	#booleanReader
 	*	@see	#byteArrayReader
 	*	@see	#floating64Reader
@@ -1396,10 +1255,8 @@ abstract class DataType {
 	}
 
 	/**	Return a String representing Object o with the data type given by tag.
-	*
 	*	@param	tag	The property tag describing the object to display.
 	*	@param	o	The object to display.
-	*
 	*	@return	A String describing the object, given that it is of the type defined by tag.
 	*/
 	static String makeString(final int tag, final Object o)

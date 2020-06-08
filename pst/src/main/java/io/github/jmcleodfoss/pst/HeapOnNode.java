@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The HeapOnNode class represents a heap stored on a node in the node B-Tree.
-*
 *	@see	io.github.jmcleodfoss.pst.BTree
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/77ce49a3-3772-4d8d-bb2c-2f7520a238a6">MS-PST Section 2.3.1: HN (Heap-on-Node)</a>
 */
@@ -11,7 +10,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.HeapOnNode");
 
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
 	*/
 	static class HID extends NID {
@@ -31,10 +29,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		private final int index;
 
 		/**	Build an HID using the given index and block index.
-		*
 		*	@param	blockIndex	The block index (starting from 0) containing the HID.
 		*	@param	index		The index within the block to the heap entry containing the HID.
-		*
 		*	@see	#factory
 		*	@see	#BTreeOnHeapRoot
 		*/
@@ -46,7 +42,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		}
 
 		/**	Create an HID from the given integer.
-		*
 		*	@param	rawData	A 32-bit little-endian value as read from the PST file to be translated into an HID.
 		*/
 		HID(int rawData)
@@ -63,7 +58,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 
 		// Perhaps the HNID should be in a separate HNID class.
 		/**	Determine whether this object represents an HID or an HNID.
-		*
 		*	@return	true if this object is an HID, and false if it is an HNID.
 		*/
 		boolean isHID()
@@ -72,7 +66,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		}
 
 		/**	Obtain a description of this HID (typically used for debugging).
-		*
 		*	@return	A description of this HID.
 		*/
 		@Override
@@ -89,12 +82,9 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		}
 
 		/**	Create an HID from the given block index and index.
-		*
 		*	@param	blockIndex	The block index (starting from 0) containing the HID.
 		*	@param	index		The index within the block to the heap entry containing the HID.
-		*
 		* 	@return	The HID for the given block index and index.
-		*
 		*	@see	#BTreeOnHeapRoot
 		*/
 		private static HID factory(int blockIndex, int index)
@@ -104,7 +94,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	The HNBitmapHeader class occurs the eighth block, and every 128 blocks thereafter (8, 136, 264, etc)
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/822e2327-b29d-4ec4-91be-45637a438d40">MS-PST Section 2.3.1.4: HNBITMAPHDR</a>
 	*/
 	static class HNBitmapHeader {
@@ -128,9 +117,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		private final int ibHnpm;
 
 		/**	Build a heap-on-node bitmap header object from the input data stream.
-		*
 		*	@param	stream	The input data stream from which to read the HNBITMAPHDR object.
-		*
 		* 	@throws	java.io.IOException	There was an I/O error reading the heap node bitmap header.
 		*/
 		private HNBitmapHeader(java.nio.ByteBuffer stream)
@@ -144,7 +131,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	The Header class represents the header of a heap-on-node structure.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.2: HNHDR</a>
 	*/
 	static class Header {
@@ -180,9 +166,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		private final ClientSignature clientSignature;
 
 		/**	Build a heap-on-node header object from the input data stream.
-		*
 		*	@param	stream	The data stream from which to read the HNHDR object.
-		*
 		* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the heap.
 		* 	@throws	UnknownClientSignatureException	A node with an unrecognized client signature was found while building the heap.
 		* 	@throws java.io.IOException	An I/O error was encountered while trying to build the heap.
@@ -205,7 +189,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		}
 
 		/**	Obtain a description of the heap-on-node header object (typically used for debugging).
-		*
 		*	@return	A string describing the Header object.
 		*/
 		@Override
@@ -216,7 +199,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	The PageMap contains the page information found at end of each heap page.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.5: HNHPAGEMAP</a>
 	*/
 	private static class PageMap {
@@ -238,9 +220,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		private final short[] heapOffset;
 
 		/**	Construct a PageMap object from the input datastream.
-		*
 		*	@param	stream	The data stream from which to read the HNPAGEMAP object.
-		*
 		* 	@throws	java.io.IOException	There was an I/O error while reading the data for the page map.
 		*/
 		private PageMap(java.nio.ByteBuffer stream)
@@ -257,7 +237,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		}
 
 		/**	Obtain a description of the PageMap object (typically used for debugging).
-		*
 		*	@return	A string describing the PageMap object.
 		*/
 		@Override
@@ -273,7 +252,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	The PageHeader contains the information found at the beginning of the 2nd-7th, 9th-15th, etc pages making up the heap-on-node structure.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9c34ecf8-36bc-45a1-a2df-ee35c6dc840a">MS-PST Section 2.3.1.3: HNPAGEHDR</a>
 	*/
 	private static class PageHeader {
@@ -290,9 +268,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 		private final int ibHnpm;
 
 		/**	Create a PageHeader object from the input data stream.
-		*
 		* 	@param	stream	The stream to read the page header from.
-		*
 		* 	@throws	java.io.IOException	An I/O exception was encountered while reading the data for the page header. 
  		*/
 		private PageHeader(java.nio.ByteBuffer stream)
@@ -315,11 +291,9 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	private final int[] blockOffset;
 
 	/**	Create a heap-on-node for the given block.
-	*
 	*	@param	entry	The entry from the block B-tree from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file {@link Header}, data stream, etc.
-	*
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the heap.
 	* 	@throws	UnknownClientSignatureException	A node with an unrecognized client signature was found while building the heap.
 	* 	@throws java.io.IOException	An I/O error was encountered while trying to build the heap.
@@ -401,7 +375,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	A convenience wrapper returning the client signature for this heap.
-	*
 	*	@return	The client signature of this heap-on-node.
 	*/
 	ClientSignature clientSignature()
@@ -410,7 +383,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Indicate whether this is a properly-formed HeapOnNode.
-	*
 	*	@return	true if the hnhdr member is non-null (meaning the heap-on-node was read in correctly), false if it is null.
 	*/
 	boolean containsData()
@@ -419,9 +391,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Return the data associated with the given HID
-	*
 	*	@param	hid	The heap ID to retrieve the data from.
-	*
 	*	@return	The data for the given heap index in this heap-on-node.
 	*/
 	byte[] heapData(final HID hid)
@@ -430,9 +400,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Obtain the index into the entire heap from an HID
-	*
 	*	@param	hid	The heap ID to retrieve the over-all heap offset of.
-	*
 	*	@return	The index into the data block list of the entire heap.
 	*/
 	private int heapIndex(final HID hid)
@@ -441,9 +409,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Determine this heap-on-node contain a property context.
-	*
 	*	@return	true if this heap-on-node contains a property context, false otherwise.
-	*
 	*	@see	#isTableContext
 	*	@see	BTreeOnHeap
 	*/
@@ -453,9 +419,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Determine whether this heap-on-node contain a table context.
-	*
 	*	@return	true if this heap-on-node contains a table context, false otherwise.
-	*
 	*	@see	#isPropertyContext
 	*	@see	BTreeOnHeap
 	*/
@@ -465,14 +429,11 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Create the heap-on-node structure for this node to pass to the more general constructor.
-	*
 	*	@param	nid	The node ID from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
-	*
 	*	@return	The heap-on-node found at the given node ID.
-	*
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while building the heap.
 	* 	@throws	UnknownClientSignatureException	An unrecognized client signature was found while building the heap.
 	* 	@throws java.io.IOException	An I/O exception was found while reading the data to build the heap.
@@ -488,13 +449,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Create the heap-on-node structure for the given BID pass to the more general constructor.
-	*
 	*	@param	bid	The block ID from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
-	*
 	*	@return	The heap-on-node found at the given block ID.
-	*
 	*	@throws NotHeapNodeException		A node which was not a heap node was found while trying to build the heap.
 	*	@throws UnknownClientSignatureException	An unknown client signature was found in one of the blocks in the heap.
 	*	@throws java.io.IOException		There was a problem reading the PST file.
@@ -513,7 +471,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Obtain a string representation of the heap on this node which includes all heap entries.
-	*
 	*	@return	A string representing the heap-on-node.
 	*/
 	@Override
@@ -534,7 +491,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Retrieve the heap data corresponding to the header user root HNID.
-	*
 	*	@return	The heap data for the user root entry in the heap-on-node.
 	*/
 	byte[] userRootHeapData()
@@ -543,9 +499,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Does this HID refer to a heap entry which exists in this heap-on-node?
-	*
 	*	@param	hid	The heap ID to check.
-	*
 	*	@return	true if the given heap ID is an HID which belongs to this heap-on-node, false otherwise.
 	*/
 	boolean validHID(HID hid)
@@ -554,9 +508,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	The list presented by the HeapOnNode object is immutable, so it does not support adding ListDataListeners.
-	*
 	*	@param	l	The listener (which will not be added).
-	*
 	*	@see	#removeListDataListener
 	*/
 	public void addListDataListener(javax.swing.event.ListDataListener l)
@@ -564,9 +516,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Obtain the list element at the given index.
-	*
 	*	@param	index	The heap entry to return.
-	*
 	*	@return	A string containing the sequence of bytez hexidecimal bytes for the given heap node, if it isn't null, or null if the
 	*		given heap node is null 
 	*/
@@ -578,7 +528,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Obtain the number of list elements.
-	*
 	*	@return	The number of entries in the heap.
 	*/
 	public int getSize()
@@ -587,9 +536,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	The list presented by the HeapOnNode object is immutable, so it is impossible to add or remove listeners.
-	*
 	*	@param	l	The listener (which need not be removed because it could never have been added.
-	*
 	*	@see	#addListDataListener
 	*/
 	public void removeListDataListener(javax.swing.event.ListDataListener l)
@@ -597,7 +544,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	}
 
 	/**	Test the HeapOnNode class by creating and printing out the first heap-on-node in the given PST file.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(String[] args)

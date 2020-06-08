@@ -24,7 +24,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		private Levels levels;
 
 		/**	Construct an object describing how many levels of sub-folders to read.
-		*
 		*	@param	levels	The number of sub-folder levels to read.
 		*/
 		private SubfolderLevelsToRead(Levels levels)
@@ -40,7 +39,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		}
 
 		/**	The readSubfolders function indicates whether the sub-folders of this folder should be read.
-		*
 		*	@return	true if the sub-folders should be read, false if they should not be.
 		*/
 		boolean readSubfolders()
@@ -74,14 +72,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	private java.util.Vector<MessageObject> contents;
 
 	/**	Create a folder object for the given Node B-Tree leaf node.
-	*
 	*	@param	nodeFolderObject	The entry in the PST file's node B-tree for this folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
-	*
 	*	@throws	NotHeapNodeException			node which is not a heap node was found while reading the folder data.
 	*	@throws NotPropertyContextNodeException		A node which does not hold a property context was found where a property context node was expected.
 	*	@throws NotTableContextNodeException		A node which does not hold a table context was found where a table context node was expected.
@@ -131,7 +127,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get an iterator through this folder's message objects.
-	*
 	*	@return	An iterator through the contents.
 	*/
 	public java.util.Iterator<MessageObject> contentsIterator()
@@ -140,10 +135,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get the requested child of this parent.
-	*
 	*	@param	oParent	The tree node from which to retrieve the child.
 	*	@param	index	The child to retrieve.
-	*
 	*	@return	The given child of the tree parent node.
 	*/
 	public Object getChild(Object oParent, int index)
@@ -164,9 +157,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get the number of children of this parent.
-	*
 	*	@param	oParent	The parent tree node to retrieve the number of children of.
-	*
 	*	@return	The number of children (sub-folders, message objects, or attachments) of the parent.
 	*/
 	public int getChildCount(Object oParent)
@@ -178,15 +169,11 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get a folder and the first level of sub-folders, but no folder contents.
-	*
-	*
 	*	@param	nodeFolderObject	The entry in the PST file's node B-tree for this folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
-	*
 	*	@return	A folder and its immediate descendents.
-	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folders.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws	NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -211,14 +198,11 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get a folder and all sub-folders and contents.
-	*
 	*	@param	nodeFolderObject	The entry in the PST file's node B-tree for this folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
-	*
 	*	@return	A folder and all its immediate descendents.
-	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folder tree.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -243,10 +227,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get the index of the given child object of the parent tree node.
-	*
 	*	@param	oParent	The tree node to look for the child in.
 	*	@param	child	The child to look for.
-	*
 	*	@return	The index of given child of the tree parent node, or -1 if it is not a child of this parent node.
 	*/
 	public int getIndexOfChild(Object oParent, Object child)
@@ -299,7 +281,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Obtain the root of the tree.
-	*
 	*	@return	The root of the (Swing) tree (model).
 	*/
 	public Object getRoot()
@@ -308,9 +289,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Indicate whether the given object is an intermediate node or a leaf node.
-	*
 	*	@param	oNode	The object to check for leafiness.
-	*
 	*	@return	true if the oNode is a leaf node, false if it is an intermediate node.
 	*/
 	public boolean isLeaf(Object oNode)
@@ -325,14 +304,11 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Read in the contents of the given folder.
-	*
 	*	@param	nodeContentsTable	The description of the folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.
-	*
 	*	@return	A vector of the message contents.
-	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -362,16 +338,13 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Read in the sub-folders of the given folder.
-	*
 	*	@param	nodeHierarchyTable	The description of the folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
-	*
 	*	@return	A vector of subfolders.
-	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -412,9 +385,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	folder.show("");
 	*	}
 	*	</pre>
-	*
 	*	@param	prefix	The text with which to prefix the lines for the current tree.
-	*
 	*	@throws	NotHeapNodeException			node which is not a heap node was found while reading a sub-folder's data.
 	*	@throws UnknownClientSignatureException		An unknown client signature was found while reading a sub-folder's data.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found while reading a sub-folder's data.
@@ -442,7 +413,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Get an iterator through this folder's sub-folders.
-	*
 	*	@return	An iterator through this folder's sub-folders.
 	*/
 	public java.util.Iterator<Folder> subfolderIterator()
@@ -451,7 +421,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Test the Folder class by iterating through the folders and displaying information about each folder and sub-folder.
-	*
 	*	@param	args	The arguments to the function
 	*/
 	public static void main(String[] args)

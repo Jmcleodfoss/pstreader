@@ -33,9 +33,7 @@ public class IPF {
 	}
 
 	/**	Is the given folder a list of appointments?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is IPF.Appointment.
 	*/
 	public static boolean isAppointment(Folder folder)
@@ -44,9 +42,7 @@ public class IPF {
 	}
 
 	/**	Is the given folder a list of contacts?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is IPF.Contact.
 	*/
 	public static boolean isContact(Folder folder)
@@ -55,9 +51,7 @@ public class IPF {
 	}
 
 	/**	Is the given folder a list of journal entries?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is IPF.Journal.
 	*/
 	public static boolean isJournal(Folder folder)
@@ -66,9 +60,7 @@ public class IPF {
 	}
 
 	/**	Is the class of the given folder one of the known classes?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is one of the known classes, false otherwise.
 	*/
 	public static boolean isKnownClass(Folder folder)
@@ -77,9 +69,7 @@ public class IPF {
 	}
 
 	/**	Is the given folder a list of notes?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is IPF.Note.
 	*/
 	public static boolean isNote(Folder folder)
@@ -88,9 +78,7 @@ public class IPF {
 	}
 
 	/**	Is the given folder a list of sticky notes?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is IPF.StickyNote.
 	*/
 	public static boolean isStickyNote(Folder folder)
@@ -99,9 +87,7 @@ public class IPF {
 	}
 
 	/**	Is the given folder a list of tasks?
-	*
 	*	@param	folder	The folder to check.
-	*
 	*	@return	true if the given folder's class is IPF.Task.
 	*/
 	public static boolean isTask(Folder folder)
@@ -110,7 +96,6 @@ public class IPF {
 	}
 
 	/**	Get an iterator through the known classes.
-	*
 	*	@return	An iterator which may be used to step through the known folder classes.
 	*/
 	public static java.util.Iterator<String> iterator()

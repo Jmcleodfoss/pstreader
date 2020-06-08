@@ -1,19 +1,16 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The MessageStore class is a (thin) wrapper around the message store PC, with a few convenience functions.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/aa0539bd-e7bf-4cec-8bde-0b87c2a86baf">MS-PST Section 2.4.3: Message Store</a>
 */
 public class MessageStore {
 
 	/**	The tag for the the root node of the PST file.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5493a0eb-0356-4e88-b4f5-0433ce0a93fa">MS-PST Section 2.4.3.1: Minimum Set of Required Properties</a>
 	*/
 	private static final int PROPID_ROOT_ENTRY_ID = PropertyTags.IpmSubTreeEntryId;
 
 	/**	The tag for the password field.
-	*
 	*	@see	#passwordHashed
 	*	@see	#checkPassword
 	*	@see	#hasPassword
@@ -25,19 +22,16 @@ public class MessageStore {
 	private final PropertyContext messageStore;
 
 	/**	The block B-Tree of the underlying PST file.
-	*
 	*	@see	#rootFolder
 	*/
 	private final BlockMap bbt;
 
 	/**	The node B-Tree of the underlying PST file.
-	*
 	*	@see	#rootFolder
 	*/
 	private final NodeMap nbt;
 
 	/**	The dat input stream, {@link Header header}, etc, of the underlying PST file.
-	*
 	*	@see	#rootFolder
 	*/
 	private final PSTFile pstFile;
@@ -49,11 +43,9 @@ public class MessageStore {
 	public final EntryID rootMailboxEntry;
 
 	/**	Create a message store object by reading in the message store node.
-	*
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file input data stream, {@link Header header}, etc.
-	*
 	*	@throws NotHeapNodeException			A node which was not a heap node was found while creating the message store.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
@@ -83,11 +75,8 @@ public class MessageStore {
 	}
 
 	/**	Check whether the given password matches the stored password.
-	*
 	*	@param	testPassword	The password to check.
-	*
 	*	@return	true if the passed password matches the password in the PST file, false otherwise.
-	*
 	*	@see	#passwordHashed
 	*	@see	#hasPassword
 	*/
@@ -98,9 +87,7 @@ public class MessageStore {
 	}
 
 	/**	Determine whether this PST file requires a password.
-	*
 	*	@return	true if the PST file is password-protected, false if it is not password-protected.
-	*
 	*	@see	#passwordHashed
 	*	@see	#checkPassword
 	*/
@@ -110,9 +97,7 @@ public class MessageStore {
 	}
 
 	/**	Get the PST root folder, which contains all PST subfolders and messages.
-	*
 	*	@return	The root folder of the PST file, as a Folder object.
-	*
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building a table context.
 	* 	@throws NullDataBlockException			A null data block was found while building a property context.
@@ -137,9 +122,7 @@ public class MessageStore {
 	}
 
 	/**	Obtain a javax.swing.table.TableModel describing the message store.
-	*
 	*	@param	namedProperties	The named properties for this PST file.
-	*
 	*	@return	A javax.swing.tableTableModel containing the named properties.
 	*/
 	public javax.swing.table.TableModel tableModel(final NameToIDMap namedProperties)

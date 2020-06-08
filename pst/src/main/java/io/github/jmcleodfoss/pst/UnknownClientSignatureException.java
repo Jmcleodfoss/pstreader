@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The UnknownClientSignatureException exception indicates an unknown client signature was encountered,
-*
 *	@see	HeapOnNode
 */
 public class UnknownClientSignatureException extends Exception {
@@ -10,7 +9,6 @@ public class UnknownClientSignatureException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	/**	Create an UnknownClientSignatureException object
-	*
 	*	@param	signature	The unrecognized client signature.
 	*/
 	UnknownClientSignatureException(final byte signature)

@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The XBlock class represents the XBlock and XXBlock block containers within a PST file.
-*
 *	@see	io.github.jmcleodfoss.pst.BlockBase
 *	@see	io.github.jmcleodfoss.pst.SimpleBlock
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8f34ce81-7a04-4a31-ba48-e05543daa77f">MS-PST Section 2.2.2.8.3: Block Types</a>
@@ -27,7 +26,6 @@ class XBlock extends BlockBase {
 		}
 
 		/**	Is there another value to return?
-		*
 		*	@return	true if there is another SimpleBlock in the list, false otherwise.
 		*/
 		public boolean hasNext()
@@ -36,7 +34,6 @@ class XBlock extends BlockBase {
 		}
 
 		/**	Retrieve the next value.
-		*
 		*	@return	The data for the next SimpleBlock in the list, as a ByteBuffer.
 		*/
 		public java.nio.ByteBuffer next()
@@ -75,11 +72,9 @@ class XBlock extends BlockBase {
 	final java.util.Vector<SimpleBlock> blockList;
 
 	/**	Create an XBlock/XXBlock from the given block B-tree entry.
-	*
 	*	@param	entry	The block B-tree entry describing the root of this XBLOCK/XXBLOCK tree structure.
 	*	@param	bbt	The PST file's block B-tree (required to find the child blocks).
 	*	@param	pstFile	The PST file's input stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O exception was encountered when reading the XBLOCK / XXBLOCK data.
 	*/
 	XBlock(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
@@ -139,7 +134,6 @@ class XBlock extends BlockBase {
 	}
 
 	/**	Retrieve the consolidated data array for this data tree.
-	*
 	*	@return	An array consisting of the data in all the leaf blocks of the data tree.
 	*/
 	byte[] data()
@@ -157,7 +151,6 @@ class XBlock extends BlockBase {
 	}
 
 	/**	Obtain an iterator to iterate through the child blocks.
-	*
 	*	@return	An iterator through the SimpleBlock objects making up the leaf nodes of this XBLOCK/XXBLOCK structure.
 	*/
 	java.util.Iterator<java.nio.ByteBuffer> iterator()
@@ -166,14 +159,11 @@ class XBlock extends BlockBase {
 	}
 
 	/**	Read in an XBLOCK.
-	*
 	*	@param	numEntries	The number of child block entries in this XBlock.
 	*	@param	bid		The array of BIDs of the blocks.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The underlying PST file's data stream, header, etc.
-	*
 	*	@return	A vector of SimpleBlock objects.
-	*
 	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XBlocks.
 	*/
 	static java.util.Vector<SimpleBlock> readXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
@@ -191,14 +181,11 @@ class XBlock extends BlockBase {
 	}
 
 	/**	Read in an XXBLOCK.
-	*
 	*	@param	numEntries	The number of child XBLOCK entries in this XXBlock.
 	*	@param	bid		The array of BIDs of the XBLOCKs.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The underlying PST file's data stream, header, etc.
-	*
 	*	@return	A vector of XBlock objects.
-	*
 	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XXBlocks.
 	*/
 	static java.util.Vector<XBlock> readXXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
@@ -217,9 +204,7 @@ class XBlock extends BlockBase {
 	}
 
 	/**	Obtain a string representation of the XBlock object.
-	*
 	*	@return	A string representation of the data tree.
-	*
 	*	@see	#bid
 	*/
 	@Override
@@ -236,7 +221,6 @@ class XBlock extends BlockBase {
 
 	/**	Test the XBlock class by traversing the node BTree and getting the XBlocks for each internal data block. This should
 	*	also display the XBlocks in each node subtree block, but that's a little tougher.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(String[] args)

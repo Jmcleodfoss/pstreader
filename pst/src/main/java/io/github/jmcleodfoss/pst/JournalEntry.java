@@ -3,7 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The JournalEntry class represents a PST journal entry message object. The values set in the constructor are those which come from the
 *	folder Contents Table; retrieval of other fields require that the client provide the message property context from which the
 *	fields may be extracted.
-*
 *	@see	io.github.jmcleodfoss.pst.Appointment
 *	@see	io.github.jmcleodfoss.pst.Contact
 *	@see	io.github.jmcleodfoss.pst.Message
@@ -16,12 +15,10 @@ package io.github.jmcleodfoss.pst;
 public class JournalEntry extends MessageObjectWithBody {
 	
 	/**	Create an object representing the journal entry for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
 	*	@param	nbt		The PST file's node B-Tree.
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the journal entry.
 	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the journal entry.
 	* 	@throws	UnparseablePropertyContextException	The property context for the journal entry was not parseable and is probably corrupt.

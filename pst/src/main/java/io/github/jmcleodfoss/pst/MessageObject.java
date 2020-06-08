@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The MessageObject class is the base class for all content objects (appointments, contacts, journal entries, messages, etc.)
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/f6ab1613-aefe-447d-a49c-18217230b148">MX-OXPROPS: Exchange Server Protocols Master Property List</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/7fd7ec40-deec-4c06-9493-1bc06b349682">MS-OXCMSG: Message and Attachment Object Protocol Specification</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1042af37-aaa4-4edc-bffd-90a1ede24188">MS-PST Section 2.4.5: Message Objects</a>
@@ -20,18 +19,15 @@ public class MessageObject {
 	public final String subject;
 
 	/**	Create a message object for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	messageRow	The row of the contents table from which to create the message
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	* 	@throws	NotHeapNodeException			A node which was not a heap node was found while building the message object.
 	* 	@throws	UnknownClientSignatureException		A block with an unrecognized client signature was found while building the message object.
 	* 	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building the message object
 	* 	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building the message object
 	* 	@throws java.io.IOException			An I/O exception was encountered while reading the data for the message object.
-	*
 	*	@see	Folder
 	*	@see	Attachment
 	*	@see	Recipient
@@ -52,15 +48,12 @@ public class MessageObject {
 	}
 
 	/**	Create a message object of the appropriate derived type.
-	*
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	row		The row of the contents table from which to create the message
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@return	The message object found at the given row of the content table.
-	*
 	* 	@throws	NotHeapNodeException			A node which was not a heap node was found while building the message object.
 	* 	@throws	NotPropertyContextNodeException		A node which was expected to be a property context node was found to be something else.
 	* 	@throws	NotTableContextNodeException		A node which was expected to be a table context node was found to be something else.
@@ -105,12 +98,9 @@ public class MessageObject {
 	}
 
 	/**	Retrieve the message object property context.
-	*
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@return	The message object property context, required as a parameter for other functions in the class.
-	*
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building the table context.
@@ -119,7 +109,6 @@ public class MessageObject {
 	*	@throws UnparseablePropertyContextException	The property context for this message could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context for this message could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
-	*
 	*	@see	Message#body
 	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	Message#transportHeaders

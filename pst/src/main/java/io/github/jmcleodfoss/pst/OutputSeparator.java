@@ -15,7 +15,6 @@ public class OutputSeparator {
 	final private byte[] separator;
 
 	/**	Construct an OutputSeparator object from the sequence of bytes passed in.
-	*
 	*	@param	separator	The array of bytes to use as a separator.
 	*/
 	private OutputSeparator(byte[] separator)
@@ -25,7 +24,6 @@ public class OutputSeparator {
 	}
 
 	/**	Construct an OutputSeparator object from the string passed in.
-	*
 	*	@param	separator	A string to use as the separator.
 	*/
 	public OutputSeparator(String separator)
@@ -34,7 +32,6 @@ public class OutputSeparator {
 	}
 
 	/**	Construct an OutputSeparator object from the default separator string.
-	*
 	*	@see	#defaultSeparator
 	*/
 	public OutputSeparator()
@@ -44,9 +41,7 @@ public class OutputSeparator {
 
 	/**	If this is the first invocation of the emit function for this object, clear fFirst. If it is the second or later call,
 	*	output the separator, followed by a newline.
-	*
 	*	@param	stream	The java.io.OutputStream to which the separator should be written.
-	*
 	*	@throws java.io.IOException	There was a problem writing the separator to the output stream.
 	*/
 	public void emit(java.io.OutputStream stream)

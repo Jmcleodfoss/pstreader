@@ -13,7 +13,6 @@ class DataDefinition {
 		private static final long serialVersionUID = 1L;
 
 		/**	Create an IncompleteFieldException describing the incomplete field.
-		*
 		*	@param	component	The name of the field which was not read fully.
 		*	@param	expected	The number of bytes expected to be read.
 		*	@param	found		The number of bytes actually read.
@@ -33,7 +32,6 @@ class DataDefinition {
 	private final boolean fSave;
 
 	/**	Create an object to read in data with the given description, saving it under the given name if fSave is true.
-	*
 	*	@param	name		The field name with which the data will be stored and retrieved.
 	*	@param	description	The description of how to read in the field.
 	*	@param	fSave		A flag indicating whether the data should be saved or skipped.
@@ -46,9 +44,7 @@ class DataDefinition {
 	}
 
 	/**	Create an object to skip over data with the given description.
-	*
-	*	@param	name		The field name with which the data would be stored and retrieved (used for logging only in this
-	*				case).
+	*	@param	name		The field name with which the data would be stored and retrieved (used for logging only in this case
 	*	@param	description	The description of how to read in the field.
 	*/
 	public DataDefinition(final String name, final DataType description)
@@ -57,11 +53,9 @@ class DataDefinition {
 	}
 
 	/**	Read in or skip a value described by description from stream, storing the result in data if necessary.
-	*
 	*	@param	description	The description of how to read in the field.
 	*	@param	byteBuffer	The input data stream from which to read the field.
 	*	@param	data		The location in which to store the field.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the requested data.
 	*/
 	static void read(final DataDefinition description, java.nio.ByteBuffer byteBuffer, java.util.IdentityHashMap<String, Object> data)
@@ -81,9 +75,7 @@ class DataDefinition {
 	}
 
 	/**	Get the aggregate size in bytes of the data represented by the data array.
-	*
 	*	@param	data	The list of data definitions describing the data for which to return the size.
-	*
 	*	@return	The size, in bytes, of the data described by the given data description array.
 	*/
 	static int size(final DataDefinition[] data)
@@ -95,7 +87,6 @@ class DataDefinition {
 	}
 
 	/**	Provide a text description of this object.
-	*
 	*	@return	A String describing this data definition object.
 	*/
 	@Override

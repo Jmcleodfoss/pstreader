@@ -23,10 +23,8 @@ public abstract class LPTLeaf implements BTreeLeaf {
 	protected static final String nm_bidSubnode = "bidSubnode";
 
 	/**	Create the base object: read in the fields, and retrieve the data common to all derived classes.
-	*
 	*	@param	byteBuffer	The input data stream from which to read the leaf object.
 	*	@param	fields		The descriptions of the fields to be read.
-	*
 	* 	@throws java.io.IOException	The PST file could not be read.
 	*/
 	protected LPTLeaf(java.nio.ByteBuffer byteBuffer, final DataDefinition[]... fields)
@@ -61,7 +59,6 @@ public abstract class LPTLeaf implements BTreeLeaf {
 	}
 
 	/**	Return the B-tree search key for this node.
-	*
 	*	@return	The key for a B-tree search.
 	*/
 	public long key()
@@ -86,7 +83,6 @@ public abstract class LPTLeaf implements BTreeLeaf {
 	}
 
 	/**	Provide a description of a node B-tree leaf node. This is typically used for debugging.
-	*
 	*	@return	A String describing this object
 	*/
 	@Override

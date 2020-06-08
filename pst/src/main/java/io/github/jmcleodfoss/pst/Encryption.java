@@ -1,13 +1,11 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The Encryption class handles decryption and encryption of the PST file.
-*
 *	@see	Header
 */
 class Encryption {
 
 	/**	The value indicating that this PST file is unencrypted. Per the MS-PST document, its value is {@value}.
-	*
 	*	@see	TranslaterNone
 	*	@see	#NOB_CRYPT_PERMUTE
 	*	@see	#NOB_CRYPT_CYCLIC
@@ -15,7 +13,6 @@ class Encryption {
 	private static final byte NOB_CRYPT_NONE = 0x00;
 
 	/**	The value indicating that this PST file uses permutative encryption.  Per the MS-PST document, its value is {@value}.
-	*
 	*	@see	TranslaterPermute
 	*	@see	#NOB_CRYPT_NONE
 	*	@see	#NOB_CRYPT_CYCLIC
@@ -23,7 +20,6 @@ class Encryption {
 	private static final byte NOB_CRYPT_PERMUTE = 0x01;
 
 	/**	The value indicating that this PST file uses cyclic encryption.  Per the MS-PST document, its value is {@value}.
-	*
 	*	@see	TranslaterCyclic
 	*	@see	#NOB_CRYPT_NONE
 	*	@see	#NOB_CRYPT_PERMUTE
@@ -32,7 +28,6 @@ class Encryption {
 
 	
 	/**	A ready-made Encryption object of type NONE, required for some PST processing classes.
-	*
 	*	@see	SimpleBlock
 	*	@see	SubnodeBTree
 	*/
@@ -158,7 +153,6 @@ class Encryption {
 		private static final long serialVersionUID = 1L;
 
 		/**	Create an UnknownEncryptionMethodException object indicating the invalid encryption method encountered.
-		*
 		*	@param	bCryptMethod	The encryption method encoutered in the PST's header file.
 		*/
 		public UnknownEncryptionMethodException(byte bCryptMethod)
@@ -171,7 +165,6 @@ class Encryption {
 	private interface Translater {
 
 		/**	The translate function performs the translation in place on the data array.
-		*
 		*	@param	data	The bytes to encode or decode.
 		*	@param	key	Additional data used by the {@link TranslaterCyclic} translater.
 		*/
@@ -179,14 +172,12 @@ class Encryption {
 	}
 
 	/**	The TranslaterNone translater is used for the {@link #NOB_CRYPT_NONE} encryption type.
-	*
 	*	@see	TranslaterPermute
 	*	@see	TranslaterCyclic
 	*/
 	private class TranslaterNone implements Translater {
 
 		/**	The translate function is trivial; it performs no conversion.
-		*
 		*	@param	data	This parameter is not used by the TranslaterNone translater.
 		*	@param	unused	This parameter is not used by the TranslaterNone translater.
 		*/
@@ -196,7 +187,6 @@ class Encryption {
 	}
 
 	/**	The TranslatePermute translater is used for the {@link #NOB_CRYPT_PERMUTE} encryption type.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5faf4800-645d-49d1-9457-2ac40eb467bd">MS-PST Section 5.1: Permutative Encoding</a>
 	*	@see	TranslaterNone
 	*	@see	TranslaterCyclic
@@ -204,7 +194,6 @@ class Encryption {
 	private class TranslaterPermute implements Translater {
 
 		/**	The translate function is a wrapper around the convert method.
-		*
 		*	@param	data	The bytes to encode or decode.
 		*	@param	unused	This parameter is not used by the TranslaterPermute tanslater.
 		*/
@@ -216,7 +205,6 @@ class Encryption {
 		/**	The convert function performs the actual conversion in place, in the direction indicated by the fEncrypt
 		*	parameter. This function was adapted from the example pfovided in Microsoft's PST definition, and exists
 		*	primarily for more convenient comparison to the version in that document.
-		*
 		*	@param	data		The bytes to encode or decode.
 		*	@param	fEncrypt	If this value is true, the data is encrypted; otherwise, it is decrypted.
 		*/
@@ -232,7 +220,6 @@ class Encryption {
 	}
 
 	/**	The TranslateCyclic translater is used for the {@link #NOB_CRYPT_CYCLIC} encryption type.
-	*
 	*	@see	"[MS-PST] Outlook Personal Folders (.pst) File Format v20110608, sections 5.2"
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9979fc01-0a3e-496f-900f-a6a867951f23">MS-PST Section 5.2: Cyclic Encoding</a>
 	*	@see	TranslaterNone
@@ -241,11 +228,9 @@ class Encryption {
 	private class TranslaterCyclic implements Translater {
 
 		/**	The translate performs the conversion for cyclic encoding.
-		*
 		*	@param	data	The bytes to encode or decode.
 		*	@param	key	This parameter is used during encoding and decoding. It should be the lower DWORD of the block ID
 		*			of the block being translated.
-		*
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9979fc01-0a3e-496f-900f-a6a867951f23">MS-PST Section 5.2: Cyclic Encoding</a>
 		*/
 		public void translate(byte[] data, long key)
@@ -278,7 +263,6 @@ class Encryption {
 	private final String name;
 
 	/**	Create an Encryption object from the given encryption method.
-	*
 	*	@param	bCryptMethod	The encryption method read in from the PST file's header.
 	*/
 	Encryption(final byte bCryptMethod)
@@ -305,7 +289,6 @@ class Encryption {
 	}
 
 	/**	Obtain a description of the encryption method.
-	*
 	*	@return	A description of the encryption method.
 	*/
 	@Override
@@ -315,7 +298,6 @@ class Encryption {
 	}
 
 	/**	Translate a block of data in place.
-	*
 	*	@param	data	The data to decrypt
 	*	@param	key	The key to use when translating the data (this is only used by {link TranslaterCyclic}).
 	*/

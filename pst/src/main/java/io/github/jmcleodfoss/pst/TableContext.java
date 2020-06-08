@@ -2,7 +2,6 @@ package io.github.jmcleodfoss.pst;
 
 /**	The TableContext class represents a PST Table Context, which is a structure on a B-tree-on-heap. The class itself is not
 *	publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5e48be0d-a75a-4918-a277-50408ff96740">MS-PST Section 2.3.4: Table Context (TC)</a>
 */
 public class TableContext extends javax.swing.table.AbstractTableModel {
@@ -14,7 +13,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.TableContext");
 
 	/**	The TCInfo class represents the PST file TCINFO structure, and contains table context info for a table context.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45b3a0c5-d6d6-4e02-aebf-13766ff693f0">MS-PST Section 2.3.4.1: TCINFO</a>
 	*/
 	private static class TCInfo {
@@ -68,9 +66,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		private final DataType[] hnidTypes;
 
 		/**	Create a TCInfo object by reading in the required information from the data inputstream.
-		*
 		*	@param	stream	The input data stream from which to read the TCINFO structure.
-		*
 		*	@throws	NotTableContextNodeException	A node which is not a table context node was found while building the table context information object.
 		*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
 		*	@throws java.io.IOException		An I/O exception was encountered while reading the data for the table context information obkect.
@@ -115,7 +111,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		/**	Create the name of the field containing the Cell Existence Bitmap (which is the last field in the row). Note
 		*	that this provides the field name in a format consistent with those of the other fields, which allows simple
 		*	construction of all field names knowing the number of columns.
-		*
 		*	@return	The name of the cell existence bitmap field.
 		*/
 		private String cellExistenceBitmapFieldName()
@@ -124,9 +119,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		}
 
 		/**	Create a generic field name with the given value as a suffix.
-		*
 		*	@param	i	The field index for which to create the field name.
-		*
 		*	@return	A generic synthesized field name based on the given field index.
 		*/
 		private String fieldName(int i)
@@ -135,7 +128,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		}
 
 		/**	Provide a representation describing this TCInfo object. This is typically used for debugging.
-		*
 		*	@return	A string describing this TCInfo object, which includes descriptions of all columns.
 		*/
 		@Override
@@ -163,9 +155,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 		/**	Is the data described by the given column description object stored directly in the table, or in the
 		*	HNID stored in the table? Note that any field with a size of less than 4 is stored directly in the table.
-		*
 		*	@param	cd	The column description to check.
-		*
 		*	@return	true if the field referred to by the given column description object is stored in an HID, false if it
 		*		is stored directly in the table.
 		*/
@@ -179,7 +169,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	The TColDescr class holds a single table column description object.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/3a2f63cf-bb40-4559-910c-e55ec43d9cbb">MS-PST Section 2.3.4.2: TCOLDESC</a>
 	*/
 	static class TColDescr {
@@ -189,10 +178,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		static class Comparator implements java.util.Comparator<TColDescr> {
 
 			/**	Compare the two TColDescr objects.
-			*
 			*	@param	a	One TColDescr object for comparison.
 			*	@param	b	The other TColDescr object for comparison.
-			*
 			*	@return	The difference in the column offsets of a and b, to ensure that the item with the larger
 			*		offset is sorted later.
 			*/
@@ -228,9 +215,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		private final int cellExistenceBitmapIndex;
 
 		/**	Create a TColDescr object from date read in from the input datastream.
-		*
 		*	@param	stream	The input data stream from which to read the column description.
-		*
 		*	@throws	java.io.IOException	An I/O error was encounted while reading the data for this column description.
 		*/
 		private TColDescr(java.nio.ByteBuffer stream)
@@ -246,7 +231,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		}
 
 		/**	Get the data type for this column description tag.
-		*
 		*	@return	The property type as masked off from the column tag.
 		*/
 		private short propertyType()
@@ -255,7 +239,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		}
 
 		/**	Provide a String representation of this TCInfo object. This is typically used for debugging.
-		*
 		*	@return	A description of this TColDescr object.
 		*/
 		@Override
@@ -280,7 +263,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		}
 
 		/**	Indicate whether the "next" function will return anything.
-		*
 		*	@return	true if there is another row to return, false if there are no more rows to return.
 		*/
 		public boolean hasNext()
@@ -289,7 +271,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 		}
 
 		/**	Return the next row.
-		*
 		*	@return	The next row, as an array of objects.
 		*/
 		public Object next()
@@ -314,11 +295,9 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	private Object[][] rows;
 
 	/**	Create a table context from the given BID.
-	*
 	*	@param	nodeDescr	Description of the node as found in the block or sub-node B-tree.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
-	*
 	* 	@throws	NotHeapNodeException			The leaf is not a heap node
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
@@ -338,12 +317,10 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 	/**	Create a TableContext object from the given heap-on-node. This should only be used when the Heap-On-Node has already
 	*	been found for purposes other than building the Table context.
-	*
 	*	@param	nodeDescr	Description of the node as found in the block or sub-node B-tree.
 	*	@param	hon		The heap-on-node on which this table context is defined.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
-	*
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
 	* 	@throws UnparseableTableContextException	The table content could not be interpreted
@@ -393,10 +370,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Returns true if the Cell Existence Bitmap indicates this column exists, and false otherwise.
-	*
 	*	@param	ceb	The cell existence block for the row currently being processed.
 	*	@param	column	The column of the table in which the field being processed lies.
-	*
 	*	@return	true if the cell existence bitmap indicates that the field is present, false if the cell existens bitmap
 	*			indicates it is absent.
 	*/
@@ -407,9 +382,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Get the column index for the given tag, if present.
-	*
 	*	@param	tag	The tag to look for in the table context's column list.
-	*
 	*	@return	The column index for the given tag, if present, or -1 if the tag was not found.
 	*/
 	private int columnIndex(int tag)
@@ -422,7 +395,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	The expected number of bytes in the row data heap entry.
-	*
 	*	@return	The expected number of bytes in a row data heap entry, based on the number of rows and the number of sum of the
 	*		number of bytes in all columns.
 	*/
@@ -432,10 +404,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Get the value for the given tag, if it exists, for the given row.
-	*
 	*	@param	row	The row to return information for.
 	*	@param	tag	The tag indicates the column to return.
-	*
 	*	@return	The value for the given tag in the given row, if any, otherwise null.
 	*/
 	public Object get(int row, int tag)
@@ -450,7 +420,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Get the number of data columns in the table.
-	*
 	*	@return	The number of data columns (i.e. excluding the cell existence bitmap) in this table context.
 	*/
 	public int getColumnCount()
@@ -460,9 +429,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Get the name of the given column for use as a table header.
-	*
 	*	@param	column	The column to retrieve the header for.
-	*
 	*	@return	The column name, as a property ID. Note that this function returns a generic name for named properties.
 	*/
 	public String getColumnName(int column)
@@ -471,15 +438,11 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Obtain a ByteBuffer from which the raw data for the given propertyID may be read.
-	*
 	*	@param	propertyTag	The property ID of the tag to read.
 	*	@param	data		The raw data for this cell in the table.
 	*	@param	hon		The heap-on-node in which to look up data stored in an HID.
-	*
 	*	@return	A ByteBuffer form which the data may be read.
-	*
 	*	@throws	java.io.UnsupportedEncodingException	An unsupported text encouding was found while reading in a String for this table.
-	*
 	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
 	*	@see	io.github.jmcleodfoss.pst.PropertyContext#getData
 	*/
@@ -507,7 +470,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Get the number of rows in the table.
-	*
 	*	@return	The number of rows in this table context.
 	*/
 	public int getRowCount()
@@ -516,10 +478,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Return the value of the specified cell.
-	*
 	*	@param	row	The row index of the cell to retrieve the value of.
 	*	@param	column	The column index of the cell to retrieve the value of.
-	*
 	*	@return	The value of the given cell, or null if the row for the given row index is empty.
 	*/
 	public Object getValueAt(int row, int column)
@@ -529,10 +489,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 
 	/**	No cells are editable.
-	*
 	*	@param	row	The row index of the cell to retrieve the value of.
 	*	@param	column	The column index of the cell to retrieve the value of.
-	*
 	*	@return	false, always.
 	*/
 	public boolean isCellEditable(int row, int column)
@@ -541,7 +499,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Is this table context object empty?
-	*
 	*	@return	true if the number of rows in this table context is 0, false if it is non-zero.
 	*/
 	private boolean isEmpty()
@@ -550,7 +507,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Obtain an iterator for the rows of this TableContext which returns all columns. cf specifiedColumnIterator
-	*
 	*	@return	The array of objects which make up this row of the TableContext.
 	*/
 	@SuppressWarnings("unchecked")
@@ -560,14 +516,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Read data for all rows from a block of bytes of raw data. This is used to read HID table contexts.
-	*
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	numColumns	The number of columns in this table context (excluding the cell existence bitmap).
 	*	@param	data		The raw row data.
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, byte[] data, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
@@ -590,14 +544,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Read data for all rows from blocks of bytes returned by an iterator. This is used to read LTP table contexts.
-	*
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	numColumns	The number of columns in this table context (excluding the cell existence bitmap).
 	*	@param	iterator	An iterator through the blocks which comprise an LTP table context.
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
@@ -618,7 +570,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Read a single row from the TableContext
-	*
 	*	@param	rowStream	The raw data for this row, as a ByteBuffer with the correct endianness.
 	*	@param	numColumns	The number of columns in this table context (excluding the cell existence bitmap)
 	*	@param	r		The index of this row (used only for diagnostic logging).
@@ -626,9 +577,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	pstFile		The PST file input data stream, header, etc.
-	*
 	*	@return	The data in the row given by rowStream, parsed into the appropriate PST data types.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this table context row.
 	*/
 	private Object[] readRow(java.nio.ByteBuffer rowStream, int numColumns, int r, SubnodeBTree sbt, BlockMap bbt, HeapOnNode hon, PSTFile pstFile)
@@ -688,9 +637,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Are objects of the given property type stored within the tree itself, or in an HID denoted by the leaf element?
-	*
 	*	@param	propertyType	The propery type to check to see whether it is stored directly in the table or in an HID.
-	*
 	*	@return	true if the given property type is stored in an HID, false if it store in directly in the table.
 	*/
 	static boolean storedInHID(int propertyType)
@@ -712,7 +659,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	}
 
 	/**	Obtain a String representation of this table context.
-	*
 	*	@return	A string representation of the table context, showing property ID and value.
 	*/
 	@Override
@@ -748,7 +694,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 	/**	Test the TableContext class by reading in the first node containing a table context, extracting the table, and printing
 	*	it out.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(String[] args)

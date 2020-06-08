@@ -3,7 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The Message class represents a PST email message. The values set in the constructor are those which come from the folder Contents
 *	Table; retrieval of other fields, including the message body, require that the client provide the message property context from
 *	which the fields may be extracted.
-*
 *	An example of the expected use case is:
 *	<pre>
 *	{@code
@@ -16,7 +15,6 @@ package io.github.jmcleodfoss.pst;
 *	System.out.printf("body %s\n", message.body(messagePC);
 *	}
 *	</pre>
-*
 *	@see	io.github.jmcleodfoss.pst.Appointment
 *	@see	io.github.jmcleodfoss.pst.Attachment
 *	@see	io.github.jmcleodfoss.pst.Contact
@@ -53,13 +51,11 @@ public class Message extends MessageObjectWithBody {
 	private java.util.Vector<Attachment> attachments;
 
 	/**	Create a message for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	messageRow	The row of the contents table from which to create the message
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	* 	@throws	NotHeapNodeException	A node which is not a heap node was found while building the message.
 	* 	@throws	NotPropertyContextNodeException	A node which was not a property context was found when a property context was expected.
 	* 	@throws	NotTableContextNodeException	A node which was not a table context was found when a table context was expected.
@@ -126,11 +122,8 @@ public class Message extends MessageObjectWithBody {
 
 	/**	Return the requested attachment as specified by the index. This is for use by other classes in this package; client
 	*	code is expected to use {@link #attachmentIterator} when processing attachments.
-	*
 	*	@param	index	The index of the attachment to retrieve. Note that this must be a valid index into the attachment table.
-	*
 	*	@return	The Attachment object for the given attachment.
-	*
 	*	@see	#attachmentIterator
 	*	@see	#numAttachments
 	*/
@@ -141,9 +134,7 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Return an iterator over the message's attachments.
-	*
 	*	@return	An iterator object which may be used to go through the message attachments.
-	*
 	*	@see	#attachment
 	*	@see	#numAttachments
 	*/
@@ -153,12 +144,9 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Retrieve the message object property context.
-	*
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@return	The message object property context, required as a parameter for other functions in the class.
-	*
 	*	@see	#body
 	*	@see	#bodyHtml
 	*	@see	#transportHeaders
@@ -188,9 +176,7 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Return the number of attachments for this message.
-	*
 	*	@return	The number of attachments to this message.
-	*
 	*	@see	#attachment
 	*	@see	#attachmentIterator
 	*/
@@ -203,9 +189,7 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Retrieve the requested recipient as specified by the index.
-	*
 	*	@param	index	The index of the recipient to retrieve. Note that this must be a valid index into the recipient table.
-	*
 	*	@return	The Recipient object for the given recipient.
 	*/
 	Recipient recipients(final int index)
@@ -215,7 +199,6 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Return a string describing the email.
-	*
 	*	@return	A string describing the message.
 	*/
 	@Override
@@ -225,11 +208,8 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Extract the Message Transport Headers from the message PC.
-	*
 	*	@param	pc	The message object property context, as retrieved by getMessage.
-	*
 	*	@return	The message body in HTML, if present, as a string.
-	*
 	*	@see	#body
 	*	@see	#bodyHtml
 	*	@see	#getMessage
@@ -241,7 +221,6 @@ public class Message extends MessageObjectWithBody {
 	}
 
 	/**	Test the Message class by iterating through the messages.
-	*
 	* 	@param arg	The command line arguments
 	*/
 	@Unimplemented(priority = Unimplemented.Priority.LOW)

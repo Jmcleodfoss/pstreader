@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The CRC class contains the CRC calculation mechanism, taken from the MS PST file format description.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/39c35207-130f-4d83-96f8-2b311a285a8f">MS-PST Section 5.3: CRC Calculation</a>
 */
 class CRC {
@@ -45,11 +44,9 @@ class CRC {
 	/**	Calculate the CRC for the incoming data. Note that this function uses 8-bit integers for all calculations. This is
 	*	based on the reference (32-bit integer) function found in the PST file format document, but in testing was found to
 	*	be 17.9% faster.
-	*
 	*	@param	byteBuffer	The array of data from which to calculate the CRC.
 	*	@param	iStart		Where in the array to start calculating the CRC.
 	*	@param	size		How many bytes to span when calculating the CRC.
-	*
 	*	@return	The CRC for the block of data provided.
 	*/
 	static int crc(java.nio.ByteBuffer byteBuffer, int iStart, int size)

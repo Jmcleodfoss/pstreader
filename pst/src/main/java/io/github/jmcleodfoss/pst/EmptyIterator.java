@@ -10,7 +10,6 @@ public class EmptyIterator implements java.util.Iterator<Object> {
 	public static final EmptyIterator iterator = new EmptyIterator();
 
 	/**	Are there any more elements to return? Note that there are never any more elements in an EmptyIterator.
-	*
 	*	return	false, always (the EmptyIterator never contains any elements, by definition.
 	*/
 	public boolean hasNext()
@@ -20,7 +19,6 @@ public class EmptyIterator implements java.util.Iterator<Object> {
 
 	/**	Get the next element. This function should never be called (since hasNext always returns true). In fact, calling this
 	*	function is a programming error, and the UnsupportedOperationExcpetion will be thrown.
-	*
 	*	returns	Nothing - calling this function results in an exception being thrown.
 	*/
 	public Object next()

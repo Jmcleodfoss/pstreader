@@ -7,7 +7,6 @@ public class ReadOnlyTableModel extends javax.swing.table.DefaultTableModel {
 	private static final long serialVersionUID = 1L;
 
 	/**	Create a ReadOnlyTableModel object.
-	*
 	*	@param	cells	The table contents.
 	*	@param	columnHeaders	The column headers.
 	*/
@@ -17,10 +16,8 @@ public class ReadOnlyTableModel extends javax.swing.table.DefaultTableModel {
 	}
 
 	/**	Is the given cell editable?
-	*
 	*	@param	row	The row containing the cell to check.
 	*	@param	col	The column containing the cell to check.
-	*
 	*	@return	false, always.
 	*/
 	public boolean isCellEditable(int row, int col)

@@ -34,9 +34,7 @@ class Debug {
 	}
 
 	/**	Get a logger. This is a wrapper around java.utilo.logging.Logger.getLogger(); using it to obtaina logger ensures that packageLogger is appropriately initialized.
-	*
 	*	@param	name	The name of the logger to use.
-	*
 	*	@return	The logger with the requested name.
 	*/
 	static java.util.logging.Logger getLogger(final String name)
@@ -48,9 +46,7 @@ class Debug {
 
 	/**	Translate a log level string into a log level, allowing it to be one of the keywords "off", "severe", "warning", "info",
 	*	"fine", "finer", "finest."
-	*
 	*	@param	s	The String to look up the log level for.
-	*
 	*	@return	The log level from java.util.logging.Level corresponding to the passed String s, if any.
 	*/
 	static java.util.logging.Level getLogLevel(final String s)
@@ -75,7 +71,6 @@ class Debug {
 	}
 
 	/**	Set up a logger with the library logging defaults.
-	*
 	*	@param	logger	The logger to set up.
 	*/
 	private static void setupLogger(java.util.logging.Logger logger)

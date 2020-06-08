@@ -37,9 +37,7 @@ class IPM {
 	}
 
 	/**	Is the given message an appointments?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.Appointment.
 	*/
 	static boolean isAppointment(String messageClass)
@@ -48,9 +46,7 @@ class IPM {
 	}
 
 	/**	Is the given message object a contact?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.Contact.
 	*/
 	static boolean isContact(String messageClass)
@@ -59,9 +55,7 @@ class IPM {
 	}
 
 	/**	Is the given message object a distribution list?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.DistributionList.
 	*/
 	static boolean isDistributionList(String messageClass)
@@ -70,9 +64,7 @@ class IPM {
 	}
 
 	/**	Is the given message a journal entry?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.Journal.
 	*/
 	static boolean isJournalEntry(String messageClass)
@@ -81,9 +73,7 @@ class IPM {
 	}
 
 	/**	Is the class of the given message one of the known classes?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is one of the known classes, false otherwise.
 	*/
 	static boolean isKnownClass(String messageClass)
@@ -92,9 +82,7 @@ class IPM {
 	}
 
 	/**	Is the given message a note?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.Note.
 	*/
 	static boolean isNote(String messageClass)
@@ -103,9 +91,7 @@ class IPM {
 	}
 
 	/**	Is the given folder a sticky note?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.StickyNote.
 	*/
 	static boolean isStickyNote(String messageClass)
@@ -114,9 +100,7 @@ class IPM {
 	}
 
 	/**	Is the given message a task?
-	*
 	*	@param	messageClass	The message class to check.
-	*
 	*	@return	true if the given message's class is IPM.Task.
 	*/
 	static boolean isTask(String messageClass)
@@ -125,7 +109,6 @@ class IPM {
 	}
 
 	/**	Get an iterator through the known classes.
-	*
 	*	@return	An iterator which may be used to step through the known folder classes.
 	*/
 	static java.util.Iterator<String> iterator()

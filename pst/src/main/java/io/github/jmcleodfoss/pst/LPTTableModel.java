@@ -7,7 +7,6 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 	private static final long serialVersionUID = 1L;
 
 	/**	Create the table model with the given ValueDelegate object.\
-	*
 	*	@param	properties	The list of properties for this table row
 	*	@param	namedProperties	The list of named properties for this PST file
 	*/
@@ -31,9 +30,7 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 	}
 
 	/**	Get the heading for the given column.
-	*
 	*	@param	column	The column index of the heading to return.
-	*
 	*	@return	The column heading for the requested column.
 	*/
 	@Override
@@ -49,10 +46,8 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 	}
 
 	/**	Retrieve the string representation of the value column (column 3).
-	*
 	*	@param	tag	The tag for this column.
 	*	@param	value	The object contained in the cell.
-	*
 	*	@return	A String representation of the cell.
 	*/
 	String getValueString(final int tag, final Object value)
@@ -61,10 +56,8 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel {
 	}
 
 	/**	No cells are editable.
-	*
 	*	@param	row	The row index of the cell to retrieve the value of.
 	*	@param	column	The column index of the cell to retrieve the value of.
-	*
 	*	@return	false, always.
 	*/
 	public boolean isCellEditable(int row, int column)

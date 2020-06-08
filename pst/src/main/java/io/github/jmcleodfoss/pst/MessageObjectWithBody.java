@@ -4,12 +4,10 @@ package io.github.jmcleodfoss.pst;
 public class MessageObjectWithBody extends MessageObject {
 
 	/**	Create a message object for a type with a Body tag for the given row in the folder contents table.
-	*
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	messageRow	The row of the contents table from which to create the message
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
-	*
 	*	@throws	NotHeapNodeException	A heap which was not a node heap was found while building the message object / body.
 	*	@throws UnknownClientSignatureException	An unknown client signature was encountered while building the message object / body.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while building the message object / body.
@@ -28,11 +26,8 @@ public class MessageObjectWithBody extends MessageObject {
 	}
 
 	/**	Extract the message body from the message object property context.
-	*
 	*	@param	pc	The message object property context, as retrieved by getMessage.
-	*
 	*	@return	The message body, as a string.
-	*
 	*	@see	#bodyHtml
 	*	@see	#getMessage
 	*	@see	Message#transportHeaders
@@ -43,11 +38,8 @@ public class MessageObjectWithBody extends MessageObject {
 	}
 
 	/**	Extract the HTML message body from the message object property context.
-	*
 	*	@param	pc	The message object property context, as retrieved by getMessage.
-	*
 	*	@return	The message body in HTML, if present, as a string.
-	*
 	*	@see	#body
 	*	@see	#getMessage
 	*	@see	Message#transportHeaders

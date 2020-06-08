@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The Header object is the PST header.
-*
 *	@see	io.github.jmcleodfoss.pst.Encryption
 *	@see	io.github.jmcleodfoss.pst.FileFormat
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
@@ -131,9 +130,7 @@ public class Header {
 	public final BREF bbtRoot;
 
 	/**	Read in the header data and save the fields we need for later.
-	*
 	*	@param	byteBuffer	The data stream from which to read the PST header.
-	*
 	*	@throws	NotPSTFileException	This is not a pst file.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the pst header.
 	*/
@@ -166,7 +163,6 @@ public class Header {
 	}
 
 	/**	Calculate the size of the header block.
-	*
 	*	@return	The size of the header for this file.
 	*/
 	public int size()
@@ -175,7 +171,6 @@ public class Header {
 	}
 
 	/**	Provide a summary of the header in String form. This is typically used for debugging.
-	*
 	*	@return	A description of the header.
 	*/
 	@Override
@@ -185,9 +180,7 @@ public class Header {
 	}
 
 	/**	Ensure that the file's magic number is correct for a PST file.
-	*
 	*	@param	dc	The DataContainer object holding the values read in from the header.
-	*
 	*	@throws	NotPSTFileException	The magic number for this file is not that for a pst file.
 	*/
 	private void validate_dwMagic(final DataContainer dc)
@@ -200,7 +193,6 @@ public class Header {
 	}
 
 	/**	Ensure that the header's initial (partial) CRC is correct. Note that this is used for both the partial and full CRCs.
-	*
 	*	@param	crcCalculated	The CRC of the header caculated from its contents.
 	*	@param	nm_field	The field name of the CRC to check.
 	*	@param	dc		The DataContainer object holding the values read in from the header.
@@ -212,7 +204,6 @@ public class Header {
 	}
 
 	/**	Test this class by reading in the PST file header and printing it out.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)
