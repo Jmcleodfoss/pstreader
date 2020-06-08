@@ -14,11 +14,9 @@ public class NodeSubnodeBTree extends NodeBTree {
 		final BlockMap bbt;
 
 		/**	Create the context object for building the node/sub-node B-tree.
-		*
 		*	@param	bref	The block reference for the node/sub-node node currently under construction.
 		*	@param	bbt	The PS file's block B-tree.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*
 		*	@throws	java.io.IOException	The data for the node sub-node B-tree context could not be read.
 		*/
 		protected NSNContext(final BREF bref, final BlockMap bbt, PSTFile pstFile)
@@ -68,10 +66,8 @@ public class NodeSubnodeBTree extends NodeBTree {
 		final java.util.Vector<SLEntry> leafNodes;
 
 		/**	Create a node B-Tree leaf entry with the subnode B-Tree.
-		*
 		*	@param	context		The context from which to build this node.
 		*	@param	byteBuffer	The data stream from which to read this node.
-		*
 		*	@throws	java.io.IOException	The data for the leaf node could not be read.
 		*/
 		protected NodeLeafEntry(final NSNContext context, java.nio.ByteBuffer byteBuffer)
@@ -94,12 +90,10 @@ public class NodeSubnodeBTree extends NodeBTree {
 	}
 
 	/**	Create a node &amp; subnode B-Tree from the given key, block reference, block BTree, and PSTfile.
-	*
 	*	@param	key	The key for this node. All sub-nodes are guaranteed to have keys greater than or equal to this key.
 	*	@param	bref	The block reference for this node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
-	*
 	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
 	*/
 	public NodeSubnodeBTree(final long key, final BREF bref, final BlockMap bbt, PSTFile pstFile)

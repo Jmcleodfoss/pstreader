@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The PropertyContext class contains a PST file property context.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/294c83c6-ff92-42f5-b6b6-876c29fa9737">MS-PST Section 2.3.3: Property Context (PC)</a>
 */
 public class PropertyContext {
@@ -26,7 +25,6 @@ public class PropertyContext {
 		final PSTFile pstFile;
 
 		/**	Create a reference which may be used to retreive information from a PST file at a later time.
-		*
 		*	@param	propertyType	The type of the property to read.
 		*	@param	entry		The entry in the block B-Tree containing the data.
 		*	@param	bbt		The PST file's block B-Tree.
@@ -41,7 +39,6 @@ public class PropertyContext {
 		}
 
 		/**	Retrieve the data we deferred reading.
-		*
 		*	@return	The data read in from the given reference to the PST file.
 		*/
 		Object data()
@@ -63,7 +60,6 @@ public class PropertyContext {
 		private static final long serialVersionUID = 1L;
 	
 		/**	Create the table model.
-		*
 		*	@param	properties	The properties in the PropertyContext object.
 		*	@param	namedProperties	The known property names
 		*/
@@ -73,7 +69,6 @@ public class PropertyContext {
 		}
 	
 		/**	Retrieve the string representation of the value.
-		*
 		*	@param	key	The property key, required to convert the data value into a String.
 		*	@param	value	The value to convert.
 		*/
@@ -85,10 +80,8 @@ public class PropertyContext {
 		}
 
 		/**	No cells are editable.
-		*
 		*	@param	rowIndex	The row of the cell to check.
 		*	@param	columnIndex	The column of the cell to check.
-		*
 		*	@return	false, as the table can never be edited.
 		*/
 		public boolean isCellEditable(final int rowIndex, final int columnIndex)
@@ -107,11 +100,9 @@ public class PropertyContext {
 	}
 
 	/**	Create a PropertyContext from the node ID, node database, and basic PST file object.
-	*
 	*	@param	node	The node containing the property context.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
-	*
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found while bulding the property context.
 	*	@throws	NotPropertyContextNodeException		A node which is not part of a property context was found while building the property context.
 	*	@throws	NullDataBlockException			A null data block was found while building the property context.
@@ -147,9 +138,7 @@ public class PropertyContext {
 	}
 
 	/**	Determine whether this property context contains the given tag.
-	*
 	*	@param	tag	The tag to look for.
-	*
 	*	@return	true if this property context contains the given tag, false if it doesn't.
 	*/
 	boolean containsKey(final int tag)
@@ -158,9 +147,7 @@ public class PropertyContext {
 	}
 
 	/**	Retrieve a value from the property context.
-	*
 	*	@param	tag	The tag to look for.
-	*
 	*	@return	The object stored under the given tag.
 	*/
 	Object get(final int tag)
@@ -173,16 +160,11 @@ public class PropertyContext {
 	}
 
 	/**	Return a ByteBuffer holding the data for the given tag, taken from HeapOnNode hon if the data is stored in an HNID.
-	*
-	*
 	*	@param	tag	The tag of the data to retrieve
 	*	@param	data	The raw data to read; this contains either the data or a reference to an HNID.
 	*	@param	hon	The heap-on-node to read from if the data is stored in an HNID.
-	*
 	*	@return	A ByteBuffer from which the data may be read.
-	*
 	*	@throws	java.io.UnsupportedEncodingException	An unsupported text encoding was found when reading in String data for this property.
-	*
 	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
 	*	@see	io.github.jmcleodfoss.pst.TableContext#getData
 	*/
@@ -206,7 +188,6 @@ public class PropertyContext {
 	}
 
 	/**	Retrieve an iterator traversing the values in the property context.
-	*
 	*	@return	An interator through all the properties in the property context.
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> iterator()
@@ -215,7 +196,6 @@ public class PropertyContext {
 	}
 
 	/**	Retrieve the property corresponding to the given B-tree-on-heap leaf entry in a Property Context.
-	*
 	*	@param	lr		The B-tree-on-heap record from which to read the property value.
 	*	@param	propertyType	The data type of the property to read.
 	*	@param	bData		A ByteBuffer containing the data to read.
@@ -223,10 +203,8 @@ public class PropertyContext {
 	*	@param	hon		The heap-on-node containing the property context
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, etc.
-	*
 	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context node was encountered while reading this property.
 	*	@throws java.io.IOException			An I/O exception was encoutered while reading this property.
-	*
 	*	@return	The object read in.
 	*/
 	private Object property(final BTreeOnHeap.LeafRecord lr, final short propertyType, final java.nio.ByteBuffer bData, final SubnodeBTree sbt, final HeapOnNode hon, final BlockMap bbt, PSTFile pstFile)
@@ -277,13 +255,11 @@ public class PropertyContext {
 	}
 
 	/**	Read in a property context.
-	*
 	*	@param	node	The node from which to read the property context.
 	*	@param	hon	The heap-on-node containing the property context.
 	*	@param	bth	The B-tree-on-heap containing the heap-on-node.
 	*	@param	bbt	The PST file block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
-	*
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while reading the property context.
 	*	@throws	java.io.IOException			An I/O error was encountered while reading in the data for the property context.
 	*/
@@ -306,9 +282,7 @@ public class PropertyContext {
 	}
 
 	/**	Return a table model for the property context for the given NID.
-	*
 	*	@param	namedProperties	The property names for this PST file.
-	*
 	*	@return	TableModel representation of this property context.
 	*/
 @SuppressWarnings("unchecked") 
@@ -318,9 +292,7 @@ public class PropertyContext {
 	}
 
 	/**	Are objects of the given property type stored within the tree itself, or in an HID denoted by the leaf element?
-	*
 	*	@param	propertyType	The propery type to check to see whether it is stored directly in the table or in an HID.
-	*
 	*	@return	true if the given property type is stored in an HID, false if it store in directly in the property context.
 	*/
 	private static boolean storedInHNID(final int propertyType)
@@ -344,7 +316,6 @@ public class PropertyContext {
 	/**	Return a string representation of this Property Context which enumerates all properties, including tag name (if known),
 	*	key,and value. This is typically used for debugging; it does not take into account named properties, or the 
 	*	"bucket list" in the property name map.
-	*
 	*	@return	A string represengint the PropertyContext object.
 	*/
 	@Override
@@ -376,7 +347,6 @@ public class PropertyContext {
 
 	/**	Test the PropertyContext class by reading in the first node containing a property context, extracting the properties,
 	*	and printing them out.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)

@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The PagedBTree class is the base class for B-trees stored on pages within the PST file (i.e. the Node and Block B-trees).
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/4f0cd8e7-c2d0-4975-90a4-d417cfca77f8">MS-PST Section 2.2.2.7.7.1: BTPAGE</a>
 */
 public abstract class PagedBTree extends BTree {
@@ -38,14 +37,10 @@ public abstract class PagedBTree extends BTree {
 		};
 
 		/**	Move to the start of this page so that the parent class can read in the header.
-		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*
 		*	@return	The passed in pstFile object, for use as a parameter to the constructor.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered when seeking the new position in the file.
-		*
 		*	@see	PageContext
 		*/
 		private static PSTFile gotoPage(final BREF bref, PSTFile pstFile)
@@ -57,10 +52,8 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Create a PageContext object form the given pstFile and bref.
-		*
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*
 		*	@throws java.io.IOException	An I/O error was encountered while either seeking the page context's position in the file or while reading the page context data.
 		*/
 		protected PageContext(BREF bref, PSTFile pstFile)
@@ -71,7 +64,6 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Obtain a data stream from which the B-tree entries may be read.
-		*
 		*	@return	A data entry stream from which the page may be read.
 		*/
 		@Override
@@ -83,7 +75,6 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Retrieve the number of bytes including unread padding in an entry.
-		*
 		*	@return	The number of bytes between the start of each entry in the B-tree.
 		*/
 		@Override
@@ -93,7 +84,6 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Obtain the number of entries found in this page.
-		*
 		*	@return	The number of B-Tree entries on this page.
 		*/
 		@Override
@@ -110,7 +100,6 @@ public abstract class PagedBTree extends BTree {
 	}
 
 	/**	The BTEntry class is an intermediate node in the B-trees stored in pages within the PST file.
-	*
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/bc8052a3-f300-4022-be31-f0f408fffca0">MS-PST Section 2.2.2.7.7.2: BTEntry (Intermediate Entries)</a>
 	*	@see	BBTEntry
 	*	@see	NBTEntry
@@ -148,10 +137,8 @@ public abstract class PagedBTree extends BTree {
 		final BREF bref;
 
 		/**	Read an intermediate entry for a B-Tree stored in a page from the input stream using the given context.
-		*
 		*	@param	context		The context from which to build the B-tree.
 		*	@param	byteBuffer	The data stream from which to read the intermediate B-tree entry.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this B-tree entry.
 		*/ 
 		BTEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer byteBuffer)
@@ -165,9 +152,7 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Return the actual size of an intermediate B-tree entry as read in from the input datastream.
-		*
 		*	@param	context	The construction context for this B-tree.
-		*
 		*	@return	The size of an intermediate node or block B-tree entry.
 		*/
 		public static int actualSize(final Context<BTree, BTreeLeaf> context)
@@ -176,7 +161,6 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Obtain the key for this intermediate node.
-		*
 		*	@return	The key for this node.
 		*/
 		public long key()
@@ -185,7 +169,6 @@ public abstract class PagedBTree extends BTree {
 		}
 
 		/**	Provide a description of this intermediate B-tree node (typically used for debugging).
-		*
 		*	@return	A string describing this object.
 		*/
 		@Override
@@ -199,11 +182,9 @@ public abstract class PagedBTree extends BTree {
 	private final BREF bref;
 
 	/**	Construct a PageBTree object with the given search key from the given position using the given context.
-	*
 	*	@param	key	The key for this node.
 	*	@param	bref	The block reference for this page.
 	*	@param	context	The context from which to construct this B-Tree.
-	*
 	*	@throws java.io.IOException	There was a problem reading the B-tree.
 	*/
 	protected PagedBTree(final long key, final BREF bref, final PageContext<BTree, BTreeLeaf> context)
@@ -215,9 +196,7 @@ public abstract class PagedBTree extends BTree {
 	}
 
 	/**	Return the actual size of an intermediate B-tree entry as read in from the input datastream.
-	*
 	*	@param	context	The construction context for this B-tree.
-	*
 	*	@return	The size of an intermediate node or block B-tree entry.
 	*/
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
@@ -226,7 +205,6 @@ public abstract class PagedBTree extends BTree {
 	}
 
 	/**	Get a table model which can be used to describe this node.
-	*
 	*	@return	A DefaultTableModel describing this node.
 	*/
 	public javax.swing.table.TableModel getNodeTableModel()

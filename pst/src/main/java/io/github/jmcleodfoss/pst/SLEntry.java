@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The SLEntry is a leaf node in the sub-node B-tree.
-*
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85c4d943-0779-43c5-bd98-61dc9bb5dfd6">MS-PST Section 2.2.2.8.3.3.1.1: SLEntry (Leaf Block Entry)</a>
 */
 class SLEntry extends LPTLeaf {
@@ -31,10 +30,8 @@ class SLEntry extends LPTLeaf {
 	};
 
 	/**	Read a sub-node B-tree leaf entry from the input stream using the given context.
-	*
 	*	@param	context	The context from which to build the sub-node B-tree leaf entyr.
 	*	@param	stream	The data stream from which to read the sub-node B-tree leaf entry.
-	*
 	*	@throws	java.io.IOException	An I/O error was encounted when reading the data for this node.
 	*/ 
 	SLEntry(final SubnodeBTree.BlockContext context, java.nio.ByteBuffer stream)
@@ -45,9 +42,7 @@ class SLEntry extends LPTLeaf {
 	}
 
 	/**	Return the actual size of a sub-node B-tree leaf entry as read in from the input datastream.
-	*
 	*	@param	context	The context in which the sub-node B-tree is being built.
-	*
 	*	@return	The total size of the sub-node B-tree leaf entry, including padding.
 	*/
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
@@ -56,9 +51,7 @@ class SLEntry extends LPTLeaf {
 	}
 
 	/**	The size of a sub-node B-tree leaf entry for this file's format.
-	*
 	*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
-	*
 	*	@return	The size of the sub-node B-tree leaf entry, without padding.
 	*/
 	static int size(PSTFile pstFile)

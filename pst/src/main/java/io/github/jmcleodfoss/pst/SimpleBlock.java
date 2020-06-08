@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The SimpleBlock class represents a leaf data block (i.e. not an XBLOCK or XXBLOCK).
-*
 *	@see	io.github.jmcleodfoss.pst.XBlock
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
@@ -23,7 +22,6 @@ class SimpleBlock extends BlockBase {
 		}
 
 		/**	Determine if there is another block to return.
-		*
 		*	@return	true if the data hasn't been returned, false if it has.
 		*/
 		public boolean hasNext()
@@ -32,7 +30,6 @@ class SimpleBlock extends BlockBase {
 		}
 
 		/**	Retrieve the block data as a ByteBuffer.
-		*
 		*	@return	A ByteBuffer from which the block data may be read.
 		*/
 		public java.nio.ByteBuffer next()
@@ -58,10 +55,8 @@ class SimpleBlock extends BlockBase {
 	final byte[] data;
 
 	/**	Create a SimpleBlock object from the given block B-tree leaf entry and basic PST file object.
-	*
 	*	@param	entry	The block B-tree leaf entry describing the block.
 	*	@param	pstFile	The PST file's header, input data stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*/
 	SimpleBlock(final BBTEntry entry, PSTFile pstFile)
@@ -73,13 +68,10 @@ class SimpleBlock extends BlockBase {
 
 	/**	Create a SimpleBlock object from the given block B-tree leaf entry and PST file, using the given encryption method.
 	*	Note that there is occasionally need to create a simple block which does not use the file encryption method.
-	*
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	encryption	The encryption method to use to decrypt the data.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
-	*
 	*	@see	SubnodeBTree.BlockContext
 	*/
 	SimpleBlock(final BBTEntry entry, final Encryption encryption, PSTFile pstFile)
@@ -91,12 +83,10 @@ class SimpleBlock extends BlockBase {
 
 	/**	Create a SimpleBlock object from the given block B-tree leaf entry with the given block size from the given PST file,
 	*	using the given encryption method.
-	*
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	blockSize	The size of the block (including the {@link BlockTrailer BLOCKTRAILER})
 	*	@param	encryption	The encryption method to use to decrypt the data.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*/
 	SimpleBlock(final BBTEntry entry, final int blockSize, final Encryption encryption, PSTFile pstFile)
@@ -124,7 +114,6 @@ class SimpleBlock extends BlockBase {
 	}
 
 	/**	Retrieve the data from this SimpleBlock.
-	*
 	*	@return	The array of data bytes from this SimpleBlock object.
 	*/
 	byte[] data()
@@ -133,7 +122,6 @@ class SimpleBlock extends BlockBase {
 	}
 
 	/**	Obtain an interator over the (one) block.
-	*
 	*	@return	A trivial iterator over this single SimpleBlock.
 	*/
 	@SuppressWarnings("unchecked")
@@ -143,12 +131,9 @@ class SimpleBlock extends BlockBase {
 	}
 
 	/**	Retrieve the required block specified by BlockBTree leaf entry.
-	*
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
-	*
 	*	@return	The data block for the requested block B-tree entry.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the block data.
 	*/
 	static SimpleBlock read(final BBTEntry entry, PSTFile pstFile)
@@ -159,7 +144,6 @@ class SimpleBlock extends BlockBase {
 	}
 
 	/**	Test this class by printing out blocks in the block B-tree.
-	*
 	*	@param	args	The command line arguments to thee test application.
 	*/
 	public static void main(final String[] args)

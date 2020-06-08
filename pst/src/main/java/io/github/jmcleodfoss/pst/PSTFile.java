@@ -16,9 +16,7 @@ public class PSTFile {
 	public final Header header;
 
 	/**	Create a FileChannel for the given filename and read in the PST header.
-	*
 	*	@param	stream	The PST file to read.
-	*
 	*	@throws NotPSTFileException	The input stream does not contain a PST file.
 	* 	@throws java.io.IOException	There was an I/O error reading the input stream.
 	*/
@@ -38,7 +36,6 @@ public class PSTFile {
 	}
 
 	/**	A convenience method to return the encryption method in the header.
-	*
 	*	@return	The encryption object from the PST {@link Header} member.
 	*/
 	Encryption encryption()
@@ -47,9 +44,7 @@ public class PSTFile {
 	}
 
 	/**	A convenience method to move to the given point in the PST file.
-	*
 	*	@param	position	The location in the PST file to move the mapped byte buffer pointer to.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered while trying to move to the requested location in the file.
 	*/
 	void position(final long position)
@@ -60,10 +55,8 @@ public class PSTFile {
 	}
 
 	/**	Read data from the given position as a ByteBuffer
-	*
 	*	@param	position	The location to read from.
 	*	@param	length		The number of bytes to read.
-	*
 	*	@return	A ByteBuffer providing access to the requested bytes
 	*/
 	public java.nio.ByteBuffer read(final int position, final int length)
@@ -75,7 +68,6 @@ public class PSTFile {
 	}
 
 	/**	Close the PSTFile file.
-	*
 	* 	@throws java.io.IOException	There was a problem closing the file.
 	*/
 	public void close()
@@ -86,9 +78,7 @@ public class PSTFile {
 	}
 
 	/**	A convenience method to indicate whether the PST file uses Unicode or ANSI encoding.
-	*
 	*	@return	true if the PST file read in is a Unicode PST file, false if it is ANSI.
-	*
 	*	@see	FileFormat#fUnicode
 	*/
 	public boolean unicode()
@@ -97,9 +87,7 @@ public class PSTFile {
 	}
 
 	/**	Create a ByteBuffer with the right byte ordering from the given array.
-	*
 	*	@param	bytes	The data to change into a ByteBuffer
-	*
 	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
 	*/
 	public static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes)
@@ -108,11 +96,9 @@ public class PSTFile {
 	}
 
 	/**	Create a ByteBuffer with the right byte ordering from the given array.
-	*
 	*	@param	bytes		The data from which to create a ByteBuffer.
 	*	@param	offset		The offset into the array of bytes to start the ByteBuffer at.
 	*	@param	numBytes	The number of bytes to put into the ByteBuffer
-	*
 	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
 	*/
 	static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes, final int offset, final int numBytes)

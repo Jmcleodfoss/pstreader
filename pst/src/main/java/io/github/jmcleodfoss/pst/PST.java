@@ -16,9 +16,7 @@ public class PST extends PSTFile {
 	public final MessageStore messageStore;
 
 	/**	Create a "large footprint" PST object from the given filename.
-	*
 	*	@param	fn		The file name of the PST file to read.
-	*
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -43,13 +41,11 @@ public class PST extends PSTFile {
 	}
 
 	/**	Create a PST object from the given filename.
-	*
 	*	@param	fn		The file name of the PST file to read.
 	*	@param	fSmallFootprint	If fSmallFootprint is true, the block and node B-trees are held in {@link BlockFinder} and
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
-	*
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -74,13 +70,11 @@ public class PST extends PSTFile {
 	}
 
 	/**	Create a PST object from the given FileInputStream.
-	*
 	*	@param	fis		The FileInputStream of the PST file to read.
 	*	@param	fSmallFootprint	If fSmallFootprint is true, the block and node B-trees are held in {@link BlockFinder} and
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
-	*
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -116,11 +110,8 @@ public class PST extends PSTFile {
 	}
 
 	/**	Check whether the given password matches the stored password.
-	*
 	*	@param	testPassword	The password to check.
-	*
 	*	@return	true if the passed password matches the password in the PST file, false otherwise.
-	*
 	*	@see	#hasPassword
 	*/
 	public boolean checkPassword(final String testPassword)
@@ -129,9 +120,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Get a folder and its first set of descendent sub-folders.
-	*
 	*	@param	nodeFolder	The description of the folder node.
-	*
 	*	@return	A folder and its child folders and contents.
 	*/
 	public Folder getFolder(NBTEntry nodeFolder)
@@ -144,7 +133,6 @@ public class PST extends PSTFile {
 	}
 
 	/**	Get a folder and all sub-folders and contents.
-	*
 	*	@return	A folder and all its immediate descendents.
 	*/
 	public Folder getFolderTree()
@@ -157,9 +145,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Determine whether this PST file requires a password.
-	*
 	*	@return	true if the PST file is password-protected, false if it is not password-protected.
-	*
 	*	@see	#checkPassword
 	*/
 	public boolean hasPassword()
@@ -168,9 +154,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to retrieve the heap-on-node for the given BID.
-	*
 	*	@param	bid	The block ID to the heap-on-node of.
-	*
 	*	@return	The heap-on-node for the given block ID.
 	*/
 	public HeapOnNode heapOnNode(BID bid)
@@ -186,7 +170,6 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to retrieve a table model for the PST file's message store.
-	*
 	*	@return	A table model for the {@link #messageStore} memeber.
 	*/
 	public javax.swing.table.TableModel messageStoreTableModel()
@@ -195,9 +178,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to retrieve a table model for the PST file's named properties.
-	*
 	*	@return	A table model for the {@link #namedProperties named properties} of the PST file.
-	*
 	*	@see	io.github.jmcleodfoss.pst.NameToIDMap
 	*/
 	public javax.swing.table.TableModel namedPropertiesTableModel()
@@ -206,9 +187,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to retrieve an iterator through the named properties.
-	*
 	*	@return	An interator through the {@link #namedProperties named properties} of the PST file.
-	*
 	*	@see	io.github.jmcleodfoss.pst.NameToIDMap
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, String>> namedPropertiesIterator()
@@ -217,9 +196,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to retrieve an iterator for the node B-tree.
-	*
 	*	@return	An iterator over the leaves of the node B-tree.
-	*
 	*	@see	NodeBTree
 	*/
 	java.util.Iterator<BTreeNode> nodeIterator()
@@ -228,18 +205,14 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to obtain the property context from the given NID
-	*
 	*	@param	nid	The node ID to retrieve the property context iterator from.
-	*
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
-	*
 	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
 	* 	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	* 	@throws	NullDataBlockException			A null data block was found while building a property context.
 	* 	@throws UnknownClientSignatureException		An unrecognized client signature was found in the node.
 	* 	@throws UnparseablePropertyContextException	The property context for the node is bad
 	*	@throws java.io.IOException			There was a problem reading the property context.
-	*
 	*	@see	PropertyContext
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
@@ -256,11 +229,8 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to obtain a table model for the property context for the given NID.
-	*
 	*	@param	node	The node or sub-node B-tree leaf from which to retrieve the property context.
-	*
 	*	@return	A table model containing the property tags, tag names, and values for the property context.
-	*
 	*	@see	PropertyContext
 	*	@see	LPTTableModel PropertyContext.tableModel(final NameToIDMap)
 	*	@see	#tableModel
@@ -272,11 +242,8 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to obtain the property context for the given node.
-	*
 	*	@param	node	The node or sub-node B-tree leaf from which to retrieve the property context.
-	*
 	*	@return	The property context from the given node.
-	*
 	*	@see	#propertyContext(NID)
 	*/
 	public PropertyContext propertyContext(LPTLeaf node)
@@ -295,13 +262,9 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to obtain the property context for the given node in the node B-tree.
-	*
 	*	@param	nid	A node ID in the node B-tree.
-	*
 	*	@return	The property context from the given node.
-	*
 	* 	@throws	java.io.IOException	There was a problem reading the property context table in this node
-	*
 	*	@see	#propertyContext(LPTLeaf)
 	*/
 	public PropertyContext propertyContext(NID nid)
@@ -312,9 +275,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Retrieve the name of the given tag.
-	*
 	*	@param	tag	The tag for which to retrieve the name.
-	*
 	*	@return	The name of the property of this tag.
 	*/
 	public String propertyName(int tag)
@@ -323,9 +284,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to obtain sub-node B-Tree for the given node ID.
-	*
 	*	@param	nid	The node ID in the node B-tree to construct the sub-node B-tree for.
-	*
 	*	@return	The sub-node B-tree for the given node, if any, otherwise null.
 	*/
 	public SubnodeBTree subnodeBTree(NID nid)
@@ -341,9 +300,7 @@ public class PST extends PSTFile {
 	}
 
 	/**	Convenience function to obtain a javax.swing.table.TableModel for a PropertyContext object.
-	*
 	*	@param	pc	The property context to create a table model for.
-	*
 	*	@return	A javax.swing.table.TableModel object containing the property context's tags, tag names, and values.
 	*/
 	public javax.swing.table.TableModel tableModel(PropertyContext pc)
@@ -357,12 +314,9 @@ public class PST extends PSTFile {
 	*	has already been built; the alternative {@link #tcTableModel(LPTLeaf)} calls the
 	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockMap, PSTFile) TableContext constructor} constructor which builds the
 	*	heap-on-node itself.
-	*
 	*	@param	node	A node from the node B-tree or a sub-node B-tree containing the TableContext.
 	*	@param	hon	The heap-on-node containing the table context.
-	*
 	*	@return	A javax.swing.table.TableModel representation of the table context.
-	*
 	*	@see	io.github.jmcleodfoss.pst.TableContext
 	*	@see	#tcTableModel(LPTLeaf)
 	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, HeapOnNode, BlockMap, PSTFile)
@@ -384,11 +338,8 @@ public class PST extends PSTFile {
 	*	{@link io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockMap, PSTFile) TableContext constructor} constructor which builds the
 	*	heap-on-node itself; if the heap-on-node for the node has already been created, the alternative function
 	*	{@link #tcTableModel(LPTLeaf, HeapOnNode)} should be used instead.
-	*
 	*	@param	node	A node from the node B-tree or a sub-node B-tree containing the TableContext.
-	*
 	*	@return	A javax.swing.table.TableModel representation of the table context.
-	*
 	*	@see	io.github.jmcleodfoss.pst.TableContext
 	*	@see	#tcTableModel(LPTLeaf, HeapOnNode)
 	*	@see	io.github.jmcleodfoss.pst.TableContext#TableContext(LPTLeaf, BlockMap, PSTFile)

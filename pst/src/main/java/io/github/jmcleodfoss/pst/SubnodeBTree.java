@@ -32,11 +32,9 @@ public class SubnodeBTree extends BTree {
 		private java.nio.ByteBuffer snStream; 
 
 		/**	Construct a BlockContext object from the information at the given BID in this PST file.
-		*
 		*	@param	bid	The block ID of the root of the sub-node B-tree.
 		*	@param	bbt	The PST file's block B-tree.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this node's block context.
 		*/
 		BlockContext(final BID bid, final BlockMap bbt, PSTFile pstFile)
@@ -76,9 +74,7 @@ public class SubnodeBTree extends BTree {
 		}
 
 		/**	Create an intermediate sub-node B-tree entry using data read in from the input stream.
-		*
 		*	@param	entryStream	The data stream from which to read the sub-node B-tree entry.
-		*
 		*	@return	A sub-node B-tree containing all the children of this sub-node.
 		*/
 		@Override
@@ -98,9 +94,7 @@ public class SubnodeBTree extends BTree {
 		}
 
 		/**	Create a sub-node B-tree leaf entry using data read in from the input stream.
-		*
 		*	@param	entryStream	The data stream from which to read the sub-node B-tree entry.
-		*
 		*	@return	A sub-node B-tree leaf entry.
 		*/
 		@Override
@@ -145,10 +139,8 @@ public class SubnodeBTree extends BTree {
 		private final BID bid;
 
 		/**	Read an intermediate sub-node B-tree entry from the input stream using the given context.
-		*
 		*	@param	context	The context in which to read the node.
 		*	@param	stream	The data stream from which to read the node information.
-		*
 		*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this node.
 		*/ 
 		SIEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer stream)
@@ -163,9 +155,7 @@ public class SubnodeBTree extends BTree {
 		}
 
 		/**	Obtain size of an intermediate sub-node B-tree entry for this file's format.
-		*
 		*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
-		*
 		*	@return	The size of the intermediate sub-node entry in this file/
 		*/
 		static int size(PSTFile pstFile)
@@ -174,7 +164,6 @@ public class SubnodeBTree extends BTree {
 		}
 
 		/**	Obtain the B-tree search key for this node. All child nodes will have keys equal to or greater than this.
-		*
 		*	@return	The key to this node.
 		*/
 		public long key()
@@ -183,7 +172,6 @@ public class SubnodeBTree extends BTree {
 		}
 
 		/**	Create a description of this intermediate sub-node B-tree entry.
-		*
 		*	@return	A description of the intermediate sub-node B-tree entry.
 		*/
 		@Override
@@ -194,10 +182,8 @@ public class SubnodeBTree extends BTree {
 	}
 
 	/**	Create a SubnodeBTree object from the given position and context.
-	*
 	*	@param	key	The key for this node in the sub-node B-tree.
 	*	@param	context	The context to use when building the sub-node B-tree.
-	*
 	*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this sub-node B-tree.
 	*/
 	private SubnodeBTree(final long key, final BlockContext context)
@@ -208,13 +194,10 @@ public class SubnodeBTree extends BTree {
 	}
 
 	/**	Create a SubnodeBTree object from the given position and PST file.
-	*
 	*	@param	bid	The block ID of the root of this sub-node B-tree.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
-	*
 	* 	@throws java.io.IOException			There was an I/O error reading the sub-node B-tree.
-	*
 	*/
 	public SubnodeBTree(final BID bid, final BlockMap bbt, PSTFile pstFile)
 	throws
@@ -224,7 +207,6 @@ public class SubnodeBTree extends BTree {
 	}
 
 	/**	Return the actual size of an intermediate sub-node B-tree entry as read in from the input datastream.
-	*
 	*	@param	context	The context in which the sub-node B-tree is being build.
 	*/
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
@@ -239,7 +221,6 @@ public class SubnodeBTree extends BTree {
 	}
 
 	/**	Test the SubnodeBTree class by reading in traversing the PST file and displaying all the sub-node B-tree leaves.
-	*
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(final String[] args)

@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The NBTEntry class represents a node B-tree leaf entry.
-*
 *	@see	io.github.jmcleodfoss.pst.BBTEntry
 *	@see	io.github.jmcleodfoss.pst.BTree
 *	@see	io.github.jmcleodfoss.pst.NodeBTree
@@ -49,10 +48,8 @@ public class NBTEntry extends LPTLeaf {
 	public final NID nidParent;
 
 	/**	Create a node B-tree leaf entry from data read in from the input datastream.
-	*
 	*	@param	byteBuffer	The data stream from which to read the Node B-tree leaf entry.
 	*	@param	context		The context to use when reading the leaf data.
-	*
 	* 	@throws	java.io.IOException	An I/O error was encountered while reading in the node's data.
 	*/
 	NBTEntry(java.nio.ByteBuffer byteBuffer, final PagedBTree.PageContext<BTree, BTreeLeaf> context)
@@ -65,9 +62,7 @@ public class NBTEntry extends LPTLeaf {
 	}
 
 	/**	Obtain the actual size of a node B-tree leaf node as read in from the input datastream.
-	*
 	*	@param	context	The context to use to find the size (this function uses only the file format information.)
-	*
 	*	@return	The actual size of a node B-tree leaf node for this file type.
 	*/
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
@@ -90,7 +85,6 @@ public class NBTEntry extends LPTLeaf {
 	}
 
 	/**	Obtain a description of a node B-tree leaf node. This is typically used for debugging.
-	*
 	*	@return	A string describing the node B-tree leaf node.
 	*/
 	@Override
