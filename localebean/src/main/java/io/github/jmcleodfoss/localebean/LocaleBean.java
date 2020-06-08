@@ -14,9 +14,7 @@ import javax.faces.context.FacesContext;
 public class LocaleBean {
 
 	/**	Determine whether a given URL refers to something which exists (by attempting to open a stream to it).
-	*
 	*	@param	urlName	The name of the URL to look for.
-	*
 	*	@return	true if the given URL could be opened as an InputStream, false if it could not.
 	*/
 	private static boolean urlExists(final String urlName)
@@ -32,9 +30,7 @@ public class LocaleBean {
 
 	/**	Return the most-specific filename which exists for the given locale, using the ResourceBundle rules to create the
 	*	filename using the current locale's country, script, language, and variant (note that the script is not yet supported).
-	*
 	*	@param	fn	The filename to create a localized version of.
-	*
 	*	@return	The most specific localized version of the given filename, if present, otherwise the file named by the filename.
 	*/
 	public static String getLocalizedFilename(final String fn)
