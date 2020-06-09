@@ -1,6 +1,9 @@
 package io.github.jmcleodfoss.localebean;
 
-/**	Test logic of LocaleBean separation of filename and extension. */
+/**	Test logic of LocaleBean separation of filename and extension.
+*	Note: This is only to test the concept; it's a standalone file that really belongs in a sandbox somewhere rather than as part of this project. It
+*	does not belong in any kind of Maven test
+*/
 class Test
 {
 
