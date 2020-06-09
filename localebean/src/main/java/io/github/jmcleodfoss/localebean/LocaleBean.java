@@ -44,8 +44,7 @@ public class LocaleBean implements Serializable {
 		final String fnExtension = iExtension >= 0 ? fn.substring(iExtension) : "";
 
 		final String language = locale.getLanguage();
-//		final String script = locale.getScript();
-		final String script = "";
+		final String script = locale.getScript();
 		final String country = locale.getCountry();
 		final String variant = locale.getVariant();
 		
