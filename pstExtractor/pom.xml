@@ -22,16 +22,6 @@
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
-			<artifactId>swingutil</artifactId>
-			<version>1.1.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmcleodfoss</groupId>
-			<artifactId>util</artifactId>
-			<version>1.1.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>localebean</artifactId>
 			<version>1.1.1-SNAPSHOT</version>
 		</dependency>
