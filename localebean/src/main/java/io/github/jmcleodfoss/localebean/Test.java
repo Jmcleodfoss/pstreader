@@ -24,5 +24,8 @@ class Test
 		process(".extension");
 		process("filename.extension");
 		process("filename.second-component.extension");
+
+		for (String a: args)
+			process(a);
 	}
 }
