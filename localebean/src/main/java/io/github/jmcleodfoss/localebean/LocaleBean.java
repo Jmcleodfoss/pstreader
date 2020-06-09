@@ -1,6 +1,5 @@
 package io.github.jmcleodfoss.localebean;
 
-import java.io.InputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
@@ -15,7 +14,7 @@ public class LocaleBean {
 
 	/**	Determine whether a given URL refers to something which exists (by attempting to open a stream to it).
 	*	@param	urlName	The name of the URL to look for.
-	*	@return	true if the given URL could be opened as an InputStream, false if it could not.
+	*	@return	true if the given URL could be opened as a java.io.InputStream, false if it could not.
 	*/
 	private static boolean urlExists(final String urlName)
 	{
