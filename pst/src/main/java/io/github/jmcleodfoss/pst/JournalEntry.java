@@ -5,6 +5,7 @@ package io.github.jmcleodfoss.pst;
 *	fields may be extracted.
 *	@see	io.github.jmcleodfoss.pst.Appointment
 *	@see	io.github.jmcleodfoss.pst.Contact
+*	@see	io.github.jmcleodfoss.pst.DistributionList
 *	@see	io.github.jmcleodfoss.pst.Message
 *	@see	io.github.jmcleodfoss.pst.StickyNote
 *	@see	io.github.jmcleodfoss.pst.Task
