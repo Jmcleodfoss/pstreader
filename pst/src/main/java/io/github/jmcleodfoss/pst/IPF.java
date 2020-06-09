@@ -18,6 +18,11 @@ public class IPF {
 	*/
 	private static final String CONTACT = "IPF.Contact";
 
+	/**	The string used for the "container class" for folders containing documents to be uploaded to a shared location.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
+	private static final String DOCUMENT_LIBRARIES = "IPF.ShortcutFolder";
+
 	/**	The string used for the "container class" for RSS feeds.
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
@@ -43,11 +48,6 @@ public class IPF {
 	*/
 	private static final String REMINDER = "Outlook.Reminder";
 
-	/**	The string used for the "container class" for folders containing shortcuts.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
-	*/
-	private static final String SHORTCUT_FOLDER = "IPF.ShortcutFolder";
-
 	/**	The string used for the "container class" for folders containing sticky notes.
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
@@ -69,13 +69,13 @@ public class IPF {
 		knownClasses.add(APPOINTMENT);
 		knownClasses.add(CONFIGURATION);
 		knownClasses.add(CONTACT);
+		knownClasses.add(DOCUMENT_LIBRARIES);
 		knownClasses.add(HOMEPAGE);
 		knownClasses.add(IM_CONTACT_LIST);
 		knownClasses.add(JOURNAL);
 		knownClasses.add(NOTE);
 		knownClasses.add(QUICK_CONTACTS);
 		knownClasses.add(REMINDER);
-		knownClasses.add(SHORTCUT_FOLDER);
 		knownClasses.add(STICKYNOTE);
 		knownClasses.add(TASK);
 	}
@@ -105,6 +105,15 @@ public class IPF {
 	public static boolean isContact(Folder folder)
 	{
 		return CONTACT.equals(folder.containerClass);
+	}
+
+	/**	Is the given folder one in contains documents to be uploaded to a shared location?
+	*	@param	folder	The folder to check.
+	*	@return	true if the given folder's class is IPF.Shortcut
+	*/
+	public static boolean isDocumentLibrary(Folder folder)
+	{
+		return DOCUMENT_LIBRARIES.equals(folder.containerClass);
 	}
 
 	/**	Is the given folder the list of RSS feeds?
