@@ -1,16 +1,17 @@
 package io.github.jmcleodfoss.localebean;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Locale;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 /**	The LocaleBean provides a mechanism to retrieve the locale-related information for use in JSF pages. */
-@ManagedBean(name = "localeBean")
+@Named("localeBean")
 @SessionScoped
-public class LocaleBean {
+public class LocaleBean implements Serializable {
 
 	/**	Determine whether a given URL refers to something which exists (by attempting to open a stream to it).
 	*	@param	urlName	The name of the URL to look for.

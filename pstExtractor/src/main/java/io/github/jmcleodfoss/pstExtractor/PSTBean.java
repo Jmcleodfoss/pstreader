@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.EnumMap;
@@ -11,13 +12,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UISelectMany;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.inject.Named;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import io.github.jmcleodfoss.pst.Appointment;
@@ -40,9 +41,10 @@ import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
 import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 
 /**	The ContactFormBean shares the data from the contact upload form with the contact server. */
-@ManagedBean(name = "pstBean")
+@Named("pstBean")
 @SessionScoped
-public class PSTBean {
+public class PSTBean implements Serializable
+{
 
 	/**	The maximum number of attempts to provide a password permitted. */
 	private static final int MAX_PASSWORD_ATTEMPTS = 3;
