@@ -63,6 +63,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<!-- Jar file for JavaScript jquery -->
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>1.7.2</version>
