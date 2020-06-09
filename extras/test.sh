@@ -90,6 +90,7 @@ TestPSTFile() {
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Folder "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Header "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/HeapOnNode "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/IPF "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/NameToIDMap "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/NodeBTree "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/PropertyContext "$pst"

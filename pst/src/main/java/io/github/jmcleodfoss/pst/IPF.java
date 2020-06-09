@@ -204,4 +204,31 @@ public class IPF {
 	{
 		return knownClasses.iterator();
 	}
+
+	/**	Test the IPF class by iterating through the root folders and displaying the type of each and whether it is known.
+	*	@param	arg	The file to show the attachment information for.
+	*/
+	public static void main(final String[] args)
+	{
+		final String fmtOutput = "%-25s %-25s %-10s\n";
+		if (args.length < 1) {
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-filename");
+			System.exit(1);
+		}
+
+		try {
+			for (String a: args) {
+				System.out.println(a);
+				PST pst = new PST(a);
+				Folder rootFolder = pst.getFolder(pst.nodeBTree.find(pst.messageStore.rootMailboxEntry.nid));
+				System.out.printf(fmtOutput, "Folder Name", "Container Class", "Known Container Class?");
+				for (java.util.Iterator<Folder> folderIterator = rootFolder.subfolderIterator(); folderIterator.hasNext(); ) {
+					final Folder f = folderIterator.next();
+					System.out.printf(fmtOutput, f.displayName, f.containerClass, isKnownClass(f));
+				}
+			}
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
+		}
+	}
 }
