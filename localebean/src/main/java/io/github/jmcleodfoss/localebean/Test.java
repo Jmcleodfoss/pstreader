@@ -1,7 +1,8 @@
 package io.github.jmcleodfoss.localebean;
 
 /**	Test logic of LocaleBean separation of filename and extension. */
-class Test {
+class Test
+{
 
 	static void process(String fn)
 	{
