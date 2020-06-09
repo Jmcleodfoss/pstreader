@@ -26,11 +26,6 @@
 			<version>1.1.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-bundle</artifactId>
-			<version>2.3.5</version>
-		</dependency>
-		<dependency>
 			<!-- for file upload -->
 			<groupId>org.apache.myfaces.tomahawk</groupId>
 			<artifactId>tomahawk20</artifactId>
@@ -40,6 +35,20 @@
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
 			<version>2.2.1-b05</version>
+		</dependency>
+		<dependency>
+			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-bundle</artifactId>
+			<version>2.3.5</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.inject</groupId>
