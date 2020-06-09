@@ -3,22 +3,34 @@ package io.github.jmcleodfoss.pst;
 /**	The IPF holds the list of IPF folder types. */
 public class IPF {
 
-	/**	The string used for the "container class" for folders containing appointments. */
+	/**	The string used for the "container class" for folders containing appointments.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
 	private static final String APPOINTMENT = "IPF.Appointment";
 
-	/**	The string used for the "container class" for folders containing contacts. */
+	/**	The string used for the "container class" for folders containing contacts.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
 	private static final String CONTACT = "IPF.Contact";
 
-	/**	The string used for the "container class" for folders containing journals. */
+	/**	The string used for the "container class" for folders containing journals.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
 	private static final String JOURNAL = "IPF.Journal";
 
-	/**	The string used for the "container class" for folders containing sticky notes. */
+	/**	The string used for the "container class" for folders containing sticky notes.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
 	private static final String STICKYNOTE = "IPF.StickyNote";
 
-	/**	The string used for the "container class" for folders containing tasks. */
+	/**	The string used for the "container class" for folders containing tasks.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
 	private static final String TASK = "IPF.Task";
 
-	/**	The string used for the "container class" for folders containing notes. */
+	/**	The string used for the "container class" for folders containing notes.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
 	private static final String NOTE = "IPF.Note";
 
 	/**	The list of known folder class types. */
