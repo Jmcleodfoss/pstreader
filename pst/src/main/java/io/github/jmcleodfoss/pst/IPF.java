@@ -8,10 +8,10 @@ public class IPF {
 	*/
 	private static final String APPOINTMENT = "IPF.Appointment";
 
-	/**	The string used for the "container class" for folders used to perseist conversation actions.
+	/**	The string used for the "container class" for folders used to persist conversation actions.
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
-	private static final String CONFIGURATION = "IPF.Configuration";
+	private static final String CONVERSATION_ACTION_SETTNGS = "IPF.Configuration";
 
 	/**	The string used for the "container class" for folders containing contacts.
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
@@ -67,7 +67,7 @@ public class IPF {
 	static final java.util.Vector<String> knownClasses = new java.util.Vector<String>();
 	static {
 		knownClasses.add(APPOINTMENT);
-		knownClasses.add(CONFIGURATION);
+		knownClasses.add(CONVERSATION_ACTION_SETTNGS);
 		knownClasses.add(CONTACT);
 		knownClasses.add(DOCUMENT_LIBRARIES);
 		knownClasses.add(HOMEPAGE);
@@ -93,9 +93,9 @@ public class IPF {
 	*	@param	folder	The folder to check.
 	*	@return	true if the given folder's class is IPF.Configuration.
 	*/
-	public static boolean isConfiguration(Folder folder)
+	public static boolean isConversationActionSettings(Folder folder)
 	{
-		return CONFIGURATION.equals(folder.containerClass);
+		return CONVERSATION_ACTION_SETTNGS.equals(folder.containerClass);
 	}
 
 	/**	Is the given folder a list of contacts?
