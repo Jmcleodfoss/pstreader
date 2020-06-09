@@ -20,8 +20,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/7fd7ec40-deec-4c06-9493-1bc06b349682">MS-OXCMSG: Message and Attachment Object Protocol Specification</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/46eb4828-c6a5-420d-a137-9ee36df317c1">MS-PST Section 2.4.6: Attachment Objects</a>
 */
-public class Attachment {
-
+public class Attachment
+{
 	/**	Attachment Flag value: The attachment has not yet been created (the file contains a placeholder but no attachment
 	*	data). Per the MC-OXCXMSG document, its value is {@value}.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG Section 2.2.2.9: PidTagAttachMethod Property</a>

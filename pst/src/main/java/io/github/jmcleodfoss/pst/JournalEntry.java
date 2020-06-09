@@ -12,8 +12,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/7fd7ec40-deec-4c06-9493-1bc06b349682">MS-OXCMSG: Message and Attachment Object Protocol Specification</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1042af37-aaa4-4edc-bffd-90a1ede24188">MS-PST Section 2.4.5: Message Objects</a>
 */
-public class JournalEntry extends MessageObjectWithBody {
-	
+public class JournalEntry extends MessageObjectWithBody
+{
 	/**	Create an object representing the journal entry for the given row in the folder contents table.
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.
