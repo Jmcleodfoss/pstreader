@@ -64,7 +64,6 @@ class pstExplorer extends JFrame {
 	private FolderTree folderTab;
 
 	/**	Create the singleton pstExplorer object.
-	*
 	*	@param	args	If any arguments are passed attempt to open the last argument as a PST file.
 	*/
 	pstExplorer(String[] args)
@@ -147,7 +146,6 @@ class pstExplorer extends JFrame {
 	}
 
 	/**	Add a NewFileListener to the list of listeners.
-	*
 	*	@param	listener	The NewFileListener object to add to the list.
 	*/
 	static void addNewFileListener(NewFileListener listener)
@@ -165,7 +163,6 @@ class pstExplorer extends JFrame {
 	}
 
 	/**	Read in the given PST file.
-	*
 	*	@param	file	The File object indicating the PST file to load.
 	*/
 	void openFile(final java.io.File file)
@@ -200,7 +197,6 @@ class pstExplorer extends JFrame {
 	}
 
 	/**	Convenience function to provide a reference to the PST object currently being processed.
-	*
 	*	@return	The PST object for the currently loaded file.
 	*/
 	static io.github.jmcleodfoss.pst.PST pst()
@@ -209,7 +205,6 @@ class pstExplorer extends JFrame {
 	}
 
 	/**	Remove a NewFileListener to the list of listeners.
-	*
 	*	@param	listener	The NewFileListener to remove from the list of NewFileListeners.
 	*/
 	static void removeFileEventListener(NewFileListener listener)
@@ -241,7 +236,6 @@ class pstExplorer extends JFrame {
 	}
 
 	/**	Simple mainline - create the pstExplorer object, which does all the work.
-	*
 	*	@param	args	The command line arguments to the application (unused).
 	*/
 	public static void main(String args[])

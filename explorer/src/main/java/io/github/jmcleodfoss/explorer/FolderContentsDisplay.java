@@ -57,9 +57,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 		}
 
 		/**	Does it make sense to display the dialog for this node?
-		*
 		*	@param	o	The node to check to see whether the "Save as HTML" menu should be available.
-		*
 		*	@return	true if the "Save as HTML" popup menu should be shown, false if it should not be shown.
 		*/
 		public boolean lookingFor(final Object o)
@@ -108,9 +106,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 		}
 
 		/**	Does it make sense to display the dialog for this node?
-		*
 		*	@param	o	The node to check to see whether the "Save Attachment" menu should be available.
-		*
 		*	@return	true if the "Save Attachment" popup menu should be shown, false if it should not be shown.
 		*/
 		public boolean lookingFor(final Object o)
@@ -190,7 +186,6 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	private PropertyContext messagePC;
 
 	/**	ssCreate the display of various types of data within the folder tree (folders, messages, and attachments).
-	*
 	*	@param	folderTree	The folder tree.
 	*/
 	FolderContentsDisplay(final BTreeJTree folderTree)
@@ -223,7 +218,6 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	}
 
 	/**	Update the display to show information about the current node of the folder tree.
-	*
 	*	@param	treeNode	The new folder tree node to display.
 	*/
 	private void doUpdate(final Object treeNode)
@@ -408,7 +402,6 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	}
 
 	/**	Update the given component (of NodeContentsDisplay type or derived there-from).
-	*
 	*	@param	component	The component to display.
 	*	@param	node		The new node.
 	*	@param	title		The tab title for the TabbedPane.
@@ -425,7 +418,6 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	}
 
 	/**	Update the component displays as nodes are selected.
-	*
 	*	@param	e	The TreeSelectionEvent which triggered the update.
 	*/
 	public void valueChanged(final javax.swing.event.TreeSelectionEvent e)

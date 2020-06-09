@@ -23,7 +23,6 @@ abstract public class FileSaverMenuItem implements ActionListener {
 	}
 
 	/**	Construct a FileSaveMenuItem with the given extension filters.
-	*
 	*	@param	extensionFilters	A list of filters indicating extensions accepted in the dialog box.
 	*/
 	FileSaverMenuItem(FileNameExtensionFilter[] extensionFilters)
@@ -32,7 +31,6 @@ abstract public class FileSaverMenuItem implements ActionListener {
 	}
 
 	/**	Obtain the initial filename suggestion for the save dialog box.
-	*
 	*	@return	This (base class) version of the function returns null.
 	*/
 	String initialFilenameSuggestion()
@@ -41,7 +39,6 @@ abstract public class FileSaverMenuItem implements ActionListener {
 	}
 
 	/**	Obtain the title for the save dialog box.
-	*
 	*	@return	Text to be used as a title for the dialog box.
 	*/
 	String dialogTitle()
@@ -50,14 +47,12 @@ abstract public class FileSaverMenuItem implements ActionListener {
 	}
 
 	/**	The data function returns the bytes to be written to the new file.
-	*
 	*	@return	The data bytes to be written to the new file.
 	*/
 	abstract byte[] data();
 
 	/**	Action to take when File / Open is selected. Note that this is called after the TreeSelectionListener which updates
 	*	the Node content display.
-	*
 	*	@param	e	The event which triggered this action.
 	*/
 	public void actionPerformed(ActionEvent e)

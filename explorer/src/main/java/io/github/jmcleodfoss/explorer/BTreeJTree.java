@@ -29,14 +29,12 @@ class BTreeJTree extends JScrollPane {
 
 		/**	Get node text - the PST BTrees use toString for purposes inconsistent with BTree nodes, so this function uses
 		*	the interface provided by io.github.jmcleodfoss.pst.TreeCustomNodeText to get the node label text.
-		*
 		*	@param	value		The node of the tree.
 		*	@param	selected	A flag indicating whether the node is selected.
 		*	@param	expanded	A flag indicating whether the node is expanded.
 		*	@param	leaf		A flag indicating whether the node is a leaf node.
 		*	@param	row		The row of the tree in the display.
 		*	@param	hasFocus	A flag indicating whether the node has keyboard focus.
-		*
 		*	@return	A string which may be used as the node label on the JTree.
 		*/
 		public String convertValueToText(Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
@@ -64,7 +62,6 @@ class BTreeJTree extends JScrollPane {
 	}
 
 	/**	Add a MouseListener to the underlying tree.
-	*
 	*	@param	listener	The MouseListener to add to the tree.
 	*/
 	public void addMouseListener(MouseListener listener)
@@ -73,7 +70,6 @@ class BTreeJTree extends JScrollPane {
 	}
 
 	/**	Add a TreeExpansionListener to the underlying tree.
-	*
 	*	@param	listener	The TreeExpansionListener to add to the tree.
 	*/
 	void addTreeExpansionListener(TreeExpansionListener listener)
@@ -82,7 +78,6 @@ class BTreeJTree extends JScrollPane {
 	}
 
 	/**	Add a TreeSelectionListener to the underlying tree.
-	*
 	*	@param	listener	The TreeSelectionListener to add to the tree.
 	*/
 	void addTreeSelectionListener(TreeSelectionListener listener)
@@ -91,7 +86,6 @@ class BTreeJTree extends JScrollPane {
 	}
 
 	/**	Add a TreeWillExpandListener to the underlying tree.
-	*
 	*	@param	listener	The TreeWillExpandListener to add to the tree.
 	*/
 	void addTreeWillExpandListener(TreeWillExpandListener listener)
@@ -100,7 +94,6 @@ class BTreeJTree extends JScrollPane {
 	}
 
 	/**	Set the model for the underlying tree.
-	*
 	*	@param	tm	The new TreeModel for the underlying tree.
 	*/
 	void setModel(TreeModel tm)

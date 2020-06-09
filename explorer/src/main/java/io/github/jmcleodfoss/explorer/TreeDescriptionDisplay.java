@@ -19,7 +19,6 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	private JComponent contents;
 
 	/**	Construct a NodeDescriptionDisplay object.
-	*
 	*	@param	tree	The tree associated with this description.
 	*	@param	contentsDisplay	The content display for the currently selected node.
 	*/
@@ -35,7 +34,6 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	}
 
 	/**	The paint method is over-ridden to place the divider correctly based on the top component's size.
-	*
 	*	@param	g	The graphics context in which to paint the component.
 	*/
 	public void paint(Graphics g)
@@ -56,7 +54,6 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	}
 
 	/**	Update the display based on the changed selection.
-	*
 	*	@param	e	The TreeSelectionEvent indicating the new node information.
 	*/
 	public void valueChanged(final TreeSelectionEvent e)

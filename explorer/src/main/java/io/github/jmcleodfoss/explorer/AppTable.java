@@ -40,7 +40,6 @@ class AppTable extends JScrollPane {
 	}
 
 	/**	Set the model and update the column widths.
-	*
 	*	@param	tm	The table model describing the table displayed by this AppTable object.
 	*/
 	void setModel(TableModel tm)

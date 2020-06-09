@@ -15,7 +15,6 @@ class NodeBTreeDisplay extends BTreeWithData {
 	}
 
 	/**	Get the tree model for the node B-tree.
-	*
 	*	@return	The tree model for the node and sub-node B-tree.
 	*/
 	TreeModel treeModel()

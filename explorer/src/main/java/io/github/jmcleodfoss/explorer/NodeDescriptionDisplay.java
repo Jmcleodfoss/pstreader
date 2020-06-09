@@ -69,9 +69,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay {
 		}
 
 		/**	Is the currently selected node an attachment node?
-		*
 		*	@param	o	The node to check to see whether it is an attachment.
-		*
 		*	@return	true if this node is an attachment, false if it is not an attachmetn
 		*/
 		public boolean lookingFor(Object o)
@@ -81,7 +79,6 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay {
 	};
 
 	/**	Construct a NodeDescriptionDisplay object.
-	*
 	*	@param	tree	The node tree associated with this description.
 	*/
 	NodeDescriptionDisplay(BTreeJTree tree)

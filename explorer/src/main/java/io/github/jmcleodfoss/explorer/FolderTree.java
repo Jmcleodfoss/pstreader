@@ -28,7 +28,6 @@ class FolderTree extends BTreeWithData {
 	}
 
 	/**	Obtain the tree model for the folder tree.
-	*
 	*	@return	The javax.swing.tree.TreeModel representing the folder hierarchy.
 	*/
 	TreeModel treeModel()

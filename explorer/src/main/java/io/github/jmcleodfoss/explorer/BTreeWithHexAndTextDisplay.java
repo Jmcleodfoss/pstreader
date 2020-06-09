@@ -16,7 +16,6 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	private HexAndTextDisplay hexAndTextDisplay;
 
 	/**	Create a BTreeWithData with a HexAndText display as its data view.
-	*
 	*	@param	orientation	The orientation of the underlying BTreeWithData's JSplitPane
 	*/
 	BTreeWithHexAndTextDisplay(int orientation)
@@ -27,9 +26,7 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	}
 
 	/**	Read the raw data for the node.
-	*
 	*	@param	node	The leaf node to display.
-	*
 	*	@return	A ByteBuffer containing the raw data bytes for this node.
 	*/
 	protected ByteBuffer readRawData(BTreeNode node)
@@ -49,7 +46,6 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	}
 
 	/**	Update the display based on the changed selection.
-	*
 	*	@param	e	The TreeSelectionEvent describing the selection change.
 	*/
 	public void valueChanged(TreeSelectionEvent e)

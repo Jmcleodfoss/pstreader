@@ -20,7 +20,6 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 	protected JComponent dataView;
 
 	/**	Construct a BTreeWithData object with the given orientation and data view component.
-	*
 	*	@param	orientation	The orientation of the JSplitPane
 	*	@param	dataView	The data to show with the B-tree
 	*/
@@ -35,7 +34,6 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 	}
 
 	/**	Construct a BTreeWithData object with the given orientation.
-	*
 	*	@param	orientation	The orientation of the JSplitPane
 	*/
 	protected BTreeWithData(final int orientation)
@@ -44,7 +42,6 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 	}
 
 	/**	Update the views when a new file is read in.
-	*
 	*	@param	e	The description of new file.
 	*/
 	public void fileLoaded(final NewFileEvent e)
@@ -55,7 +52,6 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 	}
 
 	/**	Override paint method to set divider location.
-	*
 	*	@param	g	The graphics context in which to paint the object.
 	*/
 	public void paint(java.awt.Graphics g)
@@ -72,7 +68,6 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 	}
 
 	/**	Set the data component to the given object, setting it as a TreeSelectionListener if supported.
-	*
 	*	@param	dataView	The new dataView component.
 	*/
 	void setDataView(JComponent dataView)
@@ -83,7 +78,6 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener {
 	}
 
 	/**	Get the tree model from the PST file for this client.
-	*
 	*	@return	An EmptyTreeModel.
 	*/
 	TreeModel treeModel()

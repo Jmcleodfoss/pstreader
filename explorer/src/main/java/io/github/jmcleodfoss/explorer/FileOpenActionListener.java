@@ -22,7 +22,6 @@ class FileOpenActionListener implements ActionListener {
 	}
 
 	/**	Take action to take when File -&gt; Open is selected: show a load file dialog box.
-	*
 	*	@param	e	The menu event which triggers displaying the file open dialog.
 	*/
 	public void actionPerformed(ActionEvent e)

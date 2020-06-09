@@ -60,7 +60,6 @@ class Message extends NodeContentsDisplay {
 	}
 
 	/**	Update the display to reflect the currently selected node.
-	*
 	*	@param	message		The new message to display.
 	*	@param	messagePC	The message property context.
 	*/

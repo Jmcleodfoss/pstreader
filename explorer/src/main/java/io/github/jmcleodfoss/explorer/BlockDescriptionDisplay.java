@@ -5,7 +5,6 @@ package io.github.jmcleodfoss.explorer;
 class BlockDescriptionDisplay extends TreeDescriptionDisplay {
 
 	/**	Construct a BlockDescriptionDisplay object.
-	*
 	*	@param	tree	The tree associated with this description.
 	*/
 	BlockDescriptionDisplay(BTreeJTree tree)

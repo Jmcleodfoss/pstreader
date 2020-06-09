@@ -25,10 +25,8 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay {
 	}
 
 	/**	Read in a new sub-node B-tree.
-	*
 	*	@param	hon	The heap-on-node containing the sub-node B-tree.
 	*	@param	pst	The PST file being processed.
-	*
 	*	@return	true if the B-tree-on-heap could be displayed, false if it could not, or does not exist.
 	*/
 	boolean read(final HeapOnNode hon, PST pst)

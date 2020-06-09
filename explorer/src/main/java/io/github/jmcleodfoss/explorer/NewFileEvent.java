@@ -12,7 +12,6 @@ class NewFileEvent extends EventObject {
 	PST pst;
 
 	/**	Create a NewFileEvent object.
-	*
 	*	@param	source	The object from which the event originated.
 	*	@param	pst	The new PST object.
 	*/
