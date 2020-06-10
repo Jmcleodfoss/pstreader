@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The OutputSeparator class provides the frill of printing a separator line out for the second and subsequent calls to the emit
 *	function.
 */
-public class OutputSeparator {
-
+public class OutputSeparator
+{
 	/**	The default separator consists of twenty X the underscore character. */
 	private static final String defaultSeparator = "____________________";
 

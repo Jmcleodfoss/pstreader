@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The UnparseablePropertyContextException is thrown when the property context cannot be parsed (probably because of an I/O error).
 *	@see	PropertyContext
 */
-public class UnparseablePropertyContextException extends Exception {
-
+public class UnparseablePropertyContextException extends Exception
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

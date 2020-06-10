@@ -3,14 +3,14 @@ package io.github.jmcleodfoss.pst;
 /**	The PagedBTree class is the base class for B-trees stored on pages within the PST file (i.e. the Node and Block B-trees).
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/4f0cd8e7-c2d0-4975-90a4-d417cfca77f8">MS-PST Section 2.2.2.7.7.1: BTPAGE</a>
 */
-public abstract class PagedBTree extends BTree {
-
+public abstract class PagedBTree extends BTree
+{
 	/**	The size of a PST page. */
 	static final int PAGE_SIZE = 512;
 
 	/**	The PageContext class contains information required to keep track of the current position in the B-tree during input. */
-	protected abstract static class PageContext<I extends BTree, L extends BTreeLeaf> extends BTree.Context<I, L> {
-
+	protected abstract static class PageContext<I extends BTree, L extends BTreeLeaf> extends BTree.Context<I, L>
+	{
 		private static final String nm_rgEntries = "rgEntries";
 		private static final String nm_cEnt = "cEnt";
 		private static final String nm_cbEnt = "cbEnt";
@@ -104,8 +104,8 @@ public abstract class PagedBTree extends BTree {
 	*	@see	BBTEntry
 	*	@see	NBTEntry
 	*/
-	static class BTEntry {
-
+	static class BTEntry
+	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 

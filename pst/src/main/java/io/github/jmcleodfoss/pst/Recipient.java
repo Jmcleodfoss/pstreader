@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/f6ab1613-aefe-447d-a49c-18217230b148">MX-OXPROPS: Exchange Server Protocols Master Property List</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0e6d7ebd-c850-4772-ba9d-f5a642c9ff85">MS-PST Section 2.4.5.3: Recipient Table: Message Objects</a>
 */
-class Recipient {
-
+class Recipient
+{
 	/**	The e-mail address of the recipient. */
 	public final String emailAddress;
 

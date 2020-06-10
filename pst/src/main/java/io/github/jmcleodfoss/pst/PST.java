@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The PST class is a convenience collection of entities describing a PST file. */
-public class PST extends PSTFile {
-
+public class PST extends PSTFile
+{
 	/**	The block B-tree in this PST file. */
 	public final BlockMap blockBTree;
 

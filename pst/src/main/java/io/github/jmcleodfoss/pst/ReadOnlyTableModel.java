@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The ReadOnlyTableModel is a version of DefaultTableModel which does not permit cells to be edited. */
-public class ReadOnlyTableModel extends javax.swing.table.DefaultTableModel {
-
+public class ReadOnlyTableModel extends javax.swing.table.DefaultTableModel
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

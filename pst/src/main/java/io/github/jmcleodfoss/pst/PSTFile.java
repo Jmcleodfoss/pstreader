@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The PSTFile class is a convenience container class used to read later data from the file. */
-public class PSTFile {
-
+public class PSTFile
+{
 	/**	The data stream for the PST file. */
 	private java.io.FileInputStream stream;
 

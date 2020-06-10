@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The ReadOnlyTreeModel abstract class implements trivial versions of functions irrelevant for read-only trees. */
-public abstract class ReadOnlyTreeModel implements javax.swing.tree.TreeModel {
-
+public abstract class ReadOnlyTreeModel implements javax.swing.tree.TreeModel
+{
 	/**	Add a TreeModelListener to a read-only tree. Note that there is no book-keeping required for adding a
 	*	TreeModelListener, as a read-only tree cannot change.
 	*	@param	listener	The listener to "add".

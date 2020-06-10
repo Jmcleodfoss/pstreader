@@ -5,11 +5,11 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
 */
-class SimpleBlock extends BlockBase {
-
+class SimpleBlock extends BlockBase
+{
 	/**	The BlockBase Iterator class is a trivial iterator the data stream for this one block. */
-	class Iterator implements java.util.Iterator<java.nio.ByteBuffer> {
-
+	class Iterator implements java.util.Iterator<java.nio.ByteBuffer>
+	{
 		/**	The fNext flag indicates whether there is another block. It is true until the block is returned, when it
 		*	becomes false.
 		*/

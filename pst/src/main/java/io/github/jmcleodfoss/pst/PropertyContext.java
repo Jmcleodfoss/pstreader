@@ -3,15 +3,15 @@ package io.github.jmcleodfoss.pst;
 /**	The PropertyContext class contains a PST file property context.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/294c83c6-ff92-42f5-b6b6-876c29fa9737">MS-PST Section 2.3.3: Property Context (PC)</a>
 */
-public class PropertyContext {
-
+public class PropertyContext
+{
 	/**	Logger for class debugging. */
 	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.PropertyContext");
 
 	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on
 	*	demand. */
-	protected class PSTDataPointer {
-
+	protected class PSTDataPointer
+	{
 		/**	The reader for the given property. */
 		final DataType reader;
 
@@ -54,8 +54,8 @@ public class PropertyContext {
 	}
 
 	/**	A TableModel which may be used to represent a PropertyContext object. */
-	private class TableModel extends LPTTableModel {
-	
+	private class TableModel extends LPTTableModel
+	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 	

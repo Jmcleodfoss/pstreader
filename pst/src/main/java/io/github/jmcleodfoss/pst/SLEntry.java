@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The SLEntry is a leaf node in the sub-node B-tree.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85c4d943-0779-43c5-bd98-61dc9bb5dfd6">MS-PST Section 2.2.2.8.3.3.1.1: SLEntry (Leaf Block Entry)</a>
 */
-class SLEntry extends LPTLeaf {
-
+class SLEntry extends LPTLeaf
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

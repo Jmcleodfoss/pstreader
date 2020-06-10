@@ -1,11 +1,11 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The SubnodeBTree class represents the B-tree for the sub-nodes of a node B-tree leaf node. */
-public class SubnodeBTree extends BTree {
-
+public class SubnodeBTree extends BTree
+{
 	/**	The BlockContext class contains information about a block being added to the sub-node B-tree. */
-	static class BlockContext extends BTree.Context<BTree, BTreeLeaf> {
-
+	static class BlockContext extends BTree.Context<BTree, BTreeLeaf>
+	{
 		private static final String nm_bType = "bType";
 		private static final String nm_cLevel = "cLevel";
 		private static final String nm_cEnt = "cEnt";
@@ -107,8 +107,8 @@ public class SubnodeBTree extends BTree {
 	}
 
 	/**	The SIEntry is an intermediate node in the sub-node B-tree. */
-	private static class SIEntry {
-
+	private static class SIEntry
+	{
 		private static final String nm_nid = "NID";
 		private static final String nm_nid_padding = "NID-padding";
 		private static final String nm_bid = "BID";

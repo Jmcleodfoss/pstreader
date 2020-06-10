@@ -3,11 +3,11 @@ package io.github.jmcleodfoss.pst;
 /**	The PagedBTreeFinder class contains code shared by the {@link io.github.jmcleodfoss.pst.BlockFinder} and {@link io.github.jmcleodfoss.pst.NodeFinder}
 *	classes.
 */
-abstract class PagedBTreeFinder {
-
+abstract class PagedBTreeFinder
+{
 	/**	The BTreePage class holds information about paged (block &amp; node) B-trees. */
-	protected abstract class BTreePage {
-
+	protected abstract class BTreePage
+	{
 		/**	The children (BTEntry or BBTEntry/NBTEntry) of this BTreePage */
 		private Object[] children;
 

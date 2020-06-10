@@ -9,11 +9,11 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5b7a6935-e83d-4917-9f62-6ce3707f09e0">MS-PST Section 2.2.2.8.3.2.1: XBLOCK</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/061b6ac4-d1da-468c-b75d-0303a0a8f468">MS-PST Section 2.2.2.8.3.2.2: XXBLOCK</a>
 */
-class XBlock extends BlockBase {
-
+class XBlock extends BlockBase
+{
 	/**	An iterator which returns a ByteBuffer view of the underlying data block. */
-	private class Iterator implements java.util.Iterator<java.nio.ByteBuffer> {
-
+	private class Iterator implements java.util.Iterator<java.nio.ByteBuffer>
+	{
 		/**	The underlying iterator - this class is just a thin wrapper around it to return the SimpleBlock's data as a
 		*	ByteBuffer rather than the SimpleBlock itself.
 		*/

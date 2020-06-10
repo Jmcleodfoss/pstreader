@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The UnparseableTableContextException is thrown when the table context cannot be parsed (probably because of an I/O error).
 *	@see	io.github.jmcleodfoss.pst.TableContext
 */
-public class UnparseableTableContextException extends Exception {
-
+public class UnparseableTableContextException extends Exception
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

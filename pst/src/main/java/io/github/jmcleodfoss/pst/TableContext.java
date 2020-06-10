@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.pst;
 *	publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5e48be0d-a75a-4918-a277-50408ff96740">MS-PST Section 2.3.4: Table Context (TC)</a>
 */
-public class TableContext extends javax.swing.table.AbstractTableModel {
-
+public class TableContext extends javax.swing.table.AbstractTableModel
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 
@@ -15,8 +15,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	/**	The TCInfo class represents the PST file TCINFO structure, and contains table context info for a table context.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45b3a0c5-d6d6-4e02-aebf-13766ff693f0">MS-PST Section 2.3.4.1: TCINFO</a>
 	*/
-	private static class TCInfo {
-
+	private static class TCInfo
+	{
 		/**	Index into rgib table of the ending offset of 4 and 8 byte data values. */
 		private static final int TCI_4b = 0;
 
@@ -171,12 +171,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 	/**	The TColDescr class holds a single table column description object.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/3a2f63cf-bb40-4559-910c-e55ec43d9cbb">MS-PST Section 2.3.4.2: TCOLDESC</a>
 	*/
-	static class TColDescr {
-
+	static class TColDescr
+	{
 		/**	The Comparator class permits the list of fields to sorted by row offset.
 		*/
-		static class Comparator implements java.util.Comparator<TColDescr> {
-
+		static class Comparator implements java.util.Comparator<TColDescr>
+		{
 			/**	Compare the two TColDescr objects.
 			*	@param	a	One TColDescr object for comparison.
 			*	@param	b	The other TColDescr object for comparison.
@@ -251,8 +251,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel {
 
 	/**	The Iterator class provides a means for returning a subset of columns from the table for each row.
 	*/
-	private class Iterator implements java.util.Iterator<Object> {
-
+	private class Iterator implements java.util.Iterator<Object>
+	{
 		/**	The next row to return. */
 		private int row;
 
