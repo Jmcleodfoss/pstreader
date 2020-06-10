@@ -169,7 +169,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		return ((Message)oParent).numAttachments();
 	}
 
-	/**	Get a folder and the first level of sub-folders, but no folder contents.
+	/**	Factory method to get a folder and the first level of sub-folders, but no folder contents.
 	*	@param	nodeFolderObject	The entry in the PST file's node B-tree for this folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
@@ -198,7 +198,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		return new Folder(nodeFolderObject, bbt, nbt, pstFile, new SubfolderLevelsToRead(SubfolderLevelsToRead.Levels.ONE), false);
 	}
 
-	/**	Get a folder and all sub-folders and contents.
+	/**	Factory method to get a folder and all sub-folders and contents.
 	*	@param	nodeFolderObject	The entry in the PST file's node B-tree for this folder.
 	*	@param	bbt			The PST file's block B-tree.
 	*	@param	nbt			The PST file's node B-tree.
