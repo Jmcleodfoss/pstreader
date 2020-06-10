@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The EmptyIterator class is an iterator for empty lists. It is useful in some circumstances when one wishes to avoid checking
 *	for null in client code.
 */
-public class EmptyIterator implements java.util.Iterator<Object> {
-
+public class EmptyIterator implements java.util.Iterator<Object>
+{
 	/**	A generic EmptyIterator object which may be used by anyone, and has no state, so it can be shared.
 	*/
 	public static final EmptyIterator iterator = new EmptyIterator();
