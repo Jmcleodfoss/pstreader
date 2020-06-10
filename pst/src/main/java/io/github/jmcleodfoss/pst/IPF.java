@@ -206,17 +206,18 @@ public class IPF {
 	}
 
 	/**	Test the IPF class by iterating through the root folders and displaying the type of each and whether it is known.
-	*	@param	arg	The file to show the attachment information for.
+	*	@param	args	The file(s) to show the folder information for.
 	*/
 	public static void main(final String[] args)
 	{
-		final String fmtOutput = "%-25s %-25s %-10s\n";
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.IPF pst-filename [pst-filename...]");
 			System.exit(1);
 		}
 
 		try {
+			final String fmtOutput = "%-25s %-25s %-10s\n";
+
 			for (String a: args) {
 				System.out.println(a);
 				PST pst = new PST(a);
