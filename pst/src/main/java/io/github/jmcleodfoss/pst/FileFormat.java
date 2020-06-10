@@ -66,5 +66,25 @@ class FileFormat
 	{
 		return fUnicode ? "Unicode" : "ANSI";
 	}
+
+	/**	Test ths class by indicating whether a file is unicode or not.
+	*	@param	args	The file(s) to show the file format for.
+	*/
+	public static void main(final String[] args)
+	{
+		if (args.length < 1) {
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.FileFormat pst-filename [pst-filename...]");
+			System.exit(1);
+		}
+
+		try {
+			for (String a: args) {
+				PST pst = new PST(a);
+				System.out.printf("%s: %s\n", a, pst.unicode() ? "Unicode" : "ANSI");
+			}
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
+		}
+	}
 }
 
