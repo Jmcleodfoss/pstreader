@@ -8,8 +8,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/53a4b926-8ac4-45c9-9c6d-8358d951dbcd">MS-PST Section 2.2.2.7.7.3: BBTEntry (Leaf BBT Entry)</a>
 */
-class BBTEntry implements BTreeLeaf {
-
+class BBTEntry implements BTreeLeaf
+{
 	private static final String nm_bref = "BREF";
 	private static final String nm_cb = "cb";
 	private static final String nm_cRef = "cRef";
