@@ -25,13 +25,13 @@ class FileFormat
 
 	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
 	*	@see	#VER_ANSI_2
-	*	@see	#VER_UNICODE
+	*	@see	#VER_UNICODE_MIN
 	*/
 	private static final short VER_ANSI_1 = 14;
 
 	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
 	*	@see	#VER_ANSI_1
-	*	@see	#VER_UNICODE
+	*	@see	#VER_UNICODE_MIN
 	*/
 	private static final short VER_ANSI_2 = 15;
 
@@ -39,7 +39,7 @@ class FileFormat
 	*	@see	#VER_ANSI_1
 	*	@see	#VER_ANSI_2
 	*/
-	private static final short VER_UNICODE = 23;
+	private static final short VER_UNICODE_MIN = 23;
 
 	/**	A flag indicating whether the file is Unicode. If it isn't Unicode, it must be ANSI. */
 	final boolean fUnicode;
@@ -49,17 +49,11 @@ class FileFormat
 	*/
 	FileFormat(short wVer)
 	{
-		switch (wVer){
-		case VER_ANSI_1:
-		case VER_ANSI_2:
+		if (wVer == VER_ANSI_1 || wVer == VER_ANSI_2) {
 			fUnicode = false;
-			break;
-
-		case VER_UNICODE:
+		} else if (wVer >= VER_UNICODE_MIN) {
 			fUnicode = true;
-			break;
-
-		default:
+		} else {
 			throw new UnknownFileFormatVersionException(wVer);
 		}
 	}
