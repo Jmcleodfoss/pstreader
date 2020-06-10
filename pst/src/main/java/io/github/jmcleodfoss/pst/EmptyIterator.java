@@ -1,7 +1,7 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The EmptyIterator class is an iterator for empty lists. It is useful in some circumstances when one wishes to avoid checking
-*	for null in client code.
+/**	The EmptyIterator class is an iterator for empty lists.
+*	It is useful in some circumstances when one wishes to avoid checking for null in client code.
 */
 public class EmptyIterator implements java.util.Iterator<Object>
 {
@@ -17,9 +17,11 @@ public class EmptyIterator implements java.util.Iterator<Object>
 		return false;
 	}
 
-	/**	Get the next element. This function should never be called (since hasNext always returns true). In fact, calling this
+	/**	Get the next element.
+	*	This function should never be called (since hasNext always returns false). In fact, calling this
 	*	function is a programming error, and the UnsupportedOperationExcpetion will be thrown.
-	*	returns	Nothing - calling this function results in an exception being thrown.
+	*	@return	Nothing! Calling this function results in an exception being thrown.
+	*	@throws	UnsupportedOperationException	The function was invoked.
 	*/
 	public Object next()
 	{
@@ -27,6 +29,7 @@ public class EmptyIterator implements java.util.Iterator<Object>
 	}
 
 	/**	The remove function is not supported by the EmptyIterator iterator.
+	*	@throws	UnsupportedOperationException	The function was invoked.
 	*/
 	public void remove()
 	{
