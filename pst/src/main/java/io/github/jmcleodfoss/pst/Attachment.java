@@ -246,7 +246,7 @@ public class Attachment
 	}
 
 	/**	Test the Attachment class by iterating through the messages and displaying information about each attachment.
-	*	@param	arg	The file(s) to show the attachment information for.
+	*	@param	args	The file(s) to show the attachment information for.
 	*/
 	public static void main(final String[] args)
 	{
