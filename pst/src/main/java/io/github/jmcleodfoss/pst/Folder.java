@@ -3,13 +3,14 @@ package io.github.jmcleodfoss.pst;
 /**	The Folder class represents a folder within a PST file. Note that sub-folders are loaded as required, rather than on initial
 *	construction of the Folder object for the folder root.
 */
-public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, javax.swing.tree.TreeModel {
-
+public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, javax.swing.tree.TreeModel
+{
 	/**	Ths SubfolderLevelsToRead class tells how many sub-levels to read when processing a folder: none, one, or all. */
 	private static class SubfolderLevelsToRead
 	{
 		/**	The SubFolderLevelsToReadEnum contains the possible choices for reading sub-folders. */
-		private static enum Levels {
+		private static enum Levels
+		{
 			/**	Read no sub-folders. */
 			NONE,
 
