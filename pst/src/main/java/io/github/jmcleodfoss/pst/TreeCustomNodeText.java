@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The TreeCustomNodeText interface provides a library-specific mechanism for obtaining tree node text.
-*/
+/**	The TreeCustomNodeText interface provides a library-specific mechanism for obtaining tree node text. */
 public interface TreeCustomNodeText {
 
 	/**	Obtain text suitable for display in a JTree node.
