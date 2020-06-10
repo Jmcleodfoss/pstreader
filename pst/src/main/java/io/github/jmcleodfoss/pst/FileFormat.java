@@ -4,13 +4,13 @@ package io.github.jmcleodfoss.pst;
 *	@see	Header
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
 */
-class FileFormat {
-
+class FileFormat
+{
 	/**	The UnknnownFileFormatVersionException is thrown if one tries to create an FileFormat object with an invalid value for
 	*	the file format.
 	*/
-	class UnknownFileFormatVersionException extends RuntimeException {
-
+	class UnknownFileFormatVersionException extends RuntimeException
+	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 
