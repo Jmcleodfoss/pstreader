@@ -246,18 +246,21 @@ public class Attachment
 	}
 
 	/**	Test the Attachment class by iterating through the messages and displaying information about each attachment.
-	*	@param	arg	The file to show the attachment information for.
+	*	@param	arg	The file(s) to show the attachment information for.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-filename [pst-filename...]");
 			System.exit(1);
 		}
 
 		try {
-			PST pst = new PST(new java.io.FileInputStream(args[0]), false);
-			findFolderAttachments(pst.getFolderTree(), pst);
+			for (String a: args) {
+				PST pst = new PST(new java.io.FileInputStream(a), false);
+				System.out.println(a);
+				findFolderAttachments(pst.getFolderTree(), pst);
+			}
 		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}
