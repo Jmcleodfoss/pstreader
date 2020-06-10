@@ -88,6 +88,7 @@ TestPSTFile() {
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BlockBTree "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BTreeOnHeap "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Folder "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/FileFormat "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Header "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/HeapOnNode "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/IPF "$pst"
