@@ -1,8 +1,6 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The OutputSeparator class provides the frill of printing a separator line out for the second and subsequent calls to the emit
-*	function.
-*/
+/**	The OutputSeparator class provides the frill of printing a separator line out for the second and subsequent calls to the emit function. */
 public class OutputSeparator
 {
 	/**	The default separator consists of twenty X the underscore character. */
@@ -39,8 +37,8 @@ public class OutputSeparator
 		this(defaultSeparator);
 	}
 
-	/**	If this is the first invocation of the emit function for this object, clear fFirst. If it is the second or later call,
-	*	output the separator, followed by a newline.
+	/**	If this is the first invocation of the emit function for this object, clear fFirst.
+	*	If it is the second or later call, output the separator, followed by a newline.
 	*	@param	stream	The java.io.OutputStream to which the separator should be written.
 	*	@throws java.io.IOException	There was a problem writing the separator to the output stream.
 	*/
