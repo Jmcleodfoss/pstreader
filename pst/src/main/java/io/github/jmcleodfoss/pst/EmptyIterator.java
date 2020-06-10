@@ -25,7 +25,7 @@ public class EmptyIterator implements java.util.Iterator<Object>
 	*/
 	public Object next()
 	{
-		throw new UnsupportedOperationException("remove not suported");
+		throw new UnsupportedOperationException("next not suported");
 	}
 
 	/**	The remove function is not supported by the EmptyIterator iterator.
