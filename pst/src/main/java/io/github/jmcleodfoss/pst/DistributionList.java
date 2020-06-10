@@ -140,7 +140,14 @@ public class DistributionList extends MessageObject
 	*	@param	nbt	The PST file's node B-tree
 	*	@param	pstFile	The PST file's data stream, header, etc.
 	*	@return	The list of members, as an array of strings.
-	*	@throws java.io.IOException	The distribution list contents could not be read.
+	*	@throws	java.io.IOException						An I/O error was encountered reading data from a ByteBuffer
+	*	@throws io.github.jmcleodfoss.pst.NotHeapNodeException			No valid heap node was found when creating the PropertyContext for an EntryID for an address book entry
+	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	No valid PropertyContext was found for an EntryID for an address book entry
+	*	@throws io.github.jmcleodfoss.pst.NullDataBlockException		An expected Block B-Tree entry was not found when creating the PropertyContext for an EntryID for an
+	*										address book entry
+	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	An invalid or corrupt PropertyContext was found for an EntryID for an address book entry.
+	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	An invalid or corrupt TableContext was found for an EntryID for an address book entry.
+	*	@throws io.github.jmcleodfoss.pst.UnknownClientSignatureException	An invalid ClientSignature was found for a heap entry when creating an EntryID for an address book entry.
 	*/
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
