@@ -5,8 +5,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.FileFormat
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
 */
-public class Header {
-
+public class Header
+{
 	private static final String nm_dwMagic = "dwMagic";
 	private static final String nm_dwCRCPartial = "dwCRCPartial";
 	private static final String nm_wVer = "wVer";

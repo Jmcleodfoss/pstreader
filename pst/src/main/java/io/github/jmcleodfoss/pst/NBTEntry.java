@@ -8,8 +8,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.PagedBTree.BTEntry
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/28fb2116-0998-4485-9844-9711b95603ba">MS-PST Section 2.2.2.7.7.4: NBTEntry (Leaf NBT Entry)</a>
 */
-public class NBTEntry extends LPTLeaf {
-
+public class NBTEntry extends LPTLeaf
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

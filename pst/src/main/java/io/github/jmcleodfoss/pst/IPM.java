@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The IPM holds the list of IPM message types. */
-class IPM {
-
+class IPM
+{
 	/**	The string used for appointment message objects. */
 	private static final String APPOINTMENT = "IPM.Appointment";
 

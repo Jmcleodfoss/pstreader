@@ -5,16 +5,16 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e17e195d-0454-4b9b-b398-c9127a26a678">MS-PST Section 2.4.7: Named Property Lookup Map</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/86dd69f7-8bef-48f3-abab-671b54e00976">MS-PST Section 2.5: Calculated Properties</a>
 */
-public class NameToIDMap {
-
+public class NameToIDMap
+{
 	/**	Logger for class debugging */
 	java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NameToIDMap");
 
 	/**	The NameID class contains information about an individual entry in the NID_NAME_ID_TO_MAP node.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0d6b4781-92c5-4d49-b24b-b783557098d1">MS-PST Section 2.4.7.1: NAMEID</a>
 	*/
-	private static class NameID {
-
+	private static class NameID
+	{
 		/**	GUID index (type) {@value}: No GUID. */
 		private static final short GUID_INDEX_NONE = 0;
 
@@ -135,8 +135,8 @@ public class NameToIDMap {
 	}
 
 	/**	This is an implementation of javax.swing.TableModel which may be used to display the name/property map. */
-	public class TableModel extends javax.swing.table.DefaultTableModel {
-
+	public class TableModel extends javax.swing.table.DefaultTableModel
+	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 	

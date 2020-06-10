@@ -7,11 +7,11 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e4efaad0-1876-446e-9d34-bb921588f924">MS-PST Section 1.3.1.1: Node Database (NDB) Layer</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/7d759bcb-7864-480c-8746-f6af913ab085">MS-PST Section 2.2.2.7.7: BTrees</a>
 */
-class NodeBTree extends PagedBTree implements NodeMap {
-
+class NodeBTree extends PagedBTree implements NodeMap
+{
 	/**	The base class of the context used for node B-Tree construction. */
-	protected abstract static class NBTContextBase<I, L> extends PagedBTree.PageContext<BTree, BTreeLeaf> {
-
+	protected abstract static class NBTContextBase<I, L> extends PagedBTree.PageContext<BTree, BTreeLeaf>
+	{
 		/**	Constructor trivially forwards parameters to the base class' constructor.
 		*	@param	bref	The block reference for the node B-tree node being built.
 		*	@param	pstFile	The PST data stream, header, etc.
@@ -28,8 +28,8 @@ class NodeBTree extends PagedBTree implements NodeMap {
 	/**	The context for construction of the node B-tree. This holds information required to build the B-tree but which doesn't
 	*	need to be saved in it.
 	*/
-	static class NBTContext extends NBTContextBase<BTree, BTreeLeaf> {
-
+	static class NBTContext extends NBTContextBase<BTree, BTreeLeaf>
+	{
 		/**	The constructor trivially forwards parameters to the base class' constructor.
 		*	@param	bref	The block reference for the node B-tree node being built.
 		*	@param	pstFile	The PST data stream, header, etc.

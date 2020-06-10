@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The IPF holds the list of IPF folder types. */
-public class IPF {
-
+public class IPF
+{
 	/**	The string used for the "container class" for folders containing appointments.
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/

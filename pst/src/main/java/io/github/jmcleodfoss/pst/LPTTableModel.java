@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The LPTTableModel is the base class for the table models used to represent a property context and a single row of a table context. */
-class LPTTableModel extends javax.swing.table.DefaultTableModel {
-
+class LPTTableModel extends javax.swing.table.DefaultTableModel
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

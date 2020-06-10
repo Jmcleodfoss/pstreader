@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/77ce49a3-3772-4d8d-bb2c-2f7520a238a6">MS-PST Section 2.3.1: Heap-on-Node</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.2: HNHDR</a>
 */
-class ClientSignature {
-
+class ClientSignature
+{
 	/**	The use of this client signature is not documented. */
 	private static final byte RESERVED1 = 0x6c;
 

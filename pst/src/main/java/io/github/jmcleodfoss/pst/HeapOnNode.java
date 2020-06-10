@@ -4,16 +4,16 @@ package io.github.jmcleodfoss.pst;
 *	@see	io.github.jmcleodfoss.pst.BTree
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/77ce49a3-3772-4d8d-bb2c-2f7520a238a6">MS-PST Section 2.3.1: HN (Heap-on-Node)</a>
 */
-public class HeapOnNode implements javax.swing.ListModel<Object> {
-
+public class HeapOnNode implements javax.swing.ListModel<Object>
+{
 	/**	Logger for debugging BTrees */
 	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.HeapOnNode");
 
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
 	*/
-	static class HID extends NID {
-
+	static class HID extends NID
+	{
 		/**	The HID for the root of a B-Tree-on-Heap */
 		static final HID BTreeOnHeapRoot = factory(0, 0);
 
@@ -96,8 +96,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	/**	The HNBitmapHeader class occurs the eighth block, and every 128 blocks thereafter (8, 136, 264, etc)
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/822e2327-b29d-4ec4-91be-45637a438d40">MS-PST Section 2.3.1.4: HNBITMAPHDR</a>
 	*/
-	static class HNBitmapHeader {
-
+	static class HNBitmapHeader
+	{
 		/**	If the signature byte is anything other than this, this not a valid heap node */
 		private static final byte HN_SIGNATURE = (byte)0xec;
 
@@ -133,8 +133,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	/**	The Header class represents the header of a heap-on-node structure.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.2: HNHDR</a>
 	*/
-	static class Header {
-
+	static class Header
+	{
 		/**	If the signature byte is anything other than this, this not a valid heap node */
 		private static final byte HN_SIGNATURE = (byte)0xec;
 
@@ -201,8 +201,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	/**	The PageMap contains the page information found at end of each heap page.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8e4ae05c-3c24-4103-b7e5-ffef6f244834">MS-PST Section 2.3.1.5: HNHPAGEMAP</a>
 	*/
-	private static class PageMap {
-
+	private static class PageMap
+	{
 		private static final String nm_cAlloc = "cAlloc";
 		private static final String nm_cFree = "cFree";
 		private static final String nm_rgibAlloc = "rgibAlloc";
@@ -254,8 +254,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object> {
 	/**	The PageHeader contains the information found at the beginning of the 2nd-7th, 9th-15th, etc pages making up the heap-on-node structure.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9c34ecf8-36bc-45a1-a2df-ee35c6dc840a">MS-PST Section 2.3.1.3: HNPAGEHDR</a>
 	*/
-	private static class PageHeader {
-
+	private static class PageHeader
+	{
 		private static final String nm_ibHnpm = "inHnpm";
 
 		/**	The data which makes up the Page Header */

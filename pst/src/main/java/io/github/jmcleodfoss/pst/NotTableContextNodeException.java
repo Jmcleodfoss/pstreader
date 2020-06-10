@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The NotTableContextNodeException is thrown when a node expected to have a Table Context client signature does not
 *	@see	TableContext
 */
-public class NotTableContextNodeException extends Exception {
-
+public class NotTableContextNodeException extends Exception
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 

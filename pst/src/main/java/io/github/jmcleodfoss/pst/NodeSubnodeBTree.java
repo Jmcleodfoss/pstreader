@@ -3,13 +3,13 @@ package io.github.jmcleodfoss.pst;
 /**	The NodeSubnodeBtree provides a B-Tree containing all nodes and subnodes. Note that this requires more information to create
 *	than the node B-Tree without subnodes.
 */
-public class NodeSubnodeBTree extends NodeBTree {
-
+public class NodeSubnodeBTree extends NodeBTree
+{
 	/**	The Context class includes information about the node/sub-node B-Tree. This holds information required to build the
 	*	B-tree but which doesn't need to be saved in it.
 	*/
-	private static class NSNContext extends NBTContextBase<BTree, BTreeLeaf> {
-
+	private static class NSNContext extends NBTContextBase<BTree, BTreeLeaf>
+	{
 		/**	The block B-Tree for this PST file. */
 		final BlockMap bbt;
 
@@ -46,8 +46,8 @@ public class NodeSubnodeBTree extends NodeBTree {
 	}
 
 	/**	The "NodeLeafEntry" class is a leaf entry of the node B-Tree with its subnode B-Tree. */
-	private static class NodeLeafEntry extends NBTEntry {
-
+	private static class NodeLeafEntry extends NBTEntry
+	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 

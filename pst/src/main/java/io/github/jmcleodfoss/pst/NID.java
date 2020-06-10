@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The NID class represents a PST file node ID.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/18d7644e-cb33-4e11-95c0-34d8a84fbff6">MS-PST Section 2.2.2.1: NID (Node ID)</a>
 */
-public class NID implements NodeKey {
-
+public class NID implements NodeKey
+{
 	/**	Logger for NID creation. */
 	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NID");
 

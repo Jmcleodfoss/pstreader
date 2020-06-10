@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The MessageStore class is a (thin) wrapper around the message store PC, with a few convenience functions.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/aa0539bd-e7bf-4cec-8bde-0b87c2a86baf">MS-PST Section 2.4.3: Message Store</a>
 */
-public class MessageStore {
-
+public class MessageStore
+{
 	/**	The tag for the the root node of the PST file.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5493a0eb-0356-4e88-b4f5-0433ce0a93fa">MS-PST Section 2.4.3.1: Minimum Set of Required Properties</a>
 	*/

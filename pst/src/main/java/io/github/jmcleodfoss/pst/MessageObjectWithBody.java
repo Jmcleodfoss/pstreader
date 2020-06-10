@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The MessageObjectWithBody class represents message objects which are expected to have a Body (and possibly a BodyHTML) tag. */
-public class MessageObjectWithBody extends MessageObject {
-
+public class MessageObjectWithBody extends MessageObject
+{
 	/**	Create a message object for a type with a Body tag for the given row in the folder contents table.
 	*	@param	contentsTable	The containing folder's contents table
 	*	@param	messageRow	The row of the contents table from which to create the message

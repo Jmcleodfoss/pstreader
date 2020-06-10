@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The NullDataBlockException is thrown when a data block is found to be null unexpectedly.
 *	@see	PropertyContext
 */
-public class NullDataBlockException extends Exception {
-
+public class NullDataBlockException extends Exception
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 
