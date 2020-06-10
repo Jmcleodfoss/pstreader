@@ -512,7 +512,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	@SuppressWarnings("unchecked")
 	java.util.Iterator<Object> iterator()
 	{
-		return isEmpty() ? EmptyIterator.iterator : new Iterator();
+		return new Iterator();
 	}
 
 	/**	Read data for all rows from a block of bytes of raw data. This is used to read HID table contexts.
