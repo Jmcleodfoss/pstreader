@@ -5,8 +5,8 @@ package io.github.jmcleodfoss.pst;
 *	Note that it is based on java.util.IdentityHashMap, so it is necessary to "get" a value using the identical argument used to "put" it.
 *	Changing from HashMap to IdentityHashMap reduced run-time by ~33% for the original test PST file.
 */
-class DataContainer extends java.util.IdentityHashMap<String, Object> {
-
+class DataContainer extends java.util.IdentityHashMap<String, Object>
+{
 	/**	The IncompleteInitializationException indicates that a required component is not available at the time it is required. */
 	static class IncompleteInitializationException extends RuntimeException {
 

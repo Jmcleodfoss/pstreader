@@ -7,13 +7,13 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e4efaad0-1876-446e-9d34-bb921588f924">MS-PST Section 1.3.1.1: Node Database (NDB) Layer</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/7d759bcb-7864-480c-8746-f6af913ab085">MS-PST Section 2.2.2.7.7: BTrees</a>
 */
-class BlockBTree extends PagedBTree implements BlockMap {
-
+class BlockBTree extends PagedBTree implements BlockMap
+{
 	/**	The BBTContext class provides context for block B-Tree construction. This information is not kept in the tree, but
 	*	passed through in turn to each BlockBTree child constructor call.
 	*/
-	static class BBTContext extends PagedBTree.PageContext<BTree, BTreeLeaf> {
-
+	static class BBTContext extends PagedBTree.PageContext<BTree, BTreeLeaf>
+	{
 		/**	Constructor the context for building the block B-tree.
 		*	@param	bref	The block reference for the current node of the block B-tree under construction.
 		*	@param	pstFile	The PST file's input stream, header, etc.

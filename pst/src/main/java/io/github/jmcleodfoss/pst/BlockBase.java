@@ -5,8 +5,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/d0e6fbaf-00e3-4d4d-bea8-8ab3cdb4fde6">MS-PST Section 2.2.2.8.3.1: Data Blocks</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45688317-46fb-4038-9ed3-b845d80bdabb">MS-PST Section 2.2.8.3.2: Data Tree</a>
 */
-abstract class BlockBase {
-
+abstract class BlockBase
+{
 	/**	Logger for debugging block classes. */
 	protected static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.BlockBase");
 

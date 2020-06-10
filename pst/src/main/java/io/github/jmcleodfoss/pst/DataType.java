@@ -4,7 +4,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1d61ee78-4466-4141-8276-f45153484619">MS-PST Section 2.1.1: Data Types</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 */
-abstract class DataType {
+abstract class DataType
+{
 	static final short UNSPECIFIED = 0x0000;
 	static final short NULL = 0x0001;
 	static final short INTEGER_16 = 0x0002;
@@ -119,8 +120,8 @@ abstract class DataType {
 	public abstract int size();
 
 	/**	The SizedObject class contains functionality shared by manipulators for objects with known client-defined sizes. */
-	private abstract static class SizedObject extends DataType {
-
+	private abstract static class SizedObject extends DataType
+	{
 		/**	The size of this object read in. */
 		protected final int size;
 
@@ -145,8 +146,8 @@ abstract class DataType {
 	/**	The BIDBase class contains functionality used by both ANSI and Unicode BID description objects.
 	*	@see	io.github.jmcleodfoss.pst.BID
 	*/
-	private abstract static class BIDBase extends SizedObject {
-
+	private abstract static class BIDBase extends SizedObject
+	{
 		/**	Construct a generic BID reader object.
 		*	@param	size	The number of bytes in this BID type.
 		*	@see io.github.jmcleodfoss.pst.BID#SIZE_ANSI
@@ -168,8 +169,8 @@ abstract class DataType {
 	}
 
 	/**	The BIDANSI class describes how to read and display a BID object from an ANSI PST file. */
-	private static class BIDANSI extends BIDBase {
-
+	private static class BIDANSI extends BIDBase
+	{
 		/**	Construct an object to read in and display an ANSI BID. */
 		private BIDANSI()
 		{
@@ -190,8 +191,8 @@ abstract class DataType {
 	static final BIDANSI bidAnsiReader = new BIDANSI();
 
 	/**	The BIDUnicode class describes how to read and display a BID object in a Unicode PST file. */
-	private static class BIDUnicode extends BIDBase {
-
+	private static class BIDUnicode extends BIDBase
+	{
 		/**	Construct an object to read in and display a Unicode BID. */
 		private BIDUnicode()
 		{
@@ -226,8 +227,8 @@ abstract class DataType {
 	/**	The BREFBase class contains functionality used by both ANSI and Unicode BREF description objects.
 	*	@see	io.github.jmcleodfoss.pst.BREF
 	*/
-	private abstract static class BREFBase extends SizedObject {
-
+	private abstract static class BREFBase extends SizedObject
+	{
 		/**	Construct a generic BREF reader object.
 		*	@param	size	The number of bytes in this BREF type.
 		*	@see io.github.jmcleodfoss.pst.BREF#SIZE_ANSI
@@ -249,8 +250,8 @@ abstract class DataType {
 	}
 
 	/**	The BREFAnsi class describes a BREF object in an ANSI PST file. */
-	private static class BREFANSI extends BREFBase {
-
+	private static class BREFANSI extends BREFBase
+	{
 		/**	Construct an object to read in and display an ANSI BREF. */
 		private BREFANSI()
 		{
@@ -273,8 +274,8 @@ abstract class DataType {
 	public static final BREFANSI brefAnsiReader = new BREFANSI();
 
 	/**	The BREFUnicode class describes a BREF object in a Unicode PST file. */
-	private static class BREFUnicode extends BREFBase {
-
+	private static class BREFUnicode extends BREFBase
+	{
 		/**	Construct an object to read in and display a Unicodde BREF. */
 		private BREFUnicode()
 		{
@@ -297,8 +298,8 @@ abstract class DataType {
 	public static final BREFUnicode brefUnicodeReader = new BREFUnicode();
 
 	/**	The SizedByteArray class is used to read in and display an array of bytes whose size is known. */
-	static class SizedByteArray extends SizedObject {
-
+	static class SizedByteArray extends SizedObject
+	{
 		/**	Create a reader/display manipulator for an array of bytes of known size.
 		*	@param	size	The number of bytes in the array.
 		*/
@@ -340,8 +341,8 @@ abstract class DataType {
 	}
 
 	/**	The ByteArray class described an array of bytes taking up the remainder of byteBuffer. */
-	private static class ByteArray extends SizedByteArray {
-
+	private static class ByteArray extends SizedByteArray
+	{
 		/**	Construct an manipulator for a byte array. */
 		private ByteArray()
 		{
@@ -362,8 +363,8 @@ abstract class DataType {
 	private static final ByteArray byteArrayReader = new ByteArray();
 	
 	/**	The Floating64 data type described an 64-bit floating point value. */
-	private static class Floating64 extends DataType {
-
+	private static class Floating64 extends DataType
+	{
 		/**	Construct a manipulator for a PST PtypFloating64 data type. */
 		private Floating64()
 		{
@@ -403,8 +404,8 @@ abstract class DataType {
 	/**	The GUID class describes how to read a 16-byte PST GUID in.
 	*	@see	io.github.jmcleodfoss.pst.GUID
 	*/
-	private static class GUID extends DataType {
-
+	private static class GUID extends DataType
+	{
 		/**	Construct a GUID manipulator object. */
 		private GUID()
 		{
@@ -447,8 +448,8 @@ abstract class DataType {
 	/**	The HID class describes an HID object in a PST file.
 	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
 	*/
-	private static class HID extends DataType {
-
+	private static class HID extends DataType
+	{
 		/**	Construct an HID manipulator object. */
 		private HID()
 		{
@@ -486,8 +487,8 @@ abstract class DataType {
 	static final HID hidReader = new HID();
 
 	/**	The Integer8 data type describes how to manipulate an 8-bit integer. */
-	private static class Integer8 extends DataType {
-
+	private static class Integer8 extends DataType
+	{
 		/**	Construct a manipulator for an 8-bit integer. */
 		private Integer8()
 		{
@@ -525,8 +526,8 @@ abstract class DataType {
 	static final Integer8 integer8Reader = new Integer8();
 
 	/**	The Integer16 data type describes how to read and display a 16-bit integer. */
-	private static class Integer16 extends DataType {
-
+	private static class Integer16 extends DataType
+	{
 		/**	Construct a manipulator for an PST PtypInteger32 data type. */
 		private Integer16()
 		{
@@ -564,8 +565,8 @@ abstract class DataType {
 	static final Integer16 integer16Reader = new Integer16();
 
 	/**	The Integer32 data type describes a 32-bit integer. */
-	private static class Integer32 extends DataType {
-
+	private static class Integer32 extends DataType
+	{
 		/**	Construct a manipulator for an PST PtypInteger32 data type. */
 		public Integer32()
 		{
@@ -603,8 +604,8 @@ abstract class DataType {
 	static final Integer32 integer32Reader = new Integer32();
 
 	/**	The Integer64 data type described a 64-bit integer. */
-	private static class Integer64 extends DataType {
-
+	private static class Integer64 extends DataType
+	{
 		/**	Construct a manipulator for an PST PtypInteger32 data type. */
 		private Integer64()
 		{
@@ -642,8 +643,8 @@ abstract class DataType {
 	static final Integer64 integer64Reader = new Integer64();
 
 	/**	The MultipleBinary class describes how to read in multiple binary objects from a PST file. */
-	private static class MultipleBinary extends DataType {
-
+	private static class MultipleBinary extends DataType
+	{
 		/**	Create a manipulator for reading and displaying multiple binary objects. */
 		private MultipleBinary()
 		{
@@ -720,8 +721,8 @@ abstract class DataType {
 	private static final MultipleBinary multipleBinaryReader = new MultipleBinary();
 
 	/**	The MultipleInteger32 class describes how to read in multiple 32-bit integers from a PST file. */
-	private static class MultipleInteger32 extends DataType {
-
+	private static class MultipleInteger32 extends DataType
+	{
 		/**	Create a reader/display manipulator for a list of 32-bit integers. */
 		private MultipleInteger32()
 		{
@@ -771,8 +772,8 @@ abstract class DataType {
 	private static final MultipleInteger32 multipleInteger32Reader = new MultipleInteger32();
 
 	/**	The MultipleInteger64 class describes how to read in multiple 64-bit integers from a PST file. */
-	private static class MultipleInteger64 extends DataType {
-
+	private static class MultipleInteger64 extends DataType
+	{
 		/**	Create a reader/display manipulator for a list of 64-bit integers. */
 		private MultipleInteger64()
 		{
@@ -822,8 +823,8 @@ abstract class DataType {
 	private static final MultipleInteger64 multipleInteger64Reader = new MultipleInteger64();
 
 	/**	The MultipleString class describes how to read in a list of character strings from a PST file. */
-	private static class MultipleString extends StringBase {
-
+	private static class MultipleString extends StringBase
+	{
 		/**	Create a manipulator for reading and displaying lists of PST-file strings.
 		*	@param	dataType	The type of the string (i.e. wide or narrow).
 		*/
@@ -892,8 +893,8 @@ abstract class DataType {
 	private static final MultipleString multipleStringReader = new MultipleString(STRING);
 
 	/**	The NID class describes how to read and display an NID object in a PST file. */
-	private static class NID extends DataType {
-
+	private static class NID extends DataType
+	{
 		/**	Create a reader/display manipulator for PST NID objects. */
 		public NID()
 		{
@@ -931,8 +932,8 @@ abstract class DataType {
 	static final NID nidReader = new NID();
 
 	/**	The PSTBoolean data type describes how to read in and display a boolean value in a PST file. */
-	private static class PSTBoolean extends DataType {
-
+	private static class PSTBoolean extends DataType
+	{
 		/**	Create a reader/display manipulator object for PST file Boolean values. */
 		private PSTBoolean()
 		{
@@ -970,8 +971,8 @@ abstract class DataType {
 	static final PSTBoolean booleanReader = new PSTBoolean();
 
 	/**	The StringBase class contains logic shared by the manipulators for single strings and lists of strings. */
-	private abstract static class StringBase extends DataType {
-
+	private abstract static class StringBase extends DataType
+	{
 		/**	The character set encoding of the String values read and displayed by this manipulator. */
 		protected final String charset;
 
@@ -998,8 +999,8 @@ abstract class DataType {
 	}
 
 	/**	The PSTString class describes a string (Unicode or ASCII) which occupies the remainder of the given byteBuffer. */
-	private static class PSTString extends StringBase {
-
+	private static class PSTString extends StringBase
+	{
 		/**	Create a manipulator for string objects.
 		*	@param	dataType	The actual data type.
 		*	@see	#STRING
@@ -1043,8 +1044,8 @@ abstract class DataType {
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 	*/
-	private static class Time extends DataType {
-
+	private static class Time extends DataType
+	{
 		/**	The base for MS time, which is measured in hundreds of nanosecondss since January 1, 1601. */
 		private static final java.util.Date PST_BASE_TIME = initBaseTime();
 
@@ -1108,8 +1109,8 @@ abstract class DataType {
 
 
 	/**	The SizedInteger16Array class described how to read and display an array of 16-bit integers whose size is known. */
-	static class SizedInt16Array extends SizedObject {
-
+	static class SizedInt16Array extends SizedObject
+	{
 		/**	Create a reader/display manipulator for an array of 16-bit integers of known size.
 		*	@param	size	The number of 16-bit integers in the array.
 		*/

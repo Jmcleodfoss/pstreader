@@ -1,13 +1,14 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The DataDefinition class encapsulates definitions used for reading values from a data stream. */
-class DataDefinition {
-
+class DataDefinition
+{
 	/**	Logger for data reading */
 	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.DataDefinition");
 
 	/**	The IncompleteFieldException is used to signal that it was not possible to read in all the required bytes for a field */
-	static class IncompleteFieldException extends RuntimeException {
+	static class IncompleteFieldException extends RuntimeException
+	{
 
 		/**	The serial version UID is required since the base class is serializable. */
 		private static final long serialVersionUID = 1L;

@@ -3,11 +3,11 @@ package io.github.jmcleodfoss.pst;
 /**	The BlockFinder class retrieves blocks from the block B-tree by walking it on disk rather than reading it in all at once.
 *	@see	io.github.jmcleodfoss.pst.BlockBTree
 */
-class BlockFinder extends PagedBTreeFinder implements BlockMap {
-
+class BlockFinder extends PagedBTreeFinder implements BlockMap
+{
 	/**	The BTreePage class holds information about paged (block &amp; node) B-trees. */
-	private class BTreePage extends PagedBTreeFinder.BTreePage {
-
+	private class BTreePage extends PagedBTreeFinder.BTreePage
+	{
 		/**	Create a BTreePage object form the given pstFile and bref.
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.

@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The CRC class contains the CRC calculation mechanism, taken from the MS PST file format description.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/39c35207-130f-4d83-96f8-2b311a285a8f">MS-PST Section 5.3: CRC Calculation</a>
 */
-class CRC {
-
+class CRC
+{
 	/**	The data used to calculate the CRC. */
 	private static final int[] CrcTableOffset32 = {
 		0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,

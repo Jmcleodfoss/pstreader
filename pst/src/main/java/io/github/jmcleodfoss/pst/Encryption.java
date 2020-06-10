@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The Encryption class handles decryption and encryption of the PST file.
 *	@see	Header
 */
-class Encryption {
-
+class Encryption
+	{
 	/**	The value indicating that this PST file is unencrypted. Per the MS-PST document, its value is {@value}.
 	*	@see	TranslaterNone
 	*	@see	#NOB_CRYPT_PERMUTE
@@ -147,8 +147,8 @@ class Encryption {
 	/**	The UnknownEncryptionMethodException is thrown if one tries to create an Encryption object with an invalid value for the
 	*	encryption type.
 	*/
-	class UnknownEncryptionMethodException extends RuntimeException {
-
+	class UnknownEncryptionMethodException extends RuntimeException
+	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 
@@ -162,8 +162,8 @@ class Encryption {
 	}
 
 	/**	The Tanslater interface defines the functions required for all translation types. */
-	private interface Translater {
-
+	private interface Translater
+	{
 		/**	The translate function performs the translation in place on the data array.
 		*	@param	data	The bytes to encode or decode.
 		*	@param	key	Additional data used by the {@link TranslaterCyclic} translater.
@@ -175,8 +175,8 @@ class Encryption {
 	*	@see	TranslaterPermute
 	*	@see	TranslaterCyclic
 	*/
-	private class TranslaterNone implements Translater {
-
+	private class TranslaterNone implements Translater
+	{
 		/**	The translate function is trivial; it performs no conversion.
 		*	@param	data	This parameter is not used by the TranslaterNone translater.
 		*	@param	unused	This parameter is not used by the TranslaterNone translater.
@@ -191,8 +191,8 @@ class Encryption {
 	*	@see	TranslaterNone
 	*	@see	TranslaterCyclic
 	*/
-	private class TranslaterPermute implements Translater {
-
+	private class TranslaterPermute implements Translater
+	{
 		/**	The translate function is a wrapper around the convert method.
 		*	@param	data	The bytes to encode or decode.
 		*	@param	unused	This parameter is not used by the TranslaterPermute tanslater.
@@ -225,8 +225,8 @@ class Encryption {
 	*	@see	TranslaterNone
 	*	@see	TranslaterPermute
 	*/
-	private class TranslaterCyclic implements Translater {
-
+	private class TranslaterCyclic implements Translater
+	{
 		/**	The translate performs the conversion for cyclic encoding.
 		*	@param	data	The bytes to encode or decode.
 		*	@param	key	This parameter is used during encoding and decoding. It should be the lower DWORD of the block ID

@@ -3,13 +3,13 @@ package io.github.jmcleodfoss.pst;
 /**	The BTreeOnHeap class represents a B-tree contained on a heap defined by a node in the node B-tree.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/2dd1a95a-c8b1-4ac5-87d1-10cb8de64053">MS-PST Section 2.3.2: BTree-on-Heap (BTH)</a>
 */
-public class BTreeOnHeap extends BTree {
-
+public class BTreeOnHeap extends BTree
+{
 	/**	The BTHContext class provides the context (data, metadata, and current location) for use when reading in a
 	*	B-tree-on-heap structure.
 	*/
-	private static class BTHContext extends Context<BTree, BTreeLeaf> {
-
+	private static class BTHContext extends Context<BTree, BTreeLeaf>
+	{
 		/**	The heap-on-node containing this B-tree. */
 		private HeapOnNode hon;
 
@@ -147,8 +147,8 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	The header of a B-tree-on-heap structure. */
-	private static class Header {
-
+	private static class Header
+	{
 		private static final String nm_bType = "bType";
 		private static final String nm_cbKey = "cbKey";
 		private static final String nm_cbEnt = "cbEnt";
@@ -205,8 +205,8 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	The RecordBase class contains information common to both intermediate and leaf node records. */
-	private static class RecordBase {
-
+	private static class RecordBase
+	{
 		protected static final String nm_cbKey = "cbKey";
 
 		/**	The data context used to read in data for the classes derived from RecordBase. */
@@ -258,8 +258,8 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	An intermediate entry in the B-tree-on-heap structure. */
-	private static class IntermediateRecord extends RecordBase {
-
+	private static class IntermediateRecord extends RecordBase
+	{
 		private static final String nm_hidNextLevel = "hidNextLevel";
 
 		/**	The field in the input stream which describes the next level. Note that this is read after the key, whose size
@@ -309,8 +309,8 @@ public class BTreeOnHeap extends BTree {
 	}
 
 	/**	A leaf entry in the B-tree-on-heap structure. */
-	static class LeafRecord extends RecordBase implements BTreeLeaf {
-
+	static class LeafRecord extends RecordBase implements BTreeLeaf
+	{
 		private static final String nm_cbData = "cbData";
 
 		/**	The contents of this leaf node in the B-tree-on-heap. */

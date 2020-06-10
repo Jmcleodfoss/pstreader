@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The BlockTrailer class describes the BLOCKTRAILER structure at the end of each block.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a14943ef-70c2-403f-898c-5bc3747117e1">MS-PST Section 2.2.2.8: BLOCKTRAILER</a>
 */
-class BlockTrailer {
-
+class BlockTrailer
+{
 	private static final String nm_cb = "cb";
 	private static final String nm_wSig = "wSig";
 	private static final String nm_dwCRC = "dwCRC";

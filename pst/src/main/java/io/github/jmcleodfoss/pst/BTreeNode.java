@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.pst;
 *	@see	BTree
 *	@see	BTreeLeaf
 */
-public interface BTreeNode {
-
+public interface BTreeNode
+{
 	/**	The actualSize function must returns the actual number of bytes read from the input stream to populate this node.
 	*	This is used with the defined size given in the B-tree metadata (if present) to determine how many bytes must be
 	*	skipped between entries.

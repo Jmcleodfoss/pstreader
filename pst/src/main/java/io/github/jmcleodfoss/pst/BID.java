@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The BID class represents a PST file block ID.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/d3155aa1-ccdd-4dee-a0a9-5363ccca5352">MS-PST Section 2.2.2.2: BID (Block ID)</a>
 */
-class BID implements NodeKey {
-
+class BID implements NodeKey
+{
 	/**	The size of a BID in an ANSI PST file.
 	*	@see	#SIZE_UNICODE
 	*	@see	#size

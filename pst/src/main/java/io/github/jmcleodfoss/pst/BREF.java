@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 /**	The BREF class is a block reference. Objects of this class may be used to find blocks in a PST file.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/844a5ebf-488a-45fd-8fce-92a84d8e24a3">MS-PST Section 2.2.2.4: BREF</a>
 */
-class BREF {
-
+class BREF
+{
 	/**	The size of an BREF object in ANSI files. */
 	static final int SIZE_ANSI = BID.SIZE_ANSI + IB.SIZE_ANSI;
 

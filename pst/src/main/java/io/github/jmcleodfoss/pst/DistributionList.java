@@ -66,8 +66,8 @@ public class DistributionList extends MessageObject
 	};
 
 	/**	The Entry class flags an object as being a distribution list entry. */
-	public static class Entry {
-
+	public static class Entry
+	{
 		/**	The display name of the distribution list member. */
 		public final String displayName;
 
