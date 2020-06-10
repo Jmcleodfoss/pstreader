@@ -17,7 +17,7 @@ class PSTToXML {
 	};
 
 	/**	The Named Property element names, in a format safe for XML output. */
-	private final java.util.HashMap<Short, String> safeXMLNamedProperties;
+	private final java.util.HashMap<Integer, String> safeXMLNamedProperties;
 
 	/**	The PST file contents. */
 	io.github.jmcleodfoss.pst.PST pst;
@@ -48,9 +48,9 @@ class PSTToXML {
 	{
 		pst = new io.github.jmcleodfoss.pst.PST(fn);
 
-		safeXMLNamedProperties = new java.util.HashMap<Short, String>();
-		for (java.util.Iterator<java.util.Map.Entry<Short, String>> iterator = pst.namedPropertiesIterator(); iterator.hasNext(); ) {
-			java.util.Map.Entry<Short, String> entry = iterator.next();
+		safeXMLNamedProperties = new java.util.HashMap<Integer, String>();
+		for (java.util.Iterator<java.util.Map.Entry<Integer, String>> iterator = pst.namedPropertiesIterator(); iterator.hasNext(); ) {
+			java.util.Map.Entry<Integer, String> entry = iterator.next();
 			String value = entry.getValue();
 			if (xmlSubstitutes.containsKey(value))
 				safeXMLNamedProperties.put(entry.getKey(), xmlSubstitutes.get(value));
@@ -132,7 +132,7 @@ class PSTToXML {
 				continue;
 
 			final Integer tag = keyAndValue.getKey();
-			String propertyName = safeXMLNamedProperties.get((short)(tag >> 16));
+			String propertyName = safeXMLNamedProperties.get(0xffff & (tag >> 16));
 			if (propertyName == null) {
 				int propertyID = tag;
 				propertyName = pst.propertyName(propertyID);
