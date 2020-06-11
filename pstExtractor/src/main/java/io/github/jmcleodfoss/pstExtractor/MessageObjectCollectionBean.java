@@ -5,6 +5,17 @@ import java.util.List;
 
 /**	The MessageObjectCollectionBean summarizes information about all appointment folders and the appointment request.
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the same package.
+*	@param	<B>	The bean type for the folders in any specific collection.
+*	@see	AppointmentBean
+*	@see	ContactBean
+*	@see	JournalEntryBean
+*	@see	StickyNoteBean
+*	@see	TaskBean
+*	@see	PSTBean#appointments
+*	@see	PSTBean#contacts
+*	@see	PSTBean#journalEntries
+*	@see	PSTBean#stickyNotes
+*	@see	PSTBean#tasks
 */
 public class MessageObjectCollectionBean<B>
 {

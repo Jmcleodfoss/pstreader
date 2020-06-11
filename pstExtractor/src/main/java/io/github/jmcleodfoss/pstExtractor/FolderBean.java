@@ -5,7 +5,18 @@ import java.util.List;
 
 /**	The FolderBean object contains information about a single folder.
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the same package.
-*	Note also that this does not take into account the potential tree structure of a folder hierarchy.
+*	Note also that this does not take into account the potential tree structure of a folder hierarchy, i.e. it only shows the email messages in a folder, not the sub-folders.
+*	@param	<B>	The bean type for the folder contents
+*	@see	AppointmentBean
+*	@see	ContactBean
+*	@see	JournalEntryBean
+*	@see	StickyNoteBean
+*	@see	TaskBean
+*	@see	PSTBean#appointments
+*	@see	PSTBean#contacts
+*	@see	PSTBean#journalEntries
+*	@see	PSTBean#stickyNotes
+*	@see	PSTBean#tasks
 */
 public class FolderBean<B>
 {
