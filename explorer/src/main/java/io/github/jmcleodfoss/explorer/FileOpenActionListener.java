@@ -12,7 +12,7 @@ class FileOpenActionListener implements ActionListener
 	static final FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Outlook Personal Storage Table file", "pst");
 
 	/**	The FileChooser - keep it as a member variable so we retain directory changes. */
-	JFileChooser fileChooser;
+	private JFileChooser fileChooser;
 	
 	/**	Construct the underlying FileChooser and set required filter. */
 	FileOpenActionListener()
