@@ -9,6 +9,11 @@
 	<url>https://io.github.com/Jmcleodfoss/pstreader</url>
 	<description>Library for reading pst files, and some ancillary libraries, a Swing app, and a JSF web app.</description>
 
+	<properties>
+		<project.scm.id>github</project.scm.id>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<licenses>
 		<license>
 			<name>The MIT Licence</name>
@@ -23,11 +28,6 @@
 			<organizationUrl>https://io.github.com/Jmcleodfoss</organizationUrl>
 		</developer>
 	</developers>
-
-	<properties>
-		<project.scm.id>github</project.scm.id>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 
 	<scm>
 		<connection>scm:git:https://github.com/Jmcleodfoss/pstreader.git</connection>
