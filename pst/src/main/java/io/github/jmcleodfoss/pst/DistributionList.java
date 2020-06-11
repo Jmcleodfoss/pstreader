@@ -198,7 +198,7 @@ public class DistributionList extends MessageObject
 				dc.read(byteBuffer, ADDRESS_BOOK_ENTRY_FIELDS);
 				byte[] rawData = (byte[])dc.get(nm_EntryID);
 				final EntryID entryID = new EntryID(rawData);
-				final PropertyContext pcEntry = entryID.propertyContext(bbt, nbt, pstFile);
+				final PropertyContext pcEntry = new PropertyContext(nbt.find(entryID.nid), bbt, pstFile);
 				entries.add(new Entry((String)pcEntry.get(PropertyTags.DisplayNameW), (String)pcEntry.get(email1AddressLID)));
 			}
 		}
