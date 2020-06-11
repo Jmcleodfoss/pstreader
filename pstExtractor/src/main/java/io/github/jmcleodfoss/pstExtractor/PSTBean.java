@@ -484,7 +484,7 @@ public class PSTBean implements Serializable
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		Folder rootFolder = pst.getFolder(pst.nodeBTree.find(pst.messageStore.rootMailboxEntry.nid));
+		Folder rootFolder = pst.getFolderTree();
 		TableContext rootHierarchyTable = new TableContext(rootFolder.nodeHierarchyTable, pst.blockBTree, pst);
 
 		appointments.requested = selectedExtractionTypes.contains(ExtractionTypes.APPOINTMENTS);
@@ -560,6 +560,9 @@ public class PSTBean implements Serializable
 					e.printStackTrace(System.out);
 					return "NotPST";
 				} catch (NotPropertyContextNodeException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (NotTableContextNodeException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
 				} catch (NullDataBlockException e) {
