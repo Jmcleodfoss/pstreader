@@ -54,33 +54,6 @@ public class ByteUtil
 		return s.toString();
 	}
 
-	/**	Create a signed long from the first "n" bytes of the given array, ordered from MSB to LSB
-	*	@param	rawData	The bytes to make the long value from.
-	*	@param	n	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
-	*	@return	A long value corresponding to the given array of bytes as a big-endian value.
-	*/
-	public static long makeLongBE(final byte[] rawData, int n)
-	{
-		n = java.lang.Math.min(n, rawData.length);
-		if (n > LONG_BYTES)
-			throw new RuntimeException("Need 8 bytes or fewer to make a long value");
-
-		long val = 0;
-		for (int i = 0; i < n; ++i)
-			val = (val << Byte.SIZE) | (rawData[i] & 0xff);
-
-		return val;
-	}
-
-	/**	Create a signed long from the given array of up to eight bytes, ordered from MSB to LSB.
-	*	@param	rawData	The bytes to make the long value from.
-	*	@return	A long value corresponding to the given array of bytes as a big-endian value.
-	*/
-	public static long makeLongBE(byte[] rawData)
-	{
-		return makeLongBE(rawData, LONG_BYTES);
-	}
-
 	/**	Create a signed long from the first "n" bytes of the given array, ordered from LSB to MSB.
 	*	@param	rawData	The bytes to make the long value from.
 	*	@param	n	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
@@ -121,9 +94,6 @@ public class ByteUtil
 
 		for (int i = 0; i < a.length; ++i)
 		{
-			long be = makeLongBE(a[i]);
-			System.out.println("Big Endian:    " + Long.toHexString(be));
-
 			long le = makeLongLE(a[i]);
 			System.out.println("Little Endian: " + Long.toHexString(le) + '\n');
 		}
