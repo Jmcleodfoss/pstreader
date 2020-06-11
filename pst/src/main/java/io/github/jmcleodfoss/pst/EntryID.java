@@ -32,6 +32,7 @@ public class EntryID
 	*	@throws	UnparseableTableContextException	A bad / corrupt table context was encountered.
 	*	@throws	java.io.IOException			An I/O problem was encountered while reading the data for folder.
 	*/
+	@Deprecated
 	Folder folder(BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
 		NotPropertyContextNodeException,
@@ -59,6 +60,7 @@ public class EntryID
 	*	@throws	UnparseableTableContextException	A bad / corrupt table context was encountered.
 	*	@throws	java.io.IOException			An I/O problem was encountered while reading the data for the property context.
 	*/
+	@Deprecated
 	PropertyContext propertyContext(BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
 		NotPropertyContextNodeException,
