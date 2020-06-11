@@ -9,14 +9,14 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 
 /**	The NodeDescriptionDisplay displays the the currently-selected node. */
 @SuppressWarnings("serial")
-class NodeDescriptionDisplay extends TreeDescriptionDisplay {
-
+class NodeDescriptionDisplay extends TreeDescriptionDisplay
+{
 	/**	The AttachmentSavePopupMenu is the popup menu for saving attachments. */
-	private class AttachmentSavePopupMenu extends TreeNodePopupListener {
-
+	private class AttachmentSavePopupMenu extends TreeNodePopupListener
+	{
 		/**	Handle attachment file save requests. */
-		private class AttachmentSaveActionListener extends FileSaverMenuItem {
-
+		private class AttachmentSaveActionListener extends FileSaverMenuItem
+		{
 			/**	The property context for the currently selected attachment node, if any. */
 			private PropertyContext pc;
 

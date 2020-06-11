@@ -10,8 +10,8 @@ import io.github.jmcleodfoss.pst.BTreeNode;
 
 /**	The TreeDescriptionDisplay allows a complex description object to be associated with a JTree. */
 @SuppressWarnings("serial")
-class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener {
-
+class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
+{
 	/**	The node summary/overview. */
 	private AppTable summary;
 

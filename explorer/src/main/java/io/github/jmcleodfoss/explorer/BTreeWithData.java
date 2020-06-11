@@ -11,8 +11,8 @@ import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 *	JSplitPane.
 */
 @SuppressWarnings("serial")
-abstract class BTreeWithData extends JSplitPane implements NewFileListener {
-
+abstract class BTreeWithData extends JSplitPane implements NewFileListener
+{
 	/**	The B-tree to display. */
 	protected BTreeJTree tree;
 

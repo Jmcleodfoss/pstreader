@@ -11,8 +11,8 @@ import io.github.jmcleodfoss.pst.PST;
 
 /**	The DistributionListDisplay class displays a distribution list. */
 @SuppressWarnings("serial")
-class DistributionListDisplay extends JScrollPane {
-
+class DistributionListDisplay extends JScrollPane
+{
 	/**	The raw data, in bytes and ASCII. */
 
 	/**	The members of the distribution list. */

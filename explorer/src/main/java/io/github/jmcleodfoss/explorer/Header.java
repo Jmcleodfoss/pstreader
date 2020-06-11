@@ -8,8 +8,8 @@ import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	Display information about the PST header. */
 @SuppressWarnings("serial")
-class Header extends JSplitPane implements NewFileListener {
-
+class Header extends JSplitPane implements NewFileListener
+{
 	// Constants for placement of header information
 	private static final int COL_NAME = 0;
 	private static final int COL_VALUE = 1;

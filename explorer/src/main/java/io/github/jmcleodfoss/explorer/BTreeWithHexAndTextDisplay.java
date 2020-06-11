@@ -10,8 +10,8 @@ import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	A specialized version of the generic HexAndTextDisplay class which is linked to a JTree. */
 @SuppressWarnings("serial")
-class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionListener {
-
+class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionListener
+{
 	/**	The display of hexadecimal and text. */
 	private HexAndTextDisplay hexAndTextDisplay;
 

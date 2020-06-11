@@ -6,8 +6,8 @@ import io.github.jmcleodfoss.pst.PST;
 
 /**	This event used to notify objecs which implement the NewFileListener interface that a new file has been loaded. */
 @SuppressWarnings("serial")
-class NewFileEvent extends EventObject {
-
+class NewFileEvent extends EventObject
+{
 	/**	The new PST object for the newly-loaded file. */
 	PST pst;
 

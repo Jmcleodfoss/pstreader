@@ -16,11 +16,11 @@ import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 *	class provides some wrappers to allow the underlying tree to be manipulated by client code.
 */
 @SuppressWarnings("serial")
-class BTreeJTree extends JScrollPane {
-
+class BTreeJTree extends JScrollPane
+{
 	/**	The Tree class is a JTree which gets node names from a io.github.jmcleodfoss.pst.TreeCustomNode object. */
-	private class Tree extends JTree {
-
+	private class Tree extends JTree
+	{
 		/**	Construct a JTree with an EmptyTreeModel. */
 		private Tree()
 		{

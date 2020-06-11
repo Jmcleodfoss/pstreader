@@ -6,8 +6,8 @@ import io.github.jmcleodfoss.pst.PST;
 /**	The BTreeContentsDisplay interface defines the behavior of complex B-tree display panes.
 *	Note that the BTreeContentsDisplay object must also extend JComponent.
 */
-interface BTreeContentsDisplay {
-
+interface BTreeContentsDisplay
+{
 	/**	Reset all child views. */
 	void reset();
 

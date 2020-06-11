@@ -15,8 +15,8 @@ import javax.swing.table.TableModel;
 *	provides wrappers for useful table functions.
 */
 @SuppressWarnings("serial")
-class AppTable extends JScrollPane {
-
+class AppTable extends JScrollPane
+{
 	/**	Padding to apply when calculating width of text. */
 	private final String PADDING = "  ";
 

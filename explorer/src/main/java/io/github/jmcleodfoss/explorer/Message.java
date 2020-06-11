@@ -11,8 +11,8 @@ import io.github.jmcleodfoss.pst.StickyNote;
 
 /**	The Message class exposes some message components. */
 @SuppressWarnings("serial")
-class Message extends NodeContentsDisplay {
-
+class Message extends NodeContentsDisplay
+{
 	/**	The message header. */
 	JTextArea header;
 

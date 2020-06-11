@@ -5,8 +5,8 @@ import javax.swing.tree.TreeModel;
 
 /**	This class is a specialization of BTreeWithData for block B-tree display. */
 @SuppressWarnings("serial")
-class BlockBTreeDisplay extends BTreeWithData {
-
+class BlockBTreeDisplay extends BTreeWithData
+{
 	/**	Construct a BTreeWithData object with the appropriate orientation and contents for the block B-tree display. */
 	BlockBTreeDisplay()
 	{

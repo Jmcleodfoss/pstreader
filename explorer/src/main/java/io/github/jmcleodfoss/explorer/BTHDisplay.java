@@ -13,8 +13,8 @@ import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
 /**	The BTHDisplay class displays the B-tree-on-Heap for a node and the data for the selected node of the B-tree. */
 @SuppressWarnings("serial")
-class BTHDisplay extends BTreeWithHexAndTextDisplay {
-
+class BTHDisplay extends BTreeWithHexAndTextDisplay
+{
 	/**	The heap-on-node on which this B-tree-on-heap is built. */
 	private HeapOnNode hon;
 	

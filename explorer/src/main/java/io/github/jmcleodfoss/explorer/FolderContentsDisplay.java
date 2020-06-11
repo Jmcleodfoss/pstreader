@@ -20,14 +20,14 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 
 /**	The FolderContentsDisplay is a specialization of BTreeWithData for folder display. */
 @SuppressWarnings("serial")
-class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener {
-
+class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
+{
 	/**	The HtmlSavePopupMenu is the popup menu for saving messages in HTML. */
-	class HtmlSavePopupMenu extends TreeNodePopupListener {
-
+	class HtmlSavePopupMenu extends TreeNodePopupListener
+	{
 		/**	Handle attachment file save requests. */
-		private class HTMLSaveActionListener extends FileSaverMenuItem {
-	
+		private class HTMLSaveActionListener extends FileSaverMenuItem
+		{
 			/**	{@inheritDoc} */
 			String dialogTitle()
 			{
@@ -71,11 +71,11 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	};
 
 	/**	Thee AttachmentSavePopupMenu is the popup menu for saving message attachments. */
-	class AttachmentSavePopupMenu extends TreeNodePopupListener {
-
+	class AttachmentSavePopupMenu extends TreeNodePopupListener
+	{
 		/**	Handle attachment file save requests. */
-		private class AttachmentSaveActionListener extends FileSaverMenuItem {
-	
+		private class AttachmentSaveActionListener extends FileSaverMenuItem
+		{
 			/**	{@inheritDoc} */
 			String dialogTitle()
 			{

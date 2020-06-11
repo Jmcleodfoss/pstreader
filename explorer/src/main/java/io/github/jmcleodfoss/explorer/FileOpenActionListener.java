@@ -6,8 +6,8 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**	Handle file open requests. */
-class FileOpenActionListener implements ActionListener {
-
+class FileOpenActionListener implements ActionListener
+{
 	/**	The filter used to look for PST files. */
 	static final FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Outlook Personal Storage Table file", "pst");
 

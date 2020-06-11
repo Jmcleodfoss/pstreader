@@ -5,8 +5,8 @@ import javax.swing.tree.TreeModel;
 
 /**	Specialization of BTreeWithData for folder information display. */
 @SuppressWarnings("serial")
-class FolderTree extends BTreeWithData {
-
+class FolderTree extends BTreeWithData
+{
 	/**	The component in which to display the folder data. */
 	FolderContentsDisplay folderContentsDisplay;
 

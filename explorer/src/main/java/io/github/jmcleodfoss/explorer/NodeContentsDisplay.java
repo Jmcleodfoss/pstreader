@@ -12,8 +12,8 @@ import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	The NodeContentsDisplay provides a view of the contents of a node. */
 @SuppressWarnings("serial")
-class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay {
-
+class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
+{
 	/**	The raw data, in bytes and ASCII. */
 	private HexAndTextDisplay rawData;
 
