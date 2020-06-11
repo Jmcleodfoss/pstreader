@@ -40,7 +40,11 @@ public class MessageStore
 	private final int passwordHashed;
 
 	/**	The root folder. */
+	@Deprecated
 	public final EntryID rootMailboxEntry;
+
+	/**	The root folder. */
+	public final Folder rootFolder;
 
 	/**	Create a message store object by reading in the message store node.
 	*	@param	bbt	The PST file's block B-tree.
@@ -48,6 +52,7 @@ public class MessageStore
 	*	@param	pstFile	The PST file input data stream, {@link Header header}, etc.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found while creating the message store.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building a table context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of one of the blocks in the message store was not recognized.
 	*	@throws UnparseablePropertyContextException	The property context could not be interpreted.
@@ -58,6 +63,7 @@ public class MessageStore
 	throws
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
+		NotTableContextNodeException,
 		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
@@ -72,6 +78,7 @@ public class MessageStore
 
 		passwordHashed = (Integer)messageStore.get(PROPID_PASSWORD);
 		rootMailboxEntry = new EntryID((byte[])messageStore.get(PROPID_ROOT_ENTRY_ID));
+		rootFolder = Folder.getFolderTree(nbt.find(rootMailboxEntry.nid), bbt, nbt, pstFile);
 	}
 
 	/**	Check whether the given password matches the stored password.
@@ -107,6 +114,7 @@ public class MessageStore
 	*	@throws UnparseableTableContextException	The table context could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
 	*/
+	@Deprecated
 	public Folder rootFolder()
 	throws
 		NotPropertyContextNodeException,
@@ -118,7 +126,7 @@ public class MessageStore
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		return Folder.getFolderTree(nbt.find(rootMailboxEntry.nid), bbt, nbt, pstFile);
+		return rootFolder;
 	}
 
 	/**	Obtain a javax.swing.table.TableModel describing the message store.
