@@ -118,7 +118,7 @@ public class MessageStore
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		return rootMailboxEntry.folder(bbt, nbt, pstFile);
+		return Folder.getFolderTree(nbt.find(rootMailboxEntry.nid), bbt, nbt, pstFile);
 	}
 
 	/**	Obtain a javax.swing.table.TableModel describing the message store.
