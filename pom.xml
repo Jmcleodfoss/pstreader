@@ -10,8 +10,8 @@
 	<description>Library for reading pst files, and some ancillary libraries, a Swing app, and a JSF web app.</description>
 
 	<properties>
-		<project.scm.id>github</project.scm.id>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.scm.id>github</project.scm.id>
 	</properties>
 
 	<licenses>
