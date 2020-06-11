@@ -18,7 +18,7 @@ public class MessageStore
 	*/
 	private final NodeMap nbt;
 
-	/**	The dat input stream, {@link Header header}, etc, of the underlying PST file.
+	/**	The data input stream, {@link Header header}, etc, of the underlying PST file.
 	*	@see	#rootFolder
 	*/
 	private final PSTFile pstFile;
