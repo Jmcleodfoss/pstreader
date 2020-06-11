@@ -141,7 +141,7 @@ class Encryption
 	*	encryption and decryption in cyclic encoding. */
 	private final int offsS = 0x100;
 
-	/**	An Offset into the encryption table {@link #mpbbCrypt} used when encrypting or decryptint in cyclic encoding. */
+	/**	An Offset into the encryption table {@link #mpbbCrypt} used when encrypting or decrypting in cyclic encoding. */
 	private final int offsI = 0x200;
 
 	/**	The UnknownEncryptionMethodException is thrown if one tries to create an Encryption object with an invalid value for the
