@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.pstExtractor;
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the
 *	same package.
 */
-public class StickyNoteBean {
-
+public class StickyNoteBean
+{
 	/**	The sticky note title. */
 	String title;
 

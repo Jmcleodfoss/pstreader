@@ -8,8 +8,8 @@ import java.util.List;
 *	same package.
 *	Note also that this does not take into account the potential tree structure of a folder hierarchy.
 */
-public class FolderBean<B> {
-
+public class FolderBean<B>
+{
 	/**	The folder name. */
 	String name;
 

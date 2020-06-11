@@ -8,8 +8,8 @@ import java.util.TimeZone;
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the
 *	same package.
 */
-public class AppointmentBean {
-
+public class AppointmentBean
+{
 	/**	The format to use for time/date retrieval. */
 	private static final SimpleDateFormat OUTPUT_FORMAT;
 	static {

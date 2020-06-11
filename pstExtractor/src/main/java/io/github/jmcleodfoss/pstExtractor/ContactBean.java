@@ -7,8 +7,8 @@ import java.util.List;
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the
 *	same package.
 */
-public class ContactBean {
-
+public class ContactBean
+{
 	/**	The contact's name. */
 	String name;
 
