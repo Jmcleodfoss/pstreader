@@ -53,9 +53,7 @@ class AppTable extends JScrollPane
 		FontMetrics fm = table.getFontMetrics(table.getFont());
 
 		for (int c = 0; c < tm.getColumnCount(); ++c) {
-
 			Object contents = tm.getColumnName(c);
-
 			int maxWidth = contents == null ? 0 : SwingUtilities.computeStringWidth(fmHeader, contents.toString() + PADDING);
 
 			for (int r = 0; r < tm.getRowCount(); ++r) {
