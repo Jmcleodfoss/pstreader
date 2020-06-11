@@ -40,6 +40,10 @@
 			<!-- Do all included modules by default -->
 			<id>default</id>
 
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
 			<modules>
 				<module>explorer</module>
 				<module>localebean</module>
@@ -49,10 +53,6 @@
 				<module>util</module>
 				<module>xml</module>
 			</modules>
-
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 		</profile>
 
 		<profile>
@@ -92,6 +92,10 @@
 			<!-- Developer (private + protected + public) Javadoc -->
 			<id>dev-doc</id>
 
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
 			<modules>
 				<module>explorer</module>
 				<module>localeBean</module>
@@ -101,10 +105,6 @@
 				<module>util</module>
 				<module>xml</module>
 			</modules>
-
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
 
 			<build>
 				<plugins>
@@ -127,6 +127,10 @@
 			<!-- Deploy to maven central via ossrh for the main library and the explorer application -->
 			<id>deploy-ossrh</id>
 
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
 			<modules>
 				<module>explorer</module>
 				<!-- Skip localebean, which is only used by pstExtractor -->
@@ -136,10 +140,6 @@
 				<module>util</module>
 				<module>xml</module>
 			</modules>
-
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
 
 			<!-- Deploy to Maven Central via ossrh -->
 			<distributionManagement>
