@@ -41,7 +41,6 @@
 							<artifactId>pst</artifactId>
 							<version>1.1.1-SNAPSHOT</version>
 						</additionalDependency>
-
 						<additionalDependency>
 							<groupId>io.github.jmcleodfoss</groupId>
 							<artifactId>util</artifactId>
