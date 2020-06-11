@@ -8,16 +8,6 @@ public class MessageStore
 	/**	The actual message store PC. */
 	private final PropertyContext messageStore;
 
-	/**	The block B-Tree of the underlying PST file.
-	*	@see	#rootFolder
-	*/
-	private final BlockMap bbt;
-
-	/**	The node B-Tree of the underlying PST file.
-	*	@see	#rootFolder
-	*/
-	private final NodeMap nbt;
-
 	/**	The data input stream, {@link Header header}, etc, of the underlying PST file.
 	*	@see	#rootFolder
 	*/
@@ -64,8 +54,6 @@ public class MessageStore
 	{
 		messageStore = new PropertyContext(nbt.find(NID.NID_MESSAGE_STORE), bbt, pstFile);
 
-		this.bbt = bbt;
-		this.nbt = nbt;
 		this.pstFile = pstFile;
 
 		passwordHashed = (Integer)messageStore.get(PropertyTags.LtpPstPassword);
