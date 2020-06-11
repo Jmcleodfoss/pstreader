@@ -47,7 +47,7 @@ public class DistributionList extends MessageObject
 		new DataDefinition(nm_EntryID, new DataType.SizedByteArray(24), true)
 	};
 
-	/**	When this bit is set in the second flag byte, the strings for the display name, address type, and e-mail
+	/**	When this bit is set in the second flag byte, the strings for the display name, address type, and email
 	*	address are stored in Unicode and delimited by double-NULs; when this bit is cleared, the strings are stored in
 	*	ANSI and delimited by single NULs.
 	*/
@@ -71,7 +71,7 @@ public class DistributionList extends MessageObject
 		/**	The display name of the distribution list member. */
 		public final String displayName;
 
-		/**	The e-mail address of the distribution list member. */
+		/**	The email address of the distribution list member. */
 		public final String emailAddress;
 
 		/**	Create an Entry object

@@ -6,7 +6,7 @@ package io.github.jmcleodfoss.pst;
 */
 class Recipient
 {
-	/**	The e-mail address of the recipient. */
+	/**	The email address of the recipient. */
 	public final String emailAddress;
 
 	/**	The given (display) name of the recipient. */
