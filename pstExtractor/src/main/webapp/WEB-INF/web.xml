@@ -9,9 +9,9 @@
 	version="2.5"
 >
 
-	<description>PST Contact Extraction Servlet</description>
+	<description>PST Appointments/Contacts/Journal Entries/Sticky Notes/Tasks Extraction Servlet</description>
 
-	<display-name>Servlet to extract Contacts from MS Outlook PST Files</display-name>
+	<display-name>Servlet to extract Appointments/Contacts/Journal Entries/Sticky Notes/Tasks from MS Outlook PST Files</display-name>
 
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
