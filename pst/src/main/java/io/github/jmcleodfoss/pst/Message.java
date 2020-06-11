@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The Message class represents a PST email message. The values set in the constructor are those which come from the folder Contents
-*	Table; retrieval of other fields, including the message body, require that the client provide the message property context from
-*	which the fields may be extracted.
+/**	The Message class represents a PST email message.
+*	The values set in the constructor are those which come from the folder Contents	Table; retrieval of other fields, 
+*	including the message body, require that the client provide the message property context from which the fields may be extracted.
 *	An example of the expected use case is:
 *	<pre>
 *	{@code
@@ -42,8 +42,8 @@ public class Message extends MessageObjectWithBody
 	/**	The message deliver time. */
 	public final java.util.Date messageDeliveryTime;
 
-	/**	The recipients; this is created when required. Note that not all message objects have recipient tables - only actual
-	*	mail messages have recipients.
+	/**	The recipients; this is created when required.
+	*	Note that not all message objects have recipient tables - only actual mail messages have recipients.
 	*/
 	private java.util.Vector<Recipient> recipients;
 
@@ -120,8 +120,8 @@ public class Message extends MessageObjectWithBody
 		recipients = null;
 	}
 
-	/**	Return the requested attachment as specified by the index. This is for use by other classes in this package; client
-	*	code is expected to use {@link #attachmentIterator} when processing attachments.
+	/**	Return the requested attachment as specified by the index.
+	*	This is for use by other classes in this package; client code is expected to use {@link #attachmentIterator} when processing attachments.
 	*	@param	index	The index of the attachment to retrieve. Note that this must be a valid index into the attachment table.
 	*	@return	The Attachment object for the given attachment.
 	*	@see	#attachmentIterator
