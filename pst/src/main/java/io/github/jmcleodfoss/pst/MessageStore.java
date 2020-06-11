@@ -5,19 +5,6 @@ package io.github.jmcleodfoss.pst;
 */
 public class MessageStore
 {
-	/**	The tag for the the root node of the PST file.
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5493a0eb-0356-4e88-b4f5-0433ce0a93fa">MS-PST Section 2.4.3.1: Minimum Set of Required Properties</a>
-	*/
-	private static final int PROPID_ROOT_ENTRY_ID = PropertyTags.IpmSubTreeEntryId;
-
-	/**	The tag for the password field.
-	*	@see	#passwordHashed
-	*	@see	#checkPassword
-	*	@see	#hasPassword
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/48468b1e-cc81-4e2b-82a7-9bf61adc948e">MS-PST Section 2.4.3.3: PST Password Security</a>
-	*/
-	private static final int PROPID_PASSWORD = PropertyTags.LtpPstPassword;
-
 	/**	The actual message store PC. */
 	private final PropertyContext messageStore;
 
@@ -36,7 +23,10 @@ public class MessageStore
 	*/
 	private final PSTFile pstFile;
 
-	/**	The hashed password as found in the PST file (if this is 0, the PST file has no password). */
+	/**	The hashed password as found in the PST file (if this is 0, the PST file has no password).
+	*	@see	#checkPassword
+	*	@see	#hasPassword
+	*/
 	private final int passwordHashed;
 
 	/**	The root folder. */
@@ -58,6 +48,8 @@ public class MessageStore
 	*	@throws UnparseablePropertyContextException	The property context could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5493a0eb-0356-4e88-b4f5-0433ce0a93fa">MS-PST Section 2.4.3.1: Minimum Set of Required Properties</a>
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/48468b1e-cc81-4e2b-82a7-9bf61adc948e">MS-PST Section 2.4.3.3: PST Password Security</a>
 	*/
 	public MessageStore(final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
@@ -76,8 +68,8 @@ public class MessageStore
 		this.nbt = nbt;
 		this.pstFile = pstFile;
 
-		passwordHashed = (Integer)messageStore.get(PROPID_PASSWORD);
-		rootMailboxEntry = new EntryID((byte[])messageStore.get(PROPID_ROOT_ENTRY_ID));
+		passwordHashed = (Integer)messageStore.get(PropertyTags.LtpPstPassword);
+		rootMailboxEntry = new EntryID((byte[])messageStore.get(PropertyTags.IpmSubTreeEntryId));
 		rootFolder = Folder.getFolderTree(nbt.find(rootMailboxEntry.nid), bbt, nbt, pstFile);
 	}
 
