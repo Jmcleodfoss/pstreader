@@ -11,8 +11,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-/**	This is the standard table for the application. It lives in a JScrollPane, automatically resets column sizes as required, and
-*	provides wrappers for useful table functions.
+/**	This is the standard table for the application.
+*	It lives in a JScrollPane, automatically resets column sizes as required, and provides wrappers for useful table functions.
 */
 @SuppressWarnings("serial")
 class AppTable extends JScrollPane
