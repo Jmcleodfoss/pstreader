@@ -10,8 +10,8 @@ public class MessageObject
 	/**	The message PC node information. */
 	public final NBTEntry nodeMessageObject;
 
-	/**	Whether the containing PST file is Unicode or ANSI. This value is stored, rather than the property IDs for each case,
-	*	to reduce memory requirements.
+	/**	Whether the containing PST file is Unicode or ANSI.
+	*	This value is stored, rather than the property IDs for each case, to reduce memory requirements.
 	*/
 	protected final boolean fUnicode;
 
