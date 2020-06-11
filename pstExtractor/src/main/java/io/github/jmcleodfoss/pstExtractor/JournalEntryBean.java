@@ -1,8 +1,7 @@
 package io.github.jmcleodfoss.pstExtractor;
 
 /**	The JournalEntryBean class represents a PST journal entry.
-*	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the
-*	same package.
+*	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the same package.
 */
 public class JournalEntryBean
 {

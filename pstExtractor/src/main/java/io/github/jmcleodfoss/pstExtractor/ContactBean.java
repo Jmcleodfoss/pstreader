@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**	The ContactBean class represents a PST contact entry.
-*	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the
-*	same package.
+*	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the same package.
 */
 public class ContactBean
 {

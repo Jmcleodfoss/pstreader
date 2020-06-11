@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**	The FolderBean object contains information about a single folder.
-*	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the
-*	same package.
+*	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the same package.
 *	Note also that this does not take into account the potential tree structure of a folder hierarchy.
 */
 public class FolderBean<B>
