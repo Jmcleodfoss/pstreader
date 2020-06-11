@@ -8,11 +8,6 @@ public class MessageStore
 	/**	The actual message store PC. */
 	private final PropertyContext messageStore;
 
-	/**	The data input stream, {@link Header header}, etc, of the underlying PST file.
-	*	@see	#rootFolder
-	*/
-	private final PSTFile pstFile;
-
 	/**	The hashed password as found in the PST file (if this is 0, the PST file has no password).
 	*	@see	#checkPassword
 	*	@see	#hasPassword
@@ -53,8 +48,6 @@ public class MessageStore
 		java.io.IOException
 	{
 		messageStore = new PropertyContext(nbt.find(NID.NID_MESSAGE_STORE), bbt, pstFile);
-
-		this.pstFile = pstFile;
 
 		passwordHashed = (Integer)messageStore.get(PropertyTags.LtpPstPassword);
 		rootMailboxEntry = new EntryID((byte[])messageStore.get(PropertyTags.IpmSubTreeEntryId));
