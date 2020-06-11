@@ -20,6 +20,7 @@ public class PST extends PSTFile
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnparseablePropertyContextException	A property context block could not be read.
@@ -31,6 +32,7 @@ public class PST extends PSTFile
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
+		NotTableContextNodeException,
 		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
@@ -49,6 +51,7 @@ public class PST extends PSTFile
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnparseablePropertyContextException	A property context block could not be read.
@@ -60,6 +63,7 @@ public class PST extends PSTFile
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
+		NotTableContextNodeException,
 		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
@@ -78,6 +82,7 @@ public class PST extends PSTFile
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
+	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
 	*	@throws	NullDataBlockException			A null data block was found while building a property context.
 	*	@throws UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnparseablePropertyContextException	A property context block could not be read.
@@ -89,6 +94,7 @@ public class PST extends PSTFile
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
+		NotTableContextNodeException,
 		NullDataBlockException,
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
@@ -133,15 +139,11 @@ public class PST extends PSTFile
 	}
 
 	/**	Get a folder and all sub-folders and contents.
-	*	@return	A folder and all its immediate descendents.
+	*	@return	The root folder and all its immediate descendents.
 	*/
 	public Folder getFolderTree()
 	{
-		try {
-			return messageStore.rootFolder();
-		} catch (final Exception e) {
-			return null;
-		}
+		return messageStore.rootFolder;
 	}
 
 	/**	Determine whether this PST file requires a password.
