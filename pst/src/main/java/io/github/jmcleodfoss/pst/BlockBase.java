@@ -10,10 +10,14 @@ abstract class BlockBase
 	/**	Logger for debugging block classes. */
 	protected static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.BlockBase");
 
-	/**	All blocks are a multiple of BASE_BYTES ({@value}) in size. */
+	/**	All blocks are a multiple of BASE_BYTES ({@value}) in size.
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
+	*/
 	private static final int BASE_BYTES = 64;
 
-	/**	The maximum number of bytes in a block is {@value}. */
+	/**	The maximum number of bytes in a block is {@value}.
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
+	*/
 	static final int MAX_BLOCK_BYTES = 8192;
 
 	/**	Hash key for the data read within the block. */
