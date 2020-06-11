@@ -17,15 +17,15 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.e-movimento.tinytools</groupId>
 			<artifactId>privilegedaccessor</artifactId>
 			<version>1.2.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -53,15 +53,15 @@
 				<configuration>
 					<additionalDependencies>
 						<additionalDependency>
-							<groupId>junit</groupId>
-							<artifactId>junit</artifactId>
-							<version>4.11</version>
-							<scope>test</scope>
-						</additionalDependency>
-						<additionalDependency>
 							<groupId>com.e-movimento.tinytools</groupId>
 							<artifactId>privilegedaccessor</artifactId>
 							<version>1.2.2</version>
+							<scope>test</scope>
+						</additionalDependency>
+						<additionalDependency>
+							<groupId>junit</groupId>
+							<artifactId>junit</artifactId>
+							<version>4.11</version>
 							<scope>test</scope>
 						</additionalDependency>
 					</additionalDependencies>
