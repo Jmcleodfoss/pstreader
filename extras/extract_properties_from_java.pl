@@ -9,6 +9,9 @@
 # Do some basic validation on the output.
 # Check lines with the same property tags:
 #	sort -t, -k2 new-properties-file |grep -v n/a |sed "s/,/       /g" | uniq -D -f1 
+#
+# This was used to create the starting point for the ms-oxprops database, and uses files which are deprecated and will disappear.
+# It is offered as a matter of historical interest only.
 
 use strict;
 
