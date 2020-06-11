@@ -442,8 +442,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 
 			NameToIDMap namedProperties = new NameToIDMap(blockBTree, nodeBTree, pstFile);
 			MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
-			Folder root = messageStore.rootFolder();
-			root.show("");
+			messageStore.rootFolder.show("");
 		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}

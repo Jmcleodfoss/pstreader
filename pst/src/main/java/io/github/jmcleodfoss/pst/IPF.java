@@ -221,9 +221,8 @@ public class IPF
 			for (String a: args) {
 				System.out.println(a);
 				PST pst = new PST(a);
-				Folder rootFolder = pst.getFolder(pst.nodeBTree.find(pst.messageStore.rootMailboxEntry.nid));
 				System.out.printf(fmtOutput, "Folder Name", "Container Class", "Known Container Class?");
-				for (java.util.Iterator<Folder> folderIterator = rootFolder.subfolderIterator(); folderIterator.hasNext(); ) {
+				for (java.util.Iterator<Folder> folderIterator = pst.messageStore.rootFolder.subfolderIterator(); folderIterator.hasNext(); ) {
 					final Folder f = folderIterator.next();
 					System.out.printf(fmtOutput, f.displayName, f.containerClass, isKnownClass(f));
 				}
