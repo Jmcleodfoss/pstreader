@@ -40,7 +40,7 @@ class pstExplorer extends JFrame
 	private PST pst;
 
 	/**	The full node + sub-node B-tree. */
-	private NodeSubnodeBTree nodeSubnodeBTree;
+	private NodeSubnodeBTree nodeBTree;
 
 	/**	The overall data pane which holds the PST "top-level" components. */
 	private JTabbedPane tabbedPane;
@@ -167,7 +167,7 @@ class pstExplorer extends JFrame
 	*/
 	NodeSubnodeBTree getNodeBTree()
 	{
-		return 	nodeSubnodeBTree;
+		return 	nodeBTree;
 	}
 
 	/**	Read in the given PST file.
@@ -182,7 +182,7 @@ class pstExplorer extends JFrame
 			{
 				try {
 					pst = new io.github.jmcleodfoss.pst.PST(file.getAbsolutePath());
-					nodeSubnodeBTree = pst.nodeBTreeRoot();
+					nodeBTree = pst.nodeBTreeRoot();
 					setVisible(false);
 				} catch (final Exception e) {
 					setVisible(false);
@@ -190,7 +190,7 @@ class pstExplorer extends JFrame
 					if (fDebug)
 						e.printStackTrace(System.out);
 					pst = null;
-					nodeSubnodeBTree = null;
+					nodeBTree = null;
 				}
 			}
 		};
@@ -238,7 +238,7 @@ class pstExplorer extends JFrame
 		}
 
 		pst = null;
-		nodeSubnodeBTree = null;
+		nodeBTree = null;
 
 		System.gc();
 	}
