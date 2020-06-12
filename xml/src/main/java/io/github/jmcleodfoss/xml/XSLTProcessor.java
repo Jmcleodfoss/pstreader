@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.xml;
 *	<p><strong>Use</strong><p>
 *	<code>java io.github.jmcleodfoss.pst.XSLTProcess xslt-file.xml xml-file.xml</code>
 */
-public class XSLTProcessor {
-
+public class XSLTProcessor
+{
 	/**	Convert an XML file using an XSLT stylesheet, sending result to System.out.
 	*	@param	args	The comand line arguments to the test application.
 	*/

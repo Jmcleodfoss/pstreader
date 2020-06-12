@@ -6,8 +6,8 @@ package io.github.jmcleodfoss.xml;
 *	The list of known folder classes may be found by issuing the command without parameters:
 *	<code>java io.github.jmcleodfoss.pst.PSTIPFFolderTypeToXML</code>
 **/
-class PSTIPFFolderTypeToXML extends PSTToXML {
-
+class PSTIPFFolderTypeToXML extends PSTToXML
+{
 	static final java.util.Map<String, String> knownFolderTypes = new java.util.HashMap<String, String>();
 	static {
 		final int IPFPrefixLength = 4;

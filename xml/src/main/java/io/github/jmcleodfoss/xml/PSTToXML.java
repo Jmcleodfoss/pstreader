@@ -4,8 +4,8 @@ package io.github.jmcleodfoss.xml;
 *	<p><strong>Use</strong><p>
 *	<code>java io.github.jmcleodfoss.pst.PSTToXML pst-file.pst</code>
 */
-class PSTToXML {
-
+class PSTToXML
+{
 	/**	The XML document for this PST file. */
 	private org.w3c.dom.Document document;
 
