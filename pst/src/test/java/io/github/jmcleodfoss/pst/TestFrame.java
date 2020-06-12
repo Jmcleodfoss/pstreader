@@ -29,7 +29,10 @@ abstract class TestFrame
 		NoSuchMethodException,
 		Throwable
 	{
-		test(ExtensionFileFilter.pstFileFilter);
+		File pstPattern = new File(".");
+		File[] files = pstPattern.listFiles(ExtensionFileFilter.pstFileFilter;
+		for (File file : files)
+			test(file);
 	}
 
 	abstract protected void test(File file)
@@ -56,9 +59,5 @@ abstract class TestFrame
 		NoSuchMethodException,
 		Throwable
 	{
-		File pstPattern = new File(".");
-		File[] files = pstPattern.listFiles(filter);
-		for (File file : files)
-			test(file);
 	}
 }
