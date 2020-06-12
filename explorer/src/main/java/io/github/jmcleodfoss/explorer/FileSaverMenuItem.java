@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**	The FileSaverMenuItem class implements a generic mechanism for saving files via a submenu menu item.
 */
-abstract public class FileSaverMenuItem implements ActionListener
+abstract class FileSaverMenuItem implements ActionListener
 {
 	/**	The extensions permitted by the save dialog. */
 	private final FileNameExtensionFilter[] extensionFilters;
