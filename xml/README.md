@@ -13,4 +13,4 @@ Extract contents of a PST file to an XML file
 Java native XSLT transformer
 `java io.github.jmcleodfoss.xml.XSLTProcessor xslt-file xml-file`
 
-This is deprecated. I use [xlstproc](http://xmlsoft.org/XSLT/xsltproc.html) to apply xls stylesheets.
+This works, but I use [xlstproc](http://xmlsoft.org/XSLT/xsltproc.html) to apply xls stylesheets.
