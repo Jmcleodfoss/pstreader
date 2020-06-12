@@ -7,8 +7,8 @@ import java.nio.BufferUnderflowException;
 import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 
-/** Driver for pst library tests, which runs the {@see #test} function on each file in tne working directory.
-*   Each test case derives from this, and overrides the {@see #test} function to actually do the testing, as well as any other testing needed.
+/** Driver for pst library tests, which runs the {@link #test} function on each file in tne working directory.
+*   Each test case derives from this, and overrides the {@link #test} function to actually do the testing, as well as any other testing needed.
 */
 abstract class TestFrame
 {
