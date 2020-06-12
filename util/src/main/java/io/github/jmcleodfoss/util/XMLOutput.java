@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.util;
 
 /**	This is a utility class for simple client-managed XML output of strings. */
-public class XMLOutput {
-
+public class XMLOutput
+{
 	/**	The output stream to which to write the XML. */
 	java.io.PrintStream printStream;
 

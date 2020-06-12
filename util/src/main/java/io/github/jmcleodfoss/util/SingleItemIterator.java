@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.util;
 
 /**	The SingleItemIterator Iterator class is a trivial iterator for a list known to contain a single item. */
-public class SingleItemIterator<T> implements java.util.Iterator<Object> {
-
+public class SingleItemIterator<T> implements java.util.Iterator<Object>
+{
 	/**	The data to return. */
 	private final T data;
 
