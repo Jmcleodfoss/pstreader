@@ -40,7 +40,7 @@ class pstExplorer extends JFrame
 	private PST pst;
 
 	/**	The full node + sub-node B-tree. */
-	NodeSubnodeBTree nodeSubnodeBTree;
+	private NodeSubnodeBTree nodeSubnodeBTree;
 
 	/**	The overall data pane which holds the PST "top-level" components. */
 	private JTabbedPane tabbedPane;
@@ -160,6 +160,14 @@ class pstExplorer extends JFrame
 		NewFileListener[] newFileListeners = listeners.getListeners(NewFileListener.class);
 		for(NewFileListener l : newFileListeners)
 			l.fileLoaded(e);
+	}
+
+	/**	Get the node subnode BTree
+	*	@return	the root of the node subnode B-tree
+	*/
+	NodeSubnodeBTree getNodeBTree()
+	{
+		return 	nodeSubnodeBTree;
 	}
 
 	/**	Read in the given PST file.

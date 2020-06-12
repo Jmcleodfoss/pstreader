@@ -19,6 +19,6 @@ class NodeBTreeDisplay extends BTreeWithData
 	*/
 	TreeModel treeModel()
 	{
-		return pstExplorer.explorer.nodeSubnodeBTree;
+		return pstExplorer.explorer.getNodeBTree();
 	}
 }
