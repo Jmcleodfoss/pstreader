@@ -7,7 +7,7 @@ package io.github.jmcleodfoss.xml;
 public class XSLTProcessor
 {
 	/**	Convert an XML file using an XSLT stylesheet, sending result to System.out.
-	*	@param	args	The comand line arguments to the test application.
+	*	@param	args	The XSLT style sheet and the XML file to transform
 	*/
 	public static void main(String[] args)
 	{
