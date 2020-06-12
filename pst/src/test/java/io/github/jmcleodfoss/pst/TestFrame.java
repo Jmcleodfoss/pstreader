@@ -15,6 +15,22 @@ import org.junit.Test;
 
 /** TBD */
 abstract class TestFrame {
+	@Test
+	public void pst()
+	throws
+		BufferUnderflowException,
+		FileNotFoundException,
+		IllegalAccessException,
+		InsufficientMemoryException,
+		InstantiationException,
+		IOException,
+		NotPSTFileException,
+		NoSuchMethodException,
+		Throwable
+	{
+		test(ExtensionFileFilter.pstFileFilter);
+	}
+
 	abstract protected void test(File file)
 	throws
 		BufferUnderflowException,

@@ -15,21 +15,6 @@ import org.junit.Test;
 
 /** TBD */
 public class BlockBTreeTest extends TestFrame {
-	@Test public void pst()
-	throws
-		BufferUnderflowException,
-		FileNotFoundException,
-		IllegalAccessException,
-		InsufficientMemoryException,
-		InstantiationException,
-		IOException,
-		NotPSTFileException,
-		NoSuchMethodException,
-		Throwable
-	{
-		test(ExtensionFileFilter.pstFileFilter);
-	}
-
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

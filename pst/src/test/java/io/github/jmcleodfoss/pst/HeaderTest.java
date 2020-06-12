@@ -16,21 +16,6 @@ import org.junit.Test;
 /** TBD */
 public class HeaderTest extends TestFrame {
 
-	@Test public void pst()
-	throws
-		BufferUnderflowException,
-		FileNotFoundException,
-		IllegalAccessException,
-		InsufficientMemoryException,
-		InstantiationException,
-		IOException,
-		NotPSTFileException,
-		NoSuchMethodException,
-		Throwable
-	{
-		test(ExtensionFileFilter.pstFileFilter);
-	}
-
 	@Test(expected = BufferUnderflowException.class) public void shorterThanHeader()
 	throws
 		BufferUnderflowException,
