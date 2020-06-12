@@ -7,9 +7,21 @@ import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.lang.reflect.InvocationTargetException;
 
-/** TBD */
+/** Test the io.github.jmcledofoss.pst.BTreeOnHeap class. */
 public class BTreeOnHeapTest extends TestFrame
 {
+	/** Test the BTreeOnHeap class by creating a BTreeOnHeap object for each datablock which contains a heap-on-node structure.
+	*	@param	file	The file to be tested.
+	*	@throws	BufferUnderflowException	Some tests may result in buffer underflows
+	*	@throws	FileNotFoundException		The file to be tested was not found
+	*	@throws	IllegalAccessExceotion		A reflection problem was encountered in the test framework
+	*	@throws	InsufficientMemoryException	There was not enough memory to process a file
+	*	@throws	InstantiationException		A reflection problem was encountered in the test framework
+	*	@throws	IOException			There was a problem reading a file
+	*	@throws	NotPSTException			The given file was not a PST file
+	*	@throws	NoSuchMethodException		A reflection problem was encountered in the test framework
+	*	@throws	Throwable			A run-time exception was encountered
+	*/
 	protected void test(File file)
 	throws
 		BufferUnderflowException,
