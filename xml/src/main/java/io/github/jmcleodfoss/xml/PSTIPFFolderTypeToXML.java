@@ -9,7 +9,7 @@ package io.github.jmcleodfoss.xml;
 class PSTIPFFolderTypeToXML extends PSTToXML
 {
 	/** The list of known folder types, as a mapping from human-readable strings to those found in the protocol. */
-	static final java.util.Map<String, String> knownFolderTypes = new java.util.HashMap<String, String>();
+	static final private java.util.Map<String, String> knownFolderTypes = new java.util.HashMap<String, String>();
 	static {
 		final int IPFPrefixLength = 4;
 		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPF.iterator(); iterator.hasNext(); ){
