@@ -12,15 +12,13 @@ public class SubnodeBTree extends BTree
 		private static final String nm_dwPadding = "dwPadding";
 		private static final String nm_rgEntries = "rgEntries";
 
-		/**	The fields in the input stream which contain the sub-node block header common to both ANSI and Unicode files. */
+		/**	The fields in the input stream which contain the sub-node block header common to both ANSI and Unicode files.
+		*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5182eb24-4b0b-4816-aa3f-719cc6e6b018">MS-PST Section 2.2.2.8.3.3.1.2: SLBLOCK</a>
+		*/
 		private static final DataDefinition[] common_fields = {
 			new DataDefinition(nm_bType, DataType.integer8Reader, true),
 			new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
 			new DataDefinition(nm_cEnt, DataType.integer16Reader, true),
-
-			// Note that the PST document suggests this is present for both Unicode and ANSI files, but my tests with
-			// ANSI files suggests otherwise.
-//			new DataDefinition(nm_dwPadding, new DataType.SizedByteArray(4), true)
 		};
 
 		/**	The fields in the input stream which contain the sub-node block header specific to Unicode files. */
