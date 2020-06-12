@@ -17,12 +17,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.e-movimento.tinytools</groupId>
-			<artifactId>privilegedaccessor</artifactId>
-			<version>1.2.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
@@ -52,12 +46,6 @@
 				<version>3.2.0</version>
 				<configuration>
 					<additionalDependencies>
-						<additionalDependency>
-							<groupId>com.e-movimento.tinytools</groupId>
-							<artifactId>privilegedaccessor</artifactId>
-							<version>1.2.2</version>
-							<scope>test</scope>
-						</additionalDependency>
 						<additionalDependency>
 							<groupId>junit</groupId>
 							<artifactId>junit</artifactId>
