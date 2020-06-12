@@ -8,8 +8,8 @@ public class NID implements NodeKey
 	/**	Logger for NID creation. */
 	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NID");
 
-	/**	Whether to check for known node types. This should be left disabled, since undocumented node types do occur in PST
-	*	files.
+	/**	Whether to check for known node types.
+	*	This should be left disabled, since undocumented node types do occur in PST files.
 	*/
 	private static final boolean fStrict = false;
 
@@ -130,8 +130,8 @@ public class NID implements NodeKey
 	/**	A description of this node ID type (used primarily in toString). */
 	final String description;
 
-	/**	Construct a node ID from a type and a node index. This is used to create the special node IDs defined here and in
-	*	derived classes, and should not be used elsewhere.
+	/**	Construct a node ID from a type and a node index.
+	*	This is used to create the special node IDs defined here and in derived classes, and should not be used elsewhere.
 	*	@param	type	The node type.
 	*	@param	nid	The node index.
 	*	@see	#NID_MESSAGE_STORE
@@ -166,7 +166,7 @@ public class NID implements NodeKey
 		this(type, nid.nid);
 	}
 
-	/**	Get the description of this node ID type. Throw an exception if the node ID type is not found.
+	/**	Get the description of this node ID type, throwing an exception if the node ID type is not found.
 	*	Node type checking can be strict, in which case description will thrown an exception for unrecognized node types, or it
 	*	can be relaxed, in which case an "Unknown type" is synthesized.
 	*	@param	type	The node type to create the description for.
@@ -309,7 +309,8 @@ public class NID implements NodeKey
 		return key;
 	}
 
-	/**	Provide a string describing this node ID. This function is typically used for debugging.
+	/**	Provide a string describing this node ID.
+	*	This function is typically used for debugging.
 	*	@return	A string describing this node ID object.
 	*	@see	#description
 	*/
