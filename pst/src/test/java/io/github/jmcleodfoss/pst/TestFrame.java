@@ -18,11 +18,11 @@ abstract class TestFrame
 	/** The primary test function, called for all test cases to run tests on each file in the working directory.
 	*	@throws	BufferUnderflowException	Some tests may result in buffer underflows
 	*	@throws	FileNotFoundException		The file to be tested was not found
-	*	@throws	IllegalAccessExceotion		A reflection problem was encountered in the test framework
+	*	@throws	IllegalAccessException		A reflection problem was encountered in the test framework
 	*	@throws	InsufficientMemoryException	There was not enough memory to process a file
 	*	@throws	InstantiationException		A reflection problem was encountered in the test framework
 	*	@throws	IOException			There was a problem reading a file
-	*	@throws	NotPSTException			The given file was not a PST file
+	*	@throws	NotPSTFileException		The given file was not a PST file
 	*	@throws	NoSuchMethodException		A reflection problem was encountered in the test framework
 	*	@throws	Throwable			A run-time exception was encountered
 	*/
@@ -49,11 +49,11 @@ abstract class TestFrame
 	*	@param	file	The file to be tested.
 	*	@throws	BufferUnderflowException	Some tests may result in buffer underflows
 	*	@throws	FileNotFoundException		The file to be tested was not found
-	*	@throws	IllegalAccessExceotion		A reflection problem was encountered in the test framework
+	*	@throws	IllegalAccessException		A reflection problem was encountered in the test framework
 	*	@throws	InsufficientMemoryException	There was not enough memory to process a file
 	*	@throws	InstantiationException		A reflection problem was encountered in the test framework
 	*	@throws	IOException			There was a problem reading a file
-	*	@throws	NotPSTException			The given file was not a PST file
+	*	@throws	NotPSTFileException		The given file was not a PST file
 	*	@throws	NoSuchMethodException		A reflection problem was encountered in the test framework
 	*	@throws	Throwable			A run-time exception was encountered
 	*/
