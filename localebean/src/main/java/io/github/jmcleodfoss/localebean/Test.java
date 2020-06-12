@@ -6,7 +6,6 @@ package io.github.jmcleodfoss.localebean;
 */
 class Test
 {
-
 	static void process(String fn)
 	{
 		System.out.printf("\"%s\"", fn);
