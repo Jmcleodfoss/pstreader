@@ -3,8 +3,8 @@ package io.github.jmcleodfoss.pst;
 import java.io.File;
 import java.io.FileFilter;
 
-class ExtensionFileFilter implements FileFilter {
-
+class ExtensionFileFilter implements FileFilter
+{
 	private String extension;
 
 	ExtensionFileFilter(final String extension)

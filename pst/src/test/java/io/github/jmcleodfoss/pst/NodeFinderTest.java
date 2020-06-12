@@ -15,7 +15,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /** TBD */
-public class NodeFinderTest extends TestFrame {
+public class NodeFinderTest extends TestFrame
+{
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

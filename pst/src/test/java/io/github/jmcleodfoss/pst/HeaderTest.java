@@ -14,8 +14,8 @@ import junit.extensions.PrivilegedAccessor;
 import org.junit.Test;
 
 /** TBD */
-public class HeaderTest extends TestFrame {
-
+public class HeaderTest extends TestFrame
+{
 	@Test(expected = BufferUnderflowException.class) public void shorterThanHeader()
 	throws
 		BufferUnderflowException,

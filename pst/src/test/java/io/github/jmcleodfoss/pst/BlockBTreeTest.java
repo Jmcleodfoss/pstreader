@@ -14,7 +14,8 @@ import junit.extensions.PrivilegedAccessor;
 import org.junit.Test;
 
 /** TBD */
-public class BlockBTreeTest extends TestFrame {
+public class BlockBTreeTest extends TestFrame
+{
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

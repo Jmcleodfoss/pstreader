@@ -15,7 +15,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /** TBD */
-public class BlockFinderTest extends TestFrame {
+public class BlockFinderTest extends TestFrame
+{
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

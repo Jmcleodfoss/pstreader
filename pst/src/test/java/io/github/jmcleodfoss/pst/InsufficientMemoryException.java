@@ -17,7 +17,8 @@ package io.github.jmcleodfoss.pst;
 *   </pre>
 */
 @SuppressWarnings("serial")
-class InsufficientMemoryException extends Exception {
+class InsufficientMemoryException extends Exception
+{
 	/** Create an InsufficientMemoryException
 	*	@param	e	The exception which indicates the insufficient memory condition.
 	*/

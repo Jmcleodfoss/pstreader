@@ -14,7 +14,8 @@ import junit.extensions.PrivilegedAccessor;
 import org.junit.Test;
 
 /** TBD */
-abstract class TestFrame {
+abstract class TestFrame
+{
 	@Test
 	public void pst()
 	throws

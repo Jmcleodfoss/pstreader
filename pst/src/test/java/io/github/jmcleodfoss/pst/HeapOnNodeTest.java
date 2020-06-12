@@ -14,7 +14,8 @@ import junit.extensions.PrivilegedAccessor;
 import org.junit.Test;
 
 /** TBD */
-public class HeapOnNodeTest extends TestFrame {
+public class HeapOnNodeTest extends TestFrame
+{
 	protected void test(File file)
 	throws
 		BufferUnderflowException,
