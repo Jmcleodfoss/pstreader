@@ -18,6 +18,4 @@ class ExtensionFileFilter implements FileFilter
 		int iExt = name.lastIndexOf('.');
 		return iExt >= 0 && name.substring(iExt+1).equalsIgnoreCase(extension);
 	}
-
-	static final ExtensionFileFilter pstFileFilter = new ExtensionFileFilter("pst");
 }

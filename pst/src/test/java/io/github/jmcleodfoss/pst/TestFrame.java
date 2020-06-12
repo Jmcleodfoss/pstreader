@@ -12,6 +12,9 @@ import org.junit.Test;
 */
 abstract class TestFrame
 {
+	/** The file filter to use when looking for files to test. */
+	static final ExtensionFileFilter pstFileFilter = new ExtensionFileFilter("pst");
+
 	/** The primary test function, called for all test cases to run tests on each file in the working directory.
 	*	@throws	BufferUnderflowException	Some tests may result in buffer underflows
 	*	@throws	FileNotFoundException		The file to be tested was not found
@@ -37,7 +40,7 @@ abstract class TestFrame
 		Throwable
 	{
 		File pstPattern = new File(".");
-		File[] files = pstPattern.listFiles(ExtensionFileFilter.pstFileFilter);
+		File[] files = pstPattern.listFiles(pstFileFilter);
 		for (File file : files)
 			test(file);
 	}
