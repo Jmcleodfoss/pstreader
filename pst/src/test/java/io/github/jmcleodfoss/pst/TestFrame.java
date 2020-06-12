@@ -30,7 +30,7 @@ abstract class TestFrame
 		Throwable
 	{
 		File pstPattern = new File(".");
-		File[] files = pstPattern.listFiles(ExtensionFileFilter.pstFileFilter;
+		File[] files = pstPattern.listFiles(ExtensionFileFilter.pstFileFilter);
 		for (File file : files)
 			test(file);
 	}
