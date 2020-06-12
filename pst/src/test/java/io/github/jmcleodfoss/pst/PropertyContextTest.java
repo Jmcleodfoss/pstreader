@@ -7,9 +7,21 @@ import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.lang.reflect.InvocationTargetException;
 
-/** TBD */
+/** Test the PropertyContext class */
 public class PropertyContextTest extends TestFrame
 {
+	/** Test the PropertyContext class by creating a PropertyContext object for each property context found in the file's heap-on-node.
+	*	@param	file	{@inheritDoc}
+	*	@throws	BufferUnderflowException	{@inheritDoc}
+	*	@throws	FileNotFoundException		{@inheritDoc}
+	*	@throws	IllegalAccessException		{@inheritDoc}
+	*	@throws	InsufficientMemoryException	{@inheritDoc}
+	*	@throws	InstantiationException		{@inheritDoc}
+	*	@throws	IOException			{@inheritDoc}
+	*	@throws	NotPSTFileException		{@inheritDoc}
+	*	@throws	NoSuchMethodException		{@inheritDoc}
+	*	@throws	Throwable			{@inheritDoc}
+	*/
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

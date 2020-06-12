@@ -7,9 +7,21 @@ import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.lang.reflect.InvocationTargetException;
 
-/** TBD */
+/** Test the TableContext class */
 public class TableContextTest extends TestFrame
 {
+	/** Test the TableContext class by creating a TableContext object for each table context entry found in the file's heap-on-node.
+	*	@param	file	{@inheritDoc}
+	*	@throws	BufferUnderflowException	{@inheritDoc}
+	*	@throws	FileNotFoundException		{@inheritDoc}
+	*	@throws	IllegalAccessException		{@inheritDoc}
+	*	@throws	InsufficientMemoryException	{@inheritDoc}
+	*	@throws	InstantiationException		{@inheritDoc}
+	*	@throws	IOException			{@inheritDoc}
+	*	@throws	NotPSTFileException		{@inheritDoc}
+	*	@throws	NoSuchMethodException		{@inheritDoc}
+	*	@throws	Throwable			{@inheritDoc}
+	*/
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

@@ -7,9 +7,21 @@ import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.lang.reflect.InvocationTargetException;
 
-/** TBD */
+/** Test the NodeBTree class */
 public class NodeBTreeTest extends TestFrame
 {
+	/** Test the NodeBTree class by creating the NodeBTree object for the file.
+	*	@param	file	{@inheritDoc}
+	*	@throws	BufferUnderflowException	{@inheritDoc}
+	*	@throws	FileNotFoundException		{@inheritDoc}
+	*	@throws	IllegalAccessException		{@inheritDoc}
+	*	@throws	InsufficientMemoryException	{@inheritDoc}
+	*	@throws	InstantiationException		{@inheritDoc}
+	*	@throws	IOException			{@inheritDoc}
+	*	@throws	NotPSTFileException		{@inheritDoc}
+	*	@throws	NoSuchMethodException		{@inheritDoc}
+	*	@throws	Throwable			{@inheritDoc}
+	*/
 	protected void test(File file)
 	throws
 		BufferUnderflowException,

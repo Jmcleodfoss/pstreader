@@ -7,9 +7,21 @@ import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.lang.reflect.InvocationTargetException;
 
-/** TBD */
+/** Test the SimbpleBlock class */
 public class SimpleBlockTest extends TestFrame
 {
+	/** Test the SimpleBlock class by creating all the blocks found in the file's block B-tree
+	*	@param	file	{@inheritDoc}
+	*	@throws	BufferUnderflowException	{@inheritDoc}
+	*	@throws	FileNotFoundException		{@inheritDoc}
+	*	@throws	IllegalAccessException		{@inheritDoc}
+	*	@throws	InsufficientMemoryException	{@inheritDoc}
+	*	@throws	InstantiationException		{@inheritDoc}
+	*	@throws	IOException			{@inheritDoc}
+	*	@throws	NotPSTFileException		{@inheritDoc}
+	*	@throws	NoSuchMethodException		{@inheritDoc}
+	*	@throws	Throwable			{@inheritDoc}
+	*/
 	protected void test(File file)
 	throws
 		BufferUnderflowException,
