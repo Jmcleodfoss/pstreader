@@ -96,7 +96,7 @@ public class NodeSubnodeBTree extends NodeBTree
 	*	@param	pstFile	The PST file's data stream, etc.
 	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
 	*/
-	public NodeSubnodeBTree(final long key, final BREF bref, final BlockMap bbt, PSTFile pstFile)
+	NodeSubnodeBTree(final long key, final BREF bref, final BlockMap bbt, PSTFile pstFile)
 	throws
 		java.io.IOException
 	{
