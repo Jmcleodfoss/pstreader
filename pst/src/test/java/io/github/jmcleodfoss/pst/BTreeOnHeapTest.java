@@ -11,16 +11,16 @@ import java.lang.reflect.InvocationTargetException;
 public class BTreeOnHeapTest extends TestFrame
 {
 	/** Test the BTreeOnHeap class by creating a BTreeOnHeap object for each datablock which contains a heap-on-node structure.
-	*	@param	file	The file to be tested.
-	*	@throws	BufferUnderflowException	Some tests may result in buffer underflows
-	*	@throws	FileNotFoundException		The file to be tested was not found
-	*	@throws	IllegalAccessException		A reflection problem was encountered in the test framework
-	*	@throws	InsufficientMemoryException	There was not enough memory to process a file
-	*	@throws	InstantiationException		A reflection problem was encountered in the test framework
-	*	@throws	IOException			There was a problem reading a file
-	*	@throws	NotPSTFileException		The given file was not a PST file
-	*	@throws	NoSuchMethodException		A reflection problem was encountered in the test framework
-	*	@throws	Throwable			A run-time exception was encountered
+	*	@param	file	{@inheritDoc}
+	*	@throws	BufferUnderflowException	{@inheritDoc}
+	*	@throws	FileNotFoundException		{@inheritDoc}
+	*	@throws	IllegalAccessException		{@inheritDoc}
+	*	@throws	InsufficientMemoryException	{@inheritDoc}
+	*	@throws	InstantiationException		{@inheritDoc}
+	*	@throws	IOException			{@inheritDoc}
+	*	@throws	NotPSTFileException		{@inheritDoc}
+	*	@throws	NoSuchMethodException		{@inheritDoc}
+	*	@throws	Throwable			{@inheritDoc}
 	*/
 	protected void test(File file)
 	throws
