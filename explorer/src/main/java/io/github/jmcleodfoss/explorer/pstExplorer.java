@@ -174,7 +174,7 @@ class pstExplorer extends JFrame
 			{
 				try {
 					pst = new io.github.jmcleodfoss.pst.PST(file.getAbsolutePath());
-					nodeSubnodeBTree = new NodeSubnodeBTree(0, pst.header.nbtRoot, pst.blockBTree, pst);
+					nodeSubnodeBTree = pst.nodeBTreeRoot();
 					setVisible(false);
 				} catch (final Exception e) {
 					setVisible(false);
