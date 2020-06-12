@@ -206,6 +206,17 @@ public class PST extends PSTFile
 		return ((NodeBTree)nodeBTree).iterator();
 	}
 
+	/**	Convenience function to retrieve the root of the node B-tree.
+	*	@returns	The root of the node / sub-node B-tree
+	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
+	*/
+	public NodeSubnodeBTree nodeBTreeRoot()
+	throws
+		java.io.IOException
+	{
+		return new NodeSubnodeBTree(0, header.nbtRoot, blockBTree, this);
+	}
+
 	/**	Convenience function to obtain the property context from the given NID
 	*	@param	nid	The node ID to retrieve the property context iterator from.
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
