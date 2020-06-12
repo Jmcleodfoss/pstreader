@@ -6,6 +6,9 @@ package io.github.jmcleodfoss.localebean;
 */
 class Test
 {
+	/**	Split the filename into file + extension and print the results
+	*	@param	fn	The file name to split
+	*/
 	static void process(String fn)
 	{
 		System.out.printf("\"%s\"", fn);
@@ -16,6 +19,9 @@ class Test
 		System.out.printf(" => \"%s\" + \"%s\"\n", fnFilename, fnExtension);
 	}
 
+	/** Run test function for some fixed test cases and any input passed from the command line.
+	*	@param	args	The additional filenames to process.
+	*/
 	public static void main(String[] args)
 	{
 		process("filename");
