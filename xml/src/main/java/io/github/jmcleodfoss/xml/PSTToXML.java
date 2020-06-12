@@ -20,7 +20,7 @@ class PSTToXML
 	private final java.util.HashMap<Integer, String> safeXMLNamedProperties;
 
 	/**	The PST file contents. */
-	io.github.jmcleodfoss.pst.PST pst;
+	private final io.github.jmcleodfoss.pst.PST pst;
 
 	/**	Create a PST to XML translator for the given PST file
 	*	@param	fn	The filename of the PST file to translate.

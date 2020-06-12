@@ -19,7 +19,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	}
 
 	/**	The folder class to emit. */
-	final String includedFolderClass;
+	final private String includedFolderClass;
 
 	/**	Construct an object to extract folders of the given class from the PST file with the given name.
 	*	@param	fn			The file name of the PST file to process.
