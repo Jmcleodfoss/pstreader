@@ -182,13 +182,13 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	private javax.swing.JLabel attachmentImage;
 
 	/**	The text attachment, if any. */
-	javax.swing.JTextArea attachmentText;
+	private javax.swing.JTextArea attachmentText;
 
 	/**	The HTML attachment, if any. */
-	javax.swing.JTextPane attachmentHtml;
+	private javax.swing.JTextPane attachmentHtml;
 
 	/**	The members of the distribution list, if any. */
-	DistributionListDisplay distributionList;
+	private DistributionListDisplay distributionList;
 
 	/**	The message property context, when appropriate. */
 	private PropertyContext messagePC;
