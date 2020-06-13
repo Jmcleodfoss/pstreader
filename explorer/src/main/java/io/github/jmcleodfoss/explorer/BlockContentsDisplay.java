@@ -17,6 +17,7 @@ class BlockContentsDisplay extends HexAndTextDisplay implements BTreeContentsDis
 	}
 
 	/**	{@inheritDoc}. */
+	@Override
 	public void update(BTreeNode node, PST pst)
 	{
 		if (pst == null) {

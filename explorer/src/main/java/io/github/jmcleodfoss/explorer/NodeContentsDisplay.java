@@ -36,6 +36,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	}
 
 	/**	{@inheritDoc}. */
+	@Override
 	public void reset()
 	{
 		remove(rawData);
@@ -45,6 +46,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	}
 
 	/**	{@inheritDoc}. */
+	@Override
 	public void update(BTreeNode node, PST pst)
 	{
 		if (pst == null) {

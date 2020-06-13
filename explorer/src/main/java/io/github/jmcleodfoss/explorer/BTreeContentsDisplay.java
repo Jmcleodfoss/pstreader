@@ -9,11 +9,11 @@ import io.github.jmcleodfoss.pst.PST;
 interface BTreeContentsDisplay
 {
 	/**	Reset all child views. */
-	void reset();
+	abstract void reset();
 
 	/**	Update all child views.
 	*	@param	node	The new B-tree node selected.
 	*	@param	pst	The PST object for the PST file being displayed.
 	*/
-	void update(BTreeNode node, PST pst);
+	abstract void update(BTreeNode node, PST pst);
 }
