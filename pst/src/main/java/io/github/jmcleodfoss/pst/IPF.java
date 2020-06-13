@@ -211,7 +211,17 @@ public class IPF
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.IPF pst-filename [pst-filename...]");
+			System.out.println("use:");
+			System.out.println("\tjava io.github.jmcleodfoss.pst.IPF pst-filename [pst-filename...]");
+			System.out.println("\nTo get the list of recognized folder types:");
+			System.out.println("\tjava io.github.jmcleodfoss.pst.IPF --list");
+			System.exit(1);
+		}
+
+		if (args[0].equals("--list")) {
+			System.out.println("Known folder types");
+			for (java.util.Iterator<String> iter = iterator(); iter.hasNext(); )
+				System.out.println(iter.next());
 			System.exit(1);
 		}
 
