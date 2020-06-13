@@ -106,7 +106,7 @@ class PSTToXML
 			io.github.jmcleodfoss.pst.Folder subfolder = subfolders.next();
 
 			type = subfolder.containerClass;
-			if (type == null || !folderFilter(type)) {
+			if (type != null && !folderFilter(type)) {
 				xml.openElement("folder");
 				addFolderContents(xml, subfolder, pst);
 				xml.closeElement();
