@@ -7,7 +7,6 @@ import javax.swing.JTextPane;
 import io.github.jmcleodfoss.pst.MessageObject;
 import io.github.jmcleodfoss.pst.MessageObjectWithBody;
 import io.github.jmcleodfoss.pst.PropertyContext;
-import io.github.jmcleodfoss.pst.StickyNote;
 
 /**	The Message class exposes some message components. */
 @SuppressWarnings("serial")
