@@ -28,16 +28,16 @@
 				<t:htmlTag value="h3">
 					#{folder.name}
 				</t:htmlTag>
-					<h:dataTable value="#{folder.contents}" var="task">
-						<h:column>
-							<f:facet name="header">#{res['tasks.heading.title']}</f:facet>
-							#{task.title}
-						</h:column>
-						<h:column>
-							<f:facet name="header">#{res['tasks.heading.dueDate']}</f:facet>
-							#{task.dueDate}
-						</h:column>
-					</h:dataTable>
+				<h:dataTable value="#{folder.contents}" var="task">
+					<h:column>
+						<f:facet name="header">#{res['tasks.heading.title']}</f:facet>
+						#{task.title}
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{res['tasks.heading.dueDate']}</f:facet>
+						#{task.dueDate}
+					</h:column>
+				</h:dataTable>
 			</h:column>
 		</h:dataTable>
 	</composite:implementation>
