@@ -13,19 +13,19 @@ import io.github.jmcleodfoss.pst.PropertyContext;
 class Message extends NodeContentsDisplay
 {
 	/**	The message header. */
-	JTextArea header;
+	private JTextArea header;
 
 	/**	The scrollpane to hold the message body. */
-	JScrollPane spBodyText;
+	private JScrollPane spBodyText;
 
 	/**	The message body as text. */
-	JTextArea bodyText;
+	private JTextArea bodyText;
 
 	/**	The scrollpane to hold the HTML message body. */
-	JScrollPane spBodyHtml;
+	private JScrollPane spBodyHtml;
 
 	/**	The message body as HTML, if present. */
-	JTextPane bodyHtml;
+	private JTextPane bodyHtml;
 
 	/**	Construct a message object. */
 	Message()
