@@ -38,6 +38,11 @@ public class IPF
 	*/
 	private static final String JOURNAL = "IPF.Journal";
 
+	/**	The string used for the "container class" for folders containing notes.
+	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*/
+	private static final String NOTE = "IPF.Note";
+
 	/**	The string used for the "container class" for folders containing favourite contacts
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
@@ -57,11 +62,6 @@ public class IPF
 	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	private static final String TASK = "IPF.Task";
-
-	/**	The string used for the "container class" for folders containing notes.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
-	*/
-	private static final String NOTE = "IPF.Note";
 
 	/**	The list of known folder class types. */
 	static final java.util.Vector<String> knownClasses = new java.util.Vector<String>();
