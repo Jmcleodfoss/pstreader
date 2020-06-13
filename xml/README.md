@@ -6,16 +6,16 @@ Extract data matching a given folder type from a PST file to an XML file
 `java io.github.jmcleodfoss.xml.PSTIPFFolderTypeToXML pst-filename IPF-Folder-type`
 where IPF-folder-type is one of:
 * appointment
+* configuration
 * contact
-* contact.moc.imcontactlist
-* contact.moc.quickcontacts
+* hompage
+* imcontacts
 * journal
 * note
-* note.outlookhomepage
-* outlook.reminder
+* quickcontacts
+* reminder
 * stickynote
 * task
-* note
 
 ## PSTToXML
 Extract contents of a PST file to an XML file
