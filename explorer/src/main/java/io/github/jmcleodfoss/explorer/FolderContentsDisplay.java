@@ -15,7 +15,15 @@ import io.github.jmcleodfoss.pst.DistributionList;
 import io.github.jmcleodfoss.pst.Folder;
 import io.github.jmcleodfoss.pst.LPTLeaf;
 import io.github.jmcleodfoss.pst.MessageObject;
+import io.github.jmcleodfoss.pst.NotHeapNodeException;
+import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
+import io.github.jmcleodfoss.pst.NotTableContextNodeException;
+import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PropertyContext;
+import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
+import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
+import io.github.jmcleodfoss.pst.UnparseableTableContextException;
+import io.github.jmcleodfoss.swingutil.ProgressBar;
 import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 
 /**	The FolderContentsDisplay is a specialization of BTreeWithData for folder display. */
@@ -85,7 +93,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			/**	{@inheritDoc} */
 			String initialFilenameSuggestion()
 			{
-				return ((io.github.jmcleodfoss.pst.Attachment)clickedNode).name;
+				return ((Attachment)clickedNode).name;
 			}
 
 			/**	{@inheritDoc} */
@@ -224,7 +232,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	{
 		if (treeNode instanceof Folder) {
 
-			final io.github.jmcleodfoss.pst.Folder folder = (io.github.jmcleodfoss.pst.Folder)treeNode;
+			final Folder folder = (Folder)treeNode;
 			assert folder.nodeFolderObject != null;
 
 			updateComponent(folderObject, folder.nodeFolderObject, "Info");
@@ -243,20 +251,20 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			return;
 		}
 
-		if (treeNode instanceof io.github.jmcleodfoss.pst.MessageObject) {
+		if (treeNode instanceof MessageObject) {
 
 			final MessageObject messageObject = (MessageObject)treeNode;
 			assert messageObject.nodeMessageObject != null;
 
 			try {
 				messagePC = messageObject.getMessage(pstExplorer.pst().blockBTree, pstExplorer.pst());
-			} catch (io.github.jmcleodfoss.pst.NotHeapNodeException e) {
-			} catch (io.github.jmcleodfoss.pst.NotPropertyContextNodeException e) {
-			} catch (io.github.jmcleodfoss.pst.NotTableContextNodeException e) {
-			} catch (io.github.jmcleodfoss.pst.NullDataBlockException e) {
-			} catch (io.github.jmcleodfoss.pst.UnknownClientSignatureException e) {
-			} catch (io.github.jmcleodfoss.pst.UnparseablePropertyContextException e) {
-			} catch (io.github.jmcleodfoss.pst.UnparseableTableContextException e) {
+			} catch (NotHeapNodeException e) {
+			} catch (NotPropertyContextNodeException e) {
+			} catch (NotTableContextNodeException e) {
+			} catch (NullDataBlockException e) {
+			} catch (UnknownClientSignatureException e) {
+			} catch (UnparseablePropertyContextException e) {
+			} catch (UnparseableTableContextException e) {
 			} catch (java.io.IOException e) {
 			}
 
@@ -302,14 +310,14 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			return;
 		}
 
-		if (treeNode instanceof io.github.jmcleodfoss.pst.Attachment) {
+		if (treeNode instanceof Attachment) {
 			
 			final Attachment attachmentObject = (Attachment)treeNode;
 			assert attachmentObject.nodeInfo != null;
 
 			updateComponent(attachment, attachmentObject.nodeInfo, "Attachment");
 
-			final io.github.jmcleodfoss.pst.PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
+			final PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
 
 			if (attachmentDisplay != null) {
 				if (attachmentDisplay == attachmentImage)
@@ -422,7 +430,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	*/
 	public void valueChanged(final javax.swing.event.TreeSelectionEvent e)
 	{
-		final io.github.jmcleodfoss.swingutil.ProgressBar pb = new io.github.jmcleodfoss.swingutil.ProgressBar(pstExplorer.explorer, "Reading folder data") {
+		final ProgressBar pb = new ProgressBar(pstExplorer.explorer, "Reading folder data") {
 			public void run()
 			{
 				doUpdate(e.getPath().getLastPathComponent());
