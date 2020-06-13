@@ -1,10 +1,8 @@
 # Explorer
-A Swing application for looking at PST files on any platform that supports Java.
+A Swing application for looking at PST files on any platform that supports Java. It includes all components necessary to run it; there is no need to
+download any other libraries.
 
 The PST library is a memory hog; you may need to increase the available heap to read some PST files.
-See
-* [explorer README](explorer/README.md)
-* [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer)
 
 ## Windows cmd
     java -cp target\explorer-1.0-SNAPSHOT.jar [pst-file]
