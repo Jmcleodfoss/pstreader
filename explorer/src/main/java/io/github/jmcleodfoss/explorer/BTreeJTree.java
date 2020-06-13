@@ -12,8 +12,8 @@ import javax.swing.tree.TreeSelectionModel;
 import io.github.jmcleodfoss.pst.TreeCustomNodeText;
 import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
-/**	The BTreeJTree provides special handling of JTrees which live in a JScrollPane and use BTree objectss for the tree model. This
-*	class provides some wrappers to allow the underlying tree to be manipulated by client code.
+/**	The BTreeJTree provides special handling of JTrees which live in a JScrollPane and use BTree objectss for the tree model.
+*	This class provides some wrappers to allow the underlying tree to be manipulated by client code.
 */
 @SuppressWarnings("serial")
 class BTreeJTree extends JScrollPane
