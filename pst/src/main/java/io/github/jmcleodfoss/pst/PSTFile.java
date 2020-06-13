@@ -20,7 +20,7 @@ public class PSTFile
 	*	@throws NotPSTFileException	The input stream does not contain a PST file.
 	* 	@throws java.io.IOException	There was an I/O error reading the input stream.
 	*/
-	public PSTFile(java.io.FileInputStream stream)
+	PSTFile(java.io.FileInputStream stream)
 	throws
 		NotPSTFileException,
 		java.io.IOException
@@ -90,7 +90,7 @@ public class PSTFile
 	*	@param	bytes	The data to change into a ByteBuffer
 	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
 	*/
-	public static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes)
+	static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes)
 	{
 		return makeByteBuffer(bytes, 0, bytes.length);
 	}
