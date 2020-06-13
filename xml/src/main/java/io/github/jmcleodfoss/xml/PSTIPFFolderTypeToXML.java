@@ -9,12 +9,25 @@ package io.github.jmcleodfoss.xml;
 class PSTIPFFolderTypeToXML extends PSTToXML
 {
 	/** The list of known folder types, as a mapping from human-readable strings to those found in the protocol. */
-	static final private java.util.Map<String, String> knownFolderTypes = new java.util.HashMap<String, String>();
+	static final private java.util.Map<String, String> knownFolderTypes = new java.util.TreeMap<String, String>();
 	static {
-		final int IPFPrefixLength = 4;
+		knownFolderTypes.put("appointment", io.github.jmcleodfoss.pst.IPF.APPOINTMENT);
+		knownFolderTypes.put("configuration", io.github.jmcleodfoss.pst.IPF.CONVERSATION_ACTION_SETTINGS);
+		knownFolderTypes.put("contact", io.github.jmcleodfoss.pst.IPF.CONTACT);
+		knownFolderTypes.put("homepage", io.github.jmcleodfoss.pst.IPF.HOMEPAGE);
+		knownFolderTypes.put("imcontacts", io.github.jmcleodfoss.pst.IPF.IM_CONTACT_LIST);
+		knownFolderTypes.put("journal", io.github.jmcleodfoss.pst.IPF.JOURNAL);
+		knownFolderTypes.put("note", io.github.jmcleodfoss.pst.IPF.NOTE);
+		knownFolderTypes.put("quickcontacts", io.github.jmcleodfoss.pst.IPF.QUICK_CONTACTS);
+		knownFolderTypes.put("reminder", io.github.jmcleodfoss.pst.IPF.REMINDER);
+		knownFolderTypes.put("shortcut", io.github.jmcleodfoss.pst.IPF.DOCUMENT_LIBRARIES);
+		knownFolderTypes.put("stickynote", io.github.jmcleodfoss.pst.IPF.STICKYNOTE);
+		knownFolderTypes.put("task", io.github.jmcleodfoss.pst.IPF.TASK);
+
 		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPF.iterator(); iterator.hasNext(); ){
 			String folderType = iterator.next();
-			knownFolderTypes.put(folderType.substring(IPFPrefixLength).toLowerCase(), folderType);
+			if (!knownFolderTypes.containsValue(folderType))
+				throw new RuntimeException(String.format("IPF Folder Type %s not implemented in PSTIPFolderTypeToXML", folderType));
 		}
 	}
 
