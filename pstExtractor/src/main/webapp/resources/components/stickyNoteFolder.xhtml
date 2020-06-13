@@ -28,7 +28,7 @@
 				<t:htmlTag value="h3">
 					#{folder.name}
 				</t:htmlTag>
-				<h:dataTable value="#{folder.contents}" var="stickyNote" >
+				<h:dataTable styleClass="datatable" value="#{folder.contents}" var="stickyNote" >
 					<h:column>
 						<f:facet name="header">#{res['stickyNotes.heading.title']}</f:facet>
 						#{stickyNote.title}

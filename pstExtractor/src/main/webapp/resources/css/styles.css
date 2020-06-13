@@ -28,6 +28,14 @@ p {
 	padding-bottom: 0.5em;
 }
 
+.datatable {
+	border-collapse: collapse;
+}
+
+.datatable tr {
+	border-bottom: 1px solid #ccc;
+}
+
 .centered-container {
 	text-align: center;
 }

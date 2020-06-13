@@ -28,7 +28,7 @@
 				<t:htmlTag value="h3">
 					#{folder.name}
 				</t:htmlTag>
-				<h:dataTable value="#{folder.contents}" var="contact">
+				<h:dataTable styleClass="datatable" value="#{folder.contents}" var="contact">
 					<h:column>
 						<f:facet name="header">#{res['contacts.heading.name']}</f:facet>
 						#{contact.name}

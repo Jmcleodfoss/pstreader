@@ -28,7 +28,7 @@
 				<t:htmlTag value="h3">
 					#{folder.name}
 				</t:htmlTag>
-				<h:dataTable value="#{folder.contents}" var="task">
+				<h:dataTable styleClass="datatable" value="#{folder.contents}" var="task">
 					<h:column>
 						<f:facet name="header">#{res['tasks.heading.title']}</f:facet>
 						#{task.title}

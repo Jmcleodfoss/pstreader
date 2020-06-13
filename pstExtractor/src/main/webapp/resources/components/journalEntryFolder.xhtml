@@ -28,7 +28,7 @@
 				<t:htmlTag value="h3">
 					#{folder.name}
 				</t:htmlTag>
-				<h:dataTable value="#{folder.contents}" var="journalEntry" >
+				<h:dataTable styleClass="datatable" value="#{folder.contents}" var="journalEntry" >
 					<h:column>
 						<f:facet name="header">#{res['journalEntries.heading.title']}</f:facet>
 						#{journalEntry.title}
