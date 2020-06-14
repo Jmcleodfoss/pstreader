@@ -7,6 +7,6 @@ The model used is to have different versions of a file for different languates, 
 # filename\_FR\_CA.xhtml, the French (Canada) translation of the file
 # filename\_FR\_FR.xhtml, the French (France) translation of the file
 
-Suffixes checked are Language, Country, and Variant. The script is not currently checked.
+Suffixes checked are Language, Scrupt, Country, and Variant.
 
 The function `public static String getLocalizedFilename(final String fn)` looks for the most specified version of a file, ie.e with the most number of parts.
