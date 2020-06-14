@@ -107,12 +107,13 @@ public class PST extends PSTFile
 		nodeBTree = fSmallFootprint ? new NodeFinder((PSTFile)this) : new NodeBTree(0, header.nbtRoot, (PSTFile)this);
 
 		namedProperties = new NameToIDMap(blockBTree, nodeBTree, this);
-		messageStore = new MessageStore(blockBTree, nodeBTree, this);
 
 		Appointment.initConstants(namedProperties, unicode());
 		Contact.initConstants(namedProperties, unicode());
 		DistributionList.initConstants(namedProperties, unicode());
 		Task.initConstants(namedProperties);
+
+		messageStore = new MessageStore(blockBTree, nodeBTree, this);
 	}
 
 	/**	Check whether the given password matches the stored password.
