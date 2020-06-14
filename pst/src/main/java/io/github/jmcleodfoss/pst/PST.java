@@ -129,6 +129,7 @@ public class PST extends PSTFile
 	*	@param	nodeFolder	The description of the folder node.
 	*	@return	A folder and its child folders and contents.
 	*/
+	@Deprecated
 	public Folder getFolder(NBTEntry nodeFolder)
 	{
 		try {
