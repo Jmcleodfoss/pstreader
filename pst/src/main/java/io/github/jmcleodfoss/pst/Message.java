@@ -235,7 +235,7 @@ public class Message extends MessageObjectWithBody
 		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
 			MessageObject mo = messageObjects.next();
 			if (mo instanceof Message)
-				System.out.printf("\t%s %s\n", mo.subject, ((Message)mo).messageDeliveryTime.toString());
+				System.out.printf("\t%s from %s on %s\n", mo.subject, ((Message)mo).sentRepresentingName, ((Message)mo).messageDeliveryTime.toString());
 		}
 	}
 
