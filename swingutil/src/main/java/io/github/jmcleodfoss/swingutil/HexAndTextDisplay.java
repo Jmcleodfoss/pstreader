@@ -1,8 +1,8 @@
 package io.github.jmcleodfoss.swingutil;
 
 /**	Display a block of raw data as both hex and ASCII. */
-public class HexAndTextDisplay extends javax.swing.JScrollPane {
-
+public class HexAndTextDisplay extends javax.swing.JScrollPane
+{
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 
