@@ -1,7 +1,6 @@
 package io.github.jmcleodfoss.util;
 
-/**	The Unimplemented annotation flags methods which have not yet been implemented, and member variables which are not yet used.
-*/
+/**	The Unimplemented annotation flags methods which have not yet been implemented, and member variables which are not yet used. */
 public @interface Unimplemented
 {
 	/**	The Priority enum indicates the priority with with the method or variable should be implemented.
