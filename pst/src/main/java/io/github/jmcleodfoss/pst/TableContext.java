@@ -250,41 +250,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		}
 	}
 
-	/**	The Iterator class provides a means for returning a subset of columns from the table for each row. */
-	private class Iterator implements java.util.Iterator<Object>
-	{
-		/**	The next row to return. */
-		private int row;
-
-		/**	Construct an iterator to return the given columns for each row. */
-		public Iterator()
-		{
-			row = 0;
-		}
-
-		/**	Indicate whether the "next" function will return anything.
-		*	@return	true if there is another row to return, false if there are no more rows to return.
-		*/
-		public boolean hasNext()
-		{
-			return !isEmpty() && row < rows.length;
-		}
-
-		/**	Return the next row.
-		*	@return	The next row, as an array of objects.
-		*/
-		public Object next()
-		{
-			return rows[row++];
-		}
-
-		/**	The remove function is not supported by the TableContext iterator. */
-		public void remove()
-		{
-			throw new UnsupportedOperationException("remove not suported");
-		}
-	}
-
 	/**	The TCINFO (Table Context Info) structure for this table context */
 	private final TCInfo info;
 
@@ -503,15 +468,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	private boolean isEmpty()
 	{
 		return rows.length == 0;
-	}
-
-	/**	Obtain an iterator for the rows of this TableContext which returns all columns. cf specifiedColumnIterator
-	*	@return	The array of objects which make up this row of the TableContext.
-	*/
-	@SuppressWarnings("unchecked")
-	java.util.Iterator<Object> iterator()
-	{
-		return new Iterator();
 	}
 
 	/**	Read data for all rows from a block of bytes of raw data.
