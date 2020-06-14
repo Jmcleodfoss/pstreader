@@ -304,7 +304,7 @@ public class BTreeOnHeap extends BTree
 		@Override
 		public String toString()
 		{
-			return String.format("key 0x%x, hidNextLevel 0x%02x", key(), hidNextLevel); 
+			return String.format("key 0x%x, hidNextLevel %s", key(), hidNextLevel.toString()); 
 		}
 	}
 

@@ -187,7 +187,7 @@ class GUID
 			return false;
 
 		if (o == null)
-			return this == null;
+			return false;
 
 		final GUID guid = (GUID)o;
 		for (int i = 0; i < this.guid.length; ++i) {
