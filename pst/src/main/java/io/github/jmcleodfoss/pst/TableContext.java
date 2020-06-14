@@ -1,7 +1,7 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The TableContext class represents a PST Table Context, which is a structure on a B-tree-on-heap. The class itself is not
-*	publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
+/**	The TableContext class represents a PST Table Context, which is a structure on a B-tree-on-heap.
+*	The class itself is not publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5e48be0d-a75a-4918-a277-50408ff96740">MS-PST Section 2.3.4: Table Context (TC)</a>
 */
 public class TableContext extends javax.swing.table.AbstractTableModel
@@ -108,8 +108,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			rowFields[numColumns] = new DataDefinition(cellExistenceBitmapFieldName(), new DataType.SizedByteArray((numColumns+7)/8), true);
 		}
 
-		/**	Create the name of the field containing the Cell Existence Bitmap (which is the last field in the row). Note
-		*	that this provides the field name in a format consistent with those of the other fields, which allows simple
+		/**	Create the name of the field containing the Cell Existence Bitmap (which is the last field in the row).
+		*	Note that this provides the field name in a format consistent with those of the other fields, which allows simple
 		*	construction of all field names knowing the number of columns.
 		*	@return	The name of the cell existence bitmap field.
 		*/
@@ -127,7 +127,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			return "fld_" + i;
 		}
 
-		/**	Provide a representation describing this TCInfo object. This is typically used for debugging.
+		/**	Provide a representation describing this TCInfo object.
+		*	This is typically used for debugging.
 		*	@return	A string describing this TCInfo object, which includes descriptions of all columns.
 		*/
 		@Override
@@ -249,8 +250,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		}
 	}
 
-	/**	The Iterator class provides a means for returning a subset of columns from the table for each row.
-	*/
+	/**	The Iterator class provides a means for returning a subset of columns from the table for each row. */
 	private class Iterator implements java.util.Iterator<Object>
 	{
 		/**	The next row to return. */
@@ -315,8 +315,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		this(nodeDescr, new HeapOnNode(bbt.find(nodeDescr.bidData), bbt, pstFile), bbt, pstFile);
 	}
 
-	/**	Create a TableContext object from the given heap-on-node. This should only be used when the Heap-On-Node has already
-	*	been found for purposes other than building the Table context.
+	/**	Create a TableContext object from the given heap-on-node.
+	*	This should only be used when the Heap-On-Node has already been found for purposes other than building the Table context.
 	*	@param	nodeDescr	Description of the node as found in the block or sub-node B-tree.
 	*	@param	hon		The heap-on-node on which this table context is defined.
 	*	@param	bbt		The PST file's block B-tree.
