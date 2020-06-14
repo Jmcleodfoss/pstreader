@@ -693,11 +693,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 								if (tc.isEmpty())
 									continue;
 
-//								java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = tc.iterator();
-//								while (propertyIterator.hasNext()) {
-//									java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
-//									System.out.printf("0x%08x %s\n", entry.getKey(), pst.propertyName(entry.getKey()));
-//								}
 								if (!logger.isLoggable(java.util.logging.Level.FINE))
 									tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
 							}
