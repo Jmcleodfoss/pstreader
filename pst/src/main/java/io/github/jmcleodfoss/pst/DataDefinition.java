@@ -9,7 +9,6 @@ class DataDefinition
 	/**	The IncompleteFieldException is used to signal that it was not possible to read in all the required bytes for a field */
 	static class IncompleteFieldException extends RuntimeException
 	{
-
 		/**	The serial version UID is required since the base class is serializable. */
 		private static final long serialVersionUID = 1L;
 
