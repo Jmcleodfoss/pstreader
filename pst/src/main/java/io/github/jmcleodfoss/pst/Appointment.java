@@ -106,4 +106,46 @@ public class Appointment extends MessageObject
 		RecurrenceTypeLID = namedProperties.id(PropertyLIDs.RecurrenceType, DataType.INTEGER_32);
 		ReminderDeltaLID = namedProperties.id(PropertyLIDs.ReminderDelta, DataType.INTEGER_32);
 	}
+
+	/**	Print out all the appointments in a folder and all of its sub-folders.
+	*	Used only by main (test) function.
+	*	@param	folder	The folder to print out the appointments for
+	*/
+	private static void printFolderAppointments(Folder folder, String prefix)
+	{
+		String newPrefix = prefix + folder.displayName + "/";
+		for (java.util.Iterator<Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); )
+			printFolderAppointments(subfolders.next(), newPrefix);
+
+		System.out.println(newPrefix);
+
+		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
+			MessageObject mo = messageObjects.next();
+			if (mo instanceof Appointment) {
+				Appointment a = (Appointment)mo;
+				System.out.printf("\t%s at %s for %d min\n", mo.subject, a.startTime == null ? "null" : a.startTime.toString(), a.duration);
+			}
+		}
+	}
+
+	/**	Test the Message class by iterating through the messages.
+	* 	@param arg	The command line arguments
+	*/
+	public static void main(final String[] args)
+	{
+		if (args.length == 0) {
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Message pst-file [pst-file...]");
+			System.exit(1);
+		}
+
+		try {
+			for (String a: args) {
+				System.out.println(a);
+				PST pst = new PST(a);
+				printFolderAppointments(pst.getFolderTree(), "/");
+			}
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
+		}
+	}
 }
