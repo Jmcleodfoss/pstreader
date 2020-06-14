@@ -198,8 +198,8 @@ public class Message extends MessageObjectWithBody
 		return recipients.get(index);
 	}
 
-	/**	Return a string describing the email.
-	*	@return	A string describing the message.
+	/**	Provide a String describing the message (used primarily for testing)
+	*	@return	A String describing the message
 	*/
 	@Override
 	public String toString()
@@ -220,43 +220,11 @@ public class Message extends MessageObjectWithBody
 		return (String)pc.get(PropertyTags.TransportMessageHeaders);
 	}
 
-	/**	Print out all the messages in a folder and all of its sub-folders.
-	*	Used only by main (test) function.
-	*	@param	folder	The folder to print out the messages for
-	*/
-	private static void printFolderMessages(Folder folder, String prefix)
-	{
-		String newPrefix = prefix + folder.displayName + "/";
-		for (java.util.Iterator<Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); )
-			printFolderMessages(subfolders.next(), newPrefix);
-
-		System.out.println(newPrefix);
-
-		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
-			MessageObject mo = messageObjects.next();
-			if (mo instanceof Message)
-				System.out.printf("\t%s from %s on %s\n", mo.subject, ((Message)mo).sentRepresentingName, ((Message)mo).messageDeliveryTime.toString());
-		}
-	}
-
 	/**	Test the Message class by iterating through the messages.
-	* 	@param arg	The command line arguments
+	* 	@param args	The files to test
 	*/
 	public static void main(final String[] args)
 	{
-		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Message pst-file [pst-file...]");
-			System.exit(1);
-		}
-
-		try {
-			for (String a: args) {
-				System.out.println(a);
-				PST pst = new PST(a);
-				printFolderMessages(pst.getFolderTree(), "/");
-			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
-		}
+		test("io.github.jmcleodfoss.pst.Message", args);
 	}
 }

@@ -124,15 +124,6 @@ public class Contact extends MessageObject
 		}
 	}
 
-	/**	Return a string describing the contact.
-	*	@return	A string describing the contact.
-	*/
-	@Override
-	public String toString()
-	{
-		return String.format("%s", subject);
-	}
-
 	/**	Save named property IDs for IDs of interest.
 	*	@param	namedProperties	The list of named properties.
 	*/
@@ -142,48 +133,22 @@ public class Contact extends MessageObject
 			emailAddressLIDs[i] = namedProperties.id(emailAddressLIDLookup[i], fUnicode ? DataType.STRING : DataType.STRING_8);
 	}
 
-	/**	Print out all the contacts in a folder and all of its sub-folders.
-	*	Used only by main (test) function.
-	*	@param	folder	The folder to print out the contacts for
+	/**	Provide a String describing the contact (used primarily for testing)
+	*	@return	A String describing the contact
 	*/
-	private static void printFolderContacts(Folder folder, String prefix)
+	@Override
+	public String toString()
 	{
-		String newPrefix = prefix + folder.displayName + "/";
-		for (java.util.Iterator<Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); )
-			printFolderContacts(subfolders.next(), newPrefix);
-
-		System.out.println(newPrefix);
-
-		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
-			MessageObject mo = messageObjects.next();
-			if (mo instanceof Contact) {
-				Contact c = (Contact)mo;
-				if (c.emailAddresses.isEmpty())
-					System.out.printf("\t%s h:%s m:%s w:%s\n", c.displayName, c.homePhone, c.mobilePhone, c.businessPhone);
-				else
-					System.out.printf("\t%s h:%s m:%s w:%s %s\n", c.displayName, c.homePhone, c.mobilePhone, c.businessPhone, c.emailAddresses.get(0));
-			}
-		}
+		if (emailAddresses.isEmpty())
+			return String.format("%s h:%s m:%s w:%s", displayName, homePhone, mobilePhone, businessPhone);
+		return String.format("%s h:%s m:%s w:%s %s", displayName, homePhone, mobilePhone, businessPhone, emailAddresses.get(0));
 	}
 
-	/**	Test the Message class by iterating through the messages.
-	* 	@param arg	The command line arguments
+	/**	Test the Contact class by iterating through the contacts.
+	* 	@param args	The files to test
 	*/
 	public static void main(final String[] args)
 	{
-		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Contacts pst-file [pst-file...]");
-			System.exit(1);
-		}
-
-		try {
-			for (String a: args) {
-				System.out.println(a);
-				PST pst = new PST(a);
-				printFolderContacts(pst.getFolderTree(), "/");
-			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
-		}
+		test("io.github.jmcleodfoss.pst.Contact", args);
 	}
 }

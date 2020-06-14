@@ -107,45 +107,20 @@ public class Appointment extends MessageObject
 		ReminderDeltaLID = namedProperties.id(PropertyLIDs.ReminderDelta, DataType.INTEGER_32);
 	}
 
-	/**	Print out all the appointments in a folder and all of its sub-folders.
-	*	Used only by main (test) function.
-	*	@param	folder	The folder to print out the appointments for
+	/**	Create a String representation of an appointment (used primarily for testing)
+	*	@return	A String giving some information about this appointment.
 	*/
-	private static void printFolderAppointments(Folder folder, String prefix)
+	@Override
+	public String toString()
 	{
-		String newPrefix = prefix + folder.displayName + "/";
-		for (java.util.Iterator<Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); )
-			printFolderAppointments(subfolders.next(), newPrefix);
-
-		System.out.println(newPrefix);
-
-		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
-			MessageObject mo = messageObjects.next();
-			if (mo instanceof Appointment) {
-				Appointment a = (Appointment)mo;
-				System.out.printf("\t%s at %s for %d min\n", mo.subject, a.startTime == null ? "null" : a.startTime.toString(), a.duration);
-			}
-		}
+		return String.format("%s, %s, %d", subject, startTime, duration);
 	}
 
-	/**	Test the Appointment class by iterating through the appointments.
-	* 	@param arg	The command line arguments
+	/**	Test the Appointment class by iterating through the appointments
+	* 	@param args	The files to test
 	*/
 	public static void main(final String[] args)
 	{
-		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Appointment pst-file [pst-file...]");
-			System.exit(1);
-		}
-
-		try {
-			for (String a: args) {
-				System.out.println(a);
-				PST pst = new PST(a);
-				printFolderAppointments(pst.getFolderTree(), "/");
-			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
-		}
+		test("io.github.jmcleodfoss.pst.Appointment", args);
 	}
 }
