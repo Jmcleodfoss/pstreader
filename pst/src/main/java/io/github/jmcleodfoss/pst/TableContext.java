@@ -514,7 +514,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		return new Iterator();
 	}
 
-	/**	Read data for all rows from a block of bytes of raw data. This is used to read HID table contexts.
+	/**	Read data for all rows from a block of bytes of raw data.
+	*	This is used to read HID table contexts.
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	numColumns	The number of columns in this table context (excluding the cell existence bitmap).
 	*	@param	data		The raw row data.
@@ -542,7 +543,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		}
 	}
 
-	/**	Read data for all rows from blocks of bytes returned by an iterator. This is used to read LTP table contexts.
+	/**	Read data for all rows from blocks of bytes returned by an iterator.
+	*	This is used to read LTP table contexts.
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	numColumns	The number of columns in this table context (excluding the cell existence bitmap).
 	*	@param	iterator	An iterator through the blocks which comprise an LTP table context.
