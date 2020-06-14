@@ -128,13 +128,13 @@ public class Appointment extends MessageObject
 		}
 	}
 
-	/**	Test the Message class by iterating through the messages.
+	/**	Test the Appointment class by iterating through the appointments.
 	* 	@param arg	The command line arguments
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Message pst-file [pst-file...]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Appointment pst-file [pst-file...]");
 			System.exit(1);
 		}
 
