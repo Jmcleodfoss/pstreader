@@ -152,6 +152,15 @@ public class MessageObject
 		}
 	}
 
+	/**	Provide a string describing the MessageObject (used primarily for testing)
+	*	@return	A String describing the MessageObject
+	*/
+	@Override
+	public String toString()
+	{
+		return subject;
+	}
+
 	/**	Test the given class by iterating through the messages.
 	*	@param	clName	The name of the class of messages to be displayed.
 	* 	@param	args	The command line arguments passed to the original main function
