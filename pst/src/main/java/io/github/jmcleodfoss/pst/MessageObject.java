@@ -126,4 +126,51 @@ public class MessageObject
 	{
 		return new PropertyContext(nodeMessageObject, bbt, pstFile);
 	}
+
+	/**	Print out all the objects of a given class in a folder and all of its sub-folders.
+	*	Used only by main (test) function.
+	*	@param	folder	The folder to print out the objects in
+	*	@param	path	The path to the folder
+	*	@param	cl	The class of object to look for.
+	*/
+	private static void printFolderObjects(Folder folder, String path, final Class cl)
+	{
+		String newPath = path + folder.displayName + "/";
+		for (java.util.Iterator<Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); )
+			printFolderObjects(subfolders.next(), newPath, cl);
+
+		boolean fFolderShown = false;
+		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
+			MessageObject mo = messageObjects.next();
+			if (cl.isInstance(mo)) {
+				if (!fFolderShown) {
+					fFolderShown = true;
+					System.out.println(newPath);
+				}
+				System.out.println(mo.toString());
+			}
+		}
+	}
+
+	/**	Test the given class by iterating through the messages.
+	*	@param	clName	The name of the class of messages to be displayed.
+	* 	@param	args	The command line arguments passed to the original main function
+	*/
+	public static void test(final String clName, final String[] args)
+	{
+		if (args.length == 0) {
+			System.out.printf("use:\n\tjava %s pst-file [pst-file...]", clName);
+			System.exit(1);
+		}
+
+		try {
+			for (String a: args) {
+				System.out.println(a);
+				PST pst = new PST(a);
+				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
+			}
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
+		}
+	}
 }
