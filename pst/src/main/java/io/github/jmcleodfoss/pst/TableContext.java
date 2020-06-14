@@ -487,7 +487,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		return rows[row] == null ? null : rows[row][column];
 	}
 
-
 	/**	No cells are editable.
 	*	@param	row	The row index of the cell to retrieve the value of.
 	*	@param	column	The column index of the cell to retrieve the value of.
