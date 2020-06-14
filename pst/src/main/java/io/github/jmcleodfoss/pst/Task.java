@@ -49,4 +49,46 @@ public class Task extends MessageObject
 	{
 		TaskDueDateLID = namedProperties.id(PropertyLIDs.TaskDueDate, DataType.TIME);
 	}
+
+	/**	Print out all the tasks in a folder and all of its sub-folders.
+	*	Used only by main (test) function.
+	*	@param	folder	The folder to print out the tasks for
+	*/
+	private static void printFolderTasks(Folder folder, String prefix)
+	{
+		String newPrefix = prefix + folder.displayName + "/";
+		for (java.util.Iterator<Folder> subfolders = folder.subfolderIterator(); subfolders.hasNext(); )
+			printFolderTasks(subfolders.next(), newPrefix);
+
+		System.out.println(newPrefix);
+
+		for (java.util.Iterator<MessageObject> messageObjects = folder.contentsIterator(); messageObjects.hasNext(); ){
+			MessageObject mo = messageObjects.next();
+			if (mo instanceof Task){
+				Task t = (Task)mo;
+				System.out.printf("\t%s due %s\n", mo.subject, t.dueDate);
+			}
+		}
+	}
+
+	/**	Test the Task class by iterating through the tasks.
+	* 	@param arg	The command line arguments
+	*/
+	public static void main(final String[] args)
+	{
+		if (args.length == 0) {
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Task pst-file [pst-file...]");
+			System.exit(1);
+		}
+
+		try {
+			for (String a: args) {
+				System.out.println(a);
+				PST pst = new PST(a);
+				printFolderTasks(pst.getFolderTree(), "/");
+			}
+		} catch (final Exception e) {
+			e.printStackTrace(System.out);
+		}
+	}
 }
