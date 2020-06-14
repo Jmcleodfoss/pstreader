@@ -253,8 +253,7 @@
 				<version>3.8.1</version>
 				<configuration>
 					<compilerArgs>
-						<arg>-Xlint:deprecation</arg>
-						<arg>-Xlint:unchecked</arg>
+						<arg>-Xlint:all</arg>
 					</compilerArgs>
 					<source>11</source>
 					<target>11</target>
