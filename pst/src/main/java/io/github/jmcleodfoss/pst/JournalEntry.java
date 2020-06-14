@@ -36,4 +36,12 @@ public class JournalEntry extends MessageObjectWithBody
 	{
 		super(contentsTable, row, nbt, pstFile);
 	}
+
+	/**	Test the JournalEntry class by iterating through the journal entries
+	* 	@param args	The files to test
+	*/
+	public static void main(final String[] args)
+	{
+		test("io.github.jmcleodfoss.pst.JournalEntry", args);
+	}
 }

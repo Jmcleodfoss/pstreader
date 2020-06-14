@@ -205,4 +205,12 @@ public class DistributionList extends MessageObject
 
 		return entries.iterator();
 	}
+
+	/**	Test the DistributionList class by iterating through the distribution list entries
+	* 	@param args	The files to test
+	*/
+	public static void main(final String[] args)
+	{
+		test("io.github.jmcleodfoss.pst.DistributionList", args);
+	}
 }

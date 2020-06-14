@@ -36,4 +36,12 @@ public class StickyNote extends MessageObjectWithBody
 	{
 		super(contentsTable, row, nbt, pstFile);
 	}
+
+	/**	Test the StickyNote class by iterating through the sticky notes.
+	* 	@param args	The files to test
+	*/
+	public static void main(final String[] args)
+	{
+		test("io.github.jmcleodfoss.pst.StickyNote", args);
+	}
 }
