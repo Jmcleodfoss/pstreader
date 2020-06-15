@@ -105,13 +105,19 @@ public class Header
 	/**	Size of the heeader block in ANSI files */
 	private static final int SIZE_ANSI = DataDefinition.size(common_fields) + DataDefinition.size(ansi_fields); 
 
-	/**	The offset from which to start calculating the full and partial CRC's. */
+	/**	The offset from which to start calculating the full and partial CRC's.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
+	*/
 	private static final int CRC_START_OFFSET = common_fields[0].description.size() + common_fields[1].description.size();
 
-	/**	The number of bytes used to calculate the header's partial CRC. */
+	/**	The number of bytes used to calculate the header's partial CRC.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
+	*/
 	private static final int CRC_PARTIAL_BYTES = 471;
 
-	/**	The number of bytes used to calculate the header's full CRC. */
+	/**	The number of bytes used to calculate the header's full CRC.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
+	*/
 	private static final int CRC_FULL_BYTES = 516;
 
 	/**	First byte of the header block. */
