@@ -220,6 +220,7 @@ public class Attachment
 
 	/**	Loop through folder's subfolders and message objects looking for attachments. Used only for testing Used only for testing
 	*	@param	folder	The folder to process
+	*	@param	pst	The pst file to look in
 	*	@see	#main
 	*/
 	private static void findFolderAttachments(Folder folder, PST pst)

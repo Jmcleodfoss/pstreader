@@ -125,6 +125,7 @@ public class DistributionList extends MessageObject
 
 	/**	Save named property IDs for IDs of interest.
 	*	@param	namedProperties	The list of named properties.
+	*	@param	fUnicode	Whether the current PST file is a Unicode file or not.
 	*/
 	static void initConstants(NameToIDMap namedProperties, boolean fUnicode)
 	{

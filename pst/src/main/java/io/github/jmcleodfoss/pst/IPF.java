@@ -4,62 +4,62 @@ package io.github.jmcleodfoss.pst;
 public class IPF
 {
 	/**	The string used for the "container class" for folders containing appointments.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String APPOINTMENT = "IPF.Appointment";
 
 	/**	The string used for the "container class" for folders used to persist conversation actions.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String CONVERSATION_ACTION_SETTINGS = "IPF.Configuration";
 
 	/**	The string used for the "container class" for folders containing contacts.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String CONTACT = "IPF.Contact";
 
 	/**	The string used for the "container class" for folders containing documents to be uploaded to a shared location.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String DOCUMENT_LIBRARIES = "IPF.ShortcutFolder";
 
 	/**	The string used for the "container class" for RSS feeds.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String HOMEPAGE = "IPF.Note.OutlookHomepage";
 
 	/**	The string used for the "container class" for folders containing the IM contact list
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String IM_CONTACT_LIST = "IPF.Contact.MOC.IMContactList";
 
 	/**	The string used for the "container class" for folders containing journals.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String JOURNAL = "IPF.Journal";
 
 	/**	The string used for the "container class" for folders containing notes.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String NOTE = "IPF.Note";
 
 	/**	The string used for the "container class" for folders containing favourite contacts
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String QUICK_CONTACTS = "IPF.Contact.MOC.QuickContacts";
 
 	/**	The string used for the "container class" for folders supporting reminder searches.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String REMINDER = "Outlook.Reminder";
 
 	/**	The string used for the "container class" for folders containing sticky notes.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String STICKYNOTE = "IPF.StickyNote";
 
 	/**	The string used for the "container class" for folders containing tasks.
-	*	@see <a href=https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxosfld/68a85898-84fe-43c4-b166-4711c13cdd61">MS-OXOSFLD Section 2.2.1: List of Special Folders</a>
 	*/
 	public static final String TASK = "IPF.Task";
 

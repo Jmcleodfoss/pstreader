@@ -209,7 +209,7 @@ public class PST extends PSTFile
 	}
 
 	/**	Convenience function to retrieve the root of the node B-tree.
-	*	@returns	The root of the node / sub-node B-tree
+	*	@return	The root of the node / sub-node B-tree
 	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
 	*/
 	public NodeSubnodeBTree nodeBTreeRoot()
