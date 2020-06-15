@@ -7,7 +7,10 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	protected static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.BTree");
 
 	/**	The Context class allows information about the current root node to be passed to child nodes without having to save
-	*	it in the BTree itself. */
+	*	it in the BTree itself.
+	*	@param	<I>	The type of an intermediate node (the same as the tree type)
+	*	@param	<L>	The type of a leaf node
+	*/
 	protected static abstract class Context<I extends BTree, L extends BTreeLeaf>
 	{
 		/**	The data container holding the information read in. */
