@@ -224,7 +224,7 @@ public class SubnodeBTree extends BTree
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file [log-level]");
 			System.exit(1);
 		}
 
