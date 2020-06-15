@@ -39,7 +39,7 @@ public abstract class PagedBTree extends BTree
 		/**	Move to the start of this page so that the parent class can read in the header.
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*	@return	The passed in pstFile object, for use as a parameter to the constructor.
+		*	@return	The passed in pstFile object, for use as a parameter to the {@link #PageContext} constructor.
 		*	@throws	java.io.IOException	An I/O error was encountered when seeking the new position in the file.
 		*	@see	PageContext
 		*/
