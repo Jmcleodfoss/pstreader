@@ -285,7 +285,6 @@ public class PropertyContext
 	*	@param	namedProperties	The property names for this PST file.
 	*	@return	TableModel representation of this property context.
 	*/
-@SuppressWarnings("unchecked") 
 	LPTTableModel tableModel(final NameToIDMap namedProperties)
 	{
 		return new TableModel(properties, namedProperties);
