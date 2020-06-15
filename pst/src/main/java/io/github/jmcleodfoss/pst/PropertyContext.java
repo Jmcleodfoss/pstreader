@@ -8,8 +8,7 @@ public class PropertyContext
 	/**	Logger for class debugging. */
 	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.PropertyContext");
 
-	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on
-	*	demand. */
+	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on demand. */
 	protected class PSTDataPointer
 	{
 		/**	The reader for the given property. */
