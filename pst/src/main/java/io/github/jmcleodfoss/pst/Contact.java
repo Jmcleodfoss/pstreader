@@ -108,7 +108,7 @@ public class Contact extends MessageObject
 		middleName = (String)contentsTable.get(row, fUnicode ? PropertyTags.MiddleNameW : PropertyTags.MiddleName);
 		surname = (String)contentsTable.get(row, fUnicode ? PropertyTags.SurnameW : PropertyTags.Surname);
 		homePhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.HomeTelephoneNumberW : PropertyTags.HomeTelephoneNumber);
-		homeFax = (String)contentsTable.get(row, fUnicode ? PropertyTags.HomeFaxNumberW : PropertyTags.HomeFaxNumberW);
+		homeFax = (String)contentsTable.get(row, fUnicode ? PropertyTags.HomeFaxNumberW : PropertyTags.HomeFaxNumber);
 		mobilePhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.MobileTelephoneNumberW : PropertyTags.MobileTelephoneNumber);
 		businessPhone = (String)contentsTable.get(row, fUnicode ? PropertyTags.BusinessTelephoneNumberW : PropertyTags.BusinessTelephoneNumber);
 		businessFax = (String)contentsTable.get(row, fUnicode ? PropertyTags.BusinessFaxNumberW : PropertyTags.BusinessFaxNumber);
