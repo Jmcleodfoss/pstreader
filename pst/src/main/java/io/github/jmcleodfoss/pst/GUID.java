@@ -232,18 +232,18 @@ class GUID
 	public String toString()
 	{
 		final int[] blockOffsets = {4, 6, 8, 10, SIZE};
-		String s = new String("");
+		StringBuilder s = new StringBuilder();
 
 		int i = 0;
 		for (int b = 0; b < blockOffsets.length; ++b) {
 			if (b > 0)
-				s += "-";
+				s.append("-");
 
 			for (; i < blockOffsets[b]; ++i)
-				s += String.format("%02x", guid[i] & 0xff);
+				s.append(String.format("%02x", guid[i] & 0xff));
 		}
 
-		return s;
+		return s.toString();
 	}
 
 	/** Test this class by printing out the known GUIDs
