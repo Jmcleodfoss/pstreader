@@ -173,7 +173,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	{
 		/**	The Comparator class permits the list of fields to sorted by row offset.
 		*/
-		static class Comparator implements java.util.Comparator<TColDescr>
+		static class Comparator implements java.util.Comparator<TColDescr>, java.io.Serializable
 		{
 			/**	Compare the two TColDescr objects.
 			*	@param	a	One TColDescr object for comparison.
