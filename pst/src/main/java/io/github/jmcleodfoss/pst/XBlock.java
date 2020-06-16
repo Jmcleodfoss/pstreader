@@ -107,7 +107,7 @@ class XBlock extends BlockBase
 		final int blockSize = blockSize(entry.numBytes, pstFile);
 		DataDefinition paddingField = new DataDefinition(nm_padding, new DataType.SizedByteArray(blockSize-entry.numBytes-BlockTrailer.size(pstFile)), false);
 		dc.read(pstFile.mbb, paddingField);
-		final BlockTrailer trailer = new BlockTrailer(pstFile);
+		new BlockTrailer(pstFile);
 
 		if (level == 1) {
 			blockList = readXBlock(numEntries, bid, bbt, pstFile);
