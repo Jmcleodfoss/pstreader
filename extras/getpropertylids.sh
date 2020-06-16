@@ -77,10 +77,10 @@ cat << END_FOOTER >> PropertyLIDs.java
 
 	public static void main(String[] args)
 	{
-		java.util.Iterator<Integer> iter = PropertyLIDs.lids.keySet().iterator();
+		java.util.Iterator<java.util.Map.Entry<Integer, String>> iter = PropertyLIDs.lids.entrySet().iterator();
 		while (iter.hasNext()) {
-			Integer t = iter.next();
-			System.out.printf("0x%08x: %s%n", t, PropertyLIDs.lids.get(t));
+			java.util.Map.Entry<Integer, String> e = iter.next();
+			System.out.printf("0x%08x: %s%n", e.getKey(), e.getValue());
 		}
 	}
 }

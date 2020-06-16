@@ -455,10 +455,10 @@ public class PropertyTagName {
 	*/
 	public static void main(String[] args)
 	{
-		java.util.Iterator<Integer> keys = names.keySet().iterator();
-		while (keys.hasNext()) {
-			final Integer key = keys.next();
-			System.out.printf("0x%08x %s%n", key, names.get(key));
+		java.util.Iterator<java.util.Map.Entry<Integer, String>> entries = names.entrySet().iterator();
+		while (entries.hasNext()) {
+			final java.util.Map.Entry<Integer, String> e = entries.next();
+			System.out.printf("0x%08x %s%n", e.getKey(), e.getValue());
 		}
 	}
 }
