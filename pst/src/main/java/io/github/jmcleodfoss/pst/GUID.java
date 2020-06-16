@@ -180,13 +180,13 @@ class GUID
 	@Override
 	public boolean equals(Object o)
 	{
+		if (o == null)
+			return false;
+
 		if (this == o)
 			return true;
 
 		if (!(o instanceof GUID))
-			return false;
-
-		if (o == null)
 			return false;
 
 		final GUID guid = (GUID)o;
