@@ -6,8 +6,14 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 
 import io.github.jmcleodfoss.pst.DistributionList;
+import io.github.jmcleodfoss.pst.NotHeapNodeException;
+import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
+import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PropertyContext;
 import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
+import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
+import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 
 /**	The DistributionListDisplay class displays a distribution list. */
 @SuppressWarnings("serial")
@@ -40,8 +46,27 @@ class DistributionListDisplay extends JScrollPane
 			while (memberIterator.hasNext())
 				listModel.addElement(memberIterator.next());
 			members.setModel(listModel);
-		} catch (Exception e) {
-			return false;
+		} catch (final NotHeapNodeException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final NotPropertyContextNodeException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final NullDataBlockException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final UnknownClientSignatureException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final UnparseablePropertyContextException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final UnparseableTableContextException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final java.io.IOException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
 		}
 
 		return true;
