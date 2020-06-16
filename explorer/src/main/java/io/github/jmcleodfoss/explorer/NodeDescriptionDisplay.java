@@ -12,7 +12,7 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 class NodeDescriptionDisplay extends TreeDescriptionDisplay
 {
 	/**	The AttachmentSavePopupMenu is the popup menu for saving attachments. */
-	private class AttachmentSavePopupMenu extends TreeNodePopupListener
+	static private class AttachmentSavePopupMenu extends TreeNodePopupListener
 	{
 		/**	Handle attachment file save requests. */
 		private class AttachmentSaveActionListener extends FileSaverMenuItem
