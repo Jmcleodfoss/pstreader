@@ -118,7 +118,7 @@ public class PropertyContext
 		this();
 
 		if (node == null)
-			throw new RuntimeException("node " + node + " not found");
+			throw new RuntimeException("node is null");
 
 		BBTEntry dataBlock = bbt.find(node.bidData);
 		if (dataBlock == null)
