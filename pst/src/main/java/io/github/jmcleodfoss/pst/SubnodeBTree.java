@@ -224,16 +224,12 @@ public class SubnodeBTree extends BTree
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
 			System.exit(1);
 		}
 
 
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
-			final java.util.logging.Level originalLevel = logger.getLevel();
-
 			OutputSeparator separator = new OutputSeparator();
 
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
@@ -243,13 +239,11 @@ public class SubnodeBTree extends BTree
 			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry entry = (NBTEntry)iterator.next();
-				logger.setLevel(logLevel);
 				if (entry.bidSubnode.bid != 0) {
 					separator.emit(System.out);
 
 					System.out.println("Subnode BTree for " + entry);
 					final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
-					logger.setLevel(originalLevel);
 					System.out.println(sbt);
 					java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();
 

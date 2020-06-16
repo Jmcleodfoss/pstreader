@@ -7,9 +7,6 @@ package io.github.jmcleodfoss.pst;
 */
 public class NameToIDMap
 {
-	/**	Logger for class debugging */
-	java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NameToIDMap");
-
 	/**	The NameID class contains information about an individual entry in the NID_NAME_ID_TO_MAP node.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0d6b4781-92c5-4d49-b24b-b783557098d1">MS-PST Section 2.4.7.1: NAMEID</a>
 	*/
@@ -210,7 +207,6 @@ public class NameToIDMap
 		java.io.IOException
 	{
 		final PropertyContext pc = new PropertyContext(nbt.find(NID.NID_NAME_TO_ID_MAP), bbt, pstFile);
-		logger.log(java.util.logging.Level.FINER, "Name to ID Map\n______________\n" + pc.toString());
 
 		final byte[] entryRaw = getBinaryProperty(pc, PropertyTags.NameidStreamEntry);
 		java.nio.ByteBuffer entryStream = PSTFile.makeByteBuffer(entryRaw);
@@ -247,7 +243,6 @@ public class NameToIDMap
 		if (o == null)
 			throw new RuntimeException("Could not find " + PropertyTags.name(propertyTag));
 		final byte[] arr = (byte[])o;
-		logger.log(java.util.logging.Level.INFO, PropertyTags.name(propertyTag) + " (" + arr.length + " bytes): ", arr);
 		return arr;
 	}
 
@@ -309,20 +304,15 @@ public class NameToIDMap
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NameIDToMap pst-filename [log-level]");
-			System.out.println("\nNote that log-level applies only to construction of the NameIDToMap object.");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NameIDToMap pst-filename");
 			System.exit(1);
 		}
 
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
-
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 
-			logger.setLevel(logLevel);
 			final NameToIDMap nameToIDMap = new NameToIDMap(bbt, nbt, pstFile);
 
 			Object[] keyArray = nameToIDMap.namedProperties.keySet().toArray();

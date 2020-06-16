@@ -226,16 +226,11 @@ class XBlock extends BlockBase
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.XBlock pst-filename [log-level]");
-			System.out.println("\nNote that log-level applies only to construction of the NameIDToMap object.");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.XBlock pst-filename");
 			System.exit(1);
 		}
 
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
-			logger.setLevel(logLevel);
-
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);

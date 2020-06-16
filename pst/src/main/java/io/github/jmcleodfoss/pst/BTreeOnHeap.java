@@ -463,13 +463,9 @@ public class BTreeOnHeap extends BTree
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-filename [log-level]");
-			System.out.println("\nNote that log-level applies only to construction of the BtreeOnHeap object.");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-filename");
 			System.exit(1);
 		}
-		java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-		java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
-
 		try {
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
@@ -490,11 +486,8 @@ public class BTreeOnHeap extends BTree
 						if (!hon.containsData() || (!hon.clientSignature().equals(ClientSignature.PropertyContext) && !hon.clientSignature().equals(ClientSignature.TableContext)))
 							continue;
 
-						java.util.logging.Level originalLogLevel = logger.getLevel();
-						logger.setLevel(logLevel);
 						try {
 							BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
-							logger.setLevel(originalLogLevel);
 	
 							separator.emit(System.out);
 							System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
@@ -509,7 +502,7 @@ public class BTreeOnHeap extends BTree
 					} catch (final NotHeapNodeException e) {
 						// Not every node in the block B-tree is a heap node, so this is benign.
 					} catch (final UnknownClientSignatureException e) {
-						logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
+						System.out.println("Node " + node + ": " + e);
 						e.printStackTrace(System.out);
 					}
 				}

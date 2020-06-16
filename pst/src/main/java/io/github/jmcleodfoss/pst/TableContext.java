@@ -9,9 +9,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 
-	/**	Logger for debugging TableContexts */
-	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.TableContext");
-
 	/**	The TCInfo class represents the PST file TCINFO structure, and contains table context info for a table context.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45b3a0c5-d6d6-4e02-aebf-13766ff693f0">MS-PST Section 2.3.4.1: TCINFO</a>
 	*/
@@ -300,10 +297,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	{
 		info = new TCInfo(PSTFile.makeByteBuffer(hon.userRootHeapData()));
 
-		// Note that TCInfo.toString is relatively expensive. Only call it if we really need it.
-		if (logger.isLoggable(java.util.logging.Level.INFO))
-			logger.log(java.util.logging.Level.INFO, "TC Info\n-------\n" + info);
-
 		rowIndex = new BTreeOnHeap(hon, info.hidRowIndex, pstFile);
 		int numRows = rowIndex.numLeafNodes();
 		rows = new Object[numRows][];
@@ -489,7 +482,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		int rowWidth = info.endingOffsets[TCInfo.TCI_bm];
 		final int rowsPerBlock = (BlockBase.MAX_BLOCK_BYTES - BlockTrailer.size(pstFile))/rowWidth;
 		final int nPaddingBytes = BlockBase.MAX_BLOCK_BYTES - BlockTrailer.size(pstFile) - rowsPerBlock*rowWidth;
-		logger.log(java.util.logging.Level.INFO, String.format("Rows/Block %d padding at end of block %d", rowsPerBlock, nPaddingBytes));
 		int r;
 		for (r = 0; r < rows.length; ++r) {
 			if (r > 0 && r % rowsPerBlock == 0)
@@ -546,21 +538,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		dc.read(rowStream, info.rowFields);
 		byte[] cellExistenceBitmap = (byte[])dc.get(info.rowFields[info.rowFields.length-1].name);
 
-		if (logger.isLoggable(java.util.logging.Level.INFO))
-			logger.log(java.util.logging.Level.INFO, String.format("%d: CEB %s", r, ByteUtil.createHexByteString(cellExistenceBitmap)));
-
 		Object[] row = new Object[numColumns];
 		for (int c = 0; c < numColumns; ++c) {
 			Object fieldData = dc.get(info.rowFields[c].name);
 
-			if (!cellExists(cellExistenceBitmap, c)) {
-				if (logger.isLoggable(java.util.logging.Level.INFO))
-					logger.log(java.util.logging.Level.INFO, String.format("(%d, %d): empty %s", r, c, fieldData.toString()));
+			if (!cellExists(cellExistenceBitmap, c))
 				continue;
-			}
-
-			if (logger.isLoggable(java.util.logging.Level.INFO))
-				logger.log(java.util.logging.Level.INFO, String.format("(%d, %d) %s 0x%08x: %s", r, c, info.fieldName(c), info.columnDescription[c].tag, fieldData.toString()));
 
 			if (!(fieldData instanceof HeapOnNode.HID)) {
 				row[c] = fieldData;
@@ -656,15 +639,11 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.TableContext pst-filename [log-level]");
-			System.out.println("\nNote that log-level applies only to construction of the TableContext object.");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.TableContext pst-filename");
 			System.exit(1);
 		}
 
 		try {
-			java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			logger.setLevel(logLevel);
-
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
@@ -682,29 +661,21 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 						if (!hon.containsData())
 							continue;
 						if (hon.clientSignature().equals(ClientSignature.TableContext)) {
-							if (!logger.isLoggable(java.util.logging.Level.OFF))
-								separator.emit(System.out);
-							if (logger.isLoggable(java.util.logging.Level.FINE))
-								logger.log(java.util.logging.Level.FINE, "\nHeapOnNode\n---------\n" + hon);
+							separator.emit(System.out);
 							TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
-
-							if (!logger.isLoggable(java.util.logging.Level.OFF)) {
-								System.out.println("Node " + nodeDescr + "\nTableContext\n------------\n" + tc);
-								if (tc.isEmpty())
-									continue;
-
-								if (!logger.isLoggable(java.util.logging.Level.FINE))
-									tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
-							}
+							System.out.println("Node " + nodeDescr + "\nTableContext\n------------\n" + tc);
+							if (tc.isEmpty())
+								continue;
+							tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
 						}
 					} catch (final NotHeapNodeException e) {
 						// This is expected; we have no way to find out whether a node contains a heap-on-node until we start reading it.
 						continue;
 					} catch (final UnknownClientSignatureException e) {
-						logger.log(java.util.logging.Level.WARNING, nodeDescr + "\n\t" + e.toString());
+						System.out.printf(nodeDescr + "\n\t" + e.toString());
 						e.printStackTrace(System.out);
 					} catch (final UnparseableTableContextException e) {
-						logger.log(java.util.logging.Level.WARNING, nodeDescr + "\n]t" + e.toString());
+						System.out.printf(nodeDescr + "\n]t" + e.toString());
 						e.printStackTrace(System.out);
 					}
 				}

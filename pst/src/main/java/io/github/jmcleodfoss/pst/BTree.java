@@ -3,9 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The BTree class is the base for the block, node, heap-on-node, and sub-node B-tree classes. */
 abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomNodeText
 {
-	/**	Logger for debugging BTree-derived classes */
-	protected static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.BTree");
-
 	/**	The Context class allows information about the current root node to be passed to child nodes without having to save
 	*	it in the BTree itself.
 	*	@param	<I>	The type of an intermediate node (the same as the tree type)

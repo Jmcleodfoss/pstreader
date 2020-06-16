@@ -6,9 +6,6 @@ package io.github.jmcleodfoss.pst;
 */
 public class HeapOnNode implements javax.swing.ListModel<Object>
 {
-	/**	Logger for debugging BTrees */
-	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.HeapOnNode");
-
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
 	*/
@@ -366,8 +363,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 				if (size > 0) {
 					heap[iHeap] = new byte[size];
 					dataStreams.get(iBlock).get(heap[iHeap]);
-					if (logger.isLoggable(java.util.logging.Level.FINER))
-						logger.log(java.util.logging.Level.FINER, "HeapOnNode heap block " + iHeap + ByteUtil.createHexByteString(heap[iHeap]));
 				}
 				++iHeap;
 			}
@@ -549,16 +544,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.HeapOnNode pst-filename [log-level]");
-			System.out.println("\nNote that log-level applies only to construction of the HeapOnNode object.");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.HeapOnNode pst-filename");
 			System.exit(1);
 		}
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			final java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.HeapOnNode");
-			java.util.logging.Level originalLevel = logger.getLevel();
-			logger.setLevel(logLevel);
-
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
@@ -581,7 +570,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 					} catch (final NotHeapNodeException e) {
 						// Not every node in the block B-tree is a heap node, so this is benign.
 					} catch (final Exception e) {
-						logger.log(java.util.logging.Level.INFO, e + "\nnode " + node + "\nbid(data) " + dataBlock);
 						e.printStackTrace(System.out);
 						System.out.println("node " + node);
 						System.out.println("dataBlock " + dataBlock);

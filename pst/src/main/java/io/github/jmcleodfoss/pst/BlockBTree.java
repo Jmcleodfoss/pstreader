@@ -92,10 +92,6 @@ class BlockBTree extends PagedBTree implements BlockMap
 		}
 
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BTree");
-			logger.setLevel(logLevel);
-
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);

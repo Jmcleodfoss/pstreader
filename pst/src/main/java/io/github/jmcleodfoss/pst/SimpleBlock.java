@@ -107,8 +107,6 @@ class SimpleBlock extends BlockBase
 		if (Options.checkCRC)
 			crcCalculated = CRC.crc(PST.makeByteBuffer(data), 0, data.length);
 		encryption.translate(data, (int)(entry.bref.bid.key() & 0xffffffff));
-		if (logger.isLoggable(java.util.logging.Level.FINER))
-			logger.log(java.util.logging.Level.FINER, "decoded data " + ByteUtil.createHexByteString(data));
 
 		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
@@ -158,10 +156,6 @@ class SimpleBlock extends BlockBase
 		}
 
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.BlockBase");
-			logger.setLevel(logLevel);
-
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			java.util.Iterator<BTreeNode> iterator = bbt.iterator();

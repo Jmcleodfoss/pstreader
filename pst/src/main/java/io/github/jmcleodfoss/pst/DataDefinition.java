@@ -3,9 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The DataDefinition class encapsulates definitions used for reading values from a data stream. */
 class DataDefinition
 {
-	/**	Logger for data reading */
-	static java.util.logging.Logger logger = Debug.getLogger("io.github.jmcleodfoss.pst.DataDefinition");
-
 	/**	The IncompleteFieldException is used to signal that it was not possible to read in all the required bytes for a field */
 	static class IncompleteFieldException extends RuntimeException
 	{
@@ -62,11 +59,8 @@ class DataDefinition
 	throws
 		java.io.IOException
 	{
-		final boolean f_debug = logger.isLoggable(java.util.logging.Level.FINER);
-		if (description.fSave || f_debug) {
-			logger.log(java.util.logging.Level.FINEST, (description.fSave ? "read" : "skip") + " " + description);
+		if (description.fSave) {
 			final Object value = description.description.read(byteBuffer);
-			logger.log(java.util.logging.Level.FINER, (description.fSave ? "read" : "skip") + " " + description.name + ": " + description.description.makeString(value));
 			if (description.fSave)
 				data.put(description.name, value);
 		} else {

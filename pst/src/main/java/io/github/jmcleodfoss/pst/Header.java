@@ -215,14 +215,10 @@ public class Header
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Header pst-file [log-level]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Header pst-file");
 			System.exit(1);
 		}
 		try {
-			java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
-			logger.setLevel(logLevel);
-
 			java.io.File file = new java.io.File(args[0]);
 			java.io.FileInputStream stream = new java.io.FileInputStream(file);
 			java.nio.channels.FileChannel fc = stream.getChannel();

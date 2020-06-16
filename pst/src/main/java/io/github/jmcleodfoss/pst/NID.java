@@ -5,9 +5,6 @@ package io.github.jmcleodfoss.pst;
 */
 public class NID implements NodeKey
 {
-	/**	Logger for NID creation. */
-	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.NID");
-
 	/**	Whether to check for known node types.
 	*	This should be left disabled, since undocumented node types do occur in PST files.
 	*/
@@ -154,7 +151,6 @@ public class NID implements NodeKey
 		type = (byte)(key & 0x1f);
 		nid = (key >> 5) & 0x07ffffff;
 		description = description(type);
-		logger.log(java.util.logging.Level.INFO, String.format("NID %08x => type 0x%02x nid %08x %s", key, type, nid, description));
 	}
 
 	/**	Create a node ID from the given node ID but with the new type.

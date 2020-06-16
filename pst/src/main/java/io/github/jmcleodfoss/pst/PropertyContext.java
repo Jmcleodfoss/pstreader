@@ -5,9 +5,6 @@ package io.github.jmcleodfoss.pst;
 */
 public class PropertyContext
 {
-	/**	Logger for class debugging. */
-	private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst.PropertyContext");
-
 	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on demand. */
 	protected class PSTDataPointer
 	{
@@ -234,22 +231,6 @@ public class PropertyContext
 
 		final Object o = dataReader.read(PSTFile.makeByteBuffer(hon.heapData(hnid)));
 
-		if (logger.isLoggable(java.util.logging.Level.INFO)) {
-			StringBuilder s = new StringBuilder();
-			s.append("Leaf ");
-			s.append(lr);
-			s.append(" data type ");
-			s.append(propertyType);
-			s.append(" in heap at hid ");
-			s.append(hnid);
-			s.append(", value");
-	
-			if (propertyType == DataType.BINARY)
-				s.append(ByteUtil.createHexByteString((byte[])o));
-			else
-				s.append(o);
-		}
-
 		return o;
 	}
 
@@ -350,16 +331,11 @@ public class PropertyContext
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.PropertyContext pst-filename [log-level]");
-			System.out.println("\nNote that log-level applies only to construction of the PropertyContext object.");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.PropertyContext pst-filename");
 			System.exit(1);
 		}
 
 		try {
-			final java.util.logging.Level logLevel = args.length >= 2 ? Debug.getLogLevel(args[1]) : java.util.logging.Level.OFF;
-			java.util.logging.Logger logger = java.util.logging.Logger.getLogger("io.github.jmcleodfoss.pst");
-			logger.setLevel(logLevel);
-
 			// Suppresing output can dramatically increase the speed of this function, while still showing any exceptions raised.
 			// Medium-term goal is to set this based on a command line argument.
 			final boolean fShowOutput = true;
@@ -405,10 +381,10 @@ public class PropertyContext
 				} catch (final NotHeapNodeException e) {
 					// Not every node in the block B-tree is a heap node, so this is benign.
 				} catch (final NullDataBlockException e) {
-					logger.log(java.util.logging.Level.INFO, "\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
+					System.out.println("\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
 					e.printStackTrace(System.out);
 				} catch (final UnknownClientSignatureException e) {
-					logger.log(java.util.logging.Level.INFO, "Node " + node + ": " + e);
+					System.out.println("ode " + node + ": " + e);
 					e.printStackTrace(System.out);
 				}
 			}
