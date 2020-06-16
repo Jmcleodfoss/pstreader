@@ -53,6 +53,24 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			}
 		}
 
+		/**	Is the given object equivalent to this NHD?
+		*	@param	o	The object to check for equivalency with this rHD.
+		*	returns	true if the passed object is an rHD and its key is equal to this object's key, false otherwise.
+		*/
+		public boolean equals(final Object o)
+		{
+			return o != null && this.getClass().isAssignableFrom(o.getClass()) && key == ((HID)o).key;
+		}
+
+		/**	Calculate hashcode.
+		*	@return	Hashcode for the node ID.
+		*/
+		@Override
+		public int hashCode()
+		{
+			return super.hashCode();
+		}
+
 		// Perhaps the HNID should be in a separate HNID class.
 		/**	Determine whether this object represents an HID or an HNID.
 		*	@return	true if this object is an HID, and false if it is an HNID.
