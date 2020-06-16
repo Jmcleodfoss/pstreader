@@ -118,12 +118,16 @@ public class PST extends PSTFile
 
 	/**	Check whether the given password matches the stored password.
 	*	@param	testPassword	The password to check.
+	*	@param	charset		The charset Charset used to encode the string
 	*	@return	true if the passed password matches the password in the PST file, false otherwise.
+	*	@throw	java.io.UnsupportedEncodingException	The given charset is not supported / recognized
 	*	@see	#hasPassword
 	*/
-	public boolean checkPassword(final String testPassword)
+	public boolean checkPassword(final String testPassword, java.nio.charset.Charset charset)
+	throws
+		java.io.UnsupportedEncodingException
 	{
-		return messageStore.checkPassword(testPassword);
+		return messageStore.checkPassword(testPassword, charset);
 	}
 
 	/**	Get a folder and its first set of descendent sub-folders.

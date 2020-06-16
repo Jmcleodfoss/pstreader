@@ -23,16 +23,22 @@ public class OutputSeparator
 
 	/**	Construct an OutputSeparator object from the string passed in.
 	*	@param	separator	A string to use as the separator.
+	*	@throw	java.io.UnsupportedEncodingException	The given charset is not supported / recognized
 	*/
 	public OutputSeparator(String separator)
+	throws
+		java.io.UnsupportedEncodingException
 	{
-		this(separator.getBytes(DataType.CHARSET_NARROW));
+			this(separator.getBytes(DataType.CHARSET_NARROW));
 	}
 
 	/**	Construct an OutputSeparator object from the default separator string.
+	*	@throw	java.io.UnsupportedEncodingException	The given charset is not supported / recognized
 	*	@see	#defaultSeparator
 	*/
 	public OutputSeparator()
+	throws
+		java.io.UnsupportedEncodingException
 	{
 		this(defaultSeparator);
 	}

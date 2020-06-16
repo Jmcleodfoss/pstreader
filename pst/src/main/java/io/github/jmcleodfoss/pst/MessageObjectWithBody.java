@@ -48,7 +48,13 @@ public class MessageObjectWithBody extends MessageObject
 	{
 		if (fUnicode) {
 			final byte[] htmlData = (byte[])pc.get(PropertyTags.BodyHtmlW);
-			return htmlData == null ? null : new String(htmlData);
+			try {
+				return htmlData == null ? null : new String(htmlData, DataType.CHARSET_WIDE);
+			} catch (final java.io.UnsupportedEncodingException e) {
+				// This shouldn't happen since we use a well-defined Charset.
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			}
 		}
 
 		return (String)pc.get(PropertyTags.BodyHtml);
