@@ -83,7 +83,7 @@ abstract class DataType
 	*	@see	io.github.jmcleodfoss.pst.DataType#string8Reader
 	*	@see	io.github.jmcleodfoss.pst.DataType#multipleString8Reader
 	*/
-	private static final String CHARSET_NARROW = new String("iso-8859-1");
+	private static final String CHARSET_NARROW = "iso-8859-1";
 
 	/**	The character encoding used for PST Unicode data.
 	*	@see	io.github.jmcleodfoss.pst.DataType.StringBase
@@ -92,7 +92,7 @@ abstract class DataType
 	*	@see	io.github.jmcleodfoss.pst.DataType#stringReader
 	*	@see	io.github.jmcleodfoss.pst.DataType#multipleStringReader
 	*/
-	private static final String CHARSET_WIDE = new String("UTF-16LE");
+	private static final String CHARSET_WIDE = "UTF-16LE";
 
 	/**	Create an object of type DataType. */
 	protected DataType()
