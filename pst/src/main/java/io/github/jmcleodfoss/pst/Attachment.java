@@ -198,6 +198,10 @@ public class Attachment
 		case AF_STORAGE:
 			propidData = PropertyTags.AttachDataObject;
 			break;
+
+		default:
+			// Unknown attachment method. Treat the same as none
+			break;
 		}
 		this.propidData = propidData;
 
