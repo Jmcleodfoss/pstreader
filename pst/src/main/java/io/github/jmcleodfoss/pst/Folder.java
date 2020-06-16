@@ -436,7 +436,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			BlockBTree blockBTree = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nodeBTree = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			NameToIDMap namedProperties = new NameToIDMap(blockBTree, nodeBTree, pstFile);
 			MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 			messageStore.rootFolder.show("");
 		} catch (final Exception e) {
