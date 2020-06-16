@@ -251,7 +251,7 @@ class Encryption
 				b = (byte)(b - (w & 0xff)); 
 				data[i] = b; 
  
-				w = ++w; 
+				++w;
 			}
 		}
 	}
