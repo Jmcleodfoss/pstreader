@@ -31,9 +31,15 @@ class SimpleBlock extends BlockBase
 
 		/**	Retrieve the block data as a ByteBuffer.
 		*	@return	A ByteBuffer from which the block data may be read.
+		*	@throws	NoSuchElementException	There are no more elements to return
 		*/
 		public java.nio.ByteBuffer next()
+		throws
+			java.util.NoSuchElementException
 		{
+			if (!fNext)
+				throw new java.util.NoSuchElementException();
+
 			fNext = false;
 			return PSTFile.makeByteBuffer(data);
 		}
