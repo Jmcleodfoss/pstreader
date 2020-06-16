@@ -259,7 +259,7 @@ public class SubnodeBTree extends BTree
 						final SLEntry sbtEntry = (SLEntry)sbtIterator.next(); 
 						final BBTEntry bbtEntry = bbt.find(sbtEntry.bidData);
 						if (bbtEntry != null) {
-							System.out.printf("%d: %s; %s\n", i, sbtEntry.toString(), bbtEntry.toString());
+							System.out.printf("%d: %s; %s%n", i, sbtEntry.toString(), bbtEntry.toString());
 							final SimpleBlock b = new SimpleBlock(bbtEntry, pstFile);
 							System.out.println("block: " + b);
 						} else {

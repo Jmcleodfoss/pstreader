@@ -95,9 +95,9 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 					++discrepancies;
 			}
 			if (discrepancies == 0)
-				System.out.printf("Success: all %d NIDs found\n", nids);
+				System.out.printf("Success: all %d NIDs found%n", nids);
 			else
-				System.out.printf("Failure: %d out of %d NIDs not found\n", discrepancies, nids);
+				System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
 		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}

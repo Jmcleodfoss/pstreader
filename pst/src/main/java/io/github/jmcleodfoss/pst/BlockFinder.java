@@ -95,9 +95,9 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 					++discrepancies;
 			}
 			if (discrepancies == 0)
-				System.out.printf("Success: all %d BIDs found\n", bids);
+				System.out.printf("Success: all %d BIDs found%n", bids);
 			else
-				System.out.printf("Failure: %d out of %d BIDs not found\n", discrepancies, bids);
+				System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
 		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}

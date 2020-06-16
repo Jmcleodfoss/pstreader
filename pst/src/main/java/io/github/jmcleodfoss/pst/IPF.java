@@ -226,7 +226,7 @@ public class IPF
 		}
 
 		try {
-			final String fmtOutput = "%-25s %-25s %-10s\n";
+			final String fmtOutput = "%-25s %-25s %-10s%n";
 
 			for (String a: args) {
 				System.out.println(a);

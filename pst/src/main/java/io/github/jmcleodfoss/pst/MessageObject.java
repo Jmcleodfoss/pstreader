@@ -168,7 +168,7 @@ public class MessageObject
 	public static void test(final String clName, final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.printf("use:\n\tjava %s pst-file [pst-file...]", clName);
+			System.out.printf("use:%n\tjava %s pst-file [pst-file...]", clName);
 			System.exit(1);
 		}
 

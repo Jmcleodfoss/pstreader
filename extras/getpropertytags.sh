@@ -73,7 +73,7 @@ cat << END_FOOTER >> PropertyTags.java
 		java.util.Iterator<Integer> iter = PropertyTags.tags.keySet().iterator();
 		while (iter.hasNext()) {
 			Integer t = iter.next();
-			System.out.printf("0x%08x: %s\n", t, PropertyTags.tags.get(t));
+			System.out.printf("0x%08x: %s%n", t, PropertyTags.tags.get(t));
 		}
 	}
 }

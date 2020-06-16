@@ -399,7 +399,7 @@ public class PropertyContext
 							final String name = namedProperties.name(key);
 							Object value = pc.get(key);
 							final String s = value != null ? DataType.makeString(key, value) : null;
-							System.out.printf("0x%08x %s \"%s\"\n", key, name, value);
+							System.out.printf("0x%08x %s \"%s\"%n", key, name, value);
 						}
 					}
 				} catch (final NotHeapNodeException e) {

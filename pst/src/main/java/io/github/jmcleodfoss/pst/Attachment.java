@@ -237,7 +237,7 @@ public class Attachment
 						System.out.println(folder.getNodeText(msg));
 						subjectShown = true;
 					}
-					System.out.printf("\tattachment %s mime-type %s size %d\n", attachment.name, attachment.mimeType, data == null ? 0 : data.length);
+					System.out.printf("\tattachment %s mime-type %s size %d%n", attachment.name, attachment.mimeType, data == null ? 0 : data.length);
 				}
 			}
 		}

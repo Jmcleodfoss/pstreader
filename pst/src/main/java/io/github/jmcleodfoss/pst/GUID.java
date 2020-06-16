@@ -251,7 +251,7 @@ class GUID
 	*/
 	public static void main(String[] args)
 	{
-		String format = "%25s\t%s\n";
+		String format = "%25s\t%s%n";
 
 		System.out.printf(format, "Name", "GUID");
 		System.out.printf(format, "____", "____");

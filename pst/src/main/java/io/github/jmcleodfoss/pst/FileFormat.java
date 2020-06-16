@@ -80,7 +80,7 @@ class FileFormat
 		try {
 			for (String a: args) {
 				PST pst = new PST(a);
-				System.out.printf("%s: %s\n", a, pst.unicode() ? "Unicode" : "ANSI");
+				System.out.printf("%s: %s%n", a, pst.unicode() ? "Unicode" : "ANSI");
 			}
 		} catch (final Exception e) {
 			e.printStackTrace(System.out);

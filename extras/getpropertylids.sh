@@ -80,7 +80,7 @@ cat << END_FOOTER >> PropertyLIDs.java
 		java.util.Iterator<Integer> iter = PropertyLIDs.lids.keySet().iterator();
 		while (iter.hasNext()) {
 			Integer t = iter.next();
-			System.out.printf("0x%08x: %s\n", t, PropertyLIDs.lids.get(t));
+			System.out.printf("0x%08x: %s%n", t, PropertyLIDs.lids.get(t));
 		}
 	}
 }

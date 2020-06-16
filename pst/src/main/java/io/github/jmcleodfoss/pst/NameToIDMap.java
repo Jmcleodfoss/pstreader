@@ -329,7 +329,7 @@ public class NameToIDMap
 			java.util.Arrays.sort(keyArray);
 
 			for (Object key : keyArray)
-				System.out.printf("0x%04x=%s\n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
+				System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
 		} catch (final Exception e) {
 			e.printStackTrace(System.out);
 		}
