@@ -28,9 +28,6 @@ public class NameToIDMap
 		/**	GUID index (type) {@value}: GUID is found at the "(n-1)*16" byte offset in the GUID stream. */
 		private static final short GUID_INDEX_GUID = 3;
 
-		/**	Names are stored in the PST file in this format. */
-		private static final String CHARSET_WIDE = new String("UTF-16LE");
-
 		/**	If fString, this is the offset into the string stream of the node at which the property name is found.
 		*	Otherwise, this is the numeric identifier of the property.
 		*/
@@ -118,7 +115,7 @@ public class NameToIDMap
 			final byte[] arr = new byte[(int)length];
 			stringStream.get(arr);
 
-			return new String(arr, CHARSET_WIDE); 
+			return new String(arr, DataType.CHARSET_WIDE);
 		}
 
 		/**	Create a string representation of this object (typically used for debugging).
