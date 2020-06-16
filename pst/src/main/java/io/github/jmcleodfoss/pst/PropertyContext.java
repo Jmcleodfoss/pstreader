@@ -357,38 +357,47 @@ public class PropertyContext
 				if (dataBlock == null)
 					continue;
 
-				try {
-					// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
-					HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-					if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
-						continue;
+				// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
+				HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+				if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
+					continue;
 
-					final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
+				final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
 
-					if (fShowOutput) {
-						separator.emit(System.out);
-						System.out.println("Node " + node + ", " + Long.toHexString(node.key()) + "\nPropertyContext\n---------------\n");
-						java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = pc.iterator();
-						while (propertyIterator.hasNext()) {
-							final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
-							final int key = entry.getKey();
-							final String name = namedProperties.name(key);
-							Object value = pc.get(key);
-							final String s = value != null ? DataType.makeString(key, value) : null;
-							System.out.printf("0x%08x %s \"%s\"%n", key, name, value);
-						}
+				if (fShowOutput) {
+					separator.emit(System.out);
+					System.out.println("Node " + node + ", " + Long.toHexString(node.key()) + "\nPropertyContext\n---------------\n");
+					java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = pc.iterator();
+					while (propertyIterator.hasNext()) {
+						final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
+						final int key = entry.getKey();
+						final String name = namedProperties.name(key);
+						Object value = pc.get(key);
+						final String s = value != null ? DataType.makeString(key, value) : null;
+						System.out.printf("0x%08x %s \"%s\"%n", key, name, value);
 					}
-				} catch (final NotHeapNodeException e) {
-					// Not every node in the block B-tree is a heap node, so this is benign.
-				} catch (final NullDataBlockException e) {
-					System.out.println("\tbid(data)\t" + dataBlock + " does not contain a valid property context node");
-					e.printStackTrace(System.out);
-				} catch (final UnknownClientSignatureException e) {
-					System.out.println("ode " + node + ": " + e);
-					e.printStackTrace(System.out);
 				}
 			}
-		} catch (final Exception e) {
+		} catch (final NotHeapNodeException e) {
+			// Not every node in the block B-tree is a heap node, so this is benign.
+		} catch (final NotPropertyContextNodeException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final NotPSTFileException e) {
+			System.out.printf("File %s is not a pst file%n", args[0]);
+		} catch (final NullDataBlockException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final UnknownClientSignatureException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final UnparseablePropertyContextException e) {
+			System.out.printf(e.toString());
+			e.printStackTrace(System.out);
+		} catch (final java.io.FileNotFoundException e) {
+			System.out.printf("File %s not found%n", args[0]);
+		} catch (final java.io.IOException e) {
+			System.out.printf("Could not read %s%n", args[0]);
 			e.printStackTrace(System.out);
 		}
 	}

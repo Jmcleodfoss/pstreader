@@ -671,6 +671,9 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 					} catch (final NotHeapNodeException e) {
 						// This is expected; we have no way to find out whether a node contains a heap-on-node until we start reading it.
 						continue;
+					} catch (final NotTableContextNodeException e) {
+						System.out.printf(e.toString());
+						e.printStackTrace(System.out);
 					} catch (final UnknownClientSignatureException e) {
 						System.out.printf(nodeDescr + "\n\t" + e.toString());
 						e.printStackTrace(System.out);
@@ -680,7 +683,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 					}
 				}
 			}
-		} catch (final Exception e) {
+		} catch (final java.io.FileNotFoundException e) {
+			System.out.printf("File %s not found%n", args[0]);
+		} catch (final NotPSTFileException e) {
+			System.out.printf("File %s is not a pst file%n", args[0]);
+		} catch (final java.io.IOException e) {
+			System.out.printf("Could not read %s%n", args[0]);
 			e.printStackTrace(System.out);
 		}
 	}
