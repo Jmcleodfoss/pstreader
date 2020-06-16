@@ -147,7 +147,7 @@ class Encryption
 	/**	The UnknownEncryptionMethodException is thrown if one tries to create an Encryption object with an invalid value for the
 	*	encryption type.
 	*/
-	class UnknownEncryptionMethodException extends RuntimeException
+	static class UnknownEncryptionMethodException extends RuntimeException
 	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
@@ -175,7 +175,7 @@ class Encryption
 	*	@see	TranslaterPermute
 	*	@see	TranslaterCyclic
 	*/
-	private class TranslaterNone implements Translater
+	static private class TranslaterNone implements Translater
 	{
 		/**	The translate function is trivial; it performs no conversion.
 		*	@param	data	This parameter is not used by the TranslaterNone translater.

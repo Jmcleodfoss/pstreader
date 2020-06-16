@@ -6,7 +6,7 @@ package io.github.jmcleodfoss.pst;
 public class PropertyContext
 {
 	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on demand. */
-	protected class PSTDataPointer
+	static protected class PSTDataPointer
 	{
 		/**	The reader for the given property. */
 		final DataType reader;
@@ -50,7 +50,7 @@ public class PropertyContext
 	}
 
 	/**	A TableModel which may be used to represent a PropertyContext object. */
-	private class TableModel extends LPTTableModel
+	static private class TableModel extends LPTTableModel
 	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;

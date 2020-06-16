@@ -9,7 +9,7 @@ class FileFormat
 	/**	The UnknnownFileFormatVersionException is thrown if one tries to create an FileFormat object with an invalid value for
 	*	the file format.
 	*/
-	class UnknownFileFormatVersionException extends RuntimeException
+	static class UnknownFileFormatVersionException extends RuntimeException
 	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
