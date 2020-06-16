@@ -19,7 +19,7 @@ import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 class BTreeJTree extends JScrollPane
 {
 	/**	The Tree class is a JTree which gets node names from a io.github.jmcleodfoss.pst.TreeCustomNode object. */
-	private class Tree extends JTree
+	static private class Tree extends JTree
 	{
 		/**	Construct a JTree with an EmptyTreeModel. */
 		private Tree()
