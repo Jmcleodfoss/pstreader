@@ -107,9 +107,7 @@ class BBTEntry implements BTreeLeaf
 		java.io.IOException
 	{
 		final SimpleBlock block = SimpleBlock.read(this, pstFile);
-		if (block != null)
-			return block.dataStream();
-		return null;
+		return block.dataStream();
 	}
 
 	/**	Provide a description of a block B-tree leaf node (typically used for debugging).

@@ -76,10 +76,7 @@ public abstract class LPTLeaf implements BTreeLeaf
 			return null;
 
 		final BlockBase block = BlockBase.read(bbtEntry, bbt, pstFile);
-		if (block != null)
-			return block.dataStream();
-
-		return null;
+		return block.dataStream();
 	}
 
 	/**	Provide a description of a node B-tree leaf node. This is typically used for debugging.
