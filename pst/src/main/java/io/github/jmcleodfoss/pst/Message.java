@@ -148,7 +148,7 @@ public class Message extends MessageObjectWithBody
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*	@see	#body
-	*	@see	#bodyHtml
+	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	#transportHeaders
 	*/
 	@Override
@@ -211,7 +211,7 @@ public class Message extends MessageObjectWithBody
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a string.
 	*	@see	#body
-	*	@see	#bodyHtml
+	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	#getMessage
 	*	@see	#transportHeaders
 	*/
