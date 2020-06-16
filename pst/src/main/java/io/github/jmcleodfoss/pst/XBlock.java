@@ -219,8 +219,8 @@ class XBlock extends BlockBase
 		return s;
 	}
 
-	/**	Test the XBlock class by traversing the node BTree and getting the XBlocks for each internal data block. This should
-	*	also display the XBlocks in each node subtree block, but that's a little tougher.
+	/**	Test the XBlock class by traversing the node BTree and getting the XBlocks for each internal data block.
+	*	This should also display the XBlocks in each node subtree block, but that's a little tougher.
 	*	@param	args	The command line arguments to the test application.
 	*/
 	public static void main(String[] args)
