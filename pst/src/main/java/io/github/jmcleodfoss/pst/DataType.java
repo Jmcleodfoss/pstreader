@@ -1050,7 +1050,7 @@ abstract class DataType
 		private static final java.util.Date PST_BASE_TIME = initBaseTime();
 
 		/**	The format to use when converting time objects to strings. */
-		private static final java.text.SimpleDateFormat OUTPUT_FORMAT = new java.text.SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
+		private final java.text.SimpleDateFormat OUTPUT_FORMAT = new java.text.SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
 
 		/**	Initialize the base time; exit on exception.
 		*	@return	A Date object for the base time used by PST files.
