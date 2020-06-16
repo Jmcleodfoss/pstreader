@@ -135,14 +135,14 @@ class Encryption
 
 	/**	An Offset into the encryption table {@link #mpbbCrypt} used when encrypting using permutative encoding, and for both
 	*	encryption and decryption in cyclic encoding. */
-	private final int offsR = 0;
+	static private final int offsR = 0;
 
 	/**	An Offset into the encryption table {@link #mpbbCrypt} used when decrypting using permutative encoding, and for both
 	*	encryption and decryption in cyclic encoding. */
-	private final int offsS = 0x100;
+	static private final int offsS = 0x100;
 
 	/**	An Offset into the encryption table {@link #mpbbCrypt} used when encrypting or decrypting in cyclic encoding. */
-	private final int offsI = 0x200;
+	static private final int offsI = 0x200;
 
 	/**	The UnknownEncryptionMethodException is thrown if one tries to create an Encryption object with an invalid value for the
 	*	encryption type.
