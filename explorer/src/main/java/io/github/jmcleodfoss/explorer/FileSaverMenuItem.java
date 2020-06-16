@@ -71,12 +71,18 @@ abstract class FileSaverMenuItem implements ActionListener
 		case JFileChooser.APPROVE_OPTION:
 			byte[] data = data();
 			if (data != null) {
+				FileOutputStream out = null;
 				try {
-					FileOutputStream out = new FileOutputStream(fileChooser.getSelectedFile());
+					out = new FileOutputStream(fileChooser.getSelectedFile());
 					out.write(data);
-					out.close();
-				} catch (FileNotFoundException ex) {
-				} catch (IOException ex) {
+				} catch (final FileNotFoundException ex) {
+				} catch (final IOException ex) {
+				} finally {
+					try {
+						if (out != null)
+							out.close();
+					} catch (final IOException ex) {
+					}
 				}
 			}
 			return;
