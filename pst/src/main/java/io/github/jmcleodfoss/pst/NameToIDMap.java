@@ -62,7 +62,7 @@ public class NameToIDMap
 
 			final short fStringAndGuid = entryStream.getShort();
 			fString = (fStringAndGuid & 0x0001) != 0;
-			guidIndex = (short)(fStringAndGuid >>> 1);
+			guidIndex = (short)(0xffff & (fStringAndGuid >> 1));
 
 			propertyIndex = entryStream.getShort();
 
