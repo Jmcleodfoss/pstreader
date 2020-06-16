@@ -26,7 +26,7 @@ public class OutputSeparator
 	*/
 	public OutputSeparator(String separator)
 	{
-		this(separator.getBytes());
+		this(separator.getBytes(DataType.CHARSET_NARROW));
 	}
 
 	/**	Construct an OutputSeparator object from the default separator string.
