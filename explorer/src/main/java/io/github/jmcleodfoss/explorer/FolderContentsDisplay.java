@@ -52,7 +52,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			byte[] data()
 			{
 				assert messagePC != null;
-				return ((io.github.jmcleodfoss.pst.Message)clickedNode).bodyHtml(messagePC).getBytes();
+				return ((io.github.jmcleodfoss.pst.Message)clickedNode).bodyHtmlBytes(messagePC);
 			}
 		}
 
