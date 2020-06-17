@@ -500,7 +500,7 @@ public class BTreeOnHeap extends BTree
 							throw e;
 						}
 					} catch (final NotHeapNodeException e) {
-						// Not every node in the block B-tree is a heap node, so this is benign.
+						e.printStackTrace(System.out);
 					} catch (final UnknownClientSignatureException e) {
 						System.out.println("Node " + node + ": " + e);
 						e.printStackTrace(System.out);
