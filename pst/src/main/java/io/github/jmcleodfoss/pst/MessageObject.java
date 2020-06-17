@@ -163,7 +163,7 @@ public class MessageObject
 
 	/**	Test the given class by iterating through the messages.
 	*	@param	clName	The name of the class of messages to be displayed.
-	* 	@param	args	The command line arguments passed to the original main function
+	* 	@param	args	The file(s) to show the message objects for
 	*/
 	public static void test(final String clName, final String[] args)
 	{
@@ -172,14 +172,14 @@ public class MessageObject
 			System.exit(1);
 		}
 
-		try {
-			for (String a: args) {
+		for (String a: args) {
+			try {
 				System.out.println(a);
 				PST pst = new PST(a);
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }
