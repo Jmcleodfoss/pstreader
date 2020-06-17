@@ -177,7 +177,7 @@ class pstExplorer extends JFrame
 	{
 		reset();
 
-		io.github.jmcleodfoss.swingutil.ProgressBar pb = new io.github.jmcleodfoss.swingutil.ProgressBar(this, "Reading PST File") {
+		new io.github.jmcleodfoss.swingutil.ProgressBar(this, "Reading PST File") {
 			public void run()
 			{
 				try {
@@ -246,6 +246,6 @@ class pstExplorer extends JFrame
 	*/
 	public static void main(String args[])
 	{
-		pstExplorer ex = new pstExplorer(args);
+		new pstExplorer(args);
 	}
 }
