@@ -430,7 +430,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	*/
 	public void valueChanged(final javax.swing.event.TreeSelectionEvent e)
 	{
-		final ProgressBar pb = new ProgressBar(pstExplorer.explorer, "Reading folder data") {
+		new ProgressBar(pstExplorer.explorer, "Reading folder data") {
 			public void run()
 			{
 				doUpdate(e.getPath().getLastPathComponent());
