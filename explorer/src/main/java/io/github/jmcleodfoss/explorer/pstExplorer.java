@@ -239,8 +239,6 @@ class pstExplorer extends JFrame
 
 		pst = null;
 		nodeBTree = null;
-
-		System.gc();
 	}
 
 	/**	Simple mainline - create the pstExplorer object, which does all the work.
