@@ -487,20 +487,11 @@ public class BTreeOnHeap extends BTree
 							HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 							if (!hon.containsData() || (!hon.clientSignature().equals(ClientSignature.PropertyContext) && !hon.clientSignature().equals(ClientSignature.TableContext)))
 								continue;
+							BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
 
-							try {
-								BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
-
-								separator.emit(System.out);
-								System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
-								bth.outputString(System.out, new StringBuilder("bth: "));
-							} catch (final Exception e) {
-								e.printStackTrace(System.out);
-								System.out.print("node " + node);
-								System.out.print("dataBlock " + dataBlock);
-								System.out.print("hon " + hon);
-								throw e;
-							}
+							separator.emit(System.out);
+							System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
+							bth.outputString(System.out, new StringBuilder("bth: "));
 						} catch (final NotHeapNodeException e) {
 							e.printStackTrace(System.out);
 						} catch (final UnknownClientSignatureException e) {
