@@ -225,10 +225,10 @@ public class IPF
 			System.exit(1);
 		}
 
-		try {
-			final String fmtOutput = "%-25s %-25s %-10s%n";
+		final String fmtOutput = "%-25s %-25s %-10s%n";
 
-			for (String a: args) {
+		for (String a: args) {
+			try {
 				System.out.println(a);
 				PST pst = new PST(a);
 				System.out.printf(fmtOutput, "Folder Name", "Container Class", "Known Container Class?");
@@ -236,9 +236,28 @@ public class IPF
 					final Folder f = folderIterator.next();
 					System.out.printf(fmtOutput, f.displayName, f.containerClass, isKnownClass(f));
 				}
+			} catch (final NotHeapNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPropertyContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final NotTableContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NullDataBlockException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
+				System.out.printf("Could not read %s%n", a);
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }
