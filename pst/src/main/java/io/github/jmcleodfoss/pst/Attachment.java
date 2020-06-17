@@ -266,7 +266,7 @@ public class Attachment
 				System.out.println(a);
 				findFolderAttachments(pst.getFolderTree(), pst);
 			} catch (final NotHeapNodeException e) {
-				// Not every node in the block B-tree is a heap node, so this is benign.
+				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPSTFileException e) {
