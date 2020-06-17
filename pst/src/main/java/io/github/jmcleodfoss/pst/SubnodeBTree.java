@@ -219,51 +219,52 @@ public class SubnodeBTree extends BTree
 	}
 
 	/**	Test the SubnodeBTree class by reading in traversing the PST file and displaying all the sub-node B-tree leaves.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The file(s) to display the sub-node B-Tree for.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
+		for (String a: args) {
+			try {
+				OutputSeparator separator = new OutputSeparator();
 
-		try {
-			OutputSeparator separator = new OutputSeparator();
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					final NBTEntry entry = (NBTEntry)iterator.next();
+					if (entry.bidSubnode.bid != 0) {
+						separator.emit(System.out);
 
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				final NBTEntry entry = (NBTEntry)iterator.next();
-				if (entry.bidSubnode.bid != 0) {
-					separator.emit(System.out);
+						System.out.println("Subnode BTree for " + entry);
+						final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
+						System.out.println(sbt);
+						java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();
 
-					System.out.println("Subnode BTree for " + entry);
-					final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
-					System.out.println(sbt);
-					java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();
-
-					int i = 0;
-					while (sbtIterator.hasNext()) {
-						++i;
-						final SLEntry sbtEntry = (SLEntry)sbtIterator.next(); 
-						final BBTEntry bbtEntry = bbt.find(sbtEntry.bidData);
-						if (bbtEntry != null) {
-							System.out.printf("%d: %s; %s%n", i, sbtEntry.toString(), bbtEntry.toString());
-							final SimpleBlock b = new SimpleBlock(bbtEntry, pstFile);
-							System.out.println("block: " + b);
-						} else {
-							System.out.printf("%d: %s; no block B-tree entry", i, sbtEntry.toString());
+						int i = 0;
+						while (sbtIterator.hasNext()) {
+							++i;
+							final SLEntry sbtEntry = (SLEntry)sbtIterator.next(); 
+							final BBTEntry bbtEntry = bbt.find(sbtEntry.bidData);
+							if (bbtEntry != null) {
+								System.out.printf("%d: %s; %s%n", i, sbtEntry.toString(), bbtEntry.toString());
+								final SimpleBlock b = new SimpleBlock(bbtEntry, pstFile);
+								System.out.println("block: " + b);
+							} else {
+								System.out.printf("%d: %s; no block B-tree entry", i, sbtEntry.toString());
+							}
 						}
 					}
 				}
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }

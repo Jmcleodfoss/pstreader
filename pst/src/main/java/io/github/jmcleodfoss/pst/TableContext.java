@@ -634,60 +634,62 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 
 	/**	Test the TableContext class by reading in the first node containing a table context, extracting the table, and printing
 	*	it out.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The file(s) to show the TableConext for.
 	*/
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.TableContext pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.TableContext pst-file [pst-file ...]`");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			OutputSeparator separator = new OutputSeparator();
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				NBTEntry nodeDescr = (NBTEntry)iterator.next();
-				if (nodeDescr.nid.type == NID.INTERNAL)
-					continue;
-				BBTEntry dataBlock = bbt.find(nodeDescr.bidData);
-				if (dataBlock != null) {
-					try {
-						HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-						if (!hon.containsData())
-							continue;
-						if (hon.clientSignature().equals(ClientSignature.TableContext)) {
-							separator.emit(System.out);
-							TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
-							System.out.println("Node " + nodeDescr + "\nTableContext\n------------\n" + tc);
-							if (tc.isEmpty())
+				OutputSeparator separator = new OutputSeparator();
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					NBTEntry nodeDescr = (NBTEntry)iterator.next();
+					if (nodeDescr.nid.type == NID.INTERNAL)
+						continue;
+					BBTEntry dataBlock = bbt.find(nodeDescr.bidData);
+						if (dataBlock != null) {
+						try {
+							HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+							if (!hon.containsData())
 								continue;
-							tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
+							if (hon.clientSignature().equals(ClientSignature.TableContext)) {
+								separator.emit(System.out);
+									TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
+								System.out.println("Node " + nodeDescr + "\nTableContext\n------------\n" + tc);
+								if (tc.isEmpty())
+									continue;
+								tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
+							}
+						} catch (final NotHeapNodeException e) {
+							e.printStackTrace(System.out);
+						} catch (final NotTableContextNodeException e) {
+							e.printStackTrace(System.out);
+						} catch (final UnknownClientSignatureException e) {
+							System.out.printf(nodeDescr + "\n\t" + e.toString());
+							e.printStackTrace(System.out);
+						} catch (final UnparseableTableContextException e) {
+							System.out.printf(nodeDescr + "\n]t" + e.toString());
+							e.printStackTrace(System.out);
 						}
-					} catch (final NotHeapNodeException e) {
-						e.printStackTrace(System.out);
-					} catch (final NotTableContextNodeException e) {
-						e.printStackTrace(System.out);
-					} catch (final UnknownClientSignatureException e) {
-						System.out.printf(nodeDescr + "\n\t" + e.toString());
-						e.printStackTrace(System.out);
-					} catch (final UnparseableTableContextException e) {
-						System.out.printf(nodeDescr + "\n]t" + e.toString());
-						e.printStackTrace(System.out);
 					}
 				}
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", args[0]);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", args[0]);
+			} catch (final java.io.IOException e) {
+				System.out.printf("Could not read %s%n", args[0]);
+				e.printStackTrace(System.out);
 			}
-		} catch (final java.io.FileNotFoundException e) {
-			System.out.printf("File %s not found%n", args[0]);
-		} catch (final NotPSTFileException e) {
-			System.out.printf("File %s is not a pst file%n", args[0]);
-		} catch (final java.io.IOException e) {
-			System.out.printf("Could not read %s%n", args[0]);
-			e.printStackTrace(System.out);
 		}
 	}
 }

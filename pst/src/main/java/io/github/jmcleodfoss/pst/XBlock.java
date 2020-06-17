@@ -221,36 +221,38 @@ class XBlock extends BlockBase
 
 	/**	Test the XBlock class by traversing the node BTree and getting the XBlocks for each internal data block.
 	*	This should also display the XBlocks in each node subtree block, but that's a little tougher.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The file(s) to show the XBlocks for.
 	*/
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.XBlock pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.XBlock pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
+		for (String a: args) {
+			try {
 			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 	
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				final NBTEntry node = (NBTEntry)iterator.next();
-				if (node.bidData.fInternal) {
-					final BBTEntry block = bbt.find(node.bidData);
-					if (block == null) {
-						System.out.println("Block for node " + node + " is null");
-						continue;
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					final NBTEntry node = (NBTEntry)iterator.next();
+					if (node.bidData.fInternal) {
+						final BBTEntry block = bbt.find(node.bidData);
+						if (block == null) {
+							System.out.println("Block for node " + node + " is null");
+							continue;
+						}
+						final XBlock xblock = new XBlock(block, bbt, pstFile);
+						System.out.println(xblock);
 					}
-					final XBlock xblock = new XBlock(block, bbt, pstFile);
-					System.out.println(xblock);
 				}
-			}
 
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
+			}
 		}
 	}
 }
