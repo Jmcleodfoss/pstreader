@@ -319,7 +319,7 @@ public class NameToIDMap
 				for (Object key : keyArray)
 					System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
 			} catch (final NotHeapNodeException e) {
-				// Not every node in the block B-tree is a heap node, so this is benign.
+				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {
 				System.out.println(e.toString());
 				e.printStackTrace(System.out);
