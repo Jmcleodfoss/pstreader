@@ -111,28 +111,29 @@ class NodeBTree extends PagedBTree implements NodeMap
 	}
 
 	/**	Test this class by reading in the node B-Tree and printing it.
-	*	@param	args	The command line arguments for the test application.
+	*	@param	args	The file(s) to display the B-Trees for.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			System.out.println("Node B-tree\n___________");
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				final NBTEntry entry = (NBTEntry)iterator.next();
-				System.out.println(entry);
+				System.out.println("Node B-tree\n___________");
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					final NBTEntry entry = (NBTEntry)iterator.next();
+					System.out.println(entry);
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }

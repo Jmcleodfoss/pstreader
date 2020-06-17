@@ -65,37 +65,39 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 	}
 
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The file(s) to display test BlockFinder on.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NodeBTree pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-			NodeFinder nf = new NodeFinder(pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				NodeFinder nf = new NodeFinder(pstFile);
 
-			int discrepancies = 0;
-			int nids = 0;
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				++nids;
-				final NBTEntry treeEntry = (NBTEntry)iterator.next();
-				final NBTEntry findEntry = nf.find(treeEntry.nid);
-				if (treeEntry.key() != findEntry.key())
-					++discrepancies;
+				int discrepancies = 0;
+				int nids = 0;
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					++nids;
+					final NBTEntry treeEntry = (NBTEntry)iterator.next();
+					final NBTEntry findEntry = nf.find(treeEntry.nid);
+					if (treeEntry.key() != findEntry.key())
+						++discrepancies;
+				}
+				if (discrepancies == 0)
+					System.out.printf("Success: all %d NIDs found%n", nids);
+				else
+					System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-			if (discrepancies == 0)
-				System.out.printf("Success: all %d NIDs found%n", nids);
-			else
-				System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }
