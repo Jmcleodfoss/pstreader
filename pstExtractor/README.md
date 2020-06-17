@@ -1,9 +1,9 @@
 # pstExtractor
 
-A JSF-based server for uploading all parts of a PST file except the messages (you can see contacts, tasks, and calendar entries).
+A JSF-based server for uploading all parts of a PST file except the messages (you can see contacts, tasks, and calendar entries). Note that, as it uses CDI, it needs an EE-capable servlet to run. Tomcat is no longer supported, but Tomcat EE is.
 
-## Tomcat
-This has been tested on Tomcat 9, but not on any other web servers. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
+## TomcatEE
+This has been tested on Tomcat EE 8, but not on any other web servers. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
 
     <tomcat-users>
 	<role rolename="manager-script"/>
@@ -22,8 +22,6 @@ You may now deploy/undeploy/redeploy the app via
     mvn tomcat7:deploy
     mvn tomcat7:undeploy
     mvn tomcat7:redeploy
-
-*Note* that I have found that the tomcat7:deploy goal occasionally fails because the Tomcat application keeps one of the JSF jar files open. When this happens, I shut down Tomcat and restart it. Somtimes I have to kill Java as well.
 
 If you find the server is low on memory, add the following line to the file <tomcat-home>/bin/catalina.sh
 
