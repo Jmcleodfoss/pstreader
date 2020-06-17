@@ -132,7 +132,11 @@ class NodeBTree extends PagedBTree implements NodeMap
 					final NBTEntry entry = (NBTEntry)iterator.next();
 					System.out.println(entry);
 				}
-			} catch (final Exception e) {
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
 				e.printStackTrace(System.out);
 			}
 		}
