@@ -221,7 +221,7 @@ public class Header
 
 		for (String a: args) {
 			try {
-				java.io.File file = new java.io.File(args[0]);
+				java.io.File file = new java.io.File(a);
 				java.io.FileInputStream stream = new java.io.FileInputStream(file);
 				java.nio.channels.FileChannel fc = stream.getChannel();
 				java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());

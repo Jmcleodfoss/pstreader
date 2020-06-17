@@ -163,7 +163,7 @@ class SimpleBlock extends BlockBase
 
 		for (String a: args) {
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 				while (iterator.hasNext()) {
@@ -172,11 +172,11 @@ class SimpleBlock extends BlockBase
 					System.out.println(entry + ": " + block);
 				}
 			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", args[0]);
+				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
-				System.out.printf("File %s not found%n", args[0]);
+				System.out.printf("File %s not found%n", a);
 			} catch (final java.io.IOException e) {
-				System.out.printf("Could not read %s%n", args[0]);
+				System.out.printf("Could not read %s%n", a);
 				e.printStackTrace(System.out);
 			}
 		}

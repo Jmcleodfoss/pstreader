@@ -76,7 +76,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 
 		for (String a: args) {
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				BlockFinder bf = new BlockFinder(pstFile);
