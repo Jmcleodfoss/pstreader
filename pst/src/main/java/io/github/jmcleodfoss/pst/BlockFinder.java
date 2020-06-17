@@ -65,37 +65,39 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 	}
 
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The pst files to run the test on.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BlockBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BlockBTree pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
 
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			BlockFinder bf = new BlockFinder(pstFile);
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				BlockFinder bf = new BlockFinder(pstFile);
 
-			int discrepancies = 0;
-			int bids = 0;
-			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
-			while (iterator.hasNext()) {
-				++bids;
-				final BBTEntry treeEntry = (BBTEntry)iterator.next();
-				final BBTEntry findEntry = bf.find(treeEntry.bref.bid);
-				if (treeEntry.key() != findEntry.key())
-					++discrepancies;
+				int discrepancies = 0;
+				int bids = 0;
+				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
+				while (iterator.hasNext()) {
+					++bids;
+					final BBTEntry treeEntry = (BBTEntry)iterator.next();
+					final BBTEntry findEntry = bf.find(treeEntry.bref.bid);
+					if (treeEntry.key() != findEntry.key())
+						++discrepancies;
+				}
+				if (discrepancies == 0)
+					System.out.printf("Success: all %d BIDs found%n", bids);
+				else
+					System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-			if (discrepancies == 0)
-				System.out.printf("Success: all %d BIDs found%n", bids);
-			else
-				System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }

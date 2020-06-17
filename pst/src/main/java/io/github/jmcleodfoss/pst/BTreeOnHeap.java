@@ -458,57 +458,60 @@ public class BTreeOnHeap extends BTree
 	}
 
 	/**	Test this class by displaying the first B-tree-on-heap in the given PST file.
-	*	@param	args	The arguments to the test application.
+	*	@param	args	The pst file(s) to show the B-Tree-on-heap structure for.
 	*/
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-filename [pst-filename ...]");
 			System.exit(1);
 		}
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			OutputSeparator separator = new OutputSeparator();
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				NBTEntry node = (NBTEntry)iterator.next();
-				if (!node.nid.isHeapOnNodeNID())
-					continue;
+				OutputSeparator separator = new OutputSeparator();
 
-				BBTEntry dataBlock = bbt.find(node.bidData);
-				if (dataBlock != null) {
-					try {
-						HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-						if (!hon.containsData() || (!hon.clientSignature().equals(ClientSignature.PropertyContext) && !hon.clientSignature().equals(ClientSignature.TableContext)))
-							continue;
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					NBTEntry node = (NBTEntry)iterator.next();
+					if (!node.nid.isHeapOnNodeNID())
+						continue;
 
+					BBTEntry dataBlock = bbt.find(node.bidData);
+					if (dataBlock != null) {
 						try {
-							BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
-	
-							separator.emit(System.out);
-							System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
-							bth.outputString(System.out, new StringBuilder("bth: "));
-						} catch (final Exception e) {
+							HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+							if (!hon.containsData() || (!hon.clientSignature().equals(ClientSignature.PropertyContext) && !hon.clientSignature().equals(ClientSignature.TableContext)))
+								continue;
+
+							try {
+								BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
+
+								separator.emit(System.out);
+								System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
+								bth.outputString(System.out, new StringBuilder("bth: "));
+							} catch (final Exception e) {
+								e.printStackTrace(System.out);
+								System.out.print("node " + node);
+								System.out.print("dataBlock " + dataBlock);
+								System.out.print("hon " + hon);
+								throw e;
+							}
+						} catch (final NotHeapNodeException e) {
 							e.printStackTrace(System.out);
-							System.out.print("node " + node);
-							System.out.print("dataBlock " + dataBlock);
-							System.out.print("hon " + hon);
-							throw e;
+						} catch (final UnknownClientSignatureException e) {
+							System.out.println("Node " + node + ": " + e);
+							e.printStackTrace(System.out);
 						}
-					} catch (final NotHeapNodeException e) {
-						e.printStackTrace(System.out);
-					} catch (final UnknownClientSignatureException e) {
-						System.out.println("Node " + node + ": " + e);
-						e.printStackTrace(System.out);
 					}
 				}
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }

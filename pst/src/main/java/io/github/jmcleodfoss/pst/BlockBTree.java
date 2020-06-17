@@ -82,27 +82,29 @@ class BlockBTree extends PagedBTree implements BlockMap
 	}
 
 	/**	Test this class by reading in the block B-Tree and printing it.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The pst files to display the block B-Tree of.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BlockBTree pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BlockBTree pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 
-			System.out.println("Block B-tree\n____________");
+				System.out.println("Block B-tree\n____________");
 
-			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
-			while (iterator.hasNext())
-				System.out.println((BBTEntry)iterator.next());
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
+				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
+				while (iterator.hasNext())
+					System.out.println((BBTEntry)iterator.next());
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
+			}
 		}
 	}
 }
