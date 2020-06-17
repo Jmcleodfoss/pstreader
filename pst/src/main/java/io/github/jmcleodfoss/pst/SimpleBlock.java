@@ -152,31 +152,33 @@ class SimpleBlock extends BlockBase
 	}
 
 	/**	Test this class by printing out blocks in the block B-tree.
-	*	@param	args	The command line arguments to thee test application.
+	*	@param	args	The file(s) to print the blocks out for.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.SimpleBlock");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.SimpleBlock pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
-			while (iterator.hasNext()) {
-				final BBTEntry entry = (BBTEntry)iterator.next();
-				final SimpleBlock block = new SimpleBlock(entry, pstFile);
-				System.out.println(entry + ": " + block);
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
+				while (iterator.hasNext()) {
+					final BBTEntry entry = (BBTEntry)iterator.next();
+					final SimpleBlock block = new SimpleBlock(entry, pstFile);
+					System.out.println(entry + ": " + block);
+				}
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", args[0]);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", args[0]);
+			} catch (final java.io.IOException e) {
+				System.out.printf("Could not read %s%n", args[0]);
+				e.printStackTrace(System.out);
 			}
-		} catch (final NotPSTFileException e) {
-			System.out.printf("File %s is not a pst file%n", args[0]);
-		} catch (final java.io.FileNotFoundException e) {
-			System.out.printf("File %s not found%n", args[0]);
-		} catch (final java.io.IOException e) {
-			System.out.printf("Could not read %s%n", args[0]);
-			e.printStackTrace(System.out);
 		}
 	}
 }
