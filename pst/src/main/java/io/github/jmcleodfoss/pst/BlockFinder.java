@@ -64,7 +64,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 		return (BBTEntry)super.find(bid, pstFile.header.bbtRoot);
 	}
 
-	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
+	/**	Test this class by reading in the block B-Tree and looking for the blocks in it.
 	*	@param	args	The pst files to run the test on.
 	*/
 	public static void main(final String[] args)
