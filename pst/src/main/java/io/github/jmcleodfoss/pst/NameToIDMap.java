@@ -323,7 +323,7 @@ public class NameToIDMap
 			} catch (final NotPropertyContextNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", args[0]);
+				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final NullDataBlockException e) {
 				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {
@@ -331,9 +331,9 @@ public class NameToIDMap
 			} catch (final UnparseablePropertyContextException e) {
 				e.printStackTrace(System.out);
 			} catch (final java.io.FileNotFoundException e) {
-				System.out.printf("File %s not found%n", args[0]);
+				System.out.printf("File %s not found%n", a);
 			} catch (final java.io.IOException e) {
-				System.out.printf("Could not read %s%n", args[0]);
+				System.out.printf("Could not read %s%n", a);
 				e.printStackTrace(System.out);
 			}
 		}
