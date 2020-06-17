@@ -295,29 +295,32 @@ public class NameToIDMap
 	}
 
 	/**	Test the NameIDToMap class by reading the Named Properties map in and displaying the mapping.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The name(s) of the file(s) to show the Named Properties of.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NameIDToMap pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.NameIDToMap pst-filename [pst-filename ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 
-			final NameToIDMap nameToIDMap = new NameToIDMap(bbt, nbt, pstFile);
+				final NameToIDMap nameToIDMap = new NameToIDMap(bbt, nbt, pstFile);
 
-			Object[] keyArray = nameToIDMap.namedProperties.keySet().toArray();
-			java.util.Arrays.sort(keyArray);
+				Object[] keyArray = nameToIDMap.namedProperties.keySet().toArray();
+				java.util.Arrays.sort(keyArray);
 
-			for (Object key : keyArray)
-				System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
+				System.out.println(a);
+				for (Object key : keyArray)
+					System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
+			}
 		}
 	}
 }
