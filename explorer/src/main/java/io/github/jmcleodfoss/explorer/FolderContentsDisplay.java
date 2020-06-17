@@ -79,7 +79,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	};
 
 	/**	Thee AttachmentSavePopupMenu is the popup menu for saving message attachments. */
-	class AttachmentSavePopupMenu extends TreeNodePopupListener
+	static class AttachmentSavePopupMenu extends TreeNodePopupListener
 	{
 		/**	Handle attachment file save requests. */
 		private class AttachmentSaveActionListener extends FileSaverMenuItem
