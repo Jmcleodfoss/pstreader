@@ -318,7 +318,26 @@ public class NameToIDMap
 				System.out.println(a);
 				for (Object key : keyArray)
 					System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
-			} catch (final Exception e) {
+			} catch (final NotHeapNodeException e) {
+				// Not every node in the block B-tree is a heap node, so this is benign.
+			} catch (final NotPropertyContextNodeException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", args[0]);
+			} catch (final NullDataBlockException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				System.out.printf(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", args[0]);
+			} catch (final java.io.IOException e) {
+				System.out.printf("Could not read %s%n", args[0]);
 				e.printStackTrace(System.out);
 			}
 		}
