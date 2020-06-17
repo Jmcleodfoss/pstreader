@@ -28,8 +28,7 @@ public class NameToIDMap
 		/**	GUID index (type) {@value}: GUID is found at the "(n-1)*16" byte offset in the GUID stream. */
 		private static final short GUID_INDEX_GUID = 3;
 
-		/**	If fString, this is the offset into the string stream of the node at which the property name is found.
-		*	Otherwise, this is the numeric identifier of the property.
+		/**	If {@link #fString} is trye, this is the offset into the string stream of the node at which the property name is found, otherwise, this is the numeric identifier of the property.
 		*/
 		final int propertyID;
 
@@ -97,7 +96,7 @@ public class NameToIDMap
 			return new GUID(guidArray, offset);
 		}
 
-		/**	Retrieve the property name from the array of names. Throw an exception if this NameID object does not have a name.
+		/**	Retrieve the property name from the array of names, throwing an exception if this NameID object does not have a name.
 		*	@param	stringStream	The input data stream from which to read the property name.
 		*	@return	The next name in the stream of property names.
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
@@ -275,7 +274,7 @@ public class NameToIDMap
 
 		int propertyId = propertyTag;
 		if ((propertyTag & 0xffff0000) != 0) {
-			// Were we passed a property ID + data type> Convert to a pure property ID abd check for named properties
+			// Were we passed a property ID + data type> Convert to a pure property ID and check for named properties
 			propertyId = (propertyTag >>> 16);
 		}
 
