@@ -439,7 +439,25 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 
 				MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 				messageStore.rootFolder.show("");
-			} catch (final Exception e) {
+			} catch (final NotHeapNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPropertyContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final NotTableContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NullDataBlockException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
 				e.printStackTrace(System.out);
 			}
 		}

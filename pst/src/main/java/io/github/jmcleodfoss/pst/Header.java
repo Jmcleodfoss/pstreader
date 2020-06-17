@@ -229,7 +229,11 @@ public class Header
 
 				Header header = new Header(mbb);
 				System.out.println(header);
-			} catch (final Exception e) {
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
 				e.printStackTrace(System.out);
 			}
 		}

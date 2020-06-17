@@ -589,14 +589,16 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 							System.out.println("HeapOnNode\n----------\n" + hon);
 						} catch (final NotHeapNodeException e) {
 							e.printStackTrace(System.out);
-						} catch (final Exception e) {
+						} catch (final UnknownClientSignatureException e) {
 							e.printStackTrace(System.out);
-							System.out.println("node " + node);
-							System.out.println("dataBlock " + dataBlock);
 						}
 					}
 				}
-			} catch (final Exception e) {
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
 				e.printStackTrace(System.out);
 			}
 		}

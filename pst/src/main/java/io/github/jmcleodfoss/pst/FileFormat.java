@@ -77,13 +77,31 @@ class FileFormat
 			System.exit(1);
 		}
 
-		try {
-			for (String a: args) {
+		for (String a: args) {
+			try {
 				PST pst = new PST(a);
 				System.out.printf("%s: %s%n", a, pst.unicode() ? "Unicode" : "ANSI");
+			} catch (final NotHeapNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPropertyContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final NotTableContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NullDataBlockException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }
