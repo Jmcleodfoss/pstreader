@@ -671,7 +671,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 					} catch (final NotHeapNodeException e) {
 						e.printStackTrace(System.out);
 					} catch (final NotTableContextNodeException e) {
-						System.out.printf(e.toString());
 						e.printStackTrace(System.out);
 					} catch (final UnknownClientSignatureException e) {
 						System.out.printf(nodeDescr + "\n\t" + e.toString());
