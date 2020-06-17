@@ -170,7 +170,12 @@ class SimpleBlock extends BlockBase
 				final SimpleBlock block = new SimpleBlock(entry, pstFile);
 				System.out.println(entry + ": " + block);
 			}
-		} catch (final Exception e) {
+		} catch (final NotPSTFileException e) {
+			System.out.printf("File %s is not a pst file%n", args[0]);
+		} catch (final java.io.FileNotFoundException e) {
+			System.out.printf("File %s not found%n", args[0]);
+		} catch (final java.io.IOException e) {
+			System.out.printf("Could not read %s%n", args[0]);
 			e.printStackTrace(System.out);
 		}
 	}
