@@ -326,79 +326,82 @@ public class PropertyContext
 
 	/**	Test the PropertyContext class by reading in the first node containing a property context, extracting the properties,
 	*	and printing them out.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The files to display the property contexts of.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.PropertyContext pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.PropertyContext pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			// Suppresing output can dramatically increase the speed of this function, while still showing any exceptions raised.
-			// Medium-term goal is to set this based on a command line argument.
-			final boolean fShowOutput = true;
 
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-			final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
+		for (String a: args) {
+			try {
+				// Suppresing output can dramatically increase the speed of this function, while still showing any exceptions raised.
+				// Medium-term goal is to set this based on a command line argument.
+				final boolean fShowOutput = true;
 
-			OutputSeparator separator = new OutputSeparator();
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
 
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				final NBTEntry node = (NBTEntry)iterator.next();
-				if (node.nid.type == NID.INTERNAL)
-					continue;
+				OutputSeparator separator = new OutputSeparator();
 
-				final BBTEntry dataBlock = bbt.find(node.bidData);
-				if (dataBlock == null)
-					continue;
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					final NBTEntry node = (NBTEntry)iterator.next();
+					if (node.nid.type == NID.INTERNAL)
+						continue;
 
-				// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
-				HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-				if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
-					continue;
+					final BBTEntry dataBlock = bbt.find(node.bidData);
+					if (dataBlock == null)
+						continue;
 
-				final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
+					// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
+					HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+					if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
+						continue;
 
-				if (fShowOutput) {
-					separator.emit(System.out);
-					System.out.println("Node " + node + ", " + Long.toHexString(node.key()) + "\nPropertyContext\n---------------\n");
-					java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = pc.iterator();
-					while (propertyIterator.hasNext()) {
-						final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
-						final int key = entry.getKey();
-						final String name = namedProperties.name(key);
-						Object value = pc.get(key);
-						final String s = value != null ? DataType.makeString(key, value) : null;
-						System.out.printf("0x%08x %s \"%s\"%n", key, name, value);
+					final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
+
+					if (fShowOutput) {
+						separator.emit(System.out);
+						System.out.println("Node " + node + ", " + Long.toHexString(node.key()) + "\nPropertyContext\n---------------\n");
+						java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = pc.iterator();
+						while (propertyIterator.hasNext()) {
+							final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
+							final int key = entry.getKey();
+							final String name = namedProperties.name(key);
+							Object value = pc.get(key);
+							final String s = value != null ? DataType.makeString(key, value) : null;
+							System.out.printf("0x%08x %s \"%s\"%n", key, name, value);
+						}
 					}
 				}
+			} catch (final NotHeapNodeException e) {
+				// Not every node in the block B-tree is a heap node, so this is benign.
+			} catch (final NotPropertyContextNodeException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final NullDataBlockException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				System.out.printf(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
+				System.out.printf("Could not read %s%n", a);
+				e.printStackTrace(System.out);
 			}
-		} catch (final NotHeapNodeException e) {
-			// Not every node in the block B-tree is a heap node, so this is benign.
-		} catch (final NotPropertyContextNodeException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final NotPSTFileException e) {
-			System.out.printf("File %s is not a pst file%n", args[0]);
-		} catch (final NullDataBlockException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final UnknownClientSignatureException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final UnparseablePropertyContextException e) {
-			System.out.printf(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final java.io.FileNotFoundException e) {
-			System.out.printf("File %s not found%n", args[0]);
-		} catch (final java.io.IOException e) {
-			System.out.printf("Could not read %s%n", args[0]);
-			e.printStackTrace(System.out);
 		}
 	}
 }
