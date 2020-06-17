@@ -669,8 +669,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 							tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
 						}
 					} catch (final NotHeapNodeException e) {
-						// This is expected; we have no way to find out whether a node contains a heap-on-node until we start reading it.
-						continue;
+						e.printStackTrace(System.out);
 					} catch (final NotTableContextNodeException e) {
 						System.out.printf(e.toString());
 						e.printStackTrace(System.out);
