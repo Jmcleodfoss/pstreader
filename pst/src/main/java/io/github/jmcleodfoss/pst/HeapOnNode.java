@@ -196,7 +196,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			dc.read(stream, fields);
 			ibHnpm = 0x0000ffff & (Short)dc.get(nm_ibHnpm);
 			byte blockSignature = (Byte)dc.get(nm_bSig);
-			if (blockSignature != HN_SIGNATURE)
+			if (blockSignature != HN_SIGNATURE && Options.strictHeapNodes)
 				throw new NotHeapNodeException(blockSignature);
 			
 			clientSignature = new ClientSignature((Byte)dc.get(nm_bClientSig));
