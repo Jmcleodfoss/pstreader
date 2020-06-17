@@ -260,14 +260,32 @@ public class Attachment
 			System.exit(1);
 		}
 
-		try {
-			for (String a: args) {
+		for (String a: args) {
+			try {
 				PST pst = new PST(new java.io.FileInputStream(a), false);
 				System.out.println(a);
 				findFolderAttachments(pst.getFolderTree(), pst);
+			} catch (final NotHeapNodeException e) {
+				// Not every node in the block B-tree is a heap node, so this is benign.
+			} catch (final NotPropertyContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", args[0]);
+			} catch (final NotTableContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NullDataBlockException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", args[0]);
+			} catch (final java.io.IOException e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }
