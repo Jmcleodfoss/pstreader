@@ -212,7 +212,7 @@ public class IPF
 	{
 		if (args.length < 1) {
 			System.out.println("use:");
-			System.out.println("\tjava io.github.jmcleodfoss.pst.IPF pst-filename [pst-filename...]");
+			System.out.println("\tjava io.github.jmcleodfoss.pst.IPF pst-file [pst-file ...]");
 			System.out.println("\nTo get the list of recognized folder types:");
 			System.out.println("\tjava io.github.jmcleodfoss.pst.IPF --list");
 			System.exit(1);

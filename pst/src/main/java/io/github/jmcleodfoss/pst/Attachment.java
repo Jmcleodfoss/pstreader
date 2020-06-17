@@ -256,7 +256,7 @@ public class Attachment
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-filename [pst-filename...]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Attachment pst-file [pst-file ...]");
 			System.exit(1);
 		}
 

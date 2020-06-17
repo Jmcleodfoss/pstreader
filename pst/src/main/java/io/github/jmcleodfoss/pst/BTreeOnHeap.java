@@ -463,7 +463,7 @@ public class BTreeOnHeap extends BTree
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-filename [pst-filename ...]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.BTreeOnHeap pst-file [pst-file ...]");
 			System.exit(1);
 		}
 

@@ -73,7 +73,7 @@ class FileFormat
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.FileFormat pst-filename [pst-filename...]");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.FileFormat pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
