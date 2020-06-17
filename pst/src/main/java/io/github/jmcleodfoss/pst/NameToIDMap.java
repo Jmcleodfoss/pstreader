@@ -321,18 +321,14 @@ public class NameToIDMap
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {
-				System.out.println(e.toString());
 				e.printStackTrace(System.out);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", args[0]);
 			} catch (final NullDataBlockException e) {
-				System.out.println(e.toString());
 				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {
-				System.out.println(e.toString());
 				e.printStackTrace(System.out);
 			} catch (final UnparseablePropertyContextException e) {
-				System.out.printf(e.toString());
 				e.printStackTrace(System.out);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", args[0]);
