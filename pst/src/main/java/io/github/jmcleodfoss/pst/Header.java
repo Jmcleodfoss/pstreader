@@ -210,25 +210,28 @@ public class Header
 	}
 
 	/**	Test this class by reading in the PST file header and printing it out.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The file(s) to display the header of.
 	*/
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Header pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Header pst-file [pst-file ...]");
 			System.exit(1);
 		}
-		try {
-			java.io.File file = new java.io.File(args[0]);
-			java.io.FileInputStream stream = new java.io.FileInputStream(file);
-			java.nio.channels.FileChannel fc = stream.getChannel();
-			java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
-			mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
-			Header header = new Header(mbb);
-			System.out.println(header);
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
+		for (String a: args) {
+			try {
+				java.io.File file = new java.io.File(args[0]);
+				java.io.FileInputStream stream = new java.io.FileInputStream(file);
+				java.nio.channels.FileChannel fc = stream.getChannel();
+				java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
+				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+
+				Header header = new Header(mbb);
+				System.out.println(header);
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
+			}
 		}
 	}
 }

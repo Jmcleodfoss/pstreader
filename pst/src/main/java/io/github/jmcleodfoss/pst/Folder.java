@@ -422,24 +422,26 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	Test the Folder class by iterating through the folders and displaying information about each folder and sub-folder.
-	*	@param	args	The arguments to the function
+	*	@param	args	The file(s) to display the folders of.
 	*/
 	public static void main(String[] args)
 	{
 		if (args.length == 0) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Folder pst-file");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.Folder pst-file [pst-file ...]");
 			System.exit(1);
 		}
 
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			BlockBTree blockBTree = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			NodeBTree nodeBTree = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				BlockBTree blockBTree = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				NodeBTree nodeBTree = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
-			messageStore.rootFolder.show("");
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
+				MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
+				messageStore.rootFolder.show("");
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
+			}
 		}
 	}
 }

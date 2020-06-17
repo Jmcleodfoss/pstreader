@@ -557,45 +557,48 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	}
 
 	/**	Test the HeapOnNode class by creating and printing out the first heap-on-node in the given PST file.
-	*	@param	args	The command line arguments to the test application.
+	*	@param	args	The file(s) to show the heap-on-nods od.
 	*/
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
-			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.HeapOnNode pst-filename");
+			System.out.println("use:\n\tjava io.github.jmcleodfoss.pst.HeapOnNode pst-file [pst-file ...]");
 			System.exit(1);
 		}
-		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			OutputSeparator separator = new OutputSeparator();
-			java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				final NBTEntry node = (NBTEntry)iterator.next();
-				if (!node.nid.isHeapOnNodeNID())
-					continue;
+		for (String a: args) {
+			try {
+				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(args[0]));
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				final BBTEntry dataBlock = bbt.find(node.bidData);
-				if (dataBlock != null) {
-					try {
-						separator.emit(System.out);
-						System.out.println("Node " + node + "\ndataBlock " + dataBlock);
+				OutputSeparator separator = new OutputSeparator();
+				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					final NBTEntry node = (NBTEntry)iterator.next();
+					if (!node.nid.isHeapOnNodeNID())
+						continue;
 
-						final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-						System.out.println("HeapOnNode\n----------\n" + hon);
-					} catch (final NotHeapNodeException e) {
-						e.printStackTrace(System.out);
-					} catch (final Exception e) {
-						e.printStackTrace(System.out);
-						System.out.println("node " + node);
-						System.out.println("dataBlock " + dataBlock);
+					final BBTEntry dataBlock = bbt.find(node.bidData);
+					if (dataBlock != null) {
+						try {
+							separator.emit(System.out);
+							System.out.println("Node " + node + "\ndataBlock " + dataBlock);
+
+							final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+							System.out.println("HeapOnNode\n----------\n" + hon);
+						} catch (final NotHeapNodeException e) {
+							e.printStackTrace(System.out);
+						} catch (final Exception e) {
+							e.printStackTrace(System.out);
+							System.out.println("node " + node);
+							System.out.println("dataBlock " + dataBlock);
+						}
 					}
 				}
+			} catch (final Exception e) {
+				e.printStackTrace(System.out);
 			}
-		} catch (final Exception e) {
-			e.printStackTrace(System.out);
 		}
 	}
 }
