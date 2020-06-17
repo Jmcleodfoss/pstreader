@@ -102,7 +102,11 @@ class BlockBTree extends PagedBTree implements BlockMap
 				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 				while (iterator.hasNext())
 					System.out.println((BBTEntry)iterator.next());
-			} catch (final Exception e) {
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
 				e.printStackTrace(System.out);
 			}
 		}
