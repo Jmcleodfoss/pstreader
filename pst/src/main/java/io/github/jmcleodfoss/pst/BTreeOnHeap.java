@@ -457,8 +457,8 @@ public class BTreeOnHeap extends BTree
 		return String.format("0x%08x", key);
 	}
 
-	/**	Test this class by displaying the first B-tree-on-heap in the given PST file.
-	*	@param	args	The pst file(s) to show the B-Tree-on-heap structure for.
+	/**	Test this class by displaying the BTree-on-heaps in the given PST file.
+	*	@param	args	The pst file(s) to show the BTree-on-heap structure for.
 	*/
 	public static void main(String[] args)
 	{
