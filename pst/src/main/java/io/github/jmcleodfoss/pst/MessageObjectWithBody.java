@@ -43,6 +43,7 @@ public class MessageObjectWithBody extends MessageObject
 	*	@see	#body
 	*	@see	#getMessage
 	*	@see	Message#transportHeaders
+	*	@see	#bodyHtmlBytes
 	*/
 	public String bodyHtml(final PropertyContext pc)
 	{
@@ -58,5 +59,28 @@ public class MessageObjectWithBody extends MessageObject
 		}
 
 		return (String)pc.get(PropertyTags.BodyHtml);
+	}
+
+	/**	Extract the HTML message body as bytes from the message object property context.
+	*	@param	pc	The message object property context, as retrieved by getMessage.
+	*	@return	The message body in HTML, if present, as a byte array.
+	*	@see	#body
+	*	@see	#getMessage
+	*	@see	Message#transportHeaders
+	*	@see	#bodyHtml
+	*/
+	public byte[] bodyHtmlBytes(final PropertyContext pc)
+	{
+
+		try {
+			if (fUnicode)
+				return ((String)pc.get(PropertyTags.BodyHtmlW)).getBytes(DataType.CHARSET_WIDE);
+			return ((String)pc.get(PropertyTags.BodyHtml)).getBytes(DataType.CHARSET_NARROW);
+		} catch (final java.io.UnsupportedEncodingException e) {
+			// This definitely shouldn't happen. ASCII and UTF-16LE should be supported everywhere.
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+			return null;
+		}
 	}
 }
