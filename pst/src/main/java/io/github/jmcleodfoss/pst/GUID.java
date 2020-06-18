@@ -5,7 +5,6 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/commonly-used-property-sets">MAPI Commonly Used Property Sets</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commonly Used Property Sets</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
-*	@see	<a href="https://github.com/Jmcleodfoss/pstreader/blob/master/pst/src/main/java/io/github/jmcleodfoss/GUID.java">Original version in pstreader</a>
 */
 class GUID
 {
