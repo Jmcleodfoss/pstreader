@@ -203,15 +203,6 @@ public class PST extends PSTFile
 		return namedProperties.iterator();
 	}
 
-	/**	Convenience function to retrieve an iterator for the node B-tree.
-	*	@return	An iterator over the leaves of the node B-tree.
-	*	@see	NodeBTree
-	*/
-	java.util.Iterator<BTreeNode> nodeIterator()
-	{
-		return ((NodeBTree)nodeBTree).iterator();
-	}
-
 	/**	Convenience function to retrieve the root of the node B-tree.
 	*	@return	The root of the node / sub-node B-tree
 	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
@@ -221,6 +212,15 @@ public class PST extends PSTFile
 		java.io.IOException
 	{
 		return new NodeSubnodeBTree(0, header.nbtRoot, blockBTree, this);
+	}
+
+	/**	Convenience function to retrieve an iterator for the node B-tree.
+	*	@return	An iterator over the leaves of the node B-tree.
+	*	@see	NodeBTree
+	*/
+	java.util.Iterator<BTreeNode> nodeIterator()
+	{
+		return ((NodeBTree)nodeBTree).iterator();
 	}
 
 	/**	Convenience function to obtain the property context from the given NID
