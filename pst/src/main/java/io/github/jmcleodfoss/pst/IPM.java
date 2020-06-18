@@ -276,7 +276,7 @@ class IPM
 		for (java.util.Iterator<MessageObject> msgIterator = folder.contentsIterator(); msgIterator.hasNext(); ){
 			MessageObject msg = msgIterator.next();
 			try {
-				PropertyContext pc = msg.getMessage(pst.blockBTree, pst);
+				PropertyContext pc = msg.getMessage(pst);
 				final String messageType = (String)pc.get(pst.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
 				System.out.printf(fmtOutput, msg.subject, messageType, isKnownClass(messageType));
 			} catch (final NotHeapNodeException e) {

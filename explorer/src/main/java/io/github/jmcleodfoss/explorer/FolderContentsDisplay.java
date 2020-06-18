@@ -257,7 +257,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			assert messageObject.nodeMessageObject != null;
 
 			try {
-				messagePC = messageObject.getMessage(pstExplorer.pst().blockBTree, pstExplorer.pst());
+				messagePC = messageObject.getMessage(pstExplorer.pst());
 			} catch (NotHeapNodeException e) {
 			} catch (NotPropertyContextNodeException e) {
 			} catch (NotTableContextNodeException e) {

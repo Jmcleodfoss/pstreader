@@ -98,8 +98,7 @@ public class MessageObject
 	}
 
 	/**	Retrieve the message object property context.
-	*	@param	bbt		The PST file's block B-Tree
-	*	@param	pstFile		The PST file's header, input stream, etc.
+	*	@param	pst	The PST file.
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
@@ -113,7 +112,7 @@ public class MessageObject
 	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	Message#transportHeaders
 	*/
-	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
+	public PropertyContext getMessage(final PST pst)
 	throws
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
@@ -124,7 +123,7 @@ public class MessageObject
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		return new PropertyContext(nodeMessageObject, bbt, pstFile);
+		return new PropertyContext(nodeMessageObject, pst.blockBTree, pst);
 	}
 
 	/**	Print out all the objects of a given class in a folder and all of its sub-folders.

@@ -209,7 +209,7 @@ public class PSTBean implements Serializable
 			JournalEntry j = (JournalEntry)mo;
 			JournalEntryBean b = new JournalEntryBean();
 			b.title = j.subject;
-			b.note = j.body(j.getMessage(pst.blockBTree, pst));
+			b.note = j.body(j.getMessage(pst));
 			folderJournalEntry.contents.add(b);
 		}
 		journalEntries.folders.add(folderJournalEntry);
@@ -252,7 +252,7 @@ public class PSTBean implements Serializable
 			StickyNote s = (StickyNote)mo;
 			StickyNoteBean b = new StickyNoteBean();
 			b.title = s.subject;
-			b.note = s.body(s.getMessage(pst.blockBTree, pst));
+			b.note = s.body(s.getMessage(pst));
 			folderStickyNotes.contents.add(b);
 		}
 		stickyNotes.folders.add(folderStickyNotes);

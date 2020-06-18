@@ -97,7 +97,7 @@ class PSTToXML
 				io.github.jmcleodfoss.pst.MessageObject message = contents.next();
 	
 				xml.openElement("object");
-				addPropertiesToNode(xml, message.getMessage(pst.blockBTree, pst).iterator(), pst);
+				addPropertiesToNode(xml, message.getMessage(pst).iterator(), pst);
 				xml.closeElement();
 			}
 		}

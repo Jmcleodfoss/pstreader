@@ -144,15 +144,14 @@ public class Message extends MessageObjectWithBody
 	}
 
 	/**	Retrieve the message object property context.
-	*	@param	bbt		The PST file's block B-Tree
-	*	@param	pstFile		The PST file's header, input stream, etc.
+	*	@param	pst		The PST file
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*	@see	#body
 	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	#transportHeaders
 	*/
 	@Override
-	public PropertyContext getMessage(final BlockMap bbt, final PSTFile pstFile)
+	public PropertyContext getMessage(final PST pst)
 	throws
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
@@ -163,13 +162,13 @@ public class Message extends MessageObjectWithBody
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		final PropertyContext pc = super.getMessage(bbt, pstFile);
+		final PropertyContext pc = super.getMessage(pst);
 
 		if (nodeRecipientTable != null && !nodeRecipientTable.bidData.isNull()) {
-			final TableContext tcRecipients = new TableContext(nodeRecipientTable, bbt, pstFile);
+			final TableContext tcRecipients = new TableContext(nodeRecipientTable, pst.blockBTree, pst);
 			recipients = new java.util.Vector<Recipient>(tcRecipients.getRowCount());
 			for (int i = 0; i < tcRecipients.getRowCount(); ++i)
-				recipients.add(new Recipient(tcRecipients, i, pstFile.unicode()));
+				recipients.add(new Recipient(tcRecipients, i, pst.unicode()));
 		}
 
 		return pc;
