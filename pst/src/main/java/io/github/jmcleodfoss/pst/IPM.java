@@ -3,25 +3,39 @@ package io.github.jmcleodfoss.pst;
 /**	The IPM holds the list of IPM message types. */
 class IPM
 {
-	/**	The string used for appointment message objects. */
+	/**	The string used for appointment message objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String APPOINTMENT = "IPM.Appointment";
 
-	/**	The string used for contact message objects. */
+	/**	The string used for contact message objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String CONTACT = "IPM.Contact";
 
-	/**	The string used for journal message objects. */
+	/**	The string used for journal message objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String JOURNAL = "IPM.Journal";
 
-	/**	The string used for sticky note mesasge objects. */
+	/**	The string used for sticky note mesasge objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String STICKYNOTE = "IPM.StickyNote";
 
-	/**	The string used for task message objects. */
+	/**	The string used for task message objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String TASK = "IPM.Task";
 
-	/**	The string used for note message objects. */
+	/**	The string used for note message objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String NOTE = "IPM.Note";
 
-	/**	The string used for the distribution list message objects. */
+	/**	The string used for the distribution list message objects.
+	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
+	*/
 	private static final String DISTRIBUTION_LIST = "IPM.DistList";
 
 	/**	The list of known message class types. */
