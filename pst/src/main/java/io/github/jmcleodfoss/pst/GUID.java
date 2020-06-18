@@ -1,7 +1,7 @@
 package io.github.jmcleodfoss.pst;
 
 /** The GUID class holds a PST GUID.
-*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/86dd69f7-8bef-48f3-abab-671b54e00976">MS-PST Section 2.5: Calculated Properties</a>
+*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/e17e195d-0454-4b9b-b398-c9127a26a678">MS-PST Section 2.4.7: Named Property Lookup Map</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/office/client-developer/outlook/mapi/commonly-used-property-sets">MAPI Commonly Used Property Sets</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commonly Used Property Sets</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/cc9d955b-1492-47de-9dce-5bdea80a3323">MS-OXPROPS Section 1.3.2: Commontly Used Property Sets</a>
