@@ -84,20 +84,30 @@ TestPSTFile() {
 	#options="-Xmx2g -Xms2g"
 	options=""
 
+	TestModule $pst_jar io/github/jmcleodfoss/pst/Appointment "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Attachment "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BlockBTree "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/BlockFinder "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/BTreeOnHeap "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/Contact "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/DistributionList "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Folder "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/FileFormat "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Header "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/HeapOnNode "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/IPF "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/IPM "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/JournalEntry "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/Message "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/NameToIDMap "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/NodeBTree "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/NodeFinder "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/PropertyContext "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/SimpleBlock "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/StickyNote "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/SubnodeBTree "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/TableContext "$pst"
+	TestModule $pst_jar io/github/jmcleodfoss/pst/Task "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/XBlock "$pst"
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" contact
@@ -127,7 +137,8 @@ echo "Starting tests at " `date +%H:%M:%S` > $stats
 
 # Tests which have the same output for all pst files.
 TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.GUID
-TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.PropertyTagName
+TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.PropertyTags
+TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.PropertyLIDs
 
 # Tests done on each pst file
 for pst in "$input_dir"/*.pst; do
