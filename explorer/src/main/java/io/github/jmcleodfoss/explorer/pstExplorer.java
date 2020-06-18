@@ -30,7 +30,7 @@ class pstExplorer extends JFrame
 	/**	The pstExplorer object, for convenient reference by other classes. */
 	static pstExplorer explorer;
 
-	/**	The list of NewFileEventListeners */
+	/**	The list of components to notify when a new file is loaded */
 	private EventListenerList listeners;
 
 	/**	The file we are examining. */
@@ -156,10 +156,9 @@ class pstExplorer extends JFrame
 	/**	Broadcast the new file to all NewFileListener objects. */
 	private void fireNewFileListenerEvent()
 	{
-		NewFileEvent e = new NewFileEvent(this, pst);
 		NewFileListener[] newFileListeners = listeners.getListeners(NewFileListener.class);
 		for(NewFileListener l : newFileListeners)
-			l.fileLoaded(e);
+			l.fileLoaded(pst);
 	}
 
 	/**	Get the node subnode BTree

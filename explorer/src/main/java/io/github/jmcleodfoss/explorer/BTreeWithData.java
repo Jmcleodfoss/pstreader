@@ -5,6 +5,7 @@ import javax.swing.JSplitPane;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeModel;
 
+import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
 /**	The BTreeWithData view permits simple display of a B-tree which displays the corresponding data below or to the left in a
@@ -42,9 +43,9 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener
 	}
 
 	/**	Update the views when a new file is read in.
-	*	@param	e	The description of new file.
+	*	@param	pst	The PST object loaded.
 	*/
-	public void fileLoaded(final NewFileEvent e)
+	public void fileLoaded(final PST pst)
 	{
 		TreeModel tm = treeModel();
 		assert tm != null : "TreeModel cannot be null.";
