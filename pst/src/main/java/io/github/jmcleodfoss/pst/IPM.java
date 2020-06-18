@@ -260,4 +260,94 @@ class IPM
 	{
 		return knownClasses.iterator();
 	}
+
+	/**	Loop through folder's subfolders and message objects displaying the type of each message object found.
+	*	Used only for testing Used only for testing
+	*	@param	folder	The folder to process
+	*	@param	pst	The pst file to look in
+	*	@param	fmtOutput	The format to use for output.
+	*	@see	#main
+	*/
+	private static void showFolderMessageClasses(Folder folder, PST pst, String fmtOutput)
+	{
+		for (java.util.Iterator<Folder> folderIterator = folder.subfolderIterator(); folderIterator.hasNext(); )
+			showFolderMessageClasses(folderIterator.next(), pst, fmtOutput);
+
+		for (java.util.Iterator<MessageObject> msgIterator = folder.contentsIterator(); msgIterator.hasNext(); ){
+			MessageObject msg = msgIterator.next();
+			try {
+				PropertyContext pc = msg.getMessage(pst.blockBTree, pst);
+				final String messageType = (String)pc.get(pst.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
+				System.out.printf(fmtOutput, msg.subject, messageType, isKnownClass(messageType));
+			} catch (final NotHeapNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPropertyContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotTableContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NullDataBlockException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final java.io.IOException e) {
+				e.printStackTrace(System.out);
+			}
+		}
+	}
+
+	/**	Test the IPM class by iterating through all message objects and displaying the type of each and whether it is known.
+	*	@param	args	The file(s) to show the folder information for.
+	*/
+	public static void main(final String[] args)
+	{
+		if (args.length < 1) {
+			System.out.println("use:");
+			System.out.println("\tjava io.github.jmcleodfoss.pst.IPM pst-file [pst-file ...]");
+			System.out.println("\nTo get the list of recognized folder types:");
+			System.out.println("\tjava io.github.jmcleodfoss.pst.IPM --list");
+			System.exit(1);
+		}
+
+		if (args[0].equals("--list")) {
+			System.out.println("Known message types");
+			for (java.util.Iterator<String> iter = iterator(); iter.hasNext(); )
+				System.out.println(iter.next());
+			System.exit(1);
+		}
+
+		final String fmtOutput = "%-25s %-25s %-10s%n";
+
+		for (String a: args) {
+			try {
+				System.out.println(a);
+				PST pst = new PST(a);
+				System.out.printf(fmtOutput, "Subject", "Container Class", "Known Container Class?");
+				showFolderMessageClasses(pst.messageStore.rootFolder, pst, fmtOutput);
+			} catch (final NotHeapNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPropertyContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
+			} catch (final NotTableContextNodeException e) {
+				e.printStackTrace(System.out);
+			} catch (final NullDataBlockException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseablePropertyContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+			} catch (final java.io.FileNotFoundException e) {
+				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
+				e.printStackTrace(System.out);
+			}
+		}
+	}
 }
