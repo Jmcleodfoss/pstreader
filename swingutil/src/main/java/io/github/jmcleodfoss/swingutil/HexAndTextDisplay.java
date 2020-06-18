@@ -125,7 +125,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	}
 
 	/**	This is a special renderer to show label column (column 0) differently (and similarly to the column headers). */
-	private class HeaderColumnCellRenderer implements javax.swing.table.TableCellRenderer {
+	static private class HeaderColumnCellRenderer implements javax.swing.table.TableCellRenderer {
 
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
