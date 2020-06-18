@@ -777,7 +777,6 @@ abstract class DataType
 				s.append(Integer.toHexString(i));
 			}
 			return s.toString();
-//			return "multiple-integer32 " + o.toString();
 		}
 
 		/**	Read in a list of 32-bit integers.
@@ -831,7 +830,6 @@ abstract class DataType
 				s.append(Long.toHexString(i));
 			}
 			return s.toString();
-//			return "multiple-integer64 " + o.toString();
 		}
 
 		/**	Read in a list of 64-bit integers.
