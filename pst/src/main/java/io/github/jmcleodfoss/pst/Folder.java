@@ -16,9 +16,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 
 			/**	Read a single level of sub-folders. */
 			ONE,
-		
+
 			/**	Read the entire sub-folder hierarchy. */
-			ALL 
+			ALL
 		};
 
 		/**	The number of sub-levels to read. */
@@ -55,10 +55,10 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public final NBTEntry nodeHierarchyTable;
 
 	/**	The contents table node info. */
-	public final NBTEntry nodeContentsTable; 
+	public final NBTEntry nodeContentsTable;
 
 	/**	The associated contents table node info. */
-	public final NBTEntry nodeAssociatedContentsTable; 
+	public final NBTEntry nodeAssociatedContentsTable;
 
 	/**	The folder name. */
 	public final String displayName;
@@ -236,12 +236,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	{
 		if (oParent instanceof Folder) {
 			Folder folder = (Folder)oParent;
-	
+
 			for (int i = 0; i < folder.subfolders.size(); ++i) {
 				if (folder.subfolders.get(i) == child)
 					return i;
 			}
-	
+
 			for (int i = 0; i < folder.contents.size(); ++i) {
 				if (folder.contents.get(i) == child)
 					return i + folder.subfolders.size();
