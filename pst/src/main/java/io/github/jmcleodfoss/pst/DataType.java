@@ -137,6 +137,7 @@ abstract class DataType
 		/**	Obtain the size of this object in the PST file.
 		*	@return	The size of this object in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return size;
@@ -162,6 +163,7 @@ abstract class DataType
 		*	@param	o A BID to return a String representation of.
 		*	@return	A String describing this BID object.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return ((BID)o).toString();
@@ -181,6 +183,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the ANSI BID object.
 		*	@return	The BID object read from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return new BID(byteBuffer.getInt());
@@ -203,6 +206,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the Unicode BID object.
 		*	@return	The BID object read from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return new BID(byteBuffer.getLong());
@@ -243,6 +247,7 @@ abstract class DataType
 		*	@param	o	A BREF to return a String representation of.
 		*	@return	A String describing this BREF object.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return ((BREF)o).toString();
@@ -262,6 +267,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the ANSI BREF object.
 		*	@return	The BREF object read from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			BID bid = new BID(byteBuffer.getInt());
@@ -286,6 +292,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the Unicode BREF object.
 		*	@return	The BREF object read from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			BID bid = new BID(byteBuffer.getLong());
@@ -312,6 +319,7 @@ abstract class DataType
 		*	@param	o	The array of bytes to display.
 		*	@return	A String showing the bytes in the array in hexadecimal.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			byte[] a = (byte[])o;
@@ -334,6 +342,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream to read from. Note that this is entirely consumed.
 		*	@return	The array of bytes read in from the incoming data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return read(byteBuffer, size);
@@ -353,6 +362,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream to read from. Note that this is entirely consumed.
 		*	@return	The array of bytes read in from the incoming data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return read(byteBuffer, byteBuffer.remaining());
@@ -375,6 +385,7 @@ abstract class DataType
 		*	@param	o	The value to display.
 		*	@return	A String representing the 64-bit floating-point number.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return ((Double)o).toString();
@@ -384,6 +395,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream to read from.
 		*	@return	A Double object corresponding to the value read in.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return (Double)byteBuffer.getDouble();
@@ -392,6 +404,7 @@ abstract class DataType
 		/**	The size of the object in the PST file.
 		*	@return	The size of the 64-bit floating object in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 8;
@@ -416,6 +429,7 @@ abstract class DataType
 		*	@param	o	The GUID object to print out.
 		*	@return	A String representation of the GUID object.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return ((io.github.jmcleodfoss.pst.GUID)o).toString();
@@ -425,6 +439,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the GUID.
 		*	@return	The GUID object read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			byte arr[] = new byte[io.github.jmcleodfoss.pst.GUID.SIZE];
@@ -435,6 +450,7 @@ abstract class DataType
 		/**	Obtain the size of the GUID.
 		*	@return	The size of the GUID object in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return io.github.jmcleodfoss.pst.GUID.SIZE;
@@ -460,6 +476,7 @@ abstract class DataType
 		*	@param	o	The HID object to display.
 		*	@return	A String representation of the HID object.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return ((io.github.jmcleodfoss.pst.HeapOnNode.HID)o).toString();
@@ -469,6 +486,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the HID.
 		*	@return	The HID object read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return new io.github.jmcleodfoss.pst.HeapOnNode.HID(byteBuffer.getInt());
@@ -477,6 +495,7 @@ abstract class DataType
 		/**	Obtain the size of the HID in a PST file.
 		*	@return	The size of the HID object in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 4;
@@ -499,6 +518,7 @@ abstract class DataType
 		*	@param	o	The Byte object to display.
 		*	@return	A String representation of the Byte object (in hexadecimal).
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return Integer.toHexString((Byte)o & 0xff);
@@ -508,6 +528,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the 8-bit integer.
 		*	@return	A Byte object corresponding to the 8-bit integer read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return (Byte)byteBuffer.get();
@@ -516,6 +537,7 @@ abstract class DataType
 		/**	Obtain the size of an 8-bit integer in a PST file.
 		*	@return	The size of an 8-bit integer in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 1;
@@ -538,6 +560,7 @@ abstract class DataType
 		*	@param	o	The Short object to display.
 		*	@return	A String representation of the Short object (in hexadecimal).
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return Integer.toHexString((Short)o & 0xffff);
@@ -547,6 +570,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the 16-bit integer.
 		*	@return	A Short object corresponding to the 16-bit integer read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return (Short)byteBuffer.getShort();
@@ -555,6 +579,7 @@ abstract class DataType
 		/**	Obtain the size of a 16-bit integer.
 		*	@return	The size of a 16-bit integer in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 2;
@@ -577,6 +602,7 @@ abstract class DataType
 		*	@param	o	The Integer object to display.
 		*	@return	A String representation of the Integer object (in hexadecimal).
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return Integer.toHexString((Integer)o);
@@ -586,6 +612,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the 32-bit integer.
 		*	@return	An Integer object corresponding to the 32-bit integer read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return (Integer)byteBuffer.getInt();
@@ -594,6 +621,7 @@ abstract class DataType
 		/**	Obtain the size of a 32-bit integer in a PST file.
 		*	@return	The size of a 32-bit integer in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 4;
@@ -616,6 +644,7 @@ abstract class DataType
 		*	@param	o	The Long object to display.
 		*	@return	A String representation of the Long object (in hexadecimal).
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return Long.toHexString((Long)o);
@@ -625,6 +654,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the 64-bit integer.
 		*	@return	A Long object corresponding to the 64-bit integer read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return (Long)byteBuffer.getLong();
@@ -633,6 +663,7 @@ abstract class DataType
 		/**	Obtain the size of a 64-bit integer in a PST file.
 		*	@return	The size of a 64-bit integer in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 8;
@@ -655,6 +686,7 @@ abstract class DataType
 		*	@param	o	The list of binary object to display.
 		*	@return	A String representation of the given list of binary objects.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			byte[][] arr = (byte[][])o;
@@ -672,6 +704,7 @@ abstract class DataType
 		*	@return	An array containing the binary objects read in, as an array of bytes.
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			if (byteBuffer.remaining() < 6) {
@@ -711,6 +744,7 @@ abstract class DataType
 		*	0 is returned.
 		*	@return	0, since the size of the multiple binary object is unknown in the DataType context.
 		*/
+		@Override
 		public int size()
 		{
 			return 0;
@@ -733,6 +767,7 @@ abstract class DataType
 		*	@param	o	The list of Integer values to display.
 		*	@return	A String representation of the given list of Integer values.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			StringBuilder s = new StringBuilder();
@@ -750,6 +785,7 @@ abstract class DataType
 		*	@return	An array containing the integers read in, as an array of Integer values.
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			final int count = byteBuffer.remaining()/(Integer.SIZE/Byte.SIZE);
@@ -762,6 +798,7 @@ abstract class DataType
 		/**	Obtain the size of the multiple 32-bit integer object list in the PST file.
 		*	@return	The size of a single 32-bit integer value.
 		*/
+		@Override
 		public int size()
 		{
 			return 4;
@@ -784,6 +821,7 @@ abstract class DataType
 		*	@param	o	The list of Integer values to display.
 		*	@return	A String representation of the given list of Integer values.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			StringBuilder s = new StringBuilder();
@@ -801,6 +839,7 @@ abstract class DataType
 		*	@return	An array containing the integers read in, as an array of Long values.
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			final int count = byteBuffer.remaining()/(Long.SIZE/Byte.SIZE);
@@ -813,6 +852,7 @@ abstract class DataType
 		/**	Obtain the size of the multiple 64-bit integer object list in the PST file.
 		*	@return	The size of a single 64-bit integer value.
 		*/
+		@Override
 		public int size()
 		{
 			return Long.SIZE/Byte.SIZE;
@@ -837,6 +877,7 @@ abstract class DataType
 		*	@param	o	The list of Strings to display.
 		*	@return	A String representation of the given list of Strings.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return "multiple-string " + o.toString();
@@ -848,6 +889,7 @@ abstract class DataType
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		throws
 			java.io.UnsupportedEncodingException
@@ -905,6 +947,7 @@ abstract class DataType
 		*	@param	o	The NID object to display.
 		*	@return	A String representation of the given NID.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return ((io.github.jmcleodfoss.pst.NID)o).toString();
@@ -914,6 +957,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the NID.
 		*	@return	An NID object corresponding to the NID value read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return new io.github.jmcleodfoss.pst.NID(byteBuffer.getInt());
@@ -922,6 +966,7 @@ abstract class DataType
 		/**	Obtain the size of an NID object in a PST file.
 		*	@return	The size of an NID in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 4;
@@ -944,6 +989,7 @@ abstract class DataType
 		*	@param	o	The Boolean to display.
 		*	@return	A String representation of the given Boolean value.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return o.toString();
@@ -953,6 +999,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the Boolean value.
 		*	@return	A Boolean object corresponding to the Boolean read in from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			return (Boolean)((Byte)byteBuffer.get() != 0);
@@ -961,6 +1008,7 @@ abstract class DataType
 		/**	Obtain the size of a Boolean object in a PST file.
 		*	@return	The size of an Boolean value in the PST file, in bytes.
 		*/
+		@Override
 		public int size()
 		{
 			return 1;
@@ -992,6 +1040,7 @@ abstract class DataType
 		*	0 is returned.
 		*	@return	0, since the size of a string is unknown in the DataType context.
 		*/
+		@Override
 		public int size()
 		{
 			return 0;
@@ -1015,6 +1064,7 @@ abstract class DataType
 		*	@param	o	The String to display.
 		*	@return	The given String.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return (String)o;
@@ -1025,6 +1075,7 @@ abstract class DataType
 		*	@return	A String corresponding to the Boolean read in from the data stream.
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		throws
 			java.io.UnsupportedEncodingException
@@ -1078,6 +1129,7 @@ abstract class DataType
 		*	@return	A String representation of the given object, formatted according to {@link #OUTPUT_FORMAT}.
 		*	@see	#OUTPUT_FORMAT
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			return OUTPUT_FORMAT.format((java.util.Date)o);
@@ -1087,6 +1139,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream from which to read the time.
 		*	@return	A Java Date object corresponding to the MS time read from the data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			long hundred_ns = byteBuffer.getLong();
@@ -1098,6 +1151,7 @@ abstract class DataType
 		/**	Obtain the size in bytes of an MS time object in a PST file.
 		*	@return	The size of an MS time object in a PST file.
 		*/
+		@Override
 		public int size()
 		{
 			return 8;
@@ -1123,6 +1177,7 @@ abstract class DataType
 		*	@param	o	The array of shorts to display.
 		*	@return	A String showing the shorts in the array.
 		*/
+		@Override
 		public String makeString(final Object o)
 		{
 			short[] a = (short[])o;
@@ -1139,6 +1194,7 @@ abstract class DataType
 		*	@param	byteBuffer	The incoming data stream to read from.
 		*	@return	The array of shorts read in from the incoming data stream.
 		*/
+		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
 			short arr[] = new short[size];
@@ -1150,6 +1206,7 @@ abstract class DataType
 		/**	Return the size of the array of 16-bit integers.
 		*	@return	The size of the array of 16-bit integers in the PST file.
 		*/
+		@Override
 		public int size()
 		{
 			return size*2;
