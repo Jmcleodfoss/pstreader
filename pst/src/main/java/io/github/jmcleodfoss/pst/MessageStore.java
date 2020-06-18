@@ -58,7 +58,7 @@ public class MessageStore
 	*	@param	testPassword	The password to check.
 	*	@param	charset		The charset Charset used to encode the string
 	*	@return	true if the passed password matches the password in the PST file, false otherwise.
-	*	@throw	java.io.UnsupportedEncodingException	The given encoding is not supported
+	*	@throws	java.io.UnsupportedEncodingException	The given encoding is not supported
 	*	@see	#passwordHashed
 	*	@see	#hasPassword
 	*/
