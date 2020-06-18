@@ -141,7 +141,8 @@ class GUID
 		this(arr, 0);
 	}
 
-	/** Create a GUID from the bytes at the given offset in the given array.read in from the PST file. Note that the first four
+	/** Create a GUID from the bytes at the given offset in the given array.read in from the PST file.
+	*   Note that the first four
 	*   bytes form a little-endian 16 bit value, and the remaining bytes form big-endian values.
 	*	@param	arr	The array of bytes containing the GUID
 	*	@param	offset	The offset to the start of the GUID in arr.
