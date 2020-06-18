@@ -56,7 +56,7 @@ class CRC
 
 		int crc = 0;
 		for(int i=0; i < size; ++i)
-			crc = CrcTableOffset32[(crc ^ byteBuffer.get()) & 0xff] ^ (crc >>> 8); 
+			crc = CrcTableOffset32[(crc ^ byteBuffer.get()) & 0xff] ^ (crc >>> 8);
 
 		byteBuffer.position(position);
 		return crc;

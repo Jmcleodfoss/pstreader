@@ -198,7 +198,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			byte blockSignature = (Byte)dc.get(nm_bSig);
 			if (blockSignature != HN_SIGNATURE && Options.strictHeapNodes)
 				throw new NotHeapNodeException(blockSignature);
-			
+
 			clientSignature = new ClientSignature((Byte)dc.get(nm_bClientSig));
 			hidUserRoot = new HID((Integer)dc.get(nm_hidUserRoot));
 		}
@@ -221,7 +221,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		private static final String nm_cAlloc = "cAlloc";
 		private static final String nm_cFree = "cFree";
 		private static final String nm_rgibAlloc = "rgibAlloc";
-	
+
 		/**	The data which makes up the Page Map */
 		private static final DataDefinition[] fixed_fields = {
 			new DataDefinition(nm_cAlloc, DataType.integer16Reader, true),
@@ -247,7 +247,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			numEntries = (Short)dc.get(nm_cAlloc);
 			DataDefinition dataField = new DataDefinition(nm_rgibAlloc, new DataType.SizedInt16Array((numEntries+1)), true);
 			dc.read(stream, dataField);
-	
+
 			heapOffset = (short[])dc.get(nm_rgibAlloc);
 		}
 
@@ -284,7 +284,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 
 		/**	Create a PageHeader object from the input data stream.
 		* 	@param	stream	The stream to read the page header from.
-		* 	@throws	java.io.IOException	An I/O exception was encountered while reading the data for the page header. 
+		* 	@throws	java.io.IOException	An I/O exception was encountered while reading the data for the page header.
  		*/
 		private PageHeader(java.nio.ByteBuffer stream)
 		throws
@@ -531,7 +531,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	/**	Obtain the list element at the given index.
 	*	@param	index	The heap entry to return.
 	*	@return	A string containing the sequence of bytez hexidecimal bytes for the given heap node, if it isn't null, or null if the
-	*		given heap node is null 
+	*		given heap node is null
 	*/
 	public Object getElementAt(int index)
 	{

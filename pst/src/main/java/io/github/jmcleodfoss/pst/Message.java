@@ -1,7 +1,7 @@
 package io.github.jmcleodfoss.pst;
 
 /**	The Message class represents a PST email message.
-*	The values set in the constructor are those which come from the folder Contents	Table; retrieval of other fields, 
+*	The values set in the constructor are those which come from the folder Contents	Table; retrieval of other fields,
 *	including the message body, require that the client provide the message property context from which the fields may be extracted.
 *	An example of the expected use case is:
 *	<pre>
@@ -87,14 +87,14 @@ public class Message extends MessageObjectWithBody
 		if (!nodeMessageObject.bidSubnode.isNull()) {
 			final SubnodeBTree snb = new SubnodeBTree(nodeMessageObject.bidSubnode, bbt, pstFile);
 			for (java.util.Iterator<BTreeNode> snbIterator = snb.iterator(); snbIterator.hasNext(); ) {
-				
+
 				SLEntry subnode = (SLEntry)snbIterator.next();
-	
+
 				if (subnode.nid.isRecipientTable()) {
 					nodeRecipientTable = subnode;
 					continue;
 				}
-	
+
 				if (subnode.nid.isAttachmentTable()) {
 					nodeAttachmentTable = subnode;
 

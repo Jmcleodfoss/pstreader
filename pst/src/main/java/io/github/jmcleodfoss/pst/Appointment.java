@@ -44,7 +44,7 @@ public class Appointment extends MessageObject
 
 	/**	The recurrence pattern of the appointment. */
 	public final String recurrencePattern;
-	
+
 	/**	Is this a recurring appointment? */
 	public final boolean fRecurring;
 

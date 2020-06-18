@@ -99,7 +99,7 @@ public class Attachment
 	*/
 	private static final int AF_STORAGE = 0x06;
 
-	/**	The property ID under which the attachment data is stored. Note that, typically, the attachment data is much larger 
+	/**	The property ID under which the attachment data is stored. Note that, typically, the attachment data is much larger
 	*	than the metadata.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxcmsg/252923d6-dd41-468b-9c57-d3f68051a516">MS-OXCXMSG Section 2.2.2.9: PidTagAttachMethod Property</a>
 	*	@see	#AF_NONE
@@ -184,11 +184,11 @@ public class Attachment
 		switch (attachMethod) {
 		case AF_NONE:
 			break;
-	
+
 		case AF_BY_VALUE:
 			propidData = PropertyTags.AttachDataBinary;
 			break;
-	
+
 		case AF_BY_REFERENCE:
 		case AF_BY_REFERENCE_ONLY:
 			propidData = PropertyTags.AttachLongPathname;

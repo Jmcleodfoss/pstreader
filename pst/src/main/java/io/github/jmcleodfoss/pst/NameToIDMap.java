@@ -132,7 +132,7 @@ public class NameToIDMap
 	{
 		/**	The serialVersionUID is required because the base class is serializable. */
 		private static final long serialVersionUID = 1L;
-	
+
 		/**	Create the table model.
 		*	@param	namedProperties	The map of named property IDs and values.
 		*/
@@ -150,7 +150,7 @@ public class NameToIDMap
 				setValueAt(namedProperties.name(key), i, 1);
 			}
 		}
-	
+
 		/**	Provide the header the given column.
 		*	@param	column	The index of the column to retrieve the header for.
 		*	@return	The name of the given column.
@@ -161,7 +161,7 @@ public class NameToIDMap
 			case 0: return "ID";
 			case 1: return "Property";
 			}
-			
+
 			return "";
 		}
 

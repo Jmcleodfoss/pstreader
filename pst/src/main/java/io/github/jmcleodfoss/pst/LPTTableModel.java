@@ -41,7 +41,7 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel
 		case 1: return "Property";
 		case 2: return "Data";
 		}
-		
+
 		return "";
 	}
 

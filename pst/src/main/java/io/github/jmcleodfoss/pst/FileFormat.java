@@ -19,7 +19,7 @@ class FileFormat
 		*/
 		UnknownFileFormatVersionException(short wVer)
 		{
-			super("Unknown file format version " + wVer); 
+			super("Unknown file format version " + wVer);
 		}
 	}
 

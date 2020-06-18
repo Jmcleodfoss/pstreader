@@ -74,7 +74,7 @@ public class Contact extends MessageObject
 
 	/**	The contact's email addresses. */
 	public final java.util.List<String> emailAddresses;
-	
+
 	/**	Create a Contact for the given row in the folder contents table.
 	*	@param	contentsTable	The containing folder's contents table.
 	*	@param	row		The row of the contents table from which to create the contact.

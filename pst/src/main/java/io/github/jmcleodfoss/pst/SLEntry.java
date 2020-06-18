@@ -33,7 +33,7 @@ class SLEntry extends LPTLeaf
 	*	@param	context	The context from which to build the sub-node B-tree leaf entyr.
 	*	@param	stream	The data stream from which to read the sub-node B-tree leaf entry.
 	*	@throws	java.io.IOException	An I/O error was encounted when reading the data for this node.
-	*/ 
+	*/
 	SLEntry(final SubnodeBTree.BlockContext context, java.nio.ByteBuffer stream)
 	throws
 		java.io.IOException

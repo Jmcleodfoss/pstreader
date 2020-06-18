@@ -26,7 +26,6 @@ class Encryption
 	*/
 	private static final byte NOB_CRYPT_CYCLIC = 0x02;
 
-	
 	/**	A ready-made Encryption object of type NONE, required for some PST processing classes.
 	*	@see	SimpleBlock
 	*	@see	SubnodeBTree
@@ -235,22 +234,22 @@ class Encryption
 		*/
 		public void translate(byte[] data, long key)
 		{
-			short w = (short)(key ^ (key >>> 16)); 
+			short w = (short)(key ^ (key >>> 16));
 
 			for (int i = 0; i < data.length; ++i) {
 				byte b = data[i];
 				b = (byte)(b + (w & 0xff));
 				b = mpbbCrypt[offsR + (b & 0xff)];
 
-				b = (byte)(b + (w >>> 8)); 
+				b = (byte)(b + (w >>> 8));
 				b = mpbbCrypt[offsS + (b & 0xff)];
 
-				b = (byte)(b - (w >>> 8)); 
-				b = mpbbCrypt[offsI + (b & 0xff)]; 
+				b = (byte)(b - (w >>> 8));
+				b = mpbbCrypt[offsI + (b & 0xff)];
 
-				b = (byte)(b - (w & 0xff)); 
-				data[i] = b; 
- 
+				b = (byte)(b - (w & 0xff));
+				data[i] = b;
+
 				++w;
 			}
 		}

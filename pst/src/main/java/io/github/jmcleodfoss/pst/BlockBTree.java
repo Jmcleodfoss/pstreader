@@ -38,7 +38,7 @@ class BlockBTree extends PagedBTree implements BlockMap
 			BTEntry entry = new BTEntry(this, entryStream);
 			return new BlockBTree(entry.key, entry.bref, pstFile);
 		}
-	
+
 		/**	Create a leaf block B-tree entry using data read in from the input stream.
 		*	@param	entryStream	The data stream from which to read the intermediate block data information.
 		*	@throws	java.io.IOException	An I/O error was encountered while reading in the node.

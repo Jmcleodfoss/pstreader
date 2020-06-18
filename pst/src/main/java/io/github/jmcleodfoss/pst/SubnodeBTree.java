@@ -27,7 +27,7 @@ public class SubnodeBTree extends BTree
 		};
 
 		/**	The datastream containing the sub-node B-tree nodes. */
-		private java.nio.ByteBuffer snStream; 
+		private java.nio.ByteBuffer snStream;
 
 		/**	Construct a BlockContext object from the information at the given BID in this PST file.
 		*	@param	bid	The block ID of the root of the sub-node B-tree.
@@ -83,7 +83,7 @@ public class SubnodeBTree extends BTree
 			final SIEntry entry = new SIEntry(this, entryStream);
 			return new SubnodeBTree(entry.nid.key(), this);
 		}
-	
+
 		/**	{@inheritDoc} */
 		@Override
 		protected boolean isLeafNode()
@@ -140,7 +140,7 @@ public class SubnodeBTree extends BTree
 		*	@param	context	The context in which to read the node.
 		*	@param	stream	The data stream from which to read the node information.
 		*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this node.
-		*/ 
+		*/
 		SIEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer stream)
 		throws
 			java.io.IOException
@@ -250,7 +250,7 @@ public class SubnodeBTree extends BTree
 						int i = 0;
 						while (sbtIterator.hasNext()) {
 							++i;
-							final SLEntry sbtEntry = (SLEntry)sbtIterator.next(); 
+							final SLEntry sbtEntry = (SLEntry)sbtIterator.next();
 							final BBTEntry bbtEntry = bbt.find(sbtEntry.bidData);
 							if (bbtEntry != null) {
 								System.out.printf("%d: %s; %s%n", i, sbtEntry.toString(), bbtEntry.toString());

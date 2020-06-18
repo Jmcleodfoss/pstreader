@@ -65,7 +65,7 @@ public class Header
 	};
 
 	/**	Size of the header block in Unicode files */
-	private static final int SIZE_UNICODE = DataDefinition.size(common_fields) + DataDefinition.size(unicode_fields); 
+	private static final int SIZE_UNICODE = DataDefinition.size(common_fields) + DataDefinition.size(unicode_fields);
 
 	// Not tested - no data available
 	/**	The ANSI-specific fields in the input stream the header is being read from. Note that this includes all the fields after
@@ -103,7 +103,7 @@ public class Header
 	};
 
 	/**	Size of the heeader block in ANSI files */
-	private static final int SIZE_ANSI = DataDefinition.size(common_fields) + DataDefinition.size(ansi_fields); 
+	private static final int SIZE_ANSI = DataDefinition.size(common_fields) + DataDefinition.size(ansi_fields);
 
 	/**	The offset from which to start calculating the full and partial CRC's.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>

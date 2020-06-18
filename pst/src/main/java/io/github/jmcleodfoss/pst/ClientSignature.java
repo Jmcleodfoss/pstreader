@@ -46,10 +46,10 @@ class ClientSignature
 	*/
 	static final ClientSignature PropertyContext = factory(PROPERTY_CONTEXT);
 
-	/**	The signature byte. */	
+	/**	The signature byte. */
 	private final byte signature;
 
-	/**	A description of the signature. */	
+	/**	A description of the signature. */
 	private final String description;
 
 	/**	Construct a ClientSignature object from a client signature read in from disk.

@@ -10,7 +10,7 @@ public class UnparseablePropertyContextException extends Exception
 
 	/**	Create a UnparseablePropertyContextException from the given description.
 	*	@param	s	A description of the reason the property context cannot be parsed.
-	*/	
+	*/
 	UnparseablePropertyContextException(final String s)
 	{
 		super(s);

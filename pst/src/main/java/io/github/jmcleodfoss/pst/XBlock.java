@@ -146,7 +146,7 @@ class XBlock extends BlockBase
 			System.arraycopy(block.data, 0, data, destOffset, block.data.length);
 			destOffset += block.data.length;
 		}
-		
+
 		return data;
 	}
 
@@ -235,7 +235,7 @@ class XBlock extends BlockBase
 				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-	
+
 				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 				while (iterator.hasNext()) {
 					final NBTEntry node = (NBTEntry)iterator.next();

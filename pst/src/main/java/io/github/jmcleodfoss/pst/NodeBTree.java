@@ -54,7 +54,7 @@ class NodeBTree extends PagedBTree implements NodeMap
 			final BTEntry entry = new BTEntry(this, entryStream);
 			return new NodeBTree(entry.key, entry.bref, pstFile);
 		}
-	
+
 		/**	Create a leaf block B-tree entry using data read in from the input stream.
 		*	@param	entryStream	The data stream from which to read the leaf node data.
 		*	@return	A node leaf structure containing information about a PST node.

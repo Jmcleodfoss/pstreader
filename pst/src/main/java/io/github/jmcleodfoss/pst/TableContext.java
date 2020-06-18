@@ -225,7 +225,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			tag = (Integer)dc.get(nm_tag);
 			columnOffset = (Short)dc.get(nm_ibData);
 			width = dc.getUInt8(nm_cbData);
-			cellExistenceBitmapIndex = (int)(0xff & (Byte)dc.get(nm_iBit)); 
+			cellExistenceBitmapIndex = (int)(0xff & (Byte)dc.get(nm_iBit));
 		}
 
 		/**	Get the data type for this column description tag.
@@ -594,7 +594,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		case DataType.MULTIPLE_BINARY:
 			return true;
 		}
-		
+
 		return false;
 	}
 

@@ -132,7 +132,7 @@ public class BTreeOnHeap extends BTree
 		{
 			return new LeafRecord(entryStream, header.keySize, header.dataSize);
 		}
-	
+
 		/**	Create a context object for use when reading the next level of the B-tree.
 		*	@param	hid	The heap-on-node index of the next level nod of the B-tree
 		*	@return	A new BTHContect object for use when reading the next child node of this node.
@@ -211,7 +211,7 @@ public class BTreeOnHeap extends BTree
 
 		/**	The data context used to read in data for the classes derived from RecordBase. */
 		protected DataContainer dc;
-	
+
 		/**	The size in bytes of an entry at this level of the heap (intermediate and leaf nodes may have different sizes). */
 		final int entrySize;
 
@@ -304,7 +304,7 @@ public class BTreeOnHeap extends BTree
 		@Override
 		public String toString()
 		{
-			return String.format("key 0x%x, hidNextLevel %s", key(), hidNextLevel.toString()); 
+			return String.format("key 0x%x, hidNextLevel %s", key(), hidNextLevel.toString());
 		}
 	}
 
@@ -381,7 +381,7 @@ public class BTreeOnHeap extends BTree
 		}
 	}
 
-	/**	Construct a B-tree-on-heap structure with the given key from the given context. This function may be called for the root 
+	/**	Construct a B-tree-on-heap structure with the given key from the given context. This function may be called for the root
 	*	and for intermediate nodes in the B-tree.
 	*	@param	key	{@inheritDoc}
 	*	@param	context	{@inheritDoc}
@@ -393,7 +393,7 @@ public class BTreeOnHeap extends BTree
 		super(key, context);
 	}
 
-	/**	Construct a B-tree-on-heap structure with from the given heap-on-node structure and PST file object. This function is 
+	/**	Construct a B-tree-on-heap structure with from the given heap-on-node structure and PST file object. This function is
 	*	intended to create the root of the B-tree.
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.

@@ -140,7 +140,7 @@ public abstract class PagedBTree extends BTree
 		*	@param	context		The context from which to build the B-tree.
 		*	@param	byteBuffer	The data stream from which to read the intermediate B-tree entry.
 		*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this B-tree entry.
-		*/ 
+		*/
 		BTEntry(final Context<BTree, BTreeLeaf> context, java.nio.ByteBuffer byteBuffer)
 		throws
 			java.io.IOException

@@ -371,7 +371,7 @@ abstract class DataType
 
 	/**	The reader for generic arrays of bytes. */
 	private static final ByteArray byteArrayReader = new ByteArray();
-	
+
 	/**	The Floating64 data type described an 64-bit floating point value. */
 	private static class Floating64 extends DataType
 	{
@@ -896,7 +896,7 @@ abstract class DataType
 				byte[] data = new byte[byteBuffer.remaining()];
 				byteBuffer.get(data);
 				String[] arr = new String[1];
-				arr[0] = new String(data, charset); 
+				arr[0] = new String(data, charset);
 				return arr;
 			}
 
@@ -1085,10 +1085,10 @@ abstract class DataType
 	}
 
 	/**	A reader/display manipulator for wide-character (Unicode) character strings values in the PST file. */
-	private static final PSTString stringReader = new PSTString(STRING); 
+	private static final PSTString stringReader = new PSTString(STRING);
 
 	/**	A reader/display manipulator for narrow-character (ANSI) character strings values in the PST file. */
-	private static final PSTString string8Reader = new PSTString(STRING_8); 
+	private static final PSTString string8Reader = new PSTString(STRING_8);
 
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
@@ -1306,7 +1306,6 @@ abstract class DataType
 
 		default:
 			throw new RuntimeException("Invalid Property Type" + Integer.toHexString(propertyType));
-			
 		}
 	}
 
