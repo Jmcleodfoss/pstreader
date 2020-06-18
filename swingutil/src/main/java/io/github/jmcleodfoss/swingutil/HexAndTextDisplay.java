@@ -81,9 +81,9 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 				return io.github.jmcleodfoss.pst.ByteUtil.toHexString(data[i]);
 
 			if (data[i] < 0x20 || data[i] < 0x00)
-				return new Character('.');
+				return Character.valueOf('.');
 
-			return new Character((char)data[i]);
+			return Character.valueOf((char)data[i]);
 		}
 
 		/**	Is this cell editable? THe answer is always no, as this application is read-only.
