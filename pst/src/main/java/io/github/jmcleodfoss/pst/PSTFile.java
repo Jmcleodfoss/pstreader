@@ -35,12 +35,44 @@ public class PSTFile
 		header = new io.github.jmcleodfoss.pst.Header(mbb);
 	}
 
+	/**	Close the PSTFile file.
+	* 	@throws java.io.IOException	There was a problem closing the file.
+	*/
+	public void close()
+	throws
+		java.io.IOException
+	{
+		fc.close();
+	}
+
 	/**	A convenience method to return the encryption method in the header.
 	*	@return	The encryption object from the PST {@link Header} member.
 	*/
 	Encryption encryption()
 	{
 		return header.encryption;
+	}
+
+	/**	Create a ByteBuffer with the right byte ordering from the given array.
+	*	@param	bytes	The data to change into a ByteBuffer
+	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
+	*/
+	static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes)
+	{
+		return makeByteBuffer(bytes, 0, bytes.length);
+	}
+
+	/**	Create a ByteBuffer with the right byte ordering from the given array.
+	*	@param	bytes		The data from which to create a ByteBuffer.
+	*	@param	offset		The offset into the array of bytes to start the ByteBuffer at.
+	*	@param	numBytes	The number of bytes to put into the ByteBuffer
+	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
+	*/
+	static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes, final int offset, final int numBytes)
+	{
+		java.nio.ByteBuffer byteBuffer = java.nio.ByteBuffer.wrap(bytes, offset, numBytes).asReadOnlyBuffer();
+		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+		return byteBuffer;
 	}
 
 	/**	A convenience method to move to the given point in the PST file.
@@ -67,16 +99,6 @@ public class PSTFile
 		return java.nio.ByteBuffer.wrap(data).asReadOnlyBuffer();
 	}
 
-	/**	Close the PSTFile file.
-	* 	@throws java.io.IOException	There was a problem closing the file.
-	*/
-	public void close()
-	throws
-		java.io.IOException
-	{
-		fc.close();
-	}
-
 	/**	A convenience method to indicate whether the PST file uses Unicode or ANSI encoding.
 	*	@return	true if the PST file read in is a Unicode PST file, false if it is ANSI.
 	*	@see	FileFormat#fUnicode
@@ -84,27 +106,5 @@ public class PSTFile
 	public boolean unicode()
 	{
 		return header.fileFormat.fUnicode;
-	}
-
-	/**	Create a ByteBuffer with the right byte ordering from the given array.
-	*	@param	bytes	The data to change into a ByteBuffer
-	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
-	*/
-	static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes)
-	{
-		return makeByteBuffer(bytes, 0, bytes.length);
-	}
-
-	/**	Create a ByteBuffer with the right byte ordering from the given array.
-	*	@param	bytes		The data from which to create a ByteBuffer.
-	*	@param	offset		The offset into the array of bytes to start the ByteBuffer at.
-	*	@param	numBytes	The number of bytes to put into the ByteBuffer
-	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
-	*/
-	static java.nio.ByteBuffer makeByteBuffer(final byte[] bytes, final int offset, final int numBytes)
-	{
-		java.nio.ByteBuffer byteBuffer = java.nio.ByteBuffer.wrap(bytes, offset, numBytes).asReadOnlyBuffer();
-		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
-		return byteBuffer;
 	}
 }
