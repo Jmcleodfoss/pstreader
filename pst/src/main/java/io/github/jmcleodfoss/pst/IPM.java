@@ -322,8 +322,8 @@ class IPM
 		final String fmtOutput = "%-25s %-25s %-10s%n";
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
-				System.out.println(a);
 				PST pst = new PST(a);
 				System.out.printf(fmtOutput, "Subject", "Container Class", "Known Container Class?");
 				showFolderMessageClasses(pst.messageStore.rootFolder, pst, fmtOutput);

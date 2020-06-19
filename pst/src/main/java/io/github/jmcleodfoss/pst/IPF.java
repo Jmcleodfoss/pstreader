@@ -228,8 +228,8 @@ public class IPF
 		final String fmtOutput = "%-25s %-25s %-10s%n";
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
-				System.out.println(a);
 				PST pst = new PST(a);
 				System.out.printf(fmtOutput, "Folder Name", "Container Class", "Known Container Class?");
 				for (java.util.Iterator<Folder> folderIterator = pst.messageStore.rootFolder.subfolderIterator(); folderIterator.hasNext(); ) {
