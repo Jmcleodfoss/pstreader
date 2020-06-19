@@ -164,7 +164,7 @@ class SimpleBlock extends BlockBase
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 				while (iterator.hasNext()) {

@@ -175,7 +175,7 @@ public class MessageObject
 			System.out.println(a);
 			try {
 				System.out.println(a);
-				PST pst = new PST(a);
+				final PST pst = new PST(a);
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
