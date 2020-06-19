@@ -305,6 +305,7 @@ public class NameToIDMap
 		}
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
 				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
@@ -315,7 +316,6 @@ public class NameToIDMap
 				Object[] keyArray = nameToIDMap.namedProperties.keySet().toArray();
 				java.util.Arrays.sort(keyArray);
 
-				System.out.println(a);
 				for (Object key : keyArray)
 					System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
 			} catch (final NotHeapNodeException e) {
