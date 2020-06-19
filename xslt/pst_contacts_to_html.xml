@@ -30,12 +30,15 @@
 				<!-- Skip the field we used as title -->
 				<!-- Display remaining columns as an unordered list. -->
 			<xsl:choose>
+				<xsl:when test="name() = 'AddressBookProviderEmailList-list'"/>
 				<xsl:when test="name() = 'LtpRowVer'"/>
 				<xsl:when test="name() = 'LtpRowID'"/>
 				<xsl:when test="name() = 'SearchKey'"/>
 				<xsl:when test="name() = 'MessageSize'"/>
 				<xsl:when test="name() = 'MessageClassW'"/>
+				<xsl:when test="name() = 'MessageLocalId'"/>
 				<xsl:when test="name() = 'Email1OriginalEntryId'"/>
+				<xsl:when test="name() = 'EmailList-list'"/>
 				<xsl:when test="name() = 'IconIndex'"/>
 				<xsl:when test="name() = 'SideEffects'"/>
 				<xsl:when test="name() = 'CurrentVersionName'"/>
@@ -76,9 +79,12 @@
 				<xsl:when test="name() = 'Email2AddressType'"/>
 				<xsl:when test="name() = 'AddressBookProviderArrayType'"/>
 				<xsl:when test="name() = 'LastModificationTime'"/>
+				<xsl:when test="name() = 'PercentComplete'"/>
 				<xsl:when test="name() = 'Private'"/>
+				<xsl:when test="name() = 'ReminderSet'"/>
+				<xsl:when test="name() = 'TaskComplete'"/>
 				<xsl:when test="name() = 'TaskMode'"/>
-				<xsl:when test="name() = 'ReminderSet_'"/>
+				<xsl:when test="name() = 'TaskState'"/>
 				<xsl:when test="name() = 'ReminderDelta'"/>
 				<xsl:when test="name() = 'DeleteAfterSubmit'"/>
 				<xsl:when test="name() = 'ReminderSignalTime'"/>
