@@ -2,7 +2,6 @@ package io.github.jmcleodfoss.pstExtractor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 /**	The AppointmentBean class represents a PST appointment.
 *	Note that this is not a "full" bean, in that it does not have any setters; its contents are set by other classes within the same package.
@@ -10,12 +9,7 @@ import java.util.TimeZone;
 public class AppointmentBean
 {
 	/**	The format to use for time/date retrieval. */
-	private static final SimpleDateFormat OUTPUT_FORMAT;
-	static {
-		SimpleDateFormat df = new java.text.SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
-		df.setTimeZone(TimeZone.getDefault());
-		OUTPUT_FORMAT = df;
-	}
+	private final SimpleDateFormat OUTPUT_FORMAT = DateFormat.defaultDateFormat();
 
 	/**	The appointment title. */
 	String title;
