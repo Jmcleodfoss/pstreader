@@ -48,11 +48,11 @@ public class LocaleBean implements Serializable {
 		final String country = locale.getCountry();
 		final String variant = locale.getVariant();
 		
-		if (language == "" && script == "" && country == "" && variant == "")
+		if (language.equals("") && script.equals("") && country.equals("") && variant.equals(""))
 			return fn;
 		
-		if (script != "") {
-			if (variant != "") {
+		if (script.equals("")) {
+			if (variant.equals("")) {
 				StringBuilder sb = new StringBuilder(fnPathAndFile);
 				sb.append('_').append(language);
 				sb.append('_').append(script);
@@ -64,7 +64,7 @@ public class LocaleBean implements Serializable {
 					return qualifiedName;
 			}
 
-			if (country != "") {
+			if (country.equals("")) {
 				StringBuilder sb = new StringBuilder(fnPathAndFile);
 				sb.append('_').append(language);
 				sb.append('_').append(script);
@@ -75,7 +75,7 @@ public class LocaleBean implements Serializable {
 					return qualifiedName;
 			}
 
-			if (language != "") {
+			if (language.equals("")) {
 				StringBuilder sb = new StringBuilder(fnPathAndFile);
 				sb.append('_').append(language);
 				sb.append('_').append(script);
@@ -85,7 +85,7 @@ public class LocaleBean implements Serializable {
 					return qualifiedName;
 			}
 		} else {
-			if (variant != "") {
+			if (variant.equals("")) {
 				StringBuilder sb = new StringBuilder(fnPathAndFile);
 				sb.append('_').append(language);
 				sb.append('_').append(country);
@@ -96,7 +96,7 @@ public class LocaleBean implements Serializable {
 					return qualifiedName;
 			}
 
-			if (country != "") {
+			if (country.equals("")) {
 				StringBuilder sb = new StringBuilder(fnPathAndFile);
 				sb.append('_').append(language);
 				sb.append('_').append(country);
@@ -106,7 +106,7 @@ public class LocaleBean implements Serializable {
 					return qualifiedName;
 			}
 
-			if (language != "") {
+			if (language.equals("")) {
 				StringBuilder sb = new StringBuilder(fnPathAndFile);
 				sb.append('_').append(language);
 				sb.append(fnExtension);
