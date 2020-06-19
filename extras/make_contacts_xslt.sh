@@ -29,14 +29,12 @@ cat << END_HEADER > "$outfile"
 	</xsl:template>
 
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
-		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
 		<xsl:if test="$primary_title"><xsl:value-of select="$primary_title"/></xsl:if>
 		<xsl:if test="not($primary_title)"><xsl:value-of select="$secondary_title"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
-				<!-- Skip the field we used as title -->
 			<xsl:choose>
 END_HEADER
 
