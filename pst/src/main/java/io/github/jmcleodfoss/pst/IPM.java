@@ -324,7 +324,7 @@ class IPM
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				PST pst = new PST(a);
+				final PST pst = new PST(a);
 				System.out.printf(fmtOutput, "Subject", "Container Class", "Known Container Class?");
 				showFolderMessageClasses(pst.messageStore.rootFolder, pst, fmtOutput);
 			} catch (final NotHeapNodeException e) {

@@ -230,7 +230,7 @@ public class IPF
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				PST pst = new PST(a);
+				final PST pst = new PST(a);
 				System.out.printf(fmtOutput, "Folder Name", "Container Class", "Known Container Class?");
 				for (java.util.Iterator<Folder> folderIterator = pst.messageStore.rootFolder.subfolderIterator(); folderIterator.hasNext(); ) {
 					final Folder f = folderIterator.next();
