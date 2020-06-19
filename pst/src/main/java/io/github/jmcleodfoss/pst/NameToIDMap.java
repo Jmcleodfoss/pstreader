@@ -307,7 +307,7 @@ public class NameToIDMap
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 
