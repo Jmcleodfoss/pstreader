@@ -471,11 +471,11 @@ public class BTreeOnHeap extends BTree
 			try {
 				System.out.println(a);
 
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				OutputSeparator separator = new OutputSeparator();
+				final OutputSeparator separator = new OutputSeparator();
 
 				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 				while (iterator.hasNext()) {
@@ -483,13 +483,13 @@ public class BTreeOnHeap extends BTree
 					if (!node.nid.isHeapOnNodeNID())
 						continue;
 
-					BBTEntry dataBlock = bbt.find(node.bidData);
+					final BBTEntry dataBlock = bbt.find(node.bidData);
 					if (dataBlock != null) {
 						try {
 							HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 							if (!hon.containsData() || (!hon.clientSignature().equals(ClientSignature.PropertyContext) && !hon.clientSignature().equals(ClientSignature.TableContext)))
 								continue;
-							BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
+							final BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
 
 							separator.emit(System.out);
 							System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
