@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Extract the contents of the Calendar folder from an XML file representing a PST file as an HTML file. -->
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
+
+	<!--html>
+	<body-->
+
+	<xsl:template match="/pst">
+		<html>
+		<body>
+		<h1>Calendar</h1>
+			<xsl:apply-templates select="//folder/object[MessageClassW = 'IPM.Appointment']"/>
+		</body>
+		</html>
+	</xsl:template>
+
+	<xsl:template match="//folder/object[MessageClassW = 'IPM.Appointment']">
+		<!-- if no DisplayNameW for record, use FileUnderID -->
+		<h2>
+		<xsl:if test="SubjectW"><xsl:value-of select="SubjectW"/></xsl:if>
+		<xsl:if test="not(SubjectW)"><xsl:value-of select="ConversationTopicW"/></xsl:if>
+		</h2>
+		<ul>
+		<xsl:for-each select="./*">
+				<!-- Skip the field we used as title -->
+			<xsl:choose>
+				<xsl:when test="name() = 'AllAttendeesString'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentAuxiliaryFlags'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentCounterProposal'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentLastSequence'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentMessageClass'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentNotAllowPropose'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentProposalNumber'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentProposedDuration'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentProposedEndWhole'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentProposedStartWhole'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentReplyName'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentReplyTime'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentSequence'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentSequenceTime'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentStateFlags'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentUnsendableRecipients'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AppointmentUpdateTime'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AttendeeCriticalChange'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'AutoFillLocation'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'CalendarType'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'CcAttendeesString'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ChangeHighlight'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'CleanGlobalObjectId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'DayInterval'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'DelegateMail'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'EndRecurrenceDate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'EndRecurrenceTime'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'FExceptionalAttendees'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'FExceptionalBody'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'FInvited'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ForwardInstance'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ForwardNotificationRecipients'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'FOthersAppointment'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'GlobalObjectId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'IntendedBusyStatus'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'IsException'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'IsRecurring'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'IsSilent'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'MeetingType'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'MeetingWorkspaceUrl'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'MonthInterval'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'MonthOfYearMask'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NonSendableBcc'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NonSendableCc'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NonSendableTo'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OldLocation'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OldRecurrenceType'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OldWhenEndWhole'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OldWhenStartWhole'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OptionalAttendees'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OriginalStoreEntryId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OwnerCriticalChange'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OwnerName'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'RequiredAttendees'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ResourceAttendees'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ResponseStatus'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'StartRecurrenceDate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'StartRecurrenceTime'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TimeZone'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ToAttendeesString'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'WeekInterval'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'Where'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'YearInterval'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'eExtractedMeetings'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'eMeetingDoNotForward'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+
+			</xsl:choose>
+		</xsl:for-each>
+		</ul>
+	</xsl:template>
+
+</xsl:stylesheet>
