@@ -372,7 +372,7 @@ public class PSTBean implements Serializable
 	*/
 	public SelectItem[] getExtractionTypeChoices()
 	{
-		return extractionTypeChoices;
+		return extractionTypeChoices.clone();
 	}
 
 	/**	Retrieve the maximum number of password attempts permitted.
