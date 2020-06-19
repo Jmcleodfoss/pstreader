@@ -82,7 +82,7 @@ public class TreeNodePopupListener extends java.awt.event.MouseAdapter
 		if (!lookingFor(o))
 			return;
 
-		this.clickedNode = o;
+		clickedNode = o;
 		menu.show(tree, e.getX(), e.getY());
 		menu.setVisible(true);
 	}
