@@ -24,11 +24,7 @@
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
-				<!-- Skip internal PST columns -->
-				<!-- Skip inapplicable columns which, while populated, seem to be an artefact of squeezing contact info into a message table. -->
-				<!-- Skip other pointless columns -->
 				<!-- Skip the field we used as title -->
-				<!-- Display remaining columns as an unordered list. -->
 			<xsl:choose>
 				<xsl:when test="name() = 'AddressCountryCode'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'AnniversaryEventEntryId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
