@@ -64,10 +64,10 @@ public class PSTBean implements Serializable
 	private transient final ResourceBundle rb;
 
 	/**	The actual values selected in the set of check boxes indicating what to extract. */
-	private transient List<ExtractionTypes> selectedExtractionTypes;
+	private List<ExtractionTypes> selectedExtractionTypes;
 
 	/**	The names and values of the extraction checkbox. */
-	private transient SelectItem[] extractionTypeChoices;
+	private SelectItem[] extractionTypeChoices;
 
 	/**	The uploaded PST file. */
 	private transient UploadedFile uploadedFile;
