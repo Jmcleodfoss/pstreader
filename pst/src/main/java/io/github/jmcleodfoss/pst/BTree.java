@@ -316,7 +316,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*	@param	out	The PrintStream object to write the tree to.
 	*	@param	prefix	The prefix to use when printing this node.
 	*/
-	@Deprecated
 	public void outputString(java.io.PrintStream out, final StringBuilder prefix)
 	{
 		out.println(prefix.toString() + this);
