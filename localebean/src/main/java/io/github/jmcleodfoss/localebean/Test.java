@@ -16,7 +16,7 @@ class Test
 
 		String fnFilename = iExtension >= 0 ? fn.substring(0, iExtension) : fn;
 		String fnExtension = iExtension >= 0 ? fn.substring(iExtension) : "";
-		System.out.printf(" => \"%s\" + \"%s\"\n", fnFilename, fnExtension);
+		System.out.printf(" => \"%s\" + \"%s\"%n", fnFilename, fnExtension);
 	}
 
 	/** Run test function for some fixed test cases and any input passed from the command line.
