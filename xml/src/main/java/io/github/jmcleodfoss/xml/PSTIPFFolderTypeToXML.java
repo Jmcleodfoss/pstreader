@@ -78,7 +78,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	private static void listKnownFolderTypes()
 	{
 		for (java.util.Iterator<String> iterator = knownFolderTypes.keySet().iterator(); iterator.hasNext(); )
-			System.out.printf("\t%s\n", iterator.next());
+			System.out.printf("\t%s%n", iterator.next());
 	}
 
 	/**	Extract the contents of any folders of the given type.
@@ -97,7 +97,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 		final String folderClass = args[1];
 
 		if (!knownFolderTypes.containsKey(folderClass)) {
-			System.out.printf("Folder class %s is not recognized. Known folder classes are:\n", folderClass);
+			System.out.printf("Folder class %s is not recognized. Known folder classes are:%n", folderClass);
 			listKnownFolderTypes();
 			System.exit(1);
 		}
