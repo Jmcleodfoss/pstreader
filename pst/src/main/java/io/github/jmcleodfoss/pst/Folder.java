@@ -432,6 +432,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		}
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
 				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				BlockBTree blockBTree = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
