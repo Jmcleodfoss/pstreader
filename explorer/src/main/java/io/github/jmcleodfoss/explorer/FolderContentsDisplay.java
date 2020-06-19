@@ -342,15 +342,23 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 				}
 
 			} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
-
-				attachmentText.setText(new String(attachmentObject.data(pc)));
-				attachmentDisplay = attachmentText;
-
+				try {
+					attachmentText.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
+				} catch (final java.io.UnsupportedEncodingException e) {
+					e.printStackTrace(System.out);
+					attachmentText.setText("");
+				} finally {
+					attachmentDisplay = attachmentText;
+				}
 			} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
-
-				attachmentHtml.setText(new String(attachmentObject.data(pc)));
-				attachmentDisplay = attachmentHtml;
-
+				try {
+					attachmentHtml.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
+				} catch (final java.io.UnsupportedEncodingException e) {
+					e.printStackTrace(System.out);
+					attachmentHtml.setText("");
+				} finally {
+					attachmentDisplay = attachmentHtml;
+				}
 			} else {
 				// we don't know how to display this attachment.
 			}
