@@ -153,6 +153,14 @@ class pstExplorer extends JFrame
 		explorer.listeners.add(NewFileListener.class, listener);
 	}
 
+	/**	Provide the charset to use for this file.
+	*	@return	The charset as provided by the PST object
+	*/
+	String charsetName()
+	{
+		return pst.charsetName();
+	}
+
 	/**	Broadcast the new file to all NewFileListener objects. */
 	private void fireNewFileListenerEvent()
 	{
