@@ -6,9 +6,6 @@ package io.github.jmcleodfoss.xml;
 */
 class PSTToXML
 {
-	/**	The XML document for this PST file. */
-	private org.w3c.dom.Document document;
-
 	/**	This contains named properties we know to be invalid XML, which have to be replaced for XML output. */
 	private static final java.util.HashMap<String, String> xmlSubstitutes = new java.util.HashMap<String, String>();
 	static {
