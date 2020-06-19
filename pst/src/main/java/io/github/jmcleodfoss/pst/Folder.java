@@ -437,7 +437,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree blockBTree = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				final NodeBTree nodeBTree = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-
 				final MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 				messageStore.rootFolder.show("");
 			} catch (final NotHeapNodeException e) {
