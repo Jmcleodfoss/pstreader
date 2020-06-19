@@ -29,6 +29,8 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object>
 	*/
 	public T next()
 	{
+		if (!fNext)
+			throw new java.util.NoSuchElementException();
 		fNext = false;
 		return data;
 	}
