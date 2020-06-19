@@ -227,7 +227,7 @@ public class Header
 				java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
 				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
-				Header header = new Header(mbb);
+				Final Header header = new Header(mbb);
 				System.out.println(header);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);

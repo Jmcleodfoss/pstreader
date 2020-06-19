@@ -568,11 +568,11 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 
 		for (String a: args) {
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				OutputSeparator separator = new OutputSeparator();
+				final OutputSeparator separator = new OutputSeparator();
 				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 				while (iterator.hasNext()) {
 					final NBTEntry node = (NBTEntry)iterator.next();
