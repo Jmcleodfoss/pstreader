@@ -112,8 +112,14 @@ TestPSTFile() {
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" contact
 	if [ $xsltproc_found ]; then
-		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML.xml"
-		xsltproc xslt/pst_contacts_to_html.xml "$output_dir/PSTIPFFolderTypeToXML.xml" > "$output_dir/contacts.html"
+		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-contacts.xml"
+		xsltproc xslt/pst_contacts_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-contacts.xml" > "$output_dir/contacts.html"
+	fi
+
+	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" appointment
+	if [ $xsltproc_found ]; then
+		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-meetings.xml"
+		xsltproc xslt/pst_meetings_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-meetings.xml" > "$output_dir/meetings.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTToXML "$pst"
