@@ -12,7 +12,7 @@ public class XSLTProcessor
 	public static void main(String[] args)
 	{
 		if (args.length != 2) {
-			System.out.printf("Use:\n\n\tjava %s xslt-file xml-file%n", XSLTProcessor.class.getName());
+			System.out.printf("Use:%n%n\tjava %s xslt-file xml-file%n", XSLTProcessor.class.getName());
 			System.exit(1);
 		}
 
