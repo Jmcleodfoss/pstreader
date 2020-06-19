@@ -98,7 +98,6 @@ class BlockBTree extends PagedBTree implements BlockMap
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 
 				System.out.println("Block B-tree\n____________");
-
 				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 				while (iterator.hasNext())
 					System.out.println((BBTEntry)iterator.next());
