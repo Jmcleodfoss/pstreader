@@ -35,6 +35,14 @@ public class PSTFile
 		header = new io.github.jmcleodfoss.pst.Header(mbb);
 	}
 
+	/**	Provide the name of String encoding.
+	*	@return	DataType.CHARSET_NARROW for non-Unicode files, DataType.CHARSET_WIDE for Unicode files.
+	*/
+	public String charsetName()
+	{
+		return unicode() ? DataType.CHARSET_WIDE: DataType.CHARSET_NARROW;
+	}
+
 	/**	Close the PSTFile file.
 	* 	@throws java.io.IOException	There was a problem closing the file.
 	*/
