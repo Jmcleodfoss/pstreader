@@ -468,9 +468,8 @@ public class BTreeOnHeap extends BTree
 		}
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
-				System.out.println(a);
-
 				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);

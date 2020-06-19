@@ -261,9 +261,9 @@ public class Attachment
 		}
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
-				PST pst = new PST(new java.io.FileInputStream(a), false);
-				System.out.println(a);
+				final PST pst = new PST(new java.io.FileInputStream(a), false);
 				findFolderAttachments(pst.getFolderTree(), pst);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
