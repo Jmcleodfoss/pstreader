@@ -94,7 +94,6 @@ class BlockBTree extends PagedBTree implements BlockMap
 		for (String a: args) {
 			try {
 				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 
 				System.out.println(a);
