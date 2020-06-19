@@ -38,6 +38,9 @@ import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 @SessionScoped
 public class PSTBean implements Serializable
 {
+	/**	The serialVersionUID is required because the base class is serializable. */
+	private static final long serialVersionUID = 1L;
+
 	/**	The maximum number of attempts to provide a password permitted. */
 	private static final int MAX_PASSWORD_ATTEMPTS = 3;
 
