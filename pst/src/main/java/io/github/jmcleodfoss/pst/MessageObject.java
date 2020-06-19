@@ -174,7 +174,6 @@ public class MessageObject
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				System.out.println(a);
 				final PST pst = new PST(a);
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
 			} catch (final NotHeapNodeException e) {
