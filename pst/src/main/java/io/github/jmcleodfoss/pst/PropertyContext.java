@@ -343,7 +343,7 @@ public class PropertyContext
 				// Medium-term goal is to set this based on a command line argument.
 				final boolean fShowOutput = true;
 
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 				final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
