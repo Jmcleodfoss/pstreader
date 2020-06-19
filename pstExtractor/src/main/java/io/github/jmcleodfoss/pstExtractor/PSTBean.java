@@ -463,7 +463,7 @@ public class PSTBean implements Serializable
 	*/
 	public void setSelectedExtractionTypes(List<ExtractionTypes> selectedExtractionTypes)
 	{
-		this.selectedExtractionTypes = (ArrayList<ExtractionTypes>)selectedExtractionTypes;
+		this.selectedExtractionTypes = selectedExtractionTypes;
 	}
 
 	/**	Get the required information from a PST file
