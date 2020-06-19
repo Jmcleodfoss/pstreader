@@ -643,7 +643,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			System.exit(1);
 		}
 
-		for (String a: args) {
+		for (final String a: args) {
 			System.out.println(a);
 			try {
 				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));

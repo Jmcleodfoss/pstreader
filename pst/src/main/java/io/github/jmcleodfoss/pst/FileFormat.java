@@ -77,7 +77,7 @@ class FileFormat
 			System.exit(1);
 		}
 
-		for (String a: args) {
+		for (final String a: args) {
 			try {
 				final PST pst = new PST(a);
 				System.out.printf("%s: %s%n", a, pst.unicode() ? "Unicode" : "ANSI");

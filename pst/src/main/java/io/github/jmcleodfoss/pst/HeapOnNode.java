@@ -566,7 +566,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			System.exit(1);
 		}
 
-		for (String a: args) {
+		for (final String a: args) {
 			System.out.println(a);
 			try {
 				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));

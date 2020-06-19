@@ -228,7 +228,7 @@ public class SubnodeBTree extends BTree
 			System.exit(1);
 		}
 
-		for (String a: args) {
+		for (final String a: args) {
 			System.out.println(a);
 			try {
 				OutputSeparator separator = new OutputSeparator();

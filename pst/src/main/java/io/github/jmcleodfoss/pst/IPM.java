@@ -321,7 +321,7 @@ class IPM
 
 		final String fmtOutput = "%-25s %-25s %-10s%n";
 
-		for (String a: args) {
+		for (final String a: args) {
 			System.out.println(a);
 			try {
 				final PST pst = new PST(a);

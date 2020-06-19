@@ -171,7 +171,7 @@ public class MessageObject
 			System.exit(1);
 		}
 
-		for (String a: args) {
+		for (final String a: args) {
 			System.out.println(a);
 			try {
 				final PST pst = new PST(a);
