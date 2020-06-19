@@ -646,25 +646,25 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				OutputSeparator separator = new OutputSeparator();
+				final OutputSeparator separator = new OutputSeparator();
 				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 				while (iterator.hasNext()) {
-					NBTEntry nodeDescr = (NBTEntry)iterator.next();
+					final NBTEntry nodeDescr = (NBTEntry)iterator.next();
 					if (nodeDescr.nid.type == NID.INTERNAL)
 						continue;
-					BBTEntry dataBlock = bbt.find(nodeDescr.bidData);
+					final BBTEntry dataBlock = bbt.find(nodeDescr.bidData);
 						if (dataBlock != null) {
 						try {
-							HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+							final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 							if (!hon.containsData())
 								continue;
 							if (hon.clientSignature().equals(ClientSignature.TableContext)) {
 								separator.emit(System.out);
-									TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
+								final TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
 								System.out.println("Node " + nodeDescr + "\nTableContext\n------------\n" + tc);
 								if (tc.isEmpty())
 									continue;
