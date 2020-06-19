@@ -172,6 +172,7 @@ public class MessageObject
 		}
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
 				System.out.println(a);
 				PST pst = new PST(a);
