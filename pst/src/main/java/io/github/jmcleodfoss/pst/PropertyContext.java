@@ -336,7 +336,7 @@ public class PropertyContext
 		}
 
 
-		for (String a: args) {
+		for (final String a: args) {
 			System.out.println(a);
 			try {
 				// Suppresing output can dramatically increase the speed of this function, while still showing any exceptions raised.
@@ -348,7 +348,7 @@ public class PropertyContext
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 				final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
 
-				OutputSeparator separator = new OutputSeparator();
+				final OutputSeparator separator = new OutputSeparator();
 
 				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 				while (iterator.hasNext()) {
@@ -361,7 +361,7 @@ public class PropertyContext
 						continue;
 
 					// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
-					HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+					final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 					if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
 						continue;
 
@@ -375,7 +375,7 @@ public class PropertyContext
 							final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
 							final int key = entry.getKey();
 							final String name = namedProperties.name(key);
-							Object value = pc.get(key);
+							final Object value = pc.get(key);
 							final String s = value != null ? DataType.makeString(key, value) : null;
 							System.out.printf("0x%08x %s \"%s\"%n", key, name, value);
 						}
