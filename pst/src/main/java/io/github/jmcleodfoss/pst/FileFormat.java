@@ -79,7 +79,7 @@ class FileFormat
 
 		for (String a: args) {
 			try {
-				PST pst = new PST(a);
+				final PST pst = new PST(a);
 				System.out.printf("%s: %s%n", a, pst.unicode() ? "Unicode" : "ANSI");
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
