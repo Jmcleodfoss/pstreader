@@ -61,40 +61,40 @@ public class PSTBean implements Serializable
 	}
 
 	/**	Text resources used by this bean. */
-	private final ResourceBundle rb;
+	private transient final ResourceBundle rb;
 
 	/**	The actual values selected in the set of check boxes indicating what to extract. */
-	private List<ExtractionTypes> selectedExtractionTypes;
+	private transient List<ExtractionTypes> selectedExtractionTypes;
 
 	/**	The names and values of the extraction checkbox. */
-	private SelectItem[] extractionTypeChoices;
+	private transient SelectItem[] extractionTypeChoices;
 
 	/**	The uploaded PST file. */
-	private UploadedFile uploadedFile;
+	private transient UploadedFile uploadedFile;
 
 	/**	The password for the PST file. */
-	private String password;
+	private transient String password;
 
 	/**	The appointments in this PST file. */
-	private MessageObjectCollectionBean<AppointmentBean> appointments;
+	private transient MessageObjectCollectionBean<AppointmentBean> appointments;
 
 	/**	The contacts in this PST file. */
-	private MessageObjectCollectionBean<ContactBean> contacts;
+	private transient MessageObjectCollectionBean<ContactBean> contacts;
 
 	/**	The journal entries in this PST file. */
-	private MessageObjectCollectionBean<JournalEntryBean> journalEntries;
+	private transient MessageObjectCollectionBean<JournalEntryBean> journalEntries;
 
 	/**	The sticky notes in this PST file. */
-	private MessageObjectCollectionBean<StickyNoteBean> stickyNotes;
+	private transient MessageObjectCollectionBean<StickyNoteBean> stickyNotes;
 
 	/**	The tasks in this PST file. */
-	private MessageObjectCollectionBean<TaskBean> tasks;
+	private transient MessageObjectCollectionBean<TaskBean> tasks;
 
 	/**	The PST file. */
-	private PST pst;
+	private transient PST pst;
 
 	/**	The number of attempts to provide a password. */
-	private int numPasswordAttempts;
+	private transient int numPasswordAttempts;
 
 	/**	Create a bean for communication between the form and the servlet. */
 	public PSTBean()
