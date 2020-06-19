@@ -123,8 +123,7 @@ class NodeBTree extends PagedBTree implements NodeMap
 		for (String a: args) {
 			System.out.println(a);
 			try {
-				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-
+				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
 				System.out.println("Node B-tree\n___________");
