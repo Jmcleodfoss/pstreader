@@ -75,6 +75,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 		}
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
 				PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
 
