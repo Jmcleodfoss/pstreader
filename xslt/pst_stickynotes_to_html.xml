@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Extract the contents of the Notes folder from an XML file representing a PST file as an HTML file. -->
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
+
+	<!--html>
+	<body-->
+
+	<xsl:template match="/pst">
+		<html>
+		<body>
+		<h1>Sticky</h1>
+			<xsl:apply-templates select="//folder/object[MessageClassW = 'IPM.StickyNote']"/>
+		</body>
+		</html>
+	</xsl:template>
+
+	<xsl:template match="//folder/object[MessageClassW = 'IPM.StickyNote']">
+		<h2>
+		<xsl:if test="BodyW"><xsl:value-of select="BodyW"/></xsl:if>
+		</h2>
+		<ul>
+		<xsl:for-each select="./*">
+			<!-- Skip the field we used as title -->
+			<xsl:choose>
+				<xsl:when test="name() = 'BodyW'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NoteColor'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NoteHeight'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NoteWidth'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NoteX'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'NoteY'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+
+			</xsl:choose>
+		</xsl:for-each>
+		</ul>
+	</xsl:template>
+
+</xsl:stylesheet>
