@@ -36,7 +36,6 @@ cat << END_HEADER > "$outfile"
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
-				<!-- Skip the field we used as title -->
 			<xsl:choose>
 END_HEADER
 
