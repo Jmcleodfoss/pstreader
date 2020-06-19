@@ -488,7 +488,6 @@ public class PSTBean implements Serializable
 		java.io.IOException
 	{
 		Folder rootFolder = pst.getFolderTree();
-		TableContext rootHierarchyTable = new TableContext(rootFolder.nodeHierarchyTable, pst.blockBTree, pst);
 
 		appointments.requested = selectedExtractionTypes.contains(ExtractionTypes.APPOINTMENTS);
 		contacts.requested = selectedExtractionTypes.contains(ExtractionTypes.CONTACTS);
