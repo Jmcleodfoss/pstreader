@@ -337,6 +337,7 @@ public class PropertyContext
 
 
 		for (String a: args) {
+			System.out.println(a);
 			try {
 				// Suppresing output can dramatically increase the speed of this function, while still showing any exceptions raised.
 				// Medium-term goal is to set this based on a command line argument.
