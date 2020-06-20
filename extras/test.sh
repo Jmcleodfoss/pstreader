@@ -128,6 +128,12 @@ TestPSTFile() {
 		xsltproc xslt/pst_note_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-note.xml" > "$output_dir/note.html"
 	fi
 
+	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" stickynote
+	if [ $xsltproc_found ]; then
+		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-stickynotes.xml"
+		xsltproc xslt/pst_stickynotes_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-stickynotes.xml" > "$output_dir/stickynotes.html"
+	fi
+
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" task
 	if [ $xsltproc_found ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-task.xml"
