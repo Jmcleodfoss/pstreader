@@ -26,7 +26,7 @@ cat << END_HEADER > "$outfile"
 
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
 		<h2>
-		<xsl:if test="$entry_title"><xsl:value-of select="substring-after(./$entry_title,'&amp;#01;&amp;#01;')"/></xsl:if>
+			<xsl:if test="$entry_title"><xsl:value-of select="substring-after(./$entry_title,'&amp;#01;&amp;#01;')"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
