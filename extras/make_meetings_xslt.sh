@@ -6,8 +6,7 @@ declare -r title=Calendar
 declare -r message_class=IPM.Appointment
 declare -r area=Meetings
 declare -r version=190618
-declare -r primary_title=SubjectW
-declare -r secondary_title=ConversationTopicW
+declare -r primary_title=ConversationTopicW
 
 cat << END_HEADER > "$outfile"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -29,7 +28,6 @@ cat << END_HEADER > "$outfile"
 		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
 		<xsl:if test="$primary_title"><xsl:value-of select="$primary_title"/></xsl:if>
-		<xsl:if test="not($primary_title)"><xsl:value-of select="$secondary_title"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
