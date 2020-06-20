@@ -2,12 +2,11 @@
 declare -r sourcefile=~/work/ms-oxprops-db/releases/1.0.0/ms-oxprops-2020-05-25.csv
 declare -r outfile=pst_tasks_to_html.xml
 declare -r folder_name=Tasks
-declare -r title=Tasks
+declare -r page_title=Tasks
 declare -r message_class=IPM.Task
 declare -r area=Tasks
 declare -r version=190618
-declare -r primary_title=SubjectW
-# No secondary title for tasks
+declare -r entry_title=SubjectW
 
 cat << END_HEADER > "$outfile"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -19,7 +18,7 @@ cat << END_HEADER > "$outfile"
 	<xsl:template match="/pst">
 		<html>
 		<body>
-		<h1>$title</h1>
+		<h1>$page_title</h1>
 			<xsl:apply-templates select="//folder/object[MessageClassW = '$message_class']"/>
 		</body>
 		</html>
@@ -27,7 +26,7 @@ cat << END_HEADER > "$outfile"
 
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
 		<h2>
-		<xsl:if test="$primary_title"><xsl:value-of select="substring-after(./$primary_title,'&amp;#01;&amp;#01;')"/></xsl:if>
+		<xsl:if test="$entry_title"><xsl:value-of select="substring-after(./$entry_title,'&amp;#01;&amp;#01;')"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
