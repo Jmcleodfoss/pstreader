@@ -1,10 +1,14 @@
 To Do List
 ----------
-- Error log level for some of the places where exceptions happen (April 16, 2011)
 - Acquire test pst file containing a Server ID property (PidTagDeferredActionMessageOriginalEntryId,PTagSentMailSvrEID), and implement reading in Server ID (November 24, 2019)
 - Acquire test pst file containing a Restriction property (PidTagRuleCondition), and implement reading in Server ID (November 24, 2019)
 - Acquire test pst file containing a Rule property (PidTagRuleActions), and implement reading in Server ID (November 24, 2019)
 - Throw exceptions for more unexpected conditions (May 3, 2011)
+
+Dropped
+-------
+- Error log level for some of the places where exceptions happen (April 16, 2011)
+	- I eliminated all logging this week so this no longer applies
 
 Done
 ----
