@@ -27,7 +27,7 @@ cat << END_HEADER > "$outfile"
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
 		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
-		<xsl:if test="$entry_title"><xsl:value-of select="$entry_title"/></xsl:if>
+			<xsl:if test="$entry_title"><xsl:value-of select="$entry_title"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
@@ -37,7 +37,6 @@ END_HEADER
 cat "$sourcefile" | grep -e "PidTagSubject,.*$version" -e "$area.*$version\$" | cut "-d," -f 1 | cut '-d"' -f 2 |sed "/^Pid...\(.*\)$/s//\t\t\t\t<xsl:when test=\"name() = \'\1\'\"><li><xsl:value-of select=\"name()\"\/>: <xsl:value-of select=\".\"\/><\/li><\/xsl:when>/" >> "$outfile"
 
 cat << END_FOOTER >> "$outfile"
-
 			</xsl:choose>
 		</xsl:for-each>
 		</ul>
