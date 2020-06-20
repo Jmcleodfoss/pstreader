@@ -25,7 +25,6 @@ cat << END_HEADER > "$outfile"
 	</xsl:template>
 
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
-		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
 			<xsl:if test="$entry_title"><xsl:value-of select="$entry_title"/></xsl:if>
 		</h2>
