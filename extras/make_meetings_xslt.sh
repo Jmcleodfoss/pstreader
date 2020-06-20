@@ -2,11 +2,11 @@
 declare -r sourcefile=~/work/ms-oxprops-db/releases/1.0.0/ms-oxprops-2020-05-25.csv
 declare -r outfile=pst_meetings_to_html.xml
 declare -r folder_name=Calendar
-declare -r title=Calendar
+declare -r page_title=Calendar
 declare -r message_class=IPM.Appointment
 declare -r area=Meetings
 declare -r version=190618
-declare -r primary_title=ConversationTopicW
+declare -r entry_title=ConversationTopicW
 
 cat << END_HEADER > "$outfile"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -18,7 +18,7 @@ cat << END_HEADER > "$outfile"
 	<xsl:template match="/pst">
 		<html>
 		<body>
-		<h1>$title</h1>
+		<h1>$page_title</h1>
 			<xsl:apply-templates select="//folder/object[MessageClassW = '$message_class']"/>
 		</body>
 		</html>
@@ -27,7 +27,7 @@ cat << END_HEADER > "$outfile"
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
 		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
-		<xsl:if test="$primary_title"><xsl:value-of select="$primary_title"/></xsl:if>
+		<xsl:if test="$entry_title"><xsl:value-of select="$entry_title"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
