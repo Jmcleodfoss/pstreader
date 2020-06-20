@@ -7,6 +7,7 @@ declare -r message_class=IPM.Task
 declare -r area=Tasks
 declare -r version=190618
 declare -r primary_title=SubjectW
+# No secondary title for tasks
 
 cat << END_HEADER > "$outfile"
 <?xml version="1.0" encoding="UTF-8"?>
