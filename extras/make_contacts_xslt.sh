@@ -7,7 +7,7 @@ declare -r message_class=IPM.Contact
 declare -r area=Contact Properties
 declare -r version=190618
 declare -r primary_title=DisplayNameW
-declare -r secondary_title=FileUnderID
+declare -r secondary_title=SubjectW
 
 cat << END_HEADER > "$outfile"
 <?xml version="1.0" encoding="UTF-8"?>
