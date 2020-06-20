@@ -4,9 +4,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
 
-	<!--html>
-	<body-->
-
 	<xsl:template match="/pst">
 		<html>
 		<body>
@@ -17,14 +14,14 @@
 	</xsl:template>
 
 	<xsl:template match="//folder/object[MessageClassW = 'IPM.Contact']">
-		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
-		<xsl:if test="DisplayNameW"><xsl:value-of select="DisplayNameW"/></xsl:if>
-		<xsl:if test="not(DisplayNameW)"><xsl:value-of select="FileUnderID"/></xsl:if>
+			<xsl:if test="SubjectW">
+				<xsl:if test="starts-with(./SubjectW,'&amp;#01;&amp;#01;')"><xsl:value-of select="substring-after(./SubjectW,'&amp;#01;&amp;#01;')"/></xsl:if>
+				<xsl:if test="not(starts-with(./SubjectW,'&amp;'))"><xsl:value-of select="SubjectW"/></xsl:if>
+			</xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
-				<!-- Skip the field we used as title -->
 			<xsl:choose>
 				<xsl:when test="name() = 'AddressBookProviderArrayType'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'AddressBookProviderEmailList'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
@@ -135,7 +132,6 @@
 				<xsl:when test="name() = 'IpmContactEntryId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'JunkIncludeContacts'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'OscSyncEnabled'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
-
 			</xsl:choose>
 		</xsl:for-each>
 		</ul>

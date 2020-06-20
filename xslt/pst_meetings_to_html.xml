@@ -4,9 +4,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
 
-	<!--html>
-	<body-->
-
 	<xsl:template match="/pst">
 		<html>
 		<body>
@@ -17,14 +14,11 @@
 	</xsl:template>
 
 	<xsl:template match="//folder/object[MessageClassW = 'IPM.Appointment']">
-		<!-- if no DisplayNameW for record, use FileUnderID -->
 		<h2>
-		<xsl:if test="SubjectW"><xsl:value-of select="SubjectW"/></xsl:if>
-		<xsl:if test="not(SubjectW)"><xsl:value-of select="ConversationTopicW"/></xsl:if>
+			<xsl:if test="ConversationTopicW"><xsl:value-of select="ConversationTopicW"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
-				<!-- Skip the field we used as title -->
 			<xsl:choose>
 				<xsl:when test="name() = 'AllAttendeesString'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'AppointmentAuxiliaryFlags'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
@@ -91,7 +85,6 @@
 				<xsl:when test="name() = 'YearInterval'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'eExtractedMeetings'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 				<xsl:when test="name() = 'eMeetingDoNotForward'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
-
 			</xsl:choose>
 		</xsl:for-each>
 		</ul>
