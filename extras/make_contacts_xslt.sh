@@ -18,7 +18,7 @@ cat << END_HEADER > "$outfile"
 	<xsl:template match="/pst">
 		<html>
 		<body>
-		<h1>page_title</h1>
+		<h1>$page_title</h1>
 			<xsl:apply-templates select="//folder/object[MessageClassW = '$message_class']"/>
 		</body>
 		</html>
