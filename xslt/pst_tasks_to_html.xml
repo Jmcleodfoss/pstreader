@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Extract the contents of the Tasks folder from an XML file representing a PST file as an HTML file. -->
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
+
+	<xsl:template match="/pst">
+		<html>
+		<body>
+		<h1>Tasks</h1>
+			<xsl:apply-templates select="//folder/object[MessageClassW = 'IPM.Task']"/>
+		</body>
+		</html>
+	</xsl:template>
+
+	<xsl:template match="//folder/object[MessageClassW = 'IPM.Task']">
+		<h2>
+		<xsl:if test="SubjectW"><xsl:value-of select="substring-after(./SubjectW,'&amp;#01;&amp;#01;')"/></xsl:if>
+		</h2>
+		<ul>
+		<xsl:for-each select="./*">
+			<xsl:choose>
+				<xsl:when test="name() = 'FlagString'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'LinkedTaskItems'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'PercentComplete'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskAcceptanceState'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskAccepted'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskActualEffort'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskAssigner'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskAssigners'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskComplete'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskCustomFlags'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskDateCompleted'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskDeadOccurrence'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskDueDate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskEstimatedEffort'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskFCreator'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskFFixOffline'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskFRecurring'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskGlobalId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskHistory'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskLastDelegate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskLastUpdate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskLastUser'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskMode'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskMultipleRecipients'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskNoCompute'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskOrdinal'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskOwner'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskOwnership'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskRecurrence'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskResetReminder'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskRole'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskStartDate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskState'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskStatus'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskStatusOnComplete'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskUpdates'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TaskVersion'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'TeamTask'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ToDoOrdinalDate'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ToDoSubOrdinal'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ToDoTitle'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'ValidFlagStringProof'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'eExtractedTasks'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'IpmTaskEntryId'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+				<xsl:when test="name() = 'OrdinalMost'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
+			</xsl:choose>
+		</xsl:for-each>
+		</ul>
+	</xsl:template>
+
+</xsl:stylesheet>

@@ -122,6 +122,12 @@ TestPSTFile() {
 		xsltproc xslt/pst_meetings_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-meetings.xml" > "$output_dir/meetings.html"
 	fi
 
+	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" task
+	if [ $xsltproc_found ]; then
+		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-task.xml"
+#		xsltproc xslt/pst_task_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-task.xml" > "$output_dir/task.html"
+	fi
+
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTToXML "$pst"
 	if [ $xsltproc_found ]; then
 		mv "$output_dir/PSTToXML.out" "$output_dir/PSTToXML.xml"
