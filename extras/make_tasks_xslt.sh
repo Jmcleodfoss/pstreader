@@ -26,7 +26,10 @@ cat << END_HEADER > "$outfile"
 
 	<xsl:template match="//folder/object[MessageClassW = '$message_class']">
 		<h2>
-			<xsl:if test="$entry_title"><xsl:value-of select="substring-after(./$entry_title,'&amp;#01;&amp;#01;')"/></xsl:if>
+			<xsl:if test="$entry_title">
+				<xsl:if test="starts-with(./$entry_title,'&amp;#01;&amp;#01;')"><xsl:value-of select="substring-after(./$entry_title,'&amp;#01;&amp;#01;')"/></xsl:if>
+				<xsl:if test="not(starts-with(./$entry_title,'&amp;'))"><xsl:value-of select="$entry_title"/></xsl:if>
+			</xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
