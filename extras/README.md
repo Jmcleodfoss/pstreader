@@ -2,7 +2,7 @@
 This contains scripts, a database, and some notes that don't fit anywhere else
 
 ## extract_properties_from_java.pl
-This file was used to pull existing property definitions out of the pst project's Java files for the (ms-oxprops-db)[https://github.com/Jmcleodfoss/ms-oxprops-db].
+This file was used to pull existing property definitions out of the pst project's Java files for the [ms-oxprops-db([https://github.com/Jmcleodfoss/ms-oxprops-db).
 It will never need to be run again. It is here for now as a historical artifact.
 
 ## getpropertylids.sh
