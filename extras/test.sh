@@ -125,7 +125,7 @@ TestPSTFile() {
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" note
 	if [ $xsltproc_found ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-note.xml"
-		xsltproc xslt/pst_note_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-note.xml" > "$output_dir/note.html"
+		xsltproc xslt/pst_notes_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-note.xml" > "$output_dir/note.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" stickynote
@@ -137,7 +137,7 @@ TestPSTFile() {
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" task
 	if [ $xsltproc_found ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-task.xml"
-		xsltproc xslt/pst_task_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-task.xml" > "$output_dir/task.html"
+		xsltproc xslt/pst_tasks_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-task.xml" > "$output_dir/task.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTToXML "$pst"
