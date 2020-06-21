@@ -35,6 +35,7 @@ See
 These are all in the xml.jar package.
 See [xml library README](xml/README.md).
 Note: this artifact is not in Maven Central so its Javadoc is not publicly available.
+There are also xslt transformation files to convert various outputs from the XML applications into HTML.
 
 ### Explorer Application
 A stand-alone example application for browsing PST files
@@ -45,6 +46,6 @@ See
 * [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.1.0/)
 
 ### pstExtractor Web Servlet
-A servlet which allows you to upload a file and then browse through it
+A JSF servlet which allows you to upload a file and then browse through it
 See [pstExtractor README](pstExtractor/README.md).
 Note: this artifact is not in Maven Central so its Javadoc is not publicly available.
