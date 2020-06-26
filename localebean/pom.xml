@@ -48,4 +48,33 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<additionalDependencies>
+						<additionalDependency>
+							<groupId>javax.enterprise</groupId>
+							<artifactId>cdi-api</artifactId>
+							<version>2.0</version>
+						</additionalDependency>
+						<additionalDependency>
+							<groupId>javax.inject</groupId>
+							<artifactId>javax.inject</artifactId>
+							<version>1</version>
+						</additionalDependency>
+						<additionalDependency>
+							<groupId>javax</groupId>
+							<artifactId>javaee-web-api</artifactId>
+							<version>8.0</version>
+						</additionalDependency>
+					</additionalDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
