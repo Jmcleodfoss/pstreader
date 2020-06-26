@@ -22,7 +22,7 @@ import io.github.jmcleodfoss.pst.PST;
 /**	The pstExplorer class provides a GUI for viewing PST files.
 */
 @SuppressWarnings("serial")
-class pstExplorer extends JFrame
+public class pstExplorer extends JFrame
 {
 	/**	This governs logging of some internal debugging information. */
 	private boolean fDebug = true;
