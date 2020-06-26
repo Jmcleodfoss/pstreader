@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>io.github.jmcleodfoss</groupId>
 		<artifactId>pst-parent</artifactId>
-		<version>1.1.1</version>
+		<version>1.1.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -18,12 +18,12 @@
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>localebean</artifactId>
-			<version>1.1.1</version>
+			<version>1.1.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>pst</artifactId>
-			<version>1.1.1</version>
+			<version>1.1.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.enterprise</groupId>
@@ -96,7 +96,7 @@
 						<additionalDependency>
 							<groupId>io.github.jmcleodfoss</groupId>
 							<artifactId>pst</artifactId>
-							<version>1.1.1</version>
+							<version>1.1.2-SNAPSHOT</version>
 						</additionalDependency>
 						<additionalDependency>
 							<groupId>javax.enterprise</groupId>
