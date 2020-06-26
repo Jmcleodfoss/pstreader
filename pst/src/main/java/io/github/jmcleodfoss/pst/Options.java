@@ -19,7 +19,7 @@ public class Options
 	}
 
 	/**	Control whether to throw an exception on finding non-heap-node block signatures in a Node Header.
-	*	@oaran	newValue	The new value to set {@link strictHeapNodes} to
+	*	@param	newValue	The new value to set {@link strictHeapNodes} to
 	*	@see	HeapOnNode.Header#Header
 	*/
 	public static void setStrictHeapNodes(boolean newValue)
