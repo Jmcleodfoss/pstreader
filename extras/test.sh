@@ -67,7 +67,6 @@ TestPSTIndependentModule() {
 	declare output=$results_dir/${class#io.github.jmcleodfoss.*.*}.out
 	echo "
 "`date +%H:%M:%S`": starting $class test" >> $stats
-echo "java $options -cp $cp $class $@ > $output"
 	java $options -cp "$cp" $class "$@" > "$output"
 	echo `date +%H:%M:%S`": done $class test" >> $stats
 }
