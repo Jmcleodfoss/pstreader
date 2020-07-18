@@ -28,7 +28,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			dc = new DataContainer();
 			for (DataDefinition[] f : fields)
 				dc.read(pstFile.mbb, f);
-
 			this.pstFile = pstFile;
 		}
 
@@ -74,7 +73,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			java.io.IOException;
 
 		/**	Convenience method to provide file format.
-		*	@return	true if the PST file being processed is a Unicode PST file, false if it is ANSE.
+		*	@return	true if the PST file being processed is a Unicode PST file, false if it is ANSI.
 		*/
 		protected boolean unicode()
 		{
