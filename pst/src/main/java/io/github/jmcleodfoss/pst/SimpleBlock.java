@@ -118,7 +118,7 @@ class SimpleBlock extends BlockBase
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 		final BlockTrailer trailer = new BlockTrailer(pstFile);
 		if (Options.checkCRC && crcCalculated != trailer.crc)
-			throw new RuntimeException("Block CRC "  + Integer.toHexString(trailer.crc) + " does not match calculated value " + Integer.toHexString(crcCalculated));
+			throw new RuntimeException("Block " + entry + "Block CRC "  + Integer.toHexString(trailer.crc) + " does not match calculated value " + Integer.toHexString(crcCalculated));
 	}
 
 	/**	Retrieve the data from this SimpleBlock.
