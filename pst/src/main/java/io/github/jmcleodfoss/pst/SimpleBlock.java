@@ -103,12 +103,10 @@ class SimpleBlock extends BlockBase
 	throws
 		java.io.IOException
 	{
+		byte data[] = new byte[entry.numBytes];
 		pstFile.position(entry.bref.ib.ib);
+		pstFile.mbb.get(data);
 
-		DataDefinition dataField = new DataDefinition(nm_data, new DataType.SizedByteArray(entry.numBytes), true);
-		DataContainer dc = new DataContainer();
-		dc.read(pstFile.mbb, dataField);
-		data = (byte[])dc.get(nm_data);
 		int crcCalculated = 0;
 		if (Options.checkCRC)
 			crcCalculated = CRC.crc(PST.makeByteBuffer(data), 0, data.length);
