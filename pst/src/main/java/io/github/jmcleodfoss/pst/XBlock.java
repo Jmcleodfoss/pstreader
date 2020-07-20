@@ -105,8 +105,9 @@ class XBlock extends BlockBase
 		this.bid = bid;
 
 		final int blockSize = blockSize(entry.numBytes, pstFile);
-		DataDefinition paddingField = new DataDefinition(nm_padding, new DataType.SizedByteArray(blockSize-entry.numBytes-BlockTrailer.size(pstFile)), false);
-		dc.read(pstFile.mbb, paddingField);
+		final int bytesToSkip = blockSize-entry.numBytes - BlockTrailer.size(pstFile);
+		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
+
 		new BlockTrailer(pstFile);
 
 		if (level == 1) {

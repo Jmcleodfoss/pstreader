@@ -20,9 +20,6 @@ abstract class BlockBase
 	/**	Hash key for the data read within the block. */
 	protected static final String nm_data = "data";
 
-	/**	Hash key for the padding after the data within the block. */
-	protected static final String nm_padding = "padding";
-
 	/**	Obtain the data within this block, returned as an array of bytes.
 	*	@return	The contents of the block, as an array of bytes.
 	*/
