@@ -110,11 +110,13 @@ class SimpleBlock extends BlockBase
 		int crcCalculated = 0;
 		if (Options.checkCRC)
 			crcCalculated = CRC.crc(PST.makeByteBuffer(data), 0, data.length);
+
 		encryption.translate(data, (int)(entry.bref.bid.key() & 0xffffffff));
 
 		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 		final BlockTrailer trailer = new BlockTrailer(pstFile);
+
 		if (Options.checkCRC && crcCalculated != trailer.crc)
 			throw new RuntimeException("Block " + entry + " CRC "  + Integer.toHexString(trailer.crc) + " does not match calculated value " + Integer.toHexString(crcCalculated));
 	}
