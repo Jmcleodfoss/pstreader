@@ -141,7 +141,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		{
 			DataContainer dc = new DataContainer();
 			dc.read(stream, fields);
-			ibHnpm = (Short)dc.get(nm_ibHnpm);
+			ibHnpm = 0xffff & (Short)dc.get(nm_ibHnpm);
 		}
 	}
 
@@ -194,7 +194,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		{
 			DataContainer dc = new DataContainer();
 			dc.read(stream, fields);
-			ibHnpm = 0x0000ffff & (Short)dc.get(nm_ibHnpm);
+			ibHnpm = 0xffff & (Short)dc.get(nm_ibHnpm);
 			byte blockSignature = (Byte)dc.get(nm_bSig);
 			if (blockSignature != HN_SIGNATURE && Options.strictHeapNodes)
 				throw new NotHeapNodeException(blockSignature);
@@ -292,7 +292,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		{
 			DataContainer dc = new DataContainer();
 			dc.read(stream, hdr_field);
-			ibHnpm = (Short)dc.get(nm_ibHnpm);
+			ibHnpm = 0xffff & (Short)dc.get(nm_ibHnpm);
 		}
 	};
 
