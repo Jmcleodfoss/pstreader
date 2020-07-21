@@ -46,8 +46,23 @@ public class MessageStore
 		messageStore = new PropertyContext(nbt.find(NID.NID_MESSAGE_STORE), bbt, pstFile);
 
 		passwordHashed = (Integer)messageStore.get(PropertyTags.LtpPstPassword);
-		EntryID rootMailboxEntry = new EntryID((byte[])messageStore.get(PropertyTags.IpmSubTreeEntryId));
-		rootFolder = Folder.getFolderTree(nbt.find(rootMailboxEntry.nid), bbt, nbt, pstFile);
+
+		NID rootNID = null;
+		if (messageStore.containsKey(PropertyTags.IpmSubTreeEntryId)) {
+			EntryID rootEntryId = new EntryID((byte[])messageStore.get(PropertyTags.IpmSubTreeEntryId));
+			rootNID = rootEntryId.nid;
+		} else {
+			// OST files do not have the UpmSubTreeEntryId; find the root NID by looking for the NBT entry which is its own parent.
+			java.util.Iterator<BTreeNode> iterator = ((NodeBTree)nbt).iterator();
+			while (iterator.hasNext()) {
+				final NBTEntry entry = (NBTEntry)iterator.next();
+				if (entry.nid.equals(entry.nidParent)){
+					rootNID = entry.nid;
+				}
+			}
+		}
+
+		rootFolder = Folder.getFolderTree(nbt.find(rootNID), bbt, nbt, pstFile);
 	}
 
 	/**	Check whether the given password matches the stored password.
