@@ -15,10 +15,6 @@ public class MessageStore
 	private final int passwordHashed;
 
 	/**	The root folder. */
-	@Deprecated
-	public final EntryID rootMailboxEntry;
-
-	/**	The root folder. */
 	public final Folder rootFolder;
 
 	/**	Create a message store object by reading in the message store node.
@@ -50,7 +46,7 @@ public class MessageStore
 		messageStore = new PropertyContext(nbt.find(NID.NID_MESSAGE_STORE), bbt, pstFile);
 
 		passwordHashed = (Integer)messageStore.get(PropertyTags.LtpPstPassword);
-		rootMailboxEntry = new EntryID((byte[])messageStore.get(PropertyTags.IpmSubTreeEntryId));
+		EntryID rootMailboxEntry = new EntryID((byte[])messageStore.get(PropertyTags.IpmSubTreeEntryId));
 		rootFolder = Folder.getFolderTree(nbt.find(rootMailboxEntry.nid), bbt, nbt, pstFile);
 	}
 
