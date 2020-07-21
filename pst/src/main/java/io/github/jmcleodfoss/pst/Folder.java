@@ -54,6 +54,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	/**	The hierarchy table node info. */
 	public final NBTEntry nodeHierarchyTable;
 
+	/**	The contents table node info. */
+	public final NBTEntry nodeContentsTable;
+
 	/**	The associated contents table node info. */
 	public final NBTEntry nodeAssociatedContentsTable;
 
@@ -113,12 +116,13 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 
 		if ((Integer)folderObject.get(PropertyTags.ContentCount) > 0 && fReadContents) {
 			NID nidContentsTable = new NID(nodeFolderObject.nid, NID.CONTENTS_TABLE);
-			NBTEntry nodeContentsTable = nbt.find(nidContentsTable);
+			nodeContentsTable = nbt.find(nidContentsTable);
 			if (nodeContentsTable != null)
 				contents = readContents(nodeContentsTable, bbt, nbt, pstFile);
 			else
 				contents = new java.util.Vector<MessageObject>();
 		} else {
+			nodeContentsTable = null;
 			contents = new java.util.Vector<MessageObject>();
 		}
 
