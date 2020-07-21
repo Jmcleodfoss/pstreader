@@ -114,7 +114,10 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		if ((Integer)folderObject.get(PropertyTags.ContentCount) > 0 && fReadContents) {
 			NID nidContentsTable = new NID(nodeFolderObject.nid, NID.CONTENTS_TABLE);
 			NBTEntry nodeContentsTable = nbt.find(nidContentsTable);
-			contents = readContents(nodeContentsTable, bbt, nbt, pstFile);
+			if (nodeContentsTable != null)
+				contents = readContents(nodeContentsTable, bbt, nbt, pstFile);
+			else
+				contents = new java.util.Vector<MessageObject>();
 		} else {
 			contents = new java.util.Vector<MessageObject>();
 		}
