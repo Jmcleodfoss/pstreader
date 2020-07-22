@@ -3,9 +3,63 @@ package io.github.jmcleodfoss.pst;
 /**	The FileFormat class contains the file format (ANSI or Unicode) of the PST file.
 *	@see	Header
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/c9876f5a-664b-46a3-9887-ba63f113abf5">MS-PST Section 2.2.2.6: Header</a>
+*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
 */
 class FileFormat
 {
+	/**	Internal indexes used to describe versions of files (to govern certain object sizes) */
+	enum Index {
+		/**	The original ANSI file type - not tested for this library due to lack of availability. */
+		ANSI(0),
+
+		/**	The modern UNICODE file type. */
+		UNICODE(1),
+
+		/**	An OST file from 2013 on.
+		*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+		*/
+		OST_2013(2);
+
+		/** An index into arrays where each entry corresponds to a file type (some data definitions, for example) */
+		private final int index;
+
+		/** Initialize the index.
+		*	@param	The index this value maps to.
+		*/
+		Index(int index)
+		{
+			this.index = index;
+		}
+
+		/** Retrive the index for this enum value.
+		*	@return	THe index for this value.
+		*/
+		int getIndex()
+		{
+			return index;
+		}
+
+		/** Provide a String for display
+		*	@return	A String describing the enum object.
+		*/
+		public String toString()
+		{
+			switch(this){
+			case ANSI:
+				return "ANSI";
+
+			case UNICODE:
+				return "Unicode";
+
+			case OST_2013:
+				return "OST-2013";
+
+			default:
+				return "Unknown";
+			}
+		}
+	}
+
 	/**	The UnknnownFileFormatVersionException is thrown if one tries to create an FileFormat object with an invalid value for
 	*	the file format.
 	*/
@@ -26,22 +80,36 @@ class FileFormat
 	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
 	*	@see	#VER_ANSI_2
 	*	@see	#VER_UNICODE_MIN
+	*	@see	#VER_OST_2013
 	*/
 	private static final short VER_ANSI_1 = 14;
 
 	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
 	*	@see	#VER_ANSI_1
 	*	@see	#VER_UNICODE_MIN
+	*	@see	#VER_OST_2013
 	*/
 	private static final short VER_ANSI_2 = 15;
 
 	/**	The value indicating that this is an Unicode PST file.
 	*	@see	#VER_ANSI_1
 	*	@see	#VER_ANSI_2
+	*	@see	#VER_OST_2013
 	*/
 	private static final short VER_UNICODE_MIN = 23;
 
-	/**	A flag indicating whether the file is Unicode. If it isn't Unicode, it must be ANSI. */
+	/**	The value indicating that this is an OST-2013 file
+	*	@see <a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+	*	@see	#VER_ANSI_1
+	*	@see	#VER_ANSI_2
+	*	@see	#VER_UNICODE_MIN
+	*/
+	private static final short VER_OST_2013 = 36;
+
+	/**	The file type index for the current file. */
+	final Index index;
+
+	/**	A flag indicating whether the file uses wide tesxt. If it isn't Unicode, it must be ANSI. */
 	final boolean fUnicode;
 
 	/**	Create a FileFormat object from the given version.
@@ -51,8 +119,13 @@ class FileFormat
 	{
 		if (wVer == VER_ANSI_1 || wVer == VER_ANSI_2) {
 			fUnicode = false;
+			index = Index.ANSI;
 		} else if (wVer >= VER_UNICODE_MIN) {
 			fUnicode = true;
+			if (wVer == VER_OST_2013)
+				index = Index.OST_2013;
+			else
+				index = Index.UNICODE;
 		} else {
 			throw new UnknownFileFormatVersionException(wVer);
 		}
@@ -64,7 +137,7 @@ class FileFormat
 	@Override
 	public String toString()
 	{
-		return fUnicode ? "Unicode" : "ANSI";
+		return index.toString();
 	}
 
 	/**	Test ths class by indicating whether a file is unicode or not.
