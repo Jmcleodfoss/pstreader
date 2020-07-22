@@ -164,7 +164,7 @@ TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.PropertyTags
 TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.PropertyLIDs
 
 # Tests done on each pst file
-for pst in "$input_dir"/*.pst; do
+for pst in "$input_dir"/*.[nop]st; do
 	TestPSTFile "$pst"
 done
 
