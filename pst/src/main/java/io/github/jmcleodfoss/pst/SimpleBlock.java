@@ -113,6 +113,23 @@ class SimpleBlock extends BlockBase
 
 		encryption.translate(data, (int)(entry.bref.bid.key() & 0xffffffff));
 
+		if (entry.numBytes != entry.totalBytes){
+			try {
+				java.util.zip.Inflater inflator = new java.util.zip.Inflater();
+				inflator.setInput(data);
+				byte[] inflated = new byte[entry.totalBytes];
+				inflator.inflate(inflated);
+				data = inflated;
+			} catch (java.util.zip.DataFormatException e){
+				// The block is corrupt. Just show the raw data. This will probably trigger other exceptions.
+				if (Options.logUnzipFailures){
+					System.out.printf("Block %s could not be unzipped. The file is probably corrupt. Using unzipped data.", entry.toString());
+					e.printStackTrace(System.out);
+				}
+			}
+		}
+		this.data = data;
+
 		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 		final BlockTrailer trailer = new BlockTrailer(pstFile);
