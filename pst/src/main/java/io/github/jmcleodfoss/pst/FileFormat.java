@@ -80,7 +80,7 @@ class FileFormat
 		for (final String a: args) {
 			try {
 				final PST pst = new PST(a);
-				System.out.printf("%s: %s%n", a, pst.unicode() ? "Unicode" : "ANSI");
+				System.out.printf("%s: %s%n", a, pst.header.fileFormat.toString());
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {
