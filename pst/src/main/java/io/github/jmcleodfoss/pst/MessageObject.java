@@ -88,6 +88,9 @@ public class MessageObject
 		if (IPM.isJournalEntry(messageType))
 			return new JournalEntry(contentsTable, row, nbt, pstFile);
 
+		if (IPM.isPersonMetadata(messageType))
+			return new PersonMetadata(contentsTable, row, nbt, pstFile);
+
 		if (IPM.isStickyNote(messageType))
 			return new StickyNote(contentsTable, row, nbt, pstFile);
 

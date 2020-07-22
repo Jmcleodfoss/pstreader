@@ -48,6 +48,10 @@ class IPM
 	*/
 	private static final String OOO_TEMPLATE = "IPM.Note.Rules.OOfTemplate.Microsoft";
 
+	/**	The string used for person metadata entries.
+	*	This is used in OST 2013 files, and does not seem to be documented anywhere. */
+	private static final String PERSON_METADATA = "IPM.AbchPerson";
+
 	/**	The string used for notes posted in a folder.
 	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
 	*/
@@ -160,6 +164,7 @@ class IPM
 		knownClasses.add(NOTE);
 		knownClasses.add(IMC_NOTIFICATION);
 		knownClasses.add(OOO_TEMPLATE);
+		knownClasses.add(PERSON_METADATA);
 		knownClasses.add(POST);
 		knownClasses.add(STICKYNOTE);
 		knownClasses.add(RECALL_REPORT);
@@ -235,6 +240,14 @@ class IPM
 		return NOTE.equals(messageClass);
 	}
 
+	/**	Is the given message a person metadata object?
+	*	@param	messageClass	The message class to check.
+	*	@return	true if the given message's class is IPM.Note.
+	*/
+	static boolean isPersonMetadata(String messageClass)
+	{
+		return PERSON_METADATA.equals(messageClass);
+	}
 	/**	Is the given folder a sticky note?
 	*	@param	messageClass	The message class to check.
 	*	@return	true if the given message's class is IPM.StickyNote.

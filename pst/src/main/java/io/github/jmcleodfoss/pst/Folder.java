@@ -275,6 +275,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		if (o instanceof Folder)
 			return ((Folder)o).displayName;
 
+		if (o instanceof PersonMetadata)
+			return ((PersonMetadata)o).internetMessageId;
+
 		if (o instanceof StickyNote)
 			return ((StickyNote)o).subject;
 
