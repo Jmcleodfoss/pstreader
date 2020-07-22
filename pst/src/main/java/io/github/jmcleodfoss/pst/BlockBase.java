@@ -7,7 +7,7 @@ package io.github.jmcleodfoss.pst;
 */
 abstract class BlockBase
 {
-	/**	All blocks are a multiple of BASE_BYTES ({@value}) in size.
+	/**	All blocks are a multiple of ({@value}) in size for ANSI and Unicode files.
 	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
 	*/
 	private static final int BASE_BYTES = 64;
