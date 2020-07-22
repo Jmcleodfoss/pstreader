@@ -34,7 +34,7 @@ hs_err_pid*
 diag.txt
 
 # PST files
-*.pst
+*.[nop]st
 
 # My .gitconfig file with the correct e-mail address
 .gitconfig
