@@ -279,7 +279,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			return ((StickyNote)o).subject;
 
 		if (o instanceof MessageObject)
-			return ((MessageObject)o).subject;// + " " + ((Message)o).messageDeliveryTime;
+			return ((MessageObject)o).subject;
 
 		return o.toString();
 	}
