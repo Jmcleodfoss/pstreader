@@ -129,6 +129,7 @@ class FileFormat
 		} else {
 			throw new UnknownFileFormatVersionException(wVer);
 		}
+		HeapOnNode.HID.setOst2013(index);
 	}
 
 	/**	Obtain a string describing this file format.

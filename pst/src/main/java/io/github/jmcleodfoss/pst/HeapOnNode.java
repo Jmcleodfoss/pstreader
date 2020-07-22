@@ -8,10 +8,26 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 {
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
+	*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
 	*/
 	static class HID extends NID
 	{
-		/**	The HID for the root of a B-Tree-on-Heap */
+		/**	Whether the file being processed is a OST-2013 file or not. */
+		static boolean fOst2013 = false;
+
+		/**	How far right to shift the block index for ANSI and Unicode files.
+		*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+		*/
+		static final int BLOCK_INDEX_RSHIFT = 0;
+
+		/**	How far right to shift the block index for OST-2013 files.
+		*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+		*/
+		static final int BLOCK_INDEX_RSHIFT_OST_2013 = 3;
+
+		/**	The HID for the root of a B-Tree-on-Heap
+		*	It's okay to call #factory before fOst2013 has been set since 0 is unaffected by shifting right.
+		*/
 		static final HID BTreeOnHeapRoot = factory(0, 0);
 
 		/**	The size of an HID or HNID element, in bytes. */
@@ -34,7 +50,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		private HID(int blockIndex, int index)
 		{
 			super(NID.HID, (index << 16) | (blockIndex << 5));
-			this.blockIndex = blockIndex;
+			this.blockIndex = blockIndex >> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
 			this.index = index + 1;
 		}
 
@@ -45,7 +61,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		{
 			super(rawData);
 			if (type == NID.HID) {
-				blockIndex = (short)(rawData >> 16) & 0xffff;
+				blockIndex = ((short)(rawData >> 16) & 0xffff) >> (fOst2013 ? 3 : 0);
 				index = (short)(rawData & 0xffff) >> 5;
 			} else {
 				index = 0;
@@ -78,6 +94,14 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		boolean isHID()
 		{
 			return type == NID.HID && index != 0;
+		}
+
+		/** Set the flag indicating an OST 2013 file
+		*	@param	fileFormatIndex	The index for the file format read in from the header.
+		*/
+		static void setOst2013(FileFormat.Index fileFormatIndex)
+		{
+			fOst2013 = fileFormatIndex == FileFormat.Index.OST_2013;
 		}
 
 		/**	Obtain a description of this HID (typically used for debugging).
@@ -195,6 +219,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			DataContainer dc = new DataContainer();
 			dc.read(stream, fields);
 			ibHnpm = 0xffff & (Short)dc.get(nm_ibHnpm);
+
 			byte blockSignature = (Byte)dc.get(nm_bSig);
 			if (blockSignature != HN_SIGNATURE && Options.strictHeapNodes)
 				throw new NotHeapNodeException(blockSignature);
