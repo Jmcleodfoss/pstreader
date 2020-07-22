@@ -60,8 +60,8 @@ class BBTEntry implements BTreeLeaf
 		DataContainer dc = new DataContainer();
 		dc.read(entryStream, context.unicode() ? unicode_fields : ansi_fields, common_fields);
 		bref = (BREF)dc.get(nm_bref);
-		numBytes = (Short)dc.get(nm_cb);
-		refCount = (Short)dc.get(nm_cRef);
+		numBytes = 0xffff & (Short)dc.get(nm_cb);
+		refCount = 0xffff & (Short)dc.get(nm_cRef);
 	}
 
 	/**	Obtain the actual size of a block B-tree leaf node as read in from the input datastream.
