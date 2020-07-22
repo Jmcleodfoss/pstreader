@@ -4,6 +4,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/8f34ce81-7a04-4a31-ba48-e05543daa77f">MS-PST Section 2.2.2.8.3: Block Types</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/d0e6fbaf-00e3-4d4d-bea8-8ab3cdb4fde6">MS-PST Section 2.2.2.8.3.1: Data Blocks</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45688317-46fb-4038-9ed3-b845d80bdabb">MS-PST Section 2.2.8.3.2: Data Tree</a>
+*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
 */
 abstract class BlockBase
 {
@@ -11,6 +12,11 @@ abstract class BlockBase
 	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
 	*/
 	private static final int BASE_BYTES = 64;
+
+	/**	All blocks are a multiple of ({@value}) in size for OST 2013 files.
+	*	@see <a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+	*/
+	private static final int BASE_BYTES_OST_2013 = 512;
 
 	/**	The maximum number of bytes in a block is {@value} for an ANSI or Unicode file
 	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
@@ -34,13 +40,17 @@ abstract class BlockBase
 	*	@param	numBytes	The number of data bytes in the block.
 	*	@param	pstFile		The PST file input data stream, {@link Header}, etc
 	*	@return	The size of the block with padding given the target size in bytes.
+	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
+	*	@see <a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
 	*/
 	protected static int blockSize(final int numBytes, final PSTFile pstFile)
 	{
 		int requiredSize = numBytes + BlockTrailer.size(pstFile);
-		if (requiredSize % BASE_BYTES == 0)
+
+		final int baseBytes = pstFile.header.fileFormat.index == FileFormat.Index.OST_2013 ? BASE_BYTES_OST_2013 : BASE_BYTES;
+		if (requiredSize % baseBytes == 0)
 			return requiredSize;
-		return ((requiredSize/BASE_BYTES) + 1) * BASE_BYTES;
+		return ((requiredSize/baseBytes) + 1) * baseBytes;
 	}
 
 	/**	Return the data within this block, returned as a ByteBuffer.
