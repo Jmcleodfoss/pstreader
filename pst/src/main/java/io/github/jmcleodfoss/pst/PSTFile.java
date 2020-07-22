@@ -107,7 +107,8 @@ public class PSTFile
 		return java.nio.ByteBuffer.wrap(data).asReadOnlyBuffer();
 	}
 
-	/**	A convenience method to indicate whether the PST file uses Unicode or ANSI encoding.
+	/**	A convenience method to indicate whether the PST file uses Unicode (wide text) or ANSI (8-bit) text.
+	*	Note that this is not the same as the file format Unicode type, since OST-2013 files use Unicode text.
 	*	@return	true if the PST file read in is a Unicode PST file, false if it is ANSI.
 	*	@see	FileFormat#fUnicode
 	*/
