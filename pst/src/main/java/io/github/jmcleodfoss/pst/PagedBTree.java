@@ -17,23 +17,38 @@ public abstract class PagedBTree extends BTree
 		private static final String nm_cEntMax = "cEntMax";
 		private static final String nm_cLevel = "cLevel";
 
-		/**	The Unicode-specific fields in the input stream which make up the page header. */
-		private static final DataDefinition[] unicode_fields = {
-			new DataDefinition(nm_rgEntries, new DataType.SizedByteArray(488), true)
-		};
+		/** The fields to read in for the various file formats.
+		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/4f0cd8e7-c2d0-4975-90a4-d417cfca77f8">MS-PST Section 2.2.2.7.7.1: BTPAGE</a>
+		*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+		*/
+		private static final DataDefinition fields[][] = {
+			/* ANSI format-specific fields */
+			{
+				new DataDefinition(nm_rgEntries, new DataType.SizedByteArray(492), true),
+				new DataDefinition("dwPadding", new DataType.SizedByteArray(4), true),
+				new DataDefinition(nm_cEnt, DataType.integer8Reader, true),
+				new DataDefinition(nm_cEntMax, DataType.integer8Reader, true),
+				new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
+				new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+			},
 
-		/**	The ANSI-specific fields in the input stream which make up the page header. */
-		private static final DataDefinition[] ansi_fields = {
-			new DataDefinition(nm_rgEntries, new DataType.SizedByteArray(492), true),
-			new DataDefinition("dwPadding", new DataType.SizedByteArray(4), true)
-		};
+			/* Unicode format-specific fields */
+			{
+				new DataDefinition(nm_rgEntries, new DataType.SizedByteArray(488), true),
+				new DataDefinition(nm_cEnt, DataType.integer8Reader, true),
+				new DataDefinition(nm_cEntMax, DataType.integer8Reader, true),
+				new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
+				new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+			},
 
-		/**	The fields common to both the Unicode and ANSI file formats in the input stream which make up the page header. */
-		private static final DataDefinition[] common_fields = {
-			new DataDefinition(nm_cEnt, DataType.integer8Reader, true),
-			new DataDefinition(nm_cEntMax, DataType.integer8Reader, true),
-			new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
-			new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+			/* OST 2013 format-specific fields */
+			{
+				new DataDefinition(nm_rgEntries, new DataType.SizedByteArray(4056), true),
+				new DataDefinition(nm_cEnt, DataType.integer16Reader, true),
+				new DataDefinition(nm_cEntMax, DataType.integer16Reader, true),
+				new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
+				new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+			}
 		};
 
 		/**	Move to the start of this page so that the parent class can read in the header.
@@ -60,7 +75,7 @@ public abstract class PagedBTree extends BTree
 		throws
 			java.io.IOException
 		{
-			super(gotoPage(bref, pstFile), pstFile.unicode() ? unicode_fields : ansi_fields, common_fields);
+			super(gotoPage(bref, pstFile), fields[pstFile.header.fileFormat.index.getIndex()]);
 		}
 
 		/**	Obtain a data stream from which the B-tree entries may be read.
@@ -89,6 +104,9 @@ public abstract class PagedBTree extends BTree
 		@Override
 		protected int getNumEntries()
 		{
+			if (pstFile.header.fileFormat.index == FileFormat.Index.OST_2013)
+				return (Short)dc.get(nm_cEnt);
+
 			return dc.getUInt8(nm_cEnt);
 		}
 
