@@ -1239,7 +1239,7 @@ abstract class DataType
 			return integer32Reader;
 
 		case FLOATING_32:
-			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 
 		case FLOATING_64:
 			return floating64Reader;
@@ -1247,7 +1247,7 @@ abstract class DataType
 		case CURRENCY:
 		case FLOATING_TIME:
 		case ERROR_CODE:
-			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 
 		case BOOLEAN:
 			return booleanReader;
@@ -1273,13 +1273,13 @@ abstract class DataType
 		case SERVER_ID:
 		case RESTRICTION:
 		case RULE_ACTION:
-			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 
 		case BINARY:
 			return byteArrayReader;
 
 		case MULTIPLE_INTEGER_16:
-			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 
 		case MULTIPLE_INTEGER_32:
 			return multipleInteger32Reader;
@@ -1287,7 +1287,7 @@ abstract class DataType
 		case MULTIPLE_FLOATING_32:
 		case MULTIPLE_FLOATING_64:
 		case MULTIPLE_FLOATING_TIME:
-			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 
 		case MULTIPLE_INTEGER_64:
 			return multipleInteger64Reader;
@@ -1304,14 +1304,14 @@ abstract class DataType
 					System.out.println("PtypMultipleGUID treated as PtypInteger32");
 				return integer32Reader;
 			} else {
-				throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+				throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 			}
 
 		case MULTIPLE_BINARY:
 			return multipleBinaryReader;
 
 		default:
-			throw new RuntimeException("Invalid Property Type" + Integer.toHexString(propertyType));
+			throw new RuntimeException(String.format("Invalid Property Type 0x%04x", propertyType));
 		}
 	}
 
