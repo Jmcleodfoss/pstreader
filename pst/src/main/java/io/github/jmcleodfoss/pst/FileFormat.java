@@ -24,7 +24,7 @@ class FileFormat
 		private final int index;
 
 		/** Initialize the index.
-		*	@param	The index this value maps to.
+		*	@param	index The index this value maps to.
 		*/
 		Index(int index)
 		{
