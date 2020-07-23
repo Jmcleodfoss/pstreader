@@ -1299,7 +1299,13 @@ abstract class DataType
 			return multipleStringReader;
 
 		case MULTIPLE_GUID:
-			throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			if (Options.multipleGUIDSAsInts) {
+				if (Options.logMultipleGUIDSAsIntsInstances)
+					System.out.println("PtypMultipleGUID treated as PtypInteger32");
+				return integer32Reader;
+			} else {
+				throw new RuntimeException("Property Type " + Integer.toHexString(propertyType) +" not implemented");
+			}
 
 		case MULTIPLE_BINARY:
 			return multipleBinaryReader;
