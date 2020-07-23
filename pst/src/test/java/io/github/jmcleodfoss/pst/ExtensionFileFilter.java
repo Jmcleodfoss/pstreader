@@ -7,14 +7,14 @@ import java.io.FileFilter;
 class ExtensionFileFilter implements FileFilter
 {
 	/** The extension to filter by */
-	private String extension;
+	private String[] extensions;
 
 	/** Create a FileFilter for the given extenstion
-	*	@param	extension	The extension to filter by.
+	*	@param	extensions	The extension to filter by.
 	*/
-	ExtensionFileFilter(final String extension)
+	ExtensionFileFilter(final String... extensions)
 	{
-		this.extension = extension;
+		this.extensions = extensions.clone();
 	}
 
 	/** Does the given File pass the filter?
@@ -26,6 +26,13 @@ class ExtensionFileFilter implements FileFilter
 	{
 		String name = pathname.getName();
 		int iExt = name.lastIndexOf('.');
-		return iExt >= 0 && name.substring(iExt+1).equalsIgnoreCase(extension);
+		if (iExt < 0)
+			return false;
+
+		for (String extension : extensions) {
+			if (name.substring(iExt+1).equalsIgnoreCase(extension))
+				return true;
+		}
+		return false;
 	}
 }

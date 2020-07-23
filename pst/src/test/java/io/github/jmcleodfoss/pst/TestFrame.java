@@ -13,7 +13,7 @@ import org.junit.Test;
 abstract class TestFrame
 {
 	/** The file filter to use when looking for files to test. */
-	static final ExtensionFileFilter pstFileFilter = new ExtensionFileFilter("pst");
+	static final ExtensionFileFilter pstFileFilter = new ExtensionFileFilter("ost", "nst", "pst");
 
 	/** The primary test function, called for all test cases to run tests on each file in the working directory.
 	*	@throws	BufferUnderflowException	Some tests may result in buffer underflows
