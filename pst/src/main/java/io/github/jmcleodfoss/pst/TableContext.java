@@ -247,6 +247,9 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		}
 	}
 
+	/**	The PST file's namedProperties object (needed to provide the column name) */
+	private static NameToIDMap namedProperties;
+
 	/**	The TCINFO (Table Context Info) structure for this table context */
 	private final TCInfo info;
 
@@ -388,11 +391,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 
 	/**	Get the name of the given column for use as a table header.
 	*	@param	column	The column to retrieve the header for.
+	*	@param	namedProperties	The named properties for the PST file.
 	*	@return	The column name, as a property ID. Note that this function returns a generic name for named properties.
 	*/
 	public String getColumnName(int column)
 	{
-		return PropertyTags.name(info.columnDescription[column].tag);
+		return namedProperties.name(info.columnDescription[column].tag);
 	}
 
 	/**	Obtain a ByteBuffer from which the raw data for the given propertyID may be read.
@@ -575,6 +579,15 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			row[c] = info.hnidTypes[c].read(bHeapData);
 		}
 		return row;
+	}
+
+	/**	Dependency injection for namedProperties.
+	*	@param	namedProperties	The PST file's named properties
+	*	@see	#getColumnName
+	*/
+	static void setNamedProperties(NameToIDMap namedProperties)
+	{
+		TableContext.namedProperties = namedProperties;
 	}
 
 	/**	Are objects of the given property type stored within the tree itself, or in an HID denoted by the leaf element?

@@ -226,6 +226,9 @@ public class NameToIDMap
 		}
 		this.namedProperties = namedProperties;
 		this.canonicalIDToNPID = canonicalIDToNPID;
+
+		// Dependency injection into TableContext to show column names properly in client apps using Swing AbstractTableModel to show the data
+		TableContext.setNamedProperties(this);
 	}
 
 	/**	Retrieve the bytes corresponding to the given property ID.
