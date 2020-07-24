@@ -372,6 +372,48 @@ abstract class DataType
 	/**	The reader for generic arrays of bytes. */
 	private static final ByteArray byteArrayReader = new ByteArray();
 
+	/**	The Floating32 data type described an 32-bit floating point value. */
+	private static class Floating32 extends DataType
+	{
+		/**	Construct a manipulator for a PST PtypFloating32 data type. */
+		private Floating32()
+		{
+			super();
+		}
+
+		/**	Create a String describing a byte array.
+		*	@param	o	The value to display.
+		*	@return	A String representing the 32-bit floating-point number.
+		*/
+		@Override
+		public String makeString(final Object o)
+		{
+			return ((Float)o).toString();
+		}
+
+		/**	Read in a 32-bit floating-point value.
+		*	@param	byteBuffer	The incoming data stream to read from.
+		*	@return	A Double object corresponding to the value read in.
+		*/
+		@Override
+		public Object read(java.nio.ByteBuffer byteBuffer)
+		{
+			return (Float)byteBuffer.getFloat();
+		}
+
+		/**	The size of the object in the PST file.
+		*	@return	The size of the 64-bit floating object in the PST file, in bytes.
+		*/
+		@Override
+		public int size()
+		{
+			return 4;
+		}
+	}
+
+	/**	The reader for 32-bit floating values. */
+	private static final Floating32 floating32Reader = new Floating32();
+
 	/**	The Floating64 data type described an 64-bit floating point value. */
 	private static class Floating64 extends DataType
 	{
@@ -1216,6 +1258,7 @@ abstract class DataType
 	*	@return	A reader/display manipulator for the given type.
 	*	@see	#booleanReader
 	*	@see	#byteArrayReader
+	*	@see	#floating32Reader
 	*	@see	#floating64Reader
 	*	@see	#guidReader
 	*	@see	#integer16Reader
@@ -1239,7 +1282,7 @@ abstract class DataType
 			return integer32Reader;
 
 		case FLOATING_32:
-			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
+			return floating32Reader;
 
 		case FLOATING_64:
 			return floating64Reader;
