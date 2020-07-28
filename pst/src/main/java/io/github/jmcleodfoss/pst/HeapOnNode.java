@@ -110,14 +110,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		@Override
 		public String toString()
 		{
-			StringBuilder s = new StringBuilder();
-			s.append ("type ");
-			s.append(Integer.toHexString(type));
-			s.append(" block index ");
-			s.append(Integer.toHexString(blockIndex));
-			s.append(" index ");
-			s.append(Integer.toHexString(index));
-			return s.toString();
+			return String.format("type 0x%1x index 0x%03x block index 0x%08x", type, index, blockIndex);
 		}
 
 		/**	Create an HID from the given block index and index.
