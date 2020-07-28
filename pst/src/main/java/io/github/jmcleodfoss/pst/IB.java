@@ -29,6 +29,6 @@ class IB
 	@Override
 	public String toString()
 	{
-		return Long.toHexString(ib);
+		return String.format("0x%08x", ib);
 	}
 }
