@@ -50,7 +50,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		private HID(int blockIndex, int index)
 		{
 			super(NID.HID, (index << 16) | (blockIndex << 5));
-			this.blockIndex = blockIndex >> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
+			this.blockIndex = blockIndex >>> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
 			this.index = index + 1;
 		}
 
