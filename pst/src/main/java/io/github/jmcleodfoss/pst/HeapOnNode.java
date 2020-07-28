@@ -25,10 +25,15 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		*/
 		static final int BLOCK_INDEX_RSHIFT_OST_2013 = 3;
 
+		/**	The key for the BTreeOnHeapRoot, which has type = 0, index = 1, blockIndex = 0
+		*	@see BTreeOnHeapRoot
+		*/
+		static final int BTREE_ON_HEAP_ROOT_KEY = 0x00000020;
+
 		/**	The HID for the root of a B-Tree-on-Heap
 		*	It's okay to call #factory before fOst2013 has been set since 0 is unaffected by shifting right.
 		*/
-		static final HID BTreeOnHeapRoot = factory(0, 0);
+		static final HID BTreeOnHeapRoot = new HID(BTREE_ON_HEAP_ROOT_KEY);
 
 		/**	The size of an HID or HNID element, in bytes. */
 		static final int SIZE = 4;
@@ -40,19 +45,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 
 		/**	The index to the node data within a block referred to by this HID */
 		private final int index;
-
-		/**	Build an HID using the given index and block index.
-		*	@param	blockIndex	The block index (starting from 0) containing the HID.
-		*	@param	index		The index within the block to the heap entry containing the HID.
-		*	@see	#factory
-		*	@see	#BTreeOnHeapRoot
-		*/
-		private HID(int blockIndex, int index)
-		{
-			super(NID.HID, (index << 16) | (blockIndex << 5));
-			this.blockIndex = blockIndex >>> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
-			this.index = index + 1;
-		}
 
 		/**	Create an HID from the given integer.
 		*	@param	rawData	A 32-bit little-endian value as read from the PST file to be translated into an HID.
@@ -111,17 +103,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		public String toString()
 		{
 			return String.format("type 0x%1x index 0x%03x block index 0x%08x", type, index, blockIndex);
-		}
-
-		/**	Create an HID from the given block index and index.
-		*	@param	blockIndex	The block index (starting from 0) containing the HID.
-		*	@param	index		The index within the block to the heap entry containing the HID.
-		* 	@return	The HID for the given block index and index.
-		*	@see	#BTreeOnHeapRoot
-		*/
-		private static HID factory(int blockIndex, int index)
-		{
-			return new HID(blockIndex, index);
 		}
 	}
 
