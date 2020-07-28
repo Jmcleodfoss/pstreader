@@ -227,7 +227,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		@Override
 		public String toString()
 		{
-			return String.format("%s User Root HID %s ib %d", clientSignature.toString(), hidUserRoot, ibHnpm);
+			return String.format("%s User Root HID %s ib 0x%08x", clientSignature.toString(), hidUserRoot, ibHnpm);
 		}
 	}
 
