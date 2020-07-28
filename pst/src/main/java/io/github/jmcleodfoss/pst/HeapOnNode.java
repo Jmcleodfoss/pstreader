@@ -53,8 +53,12 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		{
 			super(rawData);
 			if (type == NID.HID) {
-				blockIndex = ((short)(rawData >> 16) & 0xffff) >> (fOst2013 ? 3 : 0);
-				index = (short)(rawData & 0xffff) >> 5;
+				index = (short)(0x7ff & (rawData >> 5));
+				final int flags = fOst2013 ? 0x7 & (rawData >> 16) : 0;
+
+				final int shiftBy = 16 + (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
+				final int mask = 0xffff >>> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
+				blockIndex = 0x1fff & (rawData >> shiftBy);
 			} else {
 				index = 0;
 				blockIndex = 0;
