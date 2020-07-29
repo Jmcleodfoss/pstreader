@@ -129,7 +129,6 @@ public class PropertyContext
 			throw new NotPropertyContextNodeException(node, hon.clientSignature());
 
 		BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
-
 		read(node, hon, bth, bbt, pstFile);
 	}
 
@@ -193,6 +192,7 @@ public class PropertyContext
 
 	/**	Retrieve the property corresponding to the given B-tree-on-heap leaf entry in a Property Context.
 	*	@param	lr		The B-tree-on-heap record from which to read the property value.
+	*	@param	tag		The property tag, needed to handle an inconsistency on the Outlook side.
 	*	@param	propertyType	The data type of the property to read.
 	*	@param	bData		A ByteBuffer containing the data to read.
 	*	@param	sbt		The sub-node B-tree for the property context.
@@ -203,7 +203,7 @@ public class PropertyContext
 	*	@throws java.io.IOException			An I/O exception was encoutered while reading this property.
 	*	@return	The object read in.
 	*/
-	private Object property(final BTreeOnHeap.LeafRecord lr, final short propertyType, final java.nio.ByteBuffer bData, final SubnodeBTree sbt, final HeapOnNode hon, final BlockMap bbt, PSTFile pstFile)
+	private Object property(final BTreeOnHeap.LeafRecord lr, final int tag, final short propertyType, final java.nio.ByteBuffer bData, final SubnodeBTree sbt, final HeapOnNode hon, final BlockMap bbt, PSTFile pstFile)
 	throws
 		UnparseablePropertyContextException,
 		java.io.IOException
@@ -211,7 +211,6 @@ public class PropertyContext
 		DataType dataReader = DataType.definitionFactory(propertyType);
 		if ((dataReader.size() != 0 && dataReader.size() < lr.data.length) && (!storedInHNID(propertyType) || lr.data.length < 4))
 			return dataReader.read(bData);
-
 		final DataType hidReader = DataType.hidReader;
 		final HeapOnNode.HID hnid = (HeapOnNode.HID)hidReader.read(bData);
 		if (!hnid.isHID() && hnid.type != NID.HID) {
@@ -229,7 +228,9 @@ public class PropertyContext
 		if (!hon.validHID(hnid))
 			return null;
 
-		return dataReader.read(PSTFile.makeByteBuffer(hon.heapData(hnid)));
+		byte[] data = hon.heapData(hnid);
+		dataReader = DataType.getActualDataType(tag, data, dataReader);
+		return dataReader.read(PSTFile.makeByteBuffer(data));
 	}
 
 	/**	Read in a property context.
@@ -254,7 +255,7 @@ public class PropertyContext
 			java.nio.ByteBuffer bData = PSTFile.makeByteBuffer(lr.data);
 			final short propertyType = bData.getShort();
 			final int tag = (int)lr.key() << 16 | propertyType;
-			final Object property = property(lr, propertyType, bData, sbt, hon, bbt, pstFile);
+			final Object property = property(lr, tag, propertyType, bData, sbt, hon, bbt, pstFile);
 			properties.put(tag, property);
 		}
 	}

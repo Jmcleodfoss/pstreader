@@ -1358,6 +1358,20 @@ abstract class DataType
 		}
 	}
 
+	/**	Get the corrected DataType reader, accounting for cases where Outlook emits an ASCII value in a Unicode field
+	*	@param	propertyTag	The property tag to get the DataType for
+	*	@param	expectedDataType	The reader to be used if no adjustment takes place 
+	*	@param	data		The data buffer
+	*	@return	The correct reader for actual DataType for this field
+	*/
+	static DataType getActualDataType(int propertyTag, byte[] data, DataType expectedDataType)
+	{
+		if (propertyTag == PropertyTags.ContainerClassW && data[1] != 0x00)
+			return DataType.definitionFactory(DataType.STRING_8);
+
+		return expectedDataType;
+	}
+
 	/**	Return a String representing Object o with the data type given by tag.
 	*	@param	tag	The property tag describing the object to display.
 	*	@param	o	The object to display.
