@@ -576,8 +576,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 				continue;
 			}
 
-			java.nio.ByteBuffer bHeapData = PSTFile.makeByteBuffer(data);
-			row[c] = info.hnidTypes[c].read(bHeapData);
+			row[c] = info.hnidTypes[c].read(PSTFile.makeByteBuffer(data));
 		}
 		return row;
 	}
