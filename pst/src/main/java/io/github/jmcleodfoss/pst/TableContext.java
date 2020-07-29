@@ -570,12 +570,13 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 				continue;
 			}
 
-			if (hon.heapData(hid) == null) {
+			byte[] data = hon.heapData(hid);
+			if (data == null) {
 				row[c] = null;
 				continue;
 			}
 
-			java.nio.ByteBuffer bHeapData = PSTFile.makeByteBuffer(hon.heapData(hid));
+			java.nio.ByteBuffer bHeapData = PSTFile.makeByteBuffer(data);
 			row[c] = info.hnidTypes[c].read(bHeapData);
 		}
 		return row;
