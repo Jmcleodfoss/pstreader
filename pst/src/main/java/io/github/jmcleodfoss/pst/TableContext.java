@@ -592,7 +592,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	}
 
 	/**	Are objects of the given property type stored within the tree itself, or in an HID denoted by the leaf element?
-	*	@param	propertyType	The propery type to check to see whether it is stored directly in the table or in an HID.
+	*	@param	propertyType	The property type to check to see whether it is stored directly in the table or in an HID.
 	*	@return	true if the given property type is stored in an HID, false if it store in directly in the table.
 	*/
 	static boolean storedInHID(int propertyType)
