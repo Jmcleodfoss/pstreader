@@ -2,6 +2,7 @@ package io.github.jmcleodfoss.explorer;
 
 import java.nio.ByteBuffer;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
@@ -20,6 +21,9 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	/**	The Heap-On-Node, if present. */
 	private JList<Object> heapOnNode;
 
+	/**	Scrollable container for the heap-on-node */
+	private JScrollPane sbHeapOnNode;
+
 	/**	The BTree-on-Heap, if present. */
 	private BTHDisplay bth;
 
@@ -31,6 +35,8 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	{
 		rawData = new HexAndTextDisplay();
 		heapOnNode = new JList<Object>();
+		sbHeapOnNode = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		sbHeapOnNode.getViewport().add(heapOnNode);
 		bth = new BTHDisplay();
 		lpt = new AppTable();
 	}
@@ -40,7 +46,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	public void reset()
 	{
 		remove(rawData);
-		remove(heapOnNode);
+		remove(sbHeapOnNode);
 		remove(bth);
 		remove(lpt);
 	}
@@ -79,15 +85,16 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 
 		HeapOnNode hon = pst.heapOnNode(leaf.bidData);
 		if (hon == null) {
-			remove(heapOnNode);
+			remove(sbHeapOnNode);
 			remove(bth);
 			remove(lpt);
 			return;
 		}
 
 		heapOnNode.setModel(hon);
-		if (indexOfComponent(heapOnNode) == -1)
-			add("Heap", heapOnNode);
+		if (indexOfComponent(sbHeapOnNode) == -1) {
+			add("Heap", sbHeapOnNode);
+		}
 
 		if(bth.read(hon, pst)) {
 			if (indexOfComponent(bth) == -1)
