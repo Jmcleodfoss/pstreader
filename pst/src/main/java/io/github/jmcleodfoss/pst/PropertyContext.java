@@ -229,9 +229,7 @@ public class PropertyContext
 		if (!hon.validHID(hnid))
 			return null;
 
-		final Object o = dataReader.read(PSTFile.makeByteBuffer(hon.heapData(hnid)));
-
-		return o;
+		return dataReader.read(PSTFile.makeByteBuffer(hon.heapData(hnid)));
 	}
 
 	/**	Read in a property context.
