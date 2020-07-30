@@ -264,7 +264,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			s.append(heapOffset.length);
 			s.append(" entries:");
 			for (int i = 0; i < heapOffset.length; ++i)
-				s.append(heapOffset[i]);
+				s.append((int)(0xffff & heapOffset[i]) + " ");
 			return s.toString();
 		}
 	}
@@ -351,7 +351,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			} else {
 				final PageHeader ph = new PageHeader(blockDataStream);
 				offsetData = PageHeader.hdrSize;
-				offsetPageMap = ph.ibHnpm;
+				offsetPageMap = 0xffff & ph.ibHnpm;
 			}
 
 			// read heap page map
@@ -379,8 +379,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			blockOffset[iBlock] = iHeap;
 			final PageMap hnpm = pageMaps.get(iBlock);
 			for (int i = 0; i < hnpm.numEntries; ++i) {
-				int offset = hnpm.heapOffset[i];
-				int size = hnpm.heapOffset[i+1] - offset;
+				int offset = 0xffff & hnpm.heapOffset[i];
+				int size = 0xffff & hnpm.heapOffset[i+1] - offset;
 				if (size > 0) {
 					heap[iHeap] = new byte[size];
 					dataStreams.get(iBlock).get(heap[iHeap]);
