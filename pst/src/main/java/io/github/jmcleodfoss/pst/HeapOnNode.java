@@ -351,7 +351,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			} else {
 				final PageHeader ph = new PageHeader(blockDataStream);
 				offsetData = PageHeader.hdrSize;
-				offsetPageMap = 0xffff & ph.ibHnpm;
+				offsetPageMap = ph.ibHnpm;
 			}
 
 			// read heap page map
