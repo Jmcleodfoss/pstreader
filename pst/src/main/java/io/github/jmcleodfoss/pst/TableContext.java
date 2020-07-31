@@ -146,7 +146,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			s.append("\nData block ending offsets:");
 			for (int i : endingOffsets) {
 				s.append(' ');
-				s.append(i);
+				s.append(0xffff & i);
 			}
 			return s.toString();
 		}
@@ -223,7 +223,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			DataContainer dc = new DataContainer();
 			dc.read(stream, fields);
 			tag = (Integer)dc.get(nm_tag);
-			columnOffset = (Short)dc.get(nm_ibData);
+			columnOffset = 0xffff & (Short)dc.get(nm_ibData);
 			width = dc.getUInt8(nm_cbData);
 			cellExistenceBitmapIndex = (int)(0xff & (Byte)dc.get(nm_iBit));
 		}
@@ -375,6 +375,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			return null;
 
 		final int column = columnIndex(tag);
+
 		if (column == -1)
 			return null;
 		return rows[row][column];
@@ -483,7 +484,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	{
 		java.nio.ByteBuffer rowStream = PSTFile.makeByteBuffer(data);
 
-		int rowWidth = info.endingOffsets[TCInfo.TCI_bm];
+		int rowWidth = 0xffff & info.endingOffsets[TCInfo.TCI_bm];
 		final int maxDataSize = BlockBase.maxBlockSize(pstFile) - BlockTrailer.size(pstFile);
 		final int rowsPerBlock = maxDataSize/rowWidth;
 		final int nPaddingBytes = maxDataSize - rowsPerBlock*rowWidth;
@@ -510,7 +511,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	throws
 		java.io.IOException
 	{
-		int rowWidth = info.endingOffsets[TCInfo.TCI_bm];
+		int rowWidth = 0xffff & info.endingOffsets[TCInfo.TCI_bm];
 		int r = 0;
 
 		while (iterator.hasNext()) {
