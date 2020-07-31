@@ -796,6 +796,52 @@ abstract class DataType
 	/**	The reader/display manipulator for lists containing multiple binary objects. */
 	private static final MultipleBinary multipleBinaryReader = new MultipleBinary();
 
+	/**	The MultipleBinary class describes how to read in multiple GUID objects from a PST file.
+	*	Note that the one instance of this type which has been encountered is a named property,
+	*	AggregatedItemLinkIDs (tag 8xxx1048) seen in an OST file, does not conform to the documented
+	*	format, and appears to be a 32-bit integer, so that is what this reads.
+	*/
+	private static class MultipleGUID extends DataType
+	{
+		/**	Construct a manipulator for an PST RPtypMultipleGUID data type. */
+		public MultipleGUID()
+		{
+			super();
+		}
+
+		/**	Create a String from the passed multiple GUID object.
+		*	@param	o	The multiple GUID object to display.
+		*	@return	A String representation of the multiple GUID object
+		*/
+		@Override
+		public String makeString(final Object o)
+		{
+			return Integer.toHexString((Integer)o);
+		}
+
+		/**	Read in a multiple GUID field from the data stream.
+		*	@param	byteBuffer	The incoming data stream from which to read the GUIDs
+		*	@return	An array of GUID objects corresponding to those read in from the data stream
+		*/
+		@Override
+		public Object read(java.nio.ByteBuffer byteBuffer)
+		{
+			return (Integer)byteBuffer.getInt();
+		}
+
+		/**	Obtain the size of a multiple GUID object.
+		*	@return	The size of a multiple GUID object (0 means variable).
+		*/
+		@Override
+		public int size()
+		{
+			return 0;
+		}
+	}
+
+	/**	The reader/display manipulator for lists containing multiple GUID objects. */
+	private static final MultipleGUID multipleGUIDReader = new MultipleGUID();
+
 	/**	The MultipleInteger32 class describes how to read in multiple 32-bit integers from a PST file. */
 	private static class MultipleInteger32 extends DataType
 	{
@@ -1345,7 +1391,7 @@ abstract class DataType
 			if (Options.multipleGUIDSAsInts) {
 				if (Options.logMultipleGUIDSAsIntsInstances)
 					System.out.println("PtypMultipleGUID treated as PtypInteger32");
-				return integer32Reader;
+				return multipleGUIDReader;
 			} else {
 				throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 			}
