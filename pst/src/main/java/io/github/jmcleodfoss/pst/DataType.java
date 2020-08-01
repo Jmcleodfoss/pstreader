@@ -1419,6 +1419,7 @@ abstract class DataType
 	}
 
 	/**	Return a String representing Object o with the data type given by tag.
+	*	For special handling for PidTagSubject and PidTagSubjectW, see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5959edb3-3fb0-4e35-a0dc-c043cd888fdd">MS-PST Section 2.5.3.1.1.1</a>
 	*	@param	tag	The property tag describing the object to display.
 	*	@param	o	The object to display.
 	*	@return	A String describing the object, given that it is of the type defined by tag.
@@ -1426,6 +1427,11 @@ abstract class DataType
 	static String makeString(final int tag, final Object o)
 	{
 		final DataType writer = definitionFactory((short)(tag & 0xffff));
-		return writer.makeString(o);
+		String s = writer.makeString(o);
+
+		if ((tag == PropertyTags.SubjectW || tag == PropertyTags.Subject) && s.charAt(0) == 1)
+			return s.substring(2);
+
+		return s;
 	}
 }
