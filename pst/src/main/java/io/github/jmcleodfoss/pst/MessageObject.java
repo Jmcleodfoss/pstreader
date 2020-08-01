@@ -41,7 +41,8 @@ public class MessageObject
 		java.io.IOException
 	{
 		fUnicode = pstFile.unicode();
-		subject = (String)contentsTable.get(messageRow, fUnicode ? PropertyTags.SubjectW : PropertyTags.Subject);
+		final int subjectTag = fUnicode ? PropertyTags.SubjectW : PropertyTags.Subject;
+		subject = DataType.makeString(subjectTag, contentsTable.get(messageRow, subjectTag));
 
 		final int nidMessageObject = (Integer)contentsTable.get(messageRow, PropertyTags.LtpRowId);
 		nodeMessageObject = nbt.find(new NID(nidMessageObject));
