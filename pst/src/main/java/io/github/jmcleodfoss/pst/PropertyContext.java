@@ -68,10 +68,12 @@ public class PropertyContext
 		*	@param	key	The property key, required to convert the data value into a String.
 		*	@param	value	The value to convert.
 		*/
+		@Override
 		String getValueString(final int key, Object value)
 		{
 			if (value instanceof PSTDataPointer)
 				value = ((PSTDataPointer)value).data();
+
 			return value == null ? "" : DataType.makeString(key, value);
 		}
 
@@ -80,6 +82,7 @@ public class PropertyContext
 		*	@param	columnIndex	The column of the cell to check.
 		*	@return	false, as the table can never be edited.
 		*/
+		@Override
 		public boolean isCellEditable(final int rowIndex, final int columnIndex)
 		{
 			return false;
