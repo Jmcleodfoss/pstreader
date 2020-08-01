@@ -123,15 +123,15 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			if (childIterator != null && childIterator.hasNext())
 				return childIterator.next();
 
-			if (nextChild < children.length) {
-				if (children[nextChild] instanceof BTree) {
-					do {
-						childIterator = ((BTree)children[nextChild++]).iterator();
-					} while (!childIterator.hasNext() && nextChild <children.length);
-					return childIterator.next();
-				} else {
+			while (nextChild < children.length) {
+				if (!(children[nextChild] instanceof BTree)) {
+					childIterator = null;
 					return children[nextChild++];
 				}
+
+				childIterator = ((BTree)children[nextChild++]).iterator();
+				if (childIterator.hasNext())
+					return childIterator.next();
 			}
 
 			throw new java.util.NoSuchElementException();
