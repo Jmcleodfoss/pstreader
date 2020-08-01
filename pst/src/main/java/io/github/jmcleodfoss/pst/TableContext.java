@@ -447,7 +447,10 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	public Object getValueAt(int row, int column)
 	{
-		return rows[row] == null ? null : rows[row][column];
+		if (rows[row] == null || rows[row][column] == null)
+			return null;
+
+		return DataType.makeString(info.columnDescription[column].tag, rows[row][column]);
 	}
 
 	/**	No cells are editable.
