@@ -1426,6 +1426,9 @@ abstract class DataType
 	*/
 	static String makeString(final int tag, final Object o)
 	{
+		if (o == null)
+			return "";
+
 		final DataType writer = definitionFactory((short)(tag & 0xffff));
 		String s = writer.makeString(o);
 
