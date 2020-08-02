@@ -15,10 +15,7 @@
 
 	<xsl:template match="//folder/object[MessageClassW = 'IPM.Note']">
 		<h2>
-			<xsl:if test="SubjectW">
-				<xsl:if test="starts-with(./SubjectW,'&amp;#01;&amp;#01;')"><xsl:value-of select="substring-after(./SubjectW,'&amp;#01;&amp;#01;')"/></xsl:if>
-				<xsl:if test="not(starts-with(./SubjectW,'&amp;'))"><xsl:value-of select="SubjectW"/></xsl:if>
-			</xsl:if>
+			<xsl:if test="SubjectW"><xsl:value-of select="SubjectW"/></xsl:if>
 		</h2>
 		<ul>
 		<xsl:for-each select="./*">
