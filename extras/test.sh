@@ -53,10 +53,10 @@ TestModule() {
 
 	declare output=$(GetTestDirectory "$1")/${class#io/github/jmcleodfoss/*/*}.out
 	echo "
-"`date +%H:%M:%S`": starting $class test" >> $stats
+"$(date +%H:%M:%S)": starting $class test" >> $stats
 	echo "java $options -cp $cp $class $@ > $output"
 	java $options -cp "$cp" $class "$@" > "$output"
-	echo `date +%H:%M:%S`": done $class test" >> $stats
+	echo $(date +%H:%M:%S)": done $class test" >> $stats
 }
 
 TestPSTIndependentModule() {
@@ -67,10 +67,10 @@ TestPSTIndependentModule() {
 
 	declare output=$results_dir/${class#io.github.jmcleodfoss.*.*}.out
 	echo "
-"`date +%H:%M:%S`": starting $class test" >> $stats
+"$(date +%H:%M:%S)": starting $class test" >> $stats
 	echo "java $options -cp $cp $class $@ > $output"
 	java $options -cp "$cp" $class "$@" > "$output"
-	echo `date +%H:%M:%S`": done $class test" >> $stats
+	echo $(date +%H:%M:%S)": done $class test" >> $stats
 }
 
 TestPSTFile() {
@@ -158,7 +158,7 @@ if [ ! -d $results_dir ]; then
 	mkdir $results_dir
 fi
 
-echo "Starting tests at " `date +%H:%M:%S` > $stats
+echo "Starting tests at " $(date +%H:%M:%S) > $stats
 
 # Tests which have the same output for all pst files.
 TestPSTIndependentModule $pst_jar io.github.jmcleodfoss.pst.GUID
@@ -170,10 +170,10 @@ for pst in "$input_dir"/*.[nop]st; do
 	TestPSTFile "$pst"
 done
 
-echo "Ending tests at " `date +%H:%M:%S` >> $stats
+echo "Ending tests at " $(date +%H:%M:%S) >> $stats
 
 pwd
-declare result=`grep -e java\.lang\..*Exception -e [a-n]Exception $results_dir/*/*.{out,xml}`
+declare result=$(grep -e java\.lang\..*Exception -e [a-n]Exception $results_dir/*/*.{out,xml})
 if [[ $? -gt 0 ]]; then
 	echo "Errors found\n$result"
 fi
