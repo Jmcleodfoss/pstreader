@@ -1,3 +1,6 @@
+![MIT License](https://img.shields.io/badge/license-MIT-green) ![Codacy Security Scan](https://github.com/Jmcleodfoss/msgreader/workflows/Codacy%20Security%20Scan/badge.svg) ![CodeQL](https://github.com/Jmcleodfoss/msgreader/workflows/CodeQL/badge.svg) ![Xanitizer Security Analysis](https://github.com/Jmcleodfoss/msgreader/workflows/Xanitizer%20Security%20Analysis/badge.svg) 
+![CodeQL](https://github.com/Jmcleodfoss/pstreader/workflows/CodeQL/badge.svg)
+![OSSAR](https://github.com/Jmcleodfoss/pstreader/workflows/OSSAR/badge.svg)
 # pstreader
 Java library for reading Microsoft Outlook pst and ost files, with ancillary libraries, a Swing application, and a servlet.
 

@@ -1,8 +1,8 @@
 # XSLT Transformation Templates
 A set of xslt transformation templates to convert xml files to HTML in various contexts. All examples assume that the jars for the following libraries are in the classpath
-* pst
-* util
-* xml
+*   pst
+*   util
+*   xml
 See extras/test for another example of use
 
 ## pst_contacts_to_html.xml
