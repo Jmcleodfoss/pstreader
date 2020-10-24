@@ -35,7 +35,7 @@ cat << END_HEADER > "$outfile"
 				<xsl:when test="name() = 'BodyW'"><li><xsl:value-of select="name()"/>: <xsl:value-of select="."/></li></xsl:when>
 END_HEADER
 
-cat "$sourcefile" | grep "$area.*$version\$" | cut "-d," -f 1 | cut '-d"' -f 2 |sed "/^Pid...\(.*\)$/s//\t\t\t\t<xsl:when test=\"name() = \'\1\'\"><li><xsl:value-of select=\"name()\"\/>: <xsl:value-of select=\".\"\/><\/li><\/xsl:when>/" >> "$outfile"
+cat "$sourcefile" | grep "${area}.*${version}\$" | cut "-d," -f 1 | cut '-d"' -f 2 |sed "/^Pid...\(.*\)$/s//\t\t\t\t<xsl:when test=\"name() = \'\1\'\"><li><xsl:value-of select=\"name()\"\/>: <xsl:value-of select=\".\"\/><\/li><\/xsl:when>/" >> "$outfile"
 
 cat << END_FOOTER >> "$outfile"
 			</xsl:choose>
