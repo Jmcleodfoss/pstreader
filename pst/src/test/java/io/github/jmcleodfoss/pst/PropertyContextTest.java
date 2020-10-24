@@ -35,7 +35,7 @@ public class PropertyContextTest extends TestFrame
 		Throwable
 	{
 		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(file));
+			PSTFile pstFile = new PSTFile(new FileInputStream(file));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 			final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);

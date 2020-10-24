@@ -35,7 +35,7 @@ public class NodeFinderTest extends TestFrame
 		NoSuchMethodException,
 		Throwable
 	{
-		PSTFile pstFile = new PSTFile(new java.io.FileInputStream(file));
+		PSTFile pstFile = new PSTFile(new FileInputStream(file));
 		final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 		NodeFinder nf = new NodeFinder(pstFile);
 

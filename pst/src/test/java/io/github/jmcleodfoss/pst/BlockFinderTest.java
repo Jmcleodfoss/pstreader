@@ -36,7 +36,7 @@ public class BlockFinderTest extends TestFrame
 		Throwable
 	{
 		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(file));
+			PSTFile pstFile = new PSTFile(new FileInputStream(file));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			BlockFinder bf = new BlockFinder(pstFile);
 

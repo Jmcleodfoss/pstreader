@@ -34,7 +34,7 @@ public class BTreeOnHeapTest extends TestFrame
 		NoSuchMethodException,
 		Throwable
 	{
-		PSTFile pstFile = new PSTFile(new java.io.FileInputStream(file));
+		PSTFile pstFile = new PSTFile(new FileInputStream(file));
 		BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 		NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 

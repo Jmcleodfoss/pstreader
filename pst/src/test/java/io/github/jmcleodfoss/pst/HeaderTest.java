@@ -91,7 +91,7 @@ public class HeaderTest extends TestFrame
 		Throwable
 	{
 		try {
-			java.io.FileInputStream stream = new java.io.FileInputStream(file);
+			FileInputStream stream = new FileInputStream(file);
 			java.nio.channels.FileChannel fc = stream.getChannel();
 			java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
 			mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);

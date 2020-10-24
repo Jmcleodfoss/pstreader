@@ -35,7 +35,7 @@ public class TableContextTest extends TestFrame
 		Throwable
 	{
 		try {
-			PSTFile pstFile = new PSTFile(new java.io.FileInputStream(file));
+			PSTFile pstFile = new PSTFile(new FileInputStream(file));
 			BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 

@@ -34,7 +34,7 @@ public class NodeBTreeTest extends TestFrame
 		NoSuchMethodException,
 		Throwable
 	{
-		PSTFile pstFile = new PSTFile(new java.io.FileInputStream(file));
+		PSTFile pstFile = new PSTFile(new FileInputStream(file));
 		new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 	}
 }
