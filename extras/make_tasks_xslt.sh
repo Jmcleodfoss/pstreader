@@ -36,7 +36,7 @@ cat << END_HEADER > "$outfile"
 			<xsl:choose>
 END_HEADER
 
-cat "$sourcefile" | grep "$version\$" | grep -e "PidTagSubject," -e "$area" | cut "-d," -f 1 | cut '-d"' -f 2 |sed "/^Pid...\(.*\)$/s//\t\t\t\t<xsl:when test=\"name() = \'\1\'\"><li><xsl:value-of select=\"name()\"\/>: <xsl:value-of select=\".\"\/><\/li><\/xsl:when>/" >> "$outfile"
+grep "$version\$" "$sourcefile" |grep -e "PidTagSubject," -e "$area" | cut "-d," -f 1 | cut '-d"' -f 2 |sed "/^Pid...\(.*\)$/s//\t\t\t\t<xsl:when test=\"name() = \'\1\'\"><li><xsl:value-of select=\"name()\"\/>: <xsl:value-of select=\".\"\/><\/li><\/xsl:when>/" >> "$outfile"
 
 cat << END_FOOTER >> "$outfile"
 			</xsl:choose>
