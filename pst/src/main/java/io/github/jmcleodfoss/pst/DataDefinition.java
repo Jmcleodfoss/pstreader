@@ -3,6 +3,15 @@ package io.github.jmcleodfoss.pst;
 /**	The DataDefinition class encapsulates definitions used for reading values from a data stream. */
 class DataDefinition
 {
+	/**	The name under which the data for this field is to be stored. */
+	final String name;
+
+	/**	An object describing how to read and display the data for this field. */
+	final DataType description;
+
+	/**	Whether the data should be saved or discarded. */
+	private final boolean fSave;
+
 	/**	The IncompleteFieldException is used to signal that it was not possible to read in all the required bytes for a field */
 	static class IncompleteFieldException extends RuntimeException
 	{
@@ -18,15 +27,6 @@ class DataDefinition
 			super(component + " should have " + expected + " bytes, but " + found + " were found");
 		}
 	}
-
-	/**	The name under which the data for this field is to be stored. */
-	final String name;
-
-	/**	An object describing how to read and display the data for this field. */
-	final DataType description;
-
-	/**	Whether the data should be saved or discarded. */
-	private final boolean fSave;
 
 	/**	Create an object to read in data with the given description, saving it under the given name if fSave is true.
 	*	@param	name		The field name with which the data will be stored and retrieved.

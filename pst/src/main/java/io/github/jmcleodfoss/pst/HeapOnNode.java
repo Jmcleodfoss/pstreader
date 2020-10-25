@@ -6,6 +6,15 @@ package io.github.jmcleodfoss.pst;
 */
 public class HeapOnNode implements javax.swing.ListModel<Object>
 {
+	/**	The heap-on-node header for this heap-on-node object. This is used only in toString. */
+	private final Header hnhdr;
+
+	/**	The heap data for this heap-on-node object. */
+	private final byte[][] heap;
+
+	/**	The offsets into the heap corresponding to each block */
+	private final int[] blockOffset;
+
 	/**	The HID class is describes an index into the heap-on-node structure or a node (this is actually an HNID class).
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/85b9e985-ea53-447f-b70c-eb82bfbdcbc9">MS-PST Section 2.3.1.1: HID</a>
 	*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
@@ -194,6 +203,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			UnknownClientSignatureException,
 			java.io.IOException
 		{
+System.out.printf("bytes remaining in stream: %d%n", stream.remaining());
 			DataContainer dc = new DataContainer();
 			dc.read(stream, fields);
 			ibHnpm = 0xffff & (Short)dc.get(nm_ibHnpm);
@@ -299,15 +309,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		}
 	};
 
-	/**	The heap-on-node header for this heap-on-node object. This is used only in toString. */
-	private final Header hnhdr;
-
-	/**	The heap data for this heap-on-node object. */
-	private final byte[][] heap;
-
-	/**	The offsets into the heap corresponding to each block */
-	private final int[] blockOffset;
-
 	/**	Create a heap-on-node for the given block.
 	*	@param	entry	The entry from the block B-tree from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
@@ -341,6 +342,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			int offsetData;
 			int offsetPageMap;
 			if (iBlock == 0) {
+				if (blockDataStream.remaining() < Header.size)
+					continue;
 				hnhdr = new Header(blockDataStream);
 				offsetData = Header.size;
 				offsetPageMap = hnhdr.ibHnpm;

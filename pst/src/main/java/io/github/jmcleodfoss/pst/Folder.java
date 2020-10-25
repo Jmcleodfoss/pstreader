@@ -5,6 +5,30 @@ package io.github.jmcleodfoss.pst;
 */
 public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, javax.swing.tree.TreeModel
 {
+	/**	The folder object node info. */
+	public final NBTEntry nodeFolderObject;
+
+	/**	The hierarchy table node info. */
+	public final NBTEntry nodeHierarchyTable;
+
+	/**	The contents table node info. */
+	public final NBTEntry nodeContentsTable;
+
+	/**	The associated contents table node info. */
+	public final NBTEntry nodeAssociatedContentsTable;
+
+	/**	The folder name. */
+	public final String displayName;
+
+	/**	The type of folder. */
+	public final String containerClass;
+
+	/**	The sub-folders of the folder. */
+	private java.util.Vector<Folder> subfolders;
+
+	/**	The content objects. */
+	private java.util.Vector<MessageObject> contents;
+
 	/**	Ths SubfolderLevelsToRead class tells how many sub-levels to read when processing a folder: none, one, or all. */
 	private static class SubfolderLevelsToRead
 	{
@@ -47,30 +71,6 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			return levels != Levels.NONE;
 		}
 	}
-
-	/**	The folder object node info. */
-	public final NBTEntry nodeFolderObject;
-
-	/**	The hierarchy table node info. */
-	public final NBTEntry nodeHierarchyTable;
-
-	/**	The contents table node info. */
-	public final NBTEntry nodeContentsTable;
-
-	/**	The associated contents table node info. */
-	public final NBTEntry nodeAssociatedContentsTable;
-
-	/**	The folder name. */
-	public final String displayName;
-
-	/**	The type of folder. */
-	public final String containerClass;
-
-	/**	The sub-folders of the folder. */
-	private java.util.Vector<Folder> subfolders;
-
-	/**	The content objects. */
-	private java.util.Vector<MessageObject> contents;
 
 	/**	Create a folder object for the given Node B-Tree leaf node.
 	*	@param	nodeFolderObject	The entry in the PST file's node B-tree for this folder.

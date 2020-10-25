@@ -7,6 +7,41 @@ package io.github.jmcleodfoss.pst;
 */
 class FileFormat
 {
+	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
+	*	@see	#VER_ANSI_2
+	*	@see	#VER_UNICODE_MIN
+	*	@see	#VER_OST_2013
+	*/
+	private static final short VER_ANSI_1 = 14;
+
+	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
+	*	@see	#VER_ANSI_1
+	*	@see	#VER_UNICODE_MIN
+	*	@see	#VER_OST_2013
+	*/
+	private static final short VER_ANSI_2 = 15;
+
+	/**	The value indicating that this is an Unicode PST file.
+	*	@see	#VER_ANSI_1
+	*	@see	#VER_ANSI_2
+	*	@see	#VER_OST_2013
+	*/
+	private static final short VER_UNICODE_MIN = 23;
+
+	/**	The value indicating that this is an OST-2013 file
+	*	@see <a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
+	*	@see	#VER_ANSI_1
+	*	@see	#VER_ANSI_2
+	*	@see	#VER_UNICODE_MIN
+	*/
+	private static final short VER_OST_2013 = 36;
+
+	/**	The file type index for the current file. */
+	final Index index;
+
+	/**	A flag indicating whether the file uses wide tesxt. If it isn't Unicode, it must be ANSI. */
+	final boolean fUnicode;
+
 	/**	Internal indexes used to describe versions of files (to govern certain object sizes) */
 	enum Index {
 		/**	The original ANSI file type - not tested for this library due to lack of availability. */
@@ -76,41 +111,6 @@ class FileFormat
 			super("Unknown file format version " + wVer);
 		}
 	}
-
-	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
-	*	@see	#VER_ANSI_2
-	*	@see	#VER_UNICODE_MIN
-	*	@see	#VER_OST_2013
-	*/
-	private static final short VER_ANSI_1 = 14;
-
-	/**	A value indicating that this is an ANSI PST file (one of two values indicating this).
-	*	@see	#VER_ANSI_1
-	*	@see	#VER_UNICODE_MIN
-	*	@see	#VER_OST_2013
-	*/
-	private static final short VER_ANSI_2 = 15;
-
-	/**	The value indicating that this is an Unicode PST file.
-	*	@see	#VER_ANSI_1
-	*	@see	#VER_ANSI_2
-	*	@see	#VER_OST_2013
-	*/
-	private static final short VER_UNICODE_MIN = 23;
-
-	/**	The value indicating that this is an OST-2013 file
-	*	@see <a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
-	*	@see	#VER_ANSI_1
-	*	@see	#VER_ANSI_2
-	*	@see	#VER_UNICODE_MIN
-	*/
-	private static final short VER_OST_2013 = 36;
-
-	/**	The file type index for the current file. */
-	final Index index;
-
-	/**	A flag indicating whether the file uses wide tesxt. If it isn't Unicode, it must be ANSI. */
-	final boolean fUnicode;
 
 	/**	Create a FileFormat object from the given version.
 	*	@param	wVer	The version number as found in the PST's header file.

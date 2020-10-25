@@ -8,6 +8,9 @@ public abstract class PagedBTree extends BTree
 	/**	The size of a PST page. */
 	static final int PAGE_SIZE = 512;
 
+	/**	The block reference to the page for this node of the block or node B-tree. */
+	private final BREF bref;
+
 	/**	The PageContext class contains information required to keep track of the current position in the B-tree during input. */
 	protected abstract static class PageContext<I extends BTree, L extends BTreeLeaf> extends BTree.Context<I, L>
 	{
@@ -195,9 +198,6 @@ public abstract class PagedBTree extends BTree
 			return String.format("BTEntry: key 0x%08x BID 0x%08x IB 0x%08x", key, bref.bid.bid, bref.ib.ib);
 		}
 	}
-
-	/**	The block reference to the page for this node of the block or node B-tree. */
-	private final BREF bref;
 
 	/**	Construct a PageBTree object with the given search key from the given position using the given context.
 	*	@param	key	The key for this node.

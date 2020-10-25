@@ -5,6 +5,9 @@ package io.github.jmcleodfoss.pst;
 */
 abstract class PagedBTreeFinder
 {
+	/**	The underlying PST file data stream, header, etc. */
+	protected PSTFile pstFile;
+
 	/**	The BTreePage class holds information about paged (block &amp; node) B-trees. */
 	protected abstract class BTreePage
 	{
@@ -71,9 +74,6 @@ abstract class PagedBTreeFinder
 		throws
 			java.io.IOException;
 	}
-
-	/**	The underlying PST file data stream, header, etc. */
-	protected PSTFile pstFile;
 
 	/**	Construct a BlockFinder object.
 	*	@param	pstFile	The PST file data stream, header, etc.

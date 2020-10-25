@@ -143,6 +143,12 @@ class Encryption
 	/**	An Offset into the encryption table {@link #mpbbCrypt} used when encrypting or decrypting in cyclic encoding. */
 	static private final int offsI = 0x200;
 
+	/**	The translator object performs the required translation. */
+	private final Translater translator;
+
+	/**	The name describes the translation; it is used by the {@link #toString} function. */
+	private final String name;
+
 	/**	The UnknownEncryptionMethodException is thrown if one tries to create an Encryption object with an invalid value for the
 	*	encryption type.
 	*/
@@ -254,12 +260,6 @@ class Encryption
 			}
 		}
 	}
-
-	/**	The translator object performs the required translation. */
-	private final Translater translator;
-
-	/**	The name describes the translation; it is used by the {@link #toString} function. */
-	private final String name;
 
 	/**	Create an Encryption object from the given encryption method.
 	*	@param	bCryptMethod	The encryption method read in from the PST file's header.

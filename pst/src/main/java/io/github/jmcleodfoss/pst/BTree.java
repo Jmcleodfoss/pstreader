@@ -3,6 +3,12 @@ package io.github.jmcleodfoss.pst;
 /**	The BTree class is the base for the block, node, heap-on-node, and sub-node B-tree classes. */
 abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomNodeText
 {
+	/**	The children of this B-tree node. The children may be either intermediate nodes, which are themselves B-trees, or leaf nodes. */
+	protected final BTreeNode[] children;
+
+	/**	The key of this node is guaranteed to be the smallest key of any of its children. */
+	protected final long key;
+
 	/**	The Context class allows information about the current root node to be passed to child nodes without having to save
 	*	it in the BTree itself.
 	*	@param	<I>	The type of an intermediate node (the same as the tree type)
@@ -143,12 +149,6 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			throw new UnsupportedOperationException("remove not suported");
 		}
 	}
-
-	/**	The children of this B-tree node. The children may be either intermediate nodes, which are themselves B-trees, or leaf nodes. */
-	protected final BTreeNode[] children;
-
-	/**	The key of this node is guaranteed to be the smallest key of any of its children. */
-	protected final long key;
 
 	/**	Create a B-tree using the given context.
 	*	@param	key	The key for this node of the B-tree. All child nodes are guaranteed to have keys greater than or equal to this.
