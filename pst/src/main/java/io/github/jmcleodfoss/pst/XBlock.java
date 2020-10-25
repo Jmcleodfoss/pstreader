@@ -11,6 +11,29 @@ package io.github.jmcleodfoss.pst;
 */
 class XBlock extends BlockBase
 {
+	private static final String nm_btype = "btype";
+	private static final String nm_cLevel = "cLevel";
+	private static final String nm_cEnt = "cEnt";
+	private static final String nm_lcbTotal = "lcbTotal";
+	private static final String nm_rgbid = "rgbid";
+
+	/**	Descriptions of the fields which make up the XBLOCK and XXBLOCK information. */
+	private static final DataDefinition[] data_fields = {
+		new DataDefinition(nm_btype, DataType.integer8Reader, true),
+		new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+		new DataDefinition(nm_cEnt, DataType.integer16Reader, true),
+		new DataDefinition(nm_lcbTotal, DataType.integer32Reader, true)
+	};
+
+	/**	The BIDs of the sub-blocks. This is saved for {link #toString} only. */
+	private final BID[] bid;
+
+	/**	The total amount of data in all sub-blocks */
+	private final int dataBytes;
+
+	/**	The sub-blocks in this multi-block structure. */
+	final java.util.Vector<SimpleBlock> blockList;
+
 	/**	An iterator which returns a ByteBuffer view of the underlying data block. */
 	private class Iterator implements java.util.Iterator<java.nio.ByteBuffer>
 	{
@@ -47,29 +70,6 @@ class XBlock extends BlockBase
 			throw new UnsupportedOperationException("remove not suported");
 		}
 	}
-
-	private static final String nm_btype = "btype";
-	private static final String nm_cLevel = "cLevel";
-	private static final String nm_cEnt = "cEnt";
-	private static final String nm_lcbTotal = "lcbTotal";
-	private static final String nm_rgbid = "rgbid";
-
-	/**	Descriptions of the fields which make up the XBLOCK and XXBLOCK information. */
-	private static final DataDefinition[] data_fields = {
-		new DataDefinition(nm_btype, DataType.integer8Reader, true),
-		new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
-		new DataDefinition(nm_cEnt, DataType.integer16Reader, true),
-		new DataDefinition(nm_lcbTotal, DataType.integer32Reader, true)
-	};
-
-	/**	The BIDs of the sub-blocks. This is saved for {link #toString} only. */
-	private final BID[] bid;
-
-	/**	The total amount of data in all sub-blocks */
-	private final int dataBytes;
-
-	/**	The sub-blocks in this multi-block structure. */
-	final java.util.Vector<SimpleBlock> blockList;
 
 	/**	Create an XBlock/XXBlock from the given block B-tree entry.
 	*	@param	entry	The block B-tree entry describing the root of this XBLOCK/XXBLOCK tree structure.
