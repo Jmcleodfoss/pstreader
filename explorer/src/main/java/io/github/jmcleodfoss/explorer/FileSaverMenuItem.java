@@ -65,9 +65,6 @@ abstract class FileSaverMenuItem implements ActionListener
 			fileChooser.setSelectedFile(new File(filename));
 
 		switch(fileChooser.showSaveDialog(pstExplorer.explorer)) {
-		case JFileChooser.CANCEL_OPTION:
-			return;
-
 		case JFileChooser.APPROVE_OPTION:
 			byte[] data = data();
 			if (data != null) {
@@ -87,7 +84,9 @@ abstract class FileSaverMenuItem implements ActionListener
 			}
 			return;
 
+		case JFileChooser.CANCEL_OPTION:
 		case JFileChooser.ERROR_OPTION:
+		default:
 			return;
 		}
 	}
