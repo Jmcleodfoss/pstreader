@@ -92,8 +92,8 @@ public class HeaderTest extends TestFrame
 	{
 		try {
 			FileInputStream stream = new FileInputStream(file);
-			java.nio.channels.FileChannel fc = stream.getChannel();
-			java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
+			FileChannel fc = stream.getChannel();
+			MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 			mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 			new Header(mbb);
 		} catch (IOException e) {
