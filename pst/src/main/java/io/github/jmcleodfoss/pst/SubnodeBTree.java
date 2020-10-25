@@ -221,6 +221,7 @@ public class SubnodeBTree extends BTree
 	/**	Test the SubnodeBTree class by reading in traversing the PST file and displaying all the sub-node B-tree leaves.
 	*	@param	args	The file(s) to display the sub-node B-Tree for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {

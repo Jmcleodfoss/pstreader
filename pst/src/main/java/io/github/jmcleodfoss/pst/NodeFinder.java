@@ -67,6 +67,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
 	*	@param	args	The file(s) to display test BlockFinder on.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {

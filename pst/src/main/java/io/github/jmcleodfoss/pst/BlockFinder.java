@@ -67,6 +67,7 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it.
 	*	@param	args	The pst files to run the test on.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {

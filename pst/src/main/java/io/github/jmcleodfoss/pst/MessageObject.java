@@ -168,6 +168,7 @@ public class MessageObject
 	*	@param	clName	The name of the class of messages to be displayed.
 	* 	@param	args	The file(s) to show the message objects for
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void test(final String clName, final String[] args)
 	{
 		if (args.length == 0) {

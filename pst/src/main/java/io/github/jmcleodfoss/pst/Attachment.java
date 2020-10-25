@@ -253,6 +253,7 @@ public class Attachment
 	/**	Test the Attachment class by iterating through the messages and displaying information about each attachment.
 	*	@param	args	The file(s) to show the attachment information for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {

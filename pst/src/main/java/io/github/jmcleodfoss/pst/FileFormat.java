@@ -144,6 +144,7 @@ class FileFormat
 	/**	Test ths class by indicating whether a file is unicode or not.
 	*	@param	args	The file(s) to show the file format for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {

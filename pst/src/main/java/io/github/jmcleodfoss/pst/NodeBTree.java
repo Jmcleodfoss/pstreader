@@ -113,6 +113,7 @@ class NodeBTree extends PagedBTree implements NodeMap
 	/**	Test this class by reading in the node B-Tree and printing it.
 	*	@param	args	The file(s) to display the B-Trees for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {

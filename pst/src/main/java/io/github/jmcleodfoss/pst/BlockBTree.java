@@ -84,6 +84,7 @@ class BlockBTree extends PagedBTree implements BlockMap
 	/**	Test this class by reading in the block B-Tree and printing it.
 	*	@param	args	The pst files to display the block B-Tree of.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length == 0) {

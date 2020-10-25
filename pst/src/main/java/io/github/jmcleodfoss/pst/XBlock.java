@@ -224,6 +224,7 @@ class XBlock extends BlockBase
 	*	This should also display the XBlocks in each node subtree block, but that's a little tougher.
 	*	@param	args	The file(s) to show the XBlocks for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {

@@ -208,6 +208,7 @@ public class IPF
 	/**	Test the IPF class by iterating through the root folders and displaying the type of each and whether it is known.
 	*	@param	args	The file(s) to show the folder information for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {

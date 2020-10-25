@@ -300,6 +300,7 @@ public class NameToIDMap
 	/**	Test the NameIDToMap class by reading the Named Properties map in and displaying the mapping.
 	*	@param	args	The name(s) of the file(s) to show the Named Properties of.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {

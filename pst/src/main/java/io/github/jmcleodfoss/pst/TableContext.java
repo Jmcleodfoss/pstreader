@@ -655,6 +655,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	it out.
 	*	@param	args	The file(s) to show the TableConext for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {

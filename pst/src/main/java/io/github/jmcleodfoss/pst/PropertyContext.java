@@ -330,6 +330,7 @@ public class PropertyContext
 	*	and printing them out.
 	*	@param	args	The files to display the property contexts of.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {
