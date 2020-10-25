@@ -15,5 +15,5 @@ TBD
 *   Only valid pst files should have the extension "pst" otherwise extras/test.sh will run all tests on them pointlessly
 *   Use the extension "bin" for deliberately-corrupted pst files
 *   Do not check in any full pst files unless:
-*     They are small
-*     They contain no identifying information for anybody
+*       They are small
+*       They contain no identifying information for anybody
