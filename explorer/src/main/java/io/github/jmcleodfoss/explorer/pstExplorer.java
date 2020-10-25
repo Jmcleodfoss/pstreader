@@ -39,9 +39,6 @@ public class pstExplorer extends JFrame
 	/**	The full node + sub-node B-tree. */
 	private NodeSubnodeBTree nodeBTree;
 
-	/**	The overall data pane which holds the PST "top-level" components. */
-	private JTabbedPane tabbedPane;
-
 	/**	The PST header information. */
 	private Header headerTab;
 
@@ -110,7 +107,7 @@ public class pstExplorer extends JFrame
 				}
 		});
 
-		tabbedPane = new JTabbedPane();
+		JTabbedPane tabbedPane = new JTabbedPane();
 		this.add(tabbedPane);
 
 		headerTab = new Header();
