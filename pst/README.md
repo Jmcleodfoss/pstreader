@@ -104,15 +104,23 @@ Success: all 74011 BIDs found
 ### BTreeOnHeap
 Traverse the pst heap B-tree, showing:
 *   The node ID
+
 *   Whether the block is "internal", i.e. metadata, or user data
+
 *   The node index
+
 *   The block ID key and node index for this node's data B-tree
+
 *   The block ID key and node index for this node's sub-node B-tree
+
 *   The parent node ID and index
+
 *   The node's key and number of children 
+
 *   Information about each child node:
-**   The child's node key
-**   The child node's data
+    *   The child's node key
+    *   The child node's data
+
 ````bash
 java io.github.jmcleodfoss.pst.BTreeOnHeap pst-file [ost-file ...]
 ````
