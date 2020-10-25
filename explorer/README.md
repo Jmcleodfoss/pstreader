@@ -14,15 +14,14 @@ The Explorer application lets you explore a pst file from several conceptual lev
 *   The pst file header information
 *   The list of properties, including names or GUIDs as required
 *   The message store
-
 *   The node B-tree, as a tree with nodes that can be expanded to show sub-nodes.
 
-*         The node's contents are shown if you select the node.
+  *      The node's contents are shown if you select the node.
 
 *   The block B-tree, as a tree with nodes that can be expanded to show to show sub-node blocks.
-*         The block's contents are shown if you select a block's node.
+  *         The block's contents are shown if you select a block's node.
 *   The pst file's folders (e.g. Deleted Items, Inbox, Outbox, and Sent Items) as a tree. Expanding the tree shows the folder contents (mail items, contacts, calendar entries, sticky note entries, or tasks).
-*         Folder information:
+  *         Folder information:
 *           Raw data
 
 *           The heap for the folder information
