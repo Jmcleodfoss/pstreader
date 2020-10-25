@@ -28,7 +28,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	columnIndex	The index of the column to return the class of.
 		*	@return	The class object for the type displayed in the requested column.
 		*/
-		public java.lang.Class<?> getColumnClass(final int columnIndex)
+		public Class<?> getColumnClass(final int columnIndex)
 		{
 			if (columnIndex < NUM_COLUMNS)
 				return String.class;

@@ -108,7 +108,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 		/**	Create a FileSaverTreePopupMenu, including the save action listener. */
 		AttachmentSavePopupMenu()
 		{
-			javax.swing.JMenuItem item = new javax.swing.JMenuItem("Save...");
+			JMenuItem item = new JMenuItem("Save...");
 			item.addActionListener(new AttachmentSaveActionListener());
 			add(item);
 		}
@@ -173,10 +173,10 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	private NodeContentsDisplay attachment;
 
 	/**	The ScrollPane for the attachment display, if any. */
-	private javax.swing.JScrollPane spAttachmentDisplay;
+	private JScrollPane spAttachmentDisplay;
 
 	/**	The attachment display component, if any. */
-	private javax.swing.JComponent attachmentDisplay;
+	private JComponent attachmentDisplay;
 
 	/**	The attachment image, if any. */
 	private javax.swing.JLabel attachmentImage;

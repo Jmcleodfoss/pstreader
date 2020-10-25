@@ -168,7 +168,7 @@ public class PST extends PSTFile
 	public HeapOnNode heapOnNode(BID bid)
 	{
 		try {
-			return io.github.jmcleodfoss.pst.HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
+			return HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
 		} catch (final java.io.IOException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final UnknownClientSignatureException e) {
@@ -243,7 +243,7 @@ public class PST extends PSTFile
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
-		final io.github.jmcleodfoss.pst.NBTEntry nbtEntry = nodeBTree.find(new NID(nid));
+		final NBTEntry nbtEntry = nodeBTree.find(new NID(nid));
 		return new io.github.jmcleodfoss.pst.PropertyContext(nbtEntry, blockBTree, this).iterator();
 	}
 

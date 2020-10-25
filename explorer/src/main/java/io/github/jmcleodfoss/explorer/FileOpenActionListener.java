@@ -17,7 +17,7 @@ class FileOpenActionListener implements ActionListener
 	/**	Construct the underlying FileChooser and set required filter. */
 	FileOpenActionListener()
 	{
-		fileChooser = new javax.swing.JFileChooser();
+		fileChooser = new JFileChooser();
 		fileChooser.setFileFilter(fileFilter);
 	}
 

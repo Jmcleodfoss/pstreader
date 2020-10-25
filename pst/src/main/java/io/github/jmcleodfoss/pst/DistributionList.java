@@ -153,12 +153,12 @@ public class DistributionList extends MessageObject
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
 		java.io.IOException,
-		io.github.jmcleodfoss.pst.NotHeapNodeException,
-		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
-		io.github.jmcleodfoss.pst.NullDataBlockException,
-		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
-		io.github.jmcleodfoss.pst.UnparseableTableContextException,
-		io.github.jmcleodfoss.pst.UnknownClientSignatureException
+		NotHeapNodeException,
+		NotPropertyContextNodeException,
+		NullDataBlockException,
+		UnparseablePropertyContextException,
+		UnparseableTableContextException,
+		UnknownClientSignatureException
 	{
 		final Object o = pc.get(distributionListMembersLID);
 		if (o == null)

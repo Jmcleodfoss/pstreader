@@ -139,7 +139,7 @@ public class PSTBean implements Serializable
 		}
 		appointments.folders.add(folderAppointments);
 
-		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+		for (Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
 			addAppointments(folders.next());
 	}
 

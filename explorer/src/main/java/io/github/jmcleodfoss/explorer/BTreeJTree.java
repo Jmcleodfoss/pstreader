@@ -39,7 +39,7 @@ class BTreeJTree extends JScrollPane
 		*/
 		public String convertValueToText(Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
 		{
-			javax.swing.tree.TreeModel tm = getModel();
+			TreeModel tm = getModel();
 			if (tm instanceof TreeCustomNodeText)
 				return ((TreeCustomNodeText)tm).getNodeText(value);
 			return super.convertValueToText(value, selected, expanded, leaf, row, hasFocus);

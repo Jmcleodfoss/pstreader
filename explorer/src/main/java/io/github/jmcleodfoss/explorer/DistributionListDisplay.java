@@ -27,8 +27,8 @@ class DistributionListDisplay extends JScrollPane
 	/**	Construct the constituent elements of the display. */
 	DistributionListDisplay()
 	{
-		super(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		members = new javax.swing.JList<DistributionList.Entry>();
+		super(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		members = new JList<DistributionList.Entry>();
 		getViewport().add(members);
 	}
 

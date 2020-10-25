@@ -113,7 +113,7 @@ public class pstExplorer extends JFrame
 				}
 		});
 
-		tabbedPane = new javax.swing.JTabbedPane();
+		tabbedPane = new JTabbedPane();
 		this.add(tabbedPane);
 
 		headerTab = new Header();
@@ -180,7 +180,7 @@ public class pstExplorer extends JFrame
 	/**	Read in the given PST file.
 	*	@param	file	The File object indicating the PST file to load.
 	*/
-	void openFile(final java.io.File file)
+	void openFile(final File file)
 	{
 		reset();
 
@@ -188,7 +188,7 @@ public class pstExplorer extends JFrame
 			public void run()
 			{
 				try {
-					pst = new io.github.jmcleodfoss.pst.PST(file.getAbsolutePath());
+					pst = new PST(file.getAbsolutePath());
 					nodeBTree = pst.nodeBTreeRoot();
 					setVisible(false);
 				} catch (final Exception e) {
@@ -214,7 +214,7 @@ public class pstExplorer extends JFrame
 	/**	Convenience function to provide a reference to the PST object currently being processed.
 	*	@return	The PST object for the currently loaded file.
 	*/
-	static io.github.jmcleodfoss.pst.PST pst()
+	static PST pst()
 	{
 		return explorer.pst;
 	}

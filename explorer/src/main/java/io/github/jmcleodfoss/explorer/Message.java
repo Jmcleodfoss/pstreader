@@ -40,7 +40,7 @@ class Message extends NodeContentsDisplay
 		spBodyText = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		spBodyText.getViewport().add(bodyText);
 
-		bodyHtml = new javax.swing.JTextPane();
+		bodyHtml = new JTextPane();
 		bodyHtml.setContentType("text/html");
 		bodyHtml.getDocument().putProperty("IgnoreCharsetDirective", Boolean.TRUE);
 

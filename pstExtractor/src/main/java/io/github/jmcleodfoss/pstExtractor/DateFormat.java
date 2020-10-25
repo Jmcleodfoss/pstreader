@@ -11,7 +11,7 @@ public class DateFormat
 	*/
 	static SimpleDateFormat defaultDateFormat()
 	{
-		SimpleDateFormat df = new java.text.SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
 		df.setTimeZone(TimeZone.getDefault());
 		return df;
 	}

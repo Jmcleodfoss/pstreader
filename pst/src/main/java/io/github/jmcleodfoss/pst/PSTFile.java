@@ -32,7 +32,7 @@ public class PSTFile
 		mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
 		mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
-		header = new io.github.jmcleodfoss.pst.Header(mbb);
+		header = new Header(mbb);
 	}
 
 	/**	Provide the name of String encoding.
