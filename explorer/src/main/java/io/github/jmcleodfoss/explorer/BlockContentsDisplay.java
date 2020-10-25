@@ -10,12 +10,6 @@ import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 @SuppressWarnings("serial")
 class BlockContentsDisplay extends HexAndTextDisplay implements BTreeContentsDisplay
 {
-	/**	Construct the constituent elements of the display. */
-	BlockContentsDisplay()
-	{
-		super();
-	}
-
 	/**	{@inheritDoc}. */
 	@Override
 	public void update(BTreeNode node, PST pst)

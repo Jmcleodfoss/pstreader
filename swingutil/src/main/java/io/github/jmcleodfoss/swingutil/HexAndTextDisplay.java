@@ -18,12 +18,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		/**	The underlying data to be displayed. */
 		private byte[] data;
 
-		/**	Create a TableModel object. */
-		private TableModel()
-		{
-			super();
-		}
-
 		/**	Get the class used by the requested column.
 		*	@param	columnIndex	The index of the column to return the class of.
 		*	@return	The class object for the type displayed in the requested column.

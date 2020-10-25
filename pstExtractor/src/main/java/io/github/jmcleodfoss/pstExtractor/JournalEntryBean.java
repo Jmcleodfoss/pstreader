@@ -11,11 +11,6 @@ public class JournalEntryBean
 	/**	The journal entry. */
 	String	note;
 
-	/**	Create a JournalEntryBean object. */
-	public JournalEntryBean()
-	{
-	}
-
 	/**	Retrieve the title of the journal entry.
 	*	@return	The title of the journal entry message object.
 	*/

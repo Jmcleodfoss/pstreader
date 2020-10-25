@@ -11,11 +11,6 @@ public class StickyNoteBean
 	/**	The sticky note. */
 	String	note;
 
-	/**	Create a StickyNoteBean object. */
-	public StickyNoteBean()
-	{
-	}
-
 	/**	Retrieve the title of the sticky note.
 	*	@return	The title of the sticky note message object.
 	*/

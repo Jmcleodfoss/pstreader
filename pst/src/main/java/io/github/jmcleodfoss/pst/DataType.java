@@ -375,12 +375,6 @@ abstract class DataType
 	/**	The Floating32 data type described an 32-bit floating point value. */
 	private static class Floating32 extends DataType
 	{
-		/**	Construct a manipulator for a PST PtypFloating32 data type. */
-		private Floating32()
-		{
-			super();
-		}
-
 		/**	Create a String describing a byte array.
 		*	@param	o	The value to display.
 		*	@return	A String representing the 32-bit floating-point number.
@@ -417,12 +411,6 @@ abstract class DataType
 	/**	The Floating64 data type described an 64-bit floating point value. */
 	private static class Floating64 extends DataType
 	{
-		/**	Construct a manipulator for a PST PtypFloating64 data type. */
-		private Floating64()
-		{
-			super();
-		}
-
 		/**	Create a String describing a byte array.
 		*	@param	o	The value to display.
 		*	@return	A String representing the 64-bit floating-point number.
@@ -461,12 +449,6 @@ abstract class DataType
 	*/
 	private static class GUID extends DataType
 	{
-		/**	Construct a GUID manipulator object. */
-		private GUID()
-		{
-			super();
-		}
-
 		/**	Create a String from the passed GUID object.
 		*	@param	o	The GUID object to print out.
 		*	@return	A String representation of the GUID object.
@@ -508,12 +490,6 @@ abstract class DataType
 	*/
 	private static class HID extends DataType
 	{
-		/**	Construct an HID manipulator object. */
-		private HID()
-		{
-			super();
-		}
-
 		/**	Create a String from the passed HID object.
 		*	@param	o	The HID object to display.
 		*	@return	A String representation of the HID object.
@@ -550,12 +526,6 @@ abstract class DataType
 	/**	The Integer8 data type describes how to manipulate an 8-bit integer. */
 	private static class Integer8 extends DataType
 	{
-		/**	Construct a manipulator for an 8-bit integer. */
-		private Integer8()
-		{
-			super();
-		}
-
 		/**	Create a String from the passed Byte object.
 		*	@param	o	The Byte object to display.
 		*	@return	A String representation of the Byte object (in hexadecimal).
@@ -592,12 +562,6 @@ abstract class DataType
 	/**	The Integer16 data type describes how to read and display a 16-bit integer. */
 	private static class Integer16 extends DataType
 	{
-		/**	Construct a manipulator for an PST PtypInteger32 data type. */
-		private Integer16()
-		{
-			super();
-		}
-
 		/**	Create a String from the passed Short object.
 		*	@param	o	The Short object to display.
 		*	@return	A String representation of the Short object (in hexadecimal).
@@ -676,12 +640,6 @@ abstract class DataType
 	/**	The Integer64 data type described a 64-bit integer. */
 	private static class Integer64 extends DataType
 	{
-		/**	Construct a manipulator for an PST PtypInteger32 data type. */
-		private Integer64()
-		{
-			super();
-		}
-
 		/**	Create a String from the passed Long object.
 		*	@param	o	The Long object to display.
 		*	@return	A String representation of the Long object (in hexadecimal).
@@ -718,12 +676,6 @@ abstract class DataType
 	/**	The MultipleBinary class describes how to read in multiple binary objects from a PST file. */
 	private static class MultipleBinary extends DataType
 	{
-		/**	Create a manipulator for reading and displaying multiple binary objects. */
-		private MultipleBinary()
-		{
-			super();
-		}
-
 		/**	Create a String representation of a list of binary object.
 		*	@param	o	The list of binary object to display.
 		*	@return	A String representation of the given list of binary objects.
@@ -845,12 +797,6 @@ abstract class DataType
 	/**	The MultipleInteger32 class describes how to read in multiple 32-bit integers from a PST file. */
 	private static class MultipleInteger32 extends DataType
 	{
-		/**	Create a reader/display manipulator for a list of 32-bit integers. */
-		private MultipleInteger32()
-		{
-			super();
-		}
-
 		/**	Create a String representation of a list of Integer values.
 		*	@param	o	The list of Integer values to display.
 		*	@return	A String representation of the given list of Integer values.
@@ -898,12 +844,6 @@ abstract class DataType
 	/**	The MultipleInteger64 class describes how to read in multiple 64-bit integers from a PST file. */
 	private static class MultipleInteger64 extends DataType
 	{
-		/**	Create a reader/display manipulator for a list of 64-bit integers. */
-		private MultipleInteger64()
-		{
-			super();
-		}
-
 		/**	Create a String representation of a list of Long values.
 		*	@param	o	The list of Integer values to display.
 		*	@return	A String representation of the given list of Integer values.
@@ -1065,12 +1005,6 @@ abstract class DataType
 	/**	The PSTBoolean data type describes how to read in and display a boolean value in a PST file. */
 	private static class PSTBoolean extends DataType
 	{
-		/**	Create a reader/display manipulator object for PST file Boolean values. */
-		private PSTBoolean()
-		{
-			super();
-		}
-
 		/**	Create a String representation of a Boolean
 		*	@param	o	The Boolean to display.
 		*	@return	A String representation of the given Boolean value.
@@ -1202,12 +1136,6 @@ abstract class DataType
 				System.exit(1);
 			}
 			return new java.util.Date();
-		}
-
-		/**	Create a time reader/display manipulation object. */
-		private Time()
-		{
-			super();
 		}
 
 		/**	Create a String representation of a Date.
