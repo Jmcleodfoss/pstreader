@@ -148,9 +148,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	/**	The table model */
 	private TableModel tableModel;
 
-	/**	The table display object. */
-	private javax.swing.JTable table;
-
 	/**	The row header */
 	private javax.swing.JTable rowHeader;
 
@@ -160,7 +157,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		super(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		setBackground(java.awt.Color.LIGHT_GRAY);
 
-		table = new javax.swing.JTable();
+		javax.swing.JTable table = new javax.swing.JTable();
 		getViewport().add(table);
 		getViewport().setBackground(java.awt.Color.LIGHT_GRAY);
 		table.getTableHeader().setReorderingAllowed(false);
