@@ -7,6 +7,12 @@ package io.github.jmcleodfoss.pst;
 */
 public class NameToIDMap
 {
+	/**	The list of named properties. Note that there will be only of of these per PST file. */
+	private final java.util.HashMap<Integer, String> namedProperties;
+
+	/**	The reverse look-up of canonical ID's to mapped ID's. */
+	private final java.util.HashMap<Integer, Integer> canonicalIDToNPID;
+
 	/**	The NameID class contains information about an individual entry in the NID_NAME_ID_TO_MAP node.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/0d6b4781-92c5-4d49-b24b-b783557098d1">MS-PST Section 2.4.7.1: NAMEID</a>
 	*/
@@ -175,12 +181,6 @@ public class NameToIDMap
 			return false;
 		}
 	}
-
-	/**	The list of named properties. Note that there will be only of of these per PST file. */
-	private final java.util.HashMap<Integer, String> namedProperties;
-
-	/**	The reverse look-up of canonical ID's to mapped ID's. */
-	private final java.util.HashMap<Integer, Integer> canonicalIDToNPID;
 
 	/**	Construct a NameIDToMap object from the given node and block database and PST file object.
 	*	@param	bbt	The PST file's block B-tree.
