@@ -243,7 +243,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 		final PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
 
 		if (attachmentDisplay != null) {
-			if (attachmentDisplay,equals(attachmentImage))
+			if (attachmentDisplay.equals(attachmentImage))
 				attachmentImage.setIcon(null);
 			else if (attachmentDisplay.equals(attachmentText))
 				attachmentText.setText("");
