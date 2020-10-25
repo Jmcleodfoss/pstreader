@@ -4,7 +4,7 @@ declare -r outfile=pst_stickynotes_to_html.xml
 declare -r folder_name=Notes
 declare -r title=Sticky Notes
 declare -r message_class=IPM.StickyNote
-declare -r area=Sticky Notes
+declare -r area="Sticky Notes"
 declare -r version=190618
 declare -r primary_title=BodyW
 

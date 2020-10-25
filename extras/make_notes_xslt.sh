@@ -3,8 +3,8 @@ declare -r sourcefile=~/work/outlook-files/ms-oxprops-db/releases/1.0.0/ms-oxpro
 declare -r outfile=pst_notes_to_html.xml
 declare -r page_title=Calendar
 declare -r message_class=IPM.Note
-declare -r area1=Message Properties
-declare -r area2=Address Properties
+declare -r area1="Message Properties"
+declare -r area2="Address Properties"
 declare -r version=190618
 declare -r entry_title=SubjectW
 

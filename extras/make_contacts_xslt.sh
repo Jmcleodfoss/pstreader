@@ -4,7 +4,7 @@ declare -r outfile=pst_contacts_to_html.xml
 declare -r folder_name=Contacts
 declare -r page_title=Contacts
 declare -r message_class=IPM.Contact
-declare -r area=Contact Properties
+declare -r area="Contact Properties"
 declare -r version=190618
 declare -r entry_title=SubjectW
 
