@@ -35,6 +35,76 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 @SuppressWarnings("serial")
 class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 {
+	/**	The list of mime types which may be displayed as images (and for which there is built-in support in Java Swing). */
+	private static final ArrayList<String> imageMimeTypes = new ArrayList<String>();
+	static {
+		imageMimeTypes.add("image/bmp");
+		imageMimeTypes.add("image/gif");
+		imageMimeTypes.add("image/jpeg");
+		imageMimeTypes.add("image/pjpeg");
+		imageMimeTypes.add("image/png");
+		imageMimeTypes.add("image/tiff");
+	}
+
+	/**	The list of mime types which may be displayed as text. */
+	private static final ArrayList<String> textMimeTypes = new ArrayList<String>();
+	static {
+		textMimeTypes.add("message/delivery-status");
+		textMimeTypes.add("text/plain");
+		textMimeTypes.add("text/x-vcard");
+	}
+
+	/**	The list of mime types which may be displayed as HTML. */
+	private static final ArrayList<String> htmlMimeTypes = new ArrayList<String>();
+	static {
+		htmlMimeTypes.add("text/html");
+	}
+
+	/**	The display of the folder raw data. */
+	private NodeContentsDisplay folderObject;
+
+	/**	The display of the folder hierarchy table. */
+	private NodeContentsDisplay hierarchyTable;
+
+	/**	The display of the folder contents table. */
+	private NodeContentsDisplay contentsTable;
+
+	/**	The display of the folder associated contents table. */
+	private NodeContentsDisplay associatedContentsTable;
+
+	/**	The display of the message data. */
+	private Message message;
+
+	/**	The display of the message recipient table. */
+	private NodeContentsDisplay recipientTable;
+
+	/**	The display of the message attachment info. */
+	private NodeContentsDisplay attachmentTable;
+
+	/**	The display of attachment data. */
+	private NodeContentsDisplay attachment;
+
+	/**	The ScrollPane for the attachment display, if any. */
+	private JScrollPane spAttachmentDisplay;
+
+	/**	The attachment display component, if any. */
+	private JComponent attachmentDisplay;
+
+	/**	The attachment image, if any. */
+	private JLabel attachmentImage;
+
+	/**	The text attachment, if any. */
+	private JTextArea attachmentText;
+
+	/**	The HTML attachment, if any. */
+	private JTextPane attachmentHtml;
+
+	/**	The members of the distribution list, if any. */
+	private DistributionListDisplay distributionList;
+
+	/**	The message property context, when appropriate. */
+	private PropertyContext messagePC;
+
 	/**	The HtmlSavePopupMenu is the popup menu for saving messages in HTML. */
 	class HtmlSavePopupMenu extends TreeNodePopupListener
 	{
@@ -127,76 +197,6 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			return o instanceof Attachment;
 		}
 	};
-
-	/**	The list of mime types which may be displayed as images (and for which there is built-in support in Java Swing). */
-	private static final ArrayList<String> imageMimeTypes = new ArrayList<String>();
-	static {
-		imageMimeTypes.add("image/bmp");
-		imageMimeTypes.add("image/gif");
-		imageMimeTypes.add("image/jpeg");
-		imageMimeTypes.add("image/pjpeg");
-		imageMimeTypes.add("image/png");
-		imageMimeTypes.add("image/tiff");
-	}
-
-	/**	The list of mime types which may be displayed as text. */
-	private static final ArrayList<String> textMimeTypes = new ArrayList<String>();
-	static {
-		textMimeTypes.add("message/delivery-status");
-		textMimeTypes.add("text/plain");
-		textMimeTypes.add("text/x-vcard");
-	}
-
-	/**	The list of mime types which may be displayed as HTML. */
-	private static final ArrayList<String> htmlMimeTypes = new ArrayList<String>();
-	static {
-		htmlMimeTypes.add("text/html");
-	}
-
-	/**	The display of the folder raw data. */
-	private NodeContentsDisplay folderObject;
-
-	/**	The display of the folder hierarchy table. */
-	private NodeContentsDisplay hierarchyTable;
-
-	/**	The display of the folder contents table. */
-	private NodeContentsDisplay contentsTable;
-
-	/**	The display of the folder associated contents table. */
-	private NodeContentsDisplay associatedContentsTable;
-
-	/**	The display of the message data. */
-	private Message message;
-
-	/**	The display of the message recipient table. */
-	private NodeContentsDisplay recipientTable;
-
-	/**	The display of the message attachment info. */
-	private NodeContentsDisplay attachmentTable;
-
-	/**	The display of attachment data. */
-	private NodeContentsDisplay attachment;
-
-	/**	The ScrollPane for the attachment display, if any. */
-	private JScrollPane spAttachmentDisplay;
-
-	/**	The attachment display component, if any. */
-	private JComponent attachmentDisplay;
-
-	/**	The attachment image, if any. */
-	private JLabel attachmentImage;
-
-	/**	The text attachment, if any. */
-	private JTextArea attachmentText;
-
-	/**	The HTML attachment, if any. */
-	private JTextPane attachmentHtml;
-
-	/**	The members of the distribution list, if any. */
-	private DistributionListDisplay distributionList;
-
-	/**	The message property context, when appropriate. */
-	private PropertyContext messagePC;
 
 	/**	ssCreate the display of various types of data within the folder tree (folders, messages, and attachments).
 	*	@param	folderTree	The folder tree.
