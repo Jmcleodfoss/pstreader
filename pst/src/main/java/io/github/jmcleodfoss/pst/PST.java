@@ -244,7 +244,7 @@ public class PST extends PSTFile
 		java.io.IOException
 	{
 		final NBTEntry nbtEntry = nodeBTree.find(new NID(nid));
-		return new io.github.jmcleodfoss.pst.PropertyContext(nbtEntry, blockBTree, this).iterator();
+		return new PropertyContext(nbtEntry, blockBTree, this).iterator();
 	}
 
 	/**	Convenience function to obtain a table model for the property context for the given NID.

@@ -124,7 +124,7 @@ public class PSTBean implements Serializable
 		FolderBean<AppointmentBean> folderAppointments = new FolderBean<AppointmentBean>();
 		folderAppointments.name = folder.displayName;
 
-		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+		for (Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
 			MessageObject mo = contents.next();
 			if (!(mo instanceof Appointment))
 				continue;
@@ -151,7 +151,7 @@ public class PSTBean implements Serializable
 		FolderBean<ContactBean> folderContacts = new FolderBean<ContactBean>();
 		folderContacts.name = folder.displayName;
 
-		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+		for (Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
 			MessageObject mo = contents.next();
 			if (!(mo instanceof Contact))
 				continue;
@@ -187,7 +187,7 @@ public class PSTBean implements Serializable
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the journal entries.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the journal entries.
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the journal entries.
-	*	@throws java.io.IOException			An I/O error was encoutnered while reading the journal entries.
+	*	@throws IOException			An I/O error was encoutnered while reading the journal entries.
 	*/
 	private void addJournalEntries(Folder folder, PST pst)
 	throws
@@ -230,7 +230,7 @@ public class PSTBean implements Serializable
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the sticky notes.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the sticky notes.
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the sticky notes.
-	*	@throws java.io.IOException			An I/O error was encoutnered while reading the sticky notes.
+	*	@throws IOException			An I/O error was encoutnered while reading the sticky notes.
 	*/
 	private void addStickyNotes(Folder folder, PST pst)
 	throws
@@ -473,7 +473,7 @@ public class PSTBean implements Serializable
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the pst file.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
-	*	@throws java.io.IOException			An I/O error was encoutnered while reading the pst file.
+	*	@throws IOException			An I/O error was encoutnered while reading the pst file.
 	*/
 	private void processPST()
 	throws
@@ -484,7 +484,7 @@ public class PSTBean implements Serializable
 		UnknownClientSignatureException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
-		java.io.IOException
+		IOException
 	{
 		Folder rootFolder = pst.getFolderTree();
 
