@@ -203,7 +203,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			UnknownClientSignatureException,
 			java.io.IOException
 		{
-System.out.printf("bytes remaining in stream: %d%n", stream.remaining());
 			DataContainer dc = new DataContainer();
 			dc.read(stream, fields);
 			ibHnpm = 0xffff & (Short)dc.get(nm_ibHnpm);
