@@ -495,6 +495,7 @@ abstract class DataType
 	/**	The GUID class describes how to read a 16-byte PST GUID in.
 	*	@see	io.github.jmcleodfoss.pst.GUID
 	*/
+	@SuppressWarnings("PMD.UnnecessaryFullyQualifiedName")
 	private static class GUID extends DataType
 	{
 		/**	Create a String from the passed GUID object.
@@ -532,6 +533,7 @@ abstract class DataType
 	/**	The HID class describes an HID object in a PST file.
 	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
 	*/
+	@SuppressWarnings("PMD.UnnecessaryFullyQualifiedName")
 	private static class HID extends DataType
 	{
 		/**	Create a String from the passed HID object.
@@ -972,6 +974,7 @@ abstract class DataType
 	}
 
 	/**	The NID class describes how to read and display an NID object in a PST file. */
+	@SuppressWarnings("PMD.UnnecessaryFullyQualifiedName")
 	private static class NID extends DataType
 	{
 		/**	Create a reader/display manipulator for PST NID objects. */
