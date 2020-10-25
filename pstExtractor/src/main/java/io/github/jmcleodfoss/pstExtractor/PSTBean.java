@@ -173,7 +173,7 @@ public class PSTBean implements Serializable
 		}
 		contacts.folders.add(folderContacts);
 
-		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+		for (Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
 			addContacts(folders.next(), pst);
 	}
 
@@ -203,7 +203,7 @@ public class PSTBean implements Serializable
 		FolderBean<JournalEntryBean> folderJournalEntry = new FolderBean<JournalEntryBean>();
 		folderJournalEntry.name = folder.displayName;
 
-		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+		for (Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
 			MessageObject mo = contents.next();
 			if (!(mo instanceof JournalEntry))
 				continue;
@@ -216,7 +216,7 @@ public class PSTBean implements Serializable
 		}
 		journalEntries.folders.add(folderJournalEntry);
 
-		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+		for (Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
 			addJournalEntries(folders.next(), pst);
 	}
 
@@ -246,7 +246,7 @@ public class PSTBean implements Serializable
 		FolderBean<StickyNoteBean> folderStickyNotes = new FolderBean<StickyNoteBean>();
 		folderStickyNotes.name = folder.displayName;
 
-		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+		for (Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
 			MessageObject mo = contents.next();
 			if (!(mo instanceof StickyNote))
 				continue;
@@ -259,7 +259,7 @@ public class PSTBean implements Serializable
 		}
 		stickyNotes.folders.add(folderStickyNotes);
 
-		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+		for (Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
 			addStickyNotes(folders.next(), pst);
 	}
 
@@ -271,7 +271,7 @@ public class PSTBean implements Serializable
 		FolderBean<TaskBean> folderTasks = new FolderBean<TaskBean>();
 		folderTasks.name = folder.displayName;
 
-		for (java.util.Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
+		for (Iterator<MessageObject> contents = folder.contentsIterator(); contents.hasNext(); ) {
 			MessageObject mo = contents.next();
 			if (!(mo instanceof Task))
 				continue;
@@ -284,7 +284,7 @@ public class PSTBean implements Serializable
 		}
 		tasks.folders.add(folderTasks);
 
-		for (java.util.Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
+		for (Iterator<Folder> folders = folder.subfolderIterator(); folders.hasNext(); )
 			addTasks(folders.next());
 	}
 
