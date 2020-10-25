@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 /** Utility class for shared defeault date format creation */
+@SuppressWarnings("PMD.ClassNamingConventions")
 public class DateFormat
 {
 	/** Get the default date format.
