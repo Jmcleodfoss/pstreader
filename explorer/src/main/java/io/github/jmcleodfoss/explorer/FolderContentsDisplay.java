@@ -230,163 +230,178 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 		folderTree.addMouseListener(new AttachmentSavePopupMenu());
 	}
 
-	/**	Update the display to show information about the current node of the folder tree.
-	*	@param	treeNode	The new folder tree node to display.
+	/**	Update the display for a new node of type Attachment
+	*	@param	attachmentObject	The Attachment object for the node
 	*/
 	@SuppressWarnings("PMD.EmptyIfStmt")
-	private void doUpdate(final Object treeNode)
+	private void doAttachmentUpdate(Attachment attachmentObject)
 	{
-		if (treeNode instanceof Folder) {
+		assert attachmentObject.nodeInfo != null;
 
-			final Folder folder = (Folder)treeNode;
-			assert folder.nodeFolderObject != null;
+		updateComponent(attachment, attachmentObject.nodeInfo, "Attachment");
 
-			updateComponent(folderObject, folder.nodeFolderObject, "Info");
-			updateComponent(hierarchyTable, folder.nodeHierarchyTable, "Hierarchy");
-			updateComponent(contentsTable, folder.nodeContentsTable, "Contents");
-			updateComponent(associatedContentsTable, folder.nodeAssociatedContentsTable, "Associated Contents");
+		final PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
 
+		if (attachmentDisplay != null) {
+			if (attachmentDisplay == attachmentImage)
+				attachmentImage.setIcon(null);
+			else if (attachmentDisplay == attachmentText)
+				attachmentText.setText("");
+			else if (attachmentDisplay == attachmentHtml)
+				attachmentHtml.setText("");
+
+			spAttachmentDisplay.getViewport().remove(attachmentDisplay);
+			attachmentDisplay = null;
+		}
+
+		if (imageMimeTypes.contains(attachmentObject.mimeType)) {
+			try {
+				ByteArrayInputStream imageData = new ByteArrayInputStream(attachmentObject.data(pc));
+				BufferedImage bufferedImage = ImageIO.read(imageData);
+				attachmentImage.setIcon(new ImageIcon(bufferedImage));
+				attachmentDisplay = attachmentImage;
+			} catch (java.io.IOException e) {
+				remove(spAttachmentDisplay);
+			}
+
+		} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
+			try {
+				attachmentText.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
+			} catch (final java.io.UnsupportedEncodingException e) {
+				e.printStackTrace(System.out);
+				attachmentText.setText("");
+			} finally {
+				attachmentDisplay = attachmentText;
+			}
+		} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
+			try {
+				attachmentHtml.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
+			} catch (final java.io.UnsupportedEncodingException e) {
+				e.printStackTrace(System.out);
+				attachmentHtml.setText("");
+			} finally {
+				attachmentDisplay = attachmentHtml;
+			}
+		} else {
+			// we don't know how to display this attachment.
+		}
+
+		if (attachmentDisplay != null) {
+			spAttachmentDisplay.getViewport().add(attachmentDisplay);
+			if (indexOfComponent(spAttachmentDisplay) == -1)
+				add("Display", spAttachmentDisplay);
+		} else {
+			remove(spAttachmentDisplay);
+		}
+
+		remove(folderObject);
+		remove(hierarchyTable);
+		remove(contentsTable);
+		remove(associatedContentsTable);
+
+		remove(message);
+		remove(recipientTable);
+		remove(attachmentTable);
+		messagePC = null;
+	}
+
+	/**	Update the display for a new node of type Folder.
+	*	@param	folder	The Folder object for the node
+	*/
+	private void doFolderUpdate(Folder folder)
+	{
+		assert folder.nodeFolderObject != null;
+
+		updateComponent(folderObject, folder.nodeFolderObject, "Info");
+		updateComponent(hierarchyTable, folder.nodeHierarchyTable, "Hierarchy");
+		updateComponent(contentsTable, folder.nodeContentsTable, "Contents");
+		updateComponent(associatedContentsTable, folder.nodeAssociatedContentsTable, "Associated Contents");
+
+		remove(message);
+		remove(recipientTable);
+		remove(attachmentTable);
+		messagePC = null;
+
+		remove(attachment);
+		remove(spAttachmentDisplay);
+	}
+
+	/**	Update the display for a new node of type MessageObject
+	*	@param	messageObject	The MessageObject object for the node
+	*/
+	private void doMessageObjectUpdate(MessageObject messageObject)
+	{
+		assert messageObject.nodeMessageObject != null;
+
+		try {
+			messagePC = messageObject.getMessage(pstExplorer.pst());
+		} catch (NotHeapNodeException e) {
+		} catch (NotPropertyContextNodeException e) {
+		} catch (NotTableContextNodeException e) {
+		} catch (NullDataBlockException e) {
+		} catch (UnknownClientSignatureException e) {
+		} catch (UnparseablePropertyContextException e) {
+		} catch (UnparseableTableContextException e) {
+		} catch (java.io.IOException e) {
+		}
+
+		if (messagePC != null) {
+			updateComponent(message, messageObject.nodeMessageObject, "Message");
+			message.update(messageObject, messagePC);
+			if (messageObject instanceof io.github.jmcleodfoss.pst.Message) {
+				io.github.jmcleodfoss.pst.Message messageMessage = (io.github.jmcleodfoss.pst.Message)messageObject;
+				updateComponent(recipientTable, messageMessage.nodeRecipientTable, "Recipients");
+				updateComponent(attachmentTable, messageMessage.nodeAttachmentTable, "Attachments");
+			} else {
+				remove(recipientTable);
+				remove(attachmentTable);
+			}
+
+			if (messageObject instanceof DistributionList) {
+				DistributionList distributionListObject = (DistributionList)messageObject;
+				if (distributionList.update(distributionListObject, messagePC, pstExplorer.pst())) {
+					if (indexOfComponent(distributionList) == -1)
+						add("Distribution List Members", distributionList);
+				} else {
+					remove(distributionList);
+				}
+
+			} else {
+				remove(distributionList);
+			}
+		} else {
 			remove(message);
 			remove(recipientTable);
 			remove(attachmentTable);
-			messagePC = null;
+			remove(distributionList);
+		}
 
-			remove(attachment);
-			remove(spAttachmentDisplay);
+		remove(folderObject);
+		remove(hierarchyTable);
+		remove(contentsTable);
+		remove(associatedContentsTable);
 
+		remove(attachment);
+		remove(spAttachmentDisplay);
+	}
+
+	/**	Update the display to show information about the current node of the folder tree.
+	*	@param	treeNode	The new folder tree node to display.
+	*/
+	private void doUpdate(final Object treeNode)
+	{
+		if (treeNode instanceof Folder) {
+			doFolderUpdate((Folder)treeNode);
 			return;
 		}
 
 		if (treeNode instanceof MessageObject) {
-
-			final MessageObject messageObject = (MessageObject)treeNode;
-			assert messageObject.nodeMessageObject != null;
-
-			try {
-				messagePC = messageObject.getMessage(pstExplorer.pst());
-			} catch (NotHeapNodeException e) {
-			} catch (NotPropertyContextNodeException e) {
-			} catch (NotTableContextNodeException e) {
-			} catch (NullDataBlockException e) {
-			} catch (UnknownClientSignatureException e) {
-			} catch (UnparseablePropertyContextException e) {
-			} catch (UnparseableTableContextException e) {
-			} catch (java.io.IOException e) {
-			}
-
-			if (messagePC != null) {
-				updateComponent(message, messageObject.nodeMessageObject, "Message");
-				message.update(messageObject, messagePC);
-				if (messageObject instanceof io.github.jmcleodfoss.pst.Message) {
-					io.github.jmcleodfoss.pst.Message messageMessage = (io.github.jmcleodfoss.pst.Message)messageObject;
-					updateComponent(recipientTable, messageMessage.nodeRecipientTable, "Recipients");
-					updateComponent(attachmentTable, messageMessage.nodeAttachmentTable, "Attachments");
-				} else {
-					remove(recipientTable);
-					remove(attachmentTable);
-				}
-
-				if (messageObject instanceof DistributionList) {
-					DistributionList distributionListObject = (DistributionList)messageObject;
-					if (distributionList.update(distributionListObject, messagePC, pstExplorer.pst())) {
-						if (indexOfComponent(distributionList) == -1)
-							add("Distribution List Members", distributionList);
-					} else {
-						remove(distributionList);
-					}
-
-				} else {
-					remove(distributionList);
-				}
-			} else {
-				remove(message);
-				remove(recipientTable);
-				remove(attachmentTable);
-				remove(distributionList);
-			}
-
-			remove(folderObject);
-			remove(hierarchyTable);
-			remove(contentsTable);
-			remove(associatedContentsTable);
-
-			remove(attachment);
-			remove(spAttachmentDisplay);
-
+			doMessageObjectUpdate((MessageObject)treeNode);
 			return;
 		}
 
 		if (treeNode instanceof Attachment) {
-			
-			final Attachment attachmentObject = (Attachment)treeNode;
-			assert attachmentObject.nodeInfo != null;
-
-			updateComponent(attachment, attachmentObject.nodeInfo, "Attachment");
-
-			final PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
-
-			if (attachmentDisplay != null) {
-				if (attachmentDisplay == attachmentImage)
-					attachmentImage.setIcon(null);
-				else if (attachmentDisplay == attachmentText)
-					attachmentText.setText("");
-				else if (attachmentDisplay == attachmentHtml)
-					attachmentHtml.setText("");
-
-				spAttachmentDisplay.getViewport().remove(attachmentDisplay);
-				attachmentDisplay = null;
-			}
-
-			if (imageMimeTypes.contains(attachmentObject.mimeType)) {
-				try {
-					ByteArrayInputStream imageData = new ByteArrayInputStream(attachmentObject.data(pc));
-					BufferedImage bufferedImage = ImageIO.read(imageData);
-					attachmentImage.setIcon(new ImageIcon(bufferedImage));
-					attachmentDisplay = attachmentImage;
-				} catch (java.io.IOException e) {
-					remove(spAttachmentDisplay);
-				}
-
-			} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
-				try {
-					attachmentText.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
-				} catch (final java.io.UnsupportedEncodingException e) {
-					e.printStackTrace(System.out);
-					attachmentText.setText("");
-				} finally {
-					attachmentDisplay = attachmentText;
-				}
-			} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
-				try {
-					attachmentHtml.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
-				} catch (final java.io.UnsupportedEncodingException e) {
-					e.printStackTrace(System.out);
-					attachmentHtml.setText("");
-				} finally {
-					attachmentDisplay = attachmentHtml;
-				}
-			} else {
-				// we don't know how to display this attachment.
-			}
-
-			if (attachmentDisplay != null) {
-				spAttachmentDisplay.getViewport().add(attachmentDisplay);
-				if (indexOfComponent(spAttachmentDisplay) == -1)
-					add("Display", spAttachmentDisplay);
-			} else {
-				remove(spAttachmentDisplay);
-			}
-
-			remove(folderObject);
-			remove(hierarchyTable);
-			remove(contentsTable);
-			remove(associatedContentsTable);
-
-			remove(message);
-			remove(recipientTable);
-			remove(attachmentTable);
-			messagePC = null;
-
+			doAttachmentUpdate((Attachment)treeNode);
 			return;
 		}
 
