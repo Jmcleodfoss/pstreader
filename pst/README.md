@@ -6,7 +6,7 @@ See
 
 ## Example
 It really helps to understand the structure of the PST file as described in the reference above when using this library, but here is a quick not-quite-java example.
-```
+```Java
     import io.github.jmcleodfoss.pst.*
 
     PST pst = new PST("path-to-file/filename.pst");
@@ -42,11 +42,11 @@ The file [extras/test.sh](../../extras/test.sh) runs most of these tests on any 
 
 ### Appointment
 Show information about all appointments in the pst file
-```
+```bash
 java io.github.jmcleodfoss.pst.Appointment pst-file [pst-file ...]
 ```
 #### Output
-```
+```Text
 pst-file
 Appointment Title 1, Start time, duration
 Appointment Title 2, Start time, duration,
@@ -55,11 +55,11 @@ Appointment Title 2, Start time, duration,
 
 ### Attachment
 Show information about all attachments found in the pst file
-```
+```bash
 java io.github.jmcleodfoss.pst.Attachment pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Message subject
 	attachment Attachment-1-name mime-time Attachment-1-mime-type size Attachment-1-size
@@ -76,11 +76,11 @@ Display the block B-tree for the pst file, showing the following for each node:
 *   Block index
 *   Block size
 *   Block reference count
-```
+```bash
 java io.github.jmcleodfoss.pst.BlockBTree pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Block B-tree
 \_\_\_\_\_\_\_\_\_\_\_\_
@@ -92,11 +92,11 @@ BID key 0x0000000c 0x00000003, IB 5980 bytes 172 ref count 190
 
 ### BlockFinder
 Confirm all block B-tree entries expected are found, or report discrepancies. 
-```
+```bash
 java io.github.jmcleodfoss.pst.BlockFinder pst-file [pst-file ...]
 ````
 #### Output
-```
+```text
 pst-file
 Success: all 74011 BIDs found
 ```
@@ -113,11 +113,11 @@ Traverse the pst heap B-tree, showing:
 *   Information about each child node:
 **   The child's node key
 **   The child node's data
-````
+````bash
 java io.github.jmcleodfoss.pst.BTreeOnHeap pst-file [ost-file ...]
 ````
 #### Output
-```
+```text
 pst-file
 Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 BTreeOnHeap
@@ -145,11 +145,11 @@ bth:    key 0x000067ff, data 03 00 00 00 00 00
 
 ### Contact
 Display information about each contact in the pst file(s)
-```
+```bash
 java io.github.jmcleodfoss.pst.Contact pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 /Top of Personal Folders/Contacts/
 Contact-1 h:Contact-1-home-phone W:Contact-1-work-phone Contact-1-email
@@ -159,11 +159,11 @@ Contact-2 h:Contact-2-home-phone W:Contact-2-work-phone Contact-2-email
 
 ### DistributionList
 Display information about each distribution list in the pst file(s)
-```
+```bash
 java io.github.jmcleodfoss.pst.DistributionList pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 /Top of Personal Folders/Contacts/
 Distribution-list-1-name
@@ -173,21 +173,21 @@ Distribution-list-2-name
 
 ### FileFormat
 Show the file format (Unicode or ANSI)
-```
+```bash
 java io.github.jmcleodfoss.pst.FileFormat pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file: Unicode
 ```
 
 ### Folder
 Go recursively through all the folders and display each item's subject and date received/created.
-```
+```bash
 java io.github.jmcleodfoss.pst.Folder pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Top of Personal Folders
 |-Deleted Items
@@ -203,11 +203,11 @@ Subject for message #6 (Wed Jun 27 22:13:57 EDT 2007)
 
 ### GUID
 Display the PST GUIDs (these are fixed and defined in the PST file reference given above, so this should be the same for all PST files).
-```
+```bash
 java io.github.jmcleodfoss.pst.GUID
 ```
 #### Output
-```
+```text
                      Name       GUID
                      ____       ____
                      Null       00000000-0000-0000-0000-000000000000
@@ -238,11 +238,11 @@ Show the pst file's header information, including:
 *   The encoding type
 *   The block ID and block index of the root of the block B-tree
 *   The block ID and block index of the root of the node B-tree
-```
+```bash
 java io.github.jmcleodfoss.pst.Header pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Format Unicode, Encoding Permute, BBT BID 0x0011d482 IB 0x17c42600, NBT BID 0x0011d480 IB 0x17c41a00
 ````
@@ -256,11 +256,11 @@ Traverse the PST's heap, showing info for each node:
 *   The data block's ID, index, byte index into the PST file, size, and reference count
 *   Info about the data block (type, heap ID, block index, index, and byte index into the PST file)
 *   The contents of this node's heap as it appears in each data block
-```
+```bash
 java io.github.jmcleodfoss.pst.HeapOnNode pst-file [pst-file ...]
 ```
 #### Output
-````
+````text
 pst-file
 Node NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 dataBlock BID key 0x01d5416c 0x0075505b, IB 168a2a00 bytes 444 ref count 2
@@ -285,15 +285,15 @@ Property Context User Root HID type 0 block index 0 index 1 ib 412
 
 ### IPF
 Show all folders, their classes, and whether the class is recognized.
-```
+```bash
 java io.github.jmcleodfoss.pst.IPF pst-file [pst-file ...]
 ```
 Get a list of all known folder classes
-```
+```bash
 java io.github.jmcleodfoss.pst.IPF --list
 ```
 #### Output (on pst files)
-```
+```text
 pst-file
 Folder Name               Container Class           Known Container Class?
 Deleted Items             null                      false
@@ -309,7 +309,7 @@ Drafts                    IPF.Note                  true
 Junk E-mail               IPF.Note                  true
 ```
 #### Output (--list option)
-```
+```text
 Known folder types
 IPF.Appointment
 IPF.Configuration
@@ -327,15 +327,15 @@ IPF.Task
 
 ### IPM
 Show all messages, with their message type and whether the class is recognized
-```
+```bash
 java io.github.jmcleodfoss.pst.IPM pst-file [pst-file ...]
 ```
 Get a list of all known types classes
-```
+```bash
 java io.github.jmcleodfoss.pst.IPM --list
 ```
 #### Output (on pst files)
-```
+```text
 pst-file
 Subject                   Container Class           Known Container Class?
 Email Subject 1         IPM.Note                  true
@@ -343,7 +343,7 @@ Email Subject 2         IPM.Note                  true
 Email Subject 3         IPM.Note                  true
 ```
 #### Output (--list option)
-```
+```text
 Known message types
 IPM.Activity
 IPM.Appointment
@@ -377,11 +377,11 @@ IPM.TaskRequest.Update
 
 ### JournalEntry
 Show the journal entries in the given pst file(s)/
-```
+```bash
 java io.github.jmcleodfoss.pst.JournalEntry pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Journal-entry-1-subject
 Journal-entry-2-subject
@@ -390,11 +390,11 @@ Journal-entry-2-subject
 
 ### Message
 Show the messages in the given pst file(s).
-```
+```bash
 java io.github.jmcleodfoss.pst.Message pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 /Top of Personal Folders/Inbox/
 Message-1-subject (Message-1-data)
@@ -404,11 +404,11 @@ Message-2-subject (Message-2-data)
 
 ### NameToIDMap
 Show the named property IDs and their names or GUIDs (the order and contents depends on the history of the PST file).
-```
+```bash
 java io.github.jmcleodfoss.pst.NameToIDMap pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 0x8000=content-class
 0x8001=ReminderSet
@@ -429,11 +429,11 @@ Display the entire node B-tree, for each entry showing:
 *   The key and ID for this node's data block
 *   The key and ID for this node's sub-node B-tree
 *   This node's parent node ID and index
-```
+```bash
 java io.github.jmcleodfoss.pst.NodeBTree pst-file [pst-file ...]
 ```
 #### Output
-``
+``text
 pst-file
 \_\_\_\_\_\_\_\_\_\_\_
 NID 0x00000021: Internal node index 0x00000001, BID(data) key 0x01d5416c 0x0075505b, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
@@ -444,11 +444,11 @@ NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x
 
 ### NodeFinder
 Confirm all node B-tree entries expected are found, or report discrepancies. 
-```
+```bash
 java io.github.jmcleodfoss.pst.NodeFinder pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Success: all 8497 NIDs found
 ```
@@ -461,11 +461,11 @@ Show the property names and values associated with each node in the node B-tree.
 *   The key and index for this node's sub-node B-tree
 *   The parent node ID, type, and index, and parent's child node IDs
 *   All properties and values for this node (only simple types are shown; complex types and arrays are given as internal pointers)
-```
+```bash
 java io.github.jmcleodfoss.pst.PropertyContext pst-file [pst-file ...]
 ```
 #### Output
-````
+````text
 pst-file
 Node NID 0x00000122: Normal Folder node index 0x00000009, BID(data) key 0x01d52d40 0x00754b50, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000122: Normal Folder node index 0x00000009, 122
 PropertyContext
@@ -490,11 +490,11 @@ PropertyContext
 
 ### PropertyLIDs
 Display all known property Long IDs.
-```
+```bash
 java io.github.jmcleodfoss.pst.PropertyLIDs
 ```
 #### Output
-```
+```text
 0x00001000: DayOfMonth
 0x00009000: Categories
 0x00000001: AttendeeCriticalChange
@@ -510,11 +510,11 @@ java io.github.jmcleodfoss.pst.PropertyLIDs
 
 ### PropertyTags
 Display all known property IDs
-```
+```bash
 java io.github.jmcleodfoss.pst.PropertyTags
 ```
 #### Output
-```
+```text
 0x70030003: ViewDescriptorFlags
 0x000a000b: IsException
 0x40020003: EndEmbed
@@ -532,11 +532,11 @@ Show the block B-tree contents. For each block, show:
 *   The block size in bytes
 *   The block's reference count
 *   The block data in hex
-```
+```bash
 java io.github.jmcleodfoss.pst.SimpleBlock pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 BID key 0x00000004 0x00000001, IB 5800 bytes 108 ref count 205: 62 00 EC 7C 40 00 00 00 00 00 00 00 B5 04 04 00 00 00 00 00 7C 07 18 00 18 00 19 00 1A 00 20 00 00 00 00 00 00 00 00 00 00 00 1F 00 01 30 08 00 04 02 03 00 02 36 0C 00 04 03 03 00 03 36 10 00 04 04 0B 00 0A 36 18 00 01 05 1F 00 13 36 14 00 04 06 03 00 F2 67 00 00 04 00 03 00 F3 67 04 00 04 01 02 00 00 00 0C 00 14 00 62 00
 BID key 0x00000008 0x00000002, IB 5880 bytes 180 ref count 8: AA 00 EC 7C 40 00 00 00 00 00 00 00 B5 04 04 00 00 00 00 00 7C 10 3C 00 3C 00 3E 00 40 00 20 00 00 00 00 00 00 00 00 00 00 00 03 00 17 00 14 00 04 05 1F 00 1A 00 0C 00 04 03 03 00 36 00 34 00 04 0E 1F 00 37 00 1C 00 04 07 1F 00 42 00 18 00 04 06 0B 00 57 00 3C 00 01 0C 0B 00 58 00 3D 00 01 0D 1F 00 03 0E 30 00 04 0B 1F 00 04 0E 2C 00 04 0A 40 00 06 0E 20 00 08 08 03 00 07 0E 10 00 04 04 03 00 08 0E 28 00 04 09 03 00 17 0E 08 00 04 02 03 00 97 10 38 00 04 0F 03 00 F2 67 00 00 04 00 03 00 F3 67 04 00 04 01 02 00 00 00 0C 00 14 00 AA 00
@@ -545,11 +545,11 @@ BID key 0x00000008 0x00000002, IB 5880 bytes 180 ref count 8: AA 00 EC 7C 40 00 
 
 ### StickyNote
 Show information for all sticky notes in the given pst file(s).
-```
+```bash
 java io.github.jmcleodfoss.pst.StickyNote pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 /Top of Personal Folders/Notes/
 StickNote-1-subject
@@ -567,11 +567,11 @@ Show information about each node in the subnode B-tree. For each node, show:
 *   The block ID key, Index, and type for the sub-node B-tree for this node
 *   The parent node ID of this node
 *   This node's index on the heap
-```
+```bash
 java io.github.jmcleodfoss.pst.SubnodeBTree pst-file [pst-file ...]
 ```
 #### Output
-````
+````text
 pst-file
 Subnode BTree for NID 0x00000061: Internal node index 0x00000003, BID(data) key 0x01d5b1de 0x00756c77 (internal), BID(subnode) key 0x01d5b1ee 0x00756c7b (internal) Parent NID 0x00000000: Heap node index 0x00000000
 key 0x0000831f, 2 children
@@ -589,11 +589,11 @@ Show information about the data associated with each node in the node B-Tree:
 *   The block ID key and index for this node's sub-node B-tree
 *   The parent node ID and index
 *   The tags, property names, offsets, widths, types, and index for each field in this node. 
-```
+```bash
 java io.github.jmcleodfoss.pst.TableContext pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 Node NID 0x0000012d: Hierarchy Table node index 0x00000009, BID(data) key 0x01d53d84 0x00754f61, BID(subnode) key 0x00000000 0x00000000 Parent NID 0x00000000: Heap node index 0x00000000
 TableContext
@@ -625,11 +625,11 @@ Subfolders: empty
 
 ### Task
 Show information for all tasks in the given pst file(s).
-```
+```bash
 java io.github.jmcleodfoss.pst.Task pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 /Top of Personal Folders/Tasks/
 Task-1-Subject due Task-1-DueDate
@@ -642,11 +642,11 @@ Traverse the node B-tree, giving the structure of each node:
 *   The node size
 *   The number of data blocks in the node
 *   The block key and index for each data block
-```
+```bash
 java io.github.jmcleodfoss.pst.XBlock pst-file [pst-file ...]
 ```
 #### Output
-```
+```text
 pst-file
 8600 bytes in 2 data blocks:
 key 0x01d5b1e8 0x00756c7a
