@@ -9,6 +9,7 @@ public class XSLTProcessor
 	/**	Convert an XML file using an XSLT stylesheet, sending result to System.out.
 	*	@param	args	The XSLT style sheet and the XML file to transform
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(String[] args)
 	{
 		if (args.length != 2) {

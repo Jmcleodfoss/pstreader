@@ -224,6 +224,7 @@ class PSTToXML
 	/**	Convert a PST file into XML.
 	*	@param	args	The command line arguments to the application.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {

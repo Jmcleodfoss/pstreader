@@ -84,6 +84,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	/**	Extract the contents of any folders of the given type.
 	*	@param	args	The command line arguments to the application.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 2) {
