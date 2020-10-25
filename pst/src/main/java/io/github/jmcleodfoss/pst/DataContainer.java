@@ -7,6 +7,9 @@ package io.github.jmcleodfoss.pst;
 */
 class DataContainer extends java.util.IdentityHashMap<String, Object>
 {
+	/**	The serialVersionUID is required because the base class is serializable. */
+	private static final long serialVersionUID = 1L;
+
 	/**	The IncompleteInitializationException indicates that a required component is not available at the time it is required. */
 	static class IncompleteInitializationException extends RuntimeException
 	{
@@ -21,9 +24,6 @@ class DataContainer extends java.util.IdentityHashMap<String, Object>
 			super("Incomplete initialization: " + component + " not yet available");
 		}
 	}
-
-	/**	The serialVersionUID is required because the base class is serializable. */
-	private static final long serialVersionUID = 1L;
 
 	/**	Constructor with default maximum size .*/
 	DataContainer()

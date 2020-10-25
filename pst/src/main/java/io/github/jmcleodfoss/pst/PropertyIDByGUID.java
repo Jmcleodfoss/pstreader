@@ -11,15 +11,6 @@ package io.github.jmcleodfoss.pst;
 @SuppressWarnings("PMD.ClassNamingConventions")
 class PropertyIDByGUID {
 
-	/**	The StringByGUID class holds the mapping of GUIDs to property names for a given property ID. Note that the
-	*	mapping is by String instead of by GUID, to allow look-up by GUIDs read in from the Name/ID map.
-	*/
-	static class StringByGUID extends java.util.HashMap<String, String> {
-
-		/**	The serialVersionUID is required because the base class is serializable. */
-		private static final long serialVersionUID = 1L;
-	}
-
 	/**	The list of property names stored by index and GUID.	*/
 	static final java.util.HashMap<Short, StringByGUID> names = new java.util.HashMap<Short, StringByGUID>();
 	static {
@@ -243,6 +234,15 @@ class PropertyIDByGUID {
 		put(PropertyID.NoteHeight, GUID.PSETID_NOTE, "noteHeight");
 		put(PropertyID.NoteX, GUID.PSETID_NOTE, "NoteX");
 		put(PropertyID.NoteY, GUID.PSETID_NOTE, "NoteY");
+	}
+
+	/**	The StringByGUID class holds the mapping of GUIDs to property names for a given property ID. Note that the
+	*	mapping is by String instead of by GUID, to allow look-up by GUIDs read in from the Name/ID map.
+	*/
+	static class StringByGUID extends java.util.HashMap<String, String> {
+
+		/**	The serialVersionUID is required because the base class is serializable. */
+		private static final long serialVersionUID = 1L;
 	}
 
 	/**	Does the list of property ID's contain the given ID?

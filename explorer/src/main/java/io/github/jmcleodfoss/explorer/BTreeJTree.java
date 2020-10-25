@@ -18,6 +18,9 @@ import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 @SuppressWarnings("serial")
 class BTreeJTree extends JScrollPane
 {
+	/**	The actual tree display. */
+	private Tree tree;
+
 	/**	The Tree class is a JTree which gets node names from a io.github.jmcleodfoss.pst.TreeCustomNode object. */
 	static private class Tree extends JTree
 	{
@@ -45,9 +48,6 @@ class BTreeJTree extends JScrollPane
 			return super.convertValueToText(value, selected, expanded, leaf, row, hasFocus);
 		}
 	}
-
-	/**	The actual tree display. */
-	private Tree tree;
 
 	/**	Construct a BTreeJTree object, which contains horizontal and vertical scrollbars if necessary, and a Tree object. */
 	BTreeJTree()

@@ -9,6 +9,12 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	/**	The default number of columns of hexadecimal data to display. */
 	private static final int NUM_COLUMNS = 16;
 
+	/**	The table model */
+	private TableModel tableModel;
+
+	/**	The row header */
+	private javax.swing.JTable rowHeader;
+
 	/**	The TableModel for hex/text display */
 	private class TableModel extends javax.swing.table.AbstractTableModel {
 
@@ -144,12 +150,6 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 			return c;
 		}
 	}
-
-	/**	The table model */
-	private TableModel tableModel;
-
-	/**	The row header */
-	private javax.swing.JTable rowHeader;
 
 	/**	Construct an object to display hex and text values. */
 	public HexAndTextDisplay()
