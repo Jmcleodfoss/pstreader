@@ -171,6 +171,7 @@ class SimpleBlock extends BlockBase
 	/**	Test this class by printing out blocks in the block B-tree.
 	*	@param	args	The file(s) to print the blocks out for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(final String[] args)
 	{
 		if (args.length < 1) {

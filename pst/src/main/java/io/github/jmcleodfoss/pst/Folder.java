@@ -430,6 +430,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	/**	Test the Folder class by iterating through the folders and displaying information about each folder and sub-folder.
 	*	@param	args	The file(s) to display the folders of.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(String[] args)
 	{
 		if (args.length == 0) {

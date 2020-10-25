@@ -460,6 +460,7 @@ public class BTreeOnHeap extends BTree
 	/**	Test this class by displaying the BTree-on-heaps in the given PST file.
 	*	@param	args	The pst file(s) to show the BTree-on-heap structure for.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {

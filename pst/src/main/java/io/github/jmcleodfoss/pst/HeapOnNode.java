@@ -565,6 +565,7 @@ System.out.printf("bytes remaining in stream: %d%n", stream.remaining());
 	/**	Test the HeapOnNode class by creating and printing out the first heap-on-node in the given PST file.
 	*	@param	args	The file(s) to show the heap-on-nods od.
 	*/
+	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void main(String[] args)
 	{
 		if (args.length < 1) {
