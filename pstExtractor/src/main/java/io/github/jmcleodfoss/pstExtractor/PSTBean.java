@@ -62,9 +62,6 @@ public class PSTBean implements Serializable
 		LabelResourceName.put(ExtractionTypes.TASKS, "tasks.text");
 	}
 
-	/**	Text resources used by this bean. */
-	private transient final ResourceBundle rb;
-
 	/**	The actual values selected in the set of check boxes indicating what to extract. */
 	private List<ExtractionTypes> selectedExtractionTypes;
 
@@ -101,7 +98,7 @@ public class PSTBean implements Serializable
 	/**	Create a bean for communication between the form and the servlet. */
 	public PSTBean()
 	{
-		rb = ResourceBundle.getBundle("text-resources");
+		ResourceBundle rb = ResourceBundle.getBundle("text-resources");
 		SelectItem[] extractionTypeChoices = new SelectItem[ExtractionTypes.values().length];
 		for (ExtractionTypes t : ExtractionTypes.values())
 			extractionTypeChoices[t.ordinal()] = new SelectItem(t, rb.getString(LabelResourceName.get(t)));
