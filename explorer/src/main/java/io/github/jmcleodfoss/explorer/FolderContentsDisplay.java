@@ -233,7 +233,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	/**	Update the display to show information about the current node of the folder tree.
 	*	@param	treeNode	The new folder tree node to display.
 	*/
-	@SuppressWarnings("PMD.EmptyIfStmt");
+	@SuppressWarnings("PMD.EmptyIfStmt")
 	private void doUpdate(final Object treeNode)
 	{
 		if (treeNode instanceof Folder) {
