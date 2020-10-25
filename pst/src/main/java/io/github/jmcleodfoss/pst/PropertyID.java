@@ -10,6 +10,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="http://msdn.microsoft.com/en-us/library/cc433490(v=EXCHG.80).aspx">[MS-OXPROPS]: Exchange Server Protocols Master Property List (MSDN)</a>
 */
 @Deprecated
+@SuppressWarnings("PMD.ClassNamingConventions")
 public class PropertyID {
 
 	// Properties related to named properties. These are defined in MS-PST rather than in MS-OXPROPS.
