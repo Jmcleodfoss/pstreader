@@ -9,7 +9,7 @@ public class HTMLTableModel
 	*/
 	public static String html(javax.swing.table.TableModel tm)
 	{
-		StringBuilder s = new java.lang.StringBuilder();
+		StringBuilder s = new StringBuilder();
 		s.append("<table>\n");
 
 		s.append("<thead>\n");
