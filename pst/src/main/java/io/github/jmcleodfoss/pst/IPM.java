@@ -147,11 +147,6 @@ class IPM
 	*/
 	private static final String TASK_UPDATE = "IPM.TaskRequest.Update";
 
-	/**	The string used for items for which the specified form cannot be found.
-	*	@see <a href="https://docs.microsoft.com/en-us/office/vba/outlook/concepts/forms/item-types-and-message-classes">Iten Types and Messages</a>
-	*/
-	private static final String UNKNOWN = "IPM";
-
 	/**	The list of known message class types. */
 	static final java.util.Vector<String> knownClasses = new java.util.Vector<String>();
 	static {
