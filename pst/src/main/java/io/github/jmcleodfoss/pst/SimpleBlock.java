@@ -7,6 +7,19 @@ package io.github.jmcleodfoss.pst;
 */
 class SimpleBlock extends BlockBase
 {
+	/**	The offset from which to start calculating the CRC for a block.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
+	*/
+	private static final int CRC_START_OFFSET = 0;
+
+	/**	The number of bytes used to calculate the block's CRC.
+	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
+	*/
+	private static final int CRC_BYTES = 236;
+
+	/**	The block data. */
+	final byte[] data;
+
 	/**	The BlockBase Iterator class is a trivial iterator the data stream for this one block. */
 	class Iterator implements java.util.Iterator<java.nio.ByteBuffer>
 	{
@@ -50,19 +63,6 @@ class SimpleBlock extends BlockBase
 			throw new UnsupportedOperationException("remove not suported");
 		}
 	}
-
-	/**	The offset from which to start calculating the CRC for a block.
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
-	*/
-	private static final int CRC_START_OFFSET = 0;
-
-	/**	The number of bytes used to calculate the block's CRC.
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
-	*/
-	private static final int CRC_BYTES = 236;
-
-	/**	The block data. */
-	final byte[] data;
 
 	/**	Create a SimpleBlock object from the given block B-tree leaf entry and basic PST file object.
 	*	@param	entry	The block B-tree leaf entry describing the block.
