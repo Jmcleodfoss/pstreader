@@ -4,10 +4,14 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
+import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
 import io.github.jmcleodfoss.pst.Attachment;
@@ -179,13 +183,13 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	private JComponent attachmentDisplay;
 
 	/**	The attachment image, if any. */
-	private javax.swing.JLabel attachmentImage;
+	private JLabel attachmentImage;
 
 	/**	The text attachment, if any. */
-	private javax.swing.JTextArea attachmentText;
+	private JTextArea attachmentText;
 
 	/**	The HTML attachment, if any. */
-	private javax.swing.JTextPane attachmentHtml;
+	private JTextPane attachmentHtml;
 
 	/**	The members of the distribution list, if any. */
 	private DistributionListDisplay distributionList;
@@ -213,9 +217,9 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 
 		spAttachmentDisplay = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-		attachmentImage = new javax.swing.JLabel();
-		attachmentText = new javax.swing.JTextArea();
-		attachmentHtml = new javax.swing.JTextPane();
+		attachmentImage = new JLabel();
+		attachmentText = new JTextArea();
+		attachmentHtml = new JTextPane();
 		attachmentHtml.setContentType("text/html");
 		attachmentHtml.getDocument().putProperty("IgnoreCharsetDirective", Boolean.TRUE);
 
@@ -436,7 +440,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	/**	Update the component displays as nodes are selected.
 	*	@param	e	The TreeSelectionEvent which triggered the update.
 	*/
-	public void valueChanged(final javax.swing.event.TreeSelectionEvent e)
+	public void valueChanged(final TreeSelectionEvent e)
 	{
 		new ProgressBar(pstExplorer.explorer, "Reading folder data") {
 			public void run()
