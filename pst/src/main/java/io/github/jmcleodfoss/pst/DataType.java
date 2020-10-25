@@ -94,6 +94,75 @@ abstract class DataType
 	*/
 	static final String CHARSET_WIDE = "UTF-16LE";
 
+	/**	A reader/display manipulator for Boolean values in the PST file. */
+	static final PSTBoolean booleanReader = new PSTBoolean();
+
+	/**	The reader and displayer for ANSI BID objects. */
+	static final BIDANSI bidAnsiReader = new BIDANSI();
+
+	/**	The reader and displayer for Unicode BID objects. */
+	static final BIDUnicode bidUnicodeReader = new BIDUnicode();
+
+	/**	The reader and displayer for Unicode BREF objects. */
+	public static final BREFUnicode brefUnicodeReader = new BREFUnicode();
+
+	/**	The reader and displayer for ANSI BREF objects. */
+	public static final BREFANSI brefAnsiReader = new BREFANSI();
+
+	/**	The manipulator for reading and displaying 8-bit integers. */
+	static final Integer8 integer8Reader = new Integer8();
+
+	/**	The reader/display manipulator for 16-bit integers in the PST file. */
+	static final Integer16 integer16Reader = new Integer16();
+
+	/**	The reader/display manipulator for 32-bit integers in the PST file. */
+	static final Integer32 integer32Reader = new Integer32();
+
+	/**	The reader/display manipulator for 64-bit integers. */
+	static final Integer64 integer64Reader = new Integer64();
+
+	/**	The reader for generic arrays of bytes. */
+	private static final ByteArray byteArrayReader = new ByteArray();
+
+	/**	The reader for 32-bit floating values. */
+	private static final Floating32 floating32Reader = new Floating32();
+
+	/**	The reader for 64-bit floating values. */
+	private static final Floating64 floating64Reader = new Floating64();
+
+	/**	The manipulation object for PST GUIDs.  */
+	private static final GUID guidReader = new GUID();
+
+	/**	The manipulator for HID objects in a PST file. */
+	static final HID hidReader = new HID();
+
+	/**	The reader/display manipulator for lists containing multiple binary objects. */
+	private static final MultipleBinary multipleBinaryReader = new MultipleBinary();
+
+	/**	The reader/display manipulator for lists containing multiple GUID objects. */
+	private static final MultipleGUID multipleGUIDReader = new MultipleGUID();
+
+	/**	The reader/display manipulator for lists of 32-bit integers. */
+	private static final MultipleInteger32 multipleInteger32Reader = new MultipleInteger32();
+
+	/**	The reader/display manipulator for lists of 64-bit integers. */
+	private static final MultipleInteger64 multipleInteger64Reader = new MultipleInteger64();
+
+	/**	The reader/display manipulator for lists of multiple Unicode strings. */
+	private static final MultipleString multipleString8Reader = new MultipleString(STRING_8);
+
+	/**	The reader/display manipulator for lists of multiple Unicode strings. */
+	private static final MultipleString multipleStringReader = new MultipleString(STRING);
+
+	/**	The NID reader/manipulator object. */
+	static final NID nidReader = new NID();
+
+	/**	A reader/display manipulator for wide-character (Unicode) character strings values in the PST file. */
+	private static final PSTString stringReader = new PSTString(STRING);
+
+	/**	A reader/display manipulator for narrow-character (ANSI) character strings values in the PST file. */
+	private static final PSTString string8Reader = new PSTString(STRING_8);
+
 	/**	Create an object of type DataType. */
 	protected DataType()
 	{
@@ -190,9 +259,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader and displayer for ANSI BID objects. */
-	static final BIDANSI bidAnsiReader = new BIDANSI();
-
 	/**	The BIDUnicode class describes how to read and display a BID object in a Unicode PST file. */
 	private static class BIDUnicode extends BIDBase
 	{
@@ -212,9 +278,6 @@ abstract class DataType
 			return new BID(byteBuffer.getLong());
 		}
 	}
-
-	/**	The reader and displayer for Unicode BID objects. */
-	static final BIDUnicode bidUnicodeReader = new BIDUnicode();
 
 	/**	Return an object for reading a BID for the given file type.
 	*	@param	fUnicode	A flag indicating whether the current PST file is Unicode or ANSI.
@@ -276,9 +339,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader and displayer for ANSI BREF objects. */
-	public static final BREFANSI brefAnsiReader = new BREFANSI();
-
 	/**	The BREFUnicode class describes a BREF object in a Unicode PST file. */
 	private static class BREFUnicode extends BREFBase
 	{
@@ -300,9 +360,6 @@ abstract class DataType
 			return new BREF(bid, ib);
 		}
 	}
-
-	/**	The reader and displayer for Unicode BREF objects. */
-	public static final BREFUnicode brefUnicodeReader = new BREFUnicode();
 
 	/**	The SizedByteArray class is used to read in and display an array of bytes whose size is known. */
 	static class SizedByteArray extends SizedObject
@@ -369,9 +426,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader for generic arrays of bytes. */
-	private static final ByteArray byteArrayReader = new ByteArray();
-
 	/**	The Floating32 data type described an 32-bit floating point value. */
 	private static class Floating32 extends DataType
 	{
@@ -405,9 +459,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader for 32-bit floating values. */
-	private static final Floating32 floating32Reader = new Floating32();
-
 	/**	The Floating64 data type described an 64-bit floating point value. */
 	private static class Floating64 extends DataType
 	{
@@ -440,9 +491,6 @@ abstract class DataType
 			return 8;
 		}
 	}
-
-	/**	The reader for 64-bit floating values. */
-	private static final Floating64 floating64Reader = new Floating64();
 
 	/**	The GUID class describes how to read a 16-byte PST GUID in.
 	*	@see	io.github.jmcleodfoss.pst.GUID
@@ -481,10 +529,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The manipulation object for PST GUIDs.
-	*/
-	private static final GUID guidReader = new GUID();
-
 	/**	The HID class describes an HID object in a PST file.
 	*	@see	io.github.jmcleodfoss.pst.HeapOnNode
 	*/
@@ -520,9 +564,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The manipulator for HID objects in a PST file. */
-	static final HID hidReader = new HID();
-
 	/**	The Integer8 data type describes how to manipulate an 8-bit integer. */
 	private static class Integer8 extends DataType
 	{
@@ -556,9 +597,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The manipulator for reading and displaying 8-bit integers. */
-	static final Integer8 integer8Reader = new Integer8();
-
 	/**	The Integer16 data type describes how to read and display a 16-bit integer. */
 	private static class Integer16 extends DataType
 	{
@@ -591,9 +629,6 @@ abstract class DataType
 			return 2;
 		}
 	}
-
-	/**	The reader/display manipulator for 16-bit integers in the PST file. */
-	static final Integer16 integer16Reader = new Integer16();
 
 	/**	The Integer32 data type describes a 32-bit integer. */
 	private static class Integer32 extends DataType
@@ -634,9 +669,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader/display manipulator for 32-bit integers in the PST file. */
-	static final Integer32 integer32Reader = new Integer32();
-
 	/**	The Integer64 data type described a 64-bit integer. */
 	private static class Integer64 extends DataType
 	{
@@ -669,9 +701,6 @@ abstract class DataType
 			return 8;
 		}
 	}
-
-	/**	The reader/display manipulator for 64-bit integers. */
-	static final Integer64 integer64Reader = new Integer64();
 
 	/**	The MultipleBinary class describes how to read in multiple binary objects from a PST file. */
 	private static class MultipleBinary extends DataType
@@ -745,9 +774,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader/display manipulator for lists containing multiple binary objects. */
-	private static final MultipleBinary multipleBinaryReader = new MultipleBinary();
-
 	/**	The MultipleBinary class describes how to read in multiple GUID objects from a PST file.
 	*	Note that the one instance of this type which has been encountered is a named property,
 	*	AggregatedItemLinkIDs (tag 8xxx1048) seen in an OST file, does not conform to the documented
@@ -790,9 +816,6 @@ abstract class DataType
 			return 0;
 		}
 	}
-
-	/**	The reader/display manipulator for lists containing multiple GUID objects. */
-	private static final MultipleGUID multipleGUIDReader = new MultipleGUID();
 
 	/**	The MultipleInteger32 class describes how to read in multiple 32-bit integers from a PST file. */
 	private static class MultipleInteger32 extends DataType
@@ -838,9 +861,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader/display manipulator for lists of 32-bit integers. */
-	private static final MultipleInteger32 multipleInteger32Reader = new MultipleInteger32();
-
 	/**	The MultipleInteger64 class describes how to read in multiple 64-bit integers from a PST file. */
 	private static class MultipleInteger64 extends DataType
 	{
@@ -884,9 +904,6 @@ abstract class DataType
 			return Long.SIZE/Byte.SIZE;
 		}
 	}
-
-	/**	The reader/display manipulator for lists of 64-bit integers. */
-	private static final MultipleInteger64 multipleInteger64Reader = new MultipleInteger64();
 
 	/**	The MultipleString class describes how to read in a list of character strings from a PST file. */
 	private static class MultipleString extends StringBase
@@ -954,12 +971,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The reader/display manipulator for lists of multiple Unicode strings. */
-	private static final MultipleString multipleString8Reader = new MultipleString(STRING_8);
-
-	/**	The reader/display manipulator for lists of multiple Unicode strings. */
-	private static final MultipleString multipleStringReader = new MultipleString(STRING);
-
 	/**	The NID class describes how to read and display an NID object in a PST file. */
 	private static class NID extends DataType
 	{
@@ -999,9 +1010,6 @@ abstract class DataType
 		}
 	}
 
-	/**	The NID reader/manipulator object. */
-	static final NID nidReader = new NID();
-
 	/**	The PSTBoolean data type describes how to read in and display a boolean value in a PST file. */
 	private static class PSTBoolean extends DataType
 	{
@@ -1034,9 +1042,6 @@ abstract class DataType
 			return 1;
 		}
 	}
-
-	/**	A reader/display manipulator for Boolean values in the PST file. */
-	static final PSTBoolean booleanReader = new PSTBoolean();
 
 	/**	The StringBase class contains logic shared by the manipulators for single strings and lists of strings. */
 	private abstract static class StringBase extends DataType
@@ -1106,17 +1111,14 @@ abstract class DataType
 		}
 	}
 
-	/**	A reader/display manipulator for wide-character (Unicode) character strings values in the PST file. */
-	private static final PSTString stringReader = new PSTString(STRING);
-
-	/**	A reader/display manipulator for narrow-character (ANSI) character strings values in the PST file. */
-	private static final PSTString string8Reader = new PSTString(STRING_8);
-
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 	*/
 	private static class Time extends DataType
 	{
+		/**	A reader/display manipulation object for times in PST files. */
+		private static final Time reader = new Time();
+
 		/**	The base for MS time, which is measured in hundreds of nanosecondss since January 1, 1601. */
 		private static final java.util.Date PST_BASE_TIME = initBaseTime();
 
@@ -1170,9 +1172,6 @@ abstract class DataType
 		{
 			return 8;
 		}
-
-		/**	A reader/display manipulation object for times in PST files. */
-		private static final Time reader = new Time();
 	}
 
 
