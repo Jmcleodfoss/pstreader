@@ -20,32 +20,32 @@ The Explorer application lets you explore a pst file from several conceptual lev
     *   The block's contents are shown if you select a block's node.
 *   The pst file's folders (e.g. Deleted Items, Inbox, Outbox, and Sent Items) as a tree. Expanding the tree shows the folder contents (mail items, contacts, calendar entries, sticky note entries, or tasks).
     *   Folder information:
-    *   Raw data
-    *   The heap for the folder information
+        *   Raw data
+        *   The heap for the folder information
 
-    *   The B-Tree in the heap for the folder information
+        *   The B-Tree in the heap for the folder information
 
-    *   The property context for the folder information
+        *   The property context for the folder information
 
-*           Folder contents:
+    *   Folder contents:
 
-*             Raw data for the folder contents
+        *   Raw data for the folder contents
 
-*             The heap for the folder for the folder contents
+        *   The heap for the folder for the folder contents
 
-*             The B-Tree in the heap for the folder for the folder contents
+        *   The B-Tree in the heap for the folder for the folder contents
 
-*             The table context for the folder contents
+        *   The table context for the folder contents
 
-*           Folder associated data
+    *   Folder associated data
 
-*             Raw data for the folder associated data
+        *   Raw data for the folder associated data
 
-*             The heap for the folder for the folder associated data
+        *   The heap for the folder for the folder associated data
 
-*             The B-Tree in the heap for the folder for the folder associated data
+        *   The B-Tree in the heap for the folder for the folder associated data
 
-*             The table context for the folder associated data
+        *   The table context for the folder associated data
 
 ## Versions
 ### 1.0.0
