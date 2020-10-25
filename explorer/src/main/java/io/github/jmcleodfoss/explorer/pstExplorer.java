@@ -33,9 +33,6 @@ public class pstExplorer extends JFrame
 	/**	The list of components to notify when a new file is loaded */
 	private EventListenerList listeners;
 
-	/**	The file we are examining. */
-	private File file;
-
 	/**	The PST file */
 	private PST pst;
 
