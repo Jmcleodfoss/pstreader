@@ -147,9 +147,6 @@ public class NodeSubnodeBTree extends NodeBTree
 		if (node instanceof NodeLeafEntry)
 			return ((NodeLeafEntry)node).leafNodes.size() == 0;
 
-		if (node instanceof SLEntry)
-			return true;
-
-		return false;
+		return node instanceof SLEntry;
 	}
 }
