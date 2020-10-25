@@ -4,6 +4,7 @@ package io.github.jmcleodfoss.pst;
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/1d61ee78-4466-4141-8276-f45153484619">MS-PST Section 2.1.1: Data Types</a>
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 */
+@SuppressWarnings("PMD.ExcessiveClassLength")
 abstract class DataType
 {
 	static final short UNSPECIFIED = 0x0000;
