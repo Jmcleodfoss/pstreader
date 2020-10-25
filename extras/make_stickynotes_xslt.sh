@@ -2,7 +2,7 @@
 declare -r sourcefile=~/work/outlook-files/ms-oxprops-db/releases/1.0.0/ms-oxprops-2020-05-25.csv
 declare -r outfile=pst_stickynotes_to_html.xml
 declare -r folder_name=Notes
-declare -r title=Sticky Notes
+declare -r title="Sticky Notes"
 declare -r message_class=IPM.StickyNote
 declare -r area="Sticky Notes"
 declare -r version=190618
