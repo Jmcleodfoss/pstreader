@@ -5,6 +5,9 @@ package io.github.jmcleodfoss.pst;
 */
 public class PropertyContext
 {
+	/**	The location in which to store the properties. */
+	protected final java.util.HashMap<Integer, Object> properties;
+
 	/**	The PSTDataPointer permits saving a reference to an object which is large enough that it should only be retrieved on demand. */
 	static protected class PSTDataPointer
 	{
@@ -88,9 +91,6 @@ public class PropertyContext
 			return false;
 		}
 	}
-
-	/**	The location in which to store the properties. */
-	protected final java.util.HashMap<Integer, Object> properties;
 
 	/**	Create an empty PropertyContext object. */
 	private PropertyContext()
