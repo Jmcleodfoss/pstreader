@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
-import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 
 /** Driver for pst library tests, which runs the {@link #test} function on each file in tne working directory.

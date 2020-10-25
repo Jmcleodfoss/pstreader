@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.BufferUnderflowException;
 import java.nio.MappedByteBuffer;
-import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 
 /** Test the Header class. */

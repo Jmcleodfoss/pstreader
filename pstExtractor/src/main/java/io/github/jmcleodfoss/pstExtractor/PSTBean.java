@@ -27,7 +27,6 @@ import io.github.jmcleodfoss.pst.NotTableContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.StickyNote;
-import io.github.jmcleodfoss.pst.TableContext;
 import io.github.jmcleodfoss.pst.Task;
 import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
 import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;

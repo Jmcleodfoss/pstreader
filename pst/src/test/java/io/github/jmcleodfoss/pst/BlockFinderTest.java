@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
-import java.lang.reflect.InvocationTargetException;
 import org.junit.Assert;
 
 /** Test the io.github.jmcledofoss.pst.BlockFinder class */

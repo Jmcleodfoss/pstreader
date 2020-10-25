@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
-import java.lang.reflect.InvocationTargetException;
 
 /** Test the PropertyContext class */
 public class PropertyContextTest extends TestFrame
