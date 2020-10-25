@@ -42,7 +42,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 				final LPTLeaf attachmentNode = (LPTLeaf)clickedNode;
 				pc = pstExplorer.pst().propertyContext(attachmentNode);
 				try {
-					attachment = new pst.Attachment(attachmentNode, pstExplorer.pst().blockBTree, pstExplorer.pst());
+					attachment = new Attachment(attachmentNode, pstExplorer.pst().blockBTree, pstExplorer.pst());
 				} catch (Exception e) {
 					pc = null;
 					return "";
