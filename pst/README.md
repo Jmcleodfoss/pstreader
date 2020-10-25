@@ -666,14 +666,14 @@ key 0x01d5d280 0x007574a0
 ...
 ```
 
-# Versions
-## 1.0.0
+## Versions
+### 1.0.0
 Initial version.
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst/1.0.0/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.0.0/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.0.0/)
 
-## 1.1.0
+### 1.1.0
 *   Targets Java 11
 *   Fixes Bug #1, Bug #2, Bug #3
 *   Includes all known tags and LIDs
@@ -681,7 +681,7 @@ Initial version.
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.1.0/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.1.0/)
 
-## 1.1.1
+### 1.1.1
 No changes to functionality, but all code has undergone a thorough review and static analysis.
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst/1.1.1/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.1.1/pom)
