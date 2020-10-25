@@ -9,6 +9,18 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	/**	The serialVersionUID is required because the base class is serializable. */
 	private static final long serialVersionUID = 1L;
 
+	/**	The PST file's namedProperties object (needed to provide the column name) */
+	private static NameToIDMap namedProperties;
+
+	/**	The TCINFO (Table Context Info) structure for this table context */
+	private final TCInfo info;
+
+	/**	The RowIndex for this table context. */
+	private final BTreeOnHeap rowIndex;
+
+	/**	The row data */
+	private Object[][] rows;
+
 	/**	The TCInfo class represents the PST file TCINFO structure, and contains table context info for a table context.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/45b3a0c5-d6d6-4e02-aebf-13766ff693f0">MS-PST Section 2.3.4.1: TCINFO</a>
 	*/
@@ -171,21 +183,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	static class TColDescr
 	{
-		/**	The Comparator class permits the list of fields to sorted by row offset.
-		*/
-		static class Comparator implements java.util.Comparator<TColDescr>, java.io.Serializable
-		{
-			/**	Compare the two TColDescr objects.
-			*	@param	a	One TColDescr object for comparison.
-			*	@param	b	The other TColDescr object for comparison.
-			*	@return	The difference in the column offsets of a and b, to ensure that the item with the larger
-			*		offset is sorted later.
-			*/
-			public int compare(TColDescr a, TColDescr b)
-			{
-				return a.columnOffset - b.columnOffset;
-			}
-		}
 
 		private static final String nm_tag = "tag";
 		private static final String nm_ibData = "ibData";
@@ -212,6 +209,21 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		/**	The cell existence bitmap. */
 		private final int cellExistenceBitmapIndex;
 
+		/**	The Comparator class permits the list of fields to sorted by row offset.
+		*/
+		static class Comparator implements java.util.Comparator<TColDescr>, java.io.Serializable
+		{
+			/**	Compare the two TColDescr objects.
+			*	@param	a	One TColDescr object for comparison.
+			*	@param	b	The other TColDescr object for comparison.
+			*	@return	The difference in the column offsets of a and b, to ensure that the item with the larger
+			*		offset is sorted later.
+			*/
+			public int compare(TColDescr a, TColDescr b)
+			{
+				return a.columnOffset - b.columnOffset;
+			}
+		}
 		/**	Create a TColDescr object from date read in from the input datastream.
 		*	@param	stream	The input data stream from which to read the column description.
 		*	@throws	java.io.IOException	An I/O error was encounted while reading the data for this column description.
@@ -246,18 +258,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			return String.format("tag 0x%08x (%s) offset into row %d width %d CEB index %d", tag, propertyName, columnOffset, width, cellExistenceBitmapIndex);
 		}
 	}
-
-	/**	The PST file's namedProperties object (needed to provide the column name) */
-	private static NameToIDMap namedProperties;
-
-	/**	The TCINFO (Table Context Info) structure for this table context */
-	private final TCInfo info;
-
-	/**	The RowIndex for this table context. */
-	private final BTreeOnHeap rowIndex;
-
-	/**	The row data */
-	private Object[][] rows;
 
 	/**	Create a table context from the given BID.
 	*	@param	nodeDescr	Description of the node as found in the block or sub-node B-tree.
