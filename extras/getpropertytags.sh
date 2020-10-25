@@ -13,6 +13,7 @@ package io.github.jmcleodfoss.pst;
 *	@see <a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxprops/f6ab1613-aefe-447d-a49c-18217230b148">MS-OXPROPS</a>
 */
 
+@SuppressWarnings("PMD.ExcessiveClassLength")
 public class PropertyTags
 {
 	// Sentinel value which can be used for property tags which are uninitialized and have to be set (to e.g. one of several possibilities depending on context)
