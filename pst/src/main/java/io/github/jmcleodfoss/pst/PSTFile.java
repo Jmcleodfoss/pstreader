@@ -3,9 +3,6 @@ package io.github.jmcleodfoss.pst;
 /**	The PSTFile class is a convenience container class used to read later data from the file. */
 public class PSTFile
 {
-	/**	The data stream for the PST file. */
-	private java.io.FileInputStream stream;
-
 	/**	The FileChannel of the data stream, used to jump around the file. */
 	private java.nio.channels.FileChannel fc;
 
@@ -25,9 +22,7 @@ public class PSTFile
 		NotPSTFileException,
 		java.io.IOException
 	{
-		this.stream = stream;
-
-		fc = this.stream.getChannel();
+		fc = stream.getChannel();
 
 		mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
 		mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
