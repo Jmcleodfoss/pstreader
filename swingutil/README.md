@@ -21,21 +21,21 @@ Modal popup extension of javax.swing.JProgressBar which runs in its own thread.
 ## TreeNodePopupListener.java
 Enables popup listeners to be associated with the nodes of a javax.swing.JTree.
 
-# Versions
-## 1.0.0
+## Versions
+### 1.0.0
 Initial version.
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/swingutil/1.0.0/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/swingutil/1.0.0/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/swingutil/1.0.0/)
 
-## 1.1.0
+### 1.1.0
 *   Targets Java 11
 *   Uses Version 1.1.0 of pst library
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/swingutil/1.1.0/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/swingutil/1.1.0/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/swingutil/1.1.0/)
 
-## 1.1.1
+### 1.1.1
 No changes to functionality, but all code has undergone a thorough review and static analysis.
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/swingutil/1.1.1/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/swingutil/1.1.1/pom)
