@@ -281,9 +281,8 @@ public class NameToIDMap
 			propertyId = (propertyTag >>> 16);
 		}
 
-		if (propertyId >= PropertyTags.NamedPropertyFirst && propertyId <= PropertyTags.NamedPropertyLast){
-			if (namedProperties.containsKey(propertyId))
-				return namedProperties.get(propertyId);
+		if (propertyId >= PropertyTags.NamedPropertyFirst && propertyId <= PropertyTags.NamedPropertyLast && namedProperties.containsKey(propertyId)) {
+			return namedProperties.get(propertyId);
 		}
 
 		return String.format("propertyTag-%08x", propertyTag);
