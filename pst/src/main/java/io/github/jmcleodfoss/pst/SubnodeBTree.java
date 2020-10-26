@@ -10,7 +10,6 @@ public class SubnodeBTree extends BTree
 		private static final String nm_cLevel = "cLevel";
 		private static final String nm_cEnt = "cEnt";
 		private static final String nm_dwPadding = "dwPadding";
-		private static final String nm_rgEntries = "rgEntries";
 
 		/**	The fields in the input stream which contain the sub-node block header common to both ANSI and Unicode files.
 		*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5182eb24-4b0b-4816-aa3f-719cc6e6b018">MS-PST Section 2.2.2.8.3.3.1.2: SLBLOCK</a>
