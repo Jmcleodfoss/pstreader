@@ -72,6 +72,7 @@ public class PropertyContext
 		*	@param	value	The value to convert.
 		*/
 		@Override
+		@SuppressWarnings("PMD.AvoidReassigningParameters")
 		String getValueString(final int key, Object value)
 		{
 			if (value instanceof PSTDataPointer)
