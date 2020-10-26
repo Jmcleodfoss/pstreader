@@ -111,7 +111,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		if (index < numNBTChildren)
 			return super.getChild(parent, index);
 
-		return ((NodeLeafEntry)(parent)).leafNodes.get(index - numBTChildren);
+		return ((NodeLeafEntry)(parent)).leafNodes.get(index - numNBTChildren);
 	}
 
 	/**	{@inheritDoc} */
