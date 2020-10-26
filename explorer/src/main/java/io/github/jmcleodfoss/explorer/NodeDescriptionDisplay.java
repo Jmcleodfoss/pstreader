@@ -26,6 +26,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			/**	Create the AttachmentSaveActionListener object. */
 			AttachmentSaveActionListener()
 			{
+				super();
 				pc = null;
 				attachment = null;
 			}
