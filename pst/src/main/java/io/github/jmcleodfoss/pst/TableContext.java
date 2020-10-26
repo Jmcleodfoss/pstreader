@@ -602,9 +602,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		case DataType.MULTIPLE_STRING:
 		case DataType.MULTIPLE_BINARY:
 			return true;
+		default: return false;
 		}
-
-		return false;
 	}
 
 	/**	Obtain a String representation of this table context.

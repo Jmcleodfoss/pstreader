@@ -166,9 +166,8 @@ public class NameToIDMap
 			switch (column) {
 			case 0: return "ID";
 			case 1: return "Property";
+			default: return "";
 			}
-
-			return "";
 		}
 
 		/**	No cells are editable.

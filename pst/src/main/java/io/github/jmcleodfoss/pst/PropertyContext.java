@@ -290,9 +290,8 @@ public class PropertyContext
 		case DataType.MULTIPLE_STRING:
 		case DataType.MULTIPLE_BINARY:
 			return true;
+		default: return false;
 		}
-
-		return false;
 	}
 
 	/**	Return a string representation of this Property Context which enumerates all properties, including tag name (if known),

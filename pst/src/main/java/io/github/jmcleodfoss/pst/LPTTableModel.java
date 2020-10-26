@@ -40,9 +40,8 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel
 		case 0: return "Tag";
 		case 1: return "Property";
 		case 2: return "Data";
+		default: return "";
 		}
-
-		return "";
 	}
 
 	/**	Retrieve the string representation of the value column (column 3).
