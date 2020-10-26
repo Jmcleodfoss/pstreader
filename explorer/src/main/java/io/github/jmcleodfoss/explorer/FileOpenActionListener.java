@@ -27,14 +27,13 @@ class FileOpenActionListener implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		switch(fileChooser.showOpenDialog(pstExplorer.explorer)) {
-		case JFileChooser.CANCEL_OPTION:
-			return;
-
 		case JFileChooser.APPROVE_OPTION:
 			pstExplorer.explorer.openFile(fileChooser.getSelectedFile());
 			return;
 
+		case JFileChooser.CANCEL_OPTION:
 		case JFileChooser.ERROR_OPTION:
+		default:
 			return;
 		}
 	}
