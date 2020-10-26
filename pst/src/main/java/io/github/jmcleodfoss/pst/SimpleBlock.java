@@ -7,16 +7,6 @@ package io.github.jmcleodfoss.pst;
 */
 class SimpleBlock extends BlockBase
 {
-	/**	The offset from which to start calculating the CRC for a block.
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
-	*/
-	private static final int CRC_START_OFFSET = 0;
-
-	/**	The number of bytes used to calculate the block's CRC.
-	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/ddeb714d-8fd5-4a48-8019-8338cb511c80">MS-PST Section 2.2.2.8.2: Anatomy of a Block</a>
-	*/
-	private static final int CRC_BYTES = 236;
-
 	/**	The block data. */
 	final byte[] data;
 
