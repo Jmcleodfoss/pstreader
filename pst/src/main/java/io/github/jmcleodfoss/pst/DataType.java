@@ -287,6 +287,7 @@ abstract class DataType
 	*	@see	io.github.jmcleodfoss.pst.DataType.BIDUnicode
 	*	@see	io.github.jmcleodfoss.pst.XBlock#XBlock
 	*/
+	@SuppressWarnings("PMD.MethodNamingConvention")
 	static DataType BIDFactory(final boolean fUnicode)
 	{
 		return fUnicode ? bidUnicodeReader : bidAnsiReader;
