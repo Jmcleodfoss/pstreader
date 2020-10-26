@@ -13,23 +13,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 */
 abstract class FileSaverMenuItem implements ActionListener
 {
-	/**	The extensions permitted by the save dialog. */
-	private final FileNameExtensionFilter[] extensionFilters;
-
-	/**	Construct a FileSaveMenuItem with no extension filters. */
-	FileSaverMenuItem()
-	{
-		this(null);
-	}
-
-	/**	Construct a FileSaveMenuItem with the given extension filters.
-	*	@param	extensionFilters	A list of filters indicating extensions accepted in the dialog box.
-	*/
-	FileSaverMenuItem(FileNameExtensionFilter[] extensionFilters)
-	{
-		this.extensionFilters = extensionFilters;
-	}
-
 	/**	Obtain the initial filename suggestion for the save dialog box.
 	*	@return	This (base class) version of the function returns null.
 	*/
