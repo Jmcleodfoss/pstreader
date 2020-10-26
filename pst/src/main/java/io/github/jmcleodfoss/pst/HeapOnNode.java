@@ -531,6 +531,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*/
 	public void addListDataListener(javax.swing.event.ListDataListener l)
 	{
+		// No ListDataListeners can be added as the HeapOnNode object is immutable so ListData events will never be fired
 	}
 
 	/**	Obtain the list element at the given index.

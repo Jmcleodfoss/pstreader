@@ -188,6 +188,7 @@ class Encryption
 		*/
 		public void translate(byte[] data, long unused)
 		{
+			// The TranslaterNone class does not do any translation.
 		}
 	}
 
