@@ -56,12 +56,12 @@ public class ByteUtil
 
 	/**	Create a signed long from the first "n" bytes of the given array, ordered from LSB to MSB.
 	*	@param	rawData	The bytes to make the long value from.
-	*	@param	n	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
+	*	@param	n_requested	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
 	*	@return	A long value corresponding to the given array of bytes as a little-endian value.
 	*/
-	public static long makeLongLE(byte[] rawData, int n)
+	public static long makeLongLE(byte[] rawData, int n_requested)
 	{
-		n = Math.min(n, rawData.length);
+		n = Math.min(n_requested, rawData.length);
 		if (n > LONG_BYTES)
 			throw new RuntimeException("Need 8 bytes or fewer to make a long value");
 

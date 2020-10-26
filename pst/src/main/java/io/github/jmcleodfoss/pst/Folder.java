@@ -152,9 +152,9 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		if (index < folder.subfolders.size())
 			return folder.subfolders.get(index);
 
-		index -= folder.subfolders.size();
-		if (index < folder.contents.size())
-			return folder.contents.get(index);
+		int indexItem = index - folder.subfolders.size();
+		if (indexItem < folder.contents.size())
+			return folder.contents.get(indexItem);
 
 		assert false: "getChild for " + oParent + " index " + index + " not found";
 		return null;
