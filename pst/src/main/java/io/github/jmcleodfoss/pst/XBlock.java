@@ -15,7 +15,6 @@ class XBlock extends BlockBase
 	private static final String nm_cLevel = "cLevel";
 	private static final String nm_cEnt = "cEnt";
 	private static final String nm_lcbTotal = "lcbTotal";
-	private static final String nm_rgbid = "rgbid";
 
 	/**	Descriptions of the fields which make up the XBLOCK and XXBLOCK information. */
 	private static final DataDefinition[] data_fields = {
