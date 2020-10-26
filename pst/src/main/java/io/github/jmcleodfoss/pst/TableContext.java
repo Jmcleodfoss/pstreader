@@ -26,15 +26,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	private static class TCInfo
 	{
-		/**	Index into rgib table of the ending offset of 4 and 8 byte data values. */
-		private static final int TCI_4b = 0;
-
-		/**	Index into rgib table of the ending offset of 2 byte data values. */
-		private static final int TCI_2b = 1;
-
-		/**	Index into rgib table of the ending offset of 1 byte data values. */
-		private static final int TCI_1b = 2;
-
 		/**	Index into rgib table of the ending offset of the Cell Existence Block. */
 		private static final int TCI_bm = 3;
 
@@ -44,7 +35,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		private static final String nm_hidRowIndex = "hidRowIndex";
 		private static final String nm_hnidRows = "hnidRows";
 		private static final String nm_hidIndex = "hidIndex";
-		private static final String nm_rgTColDescr = "rgTColDescr";
 
 		/**	The fields in the input stream which make up the Table Context Info. */
 		private static final DataDefinition[] fields = {
