@@ -189,7 +189,7 @@ public class Header
 	*	@param	dc	The DataContainer object holding the values read in from the header.
 	*	@throws	NotPSTFileException	The magic number for this file is not that for a pst file.
 	*/
-	@SuppressWarnings("PMD.MethodNamingConvention")
+	@SuppressWarnings("PMD.MethodNamingConventions")
 	private void validate_dwMagic(final DataContainer dc)
 	throws
 		NotPSTFileException
@@ -204,7 +204,7 @@ public class Header
 	*	@param	nm_field	The field name of the CRC to check.
 	*	@param	dc		The DataContainer object holding the values read in from the header.
 	*/
-	@SuppressWarnings("PMD.MethodNamingConvention")
+	@SuppressWarnings("PMD.MethodNamingConventions")
 	private void validate_CRC(final int crcCalculated, final String nm_field, final DataContainer dc)
 	{
 		if (Options.checkCRC && crcCalculated != (Integer)dc.get(nm_field))
