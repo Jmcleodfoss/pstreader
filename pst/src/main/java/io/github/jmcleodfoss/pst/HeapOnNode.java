@@ -560,6 +560,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*/
 	public void removeListDataListener(javax.swing.event.ListDataListener l)
 	{
+		// No ListDataListeners can be added as addListDataListener is a no-op (since the HeapOnNode object is immutable and ListData events will never be fired)
 	}
 
 	/**	Test the HeapOnNode class by creating and printing out the first heap-on-node in the given PST file.
