@@ -51,7 +51,7 @@ public class TreeNodePopupListener extends java.awt.event.MouseAdapter
 	/**	Take action when the mouse button is released.
 	*	@param	e	The mouse event describing the button press.
 	*/
-	public void released(java.awt.event.MouseEvent e)
+	public void mouseReleased(java.awt.event.MouseEvent e)
 	{
 		if (!e.isPopupTrigger() || menu.isVisible()) {
 			doPopupCancel();
