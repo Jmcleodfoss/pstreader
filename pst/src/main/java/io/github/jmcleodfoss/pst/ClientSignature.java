@@ -133,9 +133,8 @@ class ClientSignature
 		try {
 			return new ClientSignature(signature);
 		} catch (final UnknownClientSignatureException e) {
-			e.printStackTrace(System.out);
-			System.exit(1);
-			return null;
+			// This shouldn't happen because we only call this function to define constants within this class with known good values
+			throw new RuntimeException(e);
 		}
 	}
 }
