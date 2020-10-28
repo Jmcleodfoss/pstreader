@@ -24,6 +24,7 @@ import io.github.jmcleodfoss.pst.NotHeapNodeException;
 import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
 import io.github.jmcleodfoss.pst.NotTableContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
+import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.PropertyContext;
 import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
 import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
@@ -33,7 +34,7 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 
 /**	The FolderContentsDisplay is a specialization of BTreeWithData for folder display. */
 @SuppressWarnings("serial")
-class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
+class FolderContentsDisplay extends JTabbedPane implements NewFileListener, TreeSelectionListener
 {
 	/**	The list of mime types which may be displayed as images (and for which there is built-in support in Java Swing). */
 	private static final ArrayList<String> imageMimeTypes = new ArrayList<String>();
@@ -59,6 +60,9 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 	static {
 		htmlMimeTypes.add("text/html");
 	}
+
+	/**	The charset for the current pst file */
+	private String charsetName = "";
 
 	/**	The display of the folder raw data. */
 	private NodeContentsDisplay folderObject;
@@ -266,7 +270,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 
 		} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
-				attachmentText.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
+				attachmentText.setText(new String(attachmentObject.data(pc), charsetName));
 			} catch (final java.io.UnsupportedEncodingException e) {
 				e.printStackTrace(System.out);
 				attachmentText.setText("");
@@ -275,7 +279,7 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 			}
 		} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
-				attachmentHtml.setText(new String(attachmentObject.data(pc), pstExplorer.explorer.charsetName()));
+				attachmentHtml.setText(new String(attachmentObject.data(pc), charsetName));
 			} catch (final java.io.UnsupportedEncodingException e) {
 				e.printStackTrace(System.out);
 				attachmentHtml.setText("");
@@ -408,9 +412,18 @@ class FolderContentsDisplay extends JTabbedPane implements TreeSelectionListener
 		assert false : "Unhandled IPM message class.";
 	}
 
+	/**	Update with information from the new file.
+	*	@param	pst	The PST object loaded.
+	*/
+	public void fileLoaded(final PST pst)
+	{
+		charsetName = pst.charsetName();
+	}
+
 	/**	Reset all displays and data. */
 	void reset()
 	{
+		charsetName = "";
 		folderObject.reset();
 		hierarchyTable.reset();
 		contentsTable.reset();

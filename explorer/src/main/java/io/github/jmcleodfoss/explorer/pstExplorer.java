@@ -131,6 +131,7 @@ public class pstExplorer extends JFrame
 		folderTab = new FolderTree();
 		tabbedPane.add(folderTab, "Folders");
 		addNewFileListener(folderTab);
+		addNewFileListener(folderTab.folderContentsDisplay);
 
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
