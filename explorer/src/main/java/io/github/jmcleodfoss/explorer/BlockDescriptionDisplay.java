@@ -5,10 +5,11 @@ package io.github.jmcleodfoss.explorer;
 class BlockDescriptionDisplay extends TreeDescriptionDisplay
 {
 	/**	Construct a BlockDescriptionDisplay object.
+	*	@param	explorer	The main pst Explorer application object
 	*	@param	tree	The tree associated with this description.
 	*/
-	BlockDescriptionDisplay(BTreeJTree tree)
+	BlockDescriptionDisplay(pstExplorer explorer, BTreeJTree tree)
 	{
-		super(tree, new BlockContentsDisplay());
+		super(explorer, tree, new BlockContentsDisplay());
 	}
 }

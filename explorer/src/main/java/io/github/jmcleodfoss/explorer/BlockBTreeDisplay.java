@@ -13,12 +13,14 @@ class BlockBTreeDisplay extends BTreeWithData
 	/** The current block's contents */
 	private BlockDescriptionDisplay blockDescriptionDisplay;
 
-	/**	Construct a BTreeWithData object with the appropriate orientation and contents for the block B-tree display. */
+	/**	Construct a BTreeWithData object with the appropriate orientation and contents for the block B-tree display.
+	*	@param	explorer	The main pst Explorer application object
+	*/
 	BlockBTreeDisplay(pstExplorer explorer)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
 		this.explorer = explorer;
-		blockDescriptionDisplay = new BlockDescriptionDisplay(tree);
+		blockDescriptionDisplay = new BlockDescriptionDisplay(explorer, tree);
 		setDataView(blockDescriptionDisplay);
 	}
 

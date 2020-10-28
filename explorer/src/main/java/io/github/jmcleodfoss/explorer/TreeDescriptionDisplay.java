@@ -12,6 +12,9 @@ import io.github.jmcleodfoss.pst.BTreeNode;
 @SuppressWarnings("serial")
 class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 {
+	/** The main Explorer application */
+	pstExplorer explorer;
+
 	/**	The node summary/overview. */
 	private AppTable summary;
 
@@ -19,13 +22,15 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	private JComponent contents;
 
 	/**	Construct a NodeDescriptionDisplay object.
+	*	@param	explorer	The main Explorer application
 	*	@param	tree	The tree associated with this description.
 	*	@param	contentsDisplay	The content display for the currently selected node.
 	*/
-	TreeDescriptionDisplay(BTreeJTree tree, JComponent contentsDisplay)
+	TreeDescriptionDisplay(pstExplorer explorer, BTreeJTree tree, JComponent contentsDisplay)
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 
+		this.explorer = explorer;
 		summary = new AppTable();
 		setTopComponent(summary);
 		tree.addTreeSelectionListener(this);
@@ -63,7 +68,7 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 
 		final BTreeNode node = (BTreeNode)lastPathComponent; 
 		if (contents instanceof BTreeContentsDisplay)
-			((BTreeContentsDisplay)contents).update(node, pstExplorer.pst());
+			((BTreeContentsDisplay)contents).update(node, explorer.pst());
 		summary.setModel(((BTreeNode)lastPathComponent).getNodeTableModel());
 		setDividerLocation(-1);
 	}
