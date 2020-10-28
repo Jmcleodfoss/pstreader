@@ -12,8 +12,11 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 @SuppressWarnings("serial")
 class NodeDescriptionDisplay extends TreeDescriptionDisplay
 {
+	/**	The main application object, needed to display dialog boxes in and to load new files to */
+	private final pstExplorer explorer;
+
 	/**	The AttachmentSavePopupMenu is the popup menu for saving attachments. */
-	static private class AttachmentSavePopupMenu extends TreeNodePopupListener
+	private class AttachmentSavePopupMenu extends TreeNodePopupListener
 	{
 		/**	Handle attachment file save requests. */
 		private class AttachmentSaveActionListener extends FileSaverMenuItem
@@ -42,9 +45,9 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			String initialFilenameSuggestion()
 			{
 				final LPTLeaf attachmentNode = (LPTLeaf)clickedNode;
-				pc = pstExplorer.pst().propertyContext(attachmentNode);
+				pc = explorer.pst().propertyContext(attachmentNode);
 				try {
-					attachment = new Attachment(attachmentNode, pstExplorer.pst().blockBTree, pstExplorer.pst());
+					attachment = new Attachment(attachmentNode, explorer.pst().blockBTree, explorer.pst());
 				} catch (Exception e) {
 					pc = null;
 					return "";
@@ -62,11 +65,13 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			}
 		}
 
-		/**	Create an FileSaverTreePopupMenu, including the save action listener. */
-		AttachmentSavePopupMenu(JFrame parentFrame)
+		/**	Create an FileSaverTreePopupMenu, including the save action listener.
+		*	@param	explorer	The main pst Explorer application object
+		*/
+		AttachmentSavePopupMenu(pstExplorer explorer)
 		{
 			JMenuItem item = new JMenuItem("Save...");
-			item.addActionListener(new AttachmentSaveActionListener(parentFrame));
+			item.addActionListener(new AttachmentSaveActionListener(explorer));
 			add(item);
 		}
 
@@ -82,10 +87,12 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 
 	/**	Construct a NodeDescriptionDisplay object.
 	*	@param	tree	The node tree associated with this description.
+	*	@param	explorer	The main pst Explorer application object
 	*/
-	NodeDescriptionDisplay(BTreeJTree tree, JFrame parentFrame)
+	NodeDescriptionDisplay(BTreeJTree tree, pstExplorer explorer)
 	{
 		super(tree, new NodeContentsDisplay());
-		tree.addMouseListener(new AttachmentSavePopupMenu(parentFrame));
+		this.explorer = explorer;
+		tree.addMouseListener(new AttachmentSavePopupMenu(explorer));
 	}
 }

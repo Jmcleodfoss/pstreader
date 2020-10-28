@@ -15,10 +15,10 @@ class NodeBTreeDisplay extends BTreeWithData
 	private NodeDescriptionDisplay nodeDescriptionDisplay;
 
 	/**	Construct a BTreeWithData object with the given orientation and content pane. */
-	protected NodeBTreeDisplay(JFrame parentFrame)
+	protected NodeBTreeDisplay(pstExplorer explorer)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
-		nodeDescriptionDisplay = new NodeDescriptionDisplay(tree, parentFrame);
+		nodeDescriptionDisplay = new NodeDescriptionDisplay(tree, explorer);
 		setDataView(nodeDescriptionDisplay);
 	}
 
