@@ -30,14 +30,16 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	/**	The client-level object (Property Context or Table Context. */
 	private AppTable lpt;
 
-	/**	Construct the constituent elements of the display. */
-	NodeContentsDisplay()
+	/**	Construct the constituent elements of the display.
+	*	@param	explorer	The main Explorer application
+	*/
+	NodeContentsDisplay(pstExplorer explorer)
 	{
 		rawData = new HexAndTextDisplay();
 		heapOnNode = new JList<Object>();
 		sbHeapOnNode = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		sbHeapOnNode.getViewport().add(heapOnNode);
-		bth = new BTHDisplay();
+		bth = new BTHDisplay(explorer);
 		lpt = new AppTable();
 	}
 

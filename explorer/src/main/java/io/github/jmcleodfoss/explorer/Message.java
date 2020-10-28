@@ -27,10 +27,12 @@ class Message extends NodeContentsDisplay
 	/**	The message body as HTML, if present. */
 	private JTextPane bodyHtml;
 
-	/**	Construct a message object. */
-	Message()
+	/**	Construct a message object.
+	*	@param	explorer	The main Explorer application
+	*/
+	Message(pstExplorer explorer)
 	{
-		super();
+		super(explorer);
 
 		header = new JTextArea();
 

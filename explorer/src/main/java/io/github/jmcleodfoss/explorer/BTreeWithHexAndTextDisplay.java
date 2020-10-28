@@ -12,15 +12,20 @@ import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 @SuppressWarnings("serial")
 class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionListener
 {
+	/** The main Explorer application */
+	pstExplorer explorer;
+
 	/**	The display of hexadecimal and text. */
 	private HexAndTextDisplay hexAndTextDisplay;
 
 	/**	Create a BTreeWithData with a HexAndText display as its data view.
+	*	@param	explorer	The main Explorer application
 	*	@param	orientation	The orientation of the underlying BTreeWithData's JSplitPane
 	*/
-	BTreeWithHexAndTextDisplay(int orientation)
+	BTreeWithHexAndTextDisplay(pstExplorer explorer, int orientation)
 	{
 		super(orientation, new HexAndTextDisplay());
+		this.explorer = explorer;
 		hexAndTextDisplay = (HexAndTextDisplay)getRightComponent();
 		tree.addTreeSelectionListener(this);
 	}
@@ -32,7 +37,7 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	protected ByteBuffer readRawData(BTreeNode node)
 	{
 		try {
-			return node.rawData(pstExplorer.pst().blockBTree, pstExplorer.pst());
+			return node.rawData(explorer.pst().blockBTree, explorer.pst());
 		} catch (IOException e) {
 			return null;
 		}

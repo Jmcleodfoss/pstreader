@@ -220,23 +220,24 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 	/**	ssCreate the display of various types of data within the folder tree (folders, messages, and attachments).
 	*	@param	folderTree	The folder tree.
+	*	@param	explorer	The main Explorer application
 	*/
-	FolderContentsDisplay(final BTreeJTree folderTree, JFrame parentFrame)
+	FolderContentsDisplay(final BTreeJTree folderTree, pstExplorer explorer)
 	{
 		super();
 
-		this.parentFrame = parentFrame;
+		parentFrame = explorer;
 
-		folderObject = new NodeContentsDisplay();
-		hierarchyTable = new NodeContentsDisplay();
-		contentsTable = new NodeContentsDisplay();
-		associatedContentsTable = new NodeContentsDisplay();
+		folderObject = new NodeContentsDisplay(explorer);
+		hierarchyTable = new NodeContentsDisplay(explorer);
+		contentsTable = new NodeContentsDisplay(explorer);
+		associatedContentsTable = new NodeContentsDisplay(explorer);
 
-		message = new Message();
-		recipientTable = new NodeContentsDisplay();
-		attachmentTable = new NodeContentsDisplay();
+		message = new Message(explorer);
+		recipientTable = new NodeContentsDisplay(explorer);
+		attachmentTable = new NodeContentsDisplay(explorer);
 
-		attachment = new NodeContentsDisplay();
+		attachment = new NodeContentsDisplay(explorer);
 
 		spAttachmentDisplay = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -248,8 +249,8 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 		distributionList = new DistributionListDisplay();
 
-		folderTree.addMouseListener(new HtmlSavePopupMenu(parentFrame));
-		folderTree.addMouseListener(new AttachmentSavePopupMenu(parentFrame));
+		folderTree.addMouseListener(new HtmlSavePopupMenu(explorer));
+		folderTree.addMouseListener(new AttachmentSavePopupMenu(explorer));
 	}
 
 	/**	Update the display for a new node of type Attachment

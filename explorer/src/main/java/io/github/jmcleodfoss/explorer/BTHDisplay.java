@@ -18,10 +18,12 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay
 	/**	The heap-on-node on which this B-tree-on-heap is built. */
 	private HeapOnNode hon;
 	
-	/**	Create the B-tree-on-heap display. */
-	BTHDisplay()
+	/**	Create the B-tree-on-heap display.
+	*	@param	explorer	The main Explorer application
+	*/
+	BTHDisplay(pstExplorer explorer)
 	{
-		super(JSplitPane.VERTICAL_SPLIT);
+		super(explorer, JSplitPane.VERTICAL_SPLIT);
 	}
 
 	/**	Read in a new sub-node B-tree.

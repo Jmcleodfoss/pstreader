@@ -91,7 +91,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 	*/
 	NodeDescriptionDisplay(BTreeJTree tree, pstExplorer explorer)
 	{
-		super(explorer, tree, new NodeContentsDisplay());
+		super(explorer, tree, new NodeContentsDisplay(explorer));
 		this.explorer = explorer;
 		tree.addMouseListener(new AttachmentSavePopupMenu(explorer));
 	}
