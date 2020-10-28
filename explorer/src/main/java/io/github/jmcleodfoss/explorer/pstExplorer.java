@@ -139,9 +139,9 @@ public class pstExplorer extends JFrame
 	/**	Add a NewFileListener to the list of listeners.
 	*	@param	listener	The NewFileListener object to add to the list.
 	*/
-	static void addNewFileListener(NewFileListener listener)
+	void addNewFileListener(NewFileListener listener)
 	{
-		explorer.listeners.add(NewFileListener.class, listener);
+		listeners.add(NewFileListener.class, listener);
 	}
 
 	/**	Broadcast the new file to all NewFileListener objects. */
