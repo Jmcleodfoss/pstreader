@@ -116,7 +116,7 @@ public class pstExplorer extends JFrame
 		messageStoreTab = new AppTable();
 		tabbedPane.add(messageStoreTab, "Msg Store");
 
-		nodeTab = new NodeBTreeDisplay();
+		nodeTab = new NodeBTreeDisplay(this);
 		tabbedPane.add(nodeTab, "Nodes");
 		addNewFileListener(nodeTab);
 		

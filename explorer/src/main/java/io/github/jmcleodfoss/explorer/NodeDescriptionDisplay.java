@@ -1,5 +1,6 @@
 package io.github.jmcleodfoss.explorer;
 
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 
 import io.github.jmcleodfoss.pst.Attachment;
@@ -24,9 +25,9 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			private Attachment attachment;
 	
 			/**	Create the AttachmentSaveActionListener object. */
-			AttachmentSaveActionListener()
+			AttachmentSaveActionListener(JFrame parentFrame)
 			{
-				super();
+				super(parentFrame);
 				pc = null;
 				attachment = null;
 			}
@@ -62,10 +63,10 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 		}
 
 		/**	Create an FileSaverTreePopupMenu, including the save action listener. */
-		AttachmentSavePopupMenu()
+		AttachmentSavePopupMenu(JFrame parentFrame)
 		{
 			JMenuItem item = new JMenuItem("Save...");
-			item.addActionListener(new AttachmentSaveActionListener());
+			item.addActionListener(new AttachmentSaveActionListener(parentFrame));
 			add(item);
 		}
 
@@ -82,9 +83,9 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 	/**	Construct a NodeDescriptionDisplay object.
 	*	@param	tree	The node tree associated with this description.
 	*/
-	NodeDescriptionDisplay(BTreeJTree tree)
+	NodeDescriptionDisplay(BTreeJTree tree, JFrame parentFrame)
 	{
 		super(tree, new NodeContentsDisplay());
-		tree.addMouseListener(new AttachmentSavePopupMenu());
+		tree.addMouseListener(new AttachmentSavePopupMenu(parentFrame));
 	}
 }

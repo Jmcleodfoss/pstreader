@@ -1,6 +1,7 @@
 package io.github.jmcleodfoss.explorer;
 
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.tree.TreeModel;
 
@@ -11,10 +12,10 @@ import io.github.jmcleodfoss.pst.PST;
 class NodeBTreeDisplay extends BTreeWithData
 {
 	/**	Construct a BTreeWithData object with the given orientation and content pane. */
-	protected NodeBTreeDisplay()
+	protected NodeBTreeDisplay(JFrame parentFrame)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
-		setDataView(new NodeDescriptionDisplay(tree));
+		setDataView(new NodeDescriptionDisplay(tree, parentFrame));
 	}
 
 	/**	Update the views when a new file is read in.

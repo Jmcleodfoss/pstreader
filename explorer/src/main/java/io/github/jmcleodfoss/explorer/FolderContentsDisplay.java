@@ -119,6 +119,12 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		/**	Handle attachment file save requests. */
 		private class HTMLSaveActionListener extends FileSaverMenuItem
 		{
+			/** {@inheritDoc} */
+			HTMLSaveActionListener(JFrame parentFrame)
+			{
+				super(parentFrame);
+			}
+
 			/**	{@inheritDoc} */
 			String dialogTitle()
 			{
@@ -140,10 +146,10 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		}
 
 		/**	Create a FileSaverTreePopupMenu, including the save action listener. */
-		HtmlSavePopupMenu()
+		HtmlSavePopupMenu(JFrame parentFrame)
 		{
 			JMenuItem item = new JMenuItem("Save HTML...");
-			item.addActionListener(new HTMLSaveActionListener());
+			item.addActionListener(new HTMLSaveActionListener(parentFrame));
 			add(item);
 		}
 
@@ -167,6 +173,12 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		/**	Handle attachment file save requests. */
 		private class AttachmentSaveActionListener extends FileSaverMenuItem
 		{
+			/** {@inheritDoc} */
+			AttachmentSaveActionListener(JFrame parentFrame)
+			{
+				super(parentFrame);
+			}
+
 			/**	{@inheritDoc} */
 			String dialogTitle()
 			{
@@ -189,10 +201,10 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		}
 
 		/**	Create a FileSaverTreePopupMenu, including the save action listener. */
-		AttachmentSavePopupMenu()
+		AttachmentSavePopupMenu(JFrame parentFrame)
 		{
 			JMenuItem item = new JMenuItem("Save...");
-			item.addActionListener(new AttachmentSaveActionListener());
+			item.addActionListener(new AttachmentSaveActionListener(parentFrame));
 			add(item);
 		}
 
@@ -236,8 +248,8 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 		distributionList = new DistributionListDisplay();
 
-		folderTree.addMouseListener(new HtmlSavePopupMenu());
-		folderTree.addMouseListener(new AttachmentSavePopupMenu());
+		folderTree.addMouseListener(new HtmlSavePopupMenu(parentFrame));
+		folderTree.addMouseListener(new AttachmentSavePopupMenu(parentFrame));
 	}
 
 	/**	Update the display for a new node of type Attachment

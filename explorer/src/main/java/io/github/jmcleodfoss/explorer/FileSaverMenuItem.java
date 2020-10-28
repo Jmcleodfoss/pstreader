@@ -7,11 +7,23 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 /**	The FileSaverMenuItem class implements a generic mechanism for saving files via a submenu menu item.
 */
 abstract class FileSaverMenuItem implements ActionListener
 {
+	/**	The parent frame to display dialog boxes in */
+	private final JFrame parentFrame;
+
+	/**	Construct the underlying FileChooser and set required filter.
+	*	@param	parentFrame	The frame in which to display the dialog box
+	*/
+	FileSaverMenuItem(JFrame parentFrame)
+	{
+		this.parentFrame = parentFrame;
+	}
+
 	/**	Obtain the initial filename suggestion for the save dialog box.
 	*	@return	This (base class) version of the function returns null.
 	*/
@@ -46,7 +58,7 @@ abstract class FileSaverMenuItem implements ActionListener
 		if (filename != null)
 			fileChooser.setSelectedFile(new File(filename));
 
-		switch(fileChooser.showSaveDialog(pstExplorer.explorer)) {
+		switch(fileChooser.showSaveDialog(parentFrame)) {
 		case JFileChooser.APPROVE_OPTION:
 			byte[] data = data();
 			if (data != null) {
