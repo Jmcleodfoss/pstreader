@@ -62,8 +62,8 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		htmlMimeTypes.add("text/html");
 	}
 
-	/**	The charset for the current pst file */
-	private String charsetName = "";
+	/**	The current pst object */
+	private PST pst;
 
 	/**	The parent frame to display dialog boxes in */
 	private final JFrame parentFrame;
@@ -168,7 +168,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	};
 
 	/**	Thee AttachmentSavePopupMenu is the popup menu for saving message attachments. */
-	static class AttachmentSavePopupMenu extends TreeNodePopupListener
+	class AttachmentSavePopupMenu extends TreeNodePopupListener
 	{
 		/**	Handle attachment file save requests. */
 		private class AttachmentSaveActionListener extends FileSaverMenuItem
@@ -195,7 +195,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			byte[] data()
 			{
 				Attachment attachmentObject = (Attachment)clickedNode;
-				PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
+				PropertyContext pc = pst.propertyContext(attachmentObject.nodeInfo);
 				return attachmentObject.data(pc);
 			}
 		}
@@ -262,7 +262,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 		updateComponent(attachment, attachmentObject.nodeInfo, "Attachment");
 
-		final PropertyContext pc = pstExplorer.pst().propertyContext(attachmentObject.nodeInfo);
+		final PropertyContext pc = pst.propertyContext(attachmentObject.nodeInfo);
 
 		if (attachmentDisplay != null) {
 			if (attachmentDisplay.equals(attachmentImage))
@@ -288,7 +288,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 		} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
-				attachmentText.setText(new String(attachmentObject.data(pc), charsetName));
+				attachmentText.setText(new String(attachmentObject.data(pc), pst.charsetName()));
 			} catch (final java.io.UnsupportedEncodingException e) {
 				e.printStackTrace(System.out);
 				attachmentText.setText("");
@@ -297,7 +297,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			}
 		} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
-				attachmentHtml.setText(new String(attachmentObject.data(pc), charsetName));
+				attachmentHtml.setText(new String(attachmentObject.data(pc), pst.charsetName()));
 			} catch (final java.io.UnsupportedEncodingException e) {
 				e.printStackTrace(System.out);
 				attachmentHtml.setText("");
@@ -356,7 +356,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		assert messageObject.nodeMessageObject != null;
 
 		try {
-			messagePC = messageObject.getMessage(pstExplorer.pst());
+			messagePC = messageObject.getMessage(pst);
 		} catch (NotHeapNodeException e) {
 		} catch (NotPropertyContextNodeException e) {
 		} catch (NotTableContextNodeException e) {
@@ -381,7 +381,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 			if (messageObject instanceof DistributionList) {
 				DistributionList distributionListObject = (DistributionList)messageObject;
-				if (distributionList.update(distributionListObject, messagePC, pstExplorer.pst())) {
+				if (distributionList.update(distributionListObject, messagePC, pst)) {
 					if (indexOfComponent(distributionList) == -1)
 						add("Distribution List Members", distributionList);
 				} else {
@@ -435,13 +435,12 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	*/
 	public void fileLoaded(final PST pst)
 	{
-		charsetName = pst.charsetName();
+		this.pst = pst;
 	}
 
 	/**	Reset all displays and data. */
 	void reset()
 	{
-		charsetName = "";
 		folderObject.reset();
 		hierarchyTable.reset();
 		contentsTable.reset();
@@ -455,6 +454,8 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		attachmentImage.setIcon(null);
 		attachmentText.setText("");
 		attachmentHtml.setText("");
+
+		pst = null;
 
 		remove(folderObject);
 		remove(hierarchyTable);
@@ -477,7 +478,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	private void updateComponent(final NodeContentsDisplay component, final LPTLeaf node, final String title)
 	{
 		if (node != null) {
-			component.update(node, pstExplorer.pst());
+			component.update(node, pst);
 			if (indexOfComponent(component) == -1)
 				add(title, component);
 		} else {

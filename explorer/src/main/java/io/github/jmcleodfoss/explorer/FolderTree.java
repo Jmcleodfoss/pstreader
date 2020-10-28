@@ -8,15 +8,19 @@ import javax.swing.tree.TreeModel;
 @SuppressWarnings("serial")
 class FolderTree extends BTreeWithData
 {
+	/**	The main application object, needed to display dialog boxes in and to load new files to */
+	private final pstExplorer explorer;
+
 	/**	The component in which to display the folder data. */
 	FolderContentsDisplay folderContentsDisplay;
 
 	/**	Construct the FolderContents display object.
 	*/
-	FolderTree(JFrame parentFrame)
+	FolderTree(pstExplorer explorer)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
-		folderContentsDisplay = new FolderContentsDisplay(tree, parentFrame);
+		this.explorer = explorer;
+		folderContentsDisplay = new FolderContentsDisplay(tree, explorer);
 		setDataView(folderContentsDisplay);
 	}
 
@@ -33,7 +37,7 @@ class FolderTree extends BTreeWithData
 	*/
 	TreeModel treeModel()
 	{
-		return pstExplorer.pst().getFolderTree();
+		return explorer.pst().getFolderTree();
 	}
 
 }
