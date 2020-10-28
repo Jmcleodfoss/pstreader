@@ -11,11 +11,15 @@ import io.github.jmcleodfoss.pst.PST;
 @SuppressWarnings("serial")
 class NodeBTreeDisplay extends BTreeWithData
 {
+	/** The current node's contents */
+	private NodeDescriptionDisplay nodeDescriptionDisplay;
+
 	/**	Construct a BTreeWithData object with the given orientation and content pane. */
 	protected NodeBTreeDisplay(JFrame parentFrame)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
-		setDataView(new NodeDescriptionDisplay(tree, parentFrame));
+		nodeDescriptionDisplay = new NodeDescriptionDisplay(tree, parentFrame);
+		setDataView(nodeDescriptionDisplay);
 	}
 
 	/**	Update the views when a new file is read in.
@@ -28,5 +32,12 @@ class NodeBTreeDisplay extends BTreeWithData
 		} catch (IOException e) {
 			tree.setModel(treeModel());
 		}
+	}
+
+	/**	Clear the tree model. */
+	void reset()
+	{
+		super.reset();
+		nodeDescriptionDisplay.reset();
 	}
 }
