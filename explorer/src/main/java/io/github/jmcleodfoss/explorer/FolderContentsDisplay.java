@@ -222,7 +222,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	*	@param	folderTree	The folder tree.
 	*	@param	explorer	The main Explorer application
 	*/
-	FolderContentsDisplay(final BTreeJTree folderTree, pstExplorer explorer)
+	FolderContentsDisplay(pstExplorer explorer, final BTreeJTree folderTree)
 	{
 		super();
 

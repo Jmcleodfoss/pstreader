@@ -21,7 +21,7 @@ class FolderTree extends BTreeWithData
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
 		this.explorer = explorer;
-		folderContentsDisplay = new FolderContentsDisplay(tree, explorer);
+		folderContentsDisplay = new FolderContentsDisplay(explorer, tree);
 		setDataView(folderContentsDisplay);
 	}
 

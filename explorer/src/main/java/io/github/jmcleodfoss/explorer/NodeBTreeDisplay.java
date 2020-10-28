@@ -18,7 +18,7 @@ class NodeBTreeDisplay extends BTreeWithData
 	protected NodeBTreeDisplay(pstExplorer explorer)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
-		nodeDescriptionDisplay = new NodeDescriptionDisplay(tree, explorer);
+		nodeDescriptionDisplay = new NodeDescriptionDisplay(explorer, tree);
 		setDataView(nodeDescriptionDisplay);
 	}
 

@@ -89,7 +89,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 	*	@param	tree	The node tree associated with this description.
 	*	@param	explorer	The main pst Explorer application object
 	*/
-	NodeDescriptionDisplay(BTreeJTree tree, pstExplorer explorer)
+	NodeDescriptionDisplay(pstExplorer explorer, BTreeJTree tree)
 	{
 		super(explorer, tree, new NodeContentsDisplay(explorer));
 		this.explorer = explorer;
