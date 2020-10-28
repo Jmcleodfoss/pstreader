@@ -15,6 +15,7 @@ class FolderTree extends BTreeWithData
 	FolderContentsDisplay folderContentsDisplay;
 
 	/**	Construct the FolderContents display object.
+	*	@param	explorer	The main pst Explorer application object
 	*/
 	FolderTree(pstExplorer explorer)
 	{
