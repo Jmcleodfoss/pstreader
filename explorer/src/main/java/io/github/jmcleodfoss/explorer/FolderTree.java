@@ -1,5 +1,6 @@
 package io.github.jmcleodfoss.explorer;
 
+import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.tree.TreeModel;
 
@@ -12,10 +13,10 @@ class FolderTree extends BTreeWithData
 
 	/**	Construct the FolderContents display object.
 	*/
-	FolderTree()
+	FolderTree(JFrame parentFrame)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
-		folderContentsDisplay = new FolderContentsDisplay(tree);
+		folderContentsDisplay = new FolderContentsDisplay(tree, parentFrame);
 		setDataView(folderContentsDisplay);
 	}
 

@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
@@ -63,6 +64,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 	/**	The charset for the current pst file */
 	private String charsetName = "";
+
+	/**	The parent frame to display dialog boxes in */
+	private final JFrame parentFrame;
 
 	/**	The display of the folder raw data. */
 	private NodeContentsDisplay folderObject;
@@ -205,9 +209,11 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	/**	ssCreate the display of various types of data within the folder tree (folders, messages, and attachments).
 	*	@param	folderTree	The folder tree.
 	*/
-	FolderContentsDisplay(final BTreeJTree folderTree)
+	FolderContentsDisplay(final BTreeJTree folderTree, JFrame parentFrame)
 	{
 		super();
+
+		this.parentFrame = parentFrame;
 
 		folderObject = new NodeContentsDisplay();
 		hierarchyTable = new NodeContentsDisplay();
@@ -472,7 +478,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	*/
 	public void valueChanged(final TreeSelectionEvent e)
 	{
-		new ProgressBar(pstExplorer.explorer, "Reading folder data") {
+		new ProgressBar(parentFrame, "Reading folder data") {
 			public void run()
 			{
 				doUpdate(e.getPath().getLastPathComponent());
