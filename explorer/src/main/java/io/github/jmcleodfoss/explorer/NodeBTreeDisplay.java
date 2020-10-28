@@ -1,7 +1,10 @@
 package io.github.jmcleodfoss.explorer;
 
+import java.io.IOException;
 import javax.swing.JSplitPane;
 import javax.swing.tree.TreeModel;
+
+import io.github.jmcleodfoss.pst.PST;
 
 /**	Specialization of BTreeWithData for node and sub-node B-tree display. */
 @SuppressWarnings("serial")
@@ -14,11 +17,15 @@ class NodeBTreeDisplay extends BTreeWithData
 		setDataView(new NodeDescriptionDisplay(tree));
 	}
 
-	/**	Get the tree model for the node B-tree.
-	*	@return	The tree model for the node and sub-node B-tree.
+	/**	Update the views when a new file is read in.
+	*	@param	pst	The PST object loaded.
 	*/
-	TreeModel treeModel()
+	public void fileLoaded(final PST pst)
 	{
-		return pstExplorer.explorer.getNodeBTree();
+		try {
+			tree.setModel(pst.nodeBTreeRoot());
+		} catch (IOException e) {
+			tree.setModel(treeModel());
+		}
 	}
 }

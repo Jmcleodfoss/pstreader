@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.EventListenerList;
 
-import io.github.jmcleodfoss.pst.NodeSubnodeBTree;
 import io.github.jmcleodfoss.pst.PST;
 
 /**	The pstExplorer class provides a GUI for viewing PST files.
@@ -35,9 +34,6 @@ public class pstExplorer extends JFrame
 
 	/**	The PST file */
 	private PST pst;
-
-	/**	The full node + sub-node B-tree. */
-	private NodeSubnodeBTree nodeBTree;
 
 	/**	The PST header information. */
 	private Header headerTab;
@@ -156,14 +152,6 @@ public class pstExplorer extends JFrame
 			l.fileLoaded(pst);
 	}
 
-	/**	Get the node subnode BTree
-	*	@return	the root of the node subnode B-tree
-	*/
-	NodeSubnodeBTree getNodeBTree()
-	{
-		return 	nodeBTree;
-	}
-
 	/**	Read in the given PST file.
 	*	@param	file	The File object indicating the PST file to load.
 	*/
@@ -176,7 +164,6 @@ public class pstExplorer extends JFrame
 			{
 				try {
 					pst = new PST(file.getAbsolutePath());
-					nodeBTree = pst.nodeBTreeRoot();
 					setVisible(false);
 				} catch (final Exception e) {
 					setVisible(false);
@@ -184,7 +171,6 @@ public class pstExplorer extends JFrame
 					if (fDebug)
 						e.printStackTrace(System.out);
 					pst = null;
-					nodeBTree = null;
 				}
 			}
 		};
@@ -232,7 +218,6 @@ public class pstExplorer extends JFrame
 		}
 
 		pst = null;
-		nodeBTree = null;
 	}
 
 	/**	Simple mainline - create the pstExplorer object, which does all the work.
