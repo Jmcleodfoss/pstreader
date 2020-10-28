@@ -120,7 +120,7 @@ public class pstExplorer extends JFrame
 		tabbedPane.add(nodeTab, "Nodes");
 		addNewFileListener(nodeTab);
 		
-		blockTab = new BlockBTreeDisplay();
+		blockTab = new BlockBTreeDisplay(this);
 		tabbedPane.add(blockTab, "Blocks");
 		addNewFileListener(blockTab);
 
