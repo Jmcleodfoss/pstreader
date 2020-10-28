@@ -83,7 +83,7 @@ public class pstExplorer extends JFrame
 		menuBar.add(menu);
 		item = new JMenuItem("Open...");
 		menu.add(item);
-		item.addActionListener(new FileOpenActionListener());
+		item.addActionListener(new FileOpenActionListener(this));
 
 		item = new JMenuItem("Close...");
 		menu.add(item);
