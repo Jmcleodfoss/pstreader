@@ -195,9 +195,9 @@ public class pstExplorer extends JFrame
 	/**	Remove a NewFileListener to the list of listeners.
 	*	@param	listener	The NewFileListener to remove from the list of NewFileListeners.
 	*/
-	static void removeFileEventListener(NewFileListener listener)
+	void removeFileEventListener(NewFileListener listener)
 	{
-		explorer.listeners.remove(NewFileListener.class, listener);
+		listeners.remove(NewFileListener.class, listener);
 	}
 
 	/**	Reset all data. */
