@@ -187,9 +187,9 @@ public class pstExplorer extends JFrame
 	/**	Convenience function to provide a reference to the PST object currently being processed.
 	*	@return	The PST object for the currently loaded file.
 	*/
-	static PST pst()
+	PST pst()
 	{
-		return explorer.pst;
+		return pst;
 	}
 
 	/**	Remove a NewFileListener to the list of listeners.
