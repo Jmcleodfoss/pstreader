@@ -21,6 +21,7 @@ public class SimpleBlockTest extends TestFrame
 	*	@throws	NoSuchMethodException		{@inheritDoc}
 	*	@throws	Throwable			{@inheritDoc}
 	*/
+	@SuppressWarnings("PMD.UnusedLocalVariable")
 	protected void test(File file)
 	throws
 		BufferUnderflowException,
