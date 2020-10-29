@@ -64,7 +64,7 @@ public class MessageObject
 	* 	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building the message object
 	* 	@throws java.io.IOException			An I/O exception was encountered while reading the data for the message object.
 	*/
-	SuppressWarnings("PMD.NPathComplexity")
+	@SuppressWarnings("PMD.NPathComplexity")
 	static MessageObject factory(TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,

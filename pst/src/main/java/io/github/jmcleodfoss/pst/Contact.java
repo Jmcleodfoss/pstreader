@@ -86,7 +86,7 @@ public class Contact extends MessageObject
 	*	@throws	UnparseableTableContextException	A bad / corrupt table context was found while reading the contact data.
 	*	@throws java.io.IOException			An I/O error was enountered while reading the data for this contact.
 	*/
-	SuppressWarnings("PMD.NPathComplexity")
+	@SuppressWarnings("PMD.NPathComplexity")
 	Contact(final TableContext contentsTable, final int row, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		NotHeapNodeException,
