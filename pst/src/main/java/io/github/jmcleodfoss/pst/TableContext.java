@@ -528,6 +528,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@return	The data in the row given by rowStream, parsed into the appropriate PST data types.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this table context row.
 	*/
+	@SuppressWarnings("PMD.UnusedFormalParameter")
 	private Object[] readRow(java.nio.ByteBuffer rowStream, int numColumns, int r, SubnodeBTree sbt, BlockMap bbt, HeapOnNode hon, PSTFile pstFile)
 	throws
 		java.io.IOException
