@@ -1,9 +1,7 @@
 package io.github.jmcleodfoss.explorer;
 
 import java.io.IOException;
-import javax.swing.JFrame;
 import javax.swing.JSplitPane;
-import javax.swing.tree.TreeModel;
 
 import io.github.jmcleodfoss.pst.PST;
 

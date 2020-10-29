@@ -3,7 +3,6 @@ package io.github.jmcleodfoss.explorer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**	Handle file open requests. */

@@ -1,6 +1,5 @@
 package io.github.jmcleodfoss.explorer;
 
-import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.tree.TreeModel;
 
