@@ -151,6 +151,7 @@ public class Message extends MessageObjectWithBody
 	*	@param	pst		The PST file
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the message.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@see	#body
 	*	@see	MessageObjectWithBody#bodyHtml
