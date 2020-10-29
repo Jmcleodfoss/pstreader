@@ -37,7 +37,7 @@ public class DistributionList extends MessageObject
 	/**	The descriptions of the data common to all distribution list entries. */
 	private static final DataDefinition[] DISTRIBUTION_LIST_COMMON_FIELDS = new DataDefinition[] {
 		new DataDefinition("flags", DataType.integer32Reader, false),
-		new DataDefinition(nm_ProviderUID, DataType.definitionFactory(DataType.GUID), true)
+		new DataDefinition(nm_ProviderUID, DataType.guidReader, true)
 	};
 
 	private static final String nm_EntryID = "entryID";
@@ -147,6 +147,8 @@ public class DistributionList extends MessageObject
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	No valid PropertyContext was found for an EntryID for an address book entry
 	*	@throws io.github.jmcleodfoss.pst.NullDataBlockException		An expected Block B-Tree entry was not found when creating the PropertyContext for an EntryID for an
 	*										address book entry
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	An invalid or corrupt PropertyContext was found for an EntryID for an address book entry.
 	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	An invalid or corrupt TableContext was found for an EntryID for an address book entry.
 	*	@throws io.github.jmcleodfoss.pst.UnknownClientSignatureException	An invalid ClientSignature was found for a heap entry when creating an EntryID for an address book entry.
@@ -157,6 +159,8 @@ public class DistributionList extends MessageObject
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		UnknownClientSignatureException

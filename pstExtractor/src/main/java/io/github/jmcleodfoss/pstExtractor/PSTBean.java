@@ -28,7 +28,9 @@ import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.StickyNote;
 import io.github.jmcleodfoss.pst.Task;
+import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
 import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
+import io.github.jmcleodfoss.pst.UnknownPropertyTypeException;
 import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
 import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 
@@ -181,7 +183,9 @@ public class PSTBean implements Serializable
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the journal entries. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the journal entries.
 	*	@throws	NullDataBlockException			A null data block was found when reading the journal entries.
+	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the journal entries.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the journal entries.
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the journal entries.
 	*	@throws IOException			An I/O error was encoutnered while reading the journal entries.
@@ -193,7 +197,9 @@ public class PSTBean implements Serializable
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException
 	{
@@ -224,7 +230,9 @@ public class PSTBean implements Serializable
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the sticky notes. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the sticky notes.
 	*	@throws	NullDataBlockException			A null data block was found when reading the sticky notes.
+	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the sticky notes.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the sticky notes.
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the sticky notes.
 	*	@throws IOException			An I/O error was encoutnered while reading the sticky notes.
@@ -236,7 +244,9 @@ public class PSTBean implements Serializable
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException
 	{
@@ -327,7 +337,13 @@ public class PSTBean implements Serializable
 		} catch (NullDataBlockException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
+		} catch (UnimplementedPropertyTypeException e) {
+			e.printStackTrace(System.out);
+			return "ProcessingProblem";
 		} catch (UnknownClientSignatureException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (UnknownPropertyTypeException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
 		} catch (UnparseablePropertyContextException e) {
@@ -467,7 +483,9 @@ public class PSTBean implements Serializable
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
 	*	@throws	NullDataBlockException			A null data block was found when reading the pst file.
+	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the pst file.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
 	*	@throws UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
 	*	@throws IOException			An I/O error was encoutnered while reading the pst file.
@@ -478,7 +496,9 @@ public class PSTBean implements Serializable
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		IOException
@@ -566,7 +586,13 @@ public class PSTBean implements Serializable
 				} catch (NullDataBlockException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
+				} catch (UnimplementedPropertyTypeException e) {
+					e.printStackTrace(System.out);
+					return "ProcessingProblem";
 				} catch (UnknownClientSignatureException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (UnknownPropertyTypeException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
 				} catch (UnparseablePropertyContextException e) {

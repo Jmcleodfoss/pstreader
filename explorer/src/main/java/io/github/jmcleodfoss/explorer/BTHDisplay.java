@@ -9,6 +9,8 @@ import io.github.jmcleodfoss.pst.BTreeNode;
 import io.github.jmcleodfoss.pst.BTreeOnHeap;
 import io.github.jmcleodfoss.pst.HeapOnNode;
 import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
+import io.github.jmcleodfoss.pst.UnknownPropertyTypeException;
 import io.github.jmcleodfoss.swingutil.EmptyTreeModel;
 
 /**	The BTHDisplay class displays the B-tree-on-Heap for a node and the data for the selected node of the B-tree. */
@@ -51,6 +53,10 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay
 	{
 		try {
 			return BTreeOnHeap.getData(node, hon);
+		} catch (UnimplementedPropertyTypeException e) {
+			return null;
+		} catch (UnknownPropertyTypeException e) {
+			return null;
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}

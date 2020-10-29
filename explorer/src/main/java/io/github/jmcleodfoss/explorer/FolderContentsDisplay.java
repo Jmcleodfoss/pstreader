@@ -27,7 +27,9 @@ import io.github.jmcleodfoss.pst.NotTableContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.PropertyContext;
+import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
 import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
+import io.github.jmcleodfoss.pst.UnknownPropertyTypeException;
 import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
 import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 import io.github.jmcleodfoss.swingutil.ProgressBar;
@@ -362,7 +364,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		} catch (NotPropertyContextNodeException e) {
 		} catch (NotTableContextNodeException e) {
 		} catch (NullDataBlockException e) {
+		} catch (UnimplementedPropertyTypeException e) {
 		} catch (UnknownClientSignatureException e) {
+		} catch (UnknownPropertyTypeException e) {
 		} catch (UnparseablePropertyContextException e) {
 		} catch (UnparseableTableContextException e) {
 		} catch (java.io.IOException e) {

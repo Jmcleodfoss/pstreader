@@ -247,7 +247,11 @@ public class IPF
 				e.printStackTrace(System.out);
 			} catch (final NullDataBlockException e) {
 				e.printStackTrace(System.out);
+			} catch (final UnimplementedPropertyTypeException e) {
+				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownPropertyTypeException e) {
 				e.printStackTrace(System.out);
 			} catch (final UnparseablePropertyContextException e) {
 				e.printStackTrace(System.out);

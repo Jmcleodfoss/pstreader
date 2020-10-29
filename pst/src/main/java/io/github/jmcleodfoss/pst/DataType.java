@@ -132,7 +132,7 @@ abstract class DataType
 	private static final Floating64 floating64Reader = new Floating64();
 
 	/**	The manipulation object for PST GUIDs.  */
-	private static final GUID guidReader = new GUID();
+	static final GUID guidReader = new GUID();
 
 	/**	The manipulator for HID objects in a PST file. */
 	static final HID hidReader = new HID();
@@ -1235,6 +1235,8 @@ abstract class DataType
 	/**	Create a object for reading data of given property type, with the given size if required.
 	*	@param	propertyType	The property type to obtain a reader/display manipulator for.
 	*	@return	A reader/display manipulator for the given type.
+	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@see	#booleanReader
 	*	@see	#byteArrayReader
 	*	@see	#floating32Reader
@@ -1252,6 +1254,9 @@ abstract class DataType
 	*	@see	Time#reader
 	*/
 	static DataType definitionFactory(final short propertyType)
+	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException
 	{
 		switch (propertyType) {
 		case INTEGER_16:
@@ -1269,7 +1274,14 @@ abstract class DataType
 		case CURRENCY:
 		case FLOATING_TIME:
 		case ERROR_CODE:
-			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
+		case SERVER_ID:
+		case RESTRICTION:
+		case RULE_ACTION:
+		case MULTIPLE_FLOATING_32:
+		case MULTIPLE_FLOATING_64:
+		case MULTIPLE_FLOATING_TIME:
+		case MULTIPLE_INTEGER_16:
+			throw new UnimplementedPropertyTypeException(propertyNames.get(propertyType));
 
 		case BOOLEAN:
 			return booleanReader;
@@ -1292,24 +1304,11 @@ abstract class DataType
 		case GUID:
 			return guidReader;
 
-		case SERVER_ID:
-		case RESTRICTION:
-		case RULE_ACTION:
-			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
-
 		case BINARY:
 			return byteArrayReader;
 
-		case MULTIPLE_INTEGER_16:
-			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
-
 		case MULTIPLE_INTEGER_32:
 			return multipleInteger32Reader;
-
-		case MULTIPLE_FLOATING_32:
-		case MULTIPLE_FLOATING_64:
-		case MULTIPLE_FLOATING_TIME:
-			throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
 
 		case MULTIPLE_INTEGER_64:
 			return multipleInteger64Reader;
@@ -1326,14 +1325,14 @@ abstract class DataType
 					System.out.println("PtypMultipleGUID treated as PtypInteger32");
 				return multipleGUIDReader;
 			} else {
-				throw new RuntimeException(String.format("Property Type %s (0x%04x) not implemented", propertyNames.get(propertyType), propertyType));
+				throw new UnimplementedPropertyTypeException(propertyNames.get(propertyType));
 			}
 
 		case MULTIPLE_BINARY:
 			return multipleBinaryReader;
 
 		default:
-			throw new RuntimeException(String.format("Invalid Property Type 0x%04x", propertyType));
+			throw new UnknownPropertyTypeException(propertyType);
 		}
 	}
 
@@ -1342,8 +1341,13 @@ abstract class DataType
 	*	@param	expectedDataType	The reader to be used if no adjustment takes place 
 	*	@param	data		The data buffer
 	*	@return	The correct reader for actual DataType for this field
+	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*/
 	static DataType getActualDataType(int propertyTag, byte[] data, DataType expectedDataType)
+	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException
 	{
 		if (propertyTag == PropertyTags.ContainerClassW && data[1] != 0x00)
 			return DataType.definitionFactory(DataType.STRING_8);
@@ -1362,12 +1366,17 @@ abstract class DataType
 		if (o == null)
 			return "";
 
-		final DataType writer = definitionFactory((short)(tag & 0xffff));
-		String s = writer.makeString(o);
+		try {
+			final DataType writer = definitionFactory((short)(tag & 0xffff));
+			String s = writer.makeString(o);
 
-		if ((tag == PropertyTags.SubjectW || tag == PropertyTags.Subject) && s.charAt(0) == 1)
-			return s.substring(2);
+			if ((tag == PropertyTags.SubjectW || tag == PropertyTags.Subject) && s.charAt(0) == 1)
+				return s.substring(2);
 
-		return s;
+			return s;
+		} catch (UnimplementedPropertyTypeException e) {
+		} catch (UnknownPropertyTypeException e) {
+		}
+		return "";
 	}
 }

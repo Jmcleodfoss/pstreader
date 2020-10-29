@@ -11,7 +11,9 @@ import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
 import io.github.jmcleodfoss.pst.PropertyContext;
 import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
 import io.github.jmcleodfoss.pst.UnknownClientSignatureException;
+import io.github.jmcleodfoss.pst.UnknownPropertyTypeException;
 import io.github.jmcleodfoss.pst.UnparseablePropertyContextException;
 import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 
@@ -55,7 +57,13 @@ class DistributionListDisplay extends JScrollPane
 		} catch (final NullDataBlockException e) {
 			System.out.println(e.toString());
 			e.printStackTrace(System.out);
+		} catch (UnimplementedPropertyTypeException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
 		} catch (final UnknownClientSignatureException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
+		} catch (UnknownPropertyTypeException e) {
 			System.out.println(e.toString());
 			e.printStackTrace(System.out);
 		} catch (final UnparseablePropertyContextException e) {

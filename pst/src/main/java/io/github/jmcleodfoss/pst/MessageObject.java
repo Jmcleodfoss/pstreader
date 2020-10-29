@@ -59,7 +59,9 @@ public class MessageObject
 	* 	@throws	NotPropertyContextNodeException		A node which was expected to be a property context node was found to be something else.
 	* 	@throws	NotTableContextNodeException		A node which was expected to be a table context node was found to be something else.
 	*	@throws	NullDataBlockException			A null data block was encountered while building the message object.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException		A block with an unrecognized client signature was found while building the message object.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	* 	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building the message object
 	* 	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building the message object
 	* 	@throws java.io.IOException			An I/O exception was encountered while reading the data for the message object.
@@ -71,7 +73,9 @@ public class MessageObject
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		java.io.IOException
@@ -109,7 +113,9 @@ public class MessageObject
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building the table context.
 	*	@throws NullDataBlockException			A null data block was found when building the property context.
-	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	The property context for this message could not be interpreted.
 	*	@throws UnparseableTableContextException	The table context for this message could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
@@ -123,7 +129,9 @@ public class MessageObject
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		java.io.IOException
@@ -192,7 +200,14 @@ public class MessageObject
 				e.printStackTrace(System.out);
 			} catch (final NullDataBlockException e) {
 				e.printStackTrace(System.out);
+			} catch (final UnimplementedPropertyTypeException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnknownPropertyTypeException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {
+				System.out.println(e.toString());
 				e.printStackTrace(System.out);
 			} catch (final UnparseablePropertyContextException e) {
 				e.printStackTrace(System.out);

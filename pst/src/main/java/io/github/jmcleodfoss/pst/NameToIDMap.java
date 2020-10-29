@@ -188,7 +188,9 @@ public class NameToIDMap
 	*	@throws NotHeapNodeException			A node which is not a heap node was found.
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
-	*	@throws UnknownClientSignatureException		The client signature for the block was not recognized.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws	UnknownClientSignatureException		The client signature for the block was not recognized.
+	*	@throws UnknownPropertyTypeException		The property type was not recognized
 	*	@throws UnparseablePropertyContextException	The property context could not be parsed.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
@@ -197,7 +199,9 @@ public class NameToIDMap
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
@@ -328,7 +332,11 @@ public class NameToIDMap
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final NullDataBlockException e) {
 				e.printStackTrace(System.out);
+			} catch (final UnimplementedPropertyTypeException e) {
+				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownPropertyTypeException e) {
 				e.printStackTrace(System.out);
 			} catch (final UnparseablePropertyContextException e) {
 				e.printStackTrace(System.out);

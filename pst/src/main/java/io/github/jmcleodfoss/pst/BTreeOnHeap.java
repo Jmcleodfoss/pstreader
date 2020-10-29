@@ -433,10 +433,14 @@ public class BTreeOnHeap extends BTree
 	*	@param	o	The node to retrieve the data for.
 	*	@param	hon	The heap-on-node from which the B-tree-on-heap is being built.
 	*	@return	A read-only ByteBuffer containing the data in the leaf node.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws java.io.UnsupportedEncodingException	The PST file could not be read.
 	*/
 	public static java.nio.ByteBuffer getData(final Object o, final HeapOnNode hon)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		java.io.UnsupportedEncodingException
 	{
 		if (o instanceof LeafRecord) {

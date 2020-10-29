@@ -139,7 +139,9 @@ public class Attachment
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
 	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	The property context for this attachement could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
 	*/
@@ -148,7 +150,9 @@ public class Attachment
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
@@ -163,7 +167,9 @@ public class Attachment
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
 	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	The property context for this attachement could not be interpreted.
 	*	@throws java.io.IOException			The PST file could not be read.
 	*/
@@ -172,7 +178,9 @@ public class Attachment
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
@@ -276,7 +284,11 @@ public class Attachment
 				e.printStackTrace(System.out);
 			} catch (final NullDataBlockException e) {
 				e.printStackTrace(System.out);
+			} catch (final UnimplementedPropertyTypeException e) {
+				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {
+				e.printStackTrace(System.out);
+			} catch (final UnknownPropertyTypeException e) {
 				e.printStackTrace(System.out);
 			} catch (final UnparseablePropertyContextException e) {
 				e.printStackTrace(System.out);

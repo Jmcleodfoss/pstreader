@@ -28,8 +28,13 @@ public class PropertyContext
 		*	@param	entry		The entry in the block B-Tree containing the data.
 		*	@param	bbt		The PST file's block B-Tree.
 		*	@param	pstFile		The PST file's input stream, etc.
+		*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+		*	@throws UnknownPropertyTypeException	The property type was not recognized
 		*/
 		PSTDataPointer(final short propertyType, final BBTEntry entry, final BlockMap bbt, final PSTFile pstFile)
+		throws
+			UnimplementedPropertyTypeException,
+			UnknownPropertyTypeException
 		{
 			reader = DataType.definitionFactory(propertyType);
 			this.entry = entry;
@@ -107,7 +112,9 @@ public class PropertyContext
 	*	@throws	NotPropertyContextNodeException		A node which is not part of a property context was found while building the property context.
 	*	@throws	NullDataBlockException			A null data block was found while building the property context.
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while building the property context.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unknown client signature was found while building the property context.
+	*	@throws UnknownPropertyTypeException		The property type was not recognized
 	*	@throws	java.io.IOException			An I/O error was encountered while reading in the data for the property context.
 	*/
 	PropertyContext(final LPTLeaf node, final BlockMap bbt, PSTFile pstFile)
@@ -116,7 +123,9 @@ public class PropertyContext
 		NotPropertyContextNodeException,
 		NullDataBlockException,
 		UnparseablePropertyContextException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		java.io.IOException
 	{
 		this();
@@ -163,12 +172,16 @@ public class PropertyContext
 	*	@param	data	The raw data to read; this contains either the data or a reference to an HNID.
 	*	@param	hon	The heap-on-node to read from if the data is stored in an HNID.
 	*	@return	A ByteBuffer from which the data may be read.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws	java.io.UnsupportedEncodingException	An unsupported text encoding was found when reading in String data for this property.
 	*	@see	io.github.jmcleodfoss.pst.BTreeOnHeap#getData
 	*	@see	io.github.jmcleodfoss.pst.TableContext#getData
 	*/
 	static java.nio.ByteBuffer getData(final int tag, final byte[] data, final HeapOnNode hon)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		java.io.UnsupportedEncodingException
 	{
 		java.nio.ByteBuffer dataBuffer = PSTFile.makeByteBuffer(data);
@@ -203,12 +216,16 @@ public class PropertyContext
 	*	@param	hon		The heap-on-node containing the property context
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, etc.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws	UnparseablePropertyContextException	A bad / corrupt property context node was encountered while reading this property.
 	*	@throws java.io.IOException			An I/O exception was encoutered while reading this property.
 	*	@return	The object read in.
 	*/
 	private Object property(final BTreeOnHeap.LeafRecord lr, final int tag, final short propertyType, final java.nio.ByteBuffer bData, final SubnodeBTree sbt, final HeapOnNode hon, final BlockMap bbt, PSTFile pstFile)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
@@ -243,11 +260,15 @@ public class PropertyContext
 	*	@param	bth	The B-tree-on-heap containing the heap-on-node.
 	*	@param	bbt	The PST file block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while reading the property context.
 	*	@throws	java.io.IOException			An I/O error was encountered while reading in the data for the property context.
 	*/
 	private void read(final LPTLeaf node, final HeapOnNode hon, final BTreeOnHeap bth, final BlockMap bbt, PSTFile pstFile)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		java.io.IOException
 	{
@@ -392,6 +413,12 @@ public class PropertyContext
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final NullDataBlockException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnimplementedPropertyTypeException e) {
+				System.out.println(e.toString());
+				e.printStackTrace(System.out);
+			} catch (final UnknownPropertyTypeException e) {
 				System.out.println(e.toString());
 				e.printStackTrace(System.out);
 			} catch (final UnknownClientSignatureException e) {

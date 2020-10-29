@@ -60,7 +60,9 @@ public class Message extends MessageObjectWithBody
 	* 	@throws	NotPropertyContextNodeException	A node which was not a property context was found when a property context was expected.
 	* 	@throws	NotTableContextNodeException	A node which was not a table context was found when a table context was expected.
 	* 	@throws NullDataBlockException	A null data block wsa found while building the message.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the message.
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	* 	@throws	UnparseablePropertyContextException	A bad / corrupt property context was found while building the message.
 	* 	@throws	UnparseableTableContextException	A bad / corrupt table context was found while building the message.
 	* 	@throws java.io.IOException	An I/O exception was encountered while reading in the data for the message.
@@ -71,7 +73,9 @@ public class Message extends MessageObjectWithBody
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		java.io.IOException
@@ -146,6 +150,8 @@ public class Message extends MessageObjectWithBody
 	/**	Retrieve the message object property context.
 	*	@param	pst		The PST file
 	*	@return	The message object property context, required as a parameter for other functions in the class.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@see	#body
 	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	#transportHeaders
@@ -157,7 +163,9 @@ public class Message extends MessageObjectWithBody
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
 		UnparseableTableContextException,
 		java.io.IOException

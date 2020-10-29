@@ -26,7 +26,9 @@ class PSTToXML
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
 	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnknownPropertyTypeException	The property type was not recognized
 	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
 	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
 	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
@@ -38,7 +40,9 @@ class PSTToXML
 		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
 		io.github.jmcleodfoss.pst.NotTableContextNodeException,
 		io.github.jmcleodfoss.pst.NullDataBlockException,
+		io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.UnknownPropertyTypeException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException
@@ -68,7 +72,9 @@ class PSTToXML
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
 	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnknownPropertyTypeException	The property type was not recognized
 	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
 	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
 	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
@@ -80,7 +86,9 @@ class PSTToXML
 		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
 		io.github.jmcleodfoss.pst.NotTableContextNodeException,
 		io.github.jmcleodfoss.pst.NullDataBlockException,
+		io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.UnknownPropertyTypeException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,
@@ -187,7 +195,9 @@ class PSTToXML
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws io.github.jmcleodfoss.pst.NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
 	*	@throws	io.github.jmcleodfoss.pst.NullDataBlockException		A null data block was found when reading the pst file.
+	*	@throws	io.github.jmcleodfoss.pst.UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	io.github.jmcleodfoss.pst.UnknownClientSignatureException	An unrecognized client signature was found when reading the pst file.
+	*	@throws io.github.jmcleodfoss.pst.UnknownPropertyTypeException	The property type was not recognized
 	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	A bad / corrupt property context was found whe nreading the pst file.
 	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	A bad / corrupt table context was found when reading the pst file.
 	*	@throws java.io.IOException						An I/O error was encoutnered while reading the pst file.
@@ -199,7 +209,9 @@ class PSTToXML
 		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
 		io.github.jmcleodfoss.pst.NotTableContextNodeException,
 		io.github.jmcleodfoss.pst.NullDataBlockException,
+		io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException,
 		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
+		io.github.jmcleodfoss.pst.UnknownPropertyTypeException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException,

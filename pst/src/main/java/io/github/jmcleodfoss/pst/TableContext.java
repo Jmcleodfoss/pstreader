@@ -67,14 +67,18 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		/**	Create a TCInfo object by reading in the required information from the data inputstream.
 		*	@param	stream	The input data stream from which to read the TCINFO structure.
 		*	@throws	NotTableContextNodeException	A node which is not a table context node was found while building the table context information object.
+		*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 		*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
+		*	@throws UnknownPropertyTypeException	The property type was not recognized
 		*	@throws java.io.IOException		An I/O exception was encountered while reading the data for the table context information obkect.
 		*/
 		@SuppressWarnings("unchecked")
 		private TCInfo(java.nio.ByteBuffer stream)
 		throws
 			NotTableContextNodeException,
+			UnimplementedPropertyTypeException,
 			UnknownClientSignatureException,
+			UnknownPropertyTypeException,
 			java.io.IOException
 		{
 			DataContainer dc = new DataContainer();
@@ -255,7 +259,9 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	pstFile		The PST file data stream, header, etc.
 	* 	@throws	NotHeapNodeException			The leaf is not a heap node
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	* 	@throws UnparseableTableContextException	The table content could not be interpreted
 	* 	@throws java.io.IOException			There was an I/O error reading the table.
 	*/
@@ -263,7 +269,9 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	throws
 		NotHeapNodeException,
 		NotTableContextNodeException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseableTableContextException,
 		java.io.IOException
 	{
@@ -277,14 +285,18 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	* 	@throws UnparseableTableContextException	The table content could not be interpreted
 	* 	@throws java.io.IOException			There was an I/O error reading the table.
 	*/
 	TableContext(LPTLeaf nodeDescr, HeapOnNode hon, BlockMap bbt, PSTFile pstFile)
 	throws
 		NotTableContextNodeException,
+		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
+		UnknownPropertyTypeException,
 		UnparseableTableContextException,
 		java.io.IOException
 	{
@@ -469,10 +481,14 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, byte[] data, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		java.io.IOException
 	{
 		java.nio.ByteBuffer rowStream = PSTFile.makeByteBuffer(data);
@@ -498,10 +514,14 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		java.io.IOException
 	{
 		int rowWidth = 0xffff & info.endingOffsets[TCInfo.TCI_bm];
@@ -526,11 +546,15 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	pstFile		The PST file input data stream, header, etc.
 	*	@return	The data in the row given by rowStream, parsed into the appropriate PST data types.
+	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
+	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this table context row.
 	*/
 	@SuppressWarnings("PMD.UnusedFormalParameter")
 	private Object[] readRow(java.nio.ByteBuffer rowStream, int numColumns, int r, SubnodeBTree sbt, BlockMap bbt, HeapOnNode hon, PSTFile pstFile)
 	throws
+		UnimplementedPropertyTypeException,
+		UnknownPropertyTypeException,
 		java.io.IOException
 	{
 		DataContainer dc = new DataContainer(info.rowFields.length);
@@ -684,7 +708,13 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 							e.printStackTrace(System.out);
 						} catch (final NotTableContextNodeException e) {
 							e.printStackTrace(System.out);
+						} catch (final UnimplementedPropertyTypeException e) {
+							System.out.printf(nodeDescr + "\n\t" + e.toString());
+							e.printStackTrace(System.out);
 						} catch (final UnknownClientSignatureException e) {
+							System.out.printf(nodeDescr + "\n\t" + e.toString());
+							e.printStackTrace(System.out);
+						} catch (final UnknownPropertyTypeException e) {
 							System.out.printf(nodeDescr + "\n\t" + e.toString());
 							e.printStackTrace(System.out);
 						} catch (final UnparseableTableContextException e) {
