@@ -62,8 +62,6 @@ public class ByteUtil
 	static long makeLongLE(byte[] rawData, int n_requested)
 	{
 		int n = Math.min(n_requested, rawData.length);
-		if (n > LONG_BYTES)
-			throw new RuntimeException("Need 8 bytes or fewer to make a long value");
 
 		long val = 0;
 		for (int i = n - 1; i >= 0; --i)
