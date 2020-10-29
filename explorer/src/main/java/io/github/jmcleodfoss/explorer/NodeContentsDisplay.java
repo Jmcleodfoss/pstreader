@@ -55,6 +55,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 
 	/**	{@inheritDoc}. */
 	@Override
+	@SuppressWarnings("PMD.NPathComplexity")
 	public void update(BTreeNode node, PST pst)
 	{
 		if (pst == null) {
