@@ -59,7 +59,7 @@ public class ByteUtil
 	*	@param	n_requested	The number of bytes to use (n must be less than or equal to 8, the number of bytes in a long value).
 	*	@return	A long value corresponding to the given array of bytes as a little-endian value.
 	*/
-	public static long makeLongLE(byte[] rawData, int n_requested)
+	static long makeLongLE(byte[] rawData, int n_requested)
 	{
 		int n = Math.min(n_requested, rawData.length);
 		if (n > LONG_BYTES)
@@ -75,7 +75,7 @@ public class ByteUtil
 	*	@param	rawData	The bytes to make the long value from.
 	*	@return	A long value corresponding to the given array of bytes as a little-endian value.
 	*/
-	public static long makeLongLE(byte[] rawData)
+	static long makeLongLE(byte[] rawData)
 	{
 		return makeLongLE(rawData, LONG_BYTES);
 	}
