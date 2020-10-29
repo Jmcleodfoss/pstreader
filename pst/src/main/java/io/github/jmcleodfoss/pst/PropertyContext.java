@@ -75,6 +75,7 @@ public class PropertyContext
 		/**	Retrieve the string representation of the value.
 		*	@param	key	The property key, required to convert the data value into a String.
 		*	@param	value	The value to convert.
+		*	@return	A string representation of the value
 		*/
 		@Override
 		@SuppressWarnings("PMD.AvoidReassigningParameters")
@@ -111,10 +112,10 @@ public class PropertyContext
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found while bulding the property context.
 	*	@throws	NotPropertyContextNodeException		A node which is not part of a property context was found while building the property context.
 	*	@throws	NullDataBlockException			A null data block was found while building the property context.
-	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while building the property context.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unknown client signature was found while building the property context.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
+	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while building the property context.
 	*	@throws	java.io.IOException			An I/O error was encountered while reading in the data for the property context.
 	*/
 	PropertyContext(final LPTLeaf node, final BlockMap bbt, PSTFile pstFile)
