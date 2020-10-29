@@ -26,9 +26,6 @@ public class pstExplorer extends JFrame
 	/**	This governs logging of some internal debugging information. */
 	private boolean fDebug = true;
 
-	/**	The pstExplorer object, for convenient reference by other classes. */
-	static pstExplorer explorer;
-
 	/**	The list of components to notify when a new file is loaded */
 	private EventListenerList listeners;
 
@@ -59,7 +56,6 @@ public class pstExplorer extends JFrame
 	pstExplorer(String[] args)
 	{
 		super("PST Explorer");
-		explorer = this;
 
 		listeners = new EventListenerList();
 
