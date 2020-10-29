@@ -1133,6 +1133,7 @@ abstract class DataType
 		/**	Initialize the base time; exit on exception.
 		*	@return	A Date object for the base time used by PST files.
 		*/
+		@SuppressWarnings("PMD.AvoidThrowingRawExceptionTypes")
 		private static java.util.Date initBaseTime()
 		{
 			try {

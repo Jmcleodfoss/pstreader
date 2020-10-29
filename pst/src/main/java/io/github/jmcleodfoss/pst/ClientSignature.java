@@ -128,6 +128,7 @@ class ClientSignature
 	*	@param	signature	The signature of the ClientSignature object to create.
 	*	@return	A ClientSignature object with the given signature.
 	*/
+	@SuppressWarnings("PMD.AvoidThrowingRawExceptionTypes")
 	static private ClientSignature factory(byte signature)
 	{
 		try {
