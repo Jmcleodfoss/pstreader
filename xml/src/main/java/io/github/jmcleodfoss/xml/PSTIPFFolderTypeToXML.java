@@ -49,12 +49,12 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	*/
 	PSTIPFFolderTypeToXML(final String fn, final String includedFolderClass)
 	throws
-		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
 		io.github.jmcleodfoss.pst.NotPSTFileException,
 		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,
 		io.github.jmcleodfoss.pst.NotTableContextNodeException,
 		io.github.jmcleodfoss.pst.NullDataBlockException,
+		io.github.jmcleodfoss.pst.UnknownClientSignatureException,
 		io.github.jmcleodfoss.pst.UnparseablePropertyContextException,
 		io.github.jmcleodfoss.pst.UnparseableTableContextException,
 		java.io.IOException//,
