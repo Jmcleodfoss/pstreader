@@ -242,7 +242,7 @@ public class NameToIDMap
 	*	@return	The raw data saved for this property ID.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
-	byte[] getBinaryProperty(final PropertyContext pc, final int propertyTag)
+	private byte[] getBinaryProperty(final PropertyContext pc, final int propertyTag)
 	throws
 		CRCMismatchException
 	{
