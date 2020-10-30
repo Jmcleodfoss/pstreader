@@ -27,7 +27,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 		for (java.util.Iterator<String> iterator = io.github.jmcleodfoss.pst.IPF.iterator(); iterator.hasNext(); ){
 			String folderType = iterator.next();
 			if (!knownFolderTypes.containsValue(folderType))
-				throw new RuntimeException(String.format("IPF Folder Type %s not implemented in PSTIPFolderTypeToXML", folderType));
+				throw new UnknownFolderTypeException(folderType);
 		}
 	}
 
