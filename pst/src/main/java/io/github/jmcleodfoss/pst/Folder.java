@@ -79,6 +79,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NotHeapNodeException			node which is not a heap node was found while reading the folder data.
 	*	@throws NotPropertyContextNodeException		A node which does not hold a property context was found where a property context node was expected.
 	*	@throws NotTableContextNodeException		A node which does not hold a table context was found where a table context node was expected.
@@ -92,6 +93,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	private Folder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -182,6 +184,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@return	A folder and its immediate descendents.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folders.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws	NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -195,6 +198,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static Folder getFolder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -215,6 +219,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@return	A folder and all its immediate descendents.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folder tree.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -228,6 +233,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static Folder getFolderTree(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -328,6 +334,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.
 	*	@return	A vector of the message contents.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -341,6 +348,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static java.util.Vector<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -368,6 +376,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
 	*	@return	A vector of subfolders.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
@@ -381,6 +390,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static java.util.Vector<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,

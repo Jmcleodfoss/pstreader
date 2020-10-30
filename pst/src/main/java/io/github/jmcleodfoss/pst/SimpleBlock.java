@@ -57,10 +57,12 @@ class SimpleBlock extends BlockBase
 	/**	Create a SimpleBlock object from the given block B-tree leaf entry and basic PST file object.
 	*	@param	entry	The block B-tree leaf entry describing the block.
 	*	@param	pstFile	The PST file's header, input data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*/
 	SimpleBlock(final BBTEntry entry, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		this(entry, pstFile.encryption(), pstFile);
@@ -71,11 +73,13 @@ class SimpleBlock extends BlockBase
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	encryption	The encryption method to use to decrypt the data.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*	@see	SubnodeBTree.BlockContext
 	*/
 	SimpleBlock(final BBTEntry entry, final Encryption encryption, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		this(entry, blockSize(entry.numBytes, pstFile), encryption, pstFile);
@@ -87,10 +91,12 @@ class SimpleBlock extends BlockBase
 	*	@param	blockSize	The size of the block (including the {@link BlockTrailer BLOCKTRAILER})
 	*	@param	encryption	The encryption method to use to decrypt the data.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the data for this block.
 	*/
 	SimpleBlock(final BBTEntry entry, final int blockSize, final Encryption encryption, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		byte data[] = new byte[entry.numBytes];
@@ -125,7 +131,7 @@ class SimpleBlock extends BlockBase
 		final BlockTrailer trailer = new BlockTrailer(pstFile);
 
 		if (Options.checkCRC && crcCalculated != trailer.crc)
-			throw new RuntimeException("Block " + entry + " CRC "  + Integer.toHexString(trailer.crc) + " does not match calculated value " + Integer.toHexString(crcCalculated));
+			throw new CRCMismatchException("Block", crcCalculated, trailer.crc);
 	}
 
 	/**	Retrieve the data from this SimpleBlock.
@@ -149,10 +155,12 @@ class SimpleBlock extends BlockBase
 	*	@param	entry		The block B-tree leaf entry describing the block.
 	*	@param	pstFile		The PST file's header, input data stream, etc.
 	*	@return	The data block for the requested block B-tree entry.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the block data.
 	*/
 	static SimpleBlock read(final BBTEntry entry, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		return new SimpleBlock(entry, entry.bref.bid.fInternal ? Encryption.NONE : pstFile.encryption(), pstFile);

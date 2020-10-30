@@ -69,6 +69,7 @@ public abstract class LPTLeaf implements BTreeLeaf
 	/**	{@inheritDoc} */
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		final BBTEntry bbtEntry = bbt.find(bidData);

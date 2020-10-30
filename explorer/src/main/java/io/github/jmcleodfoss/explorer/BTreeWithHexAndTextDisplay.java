@@ -6,6 +6,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	A specialized version of the generic HexAndTextDisplay class which is linked to a JTree. */
@@ -38,6 +39,8 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	{
 		try {
 			return node.rawData(explorer.pst().blockBTree, explorer.pst());
+		} catch (CRCMismatchException e) {
+			return null;
 		} catch (IOException e) {
 			return null;
 		}

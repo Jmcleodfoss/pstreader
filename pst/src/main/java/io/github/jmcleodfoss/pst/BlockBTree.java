@@ -29,10 +29,12 @@ class BlockBTree extends PagedBTree implements BlockMap
 		/**	Create an intermediate block B-tree entry using data read in from the input stream.
 		*	@param	entryStream	The data stream from which to read the intermediate block data information.
 		*	@return	A BlockBTree object representing the intermediate block B-tree node.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*/
 		@Override
 		protected BlockBTree intermediateNodeFactory(java.nio.ByteBuffer entryStream)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			BTEntry entry = new BTEntry(this, entryStream);
@@ -56,11 +58,13 @@ class BlockBTree extends PagedBTree implements BlockMap
 	*	@param	key	The key of this node. The keys of all children of this node will be greater than or equal to this value.
 	*	@param	bref	The block reference from which to read the data for this node.
 	*	@param	pstFile	The PST file header, input stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the block B-tree.
 	*
 	*/
 	BlockBTree(final long key, final BREF bref, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, bref, new BBTContext(bref, pstFile));

@@ -188,6 +188,7 @@ public class PST extends PSTFile
 		try {
 			return HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
 		} catch (final java.io.IOException e) {
+		} catch (final CRCMismatchException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final UnknownClientSignatureException e) {
 		}
@@ -223,10 +224,12 @@ public class PST extends PSTFile
 
 	/**	Convenience function to retrieve the root of the node B-tree.
 	*	@return	The root of the node / sub-node B-tree
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
 	*/
 	public NodeSubnodeBTree nodeBTreeRoot()
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		return new NodeSubnodeBTree(0, header.nbtRoot, blockBTree, this);
@@ -244,6 +247,7 @@ public class PST extends PSTFile
 	/**	Convenience function to obtain the property context from the given NID
 	*	@param	nid	The node ID to retrieve the property context iterator from.
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
 	* 	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	* 	@throws	NullDataBlockException			A null data block was found while building a property context.
@@ -256,6 +260,7 @@ public class PST extends PSTFile
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
@@ -291,6 +296,7 @@ public class PST extends PSTFile
 	{
 		try {
 			return new PropertyContext(node, blockBTree, this);
+		} catch (final CRCMismatchException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final NotPropertyContextNodeException e) {
 		} catch (final NullDataBlockException e) {
@@ -329,8 +335,11 @@ public class PST extends PSTFile
 	/**	Convenience function to obtain sub-node B-Tree for the given node ID.
 	*	@param	nid	The node ID in the node B-tree to construct the sub-node B-tree for.
 	*	@return	The sub-node B-tree for the given node, if any, otherwise null.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
 	public SubnodeBTree subnodeBTree(NID nid)
+	throws
+		CRCMismatchException
 	{
 		try {
 			NBTEntry nbtEntry = nodeBTree.find(nid);
@@ -368,6 +377,7 @@ public class PST extends PSTFile
 	{
 		try {
 			return new TableContext(node, hon, blockBTree, this);
+		} catch (final CRCMismatchException e) {
 		} catch (final NotTableContextNodeException e) {
 		} catch (final UnimplementedPropertyTypeException e) {
 		} catch (final UnknownClientSignatureException e) {
@@ -393,6 +403,7 @@ public class PST extends PSTFile
 	{
 		try {
 			return new TableContext(node, blockBTree, this);
+		} catch (final CRCMismatchException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final NotTableContextNodeException e) {
 		} catch (final UnimplementedPropertyTypeException e) {

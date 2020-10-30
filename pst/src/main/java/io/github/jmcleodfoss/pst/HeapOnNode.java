@@ -312,12 +312,14 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	entry	The entry from the block B-tree from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file {@link Header}, data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the heap.
 	* 	@throws	UnknownClientSignatureException	A node with an unrecognized client signature was found while building the heap.
 	* 	@throws java.io.IOException	An I/O error was encountered while trying to build the heap.
 	*/
 	HeapOnNode(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		UnknownClientSignatureException,
 		java.io.IOException
@@ -452,12 +454,14 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
 	*	@return	The heap-on-node found at the given node ID.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while building the heap.
 	* 	@throws	UnknownClientSignatureException	An unrecognized client signature was found while building the heap.
 	* 	@throws java.io.IOException	An I/O exception was found while reading the data to build the heap.
 	*/
 	static HeapOnNode makeHeapOnNode(NID nid, BlockMap bbt, NodeBTree nbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		UnknownClientSignatureException,
 		java.io.IOException
@@ -471,12 +475,14 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
 	*	@return	The heap-on-node found at the given block ID.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException		A node which was not a heap node was found while trying to build the heap.
 	*	@throws UnknownClientSignatureException	An unknown client signature was found in one of the blocks in the heap.
 	*	@throws java.io.IOException		There was a problem reading the PST file.
 	*/
 	public static HeapOnNode makeHeapOnNode(BID bid, BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		UnknownClientSignatureException,
 		java.io.IOException

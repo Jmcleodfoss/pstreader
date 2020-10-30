@@ -111,6 +111,7 @@ public class BTreeOnHeap extends BTree
 		@Override
 		protected BTreeOnHeap intermediateNodeFactory(java.nio.ByteBuffer entryStream)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			final IntermediateRecord entry = new IntermediateRecord(entryStream, header.keySize);
@@ -385,9 +386,11 @@ public class BTreeOnHeap extends BTree
 	*	and for intermediate nodes in the B-tree.
 	*	@param	key	{@inheritDoc}
 	*	@param	context	{@inheritDoc}
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
 	private BTreeOnHeap(final long key, final BTHContext context)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, context);
@@ -397,10 +400,12 @@ public class BTreeOnHeap extends BTree
 	*	intended to create the root of the B-tree.
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws java.io.IOException	The PST file could not be read.
 	*/
 	public BTreeOnHeap(final HeapOnNode hon, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		this(0, new BTHContext(hon, pstFile));
@@ -411,10 +416,12 @@ public class BTreeOnHeap extends BTree
 	*	@param	hon	The heap-on-node from which to derive this B-tree-on-heap.
 	*	@param	hid	The index of heap-on-node which points to the B-tree-on-heap's root.
 	*	@param	pstFile	The PST file's {@link Header}, input stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading this B-tree.
 	*/
 	BTreeOnHeap(final HeapOnNode hon, final HeapOnNode.HID hid, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		this(hid.key(), new BTHContext(hon, hid, pstFile));

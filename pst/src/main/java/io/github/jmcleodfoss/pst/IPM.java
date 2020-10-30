@@ -287,6 +287,8 @@ class IPM
 				PropertyContext pc = msg.getMessage(pst);
 				final String messageType = (String)pc.get(pst.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
 				System.out.printf(fmtOutput, msg.subject, messageType, isKnownClass(messageType));
+			} catch (final CRCMismatchException e) {
+				e.printStackTrace(System.out);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {

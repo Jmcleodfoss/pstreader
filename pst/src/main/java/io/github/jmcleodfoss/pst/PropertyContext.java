@@ -44,8 +44,11 @@ public class PropertyContext
 
 		/**	Retrieve the data we deferred reading.
 		*	@return	The data read in from the given reference to the PST file.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*/
 		Object data()
+		throws
+			CRCMismatchException
 		{
 			try {
 				BlockBase block = BlockBase.read(entry, bbt, pstFile);
@@ -81,10 +84,14 @@ public class PropertyContext
 		@SuppressWarnings("PMD.AvoidReassigningParameters")
 		String getValueString(final int key, Object value)
 		{
-			if (value instanceof PSTDataPointer)
-				value = ((PSTDataPointer)value).data();
+			try {
+				if (value instanceof PSTDataPointer)
+					value = ((PSTDataPointer)value).data();
 
-			return value == null ? "" : DataType.makeString(key, value);
+				return value == null ? "" : DataType.makeString(key, value);
+			} catch (CRCMismatchException e) {
+				return "";
+			}
 		}
 
 		/**	No cells are editable.
@@ -109,6 +116,7 @@ public class PropertyContext
 	*	@param	node	The node containing the property context.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found while bulding the property context.
 	*	@throws	NotPropertyContextNodeException		A node which is not part of a property context was found while building the property context.
 	*	@throws	NullDataBlockException			A null data block was found while building the property context.
@@ -120,6 +128,7 @@ public class PropertyContext
 	*/
 	PropertyContext(final LPTLeaf node, final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
@@ -158,8 +167,11 @@ public class PropertyContext
 	/**	Retrieve a value from the property context.
 	*	@param	tag	The tag to look for.
 	*	@return	The object stored under the given tag.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
 	Object get(final int tag)
+	throws
+		CRCMismatchException
 	{
 		final Object o = properties.get(tag);
 		if (o instanceof PSTDataPointer)
@@ -261,6 +273,7 @@ public class PropertyContext
 	*	@param	bth	The B-tree-on-heap containing the heap-on-node.
 	*	@param	bbt	The PST file block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws UnparseablePropertyContextException	A bad / corrupt property context block was found while reading the property context.
@@ -268,6 +281,7 @@ public class PropertyContext
 	*/
 	private void read(final LPTLeaf node, final HeapOnNode hon, final BTreeOnHeap bth, final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		UnimplementedPropertyTypeException,
 		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
@@ -340,8 +354,13 @@ public class PropertyContext
 			if (o == null)
 				s.append("null");
 			else {
-				if (o instanceof PSTDataPointer)
-					o = ((PSTDataPointer)o).data();
+				if (o instanceof PSTDataPointer) {
+					try {
+						o = ((PSTDataPointer)o).data();
+					} catch (CRCMismatchException e) {
+						o = "";
+					}
+				}
 				s.append(DataType.makeString(propertyTag, o));
 			}
 		}

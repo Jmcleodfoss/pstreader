@@ -63,19 +63,23 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		/**	Create an intermediate node from the data stream.
 		*	@param	byteBuffer	The data stream from which to read the intermediate node information.
 		*	@return	A B-tree object containing the entry and all its children.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*	@throws	java.io.IOException	An I/O exception was encountered while reading a non-leaf node.
 		*/
 		protected abstract I intermediateNodeFactory(java.nio.ByteBuffer byteBuffer)
 		throws
+			CRCMismatchException,
 			java.io.IOException;
 
 		/**	Create a leaf node from the data stream.
 		*	@param	byteBuffer	The data stream from which to read the leaf node information.
 		*	@return	A leaf node object containing the leaf data.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*	@throws	java.io.IOException	An I/O exception was encountered while reading a leaf node.
 		*/
 		protected abstract L leafNodeFactory(java.nio.ByteBuffer byteBuffer)
 		throws
+			CRCMismatchException,
 			java.io.IOException;
 
 		/**	Convenience method to provide file format.
@@ -153,10 +157,12 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	/**	Create a B-tree using the given context.
 	*	@param	key	The key for this node of the B-tree. All child nodes are guaranteed to have keys greater than or equal to this.
 	*	@param	context	Context data used to construct the B-tree
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encoutnered while reading the B-tree.
 	*/
 	protected BTree(final long key, Context<BTree, BTreeLeaf> context)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		final int numEntries = context.getNumEntries();

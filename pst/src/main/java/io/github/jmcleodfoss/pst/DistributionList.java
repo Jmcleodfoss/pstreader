@@ -147,6 +147,7 @@ public class DistributionList extends MessageObject
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	No valid PropertyContext was found for an EntryID for an address book entry
 	*	@throws io.github.jmcleodfoss.pst.NullDataBlockException		An expected Block B-Tree entry was not found when creating the PropertyContext for an EntryID for an
 	*										address book entry
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	An invalid or corrupt PropertyContext was found for an EntryID for an address book entry.
@@ -156,6 +157,7 @@ public class DistributionList extends MessageObject
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
 		java.io.IOException,
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,

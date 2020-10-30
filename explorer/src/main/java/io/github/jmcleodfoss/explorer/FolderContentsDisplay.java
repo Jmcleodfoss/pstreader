@@ -17,6 +17,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
 import io.github.jmcleodfoss.pst.Attachment;
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.DistributionList;
 import io.github.jmcleodfoss.pst.Folder;
 import io.github.jmcleodfoss.pst.LPTLeaf;
@@ -143,7 +144,11 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			byte[] data()
 			{
 				assert messagePC != null;
-				return ((io.github.jmcleodfoss.pst.Message)clickedNode).bodyHtmlBytes(messagePC);
+				try {
+					return ((io.github.jmcleodfoss.pst.Message)clickedNode).bodyHtmlBytes(messagePC);
+				} catch (CRCMismatchException e) {
+					return null;
+				}
 			}
 		}
 
@@ -161,10 +166,14 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		*/
 		public boolean lookingFor(final Object o)
 		{
-			if (o instanceof io.github.jmcleodfoss.pst.Message) {
-				assert messagePC != null;
-				return ((io.github.jmcleodfoss.pst.Message)o).bodyHtml(messagePC) != null;
+			try {
+				if (o instanceof io.github.jmcleodfoss.pst.Message) {
+					assert messagePC != null;
+					return ((io.github.jmcleodfoss.pst.Message)o).bodyHtml(messagePC) != null;
+				}
+			} catch (CRCMismatchException e) {
 			}
+
 			return false;
 		}
 	};
@@ -196,9 +205,13 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			/**	{@inheritDoc} */
 			byte[] data()
 			{
-				Attachment attachmentObject = (Attachment)clickedNode;
-				PropertyContext pc = pst.propertyContext(attachmentObject.nodeInfo);
-				return attachmentObject.data(pc);
+				try {
+					Attachment attachmentObject = (Attachment)clickedNode;
+					PropertyContext pc = pst.propertyContext(attachmentObject.nodeInfo);
+					return attachmentObject.data(pc);
+				} catch (CRCMismatchException e) {
+					return null;
+				}
 			}
 		}
 
@@ -287,12 +300,17 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 				attachmentDisplay = attachmentImage;
 			} catch (java.io.IOException e) {
 				remove(spAttachmentDisplay);
+			} catch (CRCMismatchException e) {
+				remove(spAttachmentDisplay);
 			}
 
 		} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
 				attachmentText.setText(new String(attachmentObject.data(pc), pst.charsetName()));
 			} catch (final java.io.UnsupportedEncodingException e) {
+				e.printStackTrace(System.out);
+				attachmentText.setText("");
+			} catch (final CRCMismatchException e) {
 				e.printStackTrace(System.out);
 				attachmentText.setText("");
 			} finally {
@@ -302,6 +320,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			try {
 				attachmentHtml.setText(new String(attachmentObject.data(pc), pst.charsetName()));
 			} catch (final java.io.UnsupportedEncodingException e) {
+				e.printStackTrace(System.out);
+				attachmentHtml.setText("");
+			} catch (final CRCMismatchException e) {
 				e.printStackTrace(System.out);
 				attachmentHtml.setText("");
 			} finally {
@@ -360,6 +381,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 		try {
 			messagePC = messageObject.getMessage(pst);
+		} catch (CRCMismatchException e) {
 		} catch (NotHeapNodeException e) {
 		} catch (NotPropertyContextNodeException e) {
 		} catch (NotTableContextNodeException e) {

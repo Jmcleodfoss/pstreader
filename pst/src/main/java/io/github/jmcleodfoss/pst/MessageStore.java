@@ -21,6 +21,7 @@ public class MessageStore
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file input data stream, {@link Header header}, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found while creating the message store.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building a table context.
@@ -36,6 +37,7 @@ public class MessageStore
 	*/
 	public MessageStore(final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,

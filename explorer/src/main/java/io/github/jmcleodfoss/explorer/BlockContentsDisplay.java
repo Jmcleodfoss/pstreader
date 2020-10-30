@@ -3,6 +3,7 @@ package io.github.jmcleodfoss.explorer;
 import java.nio.ByteBuffer;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
@@ -26,6 +27,8 @@ class BlockContentsDisplay extends HexAndTextDisplay implements BTreeContentsDis
 				return;
 			}
 			read(byteBuffer);
+		} catch (CRCMismatchException e) {
+			reset();
 		} catch (java.io.IOException e) {
 			reset();
 		}

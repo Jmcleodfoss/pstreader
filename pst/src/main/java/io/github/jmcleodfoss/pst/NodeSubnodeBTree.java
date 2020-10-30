@@ -30,6 +30,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		/**	{@inheritDoc} */
 		protected NodeSubnodeBTree intermediateNodeFactory(java.nio.ByteBuffer byteBuffer)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			final BTEntry entry = new BTEntry(this, byteBuffer);
@@ -39,6 +40,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		/**	{@inheritDoc} */
 		protected NodeLeafEntry leafNodeFactory(java.nio.ByteBuffer entryStream)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			return new NodeLeafEntry(this, entryStream);
@@ -68,10 +70,12 @@ public class NodeSubnodeBTree extends NodeBTree
 		/**	Create a node B-Tree leaf entry with the subnode B-Tree.
 		*	@param	context		The context from which to build this node.
 		*	@param	byteBuffer	The data stream from which to read this node.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*	@throws	java.io.IOException	The data for the leaf node could not be read.
 		*/
 		protected NodeLeafEntry(final NSNContext context, java.nio.ByteBuffer byteBuffer)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			super(byteBuffer, context);
@@ -94,10 +98,12 @@ public class NodeSubnodeBTree extends NodeBTree
 	*	@param	bref	The block reference for this node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws java.io.IOException	There was a problem reading the sub-node B-tree.
 	*/
 	NodeSubnodeBTree(final long key, final BREF bref, final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, bref, new NSNContext(bref, bbt, pstFile));

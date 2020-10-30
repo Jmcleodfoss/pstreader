@@ -28,11 +28,14 @@ public class MessageObjectWithBody extends MessageObject
 	/**	Extract the message body from the message object property context.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body, as a string.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#bodyHtml
 	*	@see	#getMessage
 	*	@see	Message#transportHeaders
 	*/
 	public String body(final PropertyContext pc)
+	throws
+		CRCMismatchException
 	{
 		return (String)pc.get(fUnicode ? PropertyTags.BodyW : PropertyTags.Body);
 	}
@@ -40,12 +43,15 @@ public class MessageObjectWithBody extends MessageObject
 	/**	Extract the HTML message body from the message object property context.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a string.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#body
 	*	@see	#getMessage
 	*	@see	Message#transportHeaders
 	*	@see	#bodyHtmlBytes
 	*/
 	public String bodyHtml(final PropertyContext pc)
+	throws
+		CRCMismatchException
 	{
 		if (fUnicode) {
 			final byte[] htmlData = (byte[])pc.get(PropertyTags.BodyHtmlW);
@@ -64,12 +70,15 @@ public class MessageObjectWithBody extends MessageObject
 	/**	Extract the HTML message body as bytes from the message object property context.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a byte array.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#body
 	*	@see	#getMessage
 	*	@see	Message#transportHeaders
 	*	@see	#bodyHtml
 	*/
 	public byte[] bodyHtmlBytes(final PropertyContext pc)
+	throws
+		CRCMismatchException
 	{
 
 		try {

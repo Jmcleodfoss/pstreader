@@ -85,11 +85,13 @@ abstract class BlockBase
 	*	@param	bbt	The PST file's block B-tree
 	*	@param	pstFile	The PST file input stream, etc.
 	*	@return	A BlockBase object from which the data may be retrieved.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the requested block.
 	*	@see	#data
 	*/
 	static BlockBase read(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		return entry.bref.bid.fInternal ? new XBlock(entry, bbt, pstFile) : new SimpleBlock(entry, pstFile);

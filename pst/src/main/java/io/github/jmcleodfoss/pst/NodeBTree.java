@@ -45,10 +45,12 @@ class NodeBTree extends PagedBTree implements NodeMap
 		/**	Create an intermediate node B-tree entry using data read in from the input stream.
 		*	@param	entryStream	The data stream from which to read the intermediate node data.
 		*	@return	A node B-tree containing all childrend of this intermediate node.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*/
 		@Override
 		protected NodeBTree intermediateNodeFactory(java.nio.ByteBuffer entryStream)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			final BTEntry entry = new BTEntry(this, entryStream);
@@ -73,10 +75,12 @@ class NodeBTree extends PagedBTree implements NodeMap
 	*	@param	key	The key for this node. All child node keys are greater than or equal to this key.
 	*	@param	bref	The block reference indicating where to read this node B-tree node from.
 	*	@param	pstFile	The PST file's data stream, header, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	The data for the node B-tree could not be read.
 	*/
 	NodeBTree(final long key, final BREF bref, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, bref, new NBTContext(bref, pstFile));
@@ -86,10 +90,12 @@ class NodeBTree extends PagedBTree implements NodeMap
 	*	@param	key	The key for this node. All child node keys are greater than or equal to this key.
 	*	@param	bref	The block reference indicating where to read this node B-tree node from.
 	*	@param	context	The context from which to read the node B-tree.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	The data for the node B-tree could not be read.
 	*/
 	protected NodeBTree(final long key, final BREF bref, NBTContextBase<BTree, BTreeLeaf> context)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, bref, context);

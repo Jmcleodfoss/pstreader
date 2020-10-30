@@ -136,6 +136,7 @@ public class Attachment
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file input stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
 	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
@@ -147,6 +148,7 @@ public class Attachment
 	*/
 	public Attachment(final LPTLeaf nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
@@ -164,6 +166,7 @@ public class Attachment
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file input stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
 	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
@@ -175,6 +178,7 @@ public class Attachment
 	*/
 	Attachment(final SLEntry nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
@@ -223,9 +227,12 @@ public class Attachment
 	/**	Retrieve the attachment data.
 	*	@param	pc	The attachment property context.
 	*	@return	A byte array containing the attachment data.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#propidData
 	*/
 	public byte[] data(final PropertyContext pc)
+	throws
+		CRCMismatchException
 	{
 		return (byte[])pc.get(propidData);
 	}
@@ -233,9 +240,12 @@ public class Attachment
 	/**	Loop through folder's subfolders and message objects looking for attachments. Used only for testing Used only for testing
 	*	@param	folder	The folder to process
 	*	@param	pst	The pst file to look in
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#main
 	*/
 	private static void findFolderAttachments(Folder folder, PST pst)
+	throws
+		CRCMismatchException
 	{
 		for (java.util.Iterator<MessageObject> msgIterator = folder.contentsIterator(); msgIterator.hasNext(); ){
 			MessageObject msg = msgIterator.next();

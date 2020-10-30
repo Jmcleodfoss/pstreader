@@ -33,9 +33,11 @@ public interface BTreeNode
 	*	@param	bbt	The PST file's block B-tree
 	*	@param	pstFile	The PST file's input data stream, header, etc.
 	*	@return	A ByteBuffer containing the data for this leaf node of a B-tree.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws java.io.IOException	The PST file could not be read.
 	*/
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException;
 }

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 
 import io.github.jmcleodfoss.pst.Attachment;
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.LPTLeaf;
 import io.github.jmcleodfoss.pst.PropertyContext;
 import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
@@ -58,10 +59,13 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			/**	{@inheritDoc} */
 			byte[] data()
 			{
-				final byte[] data = attachment.data(pc);
 				attachment = null;
 				pc = null;
-				return data;
+				try {
+					return attachment.data(pc);
+				} catch (CRCMismatchException e) {
+					return null;
+				}
 			}
 		}
 

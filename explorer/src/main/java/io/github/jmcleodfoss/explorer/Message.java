@@ -4,6 +4,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.MessageObject;
 import io.github.jmcleodfoss.pst.MessageObjectWithBody;
 import io.github.jmcleodfoss.pst.PropertyContext;
@@ -70,30 +71,42 @@ class Message extends NodeContentsDisplay
 		final boolean fMessage = message instanceof io.github.jmcleodfoss.pst.Message;
 		final boolean fHasBody = message instanceof MessageObjectWithBody;
 
-		final String transportHeaders = fMessage ? ((io.github.jmcleodfoss.pst.Message)message).transportHeaders(messagePC) : null;
-		if (transportHeaders != null) {
-			header.setText(transportHeaders);
-			if (indexOfComponent(header) == -1)
-				add("Header", header);
-		} else {
+		try {
+			final String transportHeaders = fMessage ? ((io.github.jmcleodfoss.pst.Message)message).transportHeaders(messagePC) : null;
+			if (transportHeaders != null) {
+				header.setText(transportHeaders);
+				if (indexOfComponent(header) == -1)
+					add("Header", header);
+			} else {
+			remove(header);
+			}
+		} catch (CRCMismatchException e) {
 			remove(header);
 		}
 
-		final String body = fHasBody ? ((MessageObjectWithBody)message).body(messagePC) : null;
-		if (body != null) {
-			bodyText.setText(body);
-			if (indexOfComponent(spBodyText) == -1)
-				add("Body (text)", spBodyText);
-		} else {
+		try {
+			final String body = fHasBody ? ((MessageObjectWithBody)message).body(messagePC) : null;
+			if (body != null) {
+				bodyText.setText(body);
+				if (indexOfComponent(spBodyText) == -1)
+					add("Body (text)", spBodyText);
+			} else {
+				remove(spBodyText);
+			}
+		} catch (CRCMismatchException e) {
 			remove(spBodyText);
 		}
 
-		final String html = fHasBody ? ((MessageObjectWithBody)message).bodyHtml(messagePC) : null;
-		if (html != null) {
-			bodyHtml.setText(html);
-			if (indexOfComponent(spBodyHtml) == -1)
-				add("Body (HTML)", spBodyHtml);
-		} else {
+		try {
+			final String html = fHasBody ? ((MessageObjectWithBody)message).bodyHtml(messagePC) : null;
+			if (html != null) {
+				bodyHtml.setText(html);
+				if (indexOfComponent(spBodyHtml) == -1)
+					add("Body (HTML)", spBodyHtml);
+			} else {
+				remove(spBodyHtml);
+			}
+		} catch (CRCMismatchException e) {
 			remove(spBodyHtml);
 		}
 	}

@@ -180,6 +180,7 @@ public class PSTBean implements Serializable
 	/**	Add the journal entries in the current folder to the list of journal entries.
 	* 	@param	folder	The folder from which to harvest the journal entries.
 	* 	@param	pst	The pst file from which to read the journal entries' data.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the journal entries.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the journal entries. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the journal entries.
@@ -194,6 +195,7 @@ public class PSTBean implements Serializable
 	private void addJournalEntries(Folder folder, PST pst)
 	throws
 		IOException,
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -227,6 +229,7 @@ public class PSTBean implements Serializable
 	/**	Add the sticky notes in the current folder to the list of sticky notes.
 	*	@param	folder	The folder from which to harvest the sticky notes.
 	*	@param	pst	The pst file from which to read the sticky notes data.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the sticky notes.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the sticky notes. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the sticky notes.
@@ -241,6 +244,7 @@ public class PSTBean implements Serializable
 	private void addStickyNotes(Folder folder, PST pst)
 	throws
 		IOException,
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -326,6 +330,9 @@ public class PSTBean implements Serializable
 		} catch (IOException e) {
 			e.printStackTrace(System.out);
 			return "ProcessingProblem";
+		} catch (CRCMismatchException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
 		} catch (NotHeapNodeException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
@@ -480,6 +487,7 @@ public class PSTBean implements Serializable
 	}
 
 	/**	Get the required information from a PST file
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
@@ -493,6 +501,7 @@ public class PSTBean implements Serializable
 	*/
 	private void processPST()
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,

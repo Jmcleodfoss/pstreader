@@ -32,10 +32,12 @@ public class SubnodeBTree extends BTree
 		*	@param	bid	The block ID of the root of the sub-node B-tree.
 		*	@param	bbt	The PST file's block B-tree.
 		*	@param	pstFile	The PST file's data stream, header, etc.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this node's block context.
 		*/
 		BlockContext(final BID bid, final BlockMap bbt, PSTFile pstFile)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			super(pstFile);
@@ -73,10 +75,12 @@ public class SubnodeBTree extends BTree
 		/**	Create an intermediate sub-node B-tree entry using data read in from the input stream.
 		*	@param	entryStream	The data stream from which to read the sub-node B-tree entry.
 		*	@return	A sub-node B-tree containing all the children of this sub-node.
+		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*/
 		@Override
 		protected SubnodeBTree intermediateNodeFactory(java.nio.ByteBuffer entryStream)
 		throws
+			CRCMismatchException,
 			java.io.IOException
 		{
 			final SIEntry entry = new SIEntry(this, entryStream);
@@ -181,10 +185,12 @@ public class SubnodeBTree extends BTree
 	/**	Create a SubnodeBTree object from the given position and context.
 	*	@param	key	The key for this node in the sub-node B-tree.
 	*	@param	context	The context to use when building the sub-node B-tree.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading in the data for this sub-node B-tree.
 	*/
 	private SubnodeBTree(final long key, final BlockContext context)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, context);
@@ -194,10 +200,12 @@ public class SubnodeBTree extends BTree
 	*	@param	bid	The block ID of the root of this sub-node B-tree.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	* 	@throws java.io.IOException			There was an I/O error reading the sub-node B-tree.
 	*/
 	public SubnodeBTree(final BID bid, final BlockMap bbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		this(0, new BlockContext(bid, bbt, pstFile));

@@ -113,6 +113,7 @@ class BBTEntry implements BTreeLeaf
 	/**	{@inheritDoc} */
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		final SimpleBlock block = SimpleBlock.read(this, pstFile);

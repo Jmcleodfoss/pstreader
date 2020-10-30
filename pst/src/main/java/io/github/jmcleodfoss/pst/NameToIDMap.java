@@ -185,6 +185,7 @@ public class NameToIDMap
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's input data stream, header, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found.
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
@@ -196,6 +197,7 @@ public class NameToIDMap
 	*/
 	public NameToIDMap(final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
@@ -238,8 +240,11 @@ public class NameToIDMap
 	*	@param	pc		The property context containing the named property list.
 	*	@param	propertyTag	The property ID to retrieve.
 	*	@return	The raw data saved for this property ID.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
 	byte[] getBinaryProperty(final PropertyContext pc, final int propertyTag)
+	throws
+		CRCMismatchException
 	{
 		final Object o = pc.get(propertyTag);
 		if (o == null)

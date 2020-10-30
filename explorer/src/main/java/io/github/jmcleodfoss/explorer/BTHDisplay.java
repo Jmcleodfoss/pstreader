@@ -7,6 +7,7 @@ import javax.swing.JSplitPane;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
 import io.github.jmcleodfoss.pst.BTreeOnHeap;
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.HeapOnNode;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
@@ -40,6 +41,7 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay
 			BTreeOnHeap bth = new BTreeOnHeap(hon, pst);
 			tree.setModel(bth);
 			return true;
+		} catch (CRCMismatchException e) {
 		} catch (IOException e) {
 		}
 

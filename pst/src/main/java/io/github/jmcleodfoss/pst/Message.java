@@ -56,6 +56,7 @@ public class Message extends MessageObjectWithBody
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	* 	@throws	NotHeapNodeException	A node which is not a heap node was found while building the message.
 	* 	@throws	NotPropertyContextNodeException	A node which was not a property context was found when a property context was expected.
 	* 	@throws	NotTableContextNodeException	A node which was not a table context was found when a table context was expected.
@@ -69,6 +70,7 @@ public class Message extends MessageObjectWithBody
 	*/
 	Message(final TableContext contentsTable, final int messageRow, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -150,6 +152,7 @@ public class Message extends MessageObjectWithBody
 	/**	Retrieve the message object property context.
 	*	@param	pst		The PST file
 	*	@return	The message object property context, required as a parameter for other functions in the class.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the message.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -160,6 +163,7 @@ public class Message extends MessageObjectWithBody
 	@Override
 	public PropertyContext getMessage(final PST pst)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -218,12 +222,15 @@ public class Message extends MessageObjectWithBody
 	/**	Extract the Message Transport Headers from the message PC.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a string.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#body
 	*	@see	MessageObjectWithBody#bodyHtml
 	*	@see	#getMessage
 	*	@see	#transportHeaders
 	*/
 	public String transportHeaders(final PropertyContext pc)
+	throws
+		CRCMismatchException
 	{
 		return (String)pc.get(PropertyTags.TransportMessageHeaders);
 	}

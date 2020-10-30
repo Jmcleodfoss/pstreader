@@ -203,10 +203,12 @@ public abstract class PagedBTree extends BTree
 	*	@param	key	The key for this node.
 	*	@param	bref	The block reference for this page.
 	*	@param	context	The context from which to construct this B-Tree.
+	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws java.io.IOException	There was a problem reading the B-tree.
 	*/
 	protected PagedBTree(final long key, final BREF bref, final PageContext<BTree, BTreeLeaf> context)
 	throws
+		CRCMismatchException,
 		java.io.IOException
 	{
 		super(key, context);

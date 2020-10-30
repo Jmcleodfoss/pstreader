@@ -5,6 +5,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.DistributionList;
 import io.github.jmcleodfoss.pst.NotHeapNodeException;
 import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
@@ -48,6 +49,9 @@ class DistributionListDisplay extends JScrollPane
 			while (memberIterator.hasNext())
 				listModel.addElement(memberIterator.next());
 			members.setModel(listModel);
+		} catch (final CRCMismatchException e) {
+			System.out.println(e.toString());
+			e.printStackTrace(System.out);
 		} catch (final NotHeapNodeException e) {
 			System.out.println(e.toString());
 			e.printStackTrace(System.out);
