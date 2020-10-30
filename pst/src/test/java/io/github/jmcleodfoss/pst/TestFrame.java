@@ -26,6 +26,7 @@ abstract class TestFrame
 	*	@throws	Throwable			A run-time exception was encountered
 	*/
 	@Test
+	@SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
 	public void pst()
 	throws
 		BufferUnderflowException,
