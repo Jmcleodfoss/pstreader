@@ -67,7 +67,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 
 				final int shiftBy = 16 + (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
 				final int mask = 0xffff >>> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
-				blockIndex = 0x1fff & (rawData >> shiftBy);
+				blockIndex = mask & (rawData >> shiftBy);
 			} else {
 				index = 0;
 				blockIndex = 0;
