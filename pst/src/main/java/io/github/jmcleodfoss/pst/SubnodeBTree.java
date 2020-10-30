@@ -239,46 +239,55 @@ public class SubnodeBTree extends BTree
 		for (final String a: args) {
 			System.out.println(a);
 			try {
-				OutputSeparator separator = new OutputSeparator();
+				java.io.FileInputStream stream = new java.io.FileInputStream(a);
+				try {
+					OutputSeparator separator = new OutputSeparator();
 
-				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+					final PSTFile pstFile = new PSTFile(stream);
+					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-				while (iterator.hasNext()) {
-					final NBTEntry entry = (NBTEntry)iterator.next();
-					if (entry.bidSubnode.bid != 0) {
-						separator.emit(System.out);
+					java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+					while (iterator.hasNext()) {
+						final NBTEntry entry = (NBTEntry)iterator.next();
+						if (entry.bidSubnode.bid != 0) {
+							separator.emit(System.out);
 
-						System.out.println("Subnode BTree for " + entry);
-						final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
-						System.out.println(sbt);
-						java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();
+							System.out.println("Subnode BTree for " + entry);
+							final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
+							System.out.println(sbt);
+							java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();
 
-						int i = 0;
-						while (sbtIterator.hasNext()) {
-							++i;
-							final SLEntry sbtEntry = (SLEntry)sbtIterator.next();
-							final BBTEntry bbtEntry = bbt.find(sbtEntry.bidData);
-							if (bbtEntry != null) {
-								System.out.printf("%d: %s; %s%n", i, sbtEntry.toString(), bbtEntry.toString());
-								final SimpleBlock b = new SimpleBlock(bbtEntry, pstFile);
-								System.out.println("block: " + b);
-							} else {
-								System.out.printf("%d: %s; no block B-tree entry", i, sbtEntry.toString());
+							int i = 0;
+							while (sbtIterator.hasNext()) {
+								++i;
+								final SLEntry sbtEntry = (SLEntry)sbtIterator.next();
+								final BBTEntry bbtEntry = bbt.find(sbtEntry.bidData);
+								if (bbtEntry != null) {
+									System.out.printf("%d: %s; %s%n", i, sbtEntry.toString(), bbtEntry.toString());
+									final SimpleBlock b = new SimpleBlock(bbtEntry, pstFile);
+									System.out.println("block: " + b);
+								} else {
+									System.out.printf("%d: %s; no block B-tree entry", i, sbtEntry.toString());
+								}
 							}
 						}
 					}
+				} catch (final CRCMismatchException e) {
+					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final NotPSTFileException e) {
+					System.out.printf("File %s is not a pst file%n", a);
+				} catch (final java.io.IOException e) {
+					e.printStackTrace(System.out);
+				} finally {
+					try {
+						stream.close();
+					} catch (final java.io.IOException e) {
+						System.out.printf("There was a problem closing file %s%n", a);
+					}
 				}
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				e.printStackTrace(System.out);
 			}
 		}
 	}

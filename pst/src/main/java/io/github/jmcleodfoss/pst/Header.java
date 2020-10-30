@@ -233,20 +233,36 @@ public class Header
 			try {
 				java.io.File file = new java.io.File(a);
 				java.io.FileInputStream stream = new java.io.FileInputStream(file);
-				java.nio.channels.FileChannel fc = stream.getChannel();
-				java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
-				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+				try {
+					java.nio.channels.FileChannel fc = stream.getChannel();
+					try {
+						java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
+						mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
-				final Header header = new Header(mbb);
-				System.out.println(header);
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
+						final Header header = new Header(mbb);
+						System.out.println(header);
+					} catch (final CRCMismatchException e) {
+						System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+					} catch (final NotPSTFileException e) {
+						System.out.printf("File %s is not a pst file%n", a);
+					} catch (final java.io.IOException e) {
+						e.printStackTrace(System.out);
+					} finally {
+						try {
+							fc.close();
+						} catch (final java.io.IOException e) {
+							System.out.printf("There was a problem closing the filechannel for file %s%n", a);
+						}
+					}
+				} finally {
+					try {
+						stream.close();
+					} catch (final java.io.IOException e) {
+						System.out.printf("There was a problem closing file %s%n", a);
+					}
+				}
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				e.printStackTrace(System.out);
 			}
 		}
 	}
