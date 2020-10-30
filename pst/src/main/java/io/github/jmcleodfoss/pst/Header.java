@@ -231,8 +231,7 @@ public class Header
 		for (final String a: args) {
 			System.out.println(a);
 			try {
-				java.io.File file = new java.io.File(a);
-				java.io.FileInputStream stream = new java.io.FileInputStream(file);
+				java.io.FileInputStream stream = new java.io.FileInputStream(a);
 				try {
 					java.nio.channels.FileChannel fc = stream.getChannel();
 					try {
