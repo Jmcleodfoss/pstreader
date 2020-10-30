@@ -209,13 +209,13 @@ public class NameToIDMap
 	{
 		final PropertyContext pc = new PropertyContext(nbt.find(NID.NID_NAME_TO_ID_MAP), bbt, pstFile);
 
-		final byte[] entryRaw = getBinaryProperty(pc, PropertyTags.NameidStreamEntry);
+		final byte[] entryRaw = getStream(pc, PropertyTags.NameidStreamEntry);
 		java.nio.ByteBuffer entryStream = PSTFile.makeByteBuffer(entryRaw);
 
-		final byte[] stringRaw = getBinaryProperty(pc, PropertyTags.NameidStreamString);
+		final byte[] stringRaw = getStream(pc, PropertyTags.NameidStreamString);
 		java.nio.ByteBuffer stringStream = PSTFile.makeByteBuffer(stringRaw);
 
-		final byte[] guidRaw = getBinaryProperty(pc, PropertyTags.NameidStreamGuid);
+		final byte[] guidRaw = getStream(pc, PropertyTags.NameidStreamGuid);
 
 		java.util.HashMap<Integer, String> namedProperties = new java.util.HashMap<Integer, String>();
 		java.util.HashMap<Integer, Integer> canonicalIDToNPID = new java.util.HashMap<Integer, Integer>();
@@ -242,7 +242,7 @@ public class NameToIDMap
 	*	@return	The raw data saved for this property ID.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
-	private byte[] getBinaryProperty(final PropertyContext pc, final int propertyTag)
+	private byte[] getStream(final PropertyContext pc, final int propertyTag)
 	throws
 		CRCMismatchException
 	{
