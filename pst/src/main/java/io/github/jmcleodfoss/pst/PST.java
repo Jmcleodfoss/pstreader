@@ -18,6 +18,8 @@ public class PST extends PSTFile
 	/**	Create a "large footprint" PST object from the given filename.
 	*	@param	fn		The file name of the PST file to read.
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
+	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -33,6 +35,8 @@ public class PST extends PSTFile
 	public PST(final String fn)
 	throws
 		CRCMismatchException,
+		IncorrectNameIDStreamContentException,
+		NameIDStreamNotFoundException,
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
@@ -55,6 +59,8 @@ public class PST extends PSTFile
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
+	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -70,6 +76,8 @@ public class PST extends PSTFile
 	public PST(final String fn, boolean fSmallFootprint)
 	throws
 		CRCMismatchException,
+		IncorrectNameIDStreamContentException,
+		NameIDStreamNotFoundException,
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
@@ -92,6 +100,8 @@ public class PST extends PSTFile
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
+	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -107,6 +117,8 @@ public class PST extends PSTFile
 	public PST(final java.io.FileInputStream fis, boolean fSmallFootprint)
 	throws
 		CRCMismatchException,
+		IncorrectNameIDStreamContentException,
+		NameIDStreamNotFoundException,
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,

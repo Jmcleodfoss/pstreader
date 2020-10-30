@@ -427,6 +427,10 @@ public class PropertyContext
 				}
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+			} catch (final IncorrectNameIDStreamContentException e) {
+				e.printStackTrace(System.out);
+			} catch (final NameIDStreamNotFoundException e) {
+				e.printStackTrace(System.out);
 			} catch (final NotHeapNodeException e) {
 				// Not every node in the block B-tree is a heap node, so this is benign.
 			} catch (final NotPropertyContextNodeException e) {

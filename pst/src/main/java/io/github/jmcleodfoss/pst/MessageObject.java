@@ -196,6 +196,10 @@ public class MessageObject
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+			} catch (final IncorrectNameIDStreamContentException e) {
+				e.printStackTrace(System.out);
+			} catch (final NameIDStreamNotFoundException e) {
+				e.printStackTrace(System.out);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {

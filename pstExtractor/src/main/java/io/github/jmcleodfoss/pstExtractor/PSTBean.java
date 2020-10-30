@@ -19,6 +19,8 @@ import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.Contact;
 import io.github.jmcleodfoss.pst.Folder;
 import io.github.jmcleodfoss.pst.IPF;
+import io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException;
+import io.github.jmcleodfoss.pst.NameIDStreamNotFoundException;
 import io.github.jmcleodfoss.pst.JournalEntry;
 import io.github.jmcleodfoss.pst.MessageObject;
 import io.github.jmcleodfoss.pst.NotHeapNodeException;
@@ -582,6 +584,12 @@ public class PSTBean implements Serializable
 					e.printStackTrace(System.out);
 					return "ProcessingProblem";
 				} catch (CRCMismatchException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (final IncorrectNameIDStreamContentException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (final NameIDStreamNotFoundException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
 				} catch (NotHeapNodeException e) {

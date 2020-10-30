@@ -57,10 +57,12 @@ public class NameToIDMap
 		*	@param	entryStream	The data stream from which to read the named ID information.
 		*	@param	guidArray	The GUID as read from the GUID stream.
 		*	@param	stringStream	The data stream from which to read the property name.
+		*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		NameID(java.nio.ByteBuffer entryStream, final byte[] guidArray, java.nio.ByteBuffer stringStream)
 		throws
+			IncorrectNameIDStreamContentException,
 			java.io.UnsupportedEncodingException
 		{
 			propertyID = entryStream.getInt();
@@ -84,11 +86,14 @@ public class NameToIDMap
 		*	Throw an exception if this NameID object does not have a GUID property set identifier.
 		*	@param	guidArray	The raw data from which to create the GUID.
 		*	@return	A io.github.jmcleodfoss.pst.GUID object corresponding to the passed raw GUID.
+		*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 		*/
 		private GUID guid(final byte[] guidArray)
+		throws
+			IncorrectNameIDStreamContentException
 		{
 			if (fString)
-				throw new RuntimeException("Not GUID!");
+				throw new IncorrectNameIDStreamContentException("GUID", "string");
 
 			if (guidIndex == GUID_INDEX_NONE)
 				return GUID.PS_NULL;
@@ -105,14 +110,16 @@ public class NameToIDMap
 		/**	Retrieve the property name from the array of names, throwing an exception if this NameID object does not have a name.
 		*	@param	stringStream	The input data stream from which to read the property name.
 		*	@return	The next name in the stream of property names.
+		*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 		*	@throws	java.io.UnsupportedEncodingException	An unsupported encoding was found when creating a String from a data buffer.
 		*/
 		private String name(java.nio.ByteBuffer stringStream)
 		throws
+			IncorrectNameIDStreamContentException,
 			java.io.UnsupportedEncodingException
 		{
 			if (!fString)
-				throw new RuntimeException("Not string!");
+				throw new IncorrectNameIDStreamContentException("String", "binary");
 
 			stringStream.position(propertyID);
 			final long length = stringStream.getInt();
@@ -186,6 +193,8 @@ public class NameToIDMap
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's input data stream, header, etc.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
+	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws NotHeapNodeException			A node which is not a heap node was found.
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
@@ -198,6 +207,8 @@ public class NameToIDMap
 	public NameToIDMap(final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
 		CRCMismatchException,
+		IncorrectNameIDStreamContentException,
+		NameIDStreamNotFoundException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
@@ -241,14 +252,16 @@ public class NameToIDMap
 	*	@param	propertyTag	The property ID to retrieve.
 	*	@return	The raw data saved for this property ID.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*/
 	private byte[] getStream(final PropertyContext pc, final int propertyTag)
 	throws
-		CRCMismatchException
+		CRCMismatchException,
+		NameIDStreamNotFoundException
 	{
 		final Object o = pc.get(propertyTag);
 		if (o == null)
-			throw new RuntimeException("Could not find " + PropertyTags.name(propertyTag));
+			throw new NameIDStreamNotFoundException(PropertyTags.name(propertyTag));
 		final byte[] arr = (byte[])o;
 		return arr;
 	}
@@ -331,6 +344,10 @@ public class NameToIDMap
 					System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+			} catch (final IncorrectNameIDStreamContentException e) {
+				e.printStackTrace(System.out);
+			} catch (final NameIDStreamNotFoundException e) {
+				e.printStackTrace(System.out);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {
