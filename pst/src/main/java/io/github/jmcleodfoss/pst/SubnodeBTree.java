@@ -241,7 +241,7 @@ public class SubnodeBTree extends BTree
 			try {
 				java.io.FileInputStream stream = new java.io.FileInputStream(a);
 				try {
-					OutputSeparator separator = new OutputSeparator();
+					final OutputSeparator separator = new OutputSeparator();
 
 					final PSTFile pstFile = new PSTFile(stream);
 					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
