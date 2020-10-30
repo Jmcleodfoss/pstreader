@@ -63,7 +63,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			super(rawData);
 			if (type == NID.HID) {
 				index = (short)(0x7ff & (rawData >> 5));
-				final int flags = fOst2013 ? 0x7 & (rawData >> 16) : 0;
+				// This ost field is not documented, so we don't use it anywhere, but this is how to extract it
+				// final int flags = fOst2013 ? 0x7 & (rawData >> 16) : 0;
 
 				final int shiftBy = 16 + (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
 				final int mask = 0xffff >>> (fOst2013 ? BLOCK_INDEX_RSHIFT_OST_2013 : BLOCK_INDEX_RSHIFT);
