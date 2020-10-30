@@ -466,6 +466,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 				final NodeBTree nodeBTree = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 				final MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 				messageStore.rootFolder.show("");
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {

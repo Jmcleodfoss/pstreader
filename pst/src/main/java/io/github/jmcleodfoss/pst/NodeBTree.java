@@ -133,6 +133,8 @@ class NodeBTree extends PagedBTree implements NodeMap
 					final NBTEntry entry = (NBTEntry)iterator.next();
 					System.out.println(entry);
 				}
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {

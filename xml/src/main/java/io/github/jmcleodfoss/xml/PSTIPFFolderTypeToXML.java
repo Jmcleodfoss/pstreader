@@ -37,6 +37,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	/**	Construct an object to extract folders of the given class from the PST file with the given name.
 	*	@param	fn			The file name of the PST file to process.
 	*	@param	includedFolderClass	The folder class to extract.
+	*	@throws	io.github.jmcleodfoss.pst.CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
 	*	@throws	io.github.jmcleodfoss.pst.NotPSTFileException			The named file is not a pst file.
 	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	A node which was not a property context node was found where a property context node was expected when reading the pst file.
@@ -51,6 +52,7 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	*/
 	PSTIPFFolderTypeToXML(final String fn, final String includedFolderClass)
 	throws
+		io.github.jmcleodfoss.pst.CRCMismatchException,
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
 		io.github.jmcleodfoss.pst.NotPSTFileException,
 		io.github.jmcleodfoss.pst.NotPropertyContextNodeException,

@@ -137,11 +137,13 @@ public class Header
 
 	/**	Read in the header data and save the fields we need for later.
 	*	@param	byteBuffer	The data stream from which to read the PST header.
+	*	@throws	CRCMismatchException	The header's calculated CRC does not match the expected value.
 	*	@throws	NotPSTFileException	This is not a pst file.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the pst header.
 	*/
 	Header(java.nio.ByteBuffer byteBuffer)
 	throws
+		CRCMismatchException,
 		NotPSTFileException,
 		java.io.IOException
 	{
@@ -203,12 +205,16 @@ public class Header
 	*	@param	crcCalculated	The CRC of the header caculated from its contents.
 	*	@param	nm_field	The field name of the CRC to check.
 	*	@param	dc		The DataContainer object holding the values read in from the header.
+	*	@throws	CRCMismatchException	The header's calculated CRC does not match the expected value.
 	*/
 	@SuppressWarnings("PMD.MethodNamingConventions")
 	private void validate_CRC(final int crcCalculated, final String nm_field, final DataContainer dc)
+	throws
+		CRCMismatchException
 	{
-		if (Options.checkCRC && crcCalculated != (Integer)dc.get(nm_field))
-			throw new RuntimeException(nm_field + " "  + Integer.toHexString((Integer)dc.get(nm_field)) + " does not match calculated value " + Integer.toHexString(crcCalculated));
+		int crcExpected = (Integer)dc.get(nm_field);
+		if (Options.checkCRC && crcCalculated != crcExpected)
+			throw new CRCMismatchException(nm_field, crcExpected, crcCalculated);
 	}
 
 	/**	Test this class by reading in the PST file header and printing it out.
@@ -233,6 +239,8 @@ public class Header
 
 				final Header header = new Header(mbb);
 				System.out.println(header);
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {

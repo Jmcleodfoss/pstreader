@@ -603,6 +603,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 						}
 					}
 				}
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {

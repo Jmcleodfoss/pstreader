@@ -180,6 +180,8 @@ class SimpleBlock extends BlockBase
 					final SimpleBlock block = new SimpleBlock(entry, pstFile);
 					System.out.println(entry + ": " + block);
 				}
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {

@@ -15,6 +15,7 @@ import javax.inject.Named;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import io.github.jmcleodfoss.pst.Appointment;
+import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.Contact;
 import io.github.jmcleodfoss.pst.Folder;
 import io.github.jmcleodfoss.pst.IPF;
@@ -571,6 +572,9 @@ public class PSTBean implements Serializable
 					// IO Exception creating or reading PST file
 					e.printStackTrace(System.out);
 					return "ProcessingProblem";
+				} catch (CRCMismatchException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
 				} catch (NotHeapNodeException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";

@@ -102,6 +102,8 @@ class BlockBTree extends PagedBTree implements BlockMap
 				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 				while (iterator.hasNext())
 					System.out.println((BBTEntry)iterator.next());
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {

@@ -17,6 +17,7 @@ public class PST extends PSTFile
 
 	/**	Create a "large footprint" PST object from the given filename.
 	*	@param	fn		The file name of the PST file to read.
+	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -31,6 +32,7 @@ public class PST extends PSTFile
 	*/
 	public PST(final String fn)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
@@ -52,6 +54,7 @@ public class PST extends PSTFile
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
+	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -66,6 +69,7 @@ public class PST extends PSTFile
 	*/
 	public PST(final String fn, boolean fSmallFootprint)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,
@@ -87,6 +91,7 @@ public class PST extends PSTFile
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
+	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
 	*	@throws NotPSTFileException			The file is not a PST file.
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -101,6 +106,7 @@ public class PST extends PSTFile
 	*/
 	public PST(final java.io.FileInputStream fis, boolean fSmallFootprint)
 	throws
+		CRCMismatchException,
 		NotHeapNodeException,
 		NotPSTFileException,
 		NotPropertyContextNodeException,

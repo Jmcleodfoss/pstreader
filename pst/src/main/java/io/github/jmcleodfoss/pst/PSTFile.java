@@ -14,11 +14,13 @@ public class PSTFile
 
 	/**	Create a FileChannel for the given filename and read in the PST header.
 	*	@param	stream	The PST file to read.
+	*	@throws	CRCMismatchException	The header's calculated CRC does not match the expected value.
 	*	@throws NotPSTFileException	The input stream does not contain a PST file.
 	* 	@throws java.io.IOException	There was an I/O error reading the input stream.
 	*/
 	PSTFile(java.io.FileInputStream stream)
 	throws
+		CRCMismatchException,
 		NotPSTFileException,
 		java.io.IOException
 	{

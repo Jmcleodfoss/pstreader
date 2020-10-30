@@ -274,6 +274,8 @@ public class Attachment
 			try {
 				final PST pst = new PST(new java.io.FileInputStream(a), false);
 				findFolderAttachments(pst.getFolderTree(), pst);
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {

@@ -324,6 +324,8 @@ public class NameToIDMap
 
 				for (Object key : keyArray)
 					System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotHeapNodeException e) {
 				e.printStackTrace(System.out);
 			} catch (final NotPropertyContextNodeException e) {

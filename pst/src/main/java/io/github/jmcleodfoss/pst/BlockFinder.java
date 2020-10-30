@@ -96,6 +96,8 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 					System.out.printf("Success: all %d BIDs found%n", bids);
 				else
 					System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {

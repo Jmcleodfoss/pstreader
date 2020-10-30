@@ -96,6 +96,8 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 					System.out.printf("Success: all %d NIDs found%n", nids);
 				else
 					System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
