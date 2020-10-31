@@ -78,32 +78,41 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 		for (final String a: args) {
 			System.out.println(a);
 			try {
-				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-				final NodeFinder nf = new NodeFinder(pstFile);
+				final java.io.FileInputStream stream = new java.io.FileInputStream(a);
+				try {
+					final PSTFile pstFile = new PSTFile(stream);
+					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+					final NodeFinder nf = new NodeFinder(pstFile);
 
-				int discrepancies = 0;
-				int nids = 0;
-				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-				while (iterator.hasNext()) {
-					++nids;
-					final NBTEntry treeEntry = (NBTEntry)iterator.next();
-					final NBTEntry findEntry = nf.find(treeEntry.nid);
-					if (treeEntry.key() != findEntry.key())
-						++discrepancies;
+					int discrepancies = 0;
+					int nids = 0;
+					java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+					while (iterator.hasNext()) {
+						++nids;
+						final NBTEntry treeEntry = (NBTEntry)iterator.next();
+						final NBTEntry findEntry = nf.find(treeEntry.nid);
+						if (treeEntry.key() != findEntry.key())
+							++discrepancies;
+					}
+					if (discrepancies == 0)
+						System.out.printf("Success: all %d NIDs found%n", nids);
+					else
+						System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
+				} catch (final CRCMismatchException e) {
+					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final NotPSTFileException e) {
+					System.out.printf("File %s is not a pst file%n", a);
+				} catch (final java.io.IOException e) {
+					e.printStackTrace(System.out);
+				} finally {
+					try {
+						stream.close();
+					} catch (final java.io.IOException e) {
+						System.out.printf("Problem closing file %s%n", a);
+					}
 				}
-				if (discrepancies == 0)
-					System.out.printf("Success: all %d NIDs found%n", nids);
-				else
-					System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				e.printStackTrace(System.out);
 			}
 		}
 	}
