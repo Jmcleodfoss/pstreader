@@ -387,77 +387,86 @@ public class PropertyContext
 				// Medium-term goal is to set this based on a command line argument.
 				final boolean fShowOutput = true;
 
-				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
-				final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
+				java.io.FileInputStream stream = new java.io.FileInputStream(a);
+				try {
+					final PSTFile pstFile = new PSTFile(stream);
+					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+					final NameToIDMap namedProperties = new NameToIDMap(bbt, nbt, pstFile);
 
-				final OutputSeparator separator = new OutputSeparator();
+					final OutputSeparator separator = new OutputSeparator();
 
-				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-				while (iterator.hasNext()) {
-					final NBTEntry node = (NBTEntry)iterator.next();
-					if (node.nid.type == NID.INTERNAL)
-						continue;
+					java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+					while (iterator.hasNext()) {
+						final NBTEntry node = (NBTEntry)iterator.next();
+						if (node.nid.type == NID.INTERNAL)
+							continue;
 
-					final BBTEntry dataBlock = bbt.find(node.bidData);
-					if (dataBlock == null)
-						continue;
+						final BBTEntry dataBlock = bbt.find(node.bidData);
+						if (dataBlock == null)
+							continue;
 
-					// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
-					final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-					if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
-						continue;
+						// Check for valid property context. We expect to encounter quite a few non-PC blocks, so this is completely benign.
+						final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+						if (!hon.clientSignature().equals(ClientSignature.PropertyContext))
+							continue;
 
-					final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
+						final PropertyContext pc = new PropertyContext(node,  bbt, pstFile);
 
-					if (fShowOutput) {
-						separator.emit(System.out);
-						System.out.println("Node " + node + ", " + Long.toHexString(node.key()) + "\nPropertyContext\n---------------\n");
-						java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = pc.iterator();
-						while (propertyIterator.hasNext()) {
-							final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
-							final int key = entry.getKey();
-							final String name = namedProperties.name(key);
-							final Object value = pc.get(key);
-							final String s = value != null ? DataType.makeString(key, value) : null;
-							System.out.printf("0x%08x %s \"%s\"%n", key, name, s);
+						if (fShowOutput) {
+							separator.emit(System.out);
+							System.out.printf("Node i%s, 0x%08x \nPropertyContext\n---------------\n", node.toString(), node.key());
+							java.util.Iterator<java.util.Map.Entry<Integer, Object>> propertyIterator = pc.iterator();
+							while (propertyIterator.hasNext()) {
+								final java.util.Map.Entry<Integer, Object> entry = propertyIterator.next();
+								final int key = entry.getKey();
+								final String name = namedProperties.name(key);
+								final Object value = pc.get(key);
+								final String s = value != null ? DataType.makeString(key, value) : null;
+								System.out.printf("0x%08x %s \"%s\"%n", key, name, s);
+							}
 						}
 					}
+				} catch (final CRCMismatchException e) {
+					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final IncorrectNameIDStreamContentException e) {
+					e.printStackTrace(System.out);
+				} catch (final NameIDStreamNotFoundException e) {
+					e.printStackTrace(System.out);
+				} catch (final NotHeapNodeException e) {
+					// Not every node in the block B-tree is a heap node, so this is benign.
+				} catch (final NotPropertyContextNodeException e) {
+					System.out.println(e.toString());
+					e.printStackTrace(System.out);
+				} catch (final NotPSTFileException e) {
+					System.out.printf("File %s is not a pst file%n", a);
+				} catch (final NullDataBlockException e) {
+					System.out.println(e.toString());
+					e.printStackTrace(System.out);
+				} catch (final UnimplementedPropertyTypeException e) {
+					System.out.println(e.toString());
+					e.printStackTrace(System.out);
+				} catch (final UnknownPropertyTypeException e) {
+					System.out.println(e.toString());
+					e.printStackTrace(System.out);
+				} catch (final UnknownClientSignatureException e) {
+					System.out.println(e.toString());
+					e.printStackTrace(System.out);
+				} catch (final UnparseablePropertyContextException e) {
+					System.out.printf(e.toString());
+					e.printStackTrace(System.out);
+				} catch (final java.io.IOException e) {
+					System.out.printf("Could not read %s%n", a);
+					e.printStackTrace(System.out);
+				} finally {
+					try {
+						stream.close();
+					} catch (java.io.IOException e) {
+						System.out.printf("Could not close file %s%n", a);
+					}
 				}
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final IncorrectNameIDStreamContentException e) {
-				e.printStackTrace(System.out);
-			} catch (final NameIDStreamNotFoundException e) {
-				e.printStackTrace(System.out);
-			} catch (final NotHeapNodeException e) {
-				// Not every node in the block B-tree is a heap node, so this is benign.
-			} catch (final NotPropertyContextNodeException e) {
-				System.out.println(e.toString());
-				e.printStackTrace(System.out);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
-			} catch (final NullDataBlockException e) {
-				System.out.println(e.toString());
-				e.printStackTrace(System.out);
-			} catch (final UnimplementedPropertyTypeException e) {
-				System.out.println(e.toString());
-				e.printStackTrace(System.out);
-			} catch (final UnknownPropertyTypeException e) {
-				System.out.println(e.toString());
-				e.printStackTrace(System.out);
-			} catch (final UnknownClientSignatureException e) {
-				System.out.println(e.toString());
-				e.printStackTrace(System.out);
-			} catch (final UnparseablePropertyContextException e) {
-				System.out.printf(e.toString());
-				e.printStackTrace(System.out);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				System.out.printf("Could not read %s%n", a);
-				e.printStackTrace(System.out);
 			}
 		}
 	}
