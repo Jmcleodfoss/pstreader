@@ -79,32 +79,40 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 			System.out.println(a);
 			try {
 				java.io.FileInputStream stream = new java.io.FileInputStream(a);
-				final PSTFile pstFile = new PSTFile(stream);
-				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				final BlockFinder bf = new BlockFinder(pstFile);
+				try {
+					final PSTFile pstFile = new PSTFile(stream);
+					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+					final BlockFinder bf = new BlockFinder(pstFile);
 
-				int discrepancies = 0;
-				int bids = 0;
-				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
-				while (iterator.hasNext()) {
-					++bids;
-					final BBTEntry treeEntry = (BBTEntry)iterator.next();
-					final BBTEntry findEntry = bf.find(treeEntry.bref.bid);
-					if (treeEntry.key() != findEntry.key())
-						++discrepancies;
+					int discrepancies = 0;
+					int bids = 0;
+					java.util.Iterator<BTreeNode> iterator = bbt.iterator();
+					while (iterator.hasNext()) {
+						++bids;
+						final BBTEntry treeEntry = (BBTEntry)iterator.next();
+						final BBTEntry findEntry = bf.find(treeEntry.bref.bid);
+						if (treeEntry.key() != findEntry.key())
+							++discrepancies;
+					}
+					if (discrepancies == 0)
+						System.out.printf("Success: all %d BIDs found%n", bids);
+					else
+						System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
+				} catch (final CRCMismatchException e) {
+					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final NotPSTFileException e) {
+					System.out.printf("File %s is not a pst file%n", a);
+				} catch (final java.io.IOException e) {
+					e.printStackTrace(System.out);
+				} finally {
+					try {
+						stream.close();
+					} catch (java.io.IOException e) {
+						System.out.printf("Could not close file %s%n", a);
+					}
 				}
-				if (discrepancies == 0)
-					System.out.printf("Success: all %d BIDs found%n", bids);
-				else
-					System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				e.printStackTrace(System.out);
 			}
 		}
 	}
