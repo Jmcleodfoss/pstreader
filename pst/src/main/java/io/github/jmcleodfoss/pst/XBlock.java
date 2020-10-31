@@ -252,7 +252,7 @@ class XBlock extends BlockBase
 						if (node.bidData.fInternal) {
 							final BBTEntry block = bbt.find(node.bidData);
 							if (block == null) {
-								System.out.println("Block for node " + node + " is null");
+								System.out.printf("Block for node %s is null", node.toString());
 								continue;
 							}
 							final XBlock xblock = new XBlock(block, bbt, pstFile);
