@@ -253,7 +253,7 @@ public class SubnodeBTree extends BTree
 						if (entry.bidSubnode.bid != 0) {
 							separator.emit(System.out);
 
-							System.out.println("Subnode BTree for " + entry);
+							System.out.printf("Subnode BTree for %s%n", entry.toString());
 							final SubnodeBTree sbt = new SubnodeBTree(entry.bidSubnode, bbt, pstFile);
 							System.out.println(sbt);
 							java.util.Iterator<BTreeNode> sbtIterator = sbt.iterator();

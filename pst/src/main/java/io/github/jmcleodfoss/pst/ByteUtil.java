@@ -93,7 +93,7 @@ public class ByteUtil
 		for (int i = 0; i < a.length; ++i)
 		{
 			long le = makeLongLE(a[i]);
-			System.out.println("Little Endian: " + Long.toHexString(le) + '\n');
+			System.out.printf("Little Endian: 0x%08x%n", le);
 		}
 
 		for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; ++i) {

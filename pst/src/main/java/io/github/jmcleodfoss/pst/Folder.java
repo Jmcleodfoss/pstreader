@@ -437,7 +437,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		UnparseableTableContextException,
 		java.io.IOException
 	{
-		System.out.println(prefix + displayName);
+		System.out.printf("%s%s", prefix, displayName);
 		for (int i = 0; i < subfolders.size(); ++i) {
 			Folder f = subfolders.get(i);
 			f.show("|" + prefix + "-");

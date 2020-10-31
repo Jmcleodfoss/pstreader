@@ -503,12 +503,12 @@ public class BTreeOnHeap extends BTree
 							final BTreeOnHeap bth = new BTreeOnHeap(hon, pstFile);
 
 							separator.emit(System.out);
-							System.out.println("Node " + node + "\nBTreeOnHeap\n----------\n" + bth);
+							System.out.printf("Node %s%nBTreeOnHeap%n----------%n%s%n", node.toString(), bth.toString());
 							bth.outputString(System.out, new StringBuilder("bth: "));
 						} catch (final NotHeapNodeException e) {
 							e.printStackTrace(System.out);
 						} catch (final UnknownClientSignatureException e) {
-							System.out.println("Node " + node + ": " + e);
+							System.out.printf("Node %s: %s%n", node.toString(), e.toString());
 							e.printStackTrace(System.out);
 						}
 					}

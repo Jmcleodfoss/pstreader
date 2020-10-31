@@ -709,7 +709,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 							if (hon.clientSignature().equals(ClientSignature.TableContext)) {
 								separator.emit(System.out);
 								final TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
-								System.out.println("Node " + nodeDescr + "\nTableContext\n------------\n" + tc);
+								System.out.printf("Node %s%nTableContext%n------------%n%s%n", nodeDescr.toString(), tc.toString());
 								if (tc.isEmpty())
 									continue;
 								tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));

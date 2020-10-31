@@ -599,10 +599,10 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 					if (dataBlock != null) {
 						try {
 							separator.emit(System.out);
-							System.out.println("Node " + node + "\ndataBlock " + dataBlock);
+							System.out.printf("Node %s%ndataBlock %s%n", node.toString(), dataBlock.toString());
 
 							final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-							System.out.println("HeapOnNode\n----------\n" + hon);
+							System.out.printf("HeapOnNode\n----------\n" + hon);
 						} catch (final NotHeapNodeException e) {
 							e.printStackTrace(System.out);
 						} catch (final UnknownClientSignatureException e) {

@@ -323,7 +323,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*/
 	public void outputString(java.io.PrintStream out, final StringBuilder prefix)
 	{
-		out.println(prefix.toString() + this);
+		out.printf("%s%s%n", prefix.toString(), this.toString());
 		prefix.append("\t");
 
 		if (children == null)
@@ -333,7 +333,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			if (c instanceof BTree)
 				((BTree)c).outputString(out, prefix);
 			else
-				out.println(prefix.toString() + c);
+				out.printf("%s%s%n", prefix.toString(), c.toString());
 	}
 
 	/**	{@inheritDoc} */
