@@ -188,7 +188,7 @@ class SimpleBlock extends BlockBase
 					while (iterator.hasNext()) {
 						final BBTEntry entry = (BBTEntry)iterator.next();
 						final SimpleBlock block = new SimpleBlock(entry, pstFile);
-						System.out.printf("%s: %s", entry.toString(), block.toString());
+						System.out.printf("%s: %s%n", entry.toString(), block.toString());
 					}
 				} catch (final CRCMismatchException e) {
 					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
