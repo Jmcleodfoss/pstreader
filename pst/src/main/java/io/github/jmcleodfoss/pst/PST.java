@@ -32,6 +32,7 @@ public class PST extends PSTFile
 	*	@throws UnparseableTableContextException	A table context block could not be read.
 	*	@throws java.io.IOException			There was an I/O error reading the file.
 	*/
+	@Deprecated
 	public PST(final String fn)
 	throws
 		CRCMismatchException,
@@ -73,6 +74,7 @@ public class PST extends PSTFile
 	*	@throws UnparseableTableContextException	A table context block could not be read.
 	*	@throws java.io.IOException			There was an I/O error reading the file.
 	*/
+	@Deprecated
 	public PST(final String fn, boolean fSmallFootprint)
 	throws
 		CRCMismatchException,
