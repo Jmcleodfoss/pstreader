@@ -584,40 +584,49 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		for (final String a: args) {
 			System.out.println(a);
 			try {
-				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				java.io.FileInputStream stream = new java.io.FileInputStream(a);
+				try {
+					final PSTFile pstFile = new PSTFile(stream);
+					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				final OutputSeparator separator = new OutputSeparator();
-				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-				while (iterator.hasNext()) {
-					final NBTEntry node = (NBTEntry)iterator.next();
-					if (!node.nid.isHeapOnNodeNID())
-						continue;
+					final OutputSeparator separator = new OutputSeparator();
+					java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+					while (iterator.hasNext()) {
+						final NBTEntry node = (NBTEntry)iterator.next();
+						if (!node.nid.isHeapOnNodeNID())
+							continue;
 
-					final BBTEntry dataBlock = bbt.find(node.bidData);
-					if (dataBlock != null) {
-						try {
-							separator.emit(System.out);
-							System.out.printf("Node %s%ndataBlock %s%n", node.toString(), dataBlock.toString());
+						final BBTEntry dataBlock = bbt.find(node.bidData);
+						if (dataBlock != null) {
+							try {
+								separator.emit(System.out);
+								System.out.printf("Node %s%ndataBlock %s%n", node.toString(), dataBlock.toString());
 
-							final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-							System.out.printf("HeapOnNode\n----------\n" + hon);
-						} catch (final NotHeapNodeException e) {
-							e.printStackTrace(System.out);
-						} catch (final UnknownClientSignatureException e) {
-							e.printStackTrace(System.out);
+								final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+								System.out.printf("HeapOnNode\n----------\n" + hon);
+							} catch (final NotHeapNodeException e) {
+								e.printStackTrace(System.out);
+							} catch (final UnknownClientSignatureException e) {
+								e.printStackTrace(System.out);
+							}
 						}
 					}
+				} catch (final CRCMismatchException e) {
+					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final NotPSTFileException e) {
+					System.out.printf("File %s is not a pst file%n", a);
+				} catch (final java.io.IOException e) {
+					e.printStackTrace(System.out);
+				} finally {
+					try {
+						stream.close();
+					} catch (java.io.IOException e) {
+						System.out.printf("Could not close file %s%n", a);
+					}
 				}
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				e.printStackTrace(System.out);
 			}
 		}
 	}
