@@ -242,7 +242,7 @@ class XBlock extends BlockBase
 			try {
 				java.io.FileInputStream stream = new java.io.FileInputStream(a);
 				try {
-					final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
+					final PSTFile pstFile = new PSTFile(stream);
 					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
