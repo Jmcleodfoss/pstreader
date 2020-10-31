@@ -180,23 +180,32 @@ class SimpleBlock extends BlockBase
 		for (final String a: args) {
 			System.out.println(a);
 			try {
-				final PSTFile pstFile = new PSTFile(new java.io.FileInputStream(a));
-				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				java.util.Iterator<BTreeNode> iterator = bbt.iterator();
-				while (iterator.hasNext()) {
-					final BBTEntry entry = (BBTEntry)iterator.next();
-					final SimpleBlock block = new SimpleBlock(entry, pstFile);
-					System.out.println(entry + ": " + block);
+				java.io.FileInputStream stream = new java.io.FileInputStream(a);
+				try {
+					final PSTFile pstFile = new PSTFile(stream);
+					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+					java.util.Iterator<BTreeNode> iterator = bbt.iterator();
+					while (iterator.hasNext()) {
+						final BBTEntry entry = (BBTEntry)iterator.next();
+						final SimpleBlock block = new SimpleBlock(entry, pstFile);
+						System.out.printf("%s: %s", entry.toString(), block.toString());
+					}
+				} catch (final CRCMismatchException e) {
+					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final NotPSTFileException e) {
+					System.out.printf("File %s is not a pst file%n", a);
+				} catch (final java.io.IOException e) {
+					System.out.printf("Could not read %s%n", a);
+					e.printStackTrace(System.out);
+				} finally {
+					try {
+						stream.close();
+					} catch (java.io.IOException e) {
+						System.out.printf("Could not close file %s%n", a);
+					}
 				}
-			} catch (final CRCMismatchException e) {
-				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final NotPSTFileException e) {
-				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final java.io.IOException e) {
-				System.out.printf("Could not read %s%n", a);
-				e.printStackTrace(System.out);
 			}
 		}
 	}
