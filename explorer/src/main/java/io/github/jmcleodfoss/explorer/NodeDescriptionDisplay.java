@@ -59,8 +59,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			/**	{@inheritDoc} */
 			byte[] data()
 			{
-				attachment = null;
-				pc = null;
+				// attachment and pc were set in initialFilenameSuggestion, called before data is retrieved
 				try {
 					return attachment.data(pc);
 				} catch (CRCMismatchException e) {
