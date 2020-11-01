@@ -4,8 +4,32 @@ package io.github.jmcleodfoss.xml;
 *	<p><strong>Use</strong><p>
 *	<code>java io.github.jmcleodfoss.pst.XSLTProcess xslt-file.xml xml-file.xml</code>
 */
-public class XSLTProcessor
+public class XSLTProcessor implements javax.xml.transform.ErrorListener
 {
+	/**	Action to take when an recoverable error is encountered
+	*	@param	exception	The recoverable error
+	*/
+	public void error(javax.xml.transform.TransformerException e)
+	{
+		System.out.println(e);
+	}
+
+	/**	Action to take when a fatal error is encountered
+	*	@param	exception	The fatal error
+	*/
+	public void fatalError(javax.xml.transform.TransformerException e)
+	{
+		System.out.println(e);
+	}
+
+	/**	Action to take when a warning is encountered
+	*	@param	exception	The warning
+	*/
+	public void warning(javax.xml.transform.TransformerException e)
+	{
+		System.out.println(e);
+	}
+
 	/**	Convert an XML file using an XSLT stylesheet, sending result to System.out.
 	*	@param	args	The XSLT style sheet and the XML file to transform
 	*/
@@ -18,7 +42,10 @@ public class XSLTProcessor
 		}
 
 		try {
+			XSLTProcessor errorListener = new XSLTProcessor();
+
 			javax.xml.transform.TransformerFactory tFactory = javax.xml.transform.TransformerFactory.newInstance();
+			tFactory.setErrorListener(errorListener);
 
 			javax.xml.transform.stream.StreamSource xslt = new javax.xml.transform.stream.StreamSource(args[0]);
 			javax.xml.transform.Transformer transformer = tFactory.newTransformer(xslt);
@@ -27,9 +54,9 @@ public class XSLTProcessor
 			javax.xml.transform.stream.StreamResult result = new javax.xml.transform.stream.StreamResult(System.out);
 			transformer.transform(source, result);
 		} catch (javax.xml.transform.TransformerConfigurationException e) {
-			e.printStackTrace();
+			System.out.printf("One or more errors were encountered in stylesheet %s; could not transform %s%n", args[0], args[1]);
 		} catch (javax.xml.transform.TransformerException e) {
-			e.printStackTrace();
+			System.out.printf("An error occurred while attempting to transform %s%n", args[1]);
 		}
 	}
 }
