@@ -99,6 +99,12 @@ There is a newer version of this library, but there is no newer version of Tomah
 *   [CVE-2014-0114](https://www.cvedetails.com/cve/CVE-2014-0114/), CVSS score 7.5 (Execute code)
 *   [CVE-2019-10086](https://www.cvedetails.com/cve/CVE-2019-10086/), CVSS score 7.5 (Information disclosure, file modification, resource availability)
 
+### commons-collections 3.2.1 released on 2008-04-15 (transitive dependency from org.apache.myfaces.tomahawk20 1.1.14 released 2012-10-12)
+*   [CVE-2015-6420](https://www.cvedetails.com/cve/CVE-2015-6420/), CVSS score 7.5 (Execute Code)
+*   [CVE-2017-15708](https://www.cvedetails.com/cve/CVE-2017-15708/), CVSS score 7.5 (Execute code)
+
+There is a newer version of this library, but there is no newer version of Tomahawk 2.0 which uses it.
+
 ### cdi-api 2.0.SP1 released 2019-07-19 (direct dependency)
 *   [CVE-2014-8122](https://www.cvedetails.com/cve/CVE-2014-8122/), CVSS score 4.3 (Obtain information)
 
