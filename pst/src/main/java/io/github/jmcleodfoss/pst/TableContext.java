@@ -258,6 +258,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws	NotHeapNodeException			The leaf is not a heap node
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
@@ -269,6 +270,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	public TableContext(LPTLeaf nodeDescr, BlockMap bbt, PSTFile pstFile)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotTableContextNodeException,
 		UnimplementedPropertyTypeException,
@@ -287,6 +289,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws UnknownClientSignatureException		The Client Signature was not recognized
@@ -297,6 +300,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	TableContext(LPTLeaf nodeDescr, HeapOnNode hon, BlockMap bbt, PSTFile pstFile)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotTableContextNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
@@ -521,6 +525,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
@@ -528,6 +533,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		UnimplementedPropertyTypeException,
 		UnknownPropertyTypeException,
 		java.io.IOException
@@ -539,7 +545,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			java.nio.ByteBuffer rowStream = iterator.next();
 			while (rowStream.remaining() >= rowWidth) {
 				if (r >= rows.length)
-					throw new RuntimeException("Too much data for " + rows.length + " rows");
+					throw new DataOverflowException(rows.length);
 				rows[r++] = readRow(rowStream, numColumns, r, sbt, bbt, hon, pstFile);
 			}
 		}
@@ -715,6 +721,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 									continue;
 								tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
 							}
+						} catch (final DataOverflowException e) {
+							e.printStackTrace(System.out);
 						} catch (final NotHeapNodeException e) {
 							e.printStackTrace(System.out);
 						} catch (final NotTableContextNodeException e) {

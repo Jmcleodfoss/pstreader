@@ -18,6 +18,7 @@ import javax.swing.event.TreeSelectionListener;
 
 import io.github.jmcleodfoss.pst.Attachment;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
+import io.github.jmcleodfoss.pst.DataOverflowException;
 import io.github.jmcleodfoss.pst.DistributionList;
 import io.github.jmcleodfoss.pst.Folder;
 import io.github.jmcleodfoss.pst.LPTLeaf;
@@ -382,6 +383,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		try {
 			messagePC = messageObject.getMessage(pst);
 		} catch (CRCMismatchException e) {
+		} catch (DataOverflowException e) {
 		} catch (NotHeapNodeException e) {
 		} catch (NotPropertyContextNodeException e) {
 		} catch (NotTableContextNodeException e) {

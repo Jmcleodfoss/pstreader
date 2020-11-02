@@ -288,6 +288,8 @@ public class Attachment
 					findFolderAttachments(pst.getFolderTree(), pst);
 				} catch (final CRCMismatchException e) {
 					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+				} catch (final DataOverflowException e) {
+					e.printStackTrace(System.out);
 				} catch (final IncorrectNameIDStreamContentException e) {
 					e.printStackTrace(System.out);
 				} catch (final NameIDStreamNotFoundException e) {

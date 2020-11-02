@@ -56,6 +56,7 @@ public class MessageObject
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*	@return	The message object found at the given row of the content table.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws	NotHeapNodeException			A node which was not a heap node was found while building the message object.
 	* 	@throws	NotPropertyContextNodeException		A node which was expected to be a property context node was found to be something else.
 	* 	@throws	NotTableContextNodeException		A node which was expected to be a table context node was found to be something else.
@@ -71,6 +72,7 @@ public class MessageObject
 	static MessageObject factory(TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -112,6 +114,7 @@ public class MessageObject
 	*	@param	pst	The PST file.
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building the table context.
@@ -129,6 +132,7 @@ public class MessageObject
 	public PropertyContext getMessage(final PST pst)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -195,6 +199,8 @@ public class MessageObject
 				final PST pst = new PST(a);
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
 			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+			} catch (final DataOverflowException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final IncorrectNameIDStreamContentException e) {
 				e.printStackTrace(System.out);

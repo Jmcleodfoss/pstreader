@@ -16,6 +16,7 @@ import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import io.github.jmcleodfoss.pst.Appointment;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
+import io.github.jmcleodfoss.pst.DataOverflowException;
 import io.github.jmcleodfoss.pst.Contact;
 import io.github.jmcleodfoss.pst.Folder;
 import io.github.jmcleodfoss.pst.IPF;
@@ -183,6 +184,7 @@ public class PSTBean implements Serializable
 	* 	@param	folder	The folder from which to harvest the journal entries.
 	* 	@param	pst	The pst file from which to read the journal entries' data.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the journal entries.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the journal entries. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the journal entries.
@@ -198,6 +200,7 @@ public class PSTBean implements Serializable
 	throws
 		IOException,
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -232,6 +235,7 @@ public class PSTBean implements Serializable
 	*	@param	folder	The folder from which to harvest the sticky notes.
 	*	@param	pst	The pst file from which to read the sticky notes data.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the sticky notes.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the sticky notes. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the sticky notes.
@@ -247,6 +251,7 @@ public class PSTBean implements Serializable
 	throws
 		IOException,
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -333,6 +338,9 @@ public class PSTBean implements Serializable
 			e.printStackTrace(System.out);
 			return "ProcessingProblem";
 		} catch (CRCMismatchException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (DataOverflowException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
 		} catch (NotHeapNodeException e) {
@@ -490,6 +498,7 @@ public class PSTBean implements Serializable
 
 	/**	Get the required information from a PST file
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
@@ -504,6 +513,7 @@ public class PSTBean implements Serializable
 	private void processPST()
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -584,6 +594,9 @@ public class PSTBean implements Serializable
 					e.printStackTrace(System.out);
 					return "ProcessingProblem";
 				} catch (CRCMismatchException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (DataOverflowException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
 				} catch (final IncorrectNameIDStreamContentException e) {

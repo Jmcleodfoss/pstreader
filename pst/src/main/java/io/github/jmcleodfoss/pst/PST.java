@@ -18,6 +18,7 @@ public class PST extends PSTFile
 	/**	Create a "large footprint" PST object from the given filename.
 	*	@param	fn		The file name of the PST file to read.
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
@@ -36,6 +37,7 @@ public class PST extends PSTFile
 	public PST(final String fn)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		IncorrectNameIDStreamContentException,
 		NameIDStreamNotFoundException,
 		NotHeapNodeException,
@@ -60,6 +62,7 @@ public class PST extends PSTFile
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
@@ -78,6 +81,7 @@ public class PST extends PSTFile
 	public PST(final String fn, boolean fSmallFootprint)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		IncorrectNameIDStreamContentException,
 		NameIDStreamNotFoundException,
 		NotHeapNodeException,
@@ -102,6 +106,7 @@ public class PST extends PSTFile
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	NotHeapNodeException			An invalid or corrupt heap node was found.
@@ -119,6 +124,7 @@ public class PST extends PSTFile
 	public PST(final java.io.FileInputStream fis, boolean fSmallFootprint)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		IncorrectNameIDStreamContentException,
 		NameIDStreamNotFoundException,
 		NotHeapNodeException,
@@ -392,6 +398,7 @@ public class PST extends PSTFile
 		try {
 			return new TableContext(node, hon, blockBTree, this);
 		} catch (final CRCMismatchException e) {
+		} catch (final DataOverflowException e) {
 		} catch (final NotTableContextNodeException e) {
 		} catch (final UnimplementedPropertyTypeException e) {
 		} catch (final UnknownClientSignatureException e) {
@@ -418,6 +425,7 @@ public class PST extends PSTFile
 		try {
 			return new TableContext(node, blockBTree, this);
 		} catch (final CRCMismatchException e) {
+		} catch (final DataOverflowException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final NotTableContextNodeException e) {
 		} catch (final UnimplementedPropertyTypeException e) {

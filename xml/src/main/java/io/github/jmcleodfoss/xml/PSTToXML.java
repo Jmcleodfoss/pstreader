@@ -22,6 +22,7 @@ class PSTToXML
 	/**	Create a PST to XML translator for the given PST file
 	*	@param	fn	The filename of the PST file to translate.
 	*	@throws	io.github.jmcleodfoss.pst.CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws	io.github.jmcleodfoss.pst.DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	io.github.jmcleodfoss.pst.NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
@@ -39,6 +40,7 @@ class PSTToXML
 	public PSTToXML(String fn)
 	throws
 		io.github.jmcleodfoss.pst.CRCMismatchException,
+		io.github.jmcleodfoss.pst.DataOverflowException,
 		io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException,
 		io.github.jmcleodfoss.pst.NameIDStreamNotFoundException,
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
@@ -75,6 +77,7 @@ class PSTToXML
 	*	@param	folder	The folder being added.
 	*	@param	pst	The PST object from which the XML document is being constructed.
 	*	@throws	io.github.jmcleodfoss.pst.CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws	io.github.jmcleodfoss.pst.DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	io.github.jmcleodfoss.pst.NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
@@ -92,6 +95,7 @@ class PSTToXML
 	private void addFolderContents(io.github.jmcleodfoss.util.XMLOutput xml, io.github.jmcleodfoss.pst.Folder folder, io.github.jmcleodfoss.pst.PST pst)
 	throws
 		io.github.jmcleodfoss.pst.CRCMismatchException,
+		io.github.jmcleodfoss.pst.DataOverflowException,
 		io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException,
 		io.github.jmcleodfoss.pst.NameIDStreamNotFoundException,
 		io.github.jmcleodfoss.pst.NotHeapNodeException,
@@ -204,6 +208,7 @@ class PSTToXML
 	/**	Output the XML for this object to the given printstream
 	*	@param	printstream	The printstream to which the XML file should be written as it is built.
 	*	@throws	io.github.jmcleodfoss.pst.CRCMismatchException			The header's calculated CRC does not match the expected value.
+	*	@throws	io.github.jmcleodfoss.pst.DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	io.github.jmcleodfoss.pst.NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*	@throws	io.github.jmcleodfoss.pst.NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
@@ -221,6 +226,7 @@ class PSTToXML
 	void createXML(java.io.PrintStream printstream)
 	throws
 		io.github.jmcleodfoss.pst.CRCMismatchException,
+		io.github.jmcleodfoss.pst.DataOverflowException,
 		io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException,
 		io.github.jmcleodfoss.pst.NameIDStreamNotFoundException,
 		io.github.jmcleodfoss.pst.NotHeapNodeException,

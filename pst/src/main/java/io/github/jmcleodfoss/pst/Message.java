@@ -57,6 +57,7 @@ public class Message extends MessageObjectWithBody
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws	NotHeapNodeException	A node which is not a heap node was found while building the message.
 	* 	@throws	NotPropertyContextNodeException	A node which was not a property context was found when a property context was expected.
 	* 	@throws	NotTableContextNodeException	A node which was not a table context was found when a table context was expected.
@@ -71,6 +72,7 @@ public class Message extends MessageObjectWithBody
 	Message(final TableContext contentsTable, final int messageRow, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
@@ -153,6 +155,7 @@ public class Message extends MessageObjectWithBody
 	*	@param	pst		The PST file
 	*	@return	The message object property context, required as a parameter for other functions in the class.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the message.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -164,6 +167,7 @@ public class Message extends MessageObjectWithBody
 	public PropertyContext getMessage(final PST pst)
 	throws
 		CRCMismatchException,
+		DataOverflowException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
