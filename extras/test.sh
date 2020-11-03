@@ -18,8 +18,7 @@ declare version=1.1.2-SNAPSHOT
 
 # Jar files
 
-if [ $OS = "Windows_NT" ]; then
-#if [ $OSTYPE != "cygwin" ]; then
+if [ "$OS" = "Windows_NT" ]; then
 	declare pst_jar=pst\\target\\pst-$version.jar
 	declare xml_jar=xml\\target\\xml-$version.jar
 	declare util_jar=util\\target\\util-$version.jar
@@ -56,10 +55,10 @@ TestModule() {
 	echo "
 $(date +%H:%M:%S): starting $class test" >> $stats
 	echo "java $options -cp $cp $class $@ > $output"
-	if [ -z $options ]; then
-		java -cp "$cp" $class "$@" > "$output"
+	if [ -z "$options" ]; then
+		java -cp "$cp" "$class" "$@" > "$output"
 	else
-		java "$options" -cp "$cp" $class "$@" > "$output"
+		java "$options" -cp "$cp" "$class" "$@" > "$output"
 	fi
 	echo "$(date +%H:%M:%S): done $class test" >> $stats
 }
@@ -74,7 +73,7 @@ TestPSTIndependentModule() {
 	echo "
 $(date +%H:%M:%S): starting $class test" >> $stats
 	echo "java $options -cp $cp $class $@ > $output"
-	if [ -z $options ]; then
+	if [ -z "$options" ]; then
 		java -cp "$cp" "$class" "$@" > "$output"
 	else
 		java "$options" -cp "$cp" "$class" "$@" > "$output"
@@ -121,37 +120,37 @@ TestPSTFile() {
 	TestModule $pst_jar io/github/jmcleodfoss/pst/XBlock "$pst"
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" contact
-	if [ $xsltproc_found ]; then
+	if [ "$xsltproc_found" ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-contacts.xml"
 		xsltproc xslt/pst_contacts_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-contacts.xml" > "$output_dir/contacts.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" appointment
-	if [ $xsltproc_found ]; then
+	if [ "$xsltproc_found" ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-meetings.xml"
 		xsltproc xslt/pst_meetings_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-meetings.xml" > "$output_dir/meetings.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" note
-	if [ $xsltproc_found ]; then
+	if [ "$xsltproc_found" ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-note.xml"
 		xsltproc xslt/pst_notes_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-note.xml" > "$output_dir/note.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" stickynote
-	if [ $xsltproc_found ]; then
+	if [ "$xsltproc_found" ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-stickynotes.xml"
 		xsltproc xslt/pst_stickynotes_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-stickynotes.xml" > "$output_dir/stickynotes.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTIPFFolderTypeToXML "$pst" task
-	if [ $xsltproc_found ]; then
+	if [ "$xsltproc_found" ]; then
 		mv "$output_dir/PSTIPFFolderTypeToXML.out" "$output_dir/PSTIPFFolderTypeToXML-task.xml"
 		xsltproc xslt/pst_tasks_to_html.xml "$output_dir/PSTIPFFolderTypeToXML-task.xml" > "$output_dir/task.html"
 	fi
 
 	TestModule "$xml_jar$dir_delim$pst_jar$dir_delim$util_jar" io/github/jmcleodfoss/xml/PSTToXML "$pst"
-	if [ $xsltproc_found ]; then
+	if [ "$xsltproc_found" ]; then
 		mv "$output_dir/PSTToXML.out" "$output_dir/PSTToXML.xml"
 		xsltproc xslt/psttohtml.xml "$output_dir/PSTToXML.xml" > "$output_dir/pst.html"
 	fi
