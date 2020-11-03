@@ -33,6 +33,7 @@ public class LocaleBean implements Serializable {
 	*	@param	fn	The filename to create a localized version of.
 	*	@return	The most specific localized version of the given filename, if present, otherwise the file named by the filename.
 	*/
+	@SuppressWarnings("PMD.NPathComplexity")
 	public static String getLocalizedFilename(final String fn)
 	{
 		final Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
