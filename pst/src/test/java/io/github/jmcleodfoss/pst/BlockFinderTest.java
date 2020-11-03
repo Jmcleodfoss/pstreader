@@ -45,6 +45,7 @@ public class BlockFinderTest extends TestFrame
 				final BBTEntry findEntry = bf.find(treeEntry.bref.bid);
 				Assert.assertEquals(treeEntry.key(), findEntry.key());
 			}
+			pstFile.close();
 		} catch (IOException e) {
 			if (e.toString().equals("java.io.IOException: Cannot allocate memory")) {
 				throw new InsufficientMemoryException(e);

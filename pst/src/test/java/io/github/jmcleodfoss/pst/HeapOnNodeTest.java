@@ -35,23 +35,27 @@ public class HeapOnNodeTest extends TestFrame
 	{
 		try {
 			PSTFile pstFile = new PSTFile(new FileInputStream(file));
-			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+			try {
+				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-			java.util.Iterator iterator = nbt.iterator();
-			while (iterator.hasNext()) {
-				final NBTEntry node = (NBTEntry)iterator.next();
-				if (!node.nid.isHeapOnNodeNID())
-					continue;
+				java.util.Iterator iterator = nbt.iterator();
+				while (iterator.hasNext()) {
+					final NBTEntry node = (NBTEntry)iterator.next();
+					if (!node.nid.isHeapOnNodeNID())
+						continue;
 
-				final BBTEntry dataBlock = bbt.find(node.bidData);
-				if (dataBlock != null) {
-					try {
-						new HeapOnNode(dataBlock, bbt, pstFile);
-					} catch (NotHeapNodeException e) {
-					} catch (UnknownClientSignatureException e) {
+					final BBTEntry dataBlock = bbt.find(node.bidData);
+					if (dataBlock != null) {
+						try {
+							new HeapOnNode(dataBlock, bbt, pstFile);
+						} catch (NotHeapNodeException e) {
+						} catch (UnknownClientSignatureException e) {
+						}
 					}
 				}
+			} finally {
+				pstFile.close();
 			}
 		} catch (IOException e) {
 			if (e.toString().equals("java.io.IOException: Cannot allocate memory")) {

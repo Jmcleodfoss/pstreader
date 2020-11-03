@@ -56,5 +56,6 @@ public class BTreeOnHeapTest extends TestFrame
 				}
 			}
 		}
+		pstFile.close();
 	}
 }

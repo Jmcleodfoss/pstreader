@@ -131,8 +131,8 @@ class NodeBTree extends PagedBTree implements NodeMap
 			System.out.println(a);
 			try {
 				java.io.FileInputStream stream = new java.io.FileInputStream(a);
+				final PSTFile pstFile = new PSTFile(stream);
 				try {
-					final PSTFile pstFile = new PSTFile(stream);
 					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
 					System.out.println("Node B-tree\n___________");
@@ -141,21 +141,21 @@ class NodeBTree extends PagedBTree implements NodeMap
 						final NBTEntry entry = (NBTEntry)iterator.next();
 						System.out.println(entry);
 					}
-				} catch (final CRCMismatchException e) {
-					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-				} catch (final NotPSTFileException e) {
-					System.out.printf("File %s is not a pst file%n", a);
-				} catch (final java.io.IOException e) {
-					e.printStackTrace(System.out);
 				} finally {
 					try {
-						stream.close();
-					} catch (java.io.IOException e) {
-						System.out.printf("Could not close file %s%n", a);
+						pstFile.close();
+					} catch (final java.io.IOException e) {
+						System.out.printf("There was a problem closing file %s%n", a);
 					}
 				}
+			} catch (final CRCMismatchException e) {
+				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
+			} catch (final NotPSTFileException e) {
+				System.out.printf("File %s is not a pst file%n", a);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
+			} catch (final java.io.IOException e) {
+				e.printStackTrace(System.out);
 			}
 		}
 	}

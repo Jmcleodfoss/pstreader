@@ -91,10 +91,15 @@ public class HeaderTest extends TestFrame
 	{
 		try {
 			FileInputStream stream = new FileInputStream(file);
-			FileChannel fc = stream.getChannel();
-			MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
-			mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
-			new Header(mbb);
+			try {
+				FileChannel fc = stream.getChannel();
+				MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+				new Header(mbb);
+				fc.close();
+			} finally {
+				stream.close();
+			}
 		} catch (IOException e) {
 			if (e.toString().equals("java.io.IOException: Cannot allocate memory")) {
 				throw new InsufficientMemoryException(e);

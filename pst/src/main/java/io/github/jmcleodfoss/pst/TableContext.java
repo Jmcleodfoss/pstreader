@@ -698,48 +698,56 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			try {
 				java.io.FileInputStream stream = new java.io.FileInputStream(a);
 				final PSTFile pstFile = new PSTFile(stream);
-				final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-				final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
+				try {
+					final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+					final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 
-				final OutputSeparator separator = new OutputSeparator();
-				java.util.Iterator<BTreeNode> iterator = nbt.iterator();
-				while (iterator.hasNext()) {
-					final NBTEntry nodeDescr = (NBTEntry)iterator.next();
-					if (nodeDescr.nid.type == NID.INTERNAL)
-						continue;
-					final BBTEntry dataBlock = bbt.find(nodeDescr.bidData);
-						if (dataBlock != null) {
-						try {
-							final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
-							if (!hon.containsData())
-								continue;
-							if (hon.clientSignature().equals(ClientSignature.TableContext)) {
-								separator.emit(System.out);
-								final TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
-								System.out.printf("Node %s%nTableContext%n------------%n%s%n", nodeDescr.toString(), tc.toString());
-								if (tc.isEmpty())
+					final OutputSeparator separator = new OutputSeparator();
+					java.util.Iterator<BTreeNode> iterator = nbt.iterator();
+					while (iterator.hasNext()) {
+						final NBTEntry nodeDescr = (NBTEntry)iterator.next();
+						if (nodeDescr.nid.type == NID.INTERNAL)
+							continue;
+						final BBTEntry dataBlock = bbt.find(nodeDescr.bidData);
+							if (dataBlock != null) {
+							try {
+								final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
+								if (!hon.containsData())
 									continue;
-								tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
+								if (hon.clientSignature().equals(ClientSignature.TableContext)) {
+									separator.emit(System.out);
+									final TableContext tc = new TableContext(nodeDescr, hon, bbt, pstFile);
+									System.out.printf("Node %s%nTableContext%n------------%n%s%n", nodeDescr.toString(), tc.toString());
+									if (tc.isEmpty())
+										continue;
+									tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
+								}
+							} catch (final DataOverflowException e) {
+								e.printStackTrace(System.out);
+							} catch (final NotHeapNodeException e) {
+								e.printStackTrace(System.out);
+							} catch (final NotTableContextNodeException e) {
+								e.printStackTrace(System.out);
+							} catch (final UnimplementedPropertyTypeException e) {
+								System.out.printf(nodeDescr + "\n\t" + e.toString());
+								e.printStackTrace(System.out);
+							} catch (final UnknownClientSignatureException e) {
+								System.out.printf(nodeDescr + "\n\t" + e.toString());
+								e.printStackTrace(System.out);
+							} catch (final UnknownPropertyTypeException e) {
+								System.out.printf(nodeDescr + "\n\t" + e.toString());
+								e.printStackTrace(System.out);
+							} catch (final UnparseableTableContextException e) {
+								System.out.printf(nodeDescr + "\n]t" + e.toString());
+								e.printStackTrace(System.out);
 							}
-						} catch (final DataOverflowException e) {
-							e.printStackTrace(System.out);
-						} catch (final NotHeapNodeException e) {
-							e.printStackTrace(System.out);
-						} catch (final NotTableContextNodeException e) {
-							e.printStackTrace(System.out);
-						} catch (final UnimplementedPropertyTypeException e) {
-							System.out.printf(nodeDescr + "\n\t" + e.toString());
-							e.printStackTrace(System.out);
-						} catch (final UnknownClientSignatureException e) {
-							System.out.printf(nodeDescr + "\n\t" + e.toString());
-							e.printStackTrace(System.out);
-						} catch (final UnknownPropertyTypeException e) {
-							System.out.printf(nodeDescr + "\n\t" + e.toString());
-							e.printStackTrace(System.out);
-						} catch (final UnparseableTableContextException e) {
-							System.out.printf(nodeDescr + "\n]t" + e.toString());
-							e.printStackTrace(System.out);
 						}
+					}
+				} finally {
+					try {
+						pstFile.close();
+					} catch (final java.io.IOException e) {
+						System.out.printf("There was a problem closing file %s%n", a);
 					}
 				}
 			} catch (final java.io.FileNotFoundException e) {

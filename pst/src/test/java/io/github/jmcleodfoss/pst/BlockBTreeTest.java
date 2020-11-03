@@ -36,6 +36,7 @@ public class BlockBTreeTest extends TestFrame
 		try {
 			PSTFile pstFile = new PSTFile(new FileInputStream(file));
 			new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
+			pstFile.close();
 		} catch (IOException e) {
 			if (e.toString().equals("java.io.IOException: Cannot allocate memory")) {
 				throw new InsufficientMemoryException(e);

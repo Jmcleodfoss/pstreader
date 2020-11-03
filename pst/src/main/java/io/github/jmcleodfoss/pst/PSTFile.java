@@ -1,8 +1,13 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The PSTFile class is a convenience container class used to read later data from the file. */
+/**	The PSTFile class is a convenience container class used to read later data from the file.
+*	This object manages (and handles closing) the passed FileInputStream, although it is benign to close FileInputStreams twice.
+*/
 public class PSTFile
 {
+	/**	The FileInputStream for the file */
+	private java.io.FileInputStream stream;
+
 	/**	The FileChannel of the data stream, used to jump around the file. */
 	private java.nio.channels.FileChannel fc;
 
@@ -24,12 +29,25 @@ public class PSTFile
 		NotPSTFileException,
 		java.io.IOException
 	{
+		this.stream = stream;
 		fc = stream.getChannel();
 
-		mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
-		mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+		try {
+			fc = stream.getChannel();
 
-		header = new Header(mbb);
+			try {
+				mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
+				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+
+				header = new Header(mbb);
+			} catch (final Exception e) {
+				fc.close();
+				throw e;
+			}
+		} catch (final Exception e) {
+			stream.close();
+			throw e;
+		}
 	}
 
 	/**	Provide the name of String encoding.
@@ -47,7 +65,11 @@ public class PSTFile
 	throws
 		java.io.IOException
 	{
-		fc.close();
+		try {
+			fc.close();
+		} finally {
+			stream.close();
+		}
 	}
 
 	/**	A convenience method to return the encryption method in the header.
