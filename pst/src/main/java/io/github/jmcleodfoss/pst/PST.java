@@ -1,6 +1,8 @@
 package io.github.jmcleodfoss.pst;
 
-/**	The PST class is a convenience collection of entities describing a PST file. */
+/**	The PST class is a convenience collection of entities describing a PST file.
+*	This object manages (and handles closing), via superclass PSTFile, the passed FileInputStream, although it is benign to close FileInputStreams twice.
+*/
 public class PST extends PSTFile
 {
 	/**	The block B-tree in this PST file. */
