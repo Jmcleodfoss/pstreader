@@ -43,7 +43,7 @@
 			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>3.2.1</version>
+			<version>3.2.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
