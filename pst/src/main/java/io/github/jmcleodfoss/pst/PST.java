@@ -141,17 +141,22 @@ public class PST extends PSTFile
 	{
 		super(fis);
 
-		blockBTree = fSmallFootprint ? new BlockFinder((PSTFile)this) : new BlockBTree(0, header.bbtRoot, (PSTFile)this);
-		nodeBTree = fSmallFootprint ? new NodeFinder((PSTFile)this) : new NodeBTree(0, header.nbtRoot, (PSTFile)this);
+		try {
+			blockBTree = fSmallFootprint ? new BlockFinder((PSTFile)this) : new BlockBTree(0, header.bbtRoot, (PSTFile)this);
+			nodeBTree = fSmallFootprint ? new NodeFinder((PSTFile)this) : new NodeBTree(0, header.nbtRoot, (PSTFile)this);
 
-		namedProperties = new NameToIDMap(blockBTree, nodeBTree, this);
+			namedProperties = new NameToIDMap(blockBTree, nodeBTree, this);
 
-		Appointment.initConstants(namedProperties, unicode());
-		Contact.initConstants(namedProperties, unicode());
-		DistributionList.initConstants(namedProperties, unicode());
-		Task.initConstants(namedProperties);
+			Appointment.initConstants(namedProperties, unicode());
+			Contact.initConstants(namedProperties, unicode());
+			DistributionList.initConstants(namedProperties, unicode());
+			Task.initConstants(namedProperties);
 
-		messageStore = new MessageStore(blockBTree, nodeBTree, this);
+			messageStore = new MessageStore(blockBTree, nodeBTree, this);
+		} catch (final Exception e) {
+			close();
+			throw e;
+		}
 	}
 
 	/**	Check whether the given password matches the stored password.
