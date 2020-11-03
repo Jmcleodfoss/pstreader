@@ -19,6 +19,7 @@ declare version=1.1.2-SNAPSHOT
 # Jar files
 
 if [ $OS = "Windows_NT" ]; then
+#if [ $OSTYPE != "cygwin" ]; then
 	declare pst_jar=pst\\target\\pst-$version.jar
 	declare xml_jar=xml\\target\\xml-$version.jar
 	declare util_jar=util\\target\\util-$version.jar
@@ -55,7 +56,11 @@ TestModule() {
 	echo "
 $(date +%H:%M:%S): starting $class test" >> $stats
 	echo "java $options -cp $cp $class $@ > $output"
-	java "$options" -cp "$cp" $class "$@" > "$output"
+	if [ -z $options ]; then
+		java -cp "$cp" $class "$@" > "$output"
+	else
+		java "$options" -cp "$cp" $class "$@" > "$output"
+	fi
 	echo "$(date +%H:%M:%S): done $class test" >> $stats
 }
 
@@ -69,7 +74,11 @@ TestPSTIndependentModule() {
 	echo "
 $(date +%H:%M:%S): starting $class test" >> $stats
 	echo "java $options -cp $cp $class $@ > $output"
-	java "$options" -cp "$cp" $class "$@" > "$output"
+	if [ -z $options ]; then
+		java -cp "$cp" "$class" "$@" > "$output"
+	else
+		java "$options" -cp "$cp" "$class" "$@" > "$output"
+	fi
 	echo "$(date +%H:%M:%S): done $class test" >> $stats
 }
 
@@ -83,7 +92,7 @@ TestPSTFile() {
 
 	# These were necessary on the Mac but don't seem to be on the Win laptop.
 	#options="-Xmx2g -Xms2g"
-	options=""
+	options=
 
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Appointment "$pst"
 	TestModule $pst_jar io/github/jmcleodfoss/pst/Attachment "$pst"
