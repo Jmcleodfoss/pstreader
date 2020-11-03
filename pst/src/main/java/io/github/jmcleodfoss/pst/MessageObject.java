@@ -198,6 +198,7 @@ public class MessageObject
 			try {
 				final PST pst = new PST(a);
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
+				pst.close();
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {

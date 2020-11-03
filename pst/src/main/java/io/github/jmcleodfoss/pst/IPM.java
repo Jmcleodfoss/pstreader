@@ -344,6 +344,7 @@ class IPM
 				final PST pst = new PST(a);
 				System.out.printf(fmtOutput, "Subject", "Container Class", "Known Container Class?");
 				showFolderMessageClasses(pst.messageStore.rootFolder, pst, fmtOutput);
+				pst.close();
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {

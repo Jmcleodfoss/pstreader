@@ -237,6 +237,7 @@ public class IPF
 					final Folder f = folderIterator.next();
 					System.out.printf(fmtOutput, f.displayName, f.containerClass, isKnownClass(f));
 				}
+				pst.close();
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {

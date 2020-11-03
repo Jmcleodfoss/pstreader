@@ -156,6 +156,7 @@ class FileFormat
 			try {
 				final PST pst = new PST(a);
 				System.out.printf("%s: %s%n", a, pst.header.fileFormat.toString());
+				pst.close();
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {
