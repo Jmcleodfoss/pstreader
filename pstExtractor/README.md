@@ -109,13 +109,3 @@ There is a newer version of this library, but there is no newer version of Tomah
 *   [CVE-2014-8122](https://www.cvedetails.com/cve/CVE-2014-8122/), CVSS score 4.3 (Obtain information)
 
 This is the latest version of this library as of 2020-11-02
-
-### glassfish.org javax.faces released 2018-03-29 (direct dependency)
-*   [CVE-2000-1235](https://www.cvedetails.com/cve/CVE-2000-1235/), CVSS score 5.0 (Information disclosure)
-*   [CVE-2000-1236](https://www.cvedetails.com/cve/CVE-2000-1236/), CVSS score 7.5 (Execute code, Sql Injection)
-*   [CVE-2002-0656](https://www.cvedetails.com/cve/CVE-2002-0656/), CVSS score 7.5 (Execute code, overflow)
-*   [CVE-2002-0659](https://www.cvedetails.com/cve/CVE-2002-0659/), CVSS score 5.0 (Denial of service)
-*   [CVE-2002-1635](https://www.cvedetails.com/cve/CVE-2002-1635/), CVSS score 5.0 (Information disclosure)
-*   [CVE-2002-1637](https://www.cvedetails.com/cve/CVE-2002-1637/), CVSS score 4.6 (Gain privilege)
-
-This is the latest version of this library as of 2020-11-02
