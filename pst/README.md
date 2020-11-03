@@ -29,6 +29,7 @@ It really helps to understand the structure of the PST file as described in the 
             // handle message folders
         }
     }
+    pst.close();
 ```
 For some more concrete examples, see [explorer](../explorer/README.md), a Swing application and [pstExtractor](../pstExtractor/README.md), a JSF-based web application.
 
