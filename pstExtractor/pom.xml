@@ -54,6 +54,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<!-- Pull in the latest version of this library to resolve CVEs in version 1.2.1 -->
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
 			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
