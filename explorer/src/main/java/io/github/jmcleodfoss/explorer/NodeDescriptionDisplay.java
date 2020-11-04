@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 
 import io.github.jmcleodfoss.pst.Attachment;
+import io.github.jmcleodfoss.pst.BadXBlockLevelException;
+import io.github.jmcleodfoss.pst.BadXBlockTypeException;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.LPTLeaf;
 import io.github.jmcleodfoss.pst.PropertyContext;
@@ -62,6 +64,10 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 				// attachment and pc were set in initialFilenameSuggestion, called before data is retrieved
 				try {
 					return attachment.data(pc);
+				} catch (final BadXBlockLevelException e) {
+					return null;
+				} catch (final BadXBlockTypeException e) {
+					return null;
 				} catch (CRCMismatchException e) {
 					return null;
 				}

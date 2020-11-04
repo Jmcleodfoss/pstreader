@@ -74,11 +74,15 @@ class XBlock extends BlockBase
 	*	@param	entry	The block B-tree entry describing the root of this XBLOCK/XXBLOCK tree structure.
 	*	@param	bbt	The PST file's block B-tree (required to find the child blocks).
 	*	@param	pstFile	The PST file's input stream, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O exception was encountered when reading the XBLOCK / XXBLOCK data.
 	*/
 	XBlock(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		java.io.IOException
 	{
@@ -89,11 +93,11 @@ class XBlock extends BlockBase
 
 		final byte type = (Byte)dc.get(nm_btype);
 		if (type != 0x01)
-			throw new RuntimeException("Block " + entry + " is not an XBlock/XXBlock, type " + Integer.toHexString(type));
+			throw new BadXBlockTypeException(type);
 
 		final byte level = (Byte)dc.get(nm_cLevel);
 		if (level != 1 & level != 2)
-			throw new RuntimeException("XBlock/XXBlock level must be 1 or 2, found " + level);
+			throw new BadXBlockLevelException(level);
 
 		final int numEntries = (Short)dc.get(nm_cEnt);
 
@@ -190,11 +194,15 @@ class XBlock extends BlockBase
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The underlying PST file's data stream, header, etc.
 	*	@return	A vector of XBlock objects.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XXBlocks.
 	*/
 	static java.util.Vector<XBlock> readXXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		java.io.IOException
 	{
@@ -255,8 +263,16 @@ class XBlock extends BlockBase
 								System.out.printf("Block for node %s is null%n", node.toString());
 								continue;
 							}
-							final XBlock xblock = new XBlock(block, bbt, pstFile);
-							System.out.println(xblock);
+							try {
+								final XBlock xblock = new XBlock(block, bbt, pstFile);
+								System.out.println(xblock);
+							} catch (final BadXBlockLevelException e) {
+								System.out.println(e);
+								e.printStackTrace(System.out);
+							} catch (final BadXBlockTypeException e) {
+								System.out.println(e);
+								e.printStackTrace(System.out);
+							}
 						}
 					}
 				} finally {

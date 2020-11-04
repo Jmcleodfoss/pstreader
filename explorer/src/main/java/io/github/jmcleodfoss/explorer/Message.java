@@ -4,6 +4,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import io.github.jmcleodfoss.pst.BadXBlockLevelException;
+import io.github.jmcleodfoss.pst.BadXBlockTypeException;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.MessageObject;
 import io.github.jmcleodfoss.pst.MessageObjectWithBody;
@@ -80,6 +82,10 @@ class Message extends NodeContentsDisplay
 			} else {
 			remove(header);
 			}
+		} catch (final BadXBlockLevelException e) {
+			remove(header);
+		} catch (final BadXBlockTypeException e) {
+			remove(header);
 		} catch (CRCMismatchException e) {
 			remove(header);
 		}
@@ -93,6 +99,10 @@ class Message extends NodeContentsDisplay
 			} else {
 				remove(spBodyText);
 			}
+		} catch (final BadXBlockLevelException e) {
+			remove(spBodyText);
+		} catch (final BadXBlockTypeException e) {
+			remove(spBodyText);
 		} catch (CRCMismatchException e) {
 			remove(spBodyText);
 		}
@@ -106,6 +116,10 @@ class Message extends NodeContentsDisplay
 			} else {
 				remove(spBodyHtml);
 			}
+		} catch (final BadXBlockLevelException e) {
+			remove(spBodyHtml);
+		} catch (final BadXBlockTypeException e) {
+			remove(spBodyHtml);
 		} catch (CRCMismatchException e) {
 			remove(spBodyHtml);
 		}

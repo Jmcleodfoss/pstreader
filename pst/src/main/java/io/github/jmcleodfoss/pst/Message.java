@@ -56,6 +56,8 @@ public class Message extends MessageObjectWithBody
 	*	@param	bbt		The PST file's block B-Tree
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws	NotHeapNodeException	A node which is not a heap node was found while building the message.
@@ -71,6 +73,8 @@ public class Message extends MessageObjectWithBody
 	*/
 	Message(final TableContext contentsTable, final int messageRow, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -154,6 +158,8 @@ public class Message extends MessageObjectWithBody
 	/**	Retrieve the message object property context.
 	*	@param	pst		The PST file
 	*	@return	The message object property context, required as a parameter for other functions in the class.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
@@ -166,6 +172,8 @@ public class Message extends MessageObjectWithBody
 	@Override
 	public PropertyContext getMessage(final PST pst)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -226,6 +234,8 @@ public class Message extends MessageObjectWithBody
 	/**	Extract the Message Transport Headers from the message PC.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a string.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#body
 	*	@see	MessageObjectWithBody#bodyHtml
@@ -234,6 +244,8 @@ public class Message extends MessageObjectWithBody
 	*/
 	public String transportHeaders(final PropertyContext pc)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 		return (String)pc.get(PropertyTags.TransportMessageHeaders);

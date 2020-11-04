@@ -19,6 +19,8 @@ public class PST extends PSTFile
 
 	/**	Create a "large footprint" PST object from the given filename.
 	*	@param	fn		The file name of the PST file to read.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
@@ -37,6 +39,8 @@ public class PST extends PSTFile
 	*/
 	public PST(final String fn)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		IncorrectNameIDStreamContentException,
@@ -62,6 +66,8 @@ public class PST extends PSTFile
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
@@ -80,6 +86,8 @@ public class PST extends PSTFile
 	*/
 	public PST(final String fn, boolean fSmallFootprint)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		IncorrectNameIDStreamContentException,
@@ -105,6 +113,8 @@ public class PST extends PSTFile
 	*				{@link NodeFinder} objects, respectively, and the underlying PST file is re-read each time a
 	*				node or blocksearch takes place. If it is false, the block and node B-trees are read in all-at-
 	*				once in the constructore and held in {@link BlockBTree} and {@link NodeBTree} objects, respectively.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws	CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
@@ -123,6 +133,8 @@ public class PST extends PSTFile
 	*/
 	public PST(final java.io.FileInputStream fis, boolean fSmallFootprint)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		IncorrectNameIDStreamContentException,
@@ -212,6 +224,8 @@ public class PST extends PSTFile
 	{
 		try {
 			return HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
+		} catch (final BadXBlockLevelException e) {
+		} catch (final BadXBlockTypeException e) {
 		} catch (final java.io.IOException e) {
 		} catch (final CRCMismatchException e) {
 		} catch (final NotHeapNodeException e) {
@@ -272,6 +286,8 @@ public class PST extends PSTFile
 	/**	Convenience function to obtain the property context from the given NID
 	*	@param	nid	The node ID to retrieve the property context iterator from.
 	*	@return	An iterator through the properties in the property context for the node identified by nid.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
 	* 	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
@@ -285,6 +301,8 @@ public class PST extends PSTFile
 	*/
 	public java.util.Iterator<java.util.Map.Entry<Integer, Object>> pcPropertyIterator(final int nid)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
@@ -321,6 +339,8 @@ public class PST extends PSTFile
 	{
 		try {
 			return new PropertyContext(node, blockBTree, this);
+		} catch (final BadXBlockLevelException e) {
+		} catch (final BadXBlockTypeException e) {
 		} catch (final CRCMismatchException e) {
 		} catch (final NotHeapNodeException e) {
 		} catch (final NotPropertyContextNodeException e) {
@@ -402,6 +422,8 @@ public class PST extends PSTFile
 	{
 		try {
 			return new TableContext(node, hon, blockBTree, this);
+		} catch (final BadXBlockLevelException e) {
+		} catch (final BadXBlockTypeException e) {
 		} catch (final CRCMismatchException e) {
 		} catch (final DataOverflowException e) {
 		} catch (final NotTableContextNodeException e) {
@@ -429,6 +451,8 @@ public class PST extends PSTFile
 	{
 		try {
 			return new TableContext(node, blockBTree, this);
+		} catch (final BadXBlockLevelException e) {
+		} catch (final BadXBlockTypeException e) {
 		} catch (final CRCMismatchException e) {
 		} catch (final DataOverflowException e) {
 		} catch (final NotHeapNodeException e) {

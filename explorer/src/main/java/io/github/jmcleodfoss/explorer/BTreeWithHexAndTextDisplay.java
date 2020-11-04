@@ -6,6 +6,8 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.BadXBlockLevelException;
+import io.github.jmcleodfoss.pst.BadXBlockTypeException;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
@@ -39,6 +41,10 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	{
 		try {
 			return node.rawData(explorer.pst().blockBTree, explorer.pst());
+		} catch (final BadXBlockLevelException e) {
+			return null;
+		} catch (final BadXBlockTypeException e) {
+			return null;
 		} catch (CRCMismatchException e) {
 			return null;
 		} catch (IOException e) {

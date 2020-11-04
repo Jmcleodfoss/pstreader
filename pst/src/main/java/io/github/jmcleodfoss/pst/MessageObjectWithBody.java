@@ -28,6 +28,8 @@ public class MessageObjectWithBody extends MessageObject
 	/**	Extract the message body from the message object property context.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body, as a string.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#bodyHtml
 	*	@see	#getMessage
@@ -35,6 +37,8 @@ public class MessageObjectWithBody extends MessageObject
 	*/
 	public String body(final PropertyContext pc)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 		return (String)pc.get(fUnicode ? PropertyTags.BodyW : PropertyTags.Body);
@@ -43,6 +47,8 @@ public class MessageObjectWithBody extends MessageObject
 	/**	Extract the HTML message body from the message object property context.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a string.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#body
 	*	@see	#getMessage
@@ -51,6 +57,8 @@ public class MessageObjectWithBody extends MessageObject
 	*/
 	public String bodyHtml(final PropertyContext pc)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 		if (fUnicode) {
@@ -70,6 +78,8 @@ public class MessageObjectWithBody extends MessageObject
 	/**	Extract the HTML message body as bytes from the message object property context.
 	*	@param	pc	The message object property context, as retrieved by getMessage.
 	*	@return	The message body in HTML, if present, as a byte array.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#body
 	*	@see	#getMessage
@@ -78,6 +88,8 @@ public class MessageObjectWithBody extends MessageObject
 	*/
 	public byte[] bodyHtmlBytes(final PropertyContext pc)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 

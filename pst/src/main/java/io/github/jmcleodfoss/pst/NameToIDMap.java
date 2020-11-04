@@ -192,6 +192,8 @@ public class NameToIDMap
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's input data stream, header, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
 	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
@@ -206,6 +208,8 @@ public class NameToIDMap
 	*/
 	public NameToIDMap(final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		IncorrectNameIDStreamContentException,
 		NameIDStreamNotFoundException,
@@ -251,11 +255,15 @@ public class NameToIDMap
 	*	@param	pc		The property context containing the named property list.
 	*	@param	propertyTag	The property ID to retrieve.
 	*	@return	The raw data saved for this property ID.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NameIDStreamNotFoundException	The requested Name ID mapping stream could not be found
 	*/
 	private byte[] getStream(final PropertyContext pc, final int propertyTag)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NameIDStreamNotFoundException
 	{
@@ -344,6 +352,12 @@ public class NameToIDMap
 
 					for (Object key : keyArray)
 						System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
+				} catch (final BadXBlockLevelException e) {
+					System.out.println(e);
+					e.printStackTrace(System.out);
+				} catch (final BadXBlockTypeException e) {
+					System.out.println(e);
+					e.printStackTrace(System.out);
 				} catch (final IncorrectNameIDStreamContentException e) {
 					e.printStackTrace(System.out);
 				} catch (final NameIDStreamNotFoundException e) {

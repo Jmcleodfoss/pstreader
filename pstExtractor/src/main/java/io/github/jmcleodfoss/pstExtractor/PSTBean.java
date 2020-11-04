@@ -15,6 +15,8 @@ import javax.inject.Named;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import io.github.jmcleodfoss.pst.Appointment;
+import io.github.jmcleodfoss.pst.BadXBlockLevelException;
+import io.github.jmcleodfoss.pst.BadXBlockTypeException;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.DataOverflowException;
 import io.github.jmcleodfoss.pst.Contact;
@@ -183,6 +185,8 @@ public class PSTBean implements Serializable
 	/**	Add the journal entries in the current folder to the list of journal entries.
 	* 	@param	folder	The folder from which to harvest the journal entries.
 	* 	@param	pst	The pst file from which to read the journal entries' data.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the journal entries.
@@ -199,6 +203,8 @@ public class PSTBean implements Serializable
 	private void addJournalEntries(Folder folder, PST pst)
 	throws
 		IOException,
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -234,6 +240,8 @@ public class PSTBean implements Serializable
 	/**	Add the sticky notes in the current folder to the list of sticky notes.
 	*	@param	folder	The folder from which to harvest the sticky notes.
 	*	@param	pst	The pst file from which to read the sticky notes data.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the sticky notes.
@@ -250,6 +258,8 @@ public class PSTBean implements Serializable
 	private void addStickyNotes(Folder folder, PST pst)
 	throws
 		IOException,
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -337,6 +347,12 @@ public class PSTBean implements Serializable
 		} catch (IOException e) {
 			e.printStackTrace(System.out);
 			return "ProcessingProblem";
+		} catch (final BadXBlockLevelException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
+		} catch (final BadXBlockTypeException e) {
+			e.printStackTrace(System.out);
+			return "CorruptPST";
 		} catch (CRCMismatchException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
@@ -497,6 +513,8 @@ public class PSTBean implements Serializable
 	}
 
 	/**	Get the required information from a PST file
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found where a heap node was expected when reading the pst file.
@@ -512,6 +530,8 @@ public class PSTBean implements Serializable
 	*/
 	private void processPST()
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -593,6 +613,12 @@ public class PSTBean implements Serializable
 					// IO Exception creating or reading PST file
 					e.printStackTrace(System.out);
 					return "ProcessingProblem";
+				} catch (final BadXBlockLevelException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
+				} catch (final BadXBlockTypeException e) {
+					e.printStackTrace(System.out);
+					return "CorruptPST";
 				} catch (CRCMismatchException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";

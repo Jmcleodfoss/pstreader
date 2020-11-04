@@ -238,6 +238,12 @@ public class IPF
 					System.out.printf(fmtOutput, f.displayName, f.containerClass, isKnownClass(f));
 				}
 				pst.close();
+			} catch (final BadXBlockLevelException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+			} catch (final BadXBlockTypeException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {

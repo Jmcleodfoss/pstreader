@@ -313,6 +313,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	entry	The entry from the block B-tree from which to construct the heap-on-node.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file {@link Header}, data stream, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while bulding the heap.
 	* 	@throws	UnknownClientSignatureException	A node with an unrecognized client signature was found while building the heap.
@@ -320,6 +322,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*/
 	HeapOnNode(final BBTEntry entry, final BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		UnknownClientSignatureException,
@@ -455,6 +459,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
 	*	@return	The heap-on-node found at the given node ID.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	* 	@throws	NotHeapNodeException	A node which was not a heap node was found while building the heap.
 	* 	@throws	UnknownClientSignatureException	An unrecognized client signature was found while building the heap.
@@ -462,6 +468,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*/
 	static HeapOnNode makeHeapOnNode(NID nid, BlockMap bbt, NodeBTree nbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		UnknownClientSignatureException,
@@ -476,6 +484,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file's data stream, etc.
 	*	@return	The heap-on-node found at the given block ID.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException		A node which was not a heap node was found while trying to build the heap.
 	*	@throws UnknownClientSignatureException	An unknown client signature was found in one of the blocks in the heap.
@@ -483,6 +493,8 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*/
 	public static HeapOnNode makeHeapOnNode(BID bid, BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		UnknownClientSignatureException,
@@ -605,6 +617,12 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 
 								final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 								System.out.printf("HeapOnNode%n----------%n%s%n", hon);
+							} catch (final BadXBlockLevelException e) {
+								System.out.println(e);
+								e.printStackTrace(System.out);
+							} catch (final BadXBlockTypeException e) {
+								System.out.println(e);
+								e.printStackTrace(System.out);
 							} catch (final NotHeapNodeException e) {
 								e.printStackTrace(System.out);
 							} catch (final UnknownClientSignatureException e) {

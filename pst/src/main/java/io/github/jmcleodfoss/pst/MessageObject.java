@@ -55,6 +55,8 @@ public class MessageObject
 	*	@param	nbt		The PST file's node B-Tree
 	*	@param	pstFile		The PST file's header, input stream, etc.
 	*	@return	The message object found at the given row of the content table.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws	NotHeapNodeException			A node which was not a heap node was found while building the message object.
@@ -71,6 +73,8 @@ public class MessageObject
 	@SuppressWarnings("PMD.NPathComplexity")
 	static MessageObject factory(TableContext contentsTable, final int row, final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -113,6 +117,8 @@ public class MessageObject
 	/**	Retrieve the message object property context.
 	*	@param	pst	The PST file.
 	*	@return	The message object property context, required as a parameter for other functions in the class.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
@@ -131,6 +137,8 @@ public class MessageObject
 	*/
 	public PropertyContext getMessage(final PST pst)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -199,6 +207,12 @@ public class MessageObject
 				final PST pst = new PST(a);
 				printFolderObjects(pst.getFolderTree(), "/", Class.forName(clName));
 				pst.close();
+			} catch (final BadXBlockLevelException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+			} catch (final BadXBlockTypeException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {

@@ -3,6 +3,8 @@ package io.github.jmcleodfoss.explorer;
 import java.nio.ByteBuffer;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.BadXBlockLevelException;
+import io.github.jmcleodfoss.pst.BadXBlockTypeException;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
@@ -27,6 +29,10 @@ class BlockContentsDisplay extends HexAndTextDisplay implements BTreeContentsDis
 				return;
 			}
 			read(byteBuffer);
+		} catch (final BadXBlockLevelException e) {
+			reset();
+		} catch (final BadXBlockTypeException e) {
+			reset();
 		} catch (CRCMismatchException e) {
 			reset();
 		} catch (java.io.IOException e) {

@@ -33,11 +33,15 @@ public interface BTreeNode
 	*	@param	bbt	The PST file's block B-tree
 	*	@param	pstFile	The PST file's input data stream, header, etc.
 	*	@return	A ByteBuffer containing the data for this leaf node of a B-tree.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws java.io.IOException	The PST file could not be read.
 	*/
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		java.io.IOException;
 }

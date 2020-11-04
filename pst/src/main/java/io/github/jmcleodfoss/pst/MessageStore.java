@@ -21,6 +21,8 @@ public class MessageStore
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	nbt	The PST file's node B-tree.
 	*	@param	pstFile	The PST file input data stream, {@link Header header}, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found while creating the message store.
@@ -38,6 +40,8 @@ public class MessageStore
 	*/
 	public MessageStore(final BlockMap bbt, final NodeMap nbt, final PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,

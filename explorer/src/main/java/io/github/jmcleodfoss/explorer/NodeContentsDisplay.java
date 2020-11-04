@@ -6,6 +6,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import io.github.jmcleodfoss.pst.BTreeNode;
+import io.github.jmcleodfoss.pst.BadXBlockLevelException;
+import io.github.jmcleodfoss.pst.BadXBlockTypeException;
 import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.HeapOnNode;
 import io.github.jmcleodfoss.pst.LPTLeaf;
@@ -73,6 +75,12 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 			rawData.read(byteBuffer);
 			if (indexOfComponent(rawData) == -1)
 				add("Raw", rawData);
+		} catch (final BadXBlockLevelException e) {
+			reset();
+			return;
+		} catch (final BadXBlockTypeException e) {
+			reset();
+			return;
 		} catch (CRCMismatchException e) {
 			reset();
 			return;

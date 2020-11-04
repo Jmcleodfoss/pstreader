@@ -69,6 +69,8 @@ public abstract class LPTLeaf implements BTreeLeaf
 	/**	{@inheritDoc} */
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		java.io.IOException
 	{

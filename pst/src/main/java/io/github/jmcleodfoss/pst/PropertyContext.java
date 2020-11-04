@@ -44,10 +44,14 @@ public class PropertyContext
 
 		/**	Retrieve the data we deferred reading.
 		*	@return	The data read in from the given reference to the PST file.
+		*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+		*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 		*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 		*/
 		Object data()
 		throws
+			BadXBlockLevelException,
+			BadXBlockTypeException,
 			CRCMismatchException
 		{
 			try {
@@ -89,6 +93,10 @@ public class PropertyContext
 					value = ((PSTDataPointer)value).data();
 
 				return value == null ? "" : DataType.makeString(key, value);
+			} catch (final BadXBlockLevelException e) {
+				return "";
+			} catch (final BadXBlockTypeException e) {
+				return "";
 			} catch (CRCMismatchException e) {
 				return "";
 			}
@@ -116,6 +124,8 @@ public class PropertyContext
 	*	@param	node	The node containing the property context.
 	*	@param	bbt	The PST file's block B-tree.
 	*	@param	pstFile	The PST file data stream, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	NotHeapNodeException			A node which was not a heap node was found while bulding the property context.
 	*	@throws	NotPropertyContextNodeException		A node which is not part of a property context was found while building the property context.
@@ -128,6 +138,8 @@ public class PropertyContext
 	*/
 	PropertyContext(final LPTLeaf node, final BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
@@ -167,10 +179,14 @@ public class PropertyContext
 	/**	Retrieve a value from the property context.
 	*	@param	tag	The tag to look for.
 	*	@return	The object stored under the given tag.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
 	Object get(final int tag)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 		final Object o = properties.get(tag);
@@ -357,6 +373,10 @@ public class PropertyContext
 				if (o instanceof PSTDataPointer) {
 					try {
 						o = ((PSTDataPointer)o).data();
+					} catch (final BadXBlockLevelException e) {
+						o = "";
+					} catch (final BadXBlockTypeException e) {
+						o = "";
 					} catch (CRCMismatchException e) {
 						o = "";
 					}
@@ -427,6 +447,12 @@ public class PropertyContext
 							}
 						}
 					}
+				} catch (final BadXBlockLevelException e) {
+					System.out.println(e);
+					e.printStackTrace(System.out);
+				} catch (final BadXBlockTypeException e) {
+					System.out.println(e);
+					e.printStackTrace(System.out);
 				} catch (final IncorrectNameIDStreamContentException e) {
 					e.printStackTrace(System.out);
 				} catch (final NameIDStreamNotFoundException e) {

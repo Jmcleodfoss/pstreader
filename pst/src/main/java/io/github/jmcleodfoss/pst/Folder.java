@@ -79,6 +79,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	NotHeapNodeException			node which is not a heap node was found while reading the folder data.
@@ -94,6 +96,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	private Folder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -186,6 +190,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@return	A folder and its immediate descendents.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folders.
@@ -201,6 +207,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static Folder getFolder(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -223,6 +231,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file input stream, etc.
 	*	@return	A folder and all its immediate descendents.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the folder tree.
@@ -238,6 +248,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static Folder getFolderTree(NBTEntry nodeFolderObject, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -340,6 +352,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	nbt			The PST file's node B-tree.
 	*	@param	pstFile			The PST file's incoming data stream, header, etc.
 	*	@return	A vector of the message contents.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
@@ -355,6 +369,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static java.util.Vector<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -384,6 +400,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	levelsToRead		The number of sub-levels to read.
 	*	@param	fReadContents		A flag indicating whether the folder contents should be read in.
 	*	@return	A vector of subfolders.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws NotHeapNodeException			A node which was not a heap node was found when reading in the sub-folders.
@@ -399,6 +417,8 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*/
 	public static java.util.Vector<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -489,6 +509,12 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 					final MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 					messageStore.rootFolder.show("");
 					pstFile.close();
+				} catch (final BadXBlockLevelException e) {
+					System.out.println(e);
+					e.printStackTrace(System.out);
+				} catch (final BadXBlockTypeException e) {
+					System.out.println(e);
+					e.printStackTrace(System.out);
 				} catch (final DataOverflowException e) {
 					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 				} catch (final NotHeapNodeException e) {

@@ -287,6 +287,12 @@ class IPM
 				PropertyContext pc = msg.getMessage(pst);
 				final String messageType = (String)pc.get(pst.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
 				System.out.printf(fmtOutput, msg.subject, messageType, isKnownClass(messageType));
+			} catch (final BadXBlockLevelException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+			} catch (final BadXBlockTypeException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				e.printStackTrace(System.out);
 			} catch (final DataOverflowException e) {
@@ -345,6 +351,12 @@ class IPM
 				System.out.printf(fmtOutput, "Subject", "Container Class", "Known Container Class?");
 				showFolderMessageClasses(pst.messageStore.rootFolder, pst, fmtOutput);
 				pst.close();
+			} catch (final BadXBlockLevelException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+			} catch (final BadXBlockTypeException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {

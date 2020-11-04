@@ -257,6 +257,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	nodeDescr	Description of the node as found in the block or sub-node B-tree.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws	NotHeapNodeException			The leaf is not a heap node
@@ -269,6 +271,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	public TableContext(LPTLeaf nodeDescr, BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotHeapNodeException,
@@ -288,6 +292,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	hon		The heap-on-node on which this table context is defined.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file data stream, header, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	* 	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building the table context.
@@ -299,6 +305,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	TableContext(LPTLeaf nodeDescr, HeapOnNode hon, BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		NotTableContextNodeException,
@@ -489,6 +497,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
@@ -496,6 +506,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, byte[] data, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		UnimplementedPropertyTypeException,
 		UnknownPropertyTypeException,
@@ -524,6 +536,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	sbt		The sub-node B-tree for the table context (where the HID data is to be found).
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file's input data stream, header, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
@@ -532,6 +546,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		DataOverflowException,
 		UnimplementedPropertyTypeException,
@@ -560,6 +576,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	hon		The heap-on-node containing this table context.
 	*	@param	pstFile		The PST file input data stream, header, etc.
 	*	@return	The data in the row given by rowStream, parsed into the appropriate PST data types.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -568,6 +586,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	@SuppressWarnings("PMD.UnusedFormalParameter")
 	private Object[] readRow(java.nio.ByteBuffer rowStream, int numColumns, int r, SubnodeBTree sbt, BlockMap bbt, HeapOnNode hon, PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		UnimplementedPropertyTypeException,
 		UnknownPropertyTypeException,
@@ -752,6 +772,12 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 				}
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
+			} catch (final BadXBlockLevelException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+			} catch (final BadXBlockTypeException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final NotPSTFileException e) {

@@ -37,6 +37,8 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	/**	Construct an object to extract folders of the given class from the PST file with the given name.
 	*	@param	fn			The file name of the PST file to process.
 	*	@param	includedFolderClass	The folder class to extract.
+	*	@throws io.github.jmcleodfoss.pst.BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws io.github.jmcleodfoss.pst.BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws	io.github.jmcleodfoss.pst.CRCMismatchException			The header's calculated CRC does not match the expected value.
 	*	@throws	io.github.jmcleodfoss.pst.DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException	either the Name ID GUID stream contains string values, or the Name ID Name stream contains binary data
@@ -55,6 +57,8 @@ class PSTIPFFolderTypeToXML extends PSTToXML
 	*/
 	PSTIPFFolderTypeToXML(final String fn, final String includedFolderClass)
 	throws
+		io.github.jmcleodfoss.pst.BadXBlockLevelException,
+		io.github.jmcleodfoss.pst.BadXBlockTypeException,
 		io.github.jmcleodfoss.pst.CRCMismatchException,
 		io.github.jmcleodfoss.pst.DataOverflowException,
 		io.github.jmcleodfoss.pst.IncorrectNameIDStreamContentException,

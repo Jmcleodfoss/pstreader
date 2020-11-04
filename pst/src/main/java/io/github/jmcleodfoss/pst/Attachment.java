@@ -136,6 +136,8 @@ public class Attachment
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file input stream, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
@@ -148,6 +150,8 @@ public class Attachment
 	*/
 	public Attachment(final LPTLeaf nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
@@ -166,6 +170,8 @@ public class Attachment
 	*	@param	nodeInfo	The sub-node B-tree entry holding the attachment information.
 	*	@param	bbt		The PST file's block B-tree.
 	*	@param	pstFile		The PST file input stream, etc.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
@@ -178,6 +184,8 @@ public class Attachment
 	*/
 	Attachment(final SLEntry nodeInfo, final BlockMap bbt, final PSTFile pstFile)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException,
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
@@ -227,11 +235,15 @@ public class Attachment
 	/**	Retrieve the attachment data.
 	*	@param	pc	The attachment property context.
 	*	@return	A byte array containing the attachment data.
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#propidData
 	*/
 	public byte[] data(final PropertyContext pc)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 		return (byte[])pc.get(propidData);
@@ -240,11 +252,15 @@ public class Attachment
 	/**	Loop through folder's subfolders and message objects looking for attachments. Used only for testing Used only for testing
 	*	@param	folder	The folder to process
 	*	@param	pst	The pst file to look in
+	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@see	#main
 	*/
 	private static void findFolderAttachments(Folder folder, PST pst)
 	throws
+		BadXBlockLevelException,
+		BadXBlockTypeException,
 		CRCMismatchException
 	{
 		for (java.util.Iterator<MessageObject> msgIterator = folder.contentsIterator(); msgIterator.hasNext(); ){
@@ -285,6 +301,12 @@ public class Attachment
 				final PST pst = new PST(a, false);
 				findFolderAttachments(pst.getFolderTree(), pst);
 				pst.close();
+			} catch (final BadXBlockLevelException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+			} catch (final BadXBlockTypeException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
 			} catch (final DataOverflowException e) {
