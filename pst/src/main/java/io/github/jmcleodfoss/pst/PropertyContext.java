@@ -93,11 +93,9 @@ public class PropertyContext
 					value = ((PSTDataPointer)value).data();
 
 				return value == null ? "" : DataType.makeString(key, value);
-			} catch (final BadXBlockLevelException e) {
-				return "";
-			} catch (final BadXBlockTypeException e) {
-				return "";
-			} catch (CRCMismatchException e) {
+			} catch (final	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException e) {
 				return "";
 			}
 		}
@@ -373,11 +371,9 @@ public class PropertyContext
 				if (o instanceof PSTDataPointer) {
 					try {
 						o = ((PSTDataPointer)o).data();
-					} catch (final BadXBlockLevelException e) {
-						o = "";
-					} catch (final BadXBlockTypeException e) {
-						o = "";
-					} catch (CRCMismatchException e) {
+					} catch (final	BadXBlockLevelException
+						|	BadXBlockTypeException
+						|	CRCMismatchException e) {
 						o = "";
 					}
 				}
@@ -447,36 +443,20 @@ public class PropertyContext
 							}
 						}
 					}
-				} catch (final BadXBlockLevelException e) {
+				} catch (final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	IncorrectNameIDStreamContentException
+					|	NameIDStreamNotFoundException
+					|	NotPropertyContextNodeException
+					|	NotHeapNodeException
+					|	UnimplementedPropertyTypeException
+					|	UnknownPropertyTypeException
+					|	UnknownClientSignatureException
+					|	UnparseablePropertyContextException e) {
 					System.out.println(e);
-					e.printStackTrace(System.out);
-				} catch (final BadXBlockTypeException e) {
-					System.out.println(e);
-					e.printStackTrace(System.out);
-				} catch (final IncorrectNameIDStreamContentException e) {
-					e.printStackTrace(System.out);
-				} catch (final NameIDStreamNotFoundException e) {
-					e.printStackTrace(System.out);
-				} catch (final NotHeapNodeException e) {
-					// Not every node in the block B-tree is a heap node, so this is benign.
-				} catch (final NotPropertyContextNodeException e) {
-					System.out.println(e.toString());
 					e.printStackTrace(System.out);
 				} catch (final NullDataBlockException e) {
-					System.out.println(e.toString());
-					e.printStackTrace(System.out);
-				} catch (final UnimplementedPropertyTypeException e) {
-					System.out.println(e.toString());
-					e.printStackTrace(System.out);
-				} catch (final UnknownPropertyTypeException e) {
-					System.out.println(e.toString());
-					e.printStackTrace(System.out);
-				} catch (final UnknownClientSignatureException e) {
-					System.out.println(e.toString());
-					e.printStackTrace(System.out);
-				} catch (final UnparseablePropertyContextException e) {
-					System.out.printf(e.toString());
-					e.printStackTrace(System.out);
+					// Not every node in the block B-tree is a heap node, so this is benign.
 				} finally {
 					try {
 						pstFile.close();
