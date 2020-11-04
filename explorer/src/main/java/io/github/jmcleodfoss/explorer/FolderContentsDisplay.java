@@ -149,11 +149,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 				assert messagePC != null;
 				try {
 					return ((io.github.jmcleodfoss.pst.Message)clickedNode).bodyHtmlBytes(messagePC);
-				} catch (final BadXBlockLevelException e) {
-					return null;
-				} catch (final BadXBlockTypeException e) {
-					return null;
-				} catch (CRCMismatchException e) {
+				} catch (final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	CRCMismatchException e) {
 					return null;
 				}
 			}
@@ -178,9 +176,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 					assert messagePC != null;
 					return ((io.github.jmcleodfoss.pst.Message)o).bodyHtml(messagePC) != null;
 				}
-			} catch (final BadXBlockLevelException e) {
-			} catch (final BadXBlockTypeException e) {
-			} catch (CRCMismatchException e) {
+			} catch (final BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException e) {
 			}
 
 			return false;
@@ -218,11 +216,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 					Attachment attachmentObject = (Attachment)clickedNode;
 					PropertyContext pc = pst.propertyContext(attachmentObject.nodeInfo);
 					return attachmentObject.data(pc);
-				} catch (final BadXBlockLevelException e) {
-					return null;
-				} catch (final BadXBlockTypeException e) {
-					return null;
-				} catch (CRCMismatchException e) {
+				} catch (final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	CRCMismatchException e) {
 					return null;
 				}
 			}
@@ -311,29 +307,20 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 				BufferedImage bufferedImage = ImageIO.read(imageData);
 				attachmentImage.setIcon(new ImageIcon(bufferedImage));
 				attachmentDisplay = attachmentImage;
-			} catch (java.io.IOException e) {
-				remove(spAttachmentDisplay);
-			} catch (final BadXBlockLevelException e) {
-				remove(spAttachmentDisplay);
-			} catch (final BadXBlockTypeException e) {
-				remove(spAttachmentDisplay);
-			} catch (CRCMismatchException e) {
+			} catch (final	java.io.IOException 
+				|	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException e) {
 				remove(spAttachmentDisplay);
 			}
 
 		} else if (textMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
 				attachmentText.setText(new String(attachmentObject.data(pc), pst.charsetName()));
-			} catch (final java.io.UnsupportedEncodingException e) {
-				e.printStackTrace(System.out);
-				attachmentText.setText("");
-			} catch (final BadXBlockLevelException e) {
-				e.printStackTrace(System.out);
-				attachmentText.setText("");
-			} catch (final BadXBlockTypeException e) {
-				e.printStackTrace(System.out);
-				attachmentText.setText("");
-			} catch (final CRCMismatchException e) {
+			} catch (final	java.io.UnsupportedEncodingException 
+				|	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException e) {
 				e.printStackTrace(System.out);
 				attachmentText.setText("");
 			} finally {
@@ -342,16 +329,10 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		} else if (htmlMimeTypes.contains(attachmentObject.mimeType)) {
 			try {
 				attachmentHtml.setText(new String(attachmentObject.data(pc), pst.charsetName()));
-			} catch (final java.io.UnsupportedEncodingException e) {
-				e.printStackTrace(System.out);
-				attachmentHtml.setText("");
-			} catch (final BadXBlockLevelException e) {
-				e.printStackTrace(System.out);
-				attachmentHtml.setText("");
-			} catch (final BadXBlockTypeException e) {
-				e.printStackTrace(System.out);
-				attachmentHtml.setText("");
-			} catch (final CRCMismatchException e) {
+			} catch (final	java.io.UnsupportedEncodingException 
+				|	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException e) {
 				e.printStackTrace(System.out);
 				attachmentHtml.setText("");
 			} finally {
@@ -410,20 +391,20 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 
 		try {
 			messagePC = messageObject.getMessage(pst);
-		} catch (final BadXBlockLevelException e) {
-		} catch (final BadXBlockTypeException e) {
-		} catch (CRCMismatchException e) {
-		} catch (DataOverflowException e) {
-		} catch (NotHeapNodeException e) {
-		} catch (NotPropertyContextNodeException e) {
-		} catch (NotTableContextNodeException e) {
-		} catch (NullDataBlockException e) {
-		} catch (UnimplementedPropertyTypeException e) {
-		} catch (UnknownClientSignatureException e) {
-		} catch (UnknownPropertyTypeException e) {
-		} catch (UnparseablePropertyContextException e) {
-		} catch (UnparseableTableContextException e) {
-		} catch (java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	DataOverflowException
+			|	NotHeapNodeException
+			|	NotPropertyContextNodeException
+			|	NotTableContextNodeException
+			|	NullDataBlockException
+			|	UnimplementedPropertyTypeException
+			|	UnknownClientSignatureException
+			|	UnknownPropertyTypeException
+			|	UnparseablePropertyContextException
+			|	UnparseableTableContextException
+			|	java.io.IOException e) {
 		}
 
 		if (messagePC != null) {
