@@ -332,14 +332,13 @@ public class PSTBean implements Serializable
 			return "ResubmitPassword";
 		}
 
-		return doProcessPST("uploadPasswordForm");
+		return doProcessPST();
 	}
 
 	/**	Get the required information from a PST file and handle any exceptions encountered during processing.
-	*	@param	clientDestination	The client component in which to write any error messages.
 	*	@return	A String indicating the next view
 	*/
-	private String doProcessPST(String clientDestination)
+	private String doProcessPST()
 	{
 		try {
 			processPST();
