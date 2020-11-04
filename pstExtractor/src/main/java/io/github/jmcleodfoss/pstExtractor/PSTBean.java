@@ -344,46 +344,22 @@ public class PSTBean implements Serializable
 		try {
 			processPST();
 			return "Results";
-		} catch (IOException e) {
+		} catch (final	IOException
+			|	UnimplementedPropertyTypeException e) {
 			e.printStackTrace(System.out);
 			return "ProcessingProblem";
-		} catch (final BadXBlockLevelException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (final BadXBlockTypeException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (CRCMismatchException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (DataOverflowException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (NotHeapNodeException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (NotPropertyContextNodeException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (NotTableContextNodeException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (NullDataBlockException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (UnimplementedPropertyTypeException e) {
-			e.printStackTrace(System.out);
-			return "ProcessingProblem";
-		} catch (UnknownClientSignatureException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (UnknownPropertyTypeException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (UnparseablePropertyContextException e) {
-			e.printStackTrace(System.out);
-			return "CorruptPST";
-		} catch (UnparseableTableContextException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	DataOverflowException
+			|	NotHeapNodeException
+			|	NotPropertyContextNodeException
+			|	NotTableContextNodeException
+			|	NullDataBlockException
+			|	UnknownClientSignatureException
+			|	UnknownPropertyTypeException
+			|	UnparseablePropertyContextException
+			|	UnparseableTableContextException e) {
 			e.printStackTrace(System.out);
 			return "CorruptPST";
 		}
@@ -609,61 +585,33 @@ public class PSTBean implements Serializable
 					pst = null;
 					pst = new PST((FileInputStream)is, true);
 					return checkPasswordAndProcess();
-				} catch (IOException e) {
+				} catch (final	IOException
+					|	UnimplementedPropertyTypeException e) {
 					// IO Exception creating or reading PST file
 					e.printStackTrace(System.out);
 					return "ProcessingProblem";
-				} catch (final BadXBlockLevelException e) {
+				} catch(final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	CRCMismatchException
+					|	DataOverflowException
+					|	IncorrectNameIDStreamContentException
+					|	NameIDStreamNotFoundException
+					|	NotHeapNodeException
+					|	NotPropertyContextNodeException
+					|	NotTableContextNodeException
+					|	NullDataBlockException
+					|	UnknownClientSignatureException
+					|	UnknownPropertyTypeException
+					|	UnparseablePropertyContextException
+					|	UnparseableTableContextException e) {
 					e.printStackTrace(System.out);
 					return "CorruptPST";
-				} catch (final BadXBlockTypeException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (CRCMismatchException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (DataOverflowException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (final IncorrectNameIDStreamContentException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (final NameIDStreamNotFoundException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (NotHeapNodeException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (NotPSTFileException e) {
+				} catch (final NotPSTFileException e) {
 					e.printStackTrace(System.out);
 					return "NotPST";
-				} catch (NotPropertyContextNodeException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (NotTableContextNodeException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (NullDataBlockException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (UnimplementedPropertyTypeException e) {
-					e.printStackTrace(System.out);
-					return "ProcessingProblem";
-				} catch (UnknownClientSignatureException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (UnknownPropertyTypeException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (UnparseablePropertyContextException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
-				} catch (UnparseableTableContextException e) {
-					e.printStackTrace(System.out);
-					return "CorruptPST";
 				}
 			}
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			// IO Exception retrieving input stream.
 			e.printStackTrace(System.out);
 			return "ProcessingProblem";
