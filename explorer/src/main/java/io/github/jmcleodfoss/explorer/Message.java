@@ -67,7 +67,7 @@ class Message extends NodeContentsDisplay
 	*	@param	message		The new message to display.
 	*	@param	messagePC	The message property context.
 	*/
-//	@SuppressWarnings("PMD.NPathComplexity")
+	@SuppressWarnings("PMD.NPathComplexity")
 	public void update(final MessageObject message, final PropertyContext messagePC)
 	{
 		final boolean fMessage = message instanceof io.github.jmcleodfoss.pst.Message;
