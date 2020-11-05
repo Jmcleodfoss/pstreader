@@ -352,29 +352,18 @@ public class NameToIDMap
 
 					for (Object key : keyArray)
 						System.out.printf("0x%04x=%s%n", (Integer)key, nameToIDMap.namedProperties.get((Integer)key));
-				} catch (final BadXBlockLevelException e) {
+				} catch (final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	IncorrectNameIDStreamContentException
+					|	NameIDStreamNotFoundException
+					|	NotHeapNodeException
+					|	NotPropertyContextNodeException
+					|	NullDataBlockException
+					|	UnimplementedPropertyTypeException
+					|	UnknownClientSignatureException
+					|	UnknownPropertyTypeException
+					|	UnparseablePropertyContextException e) {
 					System.out.println(e);
-					e.printStackTrace(System.out);
-				} catch (final BadXBlockTypeException e) {
-					System.out.println(e);
-					e.printStackTrace(System.out);
-				} catch (final IncorrectNameIDStreamContentException e) {
-					e.printStackTrace(System.out);
-				} catch (final NameIDStreamNotFoundException e) {
-					e.printStackTrace(System.out);
-				} catch (final NotHeapNodeException e) {
-					e.printStackTrace(System.out);
-				} catch (final NotPropertyContextNodeException e) {
-					e.printStackTrace(System.out);
-				} catch (final NullDataBlockException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnimplementedPropertyTypeException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnknownClientSignatureException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnknownPropertyTypeException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnparseablePropertyContextException e) {
 					e.printStackTrace(System.out);
 				} finally {
 					try {
