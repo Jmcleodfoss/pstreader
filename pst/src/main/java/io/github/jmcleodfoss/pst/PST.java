@@ -224,12 +224,12 @@ public class PST extends PSTFile
 	{
 		try {
 			return HeapOnNode.makeHeapOnNode(bid, blockBTree, this);
-		} catch (final BadXBlockLevelException e) {
-		} catch (final BadXBlockTypeException e) {
-		} catch (final java.io.IOException e) {
-		} catch (final CRCMismatchException e) {
-		} catch (final NotHeapNodeException e) {
-		} catch (final UnknownClientSignatureException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	java.io.IOException
+			|	CRCMismatchException
+			|	NotHeapNodeException
+			|	UnknownClientSignatureException e) {
 		}
 
 		return null;
