@@ -143,18 +143,17 @@ public class DistributionList extends MessageObject
 	*	@param	pstFile	The PST file's data stream, header, etc.
 	*	@return	The list of members, as an array of strings.
 	*	@throws	java.io.IOException						An I/O error was encountered reading data from a ByteBuffer
-	*	@throws io.github.jmcleodfoss.pst.NotHeapNodeException			No valid heap node was found when creating the PropertyContext for an EntryID for an address book entry
-	*	@throws io.github.jmcleodfoss.pst.NotPropertyContextNodeException	No valid PropertyContext was found for an EntryID for an address book entry
-	*	@throws io.github.jmcleodfoss.pst.NullDataBlockException		An expected Block B-Tree entry was not found when creating the PropertyContext for an EntryID for an
-	*										address book entry
-	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
-	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
-	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
+	*	@throws BadXBlockLevelException			The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
+	*	@throws BadXBlockTypeException			The type must be 1 for XBlock and XXBlock
+	*	@throws CRCMismatchException			The block's calculated CDC is not the same as the expected value.
+	*	@throws NotHeapNodeException			No valid heap node was found when creating the PropertyContext for an EntryID for an address book entry
+	*	@throws NotPropertyContextNodeException		No valid PropertyContext was found for an EntryID for an address book entry
+	*	@throws NullDataBlockException			An expected Block B-Tree entry was not found when creating the PropertyContext for an EntryID for an address book entry
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
-	*	@throws UnknownPropertyTypeException	The property type was not recognized
-	*	@throws io.github.jmcleodfoss.pst.UnparseablePropertyContextException	An invalid or corrupt PropertyContext was found for an EntryID for an address book entry.
-	*	@throws io.github.jmcleodfoss.pst.UnparseableTableContextException	An invalid or corrupt TableContext was found for an EntryID for an address book entry.
-	*	@throws io.github.jmcleodfoss.pst.UnknownClientSignatureException	An invalid ClientSignature was found for a heap entry when creating an EntryID for an address book entry.
+	*	@throws UnknownPropertyTypeException		The property type was not recognized
+	*	@throws UnparseablePropertyContextException	An invalid or corrupt PropertyContext was found for an EntryID for an address book entry.
+	*	@throws UnparseableTableContextException	An invalid or corrupt TableContext was found for an EntryID for an address book entry.
+	*	@throws UnknownClientSignatureException		An invalid ClientSignature was found for a heap entry when creating an EntryID for an address book entry.
 	*/
 	public java.util.Iterator<Entry> members(final PropertyContext pc, BlockMap bbt, NodeMap nbt, PSTFile pstFile)
 	throws
