@@ -509,31 +509,19 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 					final MessageStore messageStore = new MessageStore(blockBTree, nodeBTree, pstFile);
 					messageStore.rootFolder.show("");
 					pstFile.close();
-				} catch (final BadXBlockLevelException e) {
+				} catch (final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	DataOverflowException
+					|	NotHeapNodeException
+					|	NotPropertyContextNodeException
+					|	NotTableContextNodeException
+					|	NullDataBlockException
+					|	UnimplementedPropertyTypeException
+					|	UnknownClientSignatureException
+					|	UnknownPropertyTypeException
+					|	UnparseablePropertyContextException
+					|	UnparseableTableContextException e) {
 					System.out.println(e);
-					e.printStackTrace(System.out);
-				} catch (final BadXBlockTypeException e) {
-					System.out.println(e);
-					e.printStackTrace(System.out);
-				} catch (final DataOverflowException e) {
-					System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-				} catch (final NotHeapNodeException e) {
-					e.printStackTrace(System.out);
-				} catch (final NotPropertyContextNodeException e) {
-					e.printStackTrace(System.out);
-				} catch (final NotTableContextNodeException e) {
-					e.printStackTrace(System.out);
-				} catch (final NullDataBlockException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnimplementedPropertyTypeException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnknownClientSignatureException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnknownPropertyTypeException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnparseablePropertyContextException e) {
-					e.printStackTrace(System.out);
-				} catch (final UnparseableTableContextException e) {
 					e.printStackTrace(System.out);
 				} finally {
 					try {
