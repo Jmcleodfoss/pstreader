@@ -339,17 +339,17 @@ public class PST extends PSTFile
 	{
 		try {
 			return new PropertyContext(node, blockBTree, this);
-		} catch (final BadXBlockLevelException e) {
-		} catch (final BadXBlockTypeException e) {
-		} catch (final CRCMismatchException e) {
-		} catch (final NotHeapNodeException e) {
-		} catch (final NotPropertyContextNodeException e) {
-		} catch (final NullDataBlockException e) {
-		} catch (final UnimplementedPropertyTypeException e) {
-		} catch (final UnknownPropertyTypeException e) {
-		} catch (final UnknownClientSignatureException e) {
-		} catch (final UnparseablePropertyContextException e) {
-		} catch (final java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	NotHeapNodeException
+			|	NotPropertyContextNodeException
+			|	NullDataBlockException
+			|	UnimplementedPropertyTypeException
+			|	UnknownPropertyTypeException
+			|	UnknownClientSignatureException
+			|	UnparseablePropertyContextException
+			|	java.io.IOException e) {
 		}
 
 		return null;
@@ -422,16 +422,16 @@ public class PST extends PSTFile
 	{
 		try {
 			return new TableContext(node, hon, blockBTree, this);
-		} catch (final BadXBlockLevelException e) {
-		} catch (final BadXBlockTypeException e) {
-		} catch (final CRCMismatchException e) {
-		} catch (final DataOverflowException e) {
-		} catch (final NotTableContextNodeException e) {
-		} catch (final UnimplementedPropertyTypeException e) {
-		} catch (final UnknownClientSignatureException e) {
-		} catch (final UnknownPropertyTypeException e) {
-		} catch (final UnparseableTableContextException e) {
-		} catch (final java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	DataOverflowException
+			|	NotTableContextNodeException
+			|	UnimplementedPropertyTypeException
+			|	UnknownClientSignatureException
+			|	UnknownPropertyTypeException
+			|	UnparseableTableContextException
+			|	java.io.IOException e) {
 		}
 
 		return new javax.swing.table.DefaultTableModel();
@@ -451,17 +451,17 @@ public class PST extends PSTFile
 	{
 		try {
 			return new TableContext(node, blockBTree, this);
-		} catch (final BadXBlockLevelException e) {
-		} catch (final BadXBlockTypeException e) {
-		} catch (final CRCMismatchException e) {
-		} catch (final DataOverflowException e) {
-		} catch (final NotHeapNodeException e) {
-		} catch (final NotTableContextNodeException e) {
-		} catch (final UnimplementedPropertyTypeException e) {
-		} catch (final UnknownClientSignatureException e) {
-		} catch (final UnknownPropertyTypeException e) {
-		} catch (final UnparseableTableContextException e) {
-		} catch (final java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	DataOverflowException
+			|	NotHeapNodeException
+			|	NotTableContextNodeException
+			|	UnimplementedPropertyTypeException
+			|	UnknownClientSignatureException
+			|	UnknownPropertyTypeException
+			|	UnparseableTableContextException
+			|	java.io.IOException e) {
 		}
 
 		return new javax.swing.table.DefaultTableModel();
