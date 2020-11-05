@@ -67,7 +67,7 @@ class Message extends NodeContentsDisplay
 	*	@param	message		The new message to display.
 	*	@param	messagePC	The message property context.
 	*/
-	@SuppressWarnings("PMD.NPathComplexity")
+//	@SuppressWarnings("PMD.NPathComplexity")
 	public void update(final MessageObject message, final PropertyContext messagePC)
 	{
 		final boolean fMessage = message instanceof io.github.jmcleodfoss.pst.Message;
@@ -82,11 +82,9 @@ class Message extends NodeContentsDisplay
 			} else {
 			remove(header);
 			}
-		} catch (final BadXBlockLevelException e) {
-			remove(header);
-		} catch (final BadXBlockTypeException e) {
-			remove(header);
-		} catch (CRCMismatchException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException e) {
 			remove(header);
 		}
 
@@ -99,11 +97,9 @@ class Message extends NodeContentsDisplay
 			} else {
 				remove(spBodyText);
 			}
-		} catch (final BadXBlockLevelException e) {
-			remove(spBodyText);
-		} catch (final BadXBlockTypeException e) {
-			remove(spBodyText);
-		} catch (CRCMismatchException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException e) {
 			remove(spBodyText);
 		}
 
@@ -116,11 +112,9 @@ class Message extends NodeContentsDisplay
 			} else {
 				remove(spBodyHtml);
 			}
-		} catch (final BadXBlockLevelException e) {
-			remove(spBodyHtml);
-		} catch (final BadXBlockTypeException e) {
-			remove(spBodyHtml);
-		} catch (CRCMismatchException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException e) {
 			remove(spBodyHtml);
 		}
 	}

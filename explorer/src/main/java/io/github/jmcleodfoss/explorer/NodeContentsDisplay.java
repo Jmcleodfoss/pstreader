@@ -58,7 +58,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 
 	/**	{@inheritDoc}. */
 	@Override
-	@SuppressWarnings("PMD.NPathComplexity")
+//	@SuppressWarnings("PMD.NPathComplexity")
 	public void update(BTreeNode node, PST pst)
 	{
 		if (pst == null) {
@@ -75,16 +75,10 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 			rawData.read(byteBuffer);
 			if (indexOfComponent(rawData) == -1)
 				add("Raw", rawData);
-		} catch (final BadXBlockLevelException e) {
-			reset();
-			return;
-		} catch (final BadXBlockTypeException e) {
-			reset();
-			return;
-		} catch (CRCMismatchException e) {
-			reset();
-			return;
-		} catch (java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	java.io.IOException e) {
 			reset();
 			return;
 		}
