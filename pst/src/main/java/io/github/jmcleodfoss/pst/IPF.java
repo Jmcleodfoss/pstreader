@@ -247,6 +247,7 @@ public class IPF
 				|	NotPropertyContextNodeException
 				|	NotTableContextNodeException
 				|	NullDataBlockException
+				|	NullNodeException
 				|	UnimplementedPropertyTypeException
 				|	UnknownClientSignatureException
 				|	UnknownPropertyTypeException

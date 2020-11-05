@@ -31,6 +31,7 @@ import io.github.jmcleodfoss.pst.NotPSTFileException;
 import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
 import io.github.jmcleodfoss.pst.NotTableContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
+import io.github.jmcleodfoss.pst.NullNodeException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.StickyNote;
 import io.github.jmcleodfoss.pst.Task;
@@ -193,6 +194,7 @@ public class PSTBean implements Serializable
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the journal entries. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the journal entries.
 	*	@throws	NullDataBlockException			A null data block was found when reading the journal entries.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the journal entries.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -211,6 +213,7 @@ public class PSTBean implements Serializable
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -248,6 +251,7 @@ public class PSTBean implements Serializable
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the sticky notes. 
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the sticky notes.
 	*	@throws	NullDataBlockException			A null data block was found when reading the sticky notes.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the sticky notes.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -266,6 +270,7 @@ public class PSTBean implements Serializable
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -355,6 +360,7 @@ public class PSTBean implements Serializable
 			|	NotPropertyContextNodeException
 			|	NotTableContextNodeException
 			|	NullDataBlockException
+			|	NullNodeException
 			|	UnknownClientSignatureException
 			|	UnknownPropertyTypeException
 			|	UnparseablePropertyContextException
@@ -496,6 +502,7 @@ public class PSTBean implements Serializable
 	*	@throws NotPropertyContextNodeException		A node which was not a property context node was found where a property context node was expected when reading the pst file.
 	*	@throws NotTableContextNodeException		A node which was not a table context node was found where a table context node was expected when reading the pst file.
 	*	@throws	NullDataBlockException			A null data block was found when reading the pst file.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading the pst file.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -513,6 +520,7 @@ public class PSTBean implements Serializable
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -599,6 +607,7 @@ public class PSTBean implements Serializable
 					|	NotPropertyContextNodeException
 					|	NotTableContextNodeException
 					|	NullDataBlockException
+					|	NullNodeException
 					|	UnknownClientSignatureException
 					|	UnknownPropertyTypeException
 					|	UnparseablePropertyContextException

@@ -63,6 +63,7 @@ public class MessageObject
 	* 	@throws	NotPropertyContextNodeException		A node which was expected to be a property context node was found to be something else.
 	* 	@throws	NotTableContextNodeException		A node which was expected to be a table context node was found to be something else.
 	*	@throws	NullDataBlockException			A null data block was encountered while building the message object.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException		A block with an unrecognized client signature was found while building the message object.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -81,6 +82,7 @@ public class MessageObject
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -125,6 +127,7 @@ public class MessageObject
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building the property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building the table context.
 	*	@throws NullDataBlockException			A null data block was found when building the property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -145,6 +148,7 @@ public class MessageObject
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -216,6 +220,7 @@ public class MessageObject
 				|	NotPropertyContextNodeException
 				|	NotTableContextNodeException
 				|	NullDataBlockException
+				|	NullNodeException
 				|	UnimplementedPropertyTypeException
 				|	UnknownPropertyTypeException
 				|	UnknownClientSignatureException

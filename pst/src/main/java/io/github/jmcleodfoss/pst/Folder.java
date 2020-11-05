@@ -87,6 +87,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws NotPropertyContextNodeException		A node which does not hold a property context was found where a property context node was expected.
 	*	@throws NotTableContextNodeException		A node which does not hold a table context was found where a table context node was expected.
 	*	@throws	NullDataBlockException			A null data block was found while reading the folder data.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException 	An unknown client signature was found while reading the folder data.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
@@ -104,6 +105,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -198,6 +200,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws	NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
 	*	@throws	NullDataBlockException			A null data block was found when building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
@@ -215,6 +218,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -239,6 +243,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
 	*	@throws NullDataBlockException			A null data block was found when building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
@@ -256,6 +261,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -360,6 +366,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
 	*	@throws NullDataBlockException			A null data block was found when building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
@@ -377,6 +384,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -408,6 +416,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found when building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found when building a table context.
 	*	@throws NullDataBlockException			A null data block was found when building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unrecognized client signature was encountered.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
@@ -425,6 +434,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -516,6 +526,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 					|	NotPropertyContextNodeException
 					|	NotTableContextNodeException
 					|	NullDataBlockException
+					|	NullNodeException
 					|	UnimplementedPropertyTypeException
 					|	UnknownClientSignatureException
 					|	UnknownPropertyTypeException

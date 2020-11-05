@@ -29,6 +29,7 @@ public class MessageStore
 	*	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NotTableContextNodeException		A node without the Table Context client signature was found while building a table context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		The client signature of one of the blocks in the message store was not recognized.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -48,6 +49,7 @@ public class MessageStore
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,

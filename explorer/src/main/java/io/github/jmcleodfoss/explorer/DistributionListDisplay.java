@@ -12,6 +12,7 @@ import io.github.jmcleodfoss.pst.DistributionList;
 import io.github.jmcleodfoss.pst.NotHeapNodeException;
 import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
+import io.github.jmcleodfoss.pst.NullNodeException;
 import io.github.jmcleodfoss.pst.PropertyContext;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
@@ -57,6 +58,7 @@ class DistributionListDisplay extends JScrollPane
 			|	NotHeapNodeException
 			|	NotPropertyContextNodeException
 			|	NullDataBlockException
+			|	NullNodeException
 			|	UnimplementedPropertyTypeException
 			|	UnknownClientSignatureException
 			|	UnknownPropertyTypeException

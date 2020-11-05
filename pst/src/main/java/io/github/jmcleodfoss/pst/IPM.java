@@ -295,6 +295,7 @@ class IPM
 				|	NotPropertyContextNodeException
 				|	NotTableContextNodeException
 				|	NullDataBlockException
+				|	NullNodeException
 				|	UnimplementedPropertyTypeException
 				|	UnknownClientSignatureException
 				|	UnknownPropertyTypeException
@@ -346,6 +347,7 @@ class IPM
 				|	NotPropertyContextNodeException
 				|	NotTableContextNodeException
 				|	NullDataBlockException
+				|	NullNodeException
 				|	UnimplementedPropertyTypeException
 				|	UnknownClientSignatureException
 				|	UnknownPropertyTypeException

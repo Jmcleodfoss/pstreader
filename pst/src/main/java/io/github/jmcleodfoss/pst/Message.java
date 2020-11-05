@@ -64,6 +64,7 @@ public class Message extends MessageObjectWithBody
 	* 	@throws	NotPropertyContextNodeException	A node which was not a property context was found when a property context was expected.
 	* 	@throws	NotTableContextNodeException	A node which was not a table context was found when a table context was expected.
 	* 	@throws NullDataBlockException	A null data block wsa found while building the message.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the message.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -81,6 +82,7 @@ public class Message extends MessageObjectWithBody
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -162,6 +164,7 @@ public class Message extends MessageObjectWithBody
 	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	* 	@throws	UnknownClientSignatureException	An unknown client signature was found while building the message.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -180,6 +183,7 @@ public class Message extends MessageObjectWithBody
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,

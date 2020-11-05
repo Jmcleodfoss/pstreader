@@ -142,6 +142,7 @@ public class Attachment
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
 	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -156,6 +157,7 @@ public class Attachment
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -176,6 +178,7 @@ public class Attachment
 	*	@throws NotHeapNodeException			A node which is not a heap node was found in the purported heap.
 	*	@throws NotPropertyContextNodeException		A node was found in a PropertyContext which did not have the property context signature.
 	*	@throws NullDataBlockException			A node with a null data block was found when building a PropertyContext.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownClientSignatureException		An unrecognized client signature was found when reading a block.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -190,6 +193,7 @@ public class Attachment
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -310,6 +314,7 @@ public class Attachment
 				|	NotPropertyContextNodeException
 				|	NotTableContextNodeException
 				|	NullDataBlockException
+				|	NullNodeException
 				|	UnimplementedPropertyTypeException
 				|	UnknownClientSignatureException
 				|	UnknownPropertyTypeException

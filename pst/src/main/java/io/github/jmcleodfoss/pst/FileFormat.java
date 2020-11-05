@@ -167,6 +167,7 @@ class FileFormat
 				|	NotPropertyContextNodeException
 				|	NotTableContextNodeException
 				|	NullDataBlockException
+				|	NullNodeException
 				|	UnimplementedPropertyTypeException
 				|	UnknownClientSignatureException
 				|	UnknownPropertyTypeException

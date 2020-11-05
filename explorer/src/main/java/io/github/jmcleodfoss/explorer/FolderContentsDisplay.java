@@ -29,6 +29,7 @@ import io.github.jmcleodfoss.pst.NotHeapNodeException;
 import io.github.jmcleodfoss.pst.NotPropertyContextNodeException;
 import io.github.jmcleodfoss.pst.NotTableContextNodeException;
 import io.github.jmcleodfoss.pst.NullDataBlockException;
+import io.github.jmcleodfoss.pst.NullNodeException;
 import io.github.jmcleodfoss.pst.PST;
 import io.github.jmcleodfoss.pst.PropertyContext;
 import io.github.jmcleodfoss.pst.UnimplementedPropertyTypeException;
@@ -399,6 +400,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			|	NotPropertyContextNodeException
 			|	NotTableContextNodeException
 			|	NullDataBlockException
+			|	NullNodeException
 			|	UnimplementedPropertyTypeException
 			|	UnknownClientSignatureException
 			|	UnknownPropertyTypeException

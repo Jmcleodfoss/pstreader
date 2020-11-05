@@ -30,6 +30,7 @@ public class PST extends PSTFile
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -50,6 +51,7 @@ public class PST extends PSTFile
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -77,6 +79,7 @@ public class PST extends PSTFile
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -97,6 +100,7 @@ public class PST extends PSTFile
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -124,6 +128,7 @@ public class PST extends PSTFile
 	*	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws	NotTableContextNodeException		A node in this folder's B-tree does not contain a table context when it was expected to.
 	*	@throws	NullDataBlockException			A null data block was found while building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		The client signature of a node was not recognized.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -144,6 +149,7 @@ public class PST extends PSTFile
 		NotPropertyContextNodeException,
 		NotTableContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -292,6 +298,7 @@ public class PST extends PSTFile
 	*	@throws NotHeapNodeException			The NID does not point to a node on the heap.
 	* 	@throws	NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	* 	@throws	NullDataBlockException			A null data block was found while building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		An unknown client signature was found while building the property context.
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
@@ -307,6 +314,7 @@ public class PST extends PSTFile
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -345,6 +353,7 @@ public class PST extends PSTFile
 			|	NotHeapNodeException
 			|	NotPropertyContextNodeException
 			|	NullDataBlockException
+			|	NullNodeException
 			|	UnimplementedPropertyTypeException
 			|	UnknownPropertyTypeException
 			|	UnknownClientSignatureException

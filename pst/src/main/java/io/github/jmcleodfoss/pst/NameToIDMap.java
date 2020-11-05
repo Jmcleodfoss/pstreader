@@ -200,6 +200,7 @@ public class NameToIDMap
 	*	@throws NotHeapNodeException			A node which is not a heap node was found.
 	* 	@throws NotPropertyContextNodeException		A node without the Property Context client signature was found while building a property context.
 	*	@throws NullDataBlockException			A null data block was found while building a property context.
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws	UnknownClientSignatureException		The client signature for the block was not recognized.
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
@@ -216,6 +217,7 @@ public class NameToIDMap
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownClientSignatureException,
 		UnknownPropertyTypeException,
@@ -359,6 +361,7 @@ public class NameToIDMap
 					|	NotHeapNodeException
 					|	NotPropertyContextNodeException
 					|	NullDataBlockException
+					|	NullNodeException
 					|	UnimplementedPropertyTypeException
 					|	UnknownClientSignatureException
 					|	UnknownPropertyTypeException

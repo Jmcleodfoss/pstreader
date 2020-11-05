@@ -149,6 +149,7 @@ public class DistributionList extends MessageObject
 	*	@throws NotHeapNodeException			No valid heap node was found when creating the PropertyContext for an EntryID for an address book entry
 	*	@throws NotPropertyContextNodeException		No valid PropertyContext was found for an EntryID for an address book entry
 	*	@throws NullDataBlockException			An expected Block B-Tree entry was not found when creating the PropertyContext for an EntryID for an address book entry
+	*	@throws NullNodeException	The NullNodeException is thrown when a node is found to be null when building a PropertyContext.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
 	*	@throws UnknownPropertyTypeException		The property type was not recognized
 	*	@throws UnparseablePropertyContextException	An invalid or corrupt PropertyContext was found for an EntryID for an address book entry.
@@ -164,6 +165,7 @@ public class DistributionList extends MessageObject
 		NotHeapNodeException,
 		NotPropertyContextNodeException,
 		NullDataBlockException,
+		NullNodeException,
 		UnimplementedPropertyTypeException,
 		UnknownPropertyTypeException,
 		UnparseablePropertyContextException,
