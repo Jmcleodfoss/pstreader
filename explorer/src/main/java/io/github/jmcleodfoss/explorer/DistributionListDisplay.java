@@ -51,40 +51,18 @@ class DistributionListDisplay extends JScrollPane
 			while (memberIterator.hasNext())
 				listModel.addElement(memberIterator.next());
 			members.setModel(listModel);
-		} catch (final BadXBlockLevelException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final BadXBlockTypeException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final CRCMismatchException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final NotHeapNodeException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final NotPropertyContextNodeException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final NullDataBlockException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (UnimplementedPropertyTypeException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final UnknownClientSignatureException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (UnknownPropertyTypeException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final UnparseablePropertyContextException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final UnparseableTableContextException e) {
-			System.out.println(e.toString());
-			e.printStackTrace(System.out);
-		} catch (final java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	NotHeapNodeException
+			|	NotPropertyContextNodeException
+			|	NullDataBlockException
+			|	UnimplementedPropertyTypeException
+			|	UnknownClientSignatureException
+			|	UnknownPropertyTypeException
+			|	UnparseablePropertyContextException
+			|	UnparseableTableContextException
+			|	java.io.IOException e) {
 			System.out.println(e.toString());
 			e.printStackTrace(System.out);
 		}
