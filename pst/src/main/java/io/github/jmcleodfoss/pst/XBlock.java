@@ -266,10 +266,8 @@ class XBlock extends BlockBase
 							try {
 								final XBlock xblock = new XBlock(block, bbt, pstFile);
 								System.out.println(xblock);
-							} catch (final BadXBlockLevelException e) {
-								System.out.println(e);
-								e.printStackTrace(System.out);
-							} catch (final BadXBlockTypeException e) {
+							} catch (final	BadXBlockLevelException
+								|	BadXBlockTypeException e) {
 								System.out.println(e);
 								e.printStackTrace(System.out);
 							}

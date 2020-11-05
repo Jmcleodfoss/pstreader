@@ -617,15 +617,11 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 
 								final HeapOnNode hon = new HeapOnNode(dataBlock, bbt, pstFile);
 								System.out.printf("HeapOnNode%n----------%n%s%n", hon);
-							} catch (final BadXBlockLevelException e) {
+							} catch (final	BadXBlockLevelException
+								|	BadXBlockTypeException
+								|	NotHeapNodeException
+								|	UnknownClientSignatureException e) {
 								System.out.println(e);
-								e.printStackTrace(System.out);
-							} catch (final BadXBlockTypeException e) {
-								System.out.println(e);
-								e.printStackTrace(System.out);
-							} catch (final NotHeapNodeException e) {
-								e.printStackTrace(System.out);
-							} catch (final UnknownClientSignatureException e) {
 								e.printStackTrace(System.out);
 							}
 						}

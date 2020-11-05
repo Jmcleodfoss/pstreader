@@ -507,15 +507,10 @@ public class BTreeOnHeap extends BTree
 								separator.emit(System.out);
 								System.out.printf("Node %s%nBTreeOnHeap%n----------%n%s%n", node.toString(), bth.toString());
 								bth.outputString(System.out, new StringBuilder("bth: "));
-							} catch (final BadXBlockLevelException e) {
-								System.out.println(e);
-								e.printStackTrace(System.out);
-							} catch (final BadXBlockTypeException e) {
-								System.out.println(e);
-								e.printStackTrace(System.out);
-							} catch (final NotHeapNodeException e) {
-								e.printStackTrace(System.out);
-							} catch (final UnknownClientSignatureException e) {
+							} catch (final	BadXBlockLevelException
+								|	BadXBlockTypeException
+								|	NotHeapNodeException
+								|	UnknownClientSignatureException e) {
 								System.out.printf("Node %s: %s%n", node.toString(), e.toString());
 								e.printStackTrace(System.out);
 							}

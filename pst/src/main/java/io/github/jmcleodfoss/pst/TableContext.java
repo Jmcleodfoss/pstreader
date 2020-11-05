@@ -742,23 +742,14 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 										continue;
 									tc.rowIndex.outputString(System.out, new StringBuilder("rowIndex"));
 								}
-							} catch (final DataOverflowException e) {
-								e.printStackTrace(System.out);
-							} catch (final NotHeapNodeException e) {
-								e.printStackTrace(System.out);
-							} catch (final NotTableContextNodeException e) {
-								e.printStackTrace(System.out);
-							} catch (final UnimplementedPropertyTypeException e) {
-								System.out.printf(nodeDescr + "\n\t" + e.toString());
-								e.printStackTrace(System.out);
-							} catch (final UnknownClientSignatureException e) {
-								System.out.printf(nodeDescr + "\n\t" + e.toString());
-								e.printStackTrace(System.out);
-							} catch (final UnknownPropertyTypeException e) {
-								System.out.printf(nodeDescr + "\n\t" + e.toString());
-								e.printStackTrace(System.out);
-							} catch (final UnparseableTableContextException e) {
-								System.out.printf(nodeDescr + "\n]t" + e.toString());
+							} catch (final	DataOverflowException
+								|	NotHeapNodeException
+								|	NotTableContextNodeException
+								|	UnimplementedPropertyTypeException
+								|	UnknownClientSignatureException
+								|	UnknownPropertyTypeException
+								|	UnparseableTableContextException e) {
+								System.out.printf("%s%n\t%s", nodeDescr.toString(), e.toString());
 								e.printStackTrace(System.out);
 							}
 						}
@@ -772,10 +763,8 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 				}
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
-			} catch (final BadXBlockLevelException e) {
-				System.out.println(e);
-				e.printStackTrace(System.out);
-			} catch (final BadXBlockTypeException e) {
+			} catch (final	BadXBlockLevelException
+				|	BadXBlockTypeException e) {
 				System.out.println(e);
 				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
