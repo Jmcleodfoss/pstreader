@@ -28,9 +28,8 @@ class NodeBTreeDisplay extends BTreeWithData
 	{
 		try {
 			tree.setModel(pst.nodeBTreeRoot());
-		} catch (IOException e) {
-			tree.setModel(treeModel());
-		} catch (CRCMismatchException e) {
+		} catch (final	IOException
+			|	CRCMismatchException e) {
 			tree.setModel(treeModel());
 		}
 	}

@@ -64,11 +64,9 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 				// attachment and pc were set in initialFilenameSuggestion, called before data is retrieved
 				try {
 					return attachment.data(pc);
-				} catch (final BadXBlockLevelException e) {
-					return null;
-				} catch (final BadXBlockTypeException e) {
-					return null;
-				} catch (CRCMismatchException e) {
+				} catch (final	BadXBlockLevelException
+					|	BadXBlockTypeException
+					|	CRCMismatchException e) {
 					return null;
 				}
 			}

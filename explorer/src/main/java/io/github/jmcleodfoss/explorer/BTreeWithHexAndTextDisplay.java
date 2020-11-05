@@ -41,13 +41,10 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	{
 		try {
 			return node.rawData(explorer.pst().blockBTree, explorer.pst());
-		} catch (final BadXBlockLevelException e) {
-			return null;
-		} catch (final BadXBlockTypeException e) {
-			return null;
-		} catch (CRCMismatchException e) {
-			return null;
-		} catch (IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	IOException e) {
 			return null;
 		}
 	}

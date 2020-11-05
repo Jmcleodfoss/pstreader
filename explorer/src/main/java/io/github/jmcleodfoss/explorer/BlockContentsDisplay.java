@@ -29,13 +29,10 @@ class BlockContentsDisplay extends HexAndTextDisplay implements BTreeContentsDis
 				return;
 			}
 			read(byteBuffer);
-		} catch (final BadXBlockLevelException e) {
-			reset();
-		} catch (final BadXBlockTypeException e) {
-			reset();
-		} catch (CRCMismatchException e) {
-			reset();
-		} catch (java.io.IOException e) {
+		} catch (final	BadXBlockLevelException
+			|	BadXBlockTypeException
+			|	CRCMismatchException
+			|	java.io.IOException e) {
 			reset();
 		}
 	}

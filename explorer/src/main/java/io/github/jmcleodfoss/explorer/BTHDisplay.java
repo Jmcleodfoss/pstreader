@@ -41,8 +41,8 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay
 			BTreeOnHeap bth = new BTreeOnHeap(hon, pst);
 			tree.setModel(bth);
 			return true;
-		} catch (CRCMismatchException e) {
-		} catch (IOException e) {
+		} catch (final	CRCMismatchException
+			|	IOException e) {
 		}
 
 		tree.setModel(EmptyTreeModel.model);
@@ -55,11 +55,9 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay
 	{
 		try {
 			return BTreeOnHeap.getData(node, hon);
-		} catch (UnimplementedPropertyTypeException e) {
-			return null;
-		} catch (UnknownPropertyTypeException e) {
-			return null;
-		} catch (UnsupportedEncodingException e) {
+		} catch (final	UnimplementedPropertyTypeException
+			|	UnknownPropertyTypeException
+			|	UnsupportedEncodingException e) {
 			return null;
 		}
 	}
