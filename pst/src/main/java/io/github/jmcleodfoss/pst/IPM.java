@@ -287,35 +287,21 @@ class IPM
 				PropertyContext pc = msg.getMessage(pst);
 				final String messageType = (String)pc.get(pst.unicode() ? PropertyTags.MessageClassW : PropertyTags.MessageClass);
 				System.out.printf(fmtOutput, msg.subject, messageType, isKnownClass(messageType));
-			} catch (final BadXBlockLevelException e) {
+			} catch (final	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException
+				|	DataOverflowException
+				|	NotHeapNodeException
+				|	NotPropertyContextNodeException
+				|	NotTableContextNodeException
+				|	NullDataBlockException
+				|	UnimplementedPropertyTypeException
+				|	UnknownClientSignatureException
+				|	UnknownPropertyTypeException
+				|	UnparseablePropertyContextException
+				|	UnparseableTableContextException
+				|	java.io.IOException e) {
 				System.out.println(e);
-				e.printStackTrace(System.out);
-			} catch (final BadXBlockTypeException e) {
-				System.out.println(e);
-				e.printStackTrace(System.out);
-			} catch (final CRCMismatchException e) {
-				e.printStackTrace(System.out);
-			} catch (final DataOverflowException e) {
-				e.printStackTrace(System.out);
-			} catch (final NotHeapNodeException e) {
-				e.printStackTrace(System.out);
-			} catch (final NotPropertyContextNodeException e) {
-				e.printStackTrace(System.out);
-			} catch (final NotTableContextNodeException e) {
-				e.printStackTrace(System.out);
-			} catch (final NullDataBlockException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnimplementedPropertyTypeException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnknownClientSignatureException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnknownPropertyTypeException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnparseablePropertyContextException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnparseableTableContextException e) {
-				e.printStackTrace(System.out);
-			} catch (final java.io.IOException e) {
 				e.printStackTrace(System.out);
 			}
 		}
@@ -351,40 +337,26 @@ class IPM
 				System.out.printf(fmtOutput, "Subject", "Container Class", "Known Container Class?");
 				showFolderMessageClasses(pst.messageStore.rootFolder, pst, fmtOutput);
 				pst.close();
-			} catch (final BadXBlockLevelException e) {
-				System.out.println(e);
+			} catch (final	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	DataOverflowException
+				|	IncorrectNameIDStreamContentException
+				|	NameIDStreamNotFoundException
+				|	NotHeapNodeException
+				|	NotPropertyContextNodeException
+				|	NotTableContextNodeException
+				|	NullDataBlockException
+				|	UnimplementedPropertyTypeException
+				|	UnknownClientSignatureException
+				|	UnknownPropertyTypeException
+				|	UnparseablePropertyContextException
+				|	UnparseableTableContextException e) {
 				e.printStackTrace(System.out);
-			} catch (final BadXBlockTypeException e) {
 				System.out.println(e);
-				e.printStackTrace(System.out);
 			} catch (final CRCMismatchException e) {
 				System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
-			} catch (final DataOverflowException e) {
-				e.printStackTrace(System.out);
-			} catch (final IncorrectNameIDStreamContentException e) {
-				e.printStackTrace(System.out);
-			} catch (final NameIDStreamNotFoundException e) {
-				e.printStackTrace(System.out);
-			} catch (final NotHeapNodeException e) {
-				e.printStackTrace(System.out);
-			} catch (final NotPropertyContextNodeException e) {
-				e.printStackTrace(System.out);
 			} catch (final NotPSTFileException e) {
 				System.out.printf("File %s is not a pst file%n", a);
-			} catch (final NotTableContextNodeException e) {
-				e.printStackTrace(System.out);
-			} catch (final NullDataBlockException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnimplementedPropertyTypeException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnknownClientSignatureException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnknownPropertyTypeException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnparseablePropertyContextException e) {
-				e.printStackTrace(System.out);
-			} catch (final UnparseableTableContextException e) {
-				e.printStackTrace(System.out);
 			} catch (final java.io.FileNotFoundException e) {
 				System.out.printf("File %s not found%n", a);
 			} catch (final java.io.IOException e) {
