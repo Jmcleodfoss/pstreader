@@ -410,7 +410,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 
 	/**	Get the name of the given column for use as a table header.
 	*	@param	column	The column to retrieve the header for.
-	*	@param	namedProperties	The named properties for the PST file.
 	*	@return	The column name, as a property ID. Note that this function returns a generic name for named properties.
 	*/
 	public String getColumnName(int column)
