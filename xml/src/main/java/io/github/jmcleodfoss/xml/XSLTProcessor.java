@@ -7,7 +7,7 @@ package io.github.jmcleodfoss.xml;
 public class XSLTProcessor implements javax.xml.transform.ErrorListener
 {
 	/**	Action to take when an recoverable error is encountered
-	*	@param	exception	The recoverable error
+	*	@param	e	The recoverable error
 	*/
 	public void error(javax.xml.transform.TransformerException e)
 	{
@@ -15,7 +15,7 @@ public class XSLTProcessor implements javax.xml.transform.ErrorListener
 	}
 
 	/**	Action to take when a fatal error is encountered
-	*	@param	exception	The fatal error
+	*	@param	e	The fatal error
 	*/
 	public void fatalError(javax.xml.transform.TransformerException e)
 	{
@@ -23,7 +23,7 @@ public class XSLTProcessor implements javax.xml.transform.ErrorListener
 	}
 
 	/**	Action to take when a warning is encountered
-	*	@param	exception	The warning
+	*	@param	e	The warning
 	*/
 	public void warning(javax.xml.transform.TransformerException e)
 	{
