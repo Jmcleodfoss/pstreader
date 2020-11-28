@@ -28,3 +28,10 @@ No changes to functionality, but all code has undergone a thorough review and st
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/util/1.1.1/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/util/1.1.1/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/util/1.1.1/)
+
+### 1.1.2
+The library has also been run through several automated code scanners and security checkers, and all issues found have been resolved.
+#### Release links
+*   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/util/1.1.2/index.html)
+*   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/util/1.1.2/pom)
+*   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/util/1.1.2/)

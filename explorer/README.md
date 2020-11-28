@@ -61,3 +61,14 @@ No changes to functionality, but all code has undergone a thorough review and st
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer/1.1.1/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.1.1/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.1.1/)
+
+### 1.1.2
+Fixes several problems:
+* [Issue #6: Popup menus (Save Attachment, Save HTML) not working in Explorer application](https://github.com/Jmcleodfoss/pstreader/issues/6)
+* [Issue #7: Node and Block right-side displays don't clear on close or loading a new file](https://github.com/Jmcleodfoss/pstreader/issues/7)
+* [Issue #8: Exception when saving attachment from Node display](https://github.com/Jmcleodfoss/pstreader/issues/8)
+The application has also been run through several automated code scanners and security checkers, and all issues found have been resolved.
+#### Release links
+*   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer/1.1.2/index.html)
+*   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.1.2/pom)
+*   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.1.2/)
