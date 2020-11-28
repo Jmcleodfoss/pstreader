@@ -155,6 +155,6 @@ public class XMLOutput
 			}
 		}
 
-		return new String(dest);//dest.toString().getBytes("UTF-8"), "UTF-8");
+		return new String(dest);
 	}
 }
