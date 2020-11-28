@@ -127,6 +127,7 @@ public class XMLOutput
 	/**	Replace non-UTF8 sequences with corresponding hexadecimal XML entities.
 	*	@param	string	The string to encode.
 	*	@return	The original string, with non-printable characters replaced with XML entities.
+	*	@throws	java.io.UnsupportedEncodingException	If the default encoding is not supported
 	*/
 	public static String safeUTF8String(String string)
 	throws
