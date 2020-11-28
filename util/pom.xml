@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>util</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.2</version>
 	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>A utility library used by at least one of the pst library demo applications.</description>
@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>io.github.jmcleodfoss</groupId>
 		<artifactId>pst-parent</artifactId>
-		<version>1.1.2-SNAPSHOT</version>
+		<version>1.1.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 </project>
