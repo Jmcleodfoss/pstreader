@@ -9,7 +9,9 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object>
 	/**	The fNext flag indicates whether there is another item. It is true until the item is returned, when it becomes false. */
 	private boolean fNext;
 
-	/**	Create a trivial iterator for the given block. */
+	/**	Create a trivial iterator for the given block.
+	*	@param	data	The date to "iterate" through
+	*/
 	public SingleItemIterator(T data)
 	{
 		fNext = true;
