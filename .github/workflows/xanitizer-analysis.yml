@@ -68,7 +68,7 @@ jobs:
 
       # Run the security analysis with default settings
       - name: Xanitizer Security Analysis
-        uses: RIGS-IT/xanitizer-action@v1
+        uses: RIGS-IT/xanitizer-action@v1.0.1
         with:
           license: ${{ secrets.XANITIZER_LICENSE }}
 
