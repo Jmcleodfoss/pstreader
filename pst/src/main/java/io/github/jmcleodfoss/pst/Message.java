@@ -8,7 +8,7 @@ package io.github.jmcleodfoss.pst;
 *	{@code
 *	// given the contents table object contentsTable and the PST object pst:
 *
-*	Message message = new Mesage(contentsTable, 0, pst.blockBTree, pst.nodeBTree, pst);
+*	Message message = new Message(contentsTable, 0, pst.blockBTree, pst.nodeBTree, pst);
 *	System.out.printf("sender %s: subject %s (received %s)\n", message.sentRepresentingName, messsage.subject, message.messageDeliveryTime);
 *
 *	PropertyContext messagePC = message.getMessage(pst.blockBTree, pst);
