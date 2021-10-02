@@ -187,7 +187,7 @@ class SimpleBlock extends BlockBase
 					java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 					while (iterator.hasNext()) {
 						final BBTEntry entry = (BBTEntry)iterator.next();
-						final SimpleBlock block = new SimpleBlock(entry, pstFile);
+						final SimpleBlock block = read(entry, pstFile);
 						System.out.printf("%s: %s%n", entry.toString(), block.toString());
 					}
 				} finally {
