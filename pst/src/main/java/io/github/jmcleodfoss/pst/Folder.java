@@ -119,16 +119,18 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 		displayName = (String)folderObject.get(pstFile.unicode() ? PropertyTags.DisplayNameW : PropertyTags.DisplayName);
 		containerClass = (String)folderObject.get(pstFile.unicode() ? PropertyTags.ContainerClassW : PropertyTags.ContainerClass);
 
-		if ((Boolean)folderObject.get(PropertyTags.Subfolders) && levelsToRead.readSubfolders()) {
+		Object hasSubfolders = folderObject.get(PropertyTags.Subfolders);
+		if (hasSubfolders != null && (Boolean)hasSubfolders && levelsToRead.readSubfolders()) {
 			NID nidHierarchyTable = new NID(nodeFolderObject.nid, NID.HIERARCHY_TABLE);
 			nodeHierarchyTable = nbt.find(nidHierarchyTable);
-			subfolders = readSubfolders(nodeHierarchyTable, bbt, nbt, pstFile, levelsToRead, fReadContents);
+			this.subfolders = readSubfolders(nodeHierarchyTable, bbt, nbt, pstFile, levelsToRead, fReadContents);
 		} else {
 			nodeHierarchyTable = null;
-			subfolders = new java.util.Vector<Folder>();
+			this.subfolders = new java.util.Vector<Folder>();
 		}
 
-		if ((Integer)folderObject.get(PropertyTags.ContentCount) > 0 && fReadContents) {
+		Object contentCount = folderObject.get(PropertyTags.ContentCount);
+		if (contentCount != null && (Integer)contentCount > 0 && fReadContents) {
 			NID nidContentsTable = new NID(nodeFolderObject.nid, NID.CONTENTS_TABLE);
 			nodeContentsTable = nbt.find(nidContentsTable);
 			if (nodeContentsTable != null)
