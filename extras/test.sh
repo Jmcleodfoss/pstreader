@@ -54,11 +54,11 @@ TestModule() {
 	declare output=$(GetTestDirectory "$1")/${class#io/github/jmcleodfoss/*/*}.out
 	echo "
 $(date +%H:%M:%S): starting $class test" >> $stats
-	echo "java $options -cp $cp $class $@ > $output"
+	echo "java $options -cp $cp $class $@ 2>&1 > $output"
 	if [ -z "$options" ]; then
-		java -cp "$cp" "$class" "$@" > "$output"
+		java -cp "$cp" "$class" "$@" 2>&1 > "$output"
 	else
-		java "$options" -cp "$cp" "$class" "$@" > "$output"
+		java "$options" -cp "$cp" "$class" "$@" 2>&1 > "$output"
 	fi
 	echo "$(date +%H:%M:%S): done $class test" >> $stats
 }
@@ -72,11 +72,11 @@ TestPSTIndependentModule() {
 	declare output=$results_dir/${class#io.github.jmcleodfoss.*.*}.out
 	echo "
 $(date +%H:%M:%S): starting $class test" >> $stats
-	echo "java $options -cp $cp $class $@ > $output"
+	echo "java $options -cp $cp $class $@ 2>&1 > $output"
 	if [ -z "$options" ]; then
-		java -cp "$cp" "$class" "$@" > "$output"
+		java -cp "$cp" "$class" "$@" 2>&1 > "$output"
 	else
-		java "$options" -cp "$cp" "$class" "$@" > "$output"
+		java "$options" -cp "$cp" "$class" "$@" 2>&1 > "$output"
 	fi
 	echo "$(date +%H:%M:%S): done $class test" >> $stats
 }
