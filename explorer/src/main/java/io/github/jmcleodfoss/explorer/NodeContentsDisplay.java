@@ -105,7 +105,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 			add("Heap", sbHeapOnNode);
 		}
 
-		if(bth.read(hon, pst)) {
+		if ((hon.isPropertyContext() || hon.isTableContext()) && bth.read(hon, pst)) {
 			if (indexOfComponent(bth) == -1)
 				add("BTree", bth);
 		} else {
