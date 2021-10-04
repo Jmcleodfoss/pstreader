@@ -14,7 +14,7 @@ declare results_dir=test-output
 # Output file for tracking / timing
 declare stats=$results_dir/stats.txt
 
-declare version=1.1.2-SNAPSHOT
+declare version=1.1.3-SNAPSHOT
 
 # Jar files
 
