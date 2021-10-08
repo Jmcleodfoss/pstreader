@@ -158,6 +158,9 @@ abstract class DataType
 	/**	The NID reader/manipulator object. */
 	static final NID nidReader = new NID();
 
+	/**	A reader/display manioulater for Server IDs */
+	private static ServerID serverIDReader = new ServerID();
+
 	/**	A reader/display manipulator for wide-character (Unicode) character strings values in the PST file. */
 	private static final PSTString stringReader = new PSTString(STRING);
 
@@ -1116,6 +1119,79 @@ abstract class DataType
 		}
 	}
 
+	private static class ServerID extends DataType
+	{
+		private static ServerID reader = new ServerID();
+
+		/**	Create a String representation of a Server ID
+		*	@param	o	The Server ID to display
+		*	@return	A String representation of the given object
+		*/
+		@Override
+		public String makeString(final Object o)
+		{
+			io.github.jmcleodfoss.pst.ServerID[] servers = (io.github.jmcleodfoss.pst.ServerID[])o;
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < servers.length; ++i) {
+				if (i > 0)
+					sb.append(", ");
+				sb.append(servers[i].toString());
+			}
+			return sb.toString();
+		}
+
+		/**	Read in a ServerID object from the data stream.
+		*	@param	byteBuffer	The incoming data stream from which to read the time.
+		*	@return	A Java Date object corresponding to the MS time read from the data stream.
+		*/
+		@Override
+		public Object read(java.nio.ByteBuffer byteBuffer)
+		{
+			int count = (int)byteBuffer.getShort();
+			boolean ours = byteBuffer.get() == 1;
+			if (ours) {
+				byte incoming[] = new byte[8];
+				byteBuffer.get(incoming, 6, 2);
+				long folderReplicaId = ByteUtil.makeLongLE(incoming);
+
+				java.util.Arrays.fill(incoming, (byte)0);
+				byteBuffer.get(incoming, 2, 6);
+				long folderGlobalCounter = ByteUtil.makeLongLE(incoming);
+
+				GenericID folderId = new GenericID((int)folderReplicaId, (long)folderGlobalCounter);
+
+				java.util.Arrays.fill(incoming, (byte)0);
+				byteBuffer.get(incoming, 6, 2);
+				long messageReplicaId = ByteUtil.makeLongLE(incoming);
+
+				java.util.Arrays.fill(incoming, (byte)0);
+				byteBuffer.get(incoming, 2, 6);
+				long messageGlobalCounter = ByteUtil.makeLongLE(incoming);
+
+				GenericID messageId = new GenericID((int)messageReplicaId, (long)messageGlobalCounter);
+
+				int instance = byteBuffer.getInt();
+
+				return new io.github.jmcleodfoss.pst.ServerID(folderId, messageId, instance);
+			} else {
+				// User-defined server type. Everything is out the window, including the count.
+				// Assumption: There can't be a combination of "ours" and "!ours" server IDs
+				byte[] b = new byte[byteBuffer.remaining()];
+				byteBuffer.get(b);
+				return new io.github.jmcleodfoss.pst.ServerID(b);
+			}
+		}
+
+		/**	Obtain the size in bytes of an MS time object in a PST file.
+		*	@return	The size of an MS time object in a PST file.
+		*/
+		@Override
+		public int size()
+		{
+			return 21;
+		}
+	}
+
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 	*/
@@ -1274,7 +1350,6 @@ abstract class DataType
 		case CURRENCY:
 		case FLOATING_TIME:
 		case ERROR_CODE:
-		case SERVER_ID:
 		case RESTRICTION:
 		case RULE_ACTION:
 		case MULTIPLE_FLOATING_32:
@@ -1330,6 +1405,9 @@ abstract class DataType
 
 		case MULTIPLE_BINARY:
 			return multipleBinaryReader;
+
+		case SERVER_ID:
+			return serverIDReader;
 
 		default:
 			throw new UnknownPropertyTypeException(propertyType);
