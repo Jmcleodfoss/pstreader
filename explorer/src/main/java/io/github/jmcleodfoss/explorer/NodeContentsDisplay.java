@@ -12,6 +12,7 @@ import io.github.jmcleodfoss.pst.CRCMismatchException;
 import io.github.jmcleodfoss.pst.HeapOnNode;
 import io.github.jmcleodfoss.pst.LPTLeaf;
 import io.github.jmcleodfoss.pst.PST;
+import io.github.jmcleodfoss.pst.PagedBTree;
 import io.github.jmcleodfoss.swingutil.HexAndTextDisplay;
 
 /**	The NodeContentsDisplay provides a view of the contents of a node. */
@@ -20,6 +21,9 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 {
 	/**	The raw data, in bytes and ASCII. */
 	private HexAndTextDisplay rawData;
+
+	/**	Container for intermediate node data */
+	private AppTable btPage;
 
 	/**	The Heap-On-Node, if present. */
 	private JList<Object> heapOnNode;
@@ -40,6 +44,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	{
 		rawData = new HexAndTextDisplay();
 		heapOnNode = new JList<Object>();
+		btPage = new AppTable();
 		sbHeapOnNode = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		sbHeapOnNode.getViewport().add(heapOnNode);
 		bth = new BTHDisplay(explorer);
@@ -51,6 +56,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	public void reset()
 	{
 		remove(rawData);
+		remove(btPage);
 		remove(sbHeapOnNode);
 		remove(bth);
 		remove(lpt);
@@ -87,8 +93,13 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 			remove(sbHeapOnNode);
 			remove(bth);
 			remove(lpt);
+			if (node instanceof PagedBTree) {
+				add("BTPage", btPage);
+				btPage.setModel(((PagedBTree)node).getBTPageTableModel());
+			}
 			return;
 		}
+		remove(btPage);
 
 		LPTLeaf leaf = (LPTLeaf)node;
 

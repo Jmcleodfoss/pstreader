@@ -11,6 +11,11 @@ public abstract class PagedBTree extends BTree
 	/**	The block reference to the page for this node of the block or node B-tree. */
 	private final BREF bref;
 
+	/**	The page's context and page trailer (used to display full BTTPAGE info.
+	*	@see getBTPageTableModel
+	*/
+	private final PageContext<BTree, BTreeLeaf> context;
+
 	/**	The PageContext class contains information required to keep track of the current position in the B-tree during input. */
 	protected abstract static class PageContext<I extends BTree, L extends BTreeLeaf> extends BTree.Context<I, L>
 	{
@@ -19,6 +24,13 @@ public abstract class PagedBTree extends BTree
 		private static final String nm_cbEnt = "cbEnt";
 		private static final String nm_cEntMax = "cEntMax";
 		private static final String nm_cLevel = "cLevel";
+
+		// Page Trailer values
+		private static final String nm_pType = "pType";
+		private static final String nm_pTypeRepeat = "pTypeRepeat";
+		private static final String nm_wSig = "wSig";
+		private static final String nm_dwCRC = "dwCRC";
+		private static final String nm_bid = "bid";
 
 		/** The fields to read in for the various file formats.
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/4f0cd8e7-c2d0-4975-90a4-d417cfca77f8">MS-PST Section 2.2.2.7.7.1: BTPAGE</a>
@@ -33,6 +45,11 @@ public abstract class PagedBTree extends BTree
 				new DataDefinition(nm_cEntMax, DataType.integer8Reader, true),
 				new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
 				new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+				new DataDefinition(nm_pType, DataType.integer8Reader, true),
+				new DataDefinition(nm_pTypeRepeat, DataType.integer8Reader, true),
+				new DataDefinition(nm_wSig, DataType.integer16Reader, true),
+				new DataDefinition(nm_bid, DataType.bidAnsiReader, true),
+				new DataDefinition(nm_dwCRC, DataType.integer32Reader, true),
 			},
 
 			/* Unicode format-specific fields */
@@ -42,6 +59,11 @@ public abstract class PagedBTree extends BTree
 				new DataDefinition(nm_cEntMax, DataType.integer8Reader, true),
 				new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
 				new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+				new DataDefinition(nm_pType, DataType.integer8Reader, true),
+				new DataDefinition(nm_pTypeRepeat, DataType.integer8Reader, true),
+				new DataDefinition(nm_wSig, DataType.integer16Reader, true),
+				new DataDefinition(nm_dwCRC, DataType.integer32Reader, true),
+				new DataDefinition(nm_bid, DataType.bidUnicodeReader, true),
 			},
 
 			/* OST 2013 format-specific fields */
@@ -51,6 +73,11 @@ public abstract class PagedBTree extends BTree
 				new DataDefinition(nm_cEntMax, DataType.integer16Reader, true),
 				new DataDefinition(nm_cbEnt, DataType.integer8Reader, true),
 				new DataDefinition(nm_cLevel, DataType.integer8Reader, true),
+				new DataDefinition(nm_pType, DataType.integer8Reader, true),
+				new DataDefinition(nm_pTypeRepeat, DataType.integer8Reader, true),
+				new DataDefinition(nm_wSig, DataType.integer16Reader, true),
+				new DataDefinition(nm_dwCRC, DataType.integer32Reader, true),
+				new DataDefinition(nm_bid, DataType.bidUnicodeReader, true),
 			}
 		};
 
@@ -213,6 +240,7 @@ public abstract class PagedBTree extends BTree
 	{
 		super(key, context);
 		this.bref = bref;
+		this.context = (PageContext<BTree, BTreeLeaf>)context;
 	}
 
 	/**	Return the actual size of an intermediate B-tree entry as read in from the input datastream.
@@ -236,6 +264,30 @@ public abstract class PagedBTree extends BTree
 		};
 
 		return new javax.swing.table.DefaultTableModel(cells, new Object[]{"", ""});
+	}
+
+	/**	Get a table model which can be used to describe the BTPage for an intermediate BTree node.
+	*	@return	A ReadOnlyTableModel describing this node.
+	*/
+	public javax.swing.table.TableModel getBTPageTableModel()
+	{
+		Object[][] cells = new Object[children.length + PageContext.fields[0].length - 2][];
+
+		for (int i = 0; i < children.length; ++i)
+			cells[i] = new Object[]{String.format("rgentries %d", i), children[i].toString()};
+
+		int i = children.length;
+		cells[i++] = new Object[]{context.nm_cEnt, context.getNumEntries()};
+		cells[i++] = new Object[]{context.nm_cEntMax, context.dc.getUInt8(context.nm_cEntMax)};
+		cells[i++] = new Object[]{context.nm_cbEnt, context.dc.getUInt8(context.nm_cbEnt)};
+		cells[i++] = new Object[]{context.nm_cLevel, context.dc.getUInt8(context.nm_cLevel)};
+		cells[i++] = new Object[]{context.nm_pType, context.dc.getUInt8(context.nm_pType)};
+		cells[i++] = new Object[]{context.nm_pTypeRepeat, context.dc.getUInt8(context.nm_pTypeRepeat)};
+		cells[i++] = new Object[]{context.nm_wSig, context.dc.get(context.nm_wSig)};
+		cells[i++] = new Object[]{context.nm_dwCRC, context.dc.get(context.nm_dwCRC)};
+		cells[i++] = new Object[]{context.nm_bid, (BID)context.dc.get(context.nm_bid)};
+
+		return new ReadOnlyTableModel(cells, new Object[]{"", ""});
 	}
 
 	/**	{@inheritDoc} */
