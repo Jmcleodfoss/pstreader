@@ -84,7 +84,7 @@ class NodeContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 		}
 
 		if (!(node instanceof LPTLeaf)) {
-			remove(heapOnNode);
+			remove(sbHeapOnNode);
 			remove(bth);
 			remove(lpt);
 			return;
