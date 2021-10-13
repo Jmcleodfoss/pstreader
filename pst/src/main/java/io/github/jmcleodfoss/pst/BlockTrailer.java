@@ -59,12 +59,12 @@ class BlockTrailer
 	}
 
 	/**	Return the size of the BLOCKTRAILER, which is different under Unicode and ANSI file formats.
-	*	@param	pstFile	The PST file's Header object, etc.
+	*	@param	fileFormat	The PST file format.
 	*	@return	The size, in bytes, of the BLOCKTRAILER object in the PST file.
 	*/
-	static int size(PSTFile pstFile)
+	static int size(final FileFormat fileFormat)
 	{
-		switch(pstFile.header.fileFormat.index){
+		switch(fileFormat.index){
 		case ANSI:
 			return DataDefinition.size(fields[FileFormat.Index.ANSI.getIndex()]);
 

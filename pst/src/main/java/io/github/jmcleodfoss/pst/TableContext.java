@@ -515,7 +515,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		java.nio.ByteBuffer rowStream = PSTFile.makeByteBuffer(data);
 
 		int rowWidth = 0xffff & info.endingOffsets[TCInfo.TCI_bm];
-		final int maxDataSize = BlockBase.maxBlockSize(pstFile) - BlockTrailer.size(pstFile);
+		final int maxDataSize = BlockBase.maxBlockSize(pstFile.header.fileFormat) - BlockTrailer.size(pstFile.header.fileFormat);
 		final int rowsPerBlock = maxDataSize/rowWidth;
 		final int nPaddingBytes = maxDataSize - rowsPerBlock*rowWidth;
 		int r;

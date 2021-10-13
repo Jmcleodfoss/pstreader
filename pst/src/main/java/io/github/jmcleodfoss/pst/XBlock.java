@@ -109,8 +109,8 @@ class XBlock extends BlockBase
 		}
 		this.bid = bid;
 
-		final int blockSize = blockSize(entry.numBytes, pstFile);
-		final int bytesToSkip = blockSize-entry.numBytes - BlockTrailer.size(pstFile);
+		final int blockSize = blockSize(entry.numBytes, pstFile.header.fileFormat);
+		final int bytesToSkip = blockSize-entry.numBytes - BlockTrailer.size(pstFile.header.fileFormat);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 
 		new BlockTrailer(pstFile);

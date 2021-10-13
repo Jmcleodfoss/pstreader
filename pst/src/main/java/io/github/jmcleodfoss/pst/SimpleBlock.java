@@ -82,7 +82,7 @@ class SimpleBlock extends BlockBase
 		CRCMismatchException,
 		java.io.IOException
 	{
-		this(entry, blockSize(entry.numBytes, pstFile), encryption, pstFile);
+		this(entry, blockSize(entry.numBytes, pstFile.header.fileFormat), encryption, pstFile);
 	}
 
 	/**	Create a SimpleBlock object from the given block B-tree leaf entry with the given block size from the given PST file,
@@ -126,7 +126,7 @@ class SimpleBlock extends BlockBase
 		}
 		this.data = data;
 
-		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile);
+		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile.header.fileFormat);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 		final BlockTrailer trailer = new BlockTrailer(pstFile);
 

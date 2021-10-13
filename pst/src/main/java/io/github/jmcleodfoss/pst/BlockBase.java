@@ -38,16 +38,16 @@ abstract class BlockBase
 
 	/**	Return the size of the block, which depends on both the number of data bytes and the file format.
 	*	@param	numBytes	The number of data bytes in the block.
-	*	@param	pstFile		The PST file input data stream, {@link Header}, etc
+	*	@param	fileFormat	The PST file format.
 	*	@return	The size of the block with padding given the target size in bytes.
 	*	@see <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
 	*	@see <a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
 	*/
-	protected static int blockSize(final int numBytes, final PSTFile pstFile)
+	protected static int blockSize(final int numBytes, final FileFormat fileFormat)
 	{
-		int requiredSize = numBytes + BlockTrailer.size(pstFile);
+		int requiredSize = numBytes + BlockTrailer.size(fileFormat);
 
-		final int baseBytes = pstFile.header.fileFormat.index == FileFormat.Index.OST_2013 ? BASE_BYTES_OST_2013 : BASE_BYTES;
+		final int baseBytes = fileFormat.index == FileFormat.Index.OST_2013 ? BASE_BYTES_OST_2013 : BASE_BYTES;
 		if (requiredSize % baseBytes == 0)
 			return requiredSize;
 		return ((requiredSize/baseBytes) + 1) * baseBytes;
@@ -67,14 +67,14 @@ abstract class BlockBase
 	abstract java.util.Iterator<java.nio.ByteBuffer> iterator();
 
 	/**	The maximum size of a block.
-	*	@param	pstFile	The pstFile object for the file being read
+	*	@param	fileFormat	The PST file format.
 	*	@return	The maximum block size
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/a9c1981d-d1ea-457c-b39e-dc7fb0eb95d4">MS-PST Section 2.2.2.8: Blocks</a>
 	*	@see	<a href="https://blog.mythicsoft.com/ost-2013-file-format-the-missing-documentation/">OST 2013 file format the missing documentation blog entry</a>
 	*/
-	static int maxBlockSize(PSTFile pstFile)
+	static int maxBlockSize(final FileFormat fileFormat)
 	{
-		if (pstFile.header.fileFormat.index == FileFormat.Index.OST_2013)
+		if (fileFormat.index == FileFormat.Index.OST_2013)
 			return MAX_BLOCK_BYTES_OST_2013;
 
 		return MAX_BLOCK_BYTES;
