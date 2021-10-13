@@ -126,7 +126,7 @@ class SimpleBlock extends BlockBase
 		}
 		this.data = data;
 
-		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile.header.fileFormat);
+		final int bytesToSkip = blockSize - entry.numBytes - BlockTrailer.size(pstFile.header.fileFormat);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 		final BlockTrailer trailer = new BlockTrailer(pstFile.mbb, pstFile.header.fileFormat);
 
