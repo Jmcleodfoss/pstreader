@@ -99,9 +99,11 @@ class SimpleBlock extends BlockBase
 		CRCMismatchException,
 		java.io.IOException
 	{
+		java.nio.ByteBuffer byteBuffer = pstFile.getByteBuffer(entry.bref, blockSize(entry.numBytes, pstFile.header.fileFormat));
+		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+
 		byte data[] = new byte[entry.numBytes];
-		pstFile.position(entry.bref.ib.ib);
-		pstFile.mbb.get(data);
+		byteBuffer.get(data);
 
 		int crcCalculated = 0;
 		if (Options.checkCRC)
@@ -127,8 +129,8 @@ class SimpleBlock extends BlockBase
 		this.data = data;
 
 		final int bytesToSkip = blockSize - entry.numBytes - BlockTrailer.size(pstFile.header.fileFormat);
-		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
-		final BlockTrailer trailer = new BlockTrailer(pstFile.mbb, pstFile.header.fileFormat);
+		byteBuffer.position(byteBuffer.position() + bytesToSkip);
+		final BlockTrailer trailer = new BlockTrailer(byteBuffer, pstFile.header.fileFormat);
 
 		if (Options.checkCRC && crcCalculated != trailer.crc)
 			throw new CRCMismatchException("Block", crcCalculated, trailer.crc);

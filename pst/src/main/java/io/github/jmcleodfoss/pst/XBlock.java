@@ -86,10 +86,11 @@ class XBlock extends BlockBase
 		CRCMismatchException,
 		java.io.IOException
 	{
-		pstFile.position(entry.bref.ib.ib);
+		java.nio.ByteBuffer byteBuffer = pstFile.getByteBuffer(entry.bref, blockSize(entry.numBytes, pstFile.header.fileFormat));
+		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
 		DataContainer dc = new DataContainer();
-		dc.read(pstFile.mbb, data_fields);
+		dc.read(byteBuffer, data_fields);
 
 		final byte type = (Byte)dc.get(nm_btype);
 		if (type != 0x01)
@@ -104,16 +105,16 @@ class XBlock extends BlockBase
 		DataDefinition bidField = new DataDefinition(nm_data, DataType.BIDFactory(pstFile.unicode()), true);
 		BID[] bid = new BID[numEntries];
 		for (int i = 0; i < numEntries; ++i) {
-			dc.read(pstFile.mbb, bidField);
+			dc.read(byteBuffer, bidField);
 			bid[i] = (BID)dc.get(nm_data);
 		}
 		this.bid = bid;
 
 		final int blockSize = blockSize(entry.numBytes, pstFile.header.fileFormat);
 		final int bytesToSkip = blockSize-entry.numBytes - BlockTrailer.size(pstFile.header.fileFormat);
-		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
+		byteBuffer.position(byteBuffer.position() + bytesToSkip);
 
-		new BlockTrailer(pstFile.mbb, pstFile.header.fileFormat);
+		new BlockTrailer(byteBuffer, pstFile.header.fileFormat);
 
 		if (level == 1) {
 			blockList = readXBlock(numEntries, bid, bbt, pstFile);
