@@ -128,7 +128,7 @@ class SimpleBlock extends BlockBase
 
 		final int bytesToSkip = blockSize-entry.numBytes-BlockTrailer.size(pstFile.header.fileFormat);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
-		final BlockTrailer trailer = new BlockTrailer(pstFile);
+		final BlockTrailer trailer = new BlockTrailer(pstFile.mbb, pstFile.header.fileFormat);
 
 		if (Options.checkCRC && crcCalculated != trailer.crc)
 			throw new CRCMismatchException("Block", crcCalculated, trailer.crc);

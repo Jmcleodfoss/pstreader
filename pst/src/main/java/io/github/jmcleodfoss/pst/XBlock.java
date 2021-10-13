@@ -113,7 +113,7 @@ class XBlock extends BlockBase
 		final int bytesToSkip = blockSize-entry.numBytes - BlockTrailer.size(pstFile.header.fileFormat);
 		pstFile.mbb.position(pstFile.mbb.position() + bytesToSkip);
 
-		new BlockTrailer(pstFile);
+		new BlockTrailer(pstFile.mbb, pstFile.header.fileFormat);
 
 		if (level == 1) {
 			blockList = readXBlock(numEntries, bid, bbt, pstFile);

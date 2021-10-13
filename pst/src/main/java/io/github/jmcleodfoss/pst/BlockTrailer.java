@@ -46,15 +46,16 @@ class BlockTrailer
 	final int crc;
 
 	/**	Create a BlockTrailer object from the current position in the input datastream.
-	*	@param	pstFile	The PST file's header, input stream, etc.
+	*	@param	byteBuffer	The mapped byte buffer for the current block.
+	*	@param	fileFormat	The PST file format.
 	*	@throws	java.io.IOException	An I/O error was encoutered while reading in the block trailer.
 	*/
-	BlockTrailer(PSTFile pstFile)
+	BlockTrailer(java.nio.ByteBuffer byteBuffer, FileFormat fileFormat)
 	throws
 		java.io.IOException
 	{
 		DataContainer dc = new DataContainer();
-		dc.read(pstFile.mbb, fields[pstFile.header.fileFormat.index.getIndex()]);
+		dc.read(byteBuffer, fields[fileFormat.index.getIndex()]);
 		crc = (Integer)dc.get(nm_dwCRC);
 	}
 
