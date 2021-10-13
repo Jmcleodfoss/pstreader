@@ -93,9 +93,7 @@ public class HeaderTest extends TestFrame
 			FileInputStream stream = new FileInputStream(file);
 			try {
 				FileChannel fc = stream.getChannel();
-				MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
-				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
-				new Header(mbb);
+				new Header(fc);
 				fc.close();
 			} finally {
 				stream.close();

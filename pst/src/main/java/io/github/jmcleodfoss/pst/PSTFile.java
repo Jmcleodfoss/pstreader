@@ -39,7 +39,7 @@ public class PSTFile
 				mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
 				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
-				header = new Header(mbb);
+				header = new Header(fc);
 			} catch (final Exception e) {
 				fc.close();
 				throw e;

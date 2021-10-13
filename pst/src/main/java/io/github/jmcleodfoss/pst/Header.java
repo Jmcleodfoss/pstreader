@@ -136,17 +136,20 @@ public class Header
 	public final BREF bbtRoot;
 
 	/**	Read in the header data and save the fields we need for later.
-	*	@param	byteBuffer	The data stream from which to read the PST header.
+	*	@param	fc	The file channel of the PST file.
 	*	@throws	CRCMismatchException	The header's calculated CRC does not match the expected value.
 	*	@throws	NotPSTFileException	This is not a pst file.
 	*	@throws	java.io.IOException	An I/O error was encountered when reading the pst header.
 	*/
-	Header(java.nio.ByteBuffer byteBuffer)
+	Header(java.nio.channels.FileChannel fc)
 	throws
 		CRCMismatchException,
 		NotPSTFileException,
 		java.io.IOException
 	{
+		java.nio.ByteBuffer byteBuffer = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, Math.min(fc.size(), SIZE_UNICODE));
+		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+
 		int crcPartialCalculated = 0;
 		int crcFullCalculated = 0;
 		if (Options.checkCRC) {
@@ -235,10 +238,7 @@ public class Header
 				try {
 					java.nio.channels.FileChannel fc = stream.getChannel();
 					try {
-						java.nio.MappedByteBuffer mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
-						mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
-
-						final Header header = new Header(mbb);
+						final Header header = new Header(fc);
 						System.out.println(header);
 					} catch (final CRCMismatchException e) {
 						System.out.printf("File %s is corrupt (Calculated CRC does not match expected value)%n", a);
