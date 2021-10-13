@@ -102,6 +102,21 @@ public class PSTFile
 		return byteBuffer;
 	}
 
+	/**	Create a ByteBuffer suitable for reading the given number of bytes from the position in the BREF
+	*	@param	bref		The block reference from which to read.
+	*	@param	numBytes	The number of bytes to put into the ByteBuffer
+	*	@return	A ByteBuffer containing the input data with little-endian order from which PST fields may be read.
+	* 	@throws java.io.IOException	There was an I/O error reading the input stream.
+	*/
+	java.nio.ByteBuffer getByteBuffer(BREF bref, int numBytes)
+	throws
+		java.io.IOException
+	{
+		java.nio.ByteBuffer byteBuffer = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, bref.ib.ib, numBytes);
+		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+		return byteBuffer;
+	}
+
 	/**	A convenience method to move to the given point in the PST file.
 	*	@param	position	The location in the PST file to move the mapped byte buffer pointer to.
 	*	@throws	java.io.IOException	An I/O error was encountered while trying to move to the requested location in the file.
