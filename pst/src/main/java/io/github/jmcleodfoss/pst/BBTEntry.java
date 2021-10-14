@@ -66,10 +66,10 @@ class BBTEntry implements BTreeLeaf
 		java.io.IOException
 	{
 		DataContainer dc = new DataContainer();
-		dc.read(entryStream, fields[context.pstFile.header.fileFormat.index.getIndex()]);
+		dc.read(entryStream, fields[context.fileFormat.index.getIndex()]);
 		bref = (BREF)dc.get(nm_bref);
 		numBytes = 0xffff & (Short)dc.get(nm_cb);
-		totalBytes = context.pstFile.header.fileFormat.index == FileFormat.Index.OST_2013 ? (0xffff & (Short)dc.get(nm_cbInflated)) : numBytes;
+		totalBytes = context.fileFormat.index == FileFormat.Index.OST_2013 ? (0xffff & (Short)dc.get(nm_cbInflated)) : numBytes;
 		refCount = 0xffff & (Short)dc.get(nm_cRef);
 	}
 
