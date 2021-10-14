@@ -1130,14 +1130,8 @@ abstract class DataType
 		@Override
 		public String makeString(final Object o)
 		{
-			io.github.jmcleodfoss.pst.ServerID[] servers = (io.github.jmcleodfoss.pst.ServerID[])o;
-			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < servers.length; ++i) {
-				if (i > 0)
-					sb.append(", ");
-				sb.append(servers[i].toString());
-			}
-			return sb.toString();
+			io.github.jmcleodfoss.pst.ServerID serverId = (io.github.jmcleodfoss.pst.ServerID)o;
+			return serverId.toString();
 		}
 
 		/**	Read in a ServerID object from the data stream.
