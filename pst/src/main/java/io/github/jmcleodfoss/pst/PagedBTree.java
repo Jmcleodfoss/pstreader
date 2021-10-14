@@ -278,6 +278,7 @@ public abstract class PagedBTree extends BTree
 			cells[i] = new Object[]{String.format("rgentries %d", i), children[i].toString()};
 
 		int i = children.length;
+		cells[i++] = new Object[]{context.nm_cEnt, context.getNumEntries()};
 		if (context.fileFormat.index == FileFormat.Index.ANSI || context.fileFormat.index == FileFormat.Index.UNICODE) {
 			cells[i++] = new Object[]{context.nm_cEntMax, context.dc.getUInt8(context.nm_cEntMax)};
 		} else {
