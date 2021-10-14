@@ -94,6 +94,9 @@ public abstract class PagedBTree extends BTree
 		/**	The PST file's data stream, header, etc. */
 		protected PSTFile pstFile;
 
+		/**	The mapped byte buffer for this page */
+		protected final java.nio.ByteBuffer byteBuffer;
+
 		/**	Create a PageContext object form the given pstFile and bref.
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
@@ -105,8 +108,10 @@ public abstract class PagedBTree extends BTree
 		{
 			super(pstFile.header.fileFormat);
 			this.pstFile = pstFile;
-			pstFile.position(bref.ib.ib);
-			dc.read(pstFile.mbb, fields[pstFile.header.fileFormat.index.getIndex()]);
+
+			final int fileFormatIndex = pstFile.header.fileFormat.index.getIndex();
+			byteBuffer = pstFile.getByteBuffer(bref, PAGE_SIZES[fileFormatIndex]);
+			dc.read(byteBuffer, fields[fileFormatIndex]);
 		}
 
 		/**	Obtain a data stream from which the B-tree entries may be read.
@@ -300,10 +305,8 @@ public abstract class PagedBTree extends BTree
 	throws
 		java.io.IOException
 	{
-		pstFile.position(bref.ib.ib);
-		byte[] data = new byte[PAGE_SIZES[pstFile.header.fileFormat.index.getIndex()]];
-		pstFile.mbb.get(data);
-		return PSTFile.makeByteBuffer(data);
+		context.byteBuffer.position(0);
+		return context.byteBuffer;
 	}
 
 	/**	{@inheritDoc} */
