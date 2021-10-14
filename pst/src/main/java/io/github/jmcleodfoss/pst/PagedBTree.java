@@ -296,7 +296,6 @@ public abstract class PagedBTree extends BTree
 		} else {
 			cells[i++] = new Object[]{context.nm_cEntMax, (Short)context.dc.get(context.nm_cEntMax)};
 		}
-		cells[i++] = new Object[]{context.nm_cEntMax, context.dc.getUInt8(context.nm_cEntMax)};
 		cells[i++] = new Object[]{context.nm_cbEnt, context.dc.getUInt8(context.nm_cbEnt)};
 		cells[i++] = new Object[]{context.nm_cLevel, context.dc.getUInt8(context.nm_cLevel)};
 		cells[i++] = new Object[]{context.nm_pType, context.dc.getUInt8(context.nm_pType)};
