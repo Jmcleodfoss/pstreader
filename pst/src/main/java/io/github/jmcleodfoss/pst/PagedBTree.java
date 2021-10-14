@@ -94,6 +94,11 @@ public abstract class PagedBTree extends BTree
 		/*	The PST file's data stream, header, etc. */
 		protected PSTFile pstFile;
 
+		/**	Create a PageContext object form the given pstFile and bref.
+		*	@param	bref	The block reference for this page.
+		*	@param	pstFile	The PST file's data stream, header, etc.
+		*	@throws java.io.IOException	An I/O error was encountered while either seeking the page context's position in the file or while reading the page context data.
+		*/
 		protected PageContext(BREF bref, PSTFile pstFile)
 		throws
 			java.io.IOException
