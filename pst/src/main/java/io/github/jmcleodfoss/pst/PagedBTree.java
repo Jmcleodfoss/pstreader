@@ -5,8 +5,18 @@ package io.github.jmcleodfoss.pst;
 */
 public abstract class PagedBTree extends BTree
 {
-	/**	The size of a PST page. */
+	/**	The size of a PST page (ANSI and Unicode). */
 	static final int PAGE_SIZE = 512;
+
+	/**	The size of a PST page (OST files) (undocumented, assumed). */
+	static final int PAGE_SIZE_OST = 4096;
+
+	/** The page sizes for different file types, to be indext by FileFormat.index.getIndex(). */
+	private static final int PAGE_SIZES[] = {
+		PAGE_SIZE,
+		PAGE_SIZE,
+		PAGE_SIZE_OST
+	};
 
 	/**	The block reference to the page for this node of the block or node B-tree. */
 	private final BREF bref;
@@ -296,7 +306,7 @@ public abstract class PagedBTree extends BTree
 		java.io.IOException
 	{
 		pstFile.position(bref.ib.ib);
-		byte[] data = new byte[PAGE_SIZE];
+		byte[] data = new byte[PAGE_SIZES[pstFile.header.fileFormat.index.getIndex()]];
 		pstFile.mbb.get(data);
 		return PSTFile.makeByteBuffer(data);
 	}
