@@ -51,7 +51,7 @@ public class BTreeOnHeap extends BTree
 		throws
 			java.io.IOException
 		{
-			super(pstFile);
+			super(pstFile.header.fileFormat);
 			this.hon = hon;
 			header = new Header(PSTFile.makeByteBuffer(hon.heapData(hid)));
 			fEmpty = !header.hidRoot.isHID();
@@ -70,7 +70,7 @@ public class BTreeOnHeap extends BTree
 		throws
 			java.io.IOException
 		{
-			super(context.pstFile);
+			super(context.fileFormat);
 			header = context.header;
 			hon = context.hon;
 			fEmpty = context.fEmpty;

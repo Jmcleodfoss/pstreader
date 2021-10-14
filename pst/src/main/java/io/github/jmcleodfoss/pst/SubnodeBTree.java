@@ -40,7 +40,7 @@ public class SubnodeBTree extends BTree
 			CRCMismatchException,
 			java.io.IOException
 		{
-			super(pstFile);
+			super(pstFile.header.fileFormat);
 			final BBTEntry entry = bbt.find(bid);
 			assert entry != null : "BID " + bid + " not found!";
 			snStream = new SimpleBlock(entry, Encryption.NONE, pstFile).dataStream();

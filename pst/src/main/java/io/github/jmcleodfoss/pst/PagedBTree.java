@@ -94,32 +94,14 @@ public abstract class PagedBTree extends BTree
 		/*	The PST file's data stream, header, etc. */
 		protected PSTFile pstFile;
 
-		/**	Move to the start of this page so that the parent class can read in the header.
-		*	@param	bref	The block reference for this page.
-		*	@param	pstFile	The PST file's data stream, header, etc.
-		*	@return	The passed in pstFile object, for use as a parameter to the {@link #PageContext} constructor.
-		*	@throws	java.io.IOException	An I/O error was encountered when seeking the new position in the file.
-		*	@see	PageContext
-		*/
-		private static PSTFile gotoPage(final BREF bref, PSTFile pstFile)
-		throws
-			java.io.IOException
-		{
-			pstFile.position(bref.ib.ib);
-			return pstFile;
-		}
-
-		/**	Create a PageContext object form the given pstFile and bref.
-		*	@param	bref	The block reference for this page.
-		*	@param	pstFile	The PST file's data stream, header, etc.
-		*	@throws java.io.IOException	An I/O error was encountered while either seeking the page context's position in the file or while reading the page context data.
-		*/
 		protected PageContext(BREF bref, PSTFile pstFile)
 		throws
 			java.io.IOException
 		{
-			super(gotoPage(bref, pstFile), fields[pstFile.header.fileFormat.index.getIndex()]);
+			super(pstFile.header.fileFormat);
 			this.pstFile = pstFile;
+			pstFile.position(bref.ib.ib);
+			dc.read(pstFile.mbb, fields[pstFile.header.fileFormat.index.getIndex()]);
 		}
 
 		/**	Obtain a data stream from which the B-tree entries may be read.

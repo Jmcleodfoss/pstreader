@@ -27,14 +27,12 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		*	@param	fields	The data fields to read in.
 		*	@throws java.io.IOException	There was a problem reading the PST file.
 		*/
-		protected Context(PSTFile pstFile, final DataDefinition[]... fields)
+		protected Context(FileFormat fileFormat)
 		throws
 			java.io.IOException
 		{
 			dc = new DataContainer();
-			for (DataDefinition[] f : fields)
-				dc.read(pstFile.mbb, f);
-			this.fileFormat = pstFile.header.fileFormat;
+			this.fileFormat = fileFormat;
 		}
 
 		/**	Obtain a data stream from which entries may be read.
