@@ -11,9 +11,6 @@ public class PSTFile
 	/**	The FileChannel of the data stream, used to jump around the file. */
 	private java.nio.channels.FileChannel fc;
 
-	/**	The file, as a memory-mapped byte file. */
-	java.nio.MappedByteBuffer mbb;
-
 	/**	The PST header, which contains encryption and file format information as well as other useful data. */
 	public final Header header;
 
@@ -36,9 +33,6 @@ public class PSTFile
 			fc = stream.getChannel();
 
 			try {
-				mbb = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, fc.size());
-				mbb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
-
 				header = new Header(fc);
 			} catch (final Exception e) {
 				fc.close();
@@ -112,33 +106,22 @@ public class PSTFile
 	throws
 		java.io.IOException
 	{
-		java.nio.ByteBuffer byteBuffer = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, bref.ib.ib, numBytes);
-		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
-		return byteBuffer;
-	}
-
-	/**	A convenience method to move to the given point in the PST file.
-	*	@param	position	The location in the PST file to move the mapped byte buffer pointer to.
-	*	@throws	java.io.IOException	An I/O error was encountered while trying to move to the requested location in the file.
-	*/
-	void position(final long position)
-	throws
-		java.io.IOException
-	{
-		mbb.position((int)position);
+		return read(bref.ib.ib, numBytes);
 	}
 
 	/**	Read data from the given position as a ByteBuffer
 	*	@param	position	The location to read from.
 	*	@param	length		The number of bytes to read.
 	*	@return	A ByteBuffer providing access to the requested bytes
+	* 	@throws java.io.IOException	There was an I/O error reading the input stream.
 	*/
-	public java.nio.ByteBuffer read(final int position, final int length)
+	public java.nio.ByteBuffer read(final long position, final int length)
+	throws
+		java.io.IOException
 	{
-		byte[] data = new byte[length];
-		mbb.position(position);
-		mbb.get(data);
-		return java.nio.ByteBuffer.wrap(data).asReadOnlyBuffer();
+		java.nio.ByteBuffer byteBuffer = fc.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, position, length);
+		byteBuffer.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+		return byteBuffer;
 	}
 
 	/**	A convenience method to indicate whether the PST file uses Unicode (wide text) or ANSI (8-bit) text.
