@@ -91,7 +91,7 @@ public abstract class PagedBTree extends BTree
 			}
 		};
 
-		/*	The PST file's data stream, header, etc. */
+		/**	The PST file's data stream, header, etc. */
 		protected PSTFile pstFile;
 
 		/**	Create a PageContext object form the given pstFile and bref.
