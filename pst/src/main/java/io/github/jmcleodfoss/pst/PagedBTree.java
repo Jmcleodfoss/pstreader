@@ -91,6 +91,9 @@ public abstract class PagedBTree extends BTree
 			}
 		};
 
+		/*	The PST file's data stream, header, etc. */
+		protected PSTFile pstFile;
+
 		/**	Move to the start of this page so that the parent class can read in the header.
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
@@ -116,6 +119,7 @@ public abstract class PagedBTree extends BTree
 			java.io.IOException
 		{
 			super(gotoPage(bref, pstFile), fields[pstFile.header.fileFormat.index.getIndex()]);
+			this.pstFile = pstFile;
 		}
 
 		/**	Obtain a data stream from which the B-tree entries may be read.

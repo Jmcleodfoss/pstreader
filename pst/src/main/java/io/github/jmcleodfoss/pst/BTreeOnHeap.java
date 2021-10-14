@@ -25,6 +25,9 @@ public class BTreeOnHeap extends BTree
 		/**	The level of the nodes currently being built in the B-tree. */
 		private final int level;
 
+		/*	The PST file's data stream, header, etc. */
+		private PSTFile pstFile;
+
 		/**	Construct a BTHContext object representing the root of the B-tree-on-heap structure, where the root index is the
 		*	first entry in the heap-on-node.
 		*	@param	hon	The heap-on-node on which this B-tree-on-heap is built.
@@ -54,6 +57,7 @@ public class BTreeOnHeap extends BTree
 			fEmpty = !header.hidRoot.isHID();
 			this.hid = header.hidRoot;
 			level = header.levels;// + 1;
+			this.pstFile = pstFile;
 		}
 
 		/**	Construct a BTHContext object representing the level below the passed in context for a B-tree-on-heap structure.
@@ -72,6 +76,7 @@ public class BTreeOnHeap extends BTree
 			fEmpty = context.fEmpty;
 			this.hid = hid;
 			level = newLevel;
+			this.pstFile = context.pstFile;
 		}
 
 		/**	The stream of data from which to read the intermediate or leaf node data.

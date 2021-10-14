@@ -79,7 +79,7 @@ class BBTEntry implements BTreeLeaf
 	*/
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
-		return DataDefinition.size(fields[context.pstFile.header.fileFormat.index.getIndex()]);
+		return DataDefinition.size(fields[context.fileFormat.index.getIndex()]);
 	}
 
 	/**	{@inheritDoc} */

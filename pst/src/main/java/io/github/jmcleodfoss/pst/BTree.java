@@ -19,8 +19,8 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		/**	The data container holding the information read in. */
 		protected DataContainer dc;
 
-		/**	Hold the stream, FileChannel, and header information necessary for reading the B-tree. */
-		protected PSTFile pstFile;
+		/**	The PST file format */
+		final FileFormat fileFormat;
 
 		/**	The base class constructor reads any metadata requested and saves the input stream and file format.
 		*	@param	pstFile	The PST {@link Header}, data stream, etc.
@@ -34,7 +34,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 			dc = new DataContainer();
 			for (DataDefinition[] f : fields)
 				dc.read(pstFile.mbb, f);
-			this.pstFile = pstFile;
+			this.fileFormat = pstFile.header.fileFormat;
 		}
 
 		/**	Obtain a data stream from which entries may be read.
@@ -87,7 +87,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		*/
 		protected boolean unicode()
 		{
-			return pstFile.unicode();
+			return fileFormat.fUnicode;
 		}
 	}
 

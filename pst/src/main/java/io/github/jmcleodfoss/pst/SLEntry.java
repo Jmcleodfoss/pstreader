@@ -47,15 +47,15 @@ class SLEntry extends LPTLeaf
 	*/
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
-		return size(context.pstFile);
+		return size(context.fileFormat);
 	}
 
 	/**	The size of a sub-node B-tree leaf entry for this file's format.
-	*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
+	*	@param	fileFormat	The PST's file format object.
 	*	@return	The size of the sub-node B-tree leaf entry, without padding.
 	*/
-	static int size(PSTFile pstFile)
+	static int size(FileFormat fileFormat)
 	{
-		return pstFile.unicode() ? SIZE_UNICODE : SIZE_ANSI;
+		return fileFormat.fUnicode ? SIZE_UNICODE : SIZE_ANSI;
 	}
 }

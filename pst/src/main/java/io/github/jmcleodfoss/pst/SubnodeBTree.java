@@ -62,7 +62,7 @@ public class SubnodeBTree extends BTree
 		@Override
 		protected int getEntrySize()
 		{
-			return isLeafNode() ? SLEntry.size(pstFile) : SIEntry.size(pstFile);
+			return isLeafNode() ? SLEntry.size(fileFormat) : SIEntry.size(fileFormat);
 		}
 
 		/**	{@inheritDoc} */
@@ -156,12 +156,12 @@ public class SubnodeBTree extends BTree
 		}
 
 		/**	Obtain size of an intermediate sub-node B-tree entry for this file's format.
-		*	@param	pstFile	The PST file's {@link Header}, data stream, etc.
+		*	@param	fileFormat	The PST's file format object.
 		*	@return	The size of the intermediate sub-node entry in this file/
 		*/
-		static int size(PSTFile pstFile)
+		static int size(FileFormat fileFormat)
 		{
-			return pstFile.unicode() ? SIZE_UNICODE : SIZE_ANSI;
+			return fileFormat.fUnicode ? SIZE_UNICODE : SIZE_ANSI;
 		}
 
 		/**	Obtain the B-tree search key for this node. All child nodes will have keys equal to or greater than this.
@@ -216,7 +216,7 @@ public class SubnodeBTree extends BTree
 	*/
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
-		return SIEntry.size(context.pstFile);
+		return SIEntry.size(context.fileFormat);
 	}
 
 	/**	{@inheritDoc} */
