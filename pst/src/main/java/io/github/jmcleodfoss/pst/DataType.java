@@ -930,7 +930,14 @@ abstract class DataType
 		@Override
 		public String makeString(final Object o)
 		{
-			return "multiple-string " + o.toString();
+			String[] a = (String[])o;
+			StringBuilder s = new StringBuilder("multiple-string: ");
+			for (int i = 0; i < a.length; ++i) {
+				if (i > 0)
+					s.append(", ");
+				s.append(a[i]);
+			}
+			return s.toString();
 		}
 
 		/**	Read in a list of strings.
