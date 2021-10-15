@@ -49,11 +49,19 @@ class Header extends JSplitPane implements NewFileListener
 	*/
 	public void fileLoaded(final PST pst)
 	{
-		rawData.read(pst.read(0, pst.header.size()));
-		table.setValueAt(pst.header.fileFormat, ROW_FILE_FORMAT, COL_VALUE);
-		table.setValueAt(pst.header.encryption, ROW_ENCRYPTION_METHOD, COL_VALUE);
-		table.setValueAt(pst.header.nbtRoot, ROW_NBT_ROOT, COL_VALUE);
-		table.setValueAt(pst.header.bbtRoot, ROW_BBT_ROOT, COL_VALUE);
+		try {
+			rawData.read(pst.read(0, pst.header.size()));
+			table.setValueAt(pst.header.fileFormat, ROW_FILE_FORMAT, COL_VALUE);
+			table.setValueAt(pst.header.encryption, ROW_ENCRYPTION_METHOD, COL_VALUE);
+			table.setValueAt(pst.header.nbtRoot, ROW_NBT_ROOT, COL_VALUE);
+			table.setValueAt(pst.header.bbtRoot, ROW_BBT_ROOT, COL_VALUE);
+		} catch (java.io.IOException e) {
+			e.printStackTrace(System.out);
+			table.setValueAt("", ROW_FILE_FORMAT, COL_VALUE);
+			table.setValueAt("", ROW_ENCRYPTION_METHOD, COL_VALUE);
+			table.setValueAt("", ROW_NBT_ROOT, COL_VALUE);
+			table.setValueAt("", ROW_BBT_ROOT, COL_VALUE);
+		}
 	}
 
 	/**	Reset the contents of the header table. */
