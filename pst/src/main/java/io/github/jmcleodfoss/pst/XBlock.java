@@ -192,11 +192,9 @@ class XBlock extends BlockBase
 		cells[i++] = new Object[]{nm_cEnt, numEntries};
 		cells[i++] = new Object[]{nm_lcbTotal, lcbTotal};
 
-		java.util.Vector<Object> contents;
 		String prefix;
 		if (level == 1) {
 			prefix = "Data Block";
-			java.util.Iterator<SimpleBlock> iterator = blockList.iterator();
 			for (int j = 0; j < bid.length; ++j)
 				cells[i++] = new Object[]{String.format("%s %d", prefix, j), bid[j].toString()};
 		} else {
