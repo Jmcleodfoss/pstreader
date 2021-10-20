@@ -81,6 +81,8 @@ class BID implements NodeKey
 		StringBuilder s = new StringBuilder(String.format("key 0x%08x 0x%08x", key, bid));
 		if (fInternal)
 			s.append(" (internal)");
+		else
+			s.append(" (data)");
 		return s.toString();
 	}
 }
