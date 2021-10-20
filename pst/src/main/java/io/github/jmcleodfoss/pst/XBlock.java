@@ -277,7 +277,7 @@ class XBlock extends BlockBase
 	@Override
 	public String toString()
 	{
-		String s = String.format("%d bytes in %d data blocks:%n", dataBytes, blockList.size());
+		String s = String.format("%d bytes in %d data (%s) blocks:%n", dataBytes, blockList.size(), blockType);
 		for (int i = 0; i < bid.length; ++i) {
 			if (i > 0)
 				s += "\n";
