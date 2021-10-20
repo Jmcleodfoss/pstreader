@@ -491,7 +491,6 @@ public class PST extends PSTFile
 			return null;
 		}
 		int btype = byteBuffer.get();
-		int cLevel = byteBuffer.get();
 		if (btype == 0x01) {
 			// XBLOCK / XXBLOCK
 			try {
