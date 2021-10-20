@@ -33,6 +33,24 @@ class XBlock extends BlockBase
 	/**	The sub-blocks in this multi-block structure. */
 	final java.util.Vector<SimpleBlock> blockList;
 
+	/**	The intermediate blocks (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final java.util.Vector<XBlock> xblockList;
+
+	/**	The block type (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final byte type;
+
+	/**	The block type name (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final String blockType;
+
+	/**	The level (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final byte level;
+
+	/**	The number of child entries of this node (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final int numEntries;
+
+	/** The total count of all the bytes of external data (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final int lcbTotal;
+
 	/**	An iterator which returns a ByteBuffer view of the underlying data block. */
 	private class Iterator implements java.util.Iterator<java.nio.ByteBuffer>
 	{
@@ -92,15 +110,16 @@ class XBlock extends BlockBase
 		DataContainer dc = new DataContainer();
 		dc.read(byteBuffer, data_fields);
 
-		final byte type = (Byte)dc.get(nm_btype);
+		type = (Byte)dc.get(nm_btype);
 		if (type != 0x01)
 			throw new BadXBlockTypeException(type);
 
-		final byte level = (Byte)dc.get(nm_cLevel);
+		level = (Byte)dc.get(nm_cLevel);
 		if (level != 1 & level != 2)
 			throw new BadXBlockLevelException(level);
 
-		final int numEntries = (Short)dc.get(nm_cEnt);
+		numEntries = (Short)dc.get(nm_cEnt);
+		lcbTotal = (Integer)dc.get(nm_lcbTotal);
 
 		DataDefinition bidField = new DataDefinition(nm_data, DataType.BIDFactory(pstFile.unicode()), true);
 		BID[] bid = new BID[numEntries];
@@ -117,9 +136,12 @@ class XBlock extends BlockBase
 		new BlockTrailer(byteBuffer, pstFile.header.fileFormat);
 
 		if (level == 1) {
-			blockList = readXBlock(numEntries, bid, bbt, pstFile);
+			blockType = "XBLOCK";
+			this.blockList = readXBlock(numEntries, bid, bbt, pstFile);
+			xblockList = null;
 		} else {
-			java.util.Vector<XBlock> xblockList = readXXBlock(numEntries, bid, bbt, pstFile);
+			blockType = "XBLOCK";
+			xblockList = readXXBlock(numEntries, bid, bbt, pstFile);
 
 			int nBlocks = 0;
 			for (java.util.Iterator<XBlock> xIter = xblockList.iterator(); xIter.hasNext(); )
@@ -155,6 +177,36 @@ class XBlock extends BlockBase
 		}
 
 		return data;
+	}
+
+	/**	Get a table model which can be used to describe this node.
+	*	@return	A DefaultTableModel describing this node.
+	*/
+	public javax.swing.table.TableModel getInternalDataTableModel()
+	{
+		Object[][] cells = new Object[5 + numEntries][];
+		int i = 0;
+		cells[i++] = new Object[]{"Block type", blockType};
+		cells[i++] = new Object[]{nm_btype, type};
+		cells[i++] = new Object[]{nm_cLevel, level};
+		cells[i++] = new Object[]{nm_cEnt, numEntries};
+		cells[i++] = new Object[]{nm_lcbTotal, lcbTotal};
+
+		java.util.Vector<Object> contents;
+		String prefix;
+		if (level == 1) {
+			prefix = "Data Block";
+			java.util.Iterator<SimpleBlock> iterator = blockList.iterator();
+			for (int j = 0; j < bid.length; ++j)
+				cells[i++] = new Object[]{String.format("%s %d", prefix, j), bid[j].toString()};
+		} else {
+			prefix = "XBLOCK";
+			java.util.Iterator<XBlock> iterator = xblockList.iterator();
+			while (iterator.hasNext())
+				cells[i++] = new Object[]{String.format("%s %d", prefix, i-4), ((BlockBase)iterator.next()).toString()};
+		}
+
+		return new javax.swing.table.DefaultTableModel(cells, new Object[]{"", ""});
 	}
 
 	/**	Obtain an iterator to iterate through the child blocks.

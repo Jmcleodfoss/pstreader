@@ -56,11 +56,18 @@ class BlockContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 			rawData.read(byteBuffer);
 			if (indexOfComponent(rawData) == -1)
 				add("Raw", rawData);
+
 			if (node instanceof PagedBTree) {
 				add("BTPage", btPage);
 				btPage.setModel(((PagedBTree)node).getBTPageTableModel());
 			} else {
-				remove(btPage);
+				javax.swing.table.TableModel tm = pst.getInternalBlockTableModel(node, byteBuffer.position(0));
+				if (tm != null) {
+					add("Blocks", btPage);
+					btPage.setModel(tm);
+				} else {
+					remove(btPage);
+				}
 			}
 		} catch (final	BadXBlockLevelException
 			|	BadXBlockTypeException

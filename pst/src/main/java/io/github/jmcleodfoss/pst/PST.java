@@ -475,4 +475,53 @@ public class PST extends PSTFile
 
 		return new javax.swing.table.DefaultTableModel();
 	}
+
+	/**	Obtain a javax.swing.table.TableModel for an intermediate block or sub-node B-Tree node
+	*	@param	node	A node from the block or sub-node B-tree.
+	*	@param	byteBuffer	The raw bytes content of the intermediate block or sub-node B-Tree node.
+	*	@return	A javax.swing.table.TableModel representation intermediate node data.
+	*/
+	public javax.swing.table.TableModel getInternalBlockTableModel(BTreeNode node, java.nio.ByteBuffer byteBuffer)
+	{
+		final BBTEntry block = (BBTEntry)node;
+		if (!block.bref.bid.fInternal)
+			return null;
+
+		if (block == null) {
+			System.out.printf("Block for node %s is null%n", block.toString());
+			return null;
+		}
+		int btype = byteBuffer.get();
+		int cLevel = byteBuffer.get();
+		if (btype == 0x01) {
+			// XBLOCK / XXBLOCK
+			try {
+				System.out.printf("block %s%n", block.toString());
+				final XBlock xblock = new XBlock(block, blockBTree, this);
+				System.out.println(xblock);
+				return xblock.getInternalDataTableModel();
+			} catch (final	java.io.IOException
+				|	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+				return null;
+			}
+		} else if (btype == 0x02) {
+			// SIBLOCK / SLBLOCK
+			try {
+				final SubnodeBTree sbt = new SubnodeBTree(block.bref.bid, blockBTree, this);
+				System.out.println(sbt);
+
+				return sbt.getIntermediateNodeModel();
+			} catch (final	java.io.IOException
+				|	CRCMismatchException e) {
+				System.out.println(e);
+				e.printStackTrace(System.out);
+				return null;
+			}
+		}
+		return null;
+	}
 }

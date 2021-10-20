@@ -182,6 +182,9 @@ public class SubnodeBTree extends BTree
 		}
 	}
 
+	/**	The block context (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final BlockContext context;
+
 	/**	Create a SubnodeBTree object from the given position and context.
 	*	@param	key	The key for this node in the sub-node B-tree.
 	*	@param	context	The context to use when building the sub-node B-tree.
@@ -194,6 +197,7 @@ public class SubnodeBTree extends BTree
 		java.io.IOException
 	{
 		super(key, context);
+		this.context = context;
 	}
 
 	/**	Create a SubnodeBTree object from the given position and PST file.
@@ -219,6 +223,23 @@ public class SubnodeBTree extends BTree
 		return SIEntry.size(context.fileFormat);
 	}
 
+	/**	Get a table model which can be used to describe the SIBLOCK / SLBLOCK for a subtree btree node.
+	*	@return	A ReadOnlyTableModel describing this node.
+	*/
+	public javax.swing.table.TableModel getIntermediateNodeModel()
+	{
+		Object[][] cells = new Object[children.length + BlockContext.common_fields.length][];
+
+		int i = 0;
+		cells[i++] = new Object[]{context.nm_bType, context.dc.getUInt8(context.nm_bType)};
+		cells[i++] = new Object[]{context.nm_cLevel, context.dc.getUInt8(context.nm_cLevel)};
+		cells[i++] = new Object[]{context.nm_cEnt, (Short)context.dc.get(context.nm_cEnt)};
+
+		for (int j = 0; j < children.length; ++j)
+			cells[i++] = new Object[]{String.format("rgentries %d", j), children[j].toString()};
+
+		return new ReadOnlyTableModel(cells, new Object[]{"", ""});
+	}
 	/**	{@inheritDoc} */
 	public String getNodeText()
 	{
