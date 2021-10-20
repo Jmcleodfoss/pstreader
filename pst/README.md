@@ -694,3 +694,12 @@ The library has also been run through several automated code scanners and securi
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/pst/1.1.2/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/pst/1.1.2/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/pst/1.1.2/)
+
+### 1.1.3 (Future)
+Several updates
+- Fix a problem where internal blocks were decrypted when running XBlock as a standalone application
+- Properly handle empty folders which do not have the SubFolders or Contents properties
+- Provide data from intermediate block and node B-Trees, and block B-Tree leaf notes that are XBLOCKs, XXBLOCKs, SLENTRYs, or SIENTRYs
+- Support large files - previous versions used a single MappedByteBuffer for the entire file; this one returns a smaller MappedByteBuffer (typically the size of a PAGE) on demand
+- OST files have a wider cEntMax
+- Refactor to simplify creation of Paged B-Trees (Block and Node B-Trees)

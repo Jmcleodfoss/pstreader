@@ -72,3 +72,9 @@ The application has also been run through several automated code scanners and se
 *   [Javadoc](https://javadoc.io/doc/io.github.jmcleodfoss/explorer/1.1.2/index.html)
 *   [pom file and dependency inclusion info](https://search.maven.org/artifact/io.github.jmcleodfoss/explorer/1.1.2/pom)
 *   [Download from Sonatype OSS Maven Repository](https://repo1.maven.org/maven2/io/github/jmcleodfoss/explorer/1.1.2/)
+
+### 1.1.3
+* Provide structured view of contents of intermediate node and block B-tree entries
+* Provide structured view of XBLOCK / XXBLOCK / SIENTRY / SLENTRY internal blocks
+* Fix removal of heap-on-node display which was throwing an exception
+* Only show B-Tree-on-Heap display for Property Context and Table Context objects
