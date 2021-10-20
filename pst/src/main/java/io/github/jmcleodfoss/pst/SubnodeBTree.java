@@ -3,6 +3,9 @@ package io.github.jmcleodfoss.pst;
 /**	The SubnodeBTree class represents the B-tree for the sub-nodes of a node B-tree leaf node. */
 public class SubnodeBTree extends BTree
 {
+	/**	The block context (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
+	final BlockContext context;
+
 	/**	The BlockContext class contains information about a block being added to the sub-node B-tree. */
 	static class BlockContext extends BTree.Context<BTree, BTreeLeaf>
 	{
@@ -181,9 +184,6 @@ public class SubnodeBTree extends BTree
 			return "NID " + nid + ", BID " + bid;
 		}
 	}
-
-	/**	The block context (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
-	final BlockContext context;
 
 	/**	Create a SubnodeBTree object from the given position and context.
 	*	@param	key	The key for this node in the sub-node B-tree.
