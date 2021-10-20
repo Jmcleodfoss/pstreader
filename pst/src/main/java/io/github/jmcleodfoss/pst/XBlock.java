@@ -30,7 +30,7 @@ class XBlock extends BlockBase
 	/**	The total amount of data in all sub-blocks */
 	private final int dataBytes;
 
-	/**	The sub-blocks in this multi-block structure. */
+	/**	The leaf blocks in this multi-block structure. */
 	final java.util.Vector<SimpleBlock> blockList;
 
 	/**	The intermediate blocks (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
