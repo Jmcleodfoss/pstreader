@@ -228,11 +228,13 @@ public class SubnodeBTree extends BTree
 	*/
 	public javax.swing.table.TableModel getIntermediateNodeModel()
 	{
-		Object[][] cells = new Object[children.length + BlockContext.common_fields.length][];
+		Object[][] cells = new Object[1 + children.length + BlockContext.common_fields.length][];
 
+		int level = context.dc.getUInt8(context.nm_cLevel);
 		int i = 0;
+		cells[i++] = new Object[]{"Block type", level == 0 ? "SLENTRY" : "SIENTRY"};
 		cells[i++] = new Object[]{context.nm_bType, context.dc.getUInt8(context.nm_bType)};
-		cells[i++] = new Object[]{context.nm_cLevel, context.dc.getUInt8(context.nm_cLevel)};
+		cells[i++] = new Object[]{context.nm_cLevel, level};
 		cells[i++] = new Object[]{context.nm_cEnt, (Short)context.dc.get(context.nm_cEnt)};
 
 		for (int j = 0; j < children.length; ++j)
