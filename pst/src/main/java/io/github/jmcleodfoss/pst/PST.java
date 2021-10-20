@@ -488,7 +488,6 @@ public class PST extends PSTFile
 			return null;
 
 		if (block == null) {
-			System.out.printf("Block for node %s is null%n", block.toString());
 			return null;
 		}
 		int btype = byteBuffer.get();
@@ -496,9 +495,7 @@ public class PST extends PSTFile
 		if (btype == 0x01) {
 			// XBLOCK / XXBLOCK
 			try {
-				System.out.printf("block %s%n", block.toString());
 				final XBlock xblock = new XBlock(block, blockBTree, this);
-				System.out.println(xblock);
 				return xblock.getInternalDataTableModel();
 			} catch (final	java.io.IOException
 				|	BadXBlockLevelException
@@ -512,8 +509,6 @@ public class PST extends PSTFile
 			// SIBLOCK / SLBLOCK
 			try {
 				final SubnodeBTree sbt = new SubnodeBTree(block.bref.bid, blockBTree, this);
-				System.out.println(sbt);
-
 				return sbt.getIntermediateNodeModel();
 			} catch (final	java.io.IOException
 				|	CRCMismatchException e) {
