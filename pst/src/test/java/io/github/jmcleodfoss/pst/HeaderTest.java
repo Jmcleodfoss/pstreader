@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.BufferUnderflowException;
-import java.nio.MappedByteBuffer;
 import org.junit.Test;
 
 /** Test the Header class. */
