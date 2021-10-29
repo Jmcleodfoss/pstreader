@@ -11,7 +11,7 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 		/**	Create a BTreePage object form the given pstFile and bref.
 		*	@param	bref	The block reference for this page.
 		*	@param	pstFile	The PST file's data stream, header, etc.
-		*	@throws	java.io.IOException	THe data for the B-tree page could not be read.
+		*	@throws	java.io.IOException	The data for the B-tree page could not be read.
 		*/
 		private BTreePage(final BREF bref, PSTFile pstFile)
 		throws
