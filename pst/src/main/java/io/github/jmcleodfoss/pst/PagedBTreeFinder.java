@@ -3,7 +3,7 @@ package io.github.jmcleodfoss.pst;
 /**	The PagedBTreeFinder class contains code shared by the {@link io.github.jmcleodfoss.pst.BlockFinder} and {@link io.github.jmcleodfoss.pst.NodeFinder}
 *	classes.
 */
-abstract class PagedBTreeFinder extends ReadOnlyTreeModel
+abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomNodeText
 {
 	/**	The underlying PST file data stream, header, etc. */
 	protected PSTFile pstFile;

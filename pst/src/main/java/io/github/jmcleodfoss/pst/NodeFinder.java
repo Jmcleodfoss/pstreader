@@ -69,6 +69,25 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 		return (NBTEntry)super.find(nid, pstFile.header.nbtRoot);
 	}
 
+	/**	{@inheritDoc} */
+	public String getNodeText(final Object value)
+	{
+		if (value instanceof PagedBTree.BTEntry)
+			return String.format("NID 0x%08x", ((PagedBTree.BTEntry)value).key());
+
+		if (value instanceof BTreeLeaf) {
+			NID nid = ((NBTEntry)value).nid;
+			return String.format("%s: 0x%08x", nid.description, nid.nid);
+		}
+
+		try {
+			PagedBTreeFinder.BTreePage pbt = bTreePageFactory(pstFile.header.nbtRoot);
+			return String.format("NID 0x%08x", ((PagedBTree.BTEntry)pbt.children[0]).key());
+		} catch (java.io.IOException e) {
+			return "Uknown NID (IOException)";
+		}
+	}
+
 	/**	Get the root of the tree.
 	*	@return	The root of the Node B-Tree.
 	*/

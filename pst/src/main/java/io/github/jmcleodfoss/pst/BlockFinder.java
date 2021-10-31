@@ -69,6 +69,28 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 		return (BBTEntry)super.find(bid, pstFile.header.bbtRoot);
 	}
 
+	/**	{@inheritDoc} */
+	public String getNodeText(final Object value)
+	{
+		if (value instanceof PagedBTree.BTEntry)
+			return String.format("BID 0x%08x", ((PagedBTree.BTEntry)value).key());
+
+		if (value instanceof BTreeLeaf) {
+			BBTEntry bbtEntry = (BBTEntry)value;
+			return String.format("%s - %d bytes", bbtEntry.bref.toString(), bbtEntry.numBytes);
+		}
+
+		try {
+			PagedBTreeFinder.BTreePage pbt = bTreePageFactory(pstFile.header.bbtRoot);
+			if (pbt.children[0] instanceof PagedBTree.BTEntry)
+				return String.format("BID 0x%08x", ((PagedBTree.BTEntry)pbt.children[0]).key());
+			else
+				return String.format("BID 0x%08x", ((BBTEntry)pbt.children[0]).key());
+		} catch (java.io.IOException e) {
+			return "Uknown NID (IOException)";
+		}
+	}
+
 	/**	Get the root of the tree.
 	*	@return	The root of the block B-Tree.
 	*/
