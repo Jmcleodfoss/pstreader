@@ -53,6 +53,11 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 		return new BTreePage(bref, pstFile);
 	}
 
+	private boolean compareTree(PagedBTree that)
+	{
+		return compareTree(pstFile.header.bbtRoot, that, that);
+	}
+
 	/**	Return the requested block, or null if the block was not found.
 	*	@param	bid	The block ID of the block to look for.
 	*	@return	The Block B-tree leaf entry for the requested block ID, or null if the block ID was not found.
@@ -62,6 +67,18 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 		java.io.IOException
 	{
 		return (BBTEntry)super.find(bid, pstFile.header.bbtRoot);
+	}
+
+	/**	Get the root of the tree.
+	*	@return	The root of the block B-Tree.
+	*/
+	public Object getRoot()
+	{
+		try {
+			return bTreePageFactory(pstFile.header.bbtRoot);
+		} catch (java.io.IOException e) {
+			return null;
+		}
 	}
 
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it.
@@ -98,6 +115,11 @@ class BlockFinder extends PagedBTreeFinder implements BlockMap
 						System.out.printf("Success: all %d BIDs found%n", bids);
 					else
 						System.out.printf("Failure: %d out of %d BIDs not found%n", discrepancies, bids);
+
+					if (bf.compareTree(bbt))
+						System.out.printf("Success: BlockFinder TreeModel matches BlockBTree TreeModel");
+					else
+						System.out.printf("Failure: BlockFinder TreeModel does not match BlockBTree TreeModel");
 				} finally {
 					try {
 						pstFile.close();

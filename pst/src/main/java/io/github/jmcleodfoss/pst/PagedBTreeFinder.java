@@ -3,7 +3,7 @@ package io.github.jmcleodfoss.pst;
 /**	The PagedBTreeFinder class contains code shared by the {@link io.github.jmcleodfoss.pst.BlockFinder} and {@link io.github.jmcleodfoss.pst.NodeFinder}
 *	classes.
 */
-abstract class PagedBTreeFinder
+abstract class PagedBTreeFinder extends ReadOnlyTreeModel
 {
 	/**	The underlying PST file data stream, header, etc. */
 	protected PSTFile pstFile;
@@ -12,7 +12,7 @@ abstract class PagedBTreeFinder
 	protected abstract class BTreePage
 	{
 		/**	The children (BTEntry or BBTEntry/NBTEntry) of this BTreePage */
-		private Object[] children;
+		final protected Object[] children;
 
 		/**	Create a BTreePage object form the given pstFile and bref.
 		*	@param	bref	The block reference for this page.
@@ -124,4 +124,143 @@ abstract class PagedBTreeFinder
 	protected abstract BTreePage bTreePageFactory(BREF bref)
 	throws
 		java.io.IOException;
+
+	/**	Compare the TreeModel from this PagedBTreeFinder object to that from the PagedBTree object.
+	*	@param	bref	The BREF of the node on this PagedBTreeFinder object's tree to check
+	*	@param	thatTree	The TreeModel for the PagedBTree object to compare this PagedBTreeFinder's TreeModel with
+	*	@param	thatParent	The node on thePagedBTree that corresponds to bref on the PagedBTreeFinder object.
+	*	@return	true if the trees are equivalent, false if they differ.
+	*/
+	protected boolean compareTree(BREF bref, PagedBTree thatTree, Object thatParent)
+	{
+		try {
+			BTreePage btp = bTreePageFactory(bref);
+
+			int thisChildCount = this.getChildCount(btp);
+			int thatChildCount = thatTree.getChildCount(thatParent);
+			if (thisChildCount != thatChildCount) {
+				System.out.printf("%s: getChildCount this %d that %d%n", toString(), thisChildCount, thatChildCount);
+				return false;
+			}
+
+			for (int i = 0; i < thisChildCount; ++i) {
+				Object thisChild = getChild(btp, i);
+				Object thatChild = thatTree.getChild(thatParent, i);
+
+				boolean thisChildIsLeaf = isLeaf(thisChild);
+				boolean thatChildIsLeaf = thatTree.isLeaf(thatChild);
+
+				if (thisChildIsLeaf != thatChildIsLeaf) {
+					System.out.printf("%s: isLeaf child %d this %b that %b%n", toString(), i, thisChildIsLeaf, thatChildIsLeaf);
+					return false;
+				}
+
+				long thisKey = thisChildIsLeaf ? ((BTreeLeaf)thisChild).key() : ((PagedBTree.BTEntry)thisChild).key();
+				long thatKey = thisChildIsLeaf ? ((BTreeLeaf)thatChild).key() : ((PagedBTree)thatChild).key();
+
+				if (thisKey != thatKey) {
+					System.out.printf("%s: child %d this 0x%08x that 0x%08x%n", toString(), i, thisKey, thatKey);
+					return false;
+				}
+
+				if (!thisChildIsLeaf && !compareTree(((PagedBTree.BTEntry)thisChild).bref, thatTree, (PagedBTree)thatChild)) {
+					System.out.printf("%s: child %d this %s that %s%n", this.toString(), i, thisChild.toString(), thatChild.toString());
+					return false;
+				}
+			}
+			return true;
+		} catch (java.io.IOException e) {
+			System.out.println(e);
+			e.printStackTrace(System.out);
+			return false;
+		}
+	}
+
+	/**	Get the BTreePage (i.e. context) for the given node.
+	*	@param	node	The node to retrieve the BTreePage for
+	*	@return	The BTreePage for this object.
+	*	@throws	java.io.IOException	An I/O error was encountered while reading in the B-tree page.
+	*/
+	BTreePage getBTreePageForNode(final Object node)
+	throws
+		java.io.IOException
+	{
+		if (node instanceof PagedBTree.BTEntry)
+			return bTreePageFactory(((PagedBTree.BTEntry)node).bref);
+
+		if (node instanceof BTreePage)
+			return (BTreePage)node;
+
+		return null;
+	}
+
+	/**	Obtain the given child of this node.
+	*	@param	parent	The parent node to return the child of.
+	*	@param	index	The number of the child to return.
+	*	@return	The requested child node of the given parent node.
+	*/
+	public Object getChild(final Object parent, final int index)
+	{
+		try {
+			BTreePage btp = getBTreePageForNode(parent);
+			return btp.children[index];
+		} catch(java.io.IOException e) {
+			return null;
+		}
+	}
+
+	/**	Return a BTreePage to read the next child level of the B-tree.
+	*	@param	bref	The block reference of the B-tree page block to start searching in.
+	}
+
+	/**	Get the number of children of this node.
+	*	@param	parent	The parent node to return the number of child nodes for.
+	*	@return	The number of children of the given parent node.
+	*/
+	public int getChildCount(final Object parent)
+	{
+		if (parent instanceof BTreeLeaf)
+			return 0;
+
+		try {
+			BTreePage btp = getBTreePageForNode(parent);
+			return btp.children.length;
+		} catch(java.io.IOException e) {
+			return 0;
+		}
+	}
+
+	/**	Get the index of this child node in the given node.
+	*	@param	parent	The parent to search for child.
+	*	@param	child	The child node to look for in parent.
+	*	@return	The index of the given child in the given parent node, or -1 if it is not a child of parent.
+	*/
+	public int getIndexOfChild(final Object parent, final Object child)
+	{
+		if (parent == null || child == null)
+			return -1;
+		try {
+			BTreePage btp = getBTreePageForNode(parent);
+			for (int i = 0; i < btp.children.length; ++i) {
+				if (btp.children[i] instanceof BTreeLeaf) {
+					if (((BTreeLeaf)(btp.children[i])).key() == ((BTreeLeaf)child).key())
+						return i;
+				} else {
+					if (((PagedBTree.BTEntry)(btp.children[i])).bref == ((PagedBTree.BTEntry)child).bref)
+						return i;
+				}
+			}
+		} catch (java.io.IOException e) {
+		}
+		return -1;
+	}
+
+	/**	Is the given node a leaf node?
+	*	@param	node	The node to check for leafiness.
+	*	@return	true if node is a leaf node, false if it is an intermediate node.
+	*/
+	public boolean isLeaf(final Object node)
+	{
+		return node instanceof BTreeLeaf;
+	}
 }

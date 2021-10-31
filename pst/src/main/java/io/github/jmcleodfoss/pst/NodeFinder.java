@@ -53,6 +53,11 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 		return new BTreePage(bref, pstFile);
 	}
 
+	private boolean compareTree(PagedBTree that)
+	{
+		return compareTree(pstFile.header.nbtRoot, that, that);
+	}
+
 	/**	Return the requested block, or null if the block was not found.
 	*	@param	nid	The node ID of the node to look for.
 	*	@return	The node B-tree leaf entry for the requested block ID, or null if the block ID was not found.
@@ -62,6 +67,18 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 		java.io.IOException
 	{
 		return (NBTEntry)super.find(nid, pstFile.header.nbtRoot);
+	}
+
+	/**	Get the root of the tree.
+	*	@return	The root of the Node B-Tree.
+	*/
+	public Object getRoot()
+	{
+		try {
+			return bTreePageFactory(pstFile.header.nbtRoot);
+		} catch (java.io.IOException e) {
+			return null;
+		}
 	}
 
 	/**	Test this class by reading in the block B-Tree and looking for the blocks in it it.
@@ -98,6 +115,11 @@ class NodeFinder extends PagedBTreeFinder implements NodeMap
 						System.out.printf("Success: all %d NIDs found%n", nids);
 					else
 						System.out.printf("Failure: %d out of %d NIDs not found%n", discrepancies, nids);
+
+					if (nf.compareTree(nbt))
+						System.out.printf("Success: NodeFinder TreeModel matches NodeBTree TreeModel");
+					else
+						System.out.printf("Failure: NodeFinder TreeModel does not match NodeBTree TreeModel");
 				} finally {
 					try {
 						pstFile.close();
