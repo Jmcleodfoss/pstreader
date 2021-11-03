@@ -4,12 +4,15 @@ import java.io.IOException;
 import javax.swing.JSplitPane;
 
 import io.github.jmcleodfoss.pst.CRCMismatchException;
-import io.github.jmcleodfoss.pst.PST;
+import javax.swing.tree.TreeModel;
 
 /**	Specialization of BTreeWithData for node and sub-node B-tree display. */
 @SuppressWarnings("serial")
 class NodeBTreeDisplay extends BTreeWithData
 {
+	/** The main Explorer application */
+	pstExplorer explorer;
+
 	/** The current node's contents */
 	private NodeDescriptionDisplay nodeDescriptionDisplay;
 
@@ -17,21 +20,15 @@ class NodeBTreeDisplay extends BTreeWithData
 	protected NodeBTreeDisplay(pstExplorer explorer)
 	{
 		super(JSplitPane.HORIZONTAL_SPLIT);
+		this.explorer = explorer;
 		nodeDescriptionDisplay = new NodeDescriptionDisplay(explorer, tree);
 		setDataView(nodeDescriptionDisplay);
 	}
 
-	/**	Update the views when a new file is read in.
-	*	@param	pst	The PST object loaded.
-	*/
-	public void fileLoaded(final PST pst)
+	/**	Get the tree model for the block B-tree. */
+	TreeModel treeModel()
 	{
-		try {
-			tree.setModel(pst.nodeBTreeRoot());
-		} catch (final	IOException
-			|	CRCMismatchException e) {
-			tree.setModel(treeModel());
-		}
+		return (TreeModel)explorer.pst().nodeBTree;
 	}
 
 	/**	Clear the tree model. */
