@@ -1,9 +1,7 @@
 package io.github.jmcleodfoss.explorer;
 
-import java.io.IOException;
 import javax.swing.JSplitPane;
 
-import io.github.jmcleodfoss.pst.CRCMismatchException;
 import javax.swing.tree.TreeModel;
 
 /**	Specialization of BTreeWithData for node and sub-node B-tree display. */
