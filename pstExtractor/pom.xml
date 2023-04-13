@@ -63,7 +63,7 @@
 			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>1.1.1</version>
+			<version>1.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
