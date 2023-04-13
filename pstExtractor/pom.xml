@@ -98,7 +98,7 @@
 			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-bundle</artifactId>
-			<version>2.3.6</version>
+			<version>2.3-next-M7</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
