@@ -25,7 +25,7 @@ public class AppointmentBean
 	*/
 	public String getEnd()
 	{
-		return OUTPUT_FORMAT.format(end);
+		return end == null ? "" : OUTPUT_FORMAT.format(end);
 	}
 
 	/**	Retrieve the starting date and time for this appointment.
@@ -33,7 +33,7 @@ public class AppointmentBean
 	*/
 	public String getStart()
 	{
-		return OUTPUT_FORMAT.format(start);
+		return start == null ? "" : OUTPUT_FORMAT.format(start);
 	}
 
 	/**	Retrieve the title for this appointment.
