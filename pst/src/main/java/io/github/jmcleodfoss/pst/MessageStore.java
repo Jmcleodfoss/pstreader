@@ -67,7 +67,7 @@ public class MessageStore
 			rootNID = rootEntryId.nid;
 		} else {
 			// OST files do not have the UpmSubTreeEntryId; find the root NID by looking for the NBT entry which is its own parent.
-			java.util.Iterator<BTreeNode> iterator = ((NodeBTree)nbt).iterator();
+			java.util.Iterator<BTreeNode> iterator = ((BTree)nbt).iterator();
 			while (iterator.hasNext()) {
 				final NBTEntry entry = (NBTEntry)iterator.next();
 				if (entry.nid.equals(entry.nidParent)){
