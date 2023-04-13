@@ -48,9 +48,9 @@
 		</dependency>
 		<dependency>
 			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>commons-digester</groupId>
-			<artifactId>commons-digester</artifactId>
-			<version>1.6</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-digester3</artifactId>
+			<version>3.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
