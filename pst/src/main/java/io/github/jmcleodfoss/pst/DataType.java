@@ -1148,7 +1148,7 @@ abstract class DataType
 		@Override
 		public Object read(java.nio.ByteBuffer byteBuffer)
 		{
-			int count = (int)byteBuffer.getShort();
+			byteBuffer.getShort();
 			boolean ours = byteBuffer.get() == 1;
 			if (ours) {
 				byte incoming[] = new byte[8];
