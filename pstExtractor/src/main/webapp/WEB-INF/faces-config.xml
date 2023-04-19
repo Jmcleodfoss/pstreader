@@ -8,4 +8,8 @@
 	<locale-config>
 		<default-locale>en_US</default-locale>
 	</locale-config>
+
+	<application>
+		<message-bundle>io.github.jmcleodfoss.resource.properties</message-bundle>
+	</application>
 </faces-config>
