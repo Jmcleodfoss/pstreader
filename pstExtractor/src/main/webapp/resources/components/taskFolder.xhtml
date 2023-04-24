@@ -4,7 +4,7 @@
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 <head/>
 
@@ -17,29 +17,35 @@
 	</cc:interface>
 	
 	<cc:implementation>
-		<t:htmlTag value="h2" rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
-			#{res['tasks.text']}
-		</t:htmlTag>
-		<t:htmlTag value="h2" rendered="#{cc.attrs.rendered and empty cc.attrs.folders}">
-			#{res['noTasks.text']}
-		</t:htmlTag>
-		<h:dataTable value="#{cc.attrs.folders}" var="folder" rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
-			<h:column>
-				<t:htmlTag value="h3">
-					#{folder.name}
-				</t:htmlTag>
-				<h:dataTable styleClass="datatable" value="#{folder.contents}" var="task">
-					<h:column>
-						<f:facet name="header">#{res['tasks.heading.title']}</f:facet>
-						#{task.title}
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{res['tasks.heading.dueDate']}</f:facet>
-						#{task.dueDate}
-					</h:column>
-				</h:dataTable>
-			</h:column>
-		</h:dataTable>
+		<ui:fragment rendered="#{cc.attrs.rendered and empty cc.attrs.folders}">
+			<h2>
+				#{res['noTasks.text']}
+			</h2>
+		</ui:fragment>
+
+		<ui:fragment rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
+			<h2>
+				#{res['tasks.text']}
+			</h2>
+
+			<h:dataTable value="#{cc.attrs.folders}" var="folder">
+				<h:column>
+					<h3>
+						#{folder.name}
+					</h3>
+					<h:dataTable styleClass="datatable" value="#{folder.contents}" var="task">
+						<h:column>
+							<f:facet name="header">#{res['tasks.heading.title']}</f:facet>
+							#{task.title}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{res['tasks.heading.dueDate']}</f:facet>
+							#{task.dueDate}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+			</h:dataTable>
+		</ui:fragment>
 	</cc:implementation>
 </body>
 </html>

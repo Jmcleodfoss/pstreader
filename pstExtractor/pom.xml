@@ -14,6 +14,11 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<properties>
+		<tobago.version>4.6.0</tobago.version>
+		<myfaces.version>2.3.10</myfaces.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
@@ -26,101 +31,44 @@
 			<version>1.1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.4</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.15</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-			<version>4.4</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-digester3</artifactId>
-			<version>3.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- Pull in the latest version of this library to resolve CVEs in version 1.2.1 -->
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.5</version>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>3.0.1-b06</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>jakarta.enterprise</groupId>
-			<artifactId>jakarta.enterprise.cdi-api</artifactId>
+			<!-- This resolves:
+				javax.servlet.http.Part
+			-->
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
+			<!-- TomEE 8.0.14 provides servlet-api.kar -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-			<scope>provided</scope>
-		</dependency>
+			 <groupId>org.apache.myfaces.core</groupId>
+			 <artifactId>myfaces-api</artifactId>
+			 <version>${myfaces.version}</version>
+			 <scope>provided</scope>
+		  </dependency>
+		  <dependency>
+			 <groupId>org.apache.myfaces.core</groupId>
+			 <artifactId>myfaces-impl</artifactId>
+			 <version>${myfaces.version}</version>
+			 <scope>provided</scope>
+		  </dependency>
 		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-bundle</artifactId>
-			<version>2.3-next-M7</version>
-			<scope>provided</scope>
+			<groupId>org.apache.myfaces.tobago</groupId>
+			<artifactId>tobago-core</artifactId>
+			<version>${tobago.version}</version>
 		</dependency>
 		<dependency>
-			<!-- for file upload -->
-			<groupId>org.apache.myfaces.tomahawk</groupId>
-			<artifactId>tomahawk20</artifactId>
-			<version>1.1.14</version>
+			<groupId>org.apache.myfaces.tobago</groupId>
+			<artifactId>tobago-theme-standard</artifactId>
+			<version>${tobago.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<version>2.2.1-b05</version>
-		</dependency>
-		<dependency>
-			<!-- For TomcatEE, an equivalent library is provided so we need to ensure the dependency on Apache Tomahawk doesn't pull this in transitively. -->
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>2.0.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- Jar file for JavaScript jquery -->
+			<!-- Used by client code -->
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>3.6.4</version>
@@ -169,11 +117,6 @@
 							<groupId>org.apache.myfaces.core</groupId>
 							<artifactId>myfaces-bundle</artifactId>
 							<version>2.3.6</version>
-						</additionalDependency>
-						<additionalDependency>
-							<groupId>org.apache.myfaces.tomahawk</groupId>
-							<artifactId>tomahawk20</artifactId>
-							<version>1.1.14</version>
 						</additionalDependency>
 					</additionalDependencies>
 				</configuration>

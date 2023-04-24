@@ -6,12 +6,12 @@ $(document).ready(
 
 function setResetButtonEnabled(fEnabled)
 {
-	document.uploadPSTForm["uploadPSTForm:button-reset"].disabled = !fEnabled;
+	$("main.uploadPSTForm.#uploadPSTForm.reset").prop("disabled", !fEnabled);
 }
 
 function setSubmitButtonEnabled(fEnabled)
 {
-	document.uploadPSTForm["uploadPSTForm:button-submit"].disabled = !fEnabled;
+	$("#main.ploadPSTForm.uploadPSTForm.submit").prop("disabled", !fEnabled);
 }
 
 function setButtonsEnabled(fEnabled)

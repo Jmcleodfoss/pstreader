@@ -1,47 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 	<ui:component>
 		<table>
 			<tbody>
 				<tr>
-					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Home.xhtml' ? '' : 'un'}selected"
-						onclick="return onClickLoadNewView('Home.jsf')"
-						>
-						#{res['leftMenu.home']}
+					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Home.xhtml' ? '' : 'un'}selected">
+						<tc:link label="#{res['leftMenu.home']}" link="Home.xhtml"/>
 					</td>
 				</tr>
 				<tr>
-					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/ExtractionForm.xhtml' ? '' : 'un'}selected"
-						onclick="return onClickLoadNewView('ExtractionForm.jsf')"
-					>
-						#{res['leftMenu.extractionform']}
+					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/ExtractionForm.xhtml' ? '' : 'un'}selected">
+						<tc:link label="#{res['leftMenu.extractionform']}" link="ExtractionForm.xhtml"/>
 					</td>
 				</tr>
 				<tr>
-					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Results.xhtml' ? '' : 'un'}selected left-menu-#{pstBean.resultAvailable ? '' : 'no'}results"
-						onclick="return onClickLoadNewView('Results.jsf')"
-					>
-						#{res['leftMenu.results']}
+					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Results.xhtml' ? '' : 'un'}selected left-menu-#{pstBean.resultAvailable ? '' : 'no'}results">
+						<tc:link link="Results.xhtml" label="#{res['leftMenu.results']}"/>
 					</td>
 				</tr>
 				<tr>
-					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/Help.xhtml' ? '' : 'un'}selected"
-						onclick="return onClickLoadNewView('Help.jsf')"
-					>
-						#{res['leftMenu.help']}
+					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Help.xhtml' ? '' : 'un'}selected">
+						<tc:link link="Help.xhtml" label="#{res['leftMenu.help']}"/>
 					</td>
 				</tr>
 				<tr>
-					<td	class="left-menu-cell left-menu-#{view.viewId eq '/views/About.xhtml' ? '' : 'un'}selected"
-						onclick="return onClickLoadNewView('About.jsf')"
-					>
-						#{res['leftMenu.about']}
+					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/About.xhtml' ? '' : 'un'}selected">
+						<tc:link link="About.xhtml" label="#{res['leftMenu.about']}"/>
 					</td>
 				</tr>
 			</tbody>

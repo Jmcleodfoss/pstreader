@@ -4,7 +4,7 @@
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 <head/>
 
@@ -17,45 +17,50 @@
 	</cc:interface>
 	
 	<cc:implementation>
-		<t:htmlTag value="h2" rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
-			#{res['contacts.text']}
-		</t:htmlTag>
-		<t:htmlTag value="h2" rendered="#{cc.attrs.rendered and empty cc.attrs.folders}">
-			#{res['noContacts.text']}
-		</t:htmlTag>
-		<h:dataTable value="#{cc.attrs.folders}" var="folder" rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
-			<h:column>
-				<t:htmlTag value="h3">
-					#{folder.name}
-				</t:htmlTag>
-				<h:dataTable styleClass="datatable" value="#{folder.contents}" var="contact">
-					<h:column>
-						<f:facet name="header">#{res['contacts.heading.name']}</f:facet>
-						#{contact.name}
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{res['contacts.heading.email']}</f:facet>
-						<h:dataTable value="${contact.emailAddresses}" var="address">
-							<ul>
-								<h:column>
-									<li>#{address}</li>
-								</h:column>
-							</ul>
-						</h:dataTable>
-					</h:column>
-					<h:column>
-						<f:facet name="header">#{res['contacts.heading.telephone']}</f:facet>
-						<h:dataTable value="${contact.telephoneNumbers}" var="phone">
-							<ul>
-								<h:column>
-									<li>#{phone}</li>
-								</h:column>
-							</ul>
-						</h:dataTable>
-					</h:column>
-				</h:dataTable>
-			</h:column>
-		</h:dataTable>
+		<ui:fragment rendered="#{cc.attrs.rendered and empty cc.attrs.folders}">
+			<h2>
+				#{res['noContacts.text']}
+			</h2>
+		</ui:fragment>
+
+		<ui:fragment rendered="#{cc.attrs.rendered and not empty cc.attrs.folders}">
+			<h2>
+				#{res['contacts.text']}
+			</h2>
+			<h:dataTable value="#{cc.attrs.folders}" var="folder">
+				<h:column>
+					<h3>
+						#{folder.name}
+					</h3>
+						<h:dataTable styleClass="datatable" value="#{folder.contents}" var="contact">
+						<h:column>
+							<f:facet name="header">#{res['contacts.heading.name']}</f:facet>
+							#{contact.name}
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{res['contacts.heading.email']}</f:facet>
+							<h:dataTable value="${contact.emailAddresses}" var="address">
+								<ul>
+									<h:column>
+										<li>#{address}</li>
+									</h:column>
+								</ul>
+							</h:dataTable>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{res['contacts.heading.telephone']}</f:facet>
+							<h:dataTable value="${contact.telephoneNumbers}" var="phone">
+								<ul>
+									<h:column>
+										<li>#{phone}</li>
+									</h:column>
+								</ul>
+							</h:dataTable>
+						</h:column>
+					</h:dataTable>
+				</h:column>
+			</h:dataTable>
+		</ui:fragment>
 	</cc:implementation>
 </body>
 </html>

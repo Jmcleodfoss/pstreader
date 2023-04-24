@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html	xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:tc="http://myfaces.apache.org/tobago/component"
 >
 	<f:loadBundle basename="text-resources" var="res"/>
 	<h:outputScript library='webjars' name="jquery/3.6.4/jquery.min.js" target="head"/>
@@ -21,29 +22,31 @@
 	
 	<h:body>
 		<f:view>
-			<h1 id="heading">
-				<ui:insert name="heading"/>
-			</h1>
+			<tc:page id="main">
+				<h1 id="heading">
+					<ui:insert name="heading"/>
+				</h1>
 	
-			<div id="left-menu">
-				<ui:insert name="left-menu">
-					<ui:include src="/sections/common/leftmenu.xhtml"/>
-				</ui:insert>
-			</div>
-	
-			<div id="content-container">
-				<div id="content">
-					<ui:insert name="content"/>
+				<div id="left-menu">
+					<ui:insert name="left-menu">
+						<ui:include src="/sections/common/leftmenu.xhtml"/>
+					</ui:insert>
 				</div>
-			</div>
 	
-			<div id="v-spacer"/>
+				<div id="content-container">
+					<div id="content">
+						<ui:insert name="content"/>
+					</div>
+				</div>
+	
+				<div id="v-spacer"/>
 
-			<div id="footer-container">
-				<div id="footer">
-					<ui:include src="/sections/common/footer.xhtml"/>
+				<div id="footer-container">
+					<div id="footer">
+						<ui:include src="/sections/common/footer.xhtml"/>
+					</div>
 				</div>
-			</div>
+			</tc:page>
 		</f:view>
 	</h:body>
 </html>

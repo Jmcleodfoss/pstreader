@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<ui:composition template="/templates/layout.xhtml">
-		<ui:define name="heading">
-			#{res['submit.title.text']}
-		</ui:define>
+	<f:view>
+		<tc:page>
+			<ui:composition template="/templates/layout.xhtml">
+				<ui:define name="heading">
+					#{res['submit.title.text']}
+				</ui:define>
 	
-		<ui:define name="content">
-			<ui:include src="/sections/extraction-form/content.xhtml"/>
-		</ui:define>
-	</ui:composition>
+				<ui:define name="content">
+					<ui:include src="/sections/extraction-form/content.xhtml"/>
+				</ui:define>
+			</ui:composition>
+		</tc:page>
+	</f:view>
 </html>
