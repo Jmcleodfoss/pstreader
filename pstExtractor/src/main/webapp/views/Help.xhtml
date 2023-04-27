@@ -3,16 +3,14 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 
-	<body>
-		<ui:composition template="/templates/layout.xhtml">
-			<ui:define name="heading">
-				#{res['help.title.text']}
-			</ui:define>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="heading">
+			#{res['help.title.text']}
+		</ui:define>
 		
-			<ui:define name="content">
-				<ui:include src="/sections/help/#{localeBean.getLocalizedFilename('description.xhtml')}"/>
-			</ui:define>
-		</ui:composition>
-	</body>
+		<ui:define name="content">
+			<ui:include src="/sections/help/#{localeBean.getLocalizedFilename('description.xhtml')}"/>
+		</ui:define>
+	</ui:composition>
 
 </html>
