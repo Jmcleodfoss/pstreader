@@ -5,11 +5,4 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_3.xsd"
 	version="2.3"
 >
-	<locale-config>
-		<default-locale>en_US</default-locale>
-	</locale-config>
-
-	<application>
-		<message-bundle>io.github.jmcleodfoss.resource.properties</message-bundle>
-	</application>
 </faces-config>
