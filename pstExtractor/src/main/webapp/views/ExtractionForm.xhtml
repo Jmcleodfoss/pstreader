@@ -5,17 +5,13 @@
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<f:view>
-		<tc:page>
-			<ui:composition template="/templates/layout.xhtml">
-				<ui:define name="heading">
-					#{res['submit.title.text']}
-				</ui:define>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="heading">
+			#{res['submit.title.text']}
+		</ui:define>
 	
-				<ui:define name="content">
-					<ui:include src="/sections/extraction-form/content.xhtml"/>
-				</ui:define>
-			</ui:composition>
-		</tc:page>
-	</f:view>
+		<ui:define name="content">
+			<ui:include src="/sections/extraction-form/content.xhtml"/>
+		</ui:define>
+	</ui:composition>
 </html>
