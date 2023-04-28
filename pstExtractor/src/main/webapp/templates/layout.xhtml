@@ -9,15 +9,15 @@
 	<f:loadBundle basename="text-resources" var="res"/>
 	<h:outputStylesheet library="css" name="styles.css" target="head"/>
 	<h:outputScript library='js' name="layout.js" target="head"/>
-	 
-	<h:head>
-		<title>
-			#{res['html.head.title']}
-		</title>
-	</h:head>
-	
-	<h:body>
-		<tc:page id="main">
+
+	<tc:page id="main">
+		<h:head>
+			<title>
+				#{res['html.head.title']}
+			</title>
+		</h:head>
+
+		<h:body>
 			<h1 id="heading">
 				<ui:insert name="heading"/>
 			</h1>
@@ -27,13 +27,13 @@
 					<ui:include src="/sections/common/leftmenu.xhtml"/>
 				</ui:insert>
 			</div>
-	
+
 			<div id="content-container">
 				<div id="content">
 					<ui:insert name="content"/>
 				</div>
 			</div>
-	
+
 			<div id="v-spacer"/>
 
 			<div id="footer-container">
@@ -41,6 +41,6 @@
 					<ui:include src="/sections/common/footer.xhtml"/>
 				</div>
 			</div>
-		</tc:page>
-	</h:body>
+		</h:body>
+	</tc:page>
 </html>
