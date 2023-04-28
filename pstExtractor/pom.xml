@@ -67,12 +67,6 @@
 			<artifactId>tobago-theme-standard</artifactId>
 			<version>${tobago.version}</version>
 		</dependency>
-		<dependency>
-			<!-- Used by client code -->
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>3.6.4</version>
-		</dependency>
 	</dependencies>
 
 	<build>
