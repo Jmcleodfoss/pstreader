@@ -11,8 +11,8 @@
 				<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true"/>
 	
 				<tc:in label="#{res['password.label']}" value="#{pstBean.password}" id="password"/>
-	
-				<tc:selectManyCheckbox class="grouped-choices" value="#{pstBean.selectedExtractionTypes}">
+
+				<tc:selectManyCheckbox class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true">
 					<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
 				</tc:selectManyCheckbox>
 	
