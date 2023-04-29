@@ -486,14 +486,6 @@ public class PSTBean implements Serializable
 		this.password = password;
 	}
 
-	/**	Set the list of selected extraction types.
-	*	@param	selectedExtractionTypes	The extraction types selected.
-	*/
-	public void setSelectedExtractionTypes(List<ExtractionTypes> selectedExtractionTypes)
-	{
-		this.selectedExtractionTypes = selectedExtractionTypes;
-	}
-
 	/**	Get the required information from a PST file
 	*	@throws BadXBlockLevelException	The level must be 1 (for XBlock) or 2 (for XXBlock) but a different value was found
 	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
