@@ -551,6 +551,14 @@ public class PSTBean implements Serializable
 		}
 	}
 
+	/**	Set the list of selected extraction types.
+	*	@param  selectedExtractionTypes The extraction types selected.
+	*/
+	public void setSelectedExtractionTypes(List<ExtractionTypes> selectedExtractionTypes)
+	{
+		 this.selectedExtractionTypes = selectedExtractionTypes;
+	}
+
 	/**	Set the uplaoded PST file.
 	*	@param	uploadedFile	The uploaded PST file.
 	*/
