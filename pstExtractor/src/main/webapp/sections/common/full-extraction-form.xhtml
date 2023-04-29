@@ -6,7 +6,7 @@
 >
 	<ui:component>
 		<h:outputScript library='js' name="extraction-form.js" target="head"/>
-		<tc:form id="uploadPSTForm" name="uploadPSTForm" onreset="setButtonsEnabled(false);">
+		<tc:form id="uploadPSTForm" name="uploadPSTForm">
 			<tc:box class="dialog-box">
 				<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true">
 					<!-- commended out until I figure out how to restrict this to pst/ost/etc files -->
@@ -15,7 +15,7 @@
 	
 				<tc:in label="#{res['password.label']}" value="#{pstBean.password}" id="password"/>
 	
-				<tc:selectManyCheckbox class="grouped-choices" onclick="setResetButtonEnabled(true)" value="#{pstBean.selectedExtractionTypes}">
+				<tc:selectManyCheckbox class="grouped-choices" value="#{pstBean.selectedExtractionTypes}">
 					<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
 				</tc:selectManyCheckbox>
 	
