@@ -8,7 +8,7 @@
 		<h:outputScript library='js' name="extraction-form.js" target="head"/>
 		<tc:form id="uploadPSTForm" name="uploadPSTForm" onreset="setButtonsEnabled(false);">
 			<tc:box class="dialog-box">
-				<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" valueChangeListener="#{pstBean.fileChangeListener}" id="file" required="true">
+				<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true">
 					<!-- commended out until I figure out how to restrict this to pst/ost/etc files -->
 					<!--tc:validateFileItem contentType="application/vnd.ms-outlook"/-->
 				</tc:file>
