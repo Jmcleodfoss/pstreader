@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
-import org.apache.myfaces.custom.fileupload.UploadedFile;
+import javax.servlet.http.Part;
 
 import io.github.jmcleodfoss.pst.Appointment;
 import io.github.jmcleodfoss.pst.BadXBlockLevelException;
@@ -78,7 +78,7 @@ public class PSTBean implements Serializable
 	private SelectItem[] extractionTypeChoices;
 
 	/**	The uploaded PST file. */
-	private transient UploadedFile uploadedFile;
+	private transient Part uploadedFile;
 
 	/**	The password for the PST file. */
 	private transient String password;
@@ -455,7 +455,7 @@ public class PSTBean implements Serializable
 	/**	Retrieve the uploaded file.
 	*	@return	The uploaded PST file
 	*/
-	public UploadedFile getUploadedFile()
+	public Part getUploadedFile()
 	{
 		return uploadedFile;
 	}
@@ -561,7 +561,7 @@ public class PSTBean implements Serializable
 	/**	Set the uplaoded PST file.
 	*	@param	uploadedFile	The uploaded PST file.
 	*/
-	public void setUploadedFile(UploadedFile uploadedFile)
+	public void setUploadedFile(Part uploadedFile)
 	{
 		this.uploadedFile = uploadedFile;
 	}
