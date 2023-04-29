@@ -330,7 +330,7 @@ public class PSTBean implements Serializable
 		++numPasswordAttempts;
 		if ((pst.hasPassword() && password.length() == 0) || (!pst.hasPassword() && password.length() > 0)) {
 			if (numPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
-				reset();
+				resetForm();
 				return "AccessDenied";
 			}
 	
@@ -470,11 +470,12 @@ public class PSTBean implements Serializable
 
 	/**	Reset form data.
 	*/
-	private void reset()
+	public String resetForm()
 	{
 		pst = null;
 		numPasswordAttempts = 0;
 		selectedExtractionTypes = new ArrayList<ExtractionTypes>();
+		return "ExtractionForm";
 	}
 
 	/**	Set the password.
