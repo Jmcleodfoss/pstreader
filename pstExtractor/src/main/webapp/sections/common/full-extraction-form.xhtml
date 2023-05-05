@@ -7,13 +7,13 @@
 	<tc:form id="uploadPSTForm" name="uploadPSTForm">
 		<tc:box class="dialog-box">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true"/>
-	
+
 			<tc:in label="#{res['password.label']}" value="#{pstBean.password}" id="password"/>
 
 			<tc:selectManyCheckbox class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true">
 				<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
 			</tc:selectManyCheckbox>
-	
+
 			<tc:buttons>
 				<tc:button label="#{res['submitPSTButton.text']}" action="#{pstBean.submitPST}" id="submit"/>
 				<tc:button label="#{res['resetButton.text']}"     action="#{pstBean.resetForm}" id="reset"/>
