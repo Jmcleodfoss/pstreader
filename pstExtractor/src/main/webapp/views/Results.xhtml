@@ -5,7 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="/templates/layout.xhtml"
 >
-		<ui:define name="heading">
+	<ui:define name="heading">
 		<h:outputFormat value="#{res['results.title.format']}" escape="false">
 			<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 		</h:outputFormat>
