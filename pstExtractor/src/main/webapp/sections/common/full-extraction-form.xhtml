@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:component
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 	<tc:script file="#{request.contextPath}/resources/js/extraction-form.js"/>
 	<tc:form id="uploadPSTForm" name="uploadPSTForm">
-		<tc:box class="dialog-box">
+		<tc:box pt:class="dialog-box">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true"/>
 
 			<tc:in label="#{res['password.label']}" value="#{pstBean.password}" id="password"/>
 
-			<tc:selectManyCheckbox class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true">
+			<tc:selectManyCheckbox pt:class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true">
 				<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
 			</tc:selectManyCheckbox>
 
