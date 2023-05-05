@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml	xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/layout.xhtml"
 >
-	<ui:composition template="/templates/layout.xhtml">
-		<ui:define name="heading">
-			#{res['submit.title.text']}
-		</ui:define>
+	<ui:define name="heading">
+		#{res['submit.title.text']}
+	</ui:define>
 	
-		<ui:define name="content">
-			<ui:include src="/sections/extraction-form/content.xhtml"/>
-		</ui:define>
-	</ui:composition>
-</xml>
+	<ui:define name="content">
+		<ui:include src="/sections/extraction-form/content.xhtml"/>
+	</ui:define>
+</ui:composition>

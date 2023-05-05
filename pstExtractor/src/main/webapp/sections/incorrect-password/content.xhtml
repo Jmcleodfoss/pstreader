@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html	xmlns="http://www.w3.org/1999/xhtml"
+<ui:component
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<ui:component>
-		<h:form	enctype="multipart/form-data"
-			method="post"
-			name="uploadPasswordForm"
-			id="uploadPasswordForm"
-			onreset="setButtonsEnabled(false);"
-		>
-			<h:panelGrid styleClass="dialog-box">
-				<h:panelGroup layout="block" styleClass="centered-container">
-					<h:outputLabel for="password" value="#{res['password.label']}"/>
-					<h:inputSecret value="#{pstBean.password}" id="password"/>
-				</h:panelGroup>
+	<h:form	enctype="multipart/form-data"
+		method="post"
+		name="uploadPasswordForm"
+		id="uploadPasswordForm"
+		onreset="setButtonsEnabled(false);"
+	>
+		<h:panelGrid styleClass="dialog-box">
+			<h:panelGroup layout="block" styleClass="centered-container">
+				<h:outputLabel for="password" value="#{res['password.label']}"/>
+				<h:inputSecret value="#{pstBean.password}" id="password"/>
+			</h:panelGroup>
 	
-				<h:panelGroup layout="block" styleClass="centered-container">
-					<h:commandButton
-						value="#{res['submitPasswordButton.text']}"
-						type="submit"
-						action="#{pstBean.submitPassword}"
-						id="button-submit"
-						disabled="false"
-					/>
-					<span class="h-spacer"/>
-					<h:commandButton
-						value="#{res['resetButton.text']}"
-						type="reset"
-						id="button-reset"
-						disabled="false"
-					/>
-				</h:panelGroup>
-			</h:panelGrid>
-		</h:form>
+			<h:panelGroup layout="block" styleClass="centered-container">
+				<h:commandButton
+					value="#{res['submitPasswordButton.text']}"
+					type="submit"
+					action="#{pstBean.submitPassword}"
+					id="button-submit"
+					disabled="false"
+				/>
+				<span class="h-spacer"/>
+				<h:commandButton
+					value="#{res['resetButton.text']}"
+					type="reset"
+					id="button-reset"
+					disabled="false"
+				/>
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
 	
-	</ui:component>
-</html>
+</ui:component>

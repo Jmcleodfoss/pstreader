@@ -1,15 +1,13 @@
-<xml	xmlns="http://www.w3.org/1999/xhtml"
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/templates/layout.xhtml"
 >
-
-	<ui:composition template="/templates/layout.xhtml">
-		<ui:define name="heading">
-			#{res['help.title.text']}
-		</ui:define>
+	<ui:define name="heading">
+		#{res['help.title.text']}
+	</ui:define>
 		
-		<ui:define name="content">
-			<ui:include src="/sections/help/#{localeBean.getLocalizedFilename('description.xhtml')}"/>
-		</ui:define>
-	</ui:composition>
-
-</xml>
+	<ui:define name="content">
+		<ui:include src="/sections/help/#{localeBean.getLocalizedFilename('description.xhtml')}"/>
+	</ui:define>
+</ui:composition>

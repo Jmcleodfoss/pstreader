@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml	xmlns="http://www.w3.org/1999/xhtml"
+<ui:component
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<ui:component>
-		<table>
-			<tbody>
-				<tr>
-					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Home.xhtml' ? '' : 'un'}selected">
-						<tc:link label="#{res['leftMenu.home']}" link="Home.xhtml"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/ExtractionForm.xhtml' ? '' : 'un'}selected">
-						<tc:link label="#{res['leftMenu.extractionform']}" link="ExtractionForm.xhtml"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Results.xhtml' ? '' : 'un'}selected left-menu-#{pstBean.resultAvailable ? '' : 'no'}results">
-						<tc:link link="Results.xhtml" label="#{res['leftMenu.results']}"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Help.xhtml' ? '' : 'un'}selected">
-						<tc:link link="Help.xhtml" label="#{res['leftMenu.help']}"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="left-menu-cell left-menu-#{view.viewId eq '/views/About.xhtml' ? '' : 'un'}selected">
-						<tc:link link="About.xhtml" label="#{res['leftMenu.about']}"/>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</ui:component>
-</xml>
+	<table>
+		<tbody>
+			<tr>
+				<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Home.xhtml' ? '' : 'un'}selected">
+					<tc:link label="#{res['leftMenu.home']}" link="Home.xhtml"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left-menu-cell left-menu-#{view.viewId eq '/views/ExtractionForm.xhtml' ? '' : 'un'}selected">
+					<tc:link label="#{res['leftMenu.extractionform']}" link="ExtractionForm.xhtml"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Results.xhtml' ? '' : 'un'}selected left-menu-#{pstBean.resultAvailable ? '' : 'no'}results">
+					<tc:link link="Results.xhtml" label="#{res['leftMenu.results']}"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left-menu-cell left-menu-#{view.viewId eq '/views/Help.xhtml' ? '' : 'un'}selected">
+					<tc:link link="Help.xhtml" label="#{res['leftMenu.help']}"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left-menu-cell left-menu-#{view.viewId eq '/views/About.xhtml' ? '' : 'un'}selected">
+					<tc:link link="About.xhtml" label="#{res['leftMenu.about']}"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</ui:component>
