@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:component
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<h:outputScript library='js' name="extraction-form.js" target="head"/>
+	<tc:script file="#{request.contextPath}/resources/js/extraction-form.js"/>
 	<tc:form id="uploadPSTForm" name="uploadPSTForm">
 		<tc:box class="dialog-box">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true"/>
