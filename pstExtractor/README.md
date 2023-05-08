@@ -3,7 +3,7 @@
 A JSF-based server for uploading all parts of a PST file except the messages (you can see contacts, tasks, and calendar entries). Note that, as it uses CDI, it needs an EE-capable servlet to run. Tomcat is no longer supported, but Tomcat EE is.
 
 ## Security Warning
-This application is based on [JSF](https://en.wikipedia.org/wiki/Jakarta_Server_Faces), which was already obsolescent when I started work on it. It pulls in several dependencies (both direct and transitive) that contain known vulnerabilities.
+This application is based on [JSF](https://en.wikipedia.org/wiki/Jakarta_Server_Faces) and the [Apache Tobago](https://myfaces.apache.org/#/tobago) component libraryi (v4.6). Up until 2023, it used the [MyFaces Tomahawk](https://svn.apache.org/repos/asf/myfaces/site/publish/tomahawk/index.html), which has not been updated since 2012 and contains security vulnerabilities.
 As such, it should remain a toy application and never be used in production or even on a publicly-accessible server. See the list of vulnerabilities below for more details.
 
 ## TomcatEE
