@@ -23,9 +23,9 @@ Add the following section to the <servers> element of your maven settings.xml:
     </server>
 
 You may now deploy/undeploy/redeploy the app via
-    mvn tomcat7:deploy
-    mvn tomcat7:undeploy
-    mvn tomcat7:redeploy
+- `mvn tomcat7:deploy`
+- `mvn tomcat7:undeploy`
+- `mvn tomcat7:redeploy`
 
 If you find the server is low on memory, add the following line to the file <tomcat-home>/bin/catalina.sh
 
