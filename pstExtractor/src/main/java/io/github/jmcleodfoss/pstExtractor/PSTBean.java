@@ -9,8 +9,8 @@ import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
@@ -43,7 +43,7 @@ import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 
 /**	The ContactFormBean shares the data from the contact upload form with the contact server. */
 @Named("pstBean")
-@SessionScoped
+@ViewScoped
 public class PSTBean implements Serializable
 {
 	/**	The serialVersionUID is required because the base class is serializable. */
@@ -59,6 +59,17 @@ public class PSTBean implements Serializable
 		JOURNAL_ENTRIES,
 		STICKYNOTES,
 		TASKS
+	};
+
+	/**	Where we are in the process, used to select the section in the ExtractionForm view */
+	enum Phase {
+		UPLOAD,
+		RESULTS,
+		RESUBMIT_PASSWORD,
+		NOT_PST,
+		CORRUPT_PST,
+		ACCESS_DENIED,
+		PROCESSING_PROBLEM
 	};
 
 	/**	The resource names for the labels of the check boxes of the various types are not found. */
@@ -98,6 +109,9 @@ public class PSTBean implements Serializable
 	/**	The tasks in this PST file. */
 	private transient MessageObjectCollectionBean<TaskBean> tasks;
 
+	/**	The appplication phase */
+	private transient Phase phase;
+
 	/**	The PST file. */
 	private transient PST pst;
 
@@ -120,6 +134,8 @@ public class PSTBean implements Serializable
 		journalEntries = new MessageObjectCollectionBean<JournalEntryBean>();
 		stickyNotes = new MessageObjectCollectionBean<StickyNoteBean>();
 		tasks = new MessageObjectCollectionBean<TaskBean>();
+
+		phase = Phase.UPLOAD;
 	}
 
 	/**	Add the appointments in the given folder to the list of appointments..
@@ -331,10 +347,12 @@ public class PSTBean implements Serializable
 		if ((pst.hasPassword() && password.length() == 0) || (!pst.hasPassword() && password.length() > 0)) {
 			if (numPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
 				resetForm();
-				return "AccessDenied";
+				phase = Phase.ACCESS_DENIED;
+				return "";
 			}
 	
-			return "ResubmitPassword";
+			phase = Phase.RESUBMIT_PASSWORD;
+			return "";
 		}
 
 		return doProcessPST();
@@ -347,11 +365,13 @@ public class PSTBean implements Serializable
 	{
 		try {
 			processPST();
-			return "Results";
+			phase = Phase.RESULTS;
+			return "";
 		} catch (final	IOException
 			|	UnimplementedPropertyTypeException e) {
 			e.printStackTrace(System.out);
-			return "ProcessingProblem";
+			phase = Phase.PROCESSING_PROBLEM;
+			return "";
 		} catch (final	BadXBlockLevelException
 			|	BadXBlockTypeException
 			|	CRCMismatchException
@@ -366,7 +386,8 @@ public class PSTBean implements Serializable
 			|	UnparseablePropertyContextException
 			|	UnparseableTableContextException e) {
 			e.printStackTrace(System.out);
-			return "CorruptPST";
+			phase = Phase.CORRUPT_PST;
+			return "";
 		}
 	}
 
@@ -428,6 +449,7 @@ public class PSTBean implements Serializable
 		return password;
 	}
 
+
 	/**	Get the array listing the extraction types selected.
 	*	@return	An array containing the extraction types selected.
 	*/
@@ -460,12 +482,68 @@ public class PSTBean implements Serializable
 		return uploadedFile;
 	}
 
+	/**	Should we be displaying the "Incorrect Password" message?
+	*	@return true if submit has been pressed and the password is incorrect seceral times, false otherwise
+	*/
+	public boolean isAccessDeniedPhase()
+	{
+		return phase == Phase.ACCESS_DENIED;
+	}
+
+	/**	Should we be displaying the "Corrupt PST" message?
+	*	@return true if submit has been pressed and the file has been found to a corrupt PST file, false otherwise
+	*/
+	public boolean isCorruptPSTFilePhase()
+	{
+		return phase == Phase.CORRUPT_PST;
+	}
+
+	/**	Should we be displaying the "Not PST" message?
+	*	@return true if submit has been pressed and the file has been found to not be a PST file, false otherwise
+	*/
+	public boolean isNotPSTFilePhase()
+	{
+		return phase == Phase.NOT_PST;
+	}
+
+	/**	Should we be displaying the "Processing Problem" message?
+	*	@return true if the PST processing library threw an exception not related to bad/corrupt PST files or bad password, false otherwise
+	*/
+	public boolean isProcessingProblemPhase()
+	{
+		return phase == Phase.PROCESSING_PROBLEM;
+	}
+
+	/**	Should we be displaying the "Resubmit PST" message?
+	*	@return true if submit has been pressed and the wrong password has been provided fewer times than the threshold for password attempts, false otherwise
+	*/
+	public boolean isResubmitPasswordPhase()
+	{
+		return phase == Phase.RESUBMIT_PASSWORD;
+	}
+
 	/**	Determine whether any results are available.
 	*	@return	true if a PST file has been processed and is available, false otherwise.
 	*/
 	public boolean isResultAvailable()
 	{
 		return pst != null;
+	}
+
+	/**	Should we be displaying the results?
+	*	@return true if results are available, false otherwise
+	*/
+	public boolean isResultsPhase()
+	{
+		return phase == Phase.RESULTS;
+	}
+
+	/**	Should we be displaying the Upload PST dialog?
+	*	@return true if no PST file has been submitted, false otherwise
+	*/
+	public boolean isUploadPhase()
+	{
+		return phase == Phase.UPLOAD;
 	}
 
 	/**	Reset form data.
@@ -475,6 +553,8 @@ public class PSTBean implements Serializable
 		pst = null;
 		numPasswordAttempts = 0;
 		selectedExtractionTypes = new ArrayList<ExtractionTypes>();
+
+		phase = Phase.UPLOAD;
 		return "ExtractionForm";
 	}
 
@@ -597,7 +677,8 @@ public class PSTBean implements Serializable
 					|	UnimplementedPropertyTypeException e) {
 					// IO Exception creating or reading PST file
 					e.printStackTrace(System.out);
-					return "ProcessingProblem";
+					phase = Phase.PROCESSING_PROBLEM;
+					return "";
 				} catch(final	BadXBlockLevelException
 					|	BadXBlockTypeException
 					|	CRCMismatchException
@@ -614,19 +695,23 @@ public class PSTBean implements Serializable
 					|	UnparseablePropertyContextException
 					|	UnparseableTableContextException e) {
 					e.printStackTrace(System.out);
-					return "CorruptPST";
+					phase = Phase.CORRUPT_PST;
+					return "";
 				} catch (final NotPSTFileException e) {
 					e.printStackTrace(System.out);
-					return "NotPST";
+					phase = Phase.NOT_PST;
+					return "";
 				}
 			}
 		} catch (final IOException e) {
 			// IO Exception retrieving input stream.
 			e.printStackTrace(System.out);
-			return "ProcessingProblem";
+			phase = Phase.PROCESSING_PROBLEM;
+			return "";
 		}
 
 		// This is an unexpected condition. It can only occur if we raised an uncaught exception.
-		return "ProcessingProblem";
+		phase = Phase.PROCESSING_PROBLEM;
+		return "";
 	}
 }

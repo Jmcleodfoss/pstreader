@@ -1,15 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="/templates/layout.xhtml"
 >
 	<ui:define name="heading">
-		#{res['submit.title.text']}
+		<h:panelGroup rendered="#{pstBean.isUploadPhase()}">
+			#{res['submit.title.text']}
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isResultsPhase()}">
+			<h:outputFormat value="#{res['results.title.format']}" escape="false">
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
+			</h:outputFormat>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isResubmitPasswordPhase()}">
+			<h:outputFormat value="#{res['incorrectPassword.title.format']}" escape="false">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isNotPSTFilePhase()}">
+			<h:outputFormat value="#{res['notPST.title.format']}" escape="false">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isCorruptPSTFilePhase()}">
+			<h:outputFormat value="#{res['corruptPST.title.format']}">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isAccessDeniedPhase()}">
+			<h:outputFormat value="#{res['accessDenied.title.format']}">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isProcessingProblemPhase()}">
+			<h:outputFormat value="#{res['processingProblem.title.format']}">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
 	</ui:define>
 
 	<ui:define name="content">
-		<ui:include src="/sections/extraction-form/content.xhtml"/>
+		<h:panelGroup rendered="#{pstBean.isUploadPhase()}">
+			<ui:include src="/sections/extraction-form/content.xhtml"/>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isResultsPhase()}">
+			<ui:include src="/sections/show-pst/content.xhtml"/>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isResubmitPasswordPhase()}">
+			<p>
+				<h:outputFormat value="#{res['incorrectPassword.description.format']}" escape="false">
+					<f:param value="#{pstBean.uploadedFile.name}"/>
+					<f:param value="#{pstBean.numPasswordAttempts}"/>
+					<f:param value="#{pstBean.maxPasswordAttempts}"/>
+				</h:outputFormat>
+			</p>
+			<ui:include src="/sections/incorrect-password/content.xhtml"/>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isNotPSTFilePhase()}">
+			<h:outputFormat value="#{res['notPST.description.format']}" escape="false">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isCorruptPSTFilePhase()}">
+			<p>
+				<h:outputFormat value="#{res['corruptPST.description.format']}" escape="false">
+					<f:param value="#{pstBean.uploadedFile.name}"/>
+				</h:outputFormat>
+			</p>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isAccessDeniedPhase()}">
+			<p>
+				<h:outputFormat value="#{res['accessDenied.description.format']}" escape="false">
+					<f:param value="#{pstBean.uploadedFile.name}"/>
+					<f:param value="#{pstBean.maxPasswordAttempts}"/>
+				</h:outputFormat>
+			</p>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{pstBean.isProcessingProblemPhase()}">
+			<h:outputFormat value="#{res['processingProblem.description.format']}">
+				<f:param value="#{pstBean.uploadedFile.name}"/>
+			</h:outputFormat>
+		</h:panelGroup>
 	</ui:define>
 </ui:composition>
