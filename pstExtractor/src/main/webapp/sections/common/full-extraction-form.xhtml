@@ -9,7 +9,7 @@
 		<tc:box pt:class="dialog-box">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true"/>
 
-			<tc:in label="#{res['password.label']}" value="#{pstBean.password}" id="password"/>
+			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password"/>
 
 			<tc:selectManyCheckbox pt:class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true">
 				<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
