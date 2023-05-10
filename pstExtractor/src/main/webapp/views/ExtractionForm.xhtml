@@ -19,31 +19,31 @@
 
 		<h:panelGroup rendered="#{pstBean.isResubmitPasswordPhase()}">
 			<h:outputFormat value="#{res['incorrectPassword.title.format']}" escape="false">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{pstBean.isNotPSTFilePhase()}">
 			<h:outputFormat value="#{res['notPST.title.format']}" escape="false">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{pstBean.isCorruptPSTFilePhase()}">
 			<h:outputFormat value="#{res['corruptPST.title.format']}">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{pstBean.isAccessDeniedPhase()}">
 			<h:outputFormat value="#{res['accessDenied.title.format']}">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{pstBean.isProcessingProblemPhase()}">
 			<h:outputFormat value="#{res['processingProblem.title.format']}">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 	</ui:define>
@@ -60,7 +60,7 @@
 		<h:panelGroup rendered="#{pstBean.isResubmitPasswordPhase()}">
 			<p>
 				<h:outputFormat value="#{res['incorrectPassword.description.format']}" escape="false">
-					<f:param value="#{pstBean.uploadedFile.name}"/>
+					<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 					<f:param value="#{pstBean.numPasswordAttempts}"/>
 					<f:param value="#{pstBean.maxPasswordAttempts}"/>
 				</h:outputFormat>
@@ -70,14 +70,14 @@
 
 		<h:panelGroup rendered="#{pstBean.isNotPSTFilePhase()}">
 			<h:outputFormat value="#{res['notPST.description.format']}" escape="false">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{pstBean.isCorruptPSTFilePhase()}">
 			<p>
 				<h:outputFormat value="#{res['corruptPST.description.format']}" escape="false">
-					<f:param value="#{pstBean.uploadedFile.name}"/>
+					<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 				</h:outputFormat>
 			</p>
 		</h:panelGroup>
@@ -85,7 +85,7 @@
 		<h:panelGroup rendered="#{pstBean.isAccessDeniedPhase()}">
 			<p>
 				<h:outputFormat value="#{res['accessDenied.description.format']}" escape="false">
-					<f:param value="#{pstBean.uploadedFile.name}"/>
+					<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 					<f:param value="#{pstBean.maxPasswordAttempts}"/>
 				</h:outputFormat>
 			</p>
@@ -93,7 +93,7 @@
 
 		<h:panelGroup rendered="#{pstBean.isProcessingProblemPhase()}">
 			<h:outputFormat value="#{res['processingProblem.description.format']}">
-				<f:param value="#{pstBean.uploadedFile.name}"/>
+				<f:param value="#{pstBean.uploadedFile.submittedFileName}"/>
 			</h:outputFormat>
 		</h:panelGroup>
 	</ui:define>
