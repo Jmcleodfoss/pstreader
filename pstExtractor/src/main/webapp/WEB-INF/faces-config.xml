@@ -5,4 +5,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2"
 >
+	<lifecycle>
+		<phase-listener>org.apache.myfaces.tobago.util.DebugPhaseListener</phase-listener>
+	</lifecycle>
 </faces-config>
