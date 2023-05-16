@@ -41,17 +41,17 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			 <groupId>org.apache.myfaces.core</groupId>
-			 <artifactId>myfaces-api</artifactId>
-			 <version>${myfaces.version}</version>
-			 <scope>provided</scope>
-		  </dependency>
-		  <dependency>
-			 <groupId>org.apache.myfaces.core</groupId>
-			 <artifactId>myfaces-impl</artifactId>
-			 <version>${myfaces.version}</version>
-			 <scope>provided</scope>
-		  </dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>${myfaces.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
+			<version>${myfaces.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
