@@ -115,7 +115,7 @@
 						<additionalDependency>
 							<groupId>org.apache.myfaces.core</groupId>
 							<artifactId>myfaces-bundle</artifactId>
-							<version>2.3.6</version>
+							<version>${myfaces.version}</version>
 						</additionalDependency>
 					</additionalDependencies>
 				</configuration>
