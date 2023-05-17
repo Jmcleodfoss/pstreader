@@ -7,7 +7,7 @@ This application is based on [JSF](https://en.wikipedia.org/wiki/Jakarta_Server_
 As such, it should remain a toy application and never be used in production or even on a publicly-accessible server. See the list of vulnerabilities below for more details.
 
 ## TomcatEE
-This has been tested on Tomcat EE 8, but not on any other web servers. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
+This has been tested on Tomcat EE 8. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
 
     <tomcat-users>
 	<role rolename="manager-script"/>
@@ -27,6 +27,11 @@ You may now deploy/undeploy/redeploy the app via
 - `mvn tomcat7:undeploy`
 - `mvn tomcat7:redeploy`
 
+### Jetty
+This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty:
+`mvn clean install jetty:run -P jetty`
+
+### Troubleshooting
 If you find the server is low on memory, add the following line to the file <tomcat-home>/bin/catalina.sh
 
     # Required for pst file processing
