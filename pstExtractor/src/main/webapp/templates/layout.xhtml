@@ -9,12 +9,7 @@
 	<f:loadBundle basename="text-resources" var="res"/>
 	<tc:style file="#{request.contextPath}/resources/css/styles.css"/>
 	<tc:script file="#{request.contextPath}/resources/js/layout.js"/>
-
-	<h:head>
-		<title>
-			#{res['html.head.title']}
-		</title>
-	</h:head>
+	<tc:meta name="title" content="#{res['html.head.title']}"/>
 
 	<h:body>
 		<h1 id="heading">
