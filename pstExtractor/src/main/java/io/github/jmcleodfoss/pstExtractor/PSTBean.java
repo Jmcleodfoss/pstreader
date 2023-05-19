@@ -449,6 +449,13 @@ public class PSTBean implements Serializable
 		return password;
 	}
 
+	/**	Get the current disabled state for the Reset button
+	*	@return true if the Reset button should be disabled, false if it should be enabled.
+	*/
+	public boolean getResetButtonDisabledState()
+	{
+		return uploadedFile == null && selectedExtractionTypes.isEmpty();
+	}
 
 	/**	Get the array listing the extraction types selected.
 	*	@return	An array containing the extraction types selected.
@@ -464,6 +471,14 @@ public class PSTBean implements Serializable
 	public MessageObjectCollectionBean<StickyNoteBean> getStickyNotes()
 	{
 		return stickyNotes;
+	}
+
+	/**	Get the current disabled state for the Submit button
+	*	@return true if the Submit button should be disabled, false if it should be enabled.
+	*/
+	public boolean getSubmitButtonDisabledState()
+	{
+		return uploadedFile == null || selectedExtractionTypes.isEmpty();
 	}
 
 	/**	Get the list of tasks from this PST file.

@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:component
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<tc:script file="#{request.contextPath}/resources/js/extraction-form.js"/>
 	<tc:form id="uploadPSTForm" name="uploadPSTForm">
 		<tc:box pt:class="dialog-box">
-			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true"/>
+			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true">
+				<f:ajax execute="@this" render="submit reset" immediate="true"/>
+			</tc:file>
 
-			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password"/>
+			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password">
+				<f:ajax execute="@this" render="submit reset" immediate="true"/>
+			</tc:in>
 
-			<tc:selectManyCheckbox pt:class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true">
+			<tc:selectManyCheckbox pt:class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true" id="selections">
+				<f:ajax execute="@this" render="submit reset" immediate="true"/>
 				<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
 			</tc:selectManyCheckbox>
 
 			<tc:buttons>
-				<tc:button label="#{res['submitPSTButton.text']}" action="#{pstBean.submitPST}" id="submit"/>
-				<tc:button label="#{res['resetButton.text']}"     action="#{pstBean.resetForm}" id="reset"/>
+				<tc:button label="#{res['submitPSTButton.text']}" action="#{pstBean.submitPST}" id="submit" disabled="#{pstBean.submitButtonDisabledState}"/>
+				<tc:button label="#{res['resetButton.text']}"     action="#{pstBean.resetForm}" id="reset"  disabled="#{pstBean.resetButtonDisabledState}">
+					<tc:resetInputActionListener execute="file password selections"/>
+				</tc:button>
 			</tc:buttons>
 		</tc:box>
 	</tc:form>
