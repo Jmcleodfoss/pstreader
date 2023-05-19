@@ -30,6 +30,11 @@
 		<param-value>true</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
@@ -38,6 +43,7 @@
 		<filter-name>LoggingMdcFilter</filter-name>
 		<filter-class>org.apache.myfaces.tobago.internal.webapp.LoggingMdcFilter</filter-class>
 	</filter>
+
 	<filter-mapping>
 		<filter-name>LoggingMdcFilter</filter-name>
 		<url-pattern>/*</url-pattern>
