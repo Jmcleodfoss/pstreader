@@ -16,8 +16,8 @@
 
 	<properties>
 		<jakarta.faces.version>2.3.18</jakarta.faces.version>
-		<tobago.version>4.6.0</tobago.version>
 		<myfaces.version>2.3.10</myfaces.version>
+		<tobago.version>4.6.0</tobago.version>
 	</properties>
 
 	<dependencies>
