@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:component
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<h:form	enctype="multipart/form-data"
-		method="post"
-		name="uploadPasswordForm"
-		id="uploadPasswordForm"
-		onreset="setButtonsEnabled(false);"
-	>
-		<h:panelGrid styleClass="dialog-box">
-			<h:panelGroup layout="block" styleClass="centered-container">
-				<h:outputLabel for="password" value="#{res['password.label']}"/>
-				<h:inputSecret value="#{pstBean.password}" id="password"/>
-			</h:panelGroup>
+	<tc:form id="uploadPasswordForm">
+		<tc:box pt:class="dialog-box">
+			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password">
+				<f:ajax execute="@this" render="reset" immediate="true"/>
+			</tc:in>
 
-			<h:panelGroup layout="block" styleClass="centered-container">
-				<h:commandButton
-					value="#{res['submitPasswordButton.text']}"
-					type="submit"
-					action="#{pstBean.submitPassword}"
-					id="button-submit"
-					disabled="false"
-				/>
-				<span class="spacer"/>
-				<h:commandButton
-					value="#{res['resetButton.text']}"
-					type="reset"
-					id="button-reset"
-					disabled="false"
-				/>
-			</h:panelGroup>
-		</h:panelGrid>
-	</h:form>
+			<tc:buttons>
+				<tc:button label="#{res['submitPasswordButton.text']}" action="#{pstBean.submitPassword}"/>
+				<tc:button label="#{res['resetButton.text']}" id="reset" disabled="#{pstBean.resetPasswordButtonDisabledState}">
+					<tc:resetInputActionListener execute="password"/>
+				</tc:button>
+			</tc:buttons>
+		</tc:box>
+	</tc:form>
 
 </ui:component>

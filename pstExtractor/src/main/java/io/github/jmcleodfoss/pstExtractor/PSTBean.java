@@ -449,6 +449,14 @@ public class PSTBean implements Serializable
 		return password;
 	}
 
+	/**	Retrieve the password disabled state for the Incorrect Password form.
+	*	@return	true if the Reset button should be disabled, false if it should be enabled.
+	*/
+	public boolean getResetPasswordButtonDisabledState()
+	{
+		return password != null;
+	}
+
 	/**	Get the current disabled state for the Reset button
 	*	@return true if the Reset button should be disabled, false if it should be enabled.
 	*/
