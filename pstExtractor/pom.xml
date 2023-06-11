@@ -81,6 +81,24 @@
 					<path>/${project.artifactId}-${project.version}</path>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.51.v20230217</version>
+				<configuration>
+					<stopKey>stopKey</stopKey>
+					<stopPort>9999</stopPort>
+					<systemProperties>
+						<systemProperty>
+							<name>derby.stream.error.file</name>
+							<value>target/derby.log</value>
+						</systemProperty>
+					</systemProperties>
+					<webAppConfig>
+						<overrideDescriptor>src/main/jetty/override-web.xml</overrideDescriptor>
+					</webAppConfig>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -125,28 +143,6 @@
 				<logback.version>1.2.12</logback.version>
 				<openwebbeans.version>2.0.27</openwebbeans.version>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.jetty</groupId>
-						<artifactId>jetty-maven-plugin</artifactId>
-						<version>9.4.51.v20230217</version>
-						<configuration>
-							<stopKey>stopKey</stopKey>
-							<stopPort>9999</stopPort>
-							<systemProperties>
-								<systemProperty>
-									<name>derby.stream.error.file</name>
-									<value>target/derby.log</value>
-								</systemProperty>
-							</systemProperties>
-							<webAppConfig>
-								<overrideDescriptor>src/main/jetty/override-web.xml</overrideDescriptor>
-							</webAppConfig>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 			<dependencies>
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
