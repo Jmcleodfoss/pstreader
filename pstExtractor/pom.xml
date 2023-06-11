@@ -96,7 +96,7 @@
 						</systemProperty>
 					</systemProperties>
 					<webAppConfig>
-						<overrideDescriptor>src/main/jetty/override-web.xml</overrideDescriptor>
+						<overrideDescriptor>src/main/jetty/${jetty.web.override}</overrideDescriptor>
 					</webAppConfig>
 				</configuration>
 			</plugin>
@@ -139,11 +139,149 @@
 
 	<profiles>
 		<profile>
-			<id>jetty</id>
+			<id>mojarra</id>
 			<properties>
+				<mojarra.version>2.3.19</mojarra.version>
+				<jetty.web.override>override-web-mojarra.xml</jetty.web.override>
+				<slf4j.version>2.0.7</slf4j.version>
+				<weld.library>shaded</weld.library>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.3.2</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>war</goal>
+								</goals>
+								<configuration>
+									<classifier>mojarra</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-maven-plugin</artifactId>
+						<version>${jetty.version}</version>
+						<configuration>
+							<dumpOnStart>true</dumpOnStart>
+							<stopKey>stopKey</stopKey>
+							<stopPort>9999</stopPort>
+							<systemProperties>
+								<systemProperty>
+									<name>derby.stream.error.file</name>
+									<value>target/derby.log</value>
+								</systemProperty>
+							</systemProperties>
+							<webAppConfig>
+								<overrideDescriptor>src/main/jetty/${jetty.web.override}</overrideDescriptor>
+							</webAppConfig>
+							<properties>
+								<weldx>jetty</weldx>
+							</properties>
+						</configuration>
+						<dependencies>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.glassfish</groupId>
+					<artifactId>jakarta.faces</artifactId>
+					<version>${mojarra.version}</version>
+				</dependency>
+
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<version>${slf4j.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+					<version>${slf4j.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>weld-shaded</id>
+			<activation>
+				<property>
+					<name>weld.library</name>
+					<value>shaded</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.weld.servlet</groupId>
+					<artifactId>weld-servlet-shaded</artifactId>
+					<version>3.1.9.Final</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>weld-jetty</id>
+			<activation>
+				<property>
+					<name>weld.library</name>
+					<value>jetty</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.weld.servlet</groupId>
+					<artifactId>weld-servlet-core</artifactId>
+					<version>3.1.9.Final</version>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.weld</groupId>
+					<artifactId>weld-core-impl</artifactId>
+					<version>3.1.9.Final</version>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.weld.module</groupId>
+					<artifactId>weld-jsf</artifactId>
+					<version>3.1.9.Final</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>myfaces</id>
+			<properties>
+				<myfaces.version>2.3.10</myfaces.version>
 				<logback.version>1.2.12</logback.version>
 				<openwebbeans.version>2.0.27</openwebbeans.version>
+				<jetty.web.override>override-web-myfaces.xml</jetty.web.override>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.3.2</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>war</goal>
+								</goals>
+								<configuration>
+										<classifier>myfaces</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 			<dependencies>
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>

@@ -1,0 +1,20 @@
+<web-app>
+
+	<!-- Jetty web.xml over-rides for myfaces and tobago -->
+
+	<listener>
+		<!-- taken from tobago-example-demo web.xml -->
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+
+ 	<listener>
+		<!-- Copied from tobago-core web-fragment.xml, which Jetty does not seem to read. -->
+		<listener-class>org.apache.myfaces.tobago.webapp.TobagoServletContextListener</listener-class>
+	</listener>
+
+	<listener>
+		<!-- Copied from tobago-core web-fragment.xml, which Jetty does not seem to read. -->
+		<listener-class>org.apache.myfaces.tobago.webapp.SecretSessionListener</listener-class>
+	</listener>
+
+</web-app>
