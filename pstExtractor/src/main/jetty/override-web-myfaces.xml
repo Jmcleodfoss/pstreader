@@ -12,12 +12,12 @@
 	</listener>
 
  	<listener>
-		<!-- Copied from tobagoe-core web-fragment.xml, which jetty does not seem to read. -->
+		<!-- Copied from tobago-core web-fragment.xml, which Jetty does not seem to read. -->
 		<listener-class>org.apache.myfaces.tobago.webapp.TobagoServletContextListener</listener-class>
 	</listener>
 
 	<listener>
-		<!-- Copied from tobagoe-core web-fragment.xml, which jetty does not seem to read. -->
+		<!-- Copied from tobago-core web-fragment.xml, which Jetty does not seem to read. -->
 		<listener-class>org.apache.myfaces.tobago.webapp.SecretSessionListener</listener-class>
 	</listener>
 
