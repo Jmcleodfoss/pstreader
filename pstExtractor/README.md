@@ -2,6 +2,21 @@
 
 A JSF-based server for uploading all parts of a PST file except the messages (you can see contacts, tasks, and calendar entries). Note that, as it uses CDI, it needs an EE-capable servlet to run. Tomcat is no longer supported, but Tomcat EE is.
 
+## Variants
+### Basic
+The basic version of this application does not include an implementation of Java Server Faces; it needs to be deployed to a full-fledged Java EE server like TomEE.
+
+### MyFaces
+This application can be built to provide Java Server Faces support using Apache MyFaces using the **myfaces** profile. This will create a war file with the classifier "myfaces".
+    mvn clean install package -P myfaces
+
+### Mojarra
+This application can be built to provide Java Server Faces support using Eclipse Mojarra using the **mojarra** profile. This will create a war file with the classifier "mojarra".
+    mvn clean install package -P mojarra
+
+#### Mojarra, Weld, and Jetty
+The Eclipse Foundation's recommendation for Mojarra is to include the [weld-servlet-shaded](https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-shaded) library. This triggers warnings about classes being imported from multiple places when running Jetty via the jetty-maven-plugin. To eliminate these warnings, you can use a subset of weld servlet libraries with `-Dweld.library=jatty`.
+
 ## TomcatEE
 This has been tested on Tomcat EE 8. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
 
@@ -25,7 +40,7 @@ You may now deploy/undeploy/redeploy the app via
 
 ### Jetty
 This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty:
-`mvn clean install jetty:run -P jetty`
+    `mvn jetty:run -P jetty -Dweld.library=jetty`
 
 ### Troubleshooting
 If you find the server is low on memory, add the following line to the file <tomcat-home>/bin/catalina.sh
