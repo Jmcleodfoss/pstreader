@@ -51,33 +51,3 @@ If you find the server is low on memory, add the following line to the file <tom
     # Required for pst file processing
     JAVA_OPTS="$JAVA_OPTS -Xmx1024m"
 ```
-THe upload limit defaults to 500 MB. If you need to adjust this, change the following entries in [src/main/webapp/WEB_INF/web.xml](src/main/webapp/WEB_INF/web.xml):
-
-### web-app/filter/filter-name/init-params/param-value
-```
-    <filter>
-      <filter-name>MyFacesExtensionsFilter</filter-name>
-        <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
-        <init-param>
-          <param-name>uploadMaxFileSize</param-name>
-          <param-value>500m</param-value>
-          <description>Set the size limit for uploaded files.
-                  Format: 10 - 10 bytes
-                  10k - 10 KB
-                  10m - 10 MB
-                  1g - 1 GB
-          </description>
-        </init-param>
-      </filter-name>
-    </filter>
-```
-
-### web-app/multipart-config
-```
-    <multipart-config>
-      <!-- Set server upload size to match MyFacesExtensionsFilter -->
-      <max-file-size>52428800</max-file-size>
-      <max-request-size>52428800</max-request-size>
-      <file-size-threshold>0</file-size-threshold>
-    </multipart-config>
-```
