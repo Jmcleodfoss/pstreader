@@ -5,7 +5,7 @@
 	xmlns:tc="http://myfaces.apache.org/tobago/component"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-	<tc:form id="uploadPSTForm" name="uploadPSTForm">
+	<tc:form id="uploadPSTForm">
 		<tc:box markup="dialogbox">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true">
 				<f:ajax execute="@this" render="submit reset" immediate="true"/>
