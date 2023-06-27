@@ -9,7 +9,6 @@
 		<tc:box markup="dialogbox">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true">
 				<f:ajax execute="@this" render="submit reset" immediate="true"/>
-				<tc:validateFileItem contentType="application/vnd.ms-outlook"/>
 			</tc:file>
 
 			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password">
