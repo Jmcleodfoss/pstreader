@@ -6,16 +6,17 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 	<tc:form id="uploadPSTForm" name="uploadPSTForm">
-		<tc:box pt:class="dialog-box">
+		<tc:box markup="dialogbox">
 			<tc:file label="#{res['file.label']}" value="#{pstBean.uploadedFile}" id="file" required="true">
 				<f:ajax execute="@this" render="submit reset" immediate="true"/>
+				<tc:validateFileItem contentType="application/vnd.ms-outlook"/>
 			</tc:file>
 
 			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password">
 				<f:ajax execute="@this" render="submit reset" immediate="true"/>
 			</tc:in>
 
-			<tc:selectManyCheckbox pt:class="grouped-choices" value="#{pstBean.selectedExtractionTypes}" required="true" id="selections">
+			<tc:selectManyCheckbox markup="groupedchoices" value="#{pstBean.selectedExtractionTypes}" required="true" id="selections">
 				<f:ajax execute="@this" render="submit reset" immediate="true"/>
 				<tc:selectItems value="#{pstBean.extractionTypeChoices}"/>
 			</tc:selectManyCheckbox>

@@ -36,18 +36,18 @@ p {
   border-bottom: 1px solid #ccc;
 }
 
-.centered-container {
+.tobago-buttons-markup-centeredcontainer {
   text-align: center;
 }
 
-.dialog-box {
+.tobago-box-markup-dialogbox {
   border: 3px inset lightgrey;
   border-radius: 10px;
   margin: 1em auto 0;
   padding: 0.66em;
 }
 
-.grouped-choices {
+.tobago-selectManyCheckbox-markup-groupedchoices {
   border: 1px solid lightgrey;
   border-radius: 10px;
   margin: 1em auto;

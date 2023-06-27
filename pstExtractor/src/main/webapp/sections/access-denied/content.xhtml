@@ -4,7 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 	<tc:form id="uploadPasswordForm">
-		<tc:box pt:class="dialog-box">
+		<tc:box markup="dialogbox">
 			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password">
 				<f:ajax execute="@this" render="reset" immediate="true"/>
 			</tc:in>

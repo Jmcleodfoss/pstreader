@@ -6,10 +6,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 	<tc:form id="uploadPasswordForm">
-		<tc:box pt:class="dialog-box">
+		<tc:box markup="dialogbox">
 			<tc:in label="#{res['password.label']}" password="true" value="#{pstBean.password}" id="password"/>
 
-			<tc:buttons pt:class="centered-container">
+			<tc:buttons markup="centeredcontainer">
 				<tc:button label="#{res['submitPSTButton.text']}" action="#{pstBean.submitPassword}"/>
 				<tc:button label="#{res['resetButton.text']}"     action="#{pstBean.resetForm}"/>
 			</tc:buttons>
