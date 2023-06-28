@@ -348,11 +348,11 @@ public class PSTBean implements Serializable
 			if (numPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
 				resetForm();
 				phase = Phase.ACCESS_DENIED;
-				return "";
+				return null;
 			}
 	
 			phase = Phase.RESUBMIT_PASSWORD;
-			return "";
+			return null;
 		}
 
 		return doProcessPST();
@@ -366,12 +366,12 @@ public class PSTBean implements Serializable
 		try {
 			processPST();
 			phase = Phase.RESULTS;
-			return "";
+			return null;
 		} catch (final	IOException
 			|	UnimplementedPropertyTypeException e) {
 			e.printStackTrace(System.out);
 			phase = Phase.PROCESSING_PROBLEM;
-			return "";
+			return null;
 		} catch (final	BadXBlockLevelException
 			|	BadXBlockTypeException
 			|	CRCMismatchException
@@ -387,7 +387,7 @@ public class PSTBean implements Serializable
 			|	UnparseableTableContextException e) {
 			e.printStackTrace(System.out);
 			phase = Phase.CORRUPT_PST;
-			return "";
+			return null;
 		}
 	}
 
@@ -701,7 +701,7 @@ public class PSTBean implements Serializable
 					// IO Exception creating or reading PST file
 					e.printStackTrace(System.out);
 					phase = Phase.PROCESSING_PROBLEM;
-					return "";
+					return null;
 				} catch(final	BadXBlockLevelException
 					|	BadXBlockTypeException
 					|	CRCMismatchException
@@ -719,22 +719,22 @@ public class PSTBean implements Serializable
 					|	UnparseableTableContextException e) {
 					e.printStackTrace(System.out);
 					phase = Phase.CORRUPT_PST;
-					return "";
+					return null;
 				} catch (final NotPSTFileException e) {
 					e.printStackTrace(System.out);
 					phase = Phase.NOT_PST;
-					return "";
+					return null;
 				}
 			}
 		} catch (final IOException e) {
 			// IO Exception retrieving input stream.
 			e.printStackTrace(System.out);
 			phase = Phase.PROCESSING_PROBLEM;
-			return "";
+			return null;
 		}
 
 		// This is an unexpected condition. It can only occur if we raised an uncaught exception.
 		phase = Phase.PROCESSING_PROBLEM;
-		return "";
+		return null;
 	}
 }
