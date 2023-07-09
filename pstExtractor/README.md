@@ -42,8 +42,12 @@ You may now deploy/undeploy/redeploy the app via
 - `mvn tomcat7:redeploy`
 
 ### Jetty
-This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty:
-`mvn jetty:run -P jetty -Dweld.library=jetty`
+This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
+`mvn jetty:run -P mojarra -Dweld.library=jetty`
+To run on Jetty using MyFaces:
+`mvn jetty:run -P myfaces`
+
+You can then load the app by browsing to http://localhost:8080
 
 ### Troubleshooting
 If you find the server is low on memory, add the following line to the file <tomcat-home>/bin/catalina.sh
