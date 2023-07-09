@@ -87,6 +87,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
+					<jvmArgs>-Xmx2048m -Xms1536m -XX:PermSize=128m -XX:MaxPermSize=256m</jvmArgs>
 					<stopKey>stopKey</stopKey>
 					<stopPort>9999</stopPort>
 					<systemProperties>
