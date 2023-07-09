@@ -15,7 +15,7 @@
 	</parent>
 
 	<properties>
-		<jakarta.faces.version>2.3.19</jakarta.faces.version>
+		<mojarra.version>2.3.19</mojarra.version>
 		<tobago.version>4.6.0</tobago.version>
 		<jetty.version>9.4.51.v20230217</jetty.version>
 	</properties>
@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>jakarta.faces</artifactId>
-			<version>${jakarta.faces.version}</version>
+			<version>${mojarra.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -128,7 +128,7 @@
 						<additionalDependency>
 							<groupId>org.glassfish</groupId>
 							<artifactId>jakarta.faces</artifactId>
-							<version>${jakarta.faces.version}</version>
+							<version>${mojarra.version}</version>
 						</additionalDependency>
 					</additionalDependencies>
 				</configuration>
@@ -140,7 +140,6 @@
 		<profile>
 			<id>mojarra</id>
 			<properties>
-				<mojarra.version>2.3.19</mojarra.version>
 				<jetty.web.override>override-web-mojarra.xml</jetty.web.override>
 				<slf4j.version>2.0.7</slf4j.version>
 				<weld.library>shaded</weld.library>
