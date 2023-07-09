@@ -18,6 +18,7 @@
 		<mojarra.version>2.3.19</mojarra.version>
 		<tobago.version>4.6.0</tobago.version>
 		<jetty.version>9.4.51.v20230217</jetty.version>
+		<logback.version>1.2.12</logback.version>
 	</properties>
 
 	<dependencies>
@@ -93,11 +94,22 @@
 							<name>derby.stream.error.file</name>
 							<value>target/derby.log</value>
 						</systemProperty>
+						<systemProperty>
+							<name>logback.configurationFile</name>
+							<value>./src/main/resources/logback.xml</value>
+						</systemProperty>
 					</systemProperties>
 					<webAppConfig>
 						<overrideDescriptor>src/main/jetty/${jetty.web.override}</overrideDescriptor>
 					</webAppConfig>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>ch.qos.logback</groupId>
+						<artifactId>logback-classic</artifactId>
+						<version>${logback.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
@@ -256,7 +268,6 @@
 			<id>myfaces</id>
 			<properties>
 				<myfaces.version>2.3.10</myfaces.version>
-				<logback.version>1.2.12</logback.version>
 				<openwebbeans.version>2.0.27</openwebbeans.version>
 				<jetty.web.override>override-web-myfaces.xml</jetty.web.override>
 			</properties>
