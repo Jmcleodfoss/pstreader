@@ -29,7 +29,7 @@
     </encoder>
   </appender>
 
-  <logger name="org.apache.myfaces.tobago" level="debug"/>
+  <logger name="org.apache.myfaces.tobago" level="info"/>
 
   <root level="info">
     <appender-ref ref="console"/>
