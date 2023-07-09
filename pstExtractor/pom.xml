@@ -175,30 +175,6 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>org.eclipse.jetty</groupId>
-						<artifactId>jetty-maven-plugin</artifactId>
-						<version>${jetty.version}</version>
-						<configuration>
-							<dumpOnStart>true</dumpOnStart>
-							<stopKey>stopKey</stopKey>
-							<stopPort>9999</stopPort>
-							<systemProperties>
-								<systemProperty>
-									<name>derby.stream.error.file</name>
-									<value>target/derby.log</value>
-								</systemProperty>
-							</systemProperties>
-							<webAppConfig>
-								<overrideDescriptor>src/main/jetty/${jetty.web.override}</overrideDescriptor>
-							</webAppConfig>
-							<properties>
-								<weldx>jetty</weldx>
-							</properties>
-						</configuration>
-						<dependencies>
-						</dependencies>
-					</plugin>
 				</plugins>
 			</build>
 			<dependencies>
