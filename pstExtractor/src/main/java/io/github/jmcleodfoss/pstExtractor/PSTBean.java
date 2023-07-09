@@ -9,10 +9,12 @@ import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.servlet.http.Part;
+import javax.servlet.ServletContext;
 
 import io.github.jmcleodfoss.pst.Appointment;
 import io.github.jmcleodfoss.pst.BadXBlockLevelException;
@@ -691,40 +693,52 @@ public class PSTBean implements Serializable
 		try {
 			InputStream is = uploadedFile.getInputStream();
 
-			if (is instanceof FileInputStream) {
-				try {
-					pst = null;
-					pst = new PST((FileInputStream)is, true);
-					return checkPasswordAndProcess();
-				} catch (final	IOException
-					|	UnimplementedPropertyTypeException e) {
-					// IO Exception creating or reading PST file
-					e.printStackTrace(System.out);
-					phase = Phase.PROCESSING_PROBLEM;
-					return null;
-				} catch(final	BadXBlockLevelException
-					|	BadXBlockTypeException
-					|	CRCMismatchException
-					|	DataOverflowException
-					|	IncorrectNameIDStreamContentException
-					|	NameIDStreamNotFoundException
-					|	NotHeapNodeException
-					|	NotPropertyContextNodeException
-					|	NotTableContextNodeException
-					|	NullDataBlockException
-					|	NullNodeException
-					|	UnknownClientSignatureException
-					|	UnknownPropertyTypeException
-					|	UnparseablePropertyContextException
-					|	UnparseableTableContextException e) {
-					e.printStackTrace(System.out);
-					phase = Phase.CORRUPT_PST;
-					return null;
-				} catch (final NotPSTFileException e) {
-					e.printStackTrace(System.out);
-					phase = Phase.NOT_PST;
-					return null;
-				}
+			if (!(is instanceof FileInputStream)) {
+				// Some servlet containers return an InputStream which is not derived from FileInputStream
+				// (for example. Jetty returns a ByteArrayInputStream)
+				// For these containers, write the file and then read it in as a FileInputStream to use the library.
+
+				FacesContext fc = FacesContext.getCurrentInstance();
+				ServletContext sc = (ServletContext)fc.getExternalContext().getContext();
+				String name = String.format("%d-%s", System.currentTimeMillis(), uploadedFile.getSubmittedFileName());
+				uploadedFile.write(name);
+
+				// Temp name is date/time + filename. Since this is a toy application, this is sufficient.
+				is = new FileInputStream(sc.getAttribute("javax.servlet.context.tempdir") + java.io.File.separator + name);
+			}
+
+			try {
+				pst = null;
+				pst = new PST((FileInputStream)is, true);
+				return checkPasswordAndProcess();
+			} catch (final	IOException
+				|	UnimplementedPropertyTypeException e) {
+				// IO Exception creating or reading PST file
+				e.printStackTrace(System.out);
+				phase = Phase.PROCESSING_PROBLEM;
+				return null;
+			} catch(final	BadXBlockLevelException
+				|	BadXBlockTypeException
+				|	CRCMismatchException
+				|	DataOverflowException
+				|	IncorrectNameIDStreamContentException
+				|	NameIDStreamNotFoundException
+				|	NotHeapNodeException
+				|	NotPropertyContextNodeException
+				|	NotTableContextNodeException
+				|	NullDataBlockException
+				|	NullNodeException
+				|	UnknownClientSignatureException
+				|	UnknownPropertyTypeException
+				|	UnparseablePropertyContextException
+				|	UnparseableTableContextException e) {
+				e.printStackTrace(System.out);
+				phase = Phase.CORRUPT_PST;
+				return null;
+			} catch (final NotPSTFileException e) {
+				e.printStackTrace(System.out);
+				phase = Phase.NOT_PST;
+				return null;
 			}
 		} catch (final IOException e) {
 			// IO Exception retrieving input stream.
@@ -732,9 +746,5 @@ public class PSTBean implements Serializable
 			phase = Phase.PROCESSING_PROBLEM;
 			return null;
 		}
-
-		// This is an unexpected condition. It can only occur if we raised an uncaught exception.
-		phase = Phase.PROCESSING_PROBLEM;
-		return null;
 	}
 }
