@@ -155,7 +155,6 @@
 			<properties>
 				<jetty.web.override>override-web-mojarra.xml</jetty.web.override>
 				<slf4j.version>2.0.7</slf4j.version>
-				<weld.library>shaded</weld.library>
 			</properties>
 			<build>
 				<plugins>

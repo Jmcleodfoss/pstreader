@@ -45,7 +45,7 @@ You may now deploy/undeploy/redeploy the app via
 This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
 `mvn jetty:run -P mojarra -Dweld.library=jetty`
 To run on Jetty using MyFaces:
-`mvn jetty:run -P myfaces`
+`mvn jetty:run -P myfaces -Dweld.library=shaded'
 
 You can then load the app by browsing to http://localhost:8080
 
