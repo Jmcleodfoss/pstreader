@@ -17,7 +17,7 @@ public class LocaleBean implements Serializable {
 	*	@param	urlName	The name of the URL to look for.
 	*	@return	true if the given URL could be opened as a java.io.InputStream, false if it could not.
 	*/
-	private static boolean urlExists(final String urlName)
+	private boolean urlExists(final String urlName)
 	{
 		try {
 			URL url = new URL(urlName);
@@ -34,7 +34,7 @@ public class LocaleBean implements Serializable {
 	*	@return	The most specific localized version of the given filename, if present, otherwise the file named by the filename.
 	*/
 	@SuppressWarnings("PMD.NPathComplexity")
-	public static String getLocalizedFilename(final String fn)
+	public String getLocalizedFilename(final String fn)
 	{
 		final Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 		if (locale == Locale.getDefault())
