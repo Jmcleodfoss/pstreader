@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.Locale;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**	The LocaleBean provides a mechanism to retrieve the locale-related information for use in JSF pages. */
 @Named("localeBean")
-@SessionScoped
+@ViewScoped
 public class LocaleBean implements Serializable {
 
 	/**	Determine whether a given URL refers to something which exists (by attempting to open a stream to it).
