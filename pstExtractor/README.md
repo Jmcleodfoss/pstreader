@@ -41,6 +41,12 @@ You may now deploy/undeploy/redeploy the app via
 - `mvn tomcat7:undeploy`
 - `mvn tomcat7:redeploy`
 
+### Tomcat
+This has been tested on Tomcat 9. To run on Tomcat 9 using Mojarra:
+`mvn tomcat7:deploy -P mojarra`
+To run on Tomcat 9 using MyFaces, pull in an extra required library using the environment variable:
+`mvn tomcat7:deploy -P mojarra -D environment=myfaces-tomcat`
+
 ### Jetty
 This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
 `mvn jetty:run -P mojarra`
