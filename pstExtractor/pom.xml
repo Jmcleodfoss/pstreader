@@ -83,6 +83,7 @@
 					<path>/${project.artifactId}-${project.version}</path>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -306,6 +307,60 @@
 					<version>${weld.version}</version>
 				</dependency>
 			</dependencies>
+		</profile>
+
+		<profile>
+			<id>tomee-local</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<version>1.8.5</version>
+						<configuration>
+							<container>
+								<containerId>tomee8x</containerId>
+								<zipUrlInstaller>
+									<url>http://archive.apache.org/dist/tomee/tomee-8.0.9/apache-tomee-8.0.9-plume.zip</url>
+								</zipUrlInstaller>
+								<output>${project.build.directory}/tomee8/container.log</output>
+								<append>false</append>
+								<log>${project.build.directory}/tomee8/cargo.log</log>
+							</container>
+							<configuration>
+								<home>${project.build.directory}/tomee8/container</home>
+							</configuration>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>tomcat-local</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<version>1.8.5</version>
+						<configuration>
+							<container>
+								<containerId>tomcat9x</containerId>
+								<zipUrlInstaller>
+									<url>http://archive.apache.org/dist/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.zip</url>
+								</zipUrlInstaller>
+								<output>${project.build.directory}/tomcat-9/container.log</output>
+								<append>false</append>
+								<log>${project.build.directory}/tomcat-9/cargo.log</log>
+							</container>
+							<configuration>
+								<home>${project.build.directory}/tomcat-9/container</home>
+							</configuration>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>

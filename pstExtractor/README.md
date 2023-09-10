@@ -18,7 +18,7 @@ This application can be built to provide Java Server Faces support using Eclipse
 The Eclipse Foundation's recommendation for Mojarra is to include the [weld-servlet-shaded](https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-shaded) library. This triggers warnings about classes being imported from multiple places when running Jetty via the jetty-maven-plugin. To eliminate these warnings, you can use a subset of weld servlet libraries with `-Dweld.library=jetty`.
 
 ## Details of execution under various containers
-### TomEE
+### TomEE - standalone server
 This has been tested on Tomcat EE 8. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
 ```
     <tomcat-users>
@@ -42,11 +42,22 @@ You may now deploy/undeploy/redeploy the app via
 - `mvn tomcat7:undeploy`
 - `mvn tomcat7:redeploy`
 
-### Tomcat
+### TomEE via Codehaus Cargo plug-in
+It is also possible to run the application via a TomEE instance running in a Codehaus Cargo container:
+`clean package cargo:run  -P tomee-local`
+
+### Tomcat - standalone server
+The Tomcat admin user and server settings must be configured as for [TomEE - standalon server](#TomeEE - standalone server)
 This has been tested on Tomcat 9. To run on Tomcat 9 using Mojarra:
 `mvn tomcat7:deploy -P mojarra`
 To run on Tomcat 9 using MyFaces, pull in an extra required library using the environment variable:
 `mvn tomcat7:deploy -P mojarra -D environment=myfaces-tomcat`
+
+### Tomcat via Codehaus Cargo plug-in
+To run the application via a Tomcat instance running in a Codehaus Cargo container:
+`clean package cargo:run  -P tomcat-local -P myfaces`
+or
+`clean package cargo:run  -P tomcat-local -P mojarra`
 
 ### Jetty
 This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
