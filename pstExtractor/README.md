@@ -17,7 +17,8 @@ This application can be built to provide Java Server Faces support using Eclipse
 #### Mojarra, Weld, and Jetty
 The Eclipse Foundation's recommendation for Mojarra is to include the [weld-servlet-shaded](https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-shaded) library. This triggers warnings about classes being imported from multiple places when running Jetty via the jetty-maven-plugin. To eliminate these warnings, you can use a subset of weld servlet libraries with `-Dweld.library=jetty`.
 
-## TomcatEE
+## Details of execution under various containers
+### TomcatEE
 This has been tested on Tomcat EE 8. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
 ```
     <tomcat-users>
