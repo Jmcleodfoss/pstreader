@@ -194,15 +194,10 @@
 					<version>${slf4j.version}</version>
 				</dependency>
 				<dependency>
-					<!-- This resolves
+					<!-- This pulls in jakarta.inject:jakarta.inject-api 1.0 which resolves
 						javax.inject.Inject
 						javax.inject.Named
 					-->
-					<groupId>org.glassfish.hk2.external</groupId>
-					<artifactId>javax.inject</artifactId>
-					<version>2.5.0-b62</version>
-				</dependency>
-				<dependency>
 					<groupId>org.jboss.weld.servlet</groupId>
 					<artifactId>weld-servlet-core</artifactId>
 					<version>${weld.version}</version>
