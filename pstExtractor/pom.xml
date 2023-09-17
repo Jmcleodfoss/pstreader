@@ -20,7 +20,7 @@
 		<jetty.version>9.4.51.v20230217</jetty.version>
 		<logback.version>1.2.12</logback.version>
 		<weld.version>3.1.9.Final</weld.version>
-		<cargo.version>1.8.5</cargo.version>
+		<cargo.version>1.10.9</cargo.version>
 	</properties>
 
 	<dependencies>
@@ -316,7 +316,7 @@
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
+						<artifactId>cargo-maven3-plugin</artifactId>
 						<version>${cargo.version}</version>
 						<configuration>
 							<container>
@@ -343,7 +343,7 @@
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
+						<artifactId>cargo-maven3-plugin</artifactId>
 						<version>${cargo.version}</version>
 						<configuration>
 							<container>
