@@ -231,6 +231,17 @@
 								</configuration>
 							</execution>
 						</executions>
+						<configuration>
+							<webResources>
+								<resource>
+									<filtering>true</filtering>
+									<directory>src/main/webapp/</directory>
+									<includes>
+										<include>**/web.xml</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
@@ -258,6 +269,11 @@
 				<dependency>
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-el22</artifactId>
+					<version>${openwebbeans.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.openwebbeans</groupId>
+					<artifactId>openwebbeans-jsf</artifactId>
 					<version>${openwebbeans.version}</version>
 				</dependency>
 				<dependency>
@@ -301,11 +317,15 @@
 					<value>myfaces-tomcat</value>
 				</property>
 			</activation>
+			<properties>
+				<myfaces-tomcat-specific-content-start>--&gt;</myfaces-tomcat-specific-content-start>
+				<myfaces-tomcat-specific-content-emd>&lt;!--</myfaces-tomcat-specific-content-emd>
+			</properties>
 			<dependencies>
 				<dependency>
-					<groupId>org.jboss.weld.servlet</groupId>
-					<artifactId>weld-servlet-core</artifactId>
-					<version>${weld.version}</version>
+					<groupId>org.apache.openwebbeans</groupId>
+					<artifactId>openwebbeans-tomcat7</artifactId>
+					<version>${openwebbeans.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>

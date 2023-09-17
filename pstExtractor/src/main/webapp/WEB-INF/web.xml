@@ -43,4 +43,11 @@
 		<filter-name>LoggingMdcFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	<!-- Environment-specific sections; these are enabled by various settings of the project variable "environment" in pom.xml -->
+	<!-- ${myfaces-tomcat-specific-content-start}
+	<listener>
+		<listener-class>org.apache.webbeans.servlet.WebBeansConfigurationListener</listener-class>
+	</listener>
+	${myfaces-tomcat-specific-content-end} - -->
 </web-app>
