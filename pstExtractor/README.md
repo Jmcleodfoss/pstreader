@@ -55,7 +55,7 @@ To run on Tomcat 9 using MyFaces, pull in an extra required library using the en
 
 ### Tomcat via Codehaus Cargo plug-in
 To run the application via a Tomcat instance running in a Codehaus Cargo container:
-`mvn clean package cargo:run -P tomcat-local -P myfaces`
+`mvn clean package cargo:run -P tomcat-local -P myfaces -D environment=myfaces-tomcat`
 or
 `mvn clean package cargo:run -P tomcat-local -P mojarra`
 
