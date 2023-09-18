@@ -2,7 +2,8 @@ package io.github.jmcleodfoss.localebean;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Locale;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -13,6 +14,9 @@ import javax.inject.Named;
 @ViewScoped
 public class LocaleBean implements Serializable {
 
+	/**     The serialVersionUID is required because the base class is serializable. */
+	private static final long serialVersionUID = 1L;
+
 	/**	Determine whether a given URL refers to something which exists (by attempting to open a stream to it).
 	*	@param	urlName	The name of the URL to look for.
 	*	@return	true if the given URL could be opened as a java.io.InputStream, false if it could not.
@@ -20,10 +24,12 @@ public class LocaleBean implements Serializable {
 	private boolean urlExists(final String urlName)
 	{
 		try {
-			URL url = new URL(urlName);
-			url.openStream();
+			URI uri = new URI(urlName);
+			uri.toURL().openStream();
 			return true;
 		} catch (IOException e) {
+			return false;
+		} catch (URISyntaxException e) {
 			return false;
 		}
 	}
@@ -37,7 +43,7 @@ public class LocaleBean implements Serializable {
 	public String getLocalizedFilename(final String fn)
 	{
 		final Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-		if (locale == Locale.getDefault())
+		if (locale.equals(Locale.getDefault()))
 			return fn;
 
 		final int iExtension = fn.lastIndexOf('.');
