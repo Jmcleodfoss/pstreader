@@ -96,10 +96,6 @@
 					<stopPort>9999</stopPort>
 					<systemProperties>
 						<systemProperty>
-							<name>derby.stream.error.file</name>
-							<value>target/derby.log</value>
-						</systemProperty>
-						<systemProperty>
 							<name>logback.configurationFile</name>
 							<value>./src/main/resources/logback.xml</value>
 						</systemProperty>
