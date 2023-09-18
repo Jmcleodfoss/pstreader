@@ -47,7 +47,7 @@ It is also possible to run the application via a TomEE instance running in a Cod
 `mvn clean package cargo:run -P tomee-local`
 
 ### Tomcat - standalone server
-The Tomcat admin user and server settings must be configured as for [TomEE - standalon server](#TomeEE - standalone server)
+The Tomcat admin user and server settings must be configured as for [TomEE - standalone server](#TomeEE - standalone server)
 This has been tested on Tomcat 9. To run on Tomcat 9 using Mojarra:
 `mvn tomcat7:deploy -P mojarra`
 To run on Tomcat 9 using MyFaces, pull in an extra required library using the environment variable:
