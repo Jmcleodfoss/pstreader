@@ -44,7 +44,7 @@ You may now deploy/undeploy/redeploy the app via
 
 ### TomEE via Codehaus Cargo plug-in
 It is also possible to run the application via a TomEE instance running in a Codehaus Cargo container:
-`mvn clean package cargo:run  -P tomee-local`
+`mvn clean package cargo:run -P tomee-local`
 
 ### Tomcat - standalone server
 The Tomcat admin user and server settings must be configured as for [TomEE - standalon server](#TomeEE - standalone server)
@@ -55,15 +55,15 @@ To run on Tomcat 9 using MyFaces, pull in an extra required library using the en
 
 ### Tomcat via Codehaus Cargo plug-in
 To run the application via a Tomcat instance running in a Codehaus Cargo container:
-`mvn clean package cargo:run  -P tomcat-local -P myfaces`
+`mvn clean package cargo:run -P tomcat-local -P myfaces`
 or
-`mvn clean package cargo:run  -P tomcat-local -P mojarra`
+`mvn clean package cargo:run -P tomcat-local -P mojarra`
 
 ### Jetty
 This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
 `mvn jetty:run -P mojarra`
 To run on Jetty using MyFaces:
-`mvn jetty:run -P myfaces'
+`mvn jetty:run -P myfaces`
 
 You can then load the app by browsing to http://localhost:8080
 
