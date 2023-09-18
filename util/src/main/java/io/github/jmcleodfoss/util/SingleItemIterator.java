@@ -21,7 +21,7 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object>
 	/**	Determine if there is another item to return.
 	*	@return	true if the data hasn't been returned, false if it has.
 	*/
-	public boolean hasNext()
+	@Override public boolean hasNext()
 	{
 		return fNext;
 	}
@@ -29,7 +29,7 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object>
 	/**	Retrieve the data.
 	*	@return	The data for the single item in the list.
 	*/
-	public T next()
+	@Override public T next()
 	{
 		if (!fNext)
 			throw new java.util.NoSuchElementException();
@@ -38,7 +38,7 @@ public class SingleItemIterator<T> implements java.util.Iterator<Object>
 	}
 
 	/**	The remove function is not supported by the SingleItemIterator iterator. */
-	public void remove()
+	@Override public void remove()
 	{
 		throw new UnsupportedOperationException("remove not suported");
 	}

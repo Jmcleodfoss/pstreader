@@ -138,7 +138,7 @@ public class XMLOutput
 		char[] chars = new char[string.length()];
 		string.getChars(0, string.length(), chars, 0);
 		for (char c : chars) {
-			if (c >= 0x00 && c <= 0x1f || c >= 0x80) {
+			if (c <= 0x1f || c >= 0x80) {
 				dest.append("&amp;#");
 				if (c < 0x10)
 					dest.append('0');
