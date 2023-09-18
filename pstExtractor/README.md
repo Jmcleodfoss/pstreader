@@ -42,22 +42,34 @@ You may now deploy/undeploy/redeploy the app via
 - `mvn tomcat7:undeploy`
 - `mvn tomcat7:redeploy`
 
+The application will be available at `http://localhost:8080/pstExtractor-<version>`
+
 ### TomEE via Codehaus Cargo plug-in
 It is also possible to run the application via a TomEE instance running in a Codehaus Cargo container:
 `mvn clean package cargo:run -P tomee-local`
+
+The application will be available at `http://localhost:8080/pstExtractor`
 
 ### Tomcat - standalone server
 The Tomcat admin user and server settings must be configured as for [TomEE - standalone server](#TomeEE - standalone server)
 This has been tested on Tomcat 9. To run on Tomcat 9 using Mojarra:
 `mvn tomcat7:deploy -P mojarra`
+The application will be available at `http://localhost:8080/pstExtractor-<version>`
+
 To run on Tomcat 9 using MyFaces, pull in an extra required library using the environment variable:
 `mvn tomcat7:deploy -P mojarra -D environment=myfaces-tomcat`
+
+The application will be available at `http://localhost:8080/pstExtractor-<version>`
+
+If you want to have both the mojarra and myfaces versions available under the same Tomcat instance, copy the respective war files with the mojarra or myfaces classifier into the Tomcat webapps directory.
 
 ### Tomcat via Codehaus Cargo plug-in
 To run the application via a Tomcat instance running in a Codehaus Cargo container:
 `mvn clean package cargo:run -P tomcat-local -P myfaces -D environment=myfaces-tomcat`
 or
 `mvn clean package cargo:run -P tomcat-local -P mojarra`
+
+The application will be available at `http://localhost:8080/pstExtractor`
 
 ### Jetty
 This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
