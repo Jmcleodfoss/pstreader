@@ -210,10 +210,6 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 		}
 	}
 
-	/**	Return a BTreePage to read the next child level of the B-tree.
-	*	@param	bref	The block reference of the B-tree page block to start searching in.
-	}
-
 	/**	Get the number of children of this node.
 	*	@param	parent	The parent node to return the number of child nodes for.
 	*	@return	The number of children of the given parent node.
