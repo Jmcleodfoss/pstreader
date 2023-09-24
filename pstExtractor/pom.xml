@@ -323,7 +323,7 @@
 			</activation>
 			<properties>
 				<myfaces-tomcat-specific-content-start>--&gt;</myfaces-tomcat-specific-content-start>
-				<myfaces-tomcat-specific-content-emd>&lt;!--</myfaces-tomcat-specific-content-emd>
+				<myfaces-tomcat-specific-content-end>&lt;!--</myfaces-tomcat-specific-content-end>
 			</properties>
 			<dependencies>
 				<dependency>
