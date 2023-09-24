@@ -27,6 +27,7 @@ class SimpleBlock extends BlockBase
 		/**	Determine if there is another block to return.
 		*	@return	true if the data hasn't been returned, false if it has.
 		*/
+		@Override
 		public boolean hasNext()
 		{
 			return fNext;
@@ -36,6 +37,7 @@ class SimpleBlock extends BlockBase
 		*	@return	A ByteBuffer from which the block data may be read.
 		*	@throws	java.util.NoSuchElementException	There are no more elements to return
 		*/
+		@Override
 		public java.nio.ByteBuffer next()
 		throws
 			java.util.NoSuchElementException
@@ -48,6 +50,7 @@ class SimpleBlock extends BlockBase
 		}
 
 		/**	The remove function is not supported by the SimpleBlock iterator. */
+		@Override
 		public void remove()
 		{
 			throw new UnsupportedOperationException("remove not suported");
@@ -139,6 +142,7 @@ class SimpleBlock extends BlockBase
 	/**	Retrieve the data from this SimpleBlock.
 	*	@return	The array of data bytes from this SimpleBlock object.
 	*/
+	@Override
 	byte[] data()
 	{
 		return data;
@@ -147,6 +151,7 @@ class SimpleBlock extends BlockBase
 	/**	Obtain an interator over the (one) block.
 	*	@return	A trivial iterator over this single SimpleBlock.
 	*/
+	@Override
 	@SuppressWarnings("unchecked")
 	java.util.Iterator<java.nio.ByteBuffer> iterator()
 	{

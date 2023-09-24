@@ -28,6 +28,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		protected NodeSubnodeBTree intermediateNodeFactory(java.nio.ByteBuffer byteBuffer)
 		throws
 			CRCMismatchException,
@@ -38,6 +39,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		protected NodeLeafEntry leafNodeFactory(java.nio.ByteBuffer entryStream)
 		throws
 			CRCMismatchException,

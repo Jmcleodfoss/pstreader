@@ -216,6 +216,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			*	@return	The difference in the column offsets of a and b, to ensure that the item with the larger
 			*		offset is sorted later.
 			*/
+			@Override
 			public int compare(TColDescr a, TColDescr b)
 			{
 				return a.columnOffset - b.columnOffset;
@@ -405,6 +406,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	/**	Get the number of data columns in the table.
 	*	@return	The number of data columns (i.e. excluding the cell existence bitmap) in this table context.
 	*/
+	@Override
 	public int getColumnCount()
 	{
 		// Note: don't include the Cell Existence Bitmap!
@@ -415,6 +417,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	column	The column to retrieve the header for.
 	*	@return	The column name, as a property ID. Note that this function returns a generic name for named properties.
 	*/
+	@Override
 	public String getColumnName(int column)
 	{
 		return namedProperties.name(info.columnDescription[column].tag);
@@ -455,6 +458,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	/**	Get the number of rows in the table.
 	*	@return	The number of rows in this table context.
 	*/
+	@Override
 	public int getRowCount()
 	{
 		return rows.length;
@@ -465,6 +469,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	column	The column index of the cell to retrieve the value of.
 	*	@return	The value of the given cell, or null if the row for the given row index is empty.
 	*/
+	@Override
 	public Object getValueAt(int row, int column)
 	{
 		if (rows[row] == null || rows[row][column] == null)
@@ -478,6 +483,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@param	column	The column index of the cell to retrieve the value of.
 	*	@return	false, always.
 	*/
+	@Override
 	public boolean isCellEditable(int row, int column)
 	{
 		return false;

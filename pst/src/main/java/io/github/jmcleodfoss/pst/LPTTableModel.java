@@ -59,6 +59,7 @@ class LPTTableModel extends javax.swing.table.DefaultTableModel
 	*	@param	column	The column index of the cell to retrieve the value of.
 	*	@return	false, always.
 	*/
+	@Override
 	public boolean isCellEditable(int row, int column)
 	{
 		return false;

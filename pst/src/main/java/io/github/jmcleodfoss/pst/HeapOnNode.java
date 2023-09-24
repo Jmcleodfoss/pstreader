@@ -79,6 +79,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		*	@param	o	The object to check for equivalency with this rHD.
 		*	returns	true if the passed object is an rHD and its key is equal to this object's key, false otherwise.
 		*/
+		@Override
 		public boolean equals(final Object o)
 		{
 			return o != null && this.getClass().isAssignableFrom(o.getClass()) && key == ((HID)o).key;
@@ -548,6 +549,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	l	The listener (which will not be added).
 	*	@see	#removeListDataListener
 	*/
+	@Override
 	public void addListDataListener(javax.swing.event.ListDataListener l)
 	{
 		// No ListDataListeners can be added as the HeapOnNode object is immutable so ListData events will never be fired
@@ -558,6 +560,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@return	A string containing the sequence of bytez hexidecimal bytes for the given heap node, if it isn't null, or null if the
 	*		given heap node is null
 	*/
+	@Override
 	public Object getElementAt(int index)
 	{
 		if (heap[index] != null)
@@ -568,6 +571,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	/**	Obtain the number of list elements.
 	*	@return	The number of entries in the heap.
 	*/
+	@Override
 	public int getSize()
 	{
 		return heap.length;
@@ -577,6 +581,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*	@param	l	The listener (which need not be removed because it could never have been added.
 	*	@see	#addListDataListener
 	*/
+	@Override
 	public void removeListDataListener(javax.swing.event.ListDataListener l)
 	{
 		// No ListDataListeners can be added as addListDataListener is a no-op (since the HeapOnNode object is immutable and ListData events will never be fired)

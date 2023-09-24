@@ -168,6 +168,7 @@ public class NameToIDMap
 		*	@param	column	The index of the column to retrieve the header for.
 		*	@return	The name of the given column.
 		*/
+		@Override
 		public String getColumnName(final int column)
 		{
 			switch (column) {
@@ -182,6 +183,7 @@ public class NameToIDMap
 		*	@param	column	The column index of the cell to retrieve the value of.
 		*	@return	false, always.
 		*/
+		@Override
 		public boolean isCellEditable(final int row, final int column)
 		{
 			return false;

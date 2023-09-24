@@ -105,12 +105,14 @@ class NodeBTree extends PagedBTree implements NodeMap
 	*	@param	nid	The node ID to find.
 	*	@return	The node B-tree entry which has the requested node id as its key, or null if no node contains this key.
 	*/
+	@Override
 	public NBTEntry find(final NID nid)
 	{
 		return (NBTEntry)super.find(nid.key());
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText()
 	{
 		return String.format("NID 0x%08x", key);

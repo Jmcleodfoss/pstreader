@@ -20,6 +20,7 @@ public class ReadOnlyTableModel extends javax.swing.table.DefaultTableModel
 	*	@param	col	The column containing the cell to check.
 	*	@return	false, always.
 	*/
+	@Override
 	public boolean isCellEditable(int row, int col)
 	{
 		return false;

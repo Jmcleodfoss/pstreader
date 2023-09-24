@@ -357,24 +357,28 @@ public class BTreeOnHeap extends BTree
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		public int actualSize(Context<BTree, BTreeLeaf> context)
 		{
 			return entrySize;
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		public javax.swing.table.TableModel getNodeTableModel()
 		{
 			return null;
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		public String getNodeText()
 		{
 			return String.format("0x%08x (%d, %d): %s", key(), keySize, entrySize, ByteUtil.createHexByteString(data));
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 		throws
 			java.io.IOException
@@ -441,6 +445,7 @@ public class BTreeOnHeap extends BTree
 	*	@param	context	The context from which to create the B-tree-on-heap.
 	*	@return	The actual size of a B-tree-on-heap object for this B-tree-on-heap.
 	*/
+	@Override
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
 		return ((BTHContext)context).header.keySize + HeapOnNode.HID.SIZE;
@@ -473,6 +478,7 @@ public class BTreeOnHeap extends BTree
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText()
 	{
 		return String.format("0x%08x", key);

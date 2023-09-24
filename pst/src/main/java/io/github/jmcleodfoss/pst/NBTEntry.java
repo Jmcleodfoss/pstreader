@@ -65,12 +65,14 @@ public class NBTEntry extends LPTLeaf
 	*	@param	context	The context to use to find the size (this function uses only the file format information.)
 	*	@return	The actual size of a node B-tree leaf node for this file type.
 	*/
+	@Override
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
 		return SIZE_COMMON + (context.unicode() ? SIZE_UNICODE : SIZE_ANSI);
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public javax.swing.table.TableModel getNodeTableModel()
 	{
 		final Object[] columnHeadings = {"", ""};
