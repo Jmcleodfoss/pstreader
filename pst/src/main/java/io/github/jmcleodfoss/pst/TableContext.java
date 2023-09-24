@@ -234,7 +234,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 			tag = (Integer)dc.get(nm_tag);
 			columnOffset = 0xffff & (Short)dc.get(nm_ibData);
 			width = dc.getUInt8(nm_cbData);
-			cellExistenceBitmapIndex = (int)(0xff & (Byte)dc.get(nm_iBit));
+			cellExistenceBitmapIndex = 0xff & (Byte)dc.get(nm_iBit);
 		}
 
 		/**	Get the data type for this column description tag.
