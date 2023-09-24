@@ -1451,9 +1451,9 @@ abstract class DataType
 				return s.substring(2);
 
 			return s;
-		} catch (UnimplementedPropertyTypeException e) {
-		} catch (UnknownPropertyTypeException e) {
+		} catch ( UnimplementedPropertyTypeException
+			| UnknownPropertyTypeException e) {
+			return "";
 		}
-		return "";
 	}
 }
