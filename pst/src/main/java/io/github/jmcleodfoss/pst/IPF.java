@@ -64,7 +64,7 @@ public class IPF
 	public static final String TASK = "IPF.Task";
 
 	/**	The list of known folder class types. */
-	static final java.util.Vector<String> knownClasses = new java.util.Vector<String>();
+	static final java.util.ArrayList<String> knownClasses = new java.util.ArrayList<String>();
 	static {
 		knownClasses.add(APPOINTMENT);
 		knownClasses.add(CONVERSATION_ACTION_SETTINGS);

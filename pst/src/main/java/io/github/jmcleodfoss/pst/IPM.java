@@ -148,7 +148,7 @@ class IPM
 	private static final String TASK_UPDATE = "IPM.TaskRequest.Update";
 
 	/**	The list of known message class types. */
-	static final java.util.Vector<String> knownClasses = new java.util.Vector<String>();
+	static final java.util.ArrayList<String> knownClasses = new java.util.ArrayList<String>();
 	static {
 		knownClasses.add(ACTIVITY);
 		knownClasses.add(APPOINTMENT);

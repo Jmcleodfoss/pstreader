@@ -45,10 +45,10 @@ public class Message extends MessageObjectWithBody
 	/**	The recipients; this is created when required.
 	*	Note that not all message objects have recipient tables - only actual mail messages have recipients.
 	*/
-	private java.util.Vector<Recipient> recipients;
+	private java.util.ArrayList<Recipient> recipients;
 
 	/**	The attachments; this is created when the Message object is constructed. */
-	private java.util.Vector<Attachment> attachments;
+	private java.util.ArrayList<Attachment> attachments;
 
 	/**	Create a message for the given row in the folder contents table.
 	*	@param	contentsTable	The containing folder's contents table
@@ -97,7 +97,7 @@ public class Message extends MessageObjectWithBody
 
 		SLEntry nodeAttachmentTable = null;
 		SLEntry nodeRecipientTable = null;
-		java.util.Vector<Attachment> attachments = null;
+		java.util.ArrayList<Attachment> attachments = null;
 		if (!nodeMessageObject.bidSubnode.isNull()) {
 			final SubnodeBTree snb = new SubnodeBTree(nodeMessageObject.bidSubnode, bbt, pstFile);
 			for (java.util.Iterator<BTreeNode> snbIterator = snb.iterator(); snbIterator.hasNext(); ) {
@@ -114,7 +114,7 @@ public class Message extends MessageObjectWithBody
 
 					final TableContext tcAttachments = new TableContext(nodeAttachmentTable, bbt, pstFile);
 
-					attachments = new java.util.Vector<Attachment>(tcAttachments.getRowCount());
+					attachments = new java.util.ArrayList<Attachment>(tcAttachments.getRowCount());
 					for (int i = 0; i < tcAttachments.getRowCount(); ++i) {
 						final SLEntry nodeAttachmentPC = (SLEntry)snb.find((Integer)tcAttachments.get(i, PropertyTags.LtpRowId));
 						assert nodeAttachmentPC != null;
@@ -125,7 +125,7 @@ public class Message extends MessageObjectWithBody
 			}
 		}
 		this.nodeAttachmentTable = nodeAttachmentTable;
-		this.attachments = (attachments != null) ? attachments : new java.util.Vector<Attachment>(0);
+		this.attachments = (attachments != null) ? attachments : new java.util.ArrayList<Attachment>(0);
 
 		int messageFlags = (Integer)contentsTable.get(messageRow, PropertyTags.MessageFlags);
 		assert (nodeAttachmentTable == null) == ((messageFlags & MSG_FLAG_ATTACHMENT) == 0);
@@ -195,7 +195,7 @@ public class Message extends MessageObjectWithBody
 
 		if (nodeRecipientTable != null && !nodeRecipientTable.bidData.isNull()) {
 			final TableContext tcRecipients = new TableContext(nodeRecipientTable, pst.blockBTree, pst);
-			recipients = new java.util.Vector<Recipient>(tcRecipients.getRowCount());
+			recipients = new java.util.ArrayList<Recipient>(tcRecipients.getRowCount());
 			for (int i = 0; i < tcRecipients.getRowCount(); ++i)
 				recipients.add(new Recipient(tcRecipients, i, pst.unicode()));
 		}

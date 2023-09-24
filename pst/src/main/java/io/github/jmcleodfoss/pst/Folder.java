@@ -24,10 +24,10 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public final String containerClass;
 
 	/**	The sub-folders of the folder. */
-	private java.util.Vector<Folder> subfolders;
+	private java.util.ArrayList<Folder> subfolders;
 
 	/**	The content objects. */
-	private java.util.Vector<MessageObject> contents;
+	private java.util.ArrayList<MessageObject> contents;
 
 	/**	Ths SubfolderLevelsToRead class tells how many sub-levels to read when processing a folder: none, one, or all. */
 	private static class SubfolderLevelsToRead
@@ -126,7 +126,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			this.subfolders = readSubfolders(nodeHierarchyTable, bbt, nbt, pstFile, levelsToRead, fReadContents);
 		} else {
 			nodeHierarchyTable = null;
-			this.subfolders = new java.util.Vector<Folder>();
+			this.subfolders = new java.util.ArrayList<Folder>();
 		}
 
 		Object contentCount = folderObject.get(PropertyTags.ContentCount);
@@ -136,10 +136,10 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 			if (nodeContentsTable != null)
 				contents = readContents(nodeContentsTable, bbt, nbt, pstFile);
 			else
-				contents = new java.util.Vector<MessageObject>();
+				contents = new java.util.ArrayList<MessageObject>();
 		} else {
 			nodeContentsTable = null;
-			contents = new java.util.Vector<MessageObject>();
+			contents = new java.util.ArrayList<MessageObject>();
 		}
 
 		NID nidAssociatedContentsTable = new NID(nodeFolderObject.nid, NID.ASSOC_CONTENTS_TABLE);
@@ -382,7 +382,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws UnparseableTableContextException	The table context could not be read.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
-	public static java.util.Vector<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
+	public static java.util.ArrayList<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
 		BadXBlockLevelException,
 		BadXBlockTypeException,
@@ -402,7 +402,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	{
 		TableContext contentsTable = new TableContext(nodeContentsTable, bbt, pstFile);
 
-		java.util.Vector<MessageObject> contents = new java.util.Vector<MessageObject>(contentsTable.getRowCount());
+		java.util.ArrayList<MessageObject> contents = new java.util.ArrayList<MessageObject>(contentsTable.getRowCount());
 		for (int row = 0; row < contentsTable.getRowCount(); ++row)
 			contents.add(MessageObject.factory(contentsTable, row, bbt, nbt, pstFile));
 		return contents;
@@ -432,7 +432,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws UnparseableTableContextException	The table context could not be read.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
-	public static java.util.Vector<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
+	public static java.util.ArrayList<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
 		BadXBlockLevelException,
 		BadXBlockTypeException,
@@ -452,7 +452,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	{
 		TableContext hierarchyTable = new TableContext(nodeHierarchyTable, bbt, pstFile);
 
-		java.util.Vector<Folder> subfolders = new java.util.Vector<Folder>(hierarchyTable.getRowCount());
+		java.util.ArrayList<Folder> subfolders = new java.util.ArrayList<Folder>(hierarchyTable.getRowCount());
 		levelsToRead.decrement();
 		for (int row = 0; row < hierarchyTable.getRowCount(); ++row) {
 			int nidSubfolder = (Integer)hierarchyTable.get(row, PropertyTags.LtpRowId);

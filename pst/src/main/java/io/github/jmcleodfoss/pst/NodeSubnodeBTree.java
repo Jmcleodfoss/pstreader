@@ -67,7 +67,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		final SubnodeBTree snb;
 
 		/**	List of the subnode leaf nodes. */
-		final java.util.Vector<SLEntry> leafNodes;
+		final java.util.ArrayList<SLEntry> leafNodes;
 
 		/**	Create a node B-Tree leaf entry with the subnode B-Tree.
 		*	@param	context		The context from which to build this node.
@@ -83,10 +83,10 @@ public class NodeSubnodeBTree extends NodeBTree
 			super(byteBuffer, context);
 			if (bidSubnode.isNull()) {
 				snb = null;
-				leafNodes = new java.util.Vector<SLEntry>(0);
+				leafNodes = new java.util.ArrayList<SLEntry>(0);
 			} else {
 				snb = new SubnodeBTree(bidSubnode, context.bbt, context.pstFile);
-				leafNodes = new java.util.Vector<SLEntry>();
+				leafNodes = new java.util.ArrayList<SLEntry>();
 				for (java.util.Iterator<BTreeNode> iter = snb.iterator(); iter.hasNext(); ) {
 					final SLEntry slEntry = (SLEntry)iter.next();
 					leafNodes.add(slEntry);

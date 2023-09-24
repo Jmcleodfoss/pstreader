@@ -31,10 +31,10 @@ class XBlock extends BlockBase
 	private final int dataBytes;
 
 	/**	The leaf blocks in this multi-block structure. */
-	final java.util.Vector<SimpleBlock> blockList;
+	final java.util.List<SimpleBlock> blockList;
 
 	/**	The intermediate blocks (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
-	final java.util.Vector<XBlock> xblockList;
+	final java.util.List<XBlock> xblockList;
 
 	/**	The block type (preserved allow the block B-Tree's internal structure to be shown. @see GetInternalDataTableModel). */
 	final byte type;
@@ -150,7 +150,7 @@ class XBlock extends BlockBase
 			for (java.util.Iterator<XBlock> xIter = xblockList.iterator(); xIter.hasNext(); )
 				nBlocks += xIter.next().blockList.size();
 
-			java.util.Vector<SimpleBlock> blockList = new java.util.Vector<SimpleBlock>(nBlocks);
+			java.util.ArrayList<SimpleBlock> blockList = new java.util.ArrayList<SimpleBlock>(nBlocks);
 			for (java.util.Iterator<XBlock> xIter = xblockList.iterator(); xIter.hasNext(); ) {
 				final XBlock xblock = xIter.next();
 				for (java.util.Iterator<SimpleBlock> blockIter = xblock.blockList.iterator(); blockIter.hasNext(); )
@@ -229,12 +229,12 @@ class XBlock extends BlockBase
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XBlocks.
 	*/
-	static java.util.Vector<SimpleBlock> readXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
+	static java.util.List<SimpleBlock> readXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
 	throws
 		CRCMismatchException,
 		java.io.IOException
 	{
-		java.util.Vector<SimpleBlock> blockList = new java.util.Vector<SimpleBlock>(numEntries);
+		java.util.ArrayList<SimpleBlock> blockList = new java.util.ArrayList<SimpleBlock>(numEntries);
 		for (BID b : bid) {
 			final BBTEntry blockEntry = bbt.find(b);
 			assert blockEntry != null;
@@ -255,14 +255,14 @@ class XBlock extends BlockBase
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	java.io.IOException	An I/O exception was encountered while reading in the requested XXBlocks.
 	*/
-	static java.util.Vector<XBlock> readXXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
+	static java.util.List<XBlock> readXXBlock(final int numEntries, final BID[] bid, final BlockMap bbt, PSTFile pstFile)
 	throws
 		BadXBlockLevelException,
 		BadXBlockTypeException,
 		CRCMismatchException,
 		java.io.IOException
 	{
-		java.util.Vector<XBlock> xblockList = new java.util.Vector<XBlock>(numEntries);
+		java.util.ArrayList<XBlock> xblockList = new java.util.ArrayList<XBlock>(numEntries);
 		for (BID b : bid) {
 			final BBTEntry blockEntry = bbt.find(b);
 			assert blockEntry != null;
