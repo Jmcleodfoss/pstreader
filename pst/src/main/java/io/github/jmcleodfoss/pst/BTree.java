@@ -23,8 +23,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		final FileFormat fileFormat;
 
 		/**	The base class constructor reads any metadata requested and saves the input stream and file format.
-		*	@param	pstFile	The PST {@link Header}, data stream, etc.
-		*	@param	fields	The data fields to read in.
+		*	@param	fileFormat	The file format (ANSI or Unicode) of the PST file.
 		*	@throws java.io.IOException	There was a problem reading the PST file.
 		*/
 		protected Context(FileFormat fileFormat)
