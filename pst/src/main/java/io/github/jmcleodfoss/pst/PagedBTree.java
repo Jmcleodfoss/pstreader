@@ -246,7 +246,7 @@ public abstract class PagedBTree extends BTree
 	{
 		super(key, context);
 		this.bref = bref;
-		this.context = (PageContext<BTree, BTreeLeaf>)context;
+		this.context = context;
 	}
 
 	/**	Return the actual size of an intermediate B-tree entry as read in from the input datastream.
