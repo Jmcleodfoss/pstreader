@@ -230,12 +230,12 @@ public class SubnodeBTree extends BTree
 	{
 		Object[][] cells = new Object[1 + children.length + BlockContext.common_fields.length][];
 
-		int level = context.dc.getUInt8(context.nm_cLevel);
+		int level = context.dc.getUInt8(BlockContext.nm_cLevel);
 		int i = 0;
 		cells[i++] = new Object[]{"Block type", level == 0 ? "SLENTRY" : "SIENTRY"};
-		cells[i++] = new Object[]{context.nm_bType, context.dc.getUInt8(context.nm_bType)};
-		cells[i++] = new Object[]{context.nm_cLevel, level};
-		cells[i++] = new Object[]{context.nm_cEnt, (Short)context.dc.get(context.nm_cEnt)};
+		cells[i++] = new Object[]{BlockContext.nm_bType, context.dc.getUInt8(BlockContext.nm_bType)};
+		cells[i++] = new Object[]{BlockContext.nm_cLevel, level};
+		cells[i++] = new Object[]{BlockContext.nm_cEnt, (Short)context.dc.get(BlockContext.nm_cEnt)};
 
 		for (int j = 0; j < children.length; ++j)
 			cells[i++] = new Object[]{String.format("rgentries %d", j), children[j].toString()};
