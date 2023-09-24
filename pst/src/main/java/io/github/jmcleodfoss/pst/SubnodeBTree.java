@@ -87,7 +87,7 @@ public class SubnodeBTree extends BTree
 			java.io.IOException
 		{
 			final SIEntry entry = new SIEntry(this, entryStream);
-			return new SubnodeBTree(entry.nid.key(), this);
+			return new SubnodeBTree(entry.key(), this);
 		}
 
 		/**	{@inheritDoc} */
