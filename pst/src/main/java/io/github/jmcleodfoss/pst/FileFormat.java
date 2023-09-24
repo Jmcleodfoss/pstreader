@@ -77,6 +77,7 @@ class FileFormat
 		/** Provide a String for display
 		*	@return	A String describing the enum object.
 		*/
+		@Override
 		public String toString()
 		{
 			switch(this){
