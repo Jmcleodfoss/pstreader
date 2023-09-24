@@ -250,6 +250,7 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 						return i;
 				}
 			}
+			return -1;
 		} catch (java.io.IOException e) {
 			return -1;
 		}
