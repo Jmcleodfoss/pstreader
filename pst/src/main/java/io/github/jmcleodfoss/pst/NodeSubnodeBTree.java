@@ -119,7 +119,7 @@ public class NodeSubnodeBTree extends NodeBTree
 		if (index < numNBTChildren)
 			return super.getChild(parent, index);
 
-		return (NodeLeafEntry)parent.leafNodes.get(index - numNBTChildren);
+		return ((NodeLeafEntry)parent).leafNodes.get(index - numNBTChildren);
 	}
 
 	/**	{@inheritDoc} */
@@ -132,7 +132,7 @@ public class NodeSubnodeBTree extends NodeBTree
 				return bTree.children.length;
 		}
 
-		return (NodeLeafEntry)parent.leafNodes.size();
+		return ((NodeLeafEntry)parent).leafNodes.size();
 	}
 
 	/**	{@inheritDoc} */
