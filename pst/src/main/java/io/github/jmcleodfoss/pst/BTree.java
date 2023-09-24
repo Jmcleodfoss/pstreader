@@ -107,6 +107,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		/**	Indicate whether the "next" function will return anything.
 		*	@return	true if there is another leaf to return, false otherwise.
 		*/
+		@Override
 		public boolean hasNext()
 		{
 			if (childIterator != null && childIterator.hasNext())
@@ -125,6 +126,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		/**	Provide the next leaf of the B-tree.
 		*	@return	The next leaf of the B-tree.
 		*/
+		@Override
 		public BTreeNode next()
 		{
 			if (childIterator != null && childIterator.hasNext())
@@ -145,6 +147,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 		}
 
 		/**	The remove function is not supported. */
+		@Override
 		public void remove()
 		{
 			throw new UnsupportedOperationException("remove not suported");
@@ -210,6 +213,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*	@param	index	The number of the child to return.
 	*	@return	The requested child node of the given parent node.
 	*/
+	@Override
 	public Object getChild(final Object parent, final int index)
 	{
 		return ((BTree)parent).children[index];
@@ -219,6 +223,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*	@param	parent	The parent node to return the number of child nodes for.
 	*	@return	The number of children of the given parent node.
 	*/
+	@Override
 	public int getChildCount(final Object parent)
 	{
 		if (parent instanceof BTree) {
@@ -235,6 +240,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*	@param	child	The child node to look for in parent.
 	*	@return	The index of the given child in the given parent node, or -1 if it is not a child of parent.
 	*/
+	@Override
 	public int getIndexOfChild(final Object parent, final Object child)
 	{
 		if (parent == null || child == null)
@@ -248,6 +254,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public javax.swing.table.TableModel getNodeTableModel()
 	{
 		final Object[] columnHeadings = {"", ""};
@@ -259,6 +266,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText(final Object value)
 	{
 		return ((BTreeNode)value).getNodeText();
@@ -267,6 +275,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	/**	Get the root of the tree.
 	*	@return	The root of this B-tree.
 	*/
+	@Override
 	public Object getRoot()
 	{
 		return this;
@@ -276,6 +285,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	*	@param	node	The node to check for leafiness.
 	*	@return	true if node is a leaf node, false if it is an intermediate node.
 	*/
+	@Override
 	public boolean isLeaf(final Object node)
 	{
 		if (node instanceof BTree)
@@ -292,6 +302,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public long key()
 	{
 		return key;
@@ -334,6 +345,7 @@ abstract class BTree extends ReadOnlyTreeModel implements BTreeNode, TreeCustomN
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws
 		java.io.IOException
