@@ -207,6 +207,9 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 		*/
 		static class Comparator implements java.util.Comparator<TColDescr>, java.io.Serializable
 		{
+			/**	The serialVersionUID is required because the base class is serializable. */
+			private static final long serialVersionUID = 1L;
+
 			/**	Compare the two TColDescr objects.
 			*	@param	a	One TColDescr object for comparison.
 			*	@param	b	The other TColDescr object for comparison.
