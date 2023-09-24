@@ -158,9 +158,6 @@ abstract class DataType
 	/**	The NID reader/manipulator object. */
 	static final NID nidReader = new NID();
 
-	/**	A reader/display manioulater for Server IDs */
-	private static ServerID serverIDReader = new ServerID();
-
 	/**	A reader/display manipulator for wide-character (Unicode) character strings values in the PST file. */
 	private static final PSTString stringReader = new PSTString(STRING);
 
@@ -1128,6 +1125,7 @@ abstract class DataType
 
 	private static class ServerID extends DataType
 	{
+		/**	A reader/display manioulater for Server IDs */
 		private static ServerID reader = new ServerID();
 
 		/**	Create a String representation of a Server ID
@@ -1408,7 +1406,7 @@ abstract class DataType
 			return multipleBinaryReader;
 
 		case SERVER_ID:
-			return serverIDReader;
+			return ServerID.reader;
 
 		default:
 			throw new UnknownPropertyTypeException(propertyType);
