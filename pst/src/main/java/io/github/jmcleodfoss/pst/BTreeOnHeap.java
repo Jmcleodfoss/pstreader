@@ -202,7 +202,7 @@ public class BTreeOnHeap extends BTree
 			keySize = (Byte)dc.get(nm_cbKey);
 			dataSize = (Byte)dc.get(nm_cbEnt);
 			levels = (Byte)dc.get(nm_bIdxLevels);
-			hidRoot = (HeapOnNode.HID)(dc.get(nm_hidRoot));
+			hidRoot = (HeapOnNode.HID)dc.get(nm_hidRoot);
 		}
 
 		/**	Obtain a description of the BTH header. This is typically used for debugging.
@@ -468,9 +468,9 @@ public class BTreeOnHeap extends BTree
 		if (o instanceof LeafRecord) {
 			LeafRecord l = (LeafRecord)o;
 			if (hon.isPropertyContext())
-				return PropertyContext.getData((int)(l.key()), l.data, hon);
+				return PropertyContext.getData((int)l.key(), l.data, hon);
 			if (hon.isTableContext())
-				return TableContext.getData((int)(l.key()), l.data, hon);
+				return TableContext.getData((int)l.key(), l.data, hon);
 			return java.nio.ByteBuffer.wrap(l.data).asReadOnlyBuffer();
 		}
 

@@ -242,10 +242,10 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 			BTreePage btp = getBTreePageForNode(parent);
 			for (int i = 0; i < btp.children.length; ++i) {
 				if (btp.children[i] instanceof BTreeLeaf) {
-					if (((BTreeLeaf)(btp.children[i])).key() == ((BTreeLeaf)child).key())
+					if ((BTreeLeaf)btp.children[i].key() == ((BTreeLeaf)child).key())
 						return i;
 				} else {
-					if (((PagedBTree.BTEntry)(btp.children[i])).bref == ((PagedBTree.BTEntry)child).bref)
+					if ((PagedBTree.BTEntry)btp.children[i].bref == ((PagedBTree.BTEntry)child).bref)
 						return i;
 				}
 			}
