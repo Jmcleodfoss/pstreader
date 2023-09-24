@@ -398,8 +398,8 @@ public class BTreeOnHeap extends BTree
 
 	/**	Construct a B-tree-on-heap structure with the given key from the given context. This function may be called for the root
 	*	and for intermediate nodes in the B-tree.
-	*	@param	stream	The input stream from which to read the BTH data.
-	*	@param	keySize	The size of the key object in this B-tree-on-heap.
+	*	@param	key	The key object at the root of this B-tree-on-heap.
+	*	@param	context	The context from which to create the B-tree-on-heap.
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*/
 	private BTreeOnHeap(final long key, final BTHContext context)
