@@ -283,19 +283,19 @@ public abstract class PagedBTree extends BTree
 			cells[i] = new Object[]{String.format("rgentries %d", i), children[i].toString()};
 
 		int i = children.length;
-		cells[i++] = new Object[]{context.nm_cEnt, context.getNumEntries()};
+		cells[i++] = new Object[]{PageContext.nm_cEnt, context.getNumEntries()};
 		if (context.fileFormat.index == FileFormat.Index.ANSI || context.fileFormat.index == FileFormat.Index.UNICODE) {
-			cells[i++] = new Object[]{context.nm_cEntMax, context.dc.getUInt8(context.nm_cEntMax)};
+			cells[i++] = new Object[]{PageContext.nm_cEntMax, context.dc.getUInt8(PageContext.nm_cEntMax)};
 		} else {
-			cells[i++] = new Object[]{context.nm_cEntMax, (Short)context.dc.get(context.nm_cEntMax)};
+			cells[i++] = new Object[]{PageContext.nm_cEntMax, (Short)context.dc.get(PageContext.nm_cEntMax)};
 		}
-		cells[i++] = new Object[]{context.nm_cbEnt, context.dc.getUInt8(context.nm_cbEnt)};
-		cells[i++] = new Object[]{context.nm_cLevel, context.dc.getUInt8(context.nm_cLevel)};
-		cells[i++] = new Object[]{context.nm_pType, context.dc.getUInt8(context.nm_pType)};
-		cells[i++] = new Object[]{context.nm_pTypeRepeat, context.dc.getUInt8(context.nm_pTypeRepeat)};
-		cells[i++] = new Object[]{context.nm_wSig, context.dc.get(context.nm_wSig)};
-		cells[i++] = new Object[]{context.nm_dwCRC, context.dc.get(context.nm_dwCRC)};
-		cells[i++] = new Object[]{context.nm_bid, (BID)context.dc.get(context.nm_bid)};
+		cells[i++] = new Object[]{PageContext.nm_cbEnt, context.dc.getUInt8(PageContext.nm_cbEnt)};
+		cells[i++] = new Object[]{PageContext.nm_cLevel, context.dc.getUInt8(PageContext.nm_cLevel)};
+		cells[i++] = new Object[]{PageContext.nm_pType, context.dc.getUInt8(PageContext.nm_pType)};
+		cells[i++] = new Object[]{PageContext.nm_pTypeRepeat, context.dc.getUInt8(PageContext.nm_pTypeRepeat)};
+		cells[i++] = new Object[]{PageContext.nm_wSig, context.dc.get(PageContext.nm_wSig)};
+		cells[i++] = new Object[]{PageContext.nm_dwCRC, context.dc.get(PageContext.nm_dwCRC)};
+		cells[i++] = new Object[]{PageContext.nm_bid, (BID)context.dc.get(PageContext.nm_bid)};
 
 		return new ReadOnlyTableModel(cells, new Object[]{"", ""});
 	}
