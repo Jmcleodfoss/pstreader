@@ -274,7 +274,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 			s.append(heapOffset.length);
 			s.append(" entries:");
 			for (int i = 0; i < heapOffset.length; ++i)
-				s.append(String.format(" 0x%x", (int)(0xffff & heapOffset[i])));
+				s.append(String.format(" 0x%x", 0xffff & heapOffset[i]));
 			return s.toString();
 		}
 	}
