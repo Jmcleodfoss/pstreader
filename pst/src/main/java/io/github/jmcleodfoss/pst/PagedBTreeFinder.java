@@ -251,8 +251,8 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 				}
 			}
 		} catch (java.io.IOException e) {
+			return -1;
 		}
-		return -1;
 	}
 
 	/**	Is the given node a leaf node?

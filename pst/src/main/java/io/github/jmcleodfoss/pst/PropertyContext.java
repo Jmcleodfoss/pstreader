@@ -58,9 +58,8 @@ public class PropertyContext
 				BlockBase block = BlockBase.read(entry, bbt, pstFile);
 				return reader.read(block.dataStream());
 			} catch (final java.io.IOException e) {
+				return null;
 			}
-
-			return null;
 		}
 	}
 

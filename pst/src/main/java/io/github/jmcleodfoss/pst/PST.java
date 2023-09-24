@@ -236,9 +236,8 @@ public class PST extends PSTFile
 			|	CRCMismatchException
 			|	NotHeapNodeException
 			|	UnknownClientSignatureException e) {
+			return null;
 		}
-
-		return null;
 	}
 
 	/**	Convenience function to retrieve a table model for the PST file's message store.
@@ -359,9 +358,8 @@ public class PST extends PSTFile
 			|	UnknownClientSignatureException
 			|	UnparseablePropertyContextException
 			|	java.io.IOException e) {
+			return null;
 		}
-
-		return null;
 	}
 
 	/**	Convenience function to obtain the property context for the given node in the node B-tree.
@@ -399,10 +397,11 @@ public class PST extends PSTFile
 			NBTEntry nbtEntry = nodeBTree.find(nid);
 			if (nbtEntry != null && nbtEntry.bidSubnode != null)
 				return new SubnodeBTree(nbtEntry.bidSubnode, blockBTree, this);
+			else
+				return null;
 		} catch (final java.io.IOException e) {
+			return null;
 		}
-
-		return null;
 	}
 
 	/**	Convenience function to obtain a javax.swing.table.TableModel for a PropertyContext object.
@@ -441,9 +440,8 @@ public class PST extends PSTFile
 			|	UnknownPropertyTypeException
 			|	UnparseableTableContextException
 			|	java.io.IOException e) {
+			return new javax.swing.table.DefaultTableModel();
 		}
-
-		return new javax.swing.table.DefaultTableModel();
 	}
 
 	/**	Obtain a javax.swing.table.TableModel for the table context for the given node. This function calls the
@@ -471,9 +469,8 @@ public class PST extends PSTFile
 			|	UnknownPropertyTypeException
 			|	UnparseableTableContextException
 			|	java.io.IOException e) {
+			return new javax.swing.table.DefaultTableModel();
 		}
-
-		return new javax.swing.table.DefaultTableModel();
 	}
 
 	/**	Obtain a javax.swing.table.TableModel for an intermediate block or sub-node B-Tree node
