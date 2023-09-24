@@ -147,6 +147,7 @@ public abstract class PagedBTree extends BTree
 		}
 
 		/**	{@inheritDoc} */
+		@Override
 		protected boolean isLeafNode()
 		{
 			return dc.getUInt8(nm_cLevel) == 0;
@@ -253,6 +254,7 @@ public abstract class PagedBTree extends BTree
 	*	@param	context	The construction context for this B-tree.
 	*	@return	The size of an intermediate node or block B-tree entry.
 	*/
+	@Override
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
 		return BTEntry.actualSize(context);
@@ -261,6 +263,7 @@ public abstract class PagedBTree extends BTree
 	/**	Get a table model which can be used to describe this node.
 	*	@return	A DefaultTableModel describing this node.
 	*/
+	@Override
 	public javax.swing.table.TableModel getNodeTableModel()
 	{
 		Object[][] cells = {
@@ -301,6 +304,7 @@ public abstract class PagedBTree extends BTree
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws
 		java.io.IOException

@@ -244,6 +244,7 @@ public class NID implements NodeKey
 	*	@param	o	The object to check for equivalency with this NID.
 	*	returns	true if the passed object is an NID and its key is equal to this object's key, false otherwise.
 	*/
+	@Override
 	public boolean equals(final Object o)
 	{
 		return o instanceof NID && key == ((NID)o).key;
@@ -300,6 +301,7 @@ public class NID implements NodeKey
 	*	@return	The key for this NID.
 	*	@see	io.github.jmcleodfoss.pst.NodeBTree
 	*/
+	@Override
 	public long key()
 	{
 		return key;

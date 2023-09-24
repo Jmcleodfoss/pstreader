@@ -186,6 +186,7 @@ class Encryption
 		*	@param	data	This parameter is not used by the TranslaterNone translater.
 		*	@param	unused	This parameter is not used by the TranslaterNone translater.
 		*/
+		@Override
 		public void translate(byte[] data, long unused)
 		{
 			// The TranslaterNone class does not do any translation.
@@ -203,6 +204,7 @@ class Encryption
 		*	@param	data	The bytes to encode or decode.
 		*	@param	unused	This parameter is not used by the TranslaterPermute tanslater.
 		*/
+		@Override
 		public void translate(byte[] data, long unused)
 		{
 			convert(data, false);
@@ -239,6 +241,7 @@ class Encryption
 		*			of the block being translated.
 		*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/9979fc01-0a3e-496f-900f-a6a867951f23">MS-PST Section 5.2: Cyclic Encoding</a>
 		*/
+		@Override
 		public void translate(byte[] data, long key)
 		{
 			short w = (short)(key ^ (key >>> 16));

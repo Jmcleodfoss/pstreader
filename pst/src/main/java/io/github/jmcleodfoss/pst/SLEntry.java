@@ -45,6 +45,7 @@ class SLEntry extends LPTLeaf
 	*	@param	context	The context in which the sub-node B-tree is being built.
 	*	@return	The total size of the sub-node B-tree leaf entry, including padding.
 	*/
+	@Override
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
 		return size(context.fileFormat);

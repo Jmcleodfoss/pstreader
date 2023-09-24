@@ -218,6 +218,7 @@ public class SubnodeBTree extends BTree
 	/**	Return the actual size of an intermediate sub-node B-tree entry as read in from the input datastream.
 	*	@param	context	The context in which the sub-node B-tree is being build.
 	*/
+	@Override
 	public int actualSize(final Context<BTree, BTreeLeaf> context)
 	{
 		return SIEntry.size(context.fileFormat);
@@ -243,6 +244,7 @@ public class SubnodeBTree extends BTree
 		return new ReadOnlyTableModel(cells, new Object[]{"", ""});
 	}
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText()
 	{
 		return String.format("Node 0x%08x", key);

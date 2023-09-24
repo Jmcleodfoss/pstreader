@@ -40,6 +40,7 @@ public abstract class LPTLeaf implements BTreeLeaf
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public javax.swing.table.TableModel getNodeTableModel()
 	{
 		final Object[] columnHeadings = {"", ""};
@@ -53,6 +54,7 @@ public abstract class LPTLeaf implements BTreeLeaf
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText()
 	{
 		return String.format("%s: 0x%08x", nid.description, nid.nid);
@@ -61,12 +63,14 @@ public abstract class LPTLeaf implements BTreeLeaf
 	/**	Return the B-tree search key for this node.
 	*	@return	The key for a B-tree search.
 	*/
+	@Override
 	public long key()
 	{
 		return nid.key();
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, PSTFile pstFile)
 	throws
 		BadXBlockLevelException,

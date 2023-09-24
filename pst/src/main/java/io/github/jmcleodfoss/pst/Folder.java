@@ -159,6 +159,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	index	The child to retrieve.
 	*	@return	The given child of the tree parent node.
 	*/
+	@Override
 	public Object getChild(Object oParent, int index)
 	{
 		if (oParent instanceof Message)
@@ -180,6 +181,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	oParent	The parent tree node to retrieve the number of children of.
 	*	@return	The number of children (sub-folders, message objects, or attachments) of the parent.
 	*/
+	@Override
 	public int getChildCount(Object oParent)
 	{
 		if (oParent instanceof Folder)
@@ -279,6 +281,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	child	The child to look for.
 	*	@return	The index of given child of the tree parent node, or -1 if it is not a child of this parent node.
 	*/
+	@Override
 	public int getIndexOfChild(Object oParent, Object child)
 	{
 		if (oParent instanceof Folder) {
@@ -308,6 +311,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText(Object o)
 	{
 		if (o instanceof Appointment)
@@ -334,6 +338,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	/**	Obtain the root of the tree.
 	*	@return	The root of the (Swing) tree (model).
 	*/
+	@Override
 	public Object getRoot()
 	{
 		return this;
@@ -343,6 +348,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@param	oNode	The object to check for leafiness.
 	*	@return	true if the oNode is a leaf node, false if it is an intermediate node.
 	*/
+	@Override
 	public boolean isLeaf(Object oNode)
 	{
 		if (oNode instanceof Message)

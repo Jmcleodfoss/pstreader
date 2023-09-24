@@ -77,12 +77,14 @@ class BBTEntry implements BTreeLeaf
 	*	@param	context	The context to use to find the size (this function uses only the file format information.)
 	*	@return	The actual size of a block B-tree leaf node for this file type.
 	*/
+	@Override
 	public int actualSize(final BTree.Context<BTree, BTreeLeaf> context)
 	{
 		return DataDefinition.size(fields[context.fileFormat.index.getIndex()]);
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public javax.swing.table.TableModel getNodeTableModel()
 	{
 		final Object[] columnHeadings = {"", ""};
@@ -99,18 +101,21 @@ class BBTEntry implements BTreeLeaf
 	/**	Retrieve the key (block ID) for this node.
 	*	@return	The {@link BID} key for the block indicated by this leaf entry in the block B-tree.
 	*/
+	@Override
 	public long key()
 	{
 		return bref.bid.key();
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText()
 	{
 		return String.format("%s - %d bytes", bref.toString(), numBytes);
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public java.nio.ByteBuffer rawData(final BlockMap bbt, final PSTFile pstFile)
 	throws
 		CRCMismatchException,

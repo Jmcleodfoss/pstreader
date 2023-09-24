@@ -56,6 +56,7 @@ class BID implements NodeKey
 	*	@return	The search key for this block ID
 	*	@see	#key
 	*/
+	@Override
 	public long key()
 	{
 		return key;
