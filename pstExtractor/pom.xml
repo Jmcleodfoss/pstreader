@@ -19,7 +19,6 @@
 		<tobago.version>4.6.0</tobago.version>
 		<jetty.version>9.4.51.v20230217</jetty.version>
 		<logback.version>1.2.12</logback.version>
-		<weld.version>3.1.9.Final</weld.version>
 		<cargo.version>1.10.9</cargo.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
 	</properties>
@@ -155,6 +154,7 @@
 			<properties>
 				<jetty.web.override>override-web-mojarra.xml</jetty.web.override>
 				<slf4j.version>2.0.7</slf4j.version>
+				<weld.version>3.1.9.Final</weld.version>
 			</properties>
 			<build>
 				<plugins>
