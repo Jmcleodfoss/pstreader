@@ -509,7 +509,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@throws BadXBlockTypeException	The type must be 1 for XBlock and XXBlock
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
-	*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, byte[] data, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
@@ -549,7 +548,6 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@throws CRCMismatchException	The block's calculated CDC is not the same as the expected value.
 	*	@throws	DataOverflowException	More data was found than will fit into the number of rows allocated, indicating a probably-corrupt file.
 	*	@throws	UnimplementedPropertyTypeException	Handling for the property type has not been implemented
-	*	@throws UnknownClientSignatureException	An unknown client signature was found while building the table context information object.
 	*	@throws	java.io.IOException	An I/O error was encountered while reading in the rows for the table context.
 	*/
 	private void readRows(HeapOnNode hon, int numColumns, java.util.Iterator<java.nio.ByteBuffer> iterator, SubnodeBTree sbt, BlockMap bbt, PSTFile pstFile)
