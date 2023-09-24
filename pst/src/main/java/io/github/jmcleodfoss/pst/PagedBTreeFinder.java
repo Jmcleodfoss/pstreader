@@ -199,6 +199,7 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 	*	@param	index	The number of the child to return.
 	*	@return	The requested child node of the given parent node.
 	*/
+	@Override
 	public Object getChild(final Object parent, final int index)
 	{
 		try {
@@ -217,6 +218,7 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 	*	@param	parent	The parent node to return the number of child nodes for.
 	*	@return	The number of children of the given parent node.
 	*/
+	@Override
 	public int getChildCount(final Object parent)
 	{
 		if (parent instanceof BTreeLeaf)
@@ -235,6 +237,7 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 	*	@param	child	The child node to look for in parent.
 	*	@return	The index of the given child in the given parent node, or -1 if it is not a child of parent.
 	*/
+	@Override
 	public int getIndexOfChild(final Object parent, final Object child)
 	{
 		if (parent == null || child == null)
@@ -260,6 +263,7 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 	*	@param	node	The node to check for leafiness.
 	*	@return	true if node is a leaf node, false if it is an intermediate node.
 	*/
+	@Override
 	public boolean isLeaf(final Object node)
 	{
 		return node instanceof BTreeLeaf;

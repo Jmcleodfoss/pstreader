@@ -53,6 +53,7 @@ public class Task extends MessageObject
 	/**	Provide a String representation of the task (used primarily for testing)
 	*	@return	A String representation of the task
 	*/
+	@Override
 	public String toString()
 	{
 		return String.format("%s due %s", subject, dueDate);

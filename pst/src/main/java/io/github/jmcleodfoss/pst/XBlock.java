@@ -68,6 +68,7 @@ class XBlock extends BlockBase
 		/**	Is there another value to return?
 		*	@return	true if there is another SimpleBlock in the list, false otherwise.
 		*/
+		@Override
 		public boolean hasNext()
 		{
 			return blockIterator.hasNext();
@@ -76,12 +77,14 @@ class XBlock extends BlockBase
 		/**	Retrieve the next value.
 		*	@return	The data for the next SimpleBlock in the list, as a ByteBuffer.
 		*/
+		@Override
 		public java.nio.ByteBuffer next()
 		{
 			return PSTFile.makeByteBuffer(blockIterator.next().data());
 		}
 
 		/**	The remove function is not supported by the XBlock iterator. */
+		@Override
 		public void remove()
 		{
 			throw new UnsupportedOperationException("remove not suported");
@@ -165,6 +168,7 @@ class XBlock extends BlockBase
 	/**	Retrieve the consolidated data array for this data tree.
 	*	@return	An array consisting of the data in all the leaf blocks of the data tree.
 	*/
+	@Override
 	byte[] data()
 	{
 		byte[] data = new byte[dataBytes];
@@ -210,6 +214,7 @@ class XBlock extends BlockBase
 	/**	Obtain an iterator to iterate through the child blocks.
 	*	@return	An iterator through the SimpleBlock objects making up the leaf nodes of this XBLOCK/XXBLOCK structure.
 	*/
+	@Override
 	java.util.Iterator<java.nio.ByteBuffer> iterator()
 	{
 		return new Iterator();

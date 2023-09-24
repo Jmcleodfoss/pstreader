@@ -74,12 +74,14 @@ class BlockBTree extends PagedBTree implements BlockMap
 	*	@param	bid	The block ID to find in the block B-tree.
 	*	@return	The leaf block B-tree entry indicating where the given block lies.
 	*/
+	@Override
 	public BBTEntry find(final BID bid)
 	{
 		return (BBTEntry)super.find(bid.key());
 	}
 
 	/**	{@inheritDoc} */
+	@Override
 	public String getNodeText()
 	{
 		return String.format("BID 0x%08x", key);
