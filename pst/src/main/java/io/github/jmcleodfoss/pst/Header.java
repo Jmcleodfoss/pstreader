@@ -217,7 +217,7 @@ public class Header
 	{
 		int crcExpected = (Integer)dc.get(nm_field);
 		if (Options.checkCRC && crcCalculated != crcExpected)
-			throw new CRCMismatchException(nm_field, crcExpected, crcCalculated);
+			throw new CRCMismatchException(nm_field, crcCalculated, crcExpected);
 	}
 
 	/**	Test this class by reading in the PST file header and printing it out.
