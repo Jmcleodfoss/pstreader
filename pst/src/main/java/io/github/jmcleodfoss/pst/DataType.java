@@ -1159,7 +1159,7 @@ abstract class DataType
 				byteBuffer.get(incoming, 2, 6);
 				long folderGlobalCounter = ByteUtil.makeLongLE(incoming);
 
-				GenericID folderId = new GenericID((int)folderReplicaId, (long)folderGlobalCounter);
+				GenericID folderId = new GenericID((int)folderReplicaId, folderGlobalCounter);
 
 				java.util.Arrays.fill(incoming, (byte)0);
 				byteBuffer.get(incoming, 6, 2);
@@ -1169,7 +1169,7 @@ abstract class DataType
 				byteBuffer.get(incoming, 2, 6);
 				long messageGlobalCounter = ByteUtil.makeLongLE(incoming);
 
-				GenericID messageId = new GenericID((int)messageReplicaId, (long)messageGlobalCounter);
+				GenericID messageId = new GenericID((int)messageReplicaId, messageGlobalCounter);
 
 				int instance = byteBuffer.getInt();
 
