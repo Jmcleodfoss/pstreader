@@ -118,7 +118,7 @@ class XBlock extends BlockBase
 			throw new BadXBlockTypeException(type);
 
 		level = (Byte)dc.get(nm_cLevel);
-		if (level != 1 & level != 2)
+		if (level != 1 && level != 2)
 			throw new BadXBlockLevelException(level);
 
 		numEntries = (Short)dc.get(nm_cEnt);
