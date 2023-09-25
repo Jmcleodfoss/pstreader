@@ -133,18 +133,21 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			}
 
 			/**	{@inheritDoc} */
+			@Override
 			String dialogTitle()
 			{
 				return "Save E-mail as HTML";
 			}
 
 			/**	{@inheritDoc} */
+			@Override
 			String initialFilenameSuggestion()
 			{
 				return ((io.github.jmcleodfoss.pst.Message)clickedNode).subject + ".html";
 			}
 
 			/**	{@inheritDoc} */
+			@Override
 			byte[] data()
 			{
 				assert messagePC != null;
@@ -170,6 +173,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		*	@param	o	The node to check to see whether the "Save as HTML" menu should be available.
 		*	@return	true if the "Save as HTML" popup menu should be shown, false if it should not be shown.
 		*/
+		@Override
 		public boolean lookingFor(final Object o)
 		{
 			try {
@@ -199,18 +203,21 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			}
 
 			/**	{@inheritDoc} */
+			@Override
 			String dialogTitle()
 			{
 				return "Save Attachment" + ((Attachment)clickedNode).name;
 			}
 
 			/**	{@inheritDoc} */
+			@Override
 			String initialFilenameSuggestion()
 			{
 				return ((Attachment)clickedNode).name;
 			}
 
 			/**	{@inheritDoc} */
+			@Override
 			byte[] data()
 			{
 				try {
@@ -237,6 +244,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		*	@param	o	The node to check to see whether the "Save Attachment" menu should be available.
 		*	@return	true if the "Save Attachment" popup menu should be shown, false if it should not be shown.
 		*/
+		@Override
 		public boolean lookingFor(final Object o)
 		{
 			return o instanceof Attachment;
@@ -475,6 +483,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	/**	Update with information from the new file.
 	*	@param	pst	The PST object loaded.
 	*/
+	@Override
 	public void fileLoaded(final PST pst)
 	{
 		this.pst = pst;
@@ -531,9 +540,11 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 	/**	Update the component displays as nodes are selected.
 	*	@param	e	The TreeSelectionEvent which triggered the update.
 	*/
+	@Override
 	public void valueChanged(final TreeSelectionEvent e)
 	{
 		new ProgressBar(parentFrame, "Reading folder data") {
+			@Override
 			public void run()
 			{
 				doUpdate(e.getPath().getLastPathComponent());

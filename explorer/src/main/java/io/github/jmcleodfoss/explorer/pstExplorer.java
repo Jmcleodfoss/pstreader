@@ -84,6 +84,7 @@ public class pstExplorer extends JFrame
 		item = new JMenuItem("Close...");
 		menu.add(item);
 		item.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e)
 				{
 					reset();
@@ -93,6 +94,7 @@ public class pstExplorer extends JFrame
 		item = new JMenuItem("Exit");
 		menu.add(item);
 		item.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e)
 				{
 					dispose();
@@ -156,6 +158,7 @@ public class pstExplorer extends JFrame
 		reset();
 
 		new io.github.jmcleodfoss.swingutil.ProgressBar(this, "Reading PST File") {
+			@Override
 			public void run()
 			{
 				try {

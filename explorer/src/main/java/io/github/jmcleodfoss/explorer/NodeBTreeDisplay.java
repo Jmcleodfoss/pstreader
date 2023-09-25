@@ -24,12 +24,14 @@ class NodeBTreeDisplay extends BTreeWithData
 	}
 
 	/**	Get the tree model for the block B-tree. */
+	@Override
 	TreeModel treeModel()
 	{
 		return (TreeModel)explorer.pst().nodeBTree;
 	}
 
 	/**	Clear the tree model. */
+	@Override
 	void reset()
 	{
 		super.reset();

@@ -40,6 +40,7 @@ class BTreeJTree extends JScrollPane
 		*	@param	hasFocus	A flag indicating whether the node has keyboard focus.
 		*	@return	A string which may be used as the node label on the JTree.
 		*/
+		@Override
 		public String convertValueToText(Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
 		{
 			TreeModel tm = getModel();
@@ -64,6 +65,7 @@ class BTreeJTree extends JScrollPane
 	/**	Add a MouseListener to the underlying tree.
 	*	@param	listener	The MouseListener to add to the tree.
 	*/
+	@Override
 	public void addMouseListener(MouseListener listener)
 	{
 		tree.addMouseListener(listener);

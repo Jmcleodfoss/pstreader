@@ -50,6 +50,7 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	}
 
 	/**	Reset the constituent objects. */
+	@Override
 	void reset()
 	{
 		super.reset();
@@ -59,6 +60,7 @@ class BTreeWithHexAndTextDisplay extends BTreeWithData implements TreeSelectionL
 	/**	Update the display based on the changed selection.
 	*	@param	e	The TreeSelectionEvent describing the selection change.
 	*/
+	@Override
 	public void valueChanged(TreeSelectionEvent e)
 	{
 		HexAndTextDisplay hexAndTextDisplay = (HexAndTextDisplay)dataView;

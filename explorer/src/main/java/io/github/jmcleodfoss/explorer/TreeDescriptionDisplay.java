@@ -41,6 +41,7 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	/**	The paint method is over-ridden to place the divider correctly based on the top component's size.
 	*	@param	g	The graphics context in which to paint the component.
 	*/
+	@Override
 	public void paint(Graphics g)
 	{
 		if (getDividerLocation() == -1) {
@@ -61,6 +62,7 @@ class TreeDescriptionDisplay extends JSplitPane implements TreeSelectionListener
 	/**	Update the display based on the changed selection.
 	*	@param	e	The TreeSelectionEvent indicating the new node information.
 	*/
+	@Override
 	public void valueChanged(final TreeSelectionEvent e)
 	{
 		final Object lastPathComponent = e.getPath().getLastPathComponent();

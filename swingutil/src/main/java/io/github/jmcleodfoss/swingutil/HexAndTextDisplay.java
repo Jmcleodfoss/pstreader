@@ -28,6 +28,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	columnIndex	The index of the column to return the class of.
 		*	@return	The class object for the type displayed in the requested column.
 		*/
+		@Override
 		public Class<?> getColumnClass(final int columnIndex)
 		{
 			if (columnIndex < NUM_COLUMNS)
@@ -42,6 +43,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		/**	Get the number of columns in the table.
 		*	@return	The number of columns in the display.
 		*/
+		@Override
 		public int getColumnCount()
 		{
 			return 2*NUM_COLUMNS;
@@ -51,6 +53,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	columnIndex	The index of the column to get the name for.
 		*	@return	The name of the requested column.
 		*/
+		@Override
 		public String getColumnName(final int columnIndex)
 		{
 			return Integer.toHexString(columnIndex % NUM_COLUMNS);
@@ -59,6 +62,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		/**	Get the number of rows in the table.
 		*	@return	The number of rows in the table.
 		*/
+		@Override
 		public int getRowCount()
 		{
 			if (data == null)
@@ -71,6 +75,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	columnIndex	The index of the column of the cell to return the contents of.
 		*	@return	The contents of the requested cell.
 		*/
+		@Override
 		public Object getValueAt(final int rowIndex, final int columnIndex)
 		{
 			final int i = rowIndex * NUM_COLUMNS + (columnIndex % NUM_COLUMNS);
@@ -91,6 +96,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	columnIndex	The index of the column of the cell to check.
 		*	@return	false, always, as this is a read-only display.
 		*/
+		@Override
 		public boolean isCellEditable(final int rowIndex, final int columnIndex)
 		{
 			return false;
@@ -101,6 +107,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	rowIndex	The index of the row of the cell to set.
 		*	@param	columnIndex	The index of the column of the cell to set.
 		*/
+		@Override
 		public void setValueAt(final Object valueAt, final int rowIndex, final int columnIndex)
 		{
 			assert false;
@@ -139,6 +146,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		*	@param	columnIndex	The column of the cell being rendered.
 		*	@return	The component to use to render the cell.
 		*/
+		@Override
 		public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus, int rowIndex, int columnIndex)
 		{
 			javax.swing.table.TableCellRenderer renderer = table.getColumnModel().getColumn(0).getHeaderRenderer();

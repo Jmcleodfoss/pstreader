@@ -26,6 +26,7 @@ class FolderTree extends BTreeWithData
 
 	/**	Clear the view.
 	*/
+	@Override
 	void reset()
 	{
 		super.reset();
@@ -35,6 +36,7 @@ class FolderTree extends BTreeWithData
 	/**	Obtain the tree model for the folder tree.
 	*	@return	The javax.swing.tree.TreeModel representing the folder hierarchy.
 	*/
+	@Override
 	TreeModel treeModel()
 	{
 		return explorer.pst().getFolderTree();

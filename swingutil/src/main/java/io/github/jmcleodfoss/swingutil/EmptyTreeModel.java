@@ -17,6 +17,7 @@ public class EmptyTreeModel extends io.github.jmcleodfoss.pst.ReadOnlyTreeModel
 	*	@param	index	The index of the child to return.
 	*	@return	null, since there are no child nodes in the empty tree.
 	*/
+	@Override
 	public Object getChild(Object parent, int index)
 	{
 		return null;
@@ -26,6 +27,7 @@ public class EmptyTreeModel extends io.github.jmcleodfoss.pst.ReadOnlyTreeModel
 	*	@param	parent	The parent to return the child of.
 	*	@return	0, since there are no child nodes in the empty tree.
 	*/
+	@Override
 	public int getChildCount(Object parent)
 	{
 		return 0;
@@ -37,6 +39,7 @@ public class EmptyTreeModel extends io.github.jmcleodfoss.pst.ReadOnlyTreeModel
 	*	@param	child	The child node to find the index of under the parent node.
 	*	@return	-1, as the empty tree model has no children.
 	*/
+	@Override
 	public int getIndexOfChild(Object parent, Object child)
 	{
 		return -1;
@@ -45,6 +48,7 @@ public class EmptyTreeModel extends io.github.jmcleodfoss.pst.ReadOnlyTreeModel
 	/**	Get the root of this tree. Note that there is nothing to display even at the root level.
 	*	@return	null, since there is nothing to display for the root.
 	*/
+	@Override
 	public Object getRoot()
 	{
 		return null;
@@ -55,6 +59,7 @@ public class EmptyTreeModel extends io.github.jmcleodfoss.pst.ReadOnlyTreeModel
 	*	@param	node	The node to check to see whether it is a leaf or an intermediate node.
 	*	@return	true, always, since this can only be called for the root node.
 	*/
+	@Override
 	public boolean isLeaf(Object node)
 	{
 		return true;

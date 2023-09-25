@@ -39,12 +39,14 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			}
 	
 			/**	{@inheritDoc} */
+			@Override
 			String dialogTitle()
 			{
 				return "Save Attachment " + clickedNode;
 			}
 		
 			/**	{@inheritDoc} */
+			@Override
 			String initialFilenameSuggestion()
 			{
 				final LPTLeaf attachmentNode = (LPTLeaf)clickedNode;
@@ -59,6 +61,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 			}
 		
 			/**	{@inheritDoc} */
+			@Override
 			byte[] data()
 			{
 				// attachment and pc were set in initialFilenameSuggestion, called before data is retrieved
@@ -86,6 +89,7 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 		*	@param	o	The node to check to see whether it is an attachment.
 		*	@return	true if this node is an attachment, false if it is not an attachmetn
 		*/
+		@Override
 		public boolean lookingFor(Object o)
 		{
 			return ((LPTLeaf)o).nid.isAttachment();

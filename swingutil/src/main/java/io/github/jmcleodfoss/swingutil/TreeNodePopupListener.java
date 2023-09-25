@@ -38,6 +38,7 @@ public class TreeNodePopupListener extends java.awt.event.MouseAdapter
 	/**	Take action when the mouse button is pressed.
 	*	@param	e	The mouse event describing the button press.
 	*/
+	@Override
 	public void mousePressed(final java.awt.event.MouseEvent e)
 	{
 		if (!e.isPopupTrigger() || menu.isVisible()) {
@@ -51,6 +52,7 @@ public class TreeNodePopupListener extends java.awt.event.MouseAdapter
 	/**	Take action when the mouse button is released.
 	*	@param	e	The mouse event describing the button press.
 	*/
+	@Override
 	public void mouseReleased(java.awt.event.MouseEvent e)
 	{
 		if (!e.isPopupTrigger() || menu.isVisible()) {

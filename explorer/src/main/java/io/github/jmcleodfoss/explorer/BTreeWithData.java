@@ -45,6 +45,7 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener
 	/**	Update the views when a new file is read in.
 	*	@param	pst	The PST object loaded.
 	*/
+	@Override
 	public void fileLoaded(final PST pst)
 	{
 		TreeModel tm = treeModel();
@@ -55,6 +56,7 @@ abstract class BTreeWithData extends JSplitPane implements NewFileListener
 	/**	Override paint method to set divider location.
 	*	@param	g	The graphics context in which to paint the object.
 	*/
+	@Override
 	public void paint(java.awt.Graphics g)
 	{
 		if (getDividerLocation() == -1)

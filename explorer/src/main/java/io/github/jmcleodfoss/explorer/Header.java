@@ -47,6 +47,7 @@ class Header extends JSplitPane implements NewFileListener
 	/**	Update with information from the new file.
 	*	@param	pst	The PST object loaded.
 	*/
+	@Override
 	public void fileLoaded(final PST pst)
 	{
 		try {
