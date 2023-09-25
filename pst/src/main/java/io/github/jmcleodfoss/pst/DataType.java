@@ -1194,6 +1194,7 @@ abstract class DataType
 	/**	The Time class represents an MS Time object. It is converted on input to a standard Java Date object.
 	*	@see	<a href="https://docs.microsoft.com/en-us/openspecs/exchange_server_protocols/MS-OXCDATA/0c77892e-288e-435a-9c49-be1c20c7afdb">MS-OXDATA Section 2.11.1: Property Data Types</a>
 	*/
+	@SuppressWarnings("JavaUtilDate") // We aren't doing anything fancy or complicated with java.util.date, and the way we are using it works.
 	private static class Time extends DataType
 	{
 		/**	A reader/display manipulation object for times in PST files. */

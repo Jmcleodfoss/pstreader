@@ -230,6 +230,7 @@ public class Message extends MessageObjectWithBody
 	*	@return	A String describing the message
 	*/
 	@Override
+	@SuppressWarnings("JavaUtilDate") // We aren't doing anything fancy or complicated with java.util.date, and the way we are using it works.
 	public String toString()
 	{
 		return String.format("%s, %s (%s)", subject, sentRepresentingName, messageDeliveryTime.toString());

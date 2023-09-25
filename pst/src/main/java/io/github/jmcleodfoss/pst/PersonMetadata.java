@@ -52,6 +52,7 @@ public class PersonMetadata extends MessageObject
 	*	@return	A String giving some information about this appointment.
 	*/
 	@Override
+	@SuppressWarnings("JavaUtilDate") // We aren't doing anything fancy or complicated with java.util.date, and the way we are using it works.
 	public String toString()
 	{
 		return String.format("%s, created %s", internetMessageId, creationTime.toString());
