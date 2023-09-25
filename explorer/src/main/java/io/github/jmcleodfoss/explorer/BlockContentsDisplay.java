@@ -22,7 +22,6 @@ class BlockContentsDisplay extends JTabbedPane implements BTreeContentsDisplay
 	private AppTable btPage;
 
 	/**	Construct the constituent elements of the display.
-	*	@param	explorer	The main Explorer application
 	*/
 	BlockContentsDisplay()
 	{
