@@ -589,7 +589,7 @@ public class TableContext extends javax.swing.table.AbstractTableModel
 	*	@throws UnknownPropertyTypeException	The property type was not recognized
 	*	@throws	java.io.IOException	An I/O error was encountered while reading the data for this table context row.
 	*/
-	@SuppressWarnings("PMD.UnusedFormalParameter")
+	@SuppressWarnings({"PMD.UnusedFormalParameter", "unused"})
 	private Object[] readRow(java.nio.ByteBuffer rowStream, int numColumns, int r, SubnodeBTree sbt, BlockMap bbt, HeapOnNode hon, PSTFile pstFile)
 	throws
 		BadXBlockLevelException,
