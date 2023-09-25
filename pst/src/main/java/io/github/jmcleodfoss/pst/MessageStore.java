@@ -109,6 +109,7 @@ public class MessageStore
 	*	@return	The root folder of the PST file, as a Folder object.
 	*/
 	@Deprecated
+	@SuppressWarnings("InlineMeSuggester")
 	public Folder rootFolder()
 	{
 		return rootFolder;
