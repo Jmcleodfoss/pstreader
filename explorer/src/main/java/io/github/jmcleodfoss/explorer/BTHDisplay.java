@@ -43,10 +43,9 @@ class BTHDisplay extends BTreeWithHexAndTextDisplay
 			return true;
 		} catch (final	CRCMismatchException
 			|	IOException e) {
+			tree.setModel(EmptyTreeModel.model);
+			return false;
 		}
-
-		tree.setModel(EmptyTreeModel.model);
-		return false;
 	}
 
 	/**	{@inheritDoc} */

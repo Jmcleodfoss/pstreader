@@ -67,13 +67,14 @@ abstract class FileSaverMenuItem implements ActionListener
 				try {
 					out = new FileOutputStream(fileChooser.getSelectedFile());
 					out.write(data);
-				} catch (final FileNotFoundException ex) {
 				} catch (final IOException ex) {
+					// Finally block handles this.
 				} finally {
 					try {
 						if (out != null)
 							out.close();
 					} catch (final IOException ex) {
+						// pass through and return
 					}
 				}
 			}

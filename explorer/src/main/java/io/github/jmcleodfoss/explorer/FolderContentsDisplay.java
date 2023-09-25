@@ -184,6 +184,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			} catch (final BadXBlockLevelException
 				|	BadXBlockTypeException
 				|	CRCMismatchException e) {
+				// Pass through to return
 			}
 
 			return false;
@@ -415,6 +416,7 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 			|	UnparseablePropertyContextException
 			|	UnparseableTableContextException
 			|	java.io.IOException e) {
+			// Pass through and return
 		}
 
 		if (messagePC != null) {

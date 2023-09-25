@@ -213,6 +213,7 @@ public class pstExplorer extends JFrame
 			try {
 				pst.close();
 			} catch (final IOException e) {
+				// Can't do anything if PSTFile.close fails, so pass through and reset the variable
 			}
 		}
 
