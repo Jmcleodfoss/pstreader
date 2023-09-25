@@ -4,6 +4,7 @@ package io.github.jmcleodfoss.pst;
 *	The class itself is not publicly available, but it extends javax.swing.table.AbstractTableModel, which provides a usable public interface.
 *	@see	<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-pst/5e48be0d-a75a-4918-a277-50408ff96740">MS-PST Section 2.3.4: Table Context (TC)</a>
 */
+@SuppressWarnings("serial") // We don't really expect this to be serialized; it just picked up the attribute from AbstractTableModel. And making it serializable would require a large number of cascading changes
 public class TableContext extends javax.swing.table.AbstractTableModel
 {
 	/**	The serialVersionUID is required because the base class is serializable. */
