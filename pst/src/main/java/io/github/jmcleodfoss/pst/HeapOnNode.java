@@ -126,9 +126,6 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 	*/
 	static class HNBitmapHeader
 	{
-		/**	If the signature byte is anything other than this, this not a valid heap node */
-		private static final byte HN_SIGNATURE = (byte)0xec;
-
 		private static final String nm_ibHnpm = "ibHnpm";
 		private static final String nm_rgbFillLevel = "rgb FillLevel";
 
