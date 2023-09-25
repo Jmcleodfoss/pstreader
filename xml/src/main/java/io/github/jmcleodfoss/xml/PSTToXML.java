@@ -272,7 +272,7 @@ class PSTToXML
 	*/
 	protected boolean folderFilter(final String type)
 	{
-		return (false);
+		return false;
 	}
 
 	/**	Convert a PST file into XML.
