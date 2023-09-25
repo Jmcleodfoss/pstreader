@@ -26,7 +26,7 @@ public class DistributionList extends MessageObject
 	private static int distributionListMembersLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID of the DistributionListOneOffMembers property. */
-	@SuppressWarnings("PMD.UnusedPrivateField") // Allow this; I'll add support for it when I have a PST file which uses it.
+	@SuppressWarnings({"PMD.UnusedPrivateField", "unused"}) // Allow this; I'll add support for it when I have a PST file which uses it.
 	private static int distributionListOneOffMembersLID = PropertyLIDs.UNKNOWN;
 
 	/**	The property ID of the "Email 1 Address" property. */
