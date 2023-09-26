@@ -71,7 +71,7 @@ class ClientSignature
 	@Override
 	public boolean equals(Object comp)
 	{
-		return comp instanceof ClientSignature && comp != null && signature == ((ClientSignature)comp).signature;
+		return comp != null && comp instanceof ClientSignature && signature == ((ClientSignature)comp).signature;
 	}
 
 	/**	Generate a hashcode for this ClientSignature (needed since we override equals)
