@@ -13,7 +13,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	private TableModel tableModel;
 
 	/**	The row header */
-	private javax.swing.JTable rowHeader;
+	private javax.swing.JTable displayRowHeader;
 
 	/**	The TableModel for hex/text display */
 	private class TableModel extends javax.swing.table.AbstractTableModel {
@@ -174,9 +174,9 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 		table.setModel(tableModel);
 		tableModel.addTableModelListener(table);
 
-		rowHeader = new javax.swing.JTable(1, 1);
-		rowHeader.setVisible(false);
-		setRowHeaderView(rowHeader);
+		displayRowHeader = new javax.swing.JTable(1, 1);
+		displayRowHeader.setVisible(false);
+		setRowHeaderView(displayRowHeader);
 
 		javax.swing.JViewport rowViewport = getRowHeader();
 		rowViewport.setBackground(java.awt.Color.LIGHT_GRAY);
@@ -186,10 +186,10 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	/**	Set or update the width of the row header. */
 	private void updateRowHeaderViewportWidth()
 	{
-		final int nRows = rowHeader.getRowCount();
-		final Object contents = nRows == 0 ? null : rowHeader.getValueAt(nRows-1, 0);
+		final int nRows = displayRowHeader.getRowCount();
+		final Object contents = nRows == 0 ? null : displayRowHeader.getValueAt(nRows-1, 0);
 		final String widest = contents == null ? " FFFF  " : ((String)contents + "   ");
-		final int columnWidth = javax.swing.SwingUtilities.computeStringWidth(rowHeader.getFontMetrics(rowHeader.getFont()), widest);
+		final int columnWidth = javax.swing.SwingUtilities.computeStringWidth(displayRowHeader.getFontMetrics(displayRowHeader.getFont()), widest);
 		javax.swing.JViewport rowViewport = getRowHeader();
 		java.awt.Dimension d = rowViewport.getViewSize();
 		if (d.width != columnWidth) {
@@ -204,15 +204,15 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	public void read(java.nio.ByteBuffer byteBuffer)
 	{
 		tableModel.read(byteBuffer);
-		rowHeader.setVisible(true);
+		displayRowHeader.setVisible(true);
 		getViewport().doLayout();
 
-		rowHeader = new javax.swing.JTable(tableModel.getRowCount(), 1);
-		javax.swing.table.TableColumn column = rowHeader.getColumnModel().getColumn(0);
+		displayRowHeader = new javax.swing.JTable(tableModel.getRowCount(), 1);
+		javax.swing.table.TableColumn column = displayRowHeader.getColumnModel().getColumn(0);
 		column.setCellRenderer(new HeaderColumnCellRenderer());
 		for (int i = 0; i < tableModel.getRowCount(); ++i)
-			rowHeader.setValueAt(Integer.toHexString(i*NUM_COLUMNS), i, 0);
-		setRowHeaderView(rowHeader);
+			displayRowHeader.setValueAt(Integer.toHexString(i*NUM_COLUMNS), i, 0);
+		setRowHeaderView(displayRowHeader);
 		updateRowHeaderViewportWidth();
 	}
 
@@ -220,7 +220,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	public void reset()
 	{
 		tableModel.reset();
-		rowHeader.setVisible(false);
+		displayRowHeader.setVisible(false);
 		getViewport().doLayout();
 	}
 }
