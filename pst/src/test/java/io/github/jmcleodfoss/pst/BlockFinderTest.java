@@ -22,6 +22,7 @@ public class BlockFinderTest extends TestFrame
 	*	@throws	NoSuchMethodException		{@inheritDoc}
 	*	@throws	Throwable			{@inheritDoc}
 	*/
+	@Override
 	protected void test(File file)
 	throws
 		BufferUnderflowException,
