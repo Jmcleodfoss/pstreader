@@ -68,9 +68,19 @@ class ClientSignature
 	*	@param	comp	The ClientSignature object to compare this ClientSignature to.
 	*	@return	true if the signature members of the two objects are the same, false otherwise.
 	*/
-	public boolean equals(ClientSignature comp)
+	@Override
+	public boolean equals(Object comp)
 	{
-		return signature == comp.signature;
+		return comp instanceof ClientSignature && comp != null && signature == ((ClientSignature)comp).signature;
+	}
+
+	/**	Generate a hashcode for this ClientSignature (needed since we override equals)
+	*	@return	A hashcode unique to this client signature
+	*/
+	@Override
+	public int hashCode()
+	{
+		return signature;
 	}
 
 	/**	Provide a description of the client signature.
