@@ -82,7 +82,7 @@ public class HeapOnNode implements javax.swing.ListModel<Object>
 		@Override
 		public boolean equals(final Object o)
 		{
-			return o != null && this.getClass().isAssignableFrom(o.getClass()) && key == ((HID)o).key;
+			return o != null && o instanceof HID && key == ((HID)o).key;
 		}
 
 		/**	Calculate hashcode.
