@@ -9,6 +9,7 @@ abstract class PagedBTreeFinder extends ReadOnlyTreeModel implements TreeCustomN
 	protected PSTFile pstFile;
 
 	/**	The BTreePage class holds information about paged (block &amp; node) B-trees. */
+	@SuppressWarnings("ClassCanBeStatic")
 	protected abstract class BTreePage
 	{
 		/**	The children (BTEntry or BBTEntry/NBTEntry) of this BTreePage */
