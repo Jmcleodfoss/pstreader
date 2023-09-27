@@ -160,6 +160,7 @@ public class HexAndTextDisplay extends javax.swing.JScrollPane
 	}
 
 	/**	Construct an object to display hex and text values. */
+	@SuppressWarnings("this-escape") // Uses of this is to call a function for the base class, which is complete by the time it is used.
 	public HexAndTextDisplay()
 	{
 		super(javax.swing.JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, javax.swing.JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

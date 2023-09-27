@@ -31,6 +31,7 @@ abstract public class ProgressBar extends javax.swing.JDialog implements Runnabl
 	*	@param	fAutoStart	A flag indicating whether the progress bar should be displayed automatically, or later by
 	*				calling the {@link #start} function.
 	*/
+	@SuppressWarnings("this-escape") // Uses of this is to call a function for the base class, which is complete by the time it is used.
 	public ProgressBar(java.awt.Frame owner, String title, boolean fAutoStart)
 	{
 		super(owner, title, true);
