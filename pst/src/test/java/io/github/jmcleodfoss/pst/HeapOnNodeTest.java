@@ -52,6 +52,7 @@ public class HeapOnNodeTest extends TestFrame
 							new HeapOnNode(dataBlock, bbt, pstFile);
 						} catch (final	NotHeapNodeException
 							|	UnknownClientSignatureException e) {
+							// None of these exceptions interfere with the test at hand.
 						}
 					}
 				}

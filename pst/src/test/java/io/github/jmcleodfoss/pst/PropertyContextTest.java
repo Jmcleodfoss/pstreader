@@ -60,6 +60,7 @@ public class PropertyContextTest extends TestFrame
 				} catch (final	NotHeapNodeException
 					|	NullDataBlockException
 					|	UnknownClientSignatureException e) {
+					// None of these exceptions interfere with the test at hand.
 				}
 			}
 		} catch (IOException e) {
