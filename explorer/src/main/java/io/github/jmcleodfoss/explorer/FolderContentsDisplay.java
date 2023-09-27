@@ -126,7 +126,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		/**	Handle attachment file save requests. */
 		private class HTMLSaveActionListener extends FileSaverMenuItem
 		{
-			/** {@inheritDoc} */
+			/**	Constructor for Save as HTML action listener
+			*	@param	parentFrame	The frame to display the file save dialog in
+			*/
 			HTMLSaveActionListener(JFrame parentFrame)
 			{
 				super(parentFrame);
@@ -197,7 +199,9 @@ class FolderContentsDisplay extends JTabbedPane implements NewFileListener, Tree
 		/**	Handle attachment file save requests. */
 		private class AttachmentSaveActionListener extends FileSaverMenuItem
 		{
-			/** {@inheritDoc} */
+			/**	Constructor for Save as HTML action listener
+			*	@param	parentFrame	The frame to display the file save dialog in
+			*/
 			AttachmentSaveActionListener(JFrame parentFrame)
 			{
 				super(parentFrame);
