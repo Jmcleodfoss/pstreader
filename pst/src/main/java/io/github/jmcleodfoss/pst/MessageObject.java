@@ -201,8 +201,23 @@ public class MessageObject
 	@SuppressWarnings("PMD.DoNotCallSystemExit")
 	public static void test(final String clName, final String[] args)
 	{
-		if (args.length == 0) {
-			System.out.printf("use:%n\tjava %s pst-file [pst-file ...]", clName);
+		final java.util.Set<String> ALLOWABLE_OBJECTS = java.util.Set.of(
+			"io.github.jmcleodfoss.pst.Appointment",
+			"io.github.jmcleodfoss.pst.Contact",
+			"io.github.jmcleodfoss.pst.DistributionList",
+			"io.github.jmcleodfoss.pst.JournalEntry",
+			"io.github.jmcleodfoss.pst.Message",
+			"io.github.jmcleodfoss.pst.PersonMetatdata",
+			"io.github.jmcleodfoss.pst.StickyNore",
+			"io.github.jmcleodfoss.pst.Task"
+		);
+		if (args.length == 0 || !ALLOWABLE_OBJECTS.contains(clName)) {
+
+			System.out.printf("use:%n\tjava objectType pst-file [pst-file ...]%n");
+			System.out.println("Valid object types are");
+			for (final String s: ALLOWABLE_OBJECTS)
+				System.out.println(s);
+
 			System.exit(1);
 		}
 
