@@ -24,10 +24,10 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	public final String containerClass;
 
 	/**	The sub-folders of the folder. */
-	private java.util.ArrayList<Folder> subfolders;
+	private java.util.List<Folder> subfolders;
 
 	/**	The content objects. */
-	private java.util.ArrayList<MessageObject> contents;
+	private java.util.List<MessageObject> contents;
 
 	/**	Ths SubfolderLevelsToRead class tells how many sub-levels to read when processing a folder: none, one, or all. */
 	private static class SubfolderLevelsToRead
@@ -382,7 +382,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws UnparseableTableContextException	The table context could not be read.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
-	public static java.util.ArrayList<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
+	public static java.util.List<MessageObject> readContents(final NBTEntry nodeContentsTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
 		BadXBlockLevelException,
 		BadXBlockTypeException,
@@ -432,7 +432,7 @@ public class Folder extends ReadOnlyTreeModel implements TreeCustomNodeText, jav
 	*	@throws UnparseableTableContextException	The table context could not be read.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
-	public static java.util.ArrayList<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
+	public static java.util.List<Folder> readSubfolders(final NBTEntry nodeHierarchyTable, final BlockMap bbt, final NodeMap nbt, PSTFile pstFile, SubfolderLevelsToRead levelsToRead, boolean fReadContents)
 	throws
 		BadXBlockLevelException,
 		BadXBlockTypeException,
