@@ -209,6 +209,7 @@ public class NameToIDMap
 	*	@throws UnparseablePropertyContextException	The property context could not be parsed.
 	*	@throws java.io.IOException			There was a problem reading the PST file.
 	*/
+	@SuppressWarnings("this-escape") // Use of this calls a function that sets a pointer to this; no unsafe use happens
 	public NameToIDMap(final BlockMap bbt, final NodeMap nbt, PSTFile pstFile)
 	throws
 		BadXBlockLevelException,
