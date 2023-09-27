@@ -21,7 +21,7 @@ public class SimpleBlockTest extends TestFrame
 	*	@throws	NoSuchMethodException		{@inheritDoc}
 	*	@throws	Throwable			{@inheritDoc}
 	*/
-	@SuppressWarnings("PMD.UnusedLocalVariable")
+	@SuppressWarnings({"PMD.UnusedLocalVariable", "UnusedVariable"}) // The constructor of SimpleBlock is what is being tested; no need to do anything with it.
 	@Override
 	protected void test(File file)
 	throws
