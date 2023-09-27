@@ -66,7 +66,7 @@ class BTreeJTree extends JScrollPane
 	*	@param	listener	The MouseListener to add to the tree.
 	*/
 	@Override
-	public void addMouseListener(MouseListener listener)
+	synchronized public void addMouseListener(MouseListener listener)
 	{
 		tree.addMouseListener(listener);
 	}
