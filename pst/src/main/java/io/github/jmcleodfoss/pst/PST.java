@@ -136,6 +136,7 @@ public class PST extends PSTFile
 	*	@throws UnparseableTableContextException	A table context block could not be read.
 	*	@throws java.io.IOException			There was an I/O error reading the file.
 	*/
+	@SuppressWarnings("this-escape") // Uses of this here are explicity for the base class, which is completely constructed when used.
 	public PST(final java.io.FileInputStream fis, boolean fSmallFootprint)
 	throws
 		BadXBlockLevelException,
@@ -163,14 +164,14 @@ public class PST extends PSTFile
 			blockBTree = fSmallFootprint ? new BlockFinder((PSTFile)this) : new BlockBTree(0, header.bbtRoot, (PSTFile)this);
 			nodeBTree = fSmallFootprint ? new NodeFinder((PSTFile)this) : new NodeBTree(0, header.nbtRoot, (PSTFile)this);
 
-			namedProperties = new NameToIDMap(blockBTree, nodeBTree, this);
+			namedProperties = new NameToIDMap(blockBTree, nodeBTree, (PSTFile)this);
 
 			Appointment.initConstants(namedProperties, unicode());
 			Contact.initConstants(namedProperties, unicode());
 			DistributionList.initConstants(namedProperties, unicode());
 			Task.initConstants(namedProperties);
 
-			messageStore = new MessageStore(blockBTree, nodeBTree, this);
+			messageStore = new MessageStore(blockBTree, nodeBTree, (PSTFile)this);
 		} catch (final Exception e) {
 			close();
 			throw e;
