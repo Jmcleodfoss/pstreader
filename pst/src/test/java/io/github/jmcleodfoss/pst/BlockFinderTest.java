@@ -40,7 +40,7 @@ public class BlockFinderTest extends TestFrame
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
 			BlockFinder bf = new BlockFinder(pstFile);
 
-			java.util.Iterator iterator = bbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 			while (iterator.hasNext()) {
 				final BBTEntry treeEntry = (BBTEntry)iterator.next();
 				final BBTEntry findEntry = bf.find(treeEntry.bref.bid);

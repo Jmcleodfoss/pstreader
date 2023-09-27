@@ -39,7 +39,7 @@ public class NodeFinderTest extends TestFrame
 		final NodeBTree nbt = new NodeBTree(0, pstFile.header.nbtRoot, pstFile);
 		NodeFinder nf = new NodeFinder(pstFile);
 
-		java.util.Iterator iterator = nbt.iterator();
+		java.util.Iterator<BTreeNode> iterator = nbt.iterator();
 		while (iterator.hasNext()) {
 			final NBTEntry treeEntry = (NBTEntry)iterator.next();
 			final NBTEntry findEntry = nf.find(treeEntry.nid);

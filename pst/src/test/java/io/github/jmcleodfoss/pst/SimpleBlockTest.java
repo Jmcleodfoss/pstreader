@@ -38,7 +38,7 @@ public class SimpleBlockTest extends TestFrame
 		try {
 			PSTFile pstFile = new PSTFile(new FileInputStream(file));
 			final BlockBTree bbt = new BlockBTree(0, pstFile.header.bbtRoot, pstFile);
-			java.util.Iterator iterator = bbt.iterator();
+			java.util.Iterator<BTreeNode> iterator = bbt.iterator();
 			while (iterator.hasNext()) {
 				final BBTEntry entry = (BBTEntry)iterator.next();
 				final SimpleBlock block = new SimpleBlock(entry, pstFile);
