@@ -15,9 +15,6 @@ import io.github.jmcleodfoss.swingutil.TreeNodePopupListener;
 @SuppressWarnings("serial")
 class NodeDescriptionDisplay extends TreeDescriptionDisplay
 {
-	/**	The main application object, needed to display dialog boxes in and to load new files to */
-	private final pstExplorer explorer;
-
 	/**	The AttachmentSavePopupMenu is the popup menu for saving attachments. */
 	private class AttachmentSavePopupMenu extends TreeNodePopupListener
 	{
@@ -103,7 +100,6 @@ class NodeDescriptionDisplay extends TreeDescriptionDisplay
 	NodeDescriptionDisplay(pstExplorer explorer, BTreeJTree tree)
 	{
 		super(explorer, tree, new NodeContentsDisplay(explorer));
-		this.explorer = explorer;
 		tree.addMouseListener(new AttachmentSavePopupMenu(explorer));
 	}
 }
