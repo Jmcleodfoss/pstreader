@@ -7,7 +7,7 @@ public class XMLOutput
 	java.io.PrintStream printStream;
 
 	/**	The stack of open elements used by addElement(String)/closeElement() */
-	java.util.Stack<String> openElements = new java.util.Stack<String>();
+	java.util.ArrayDeque<String> openElements = new java.util.ArrayDeque<String>();
 
 	/**	Construct an XMLOutput object which writes to printStream, showing the XML declaration if showDeclaration is true, and
 	*	using the given encoding, if non-null.
@@ -72,7 +72,7 @@ public class XMLOutput
 	/**	Close an element opened by openElement(String). */
 	public void closeElement()
 	{
-		String name = openElements.pop();
+		String name = openElements.removeFirst();
 		indent();
 		printStream.print("</");
 		printStream.print(name);
@@ -91,7 +91,7 @@ public class XMLOutput
 		printStream.append('>');
 		printStream.println();
 
-		openElements.push(name);
+		openElements.addFirst(name);
 	}
 
 	/**	Replace invalid characters in an element tag with valid ones.
