@@ -57,9 +57,9 @@ public class PropertyContextTest extends TestFrame
 						continue;
 
 					new PropertyContext(node, bbt, pstFile);
-				} catch (final NotHeapNodeException e) {
-				} catch (final NullDataBlockException e) {
-				} catch (final UnknownClientSignatureException e) {
+				} catch (final	NotHeapNodeException
+					|	NullDataBlockException
+					|	UnknownClientSignatureException e) {
 				}
 			}
 		} catch (IOException e) {

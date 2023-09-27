@@ -50,8 +50,8 @@ public class HeapOnNodeTest extends TestFrame
 					if (dataBlock != null) {
 						try {
 							new HeapOnNode(dataBlock, bbt, pstFile);
-						} catch (NotHeapNodeException e) {
-						} catch (UnknownClientSignatureException e) {
+						} catch (final	NotHeapNodeException
+							|	UnknownClientSignatureException e) {
 						}
 					}
 				}
