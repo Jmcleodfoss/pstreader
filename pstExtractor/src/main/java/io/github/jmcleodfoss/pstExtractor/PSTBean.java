@@ -46,6 +46,7 @@ import io.github.jmcleodfoss.pst.UnparseableTableContextException;
 /**	The ContactFormBean shares the data from the contact upload form with the contact server. */
 @Named("pstBean")
 @ViewScoped
+@SuppressWarnings("serial")
 public class PSTBean implements Serializable
 {
 	/**	The serialVersionUID is required because the base class is serializable. */
