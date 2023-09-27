@@ -257,8 +257,7 @@
 						<arg>-XDcompilePolicy=simple</arg>
 						<arg>-Xplugin:ErrorProne</arg>
 					</compilerArgs>
-					<source>11</source>
-					<target>11</target>
+					<release>17</release>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>com.google.errorprone</groupId>
