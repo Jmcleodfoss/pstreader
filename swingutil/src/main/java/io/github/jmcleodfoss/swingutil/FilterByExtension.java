@@ -8,7 +8,7 @@ package io.github.jmcleodfoss.swingutil;
 public class FilterByExtension extends javax.swing.filechooser.FileFilter {
 
 	/**	The extensions to accept. */
-	private final java.util.Vector<String> extensions;
+	private final java.util.ArrayList<String> extensions;
 
 	/**	The file type description. */
 	private final String descr;
@@ -19,7 +19,7 @@ public class FilterByExtension extends javax.swing.filechooser.FileFilter {
 	*/
 	public FilterByExtension(String descr, String... extensions)
 	{
-		this.extensions = new java.util.Vector<String>(extensions.length);
+		this.extensions = new java.util.ArrayList<String>(extensions.length);
 		for (int i = 0; i < extensions.length; ++i)
 			this.extensions.add(extensions[i]);
 		this.descr = descr;
