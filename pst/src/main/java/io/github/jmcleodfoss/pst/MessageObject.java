@@ -165,6 +165,7 @@ public class MessageObject
 	*	@param	path	The path to the folder
 	*	@param	cl	The class of object to look for.
 	*/
+	@SuppressWarnings("rawtypes") // This is used only for testing / diagnostics
 	private static void printFolderObjects(Folder folder, String path, final Class cl)
 	{
 		String newPath = path + folder.displayName + "/";
