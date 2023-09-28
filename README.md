@@ -3,7 +3,6 @@
 ![Java CI with Maven](https://github.com/Jmcleodfoss/pstreader/workflows/Java%20CI%20with%20Maven/badge.svg)
 ![Codacy Security Scan](https://github.com/Jmcleodfoss/msgreader/workflows/Codacy%20Security%20Scan/badge.svg) 
 ![CodeQL](https://github.com/Jmcleodfoss/msgreader/workflows/CodeQL/badge.svg) 
-![Xanitizer Security Analysis](https://github.com/Jmcleodfoss/msgreader/workflows/Xanitizer%20Security%20Analysis/badge.svg) 
 # pstreader
 Java library for reading Microsoft Outlook pst and ost files, with ancillary libraries, a Swing application, and a servlet.
 
