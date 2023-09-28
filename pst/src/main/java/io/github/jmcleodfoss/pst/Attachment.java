@@ -233,7 +233,7 @@ public class Attachment
 		name = pc.containsKey(tagAttachmentFilename) ? (String)pc.get(tagAttachmentFilename) : "unnamed-attachment";
 		extension = (String)pc.get(PropertyTags.AttachExtension);
 		final String mimeType = (String)pc.get(pstFile.unicode() ? PropertyTags.AttachMimeTagW : PropertyTags.AttachMimeTag);
-		this.mimeType = mimeType == null ? "" : mimeType.toLowerCase();
+		this.mimeType = mimeType == null ? "" : mimeType;
 	}
 
 	/**	Retrieve the attachment data.
