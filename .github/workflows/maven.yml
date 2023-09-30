@@ -22,4 +22,4 @@ jobs:
         java-version: 20
         distribution: temurin
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -D skipTests=true
+      run: mvn -B package --file pom.xml -D skipTests=true -D maven.tests.skip=true
