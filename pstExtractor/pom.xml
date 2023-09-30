@@ -21,6 +21,7 @@
 		<logback.version>1.2.12</logback.version>
 		<cargo.version>1.10.9</cargo.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+		<slf4j.version>1.7.36</slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -165,7 +166,6 @@
 			<id>mojarra</id>
 			<properties>
 				<jetty.web.override>override-web-mojarra.xml</jetty.web.override>
-				<slf4j.version>2.0.7</slf4j.version>
 				<weld.version>3.1.9.Final</weld.version>
 			</properties>
 			<build>
@@ -305,22 +305,10 @@
 					<artifactId>geronimo-interceptor_1.2_spec</artifactId>
 					<version>1.2</version>
 				</dependency>
-			</dependencies>
-		</profile>
-
-		<profile>
-			<id>myfaces-jetty</id>
-			<activation>
-				<property>
-					<name>environment</name>
-					<value>myfaces-jetty</value>
-				</property>
-			</activation>
-			<dependencies>
 				<dependency>
-					<groupId>ch.qos.logback</groupId>
-					<artifactId>logback-core</artifactId>
-					<version>${logback.version}</version>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+					<version>${slf4j.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>
