@@ -49,5 +49,5 @@
 	<listener>
 		<listener-class>org.apache.webbeans.servlet.WebBeansConfigurationListener</listener-class>
 	</listener>
-	${myfaces-tomcat-specific-content-end} - -->
+	${myfaces-tomcat-specific-content-end} -->
 </web-app>
