@@ -19,7 +19,7 @@ The Eclipse Foundation's recommendation for Mojarra is to include the [weld-serv
 
 ## Details of execution under various containers
 ### TomEE - standalone server
-This has been tested on Tomcat EE 8. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
+This has been tested on TomEE 9. To deploy this on a locally running version of Tomcat, ensure that there is a user with the role _manager-script_ configured in your tomcat-users.xml file. In my case, the user with this role is _script_, and the password is _admin_:
 ```
     <tomcat-users>
 	<role rolename="manager-script"/>
@@ -51,8 +51,8 @@ It is also possible to run the application via a TomEE instance running in a Cod
 The application will be available at `http://localhost:8080/pstExtractor`
 
 ### Tomcat - standalone server
-The Tomcat admin user and server settings must be configured as for [TomEE - standalone server](#TomeEE - standalone server)
 This has been tested on Tomcat 9. To run on Tomcat 9 using Mojarra:
+The Tomcat admin user and server settings must be configured as for [TomEE - standalone server](#TomeEE - standalone server)
 `mvn tomcat7:deploy -P mojarra`
 The application will be available at `http://localhost:8080/pstExtractor-<version>`
 
@@ -72,7 +72,7 @@ or
 The application will be available at `http://localhost:8080/pstExtractor`
 
 ### Jetty
-This has been tested on Jetty 9 using the jetty-maven-plugin. To run on Jetty using Mojarra:
+This has been tested on Jetty 11 using the jetty-maven-plugin. To run on Jetty using Mojarra:
 `mvn jetty:run -P mojarra`
 To run on Jetty using MyFaces:
 `mvn jetty:run -P myfaces`

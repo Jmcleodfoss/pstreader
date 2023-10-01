@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Locale;
-import javax.faces.view.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.inject.Named;
+import jakarta.faces.view.ViewScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 
 /**	The LocaleBean provides a mechanism to retrieve the locale-related information for use in JSF pages. */
 @Named("localeBean")

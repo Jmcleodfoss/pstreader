@@ -1,5 +1,6 @@
 package io.github.jmcleodfoss.pstExtractor;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
@@ -9,12 +10,12 @@ import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
-import javax.servlet.http.Part;
-import javax.servlet.ServletContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.model.SelectItem;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+import jakarta.servlet.http.Part;
+import jakarta.servlet.ServletContext;
 
 import io.github.jmcleodfoss.pst.Appointment;
 import io.github.jmcleodfoss.pst.BadXBlockLevelException;
@@ -86,7 +87,7 @@ public class PSTBean implements Serializable
 	}
 
 	/**	The actual values selected in the set of check boxes indicating what to extract. */
-	private List<ExtractionTypes> selectedExtractionTypes;
+	transient private List<ExtractionTypes> selectedExtractionTypes;
 
 	/**	The names and values of the extraction checkbox. */
 	private SelectItem[] extractionTypeChoices;
@@ -347,7 +348,7 @@ public class PSTBean implements Serializable
 	public String checkPasswordAndProcess()
 	{
 		++numPasswordAttempts;
-		if ((pst.hasPassword() && password.length() == 0) || (!pst.hasPassword() && password.length() > 0)) {
+		if ((pst.hasPassword() && password != null && password.length() == 0) || (!pst.hasPassword() && password.length() > 0)) {
 			if (numPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
 				resetForm();
 				phase = Phase.ACCESS_DENIED;
@@ -392,6 +393,30 @@ public class PSTBean implements Serializable
 			phase = Phase.CORRUPT_PST;
 			return null;
 		}
+	}
+
+	private String findUploadedFile(ServletContext sc, String name)
+	{
+		{
+			String fn = sc.getAttribute("javax.servlet.context.tempdir") + java.io.File.separator + name;
+			File f = new File(fn);
+			if (f.isFile())
+				return fn;
+		}
+		{
+			String fn = sc.getAttribute("jakarta.servlet.context.tempdir") + java.io.File.separator + name;
+			File f = new File(fn);
+			if (f.isFile())
+				return fn;
+		}
+		{
+			String fn = System.getProperty("java.io.tmpdir") + java.io.File.separator + name;
+			File f = new File(fn);
+			if (f.isFile())
+				return fn;
+		}
+
+		return null;
 	}
 
 	/**	Get the list of appointments from this PST file.
@@ -701,11 +726,12 @@ public class PSTBean implements Serializable
 
 				FacesContext fc = FacesContext.getCurrentInstance();
 				ServletContext sc = (ServletContext)fc.getExternalContext().getContext();
+
 				String name = String.format("%d-%s", System.currentTimeMillis(), uploadedFile.getSubmittedFileName());
 				uploadedFile.write(name);
 
 				// Temp name is date/time + filename. Since this is a toy application, this is sufficient.
-				is = new FileInputStream(sc.getAttribute("javax.servlet.context.tempdir") + java.io.File.separator + name);
+				is = new FileInputStream(findUploadedFile(sc, name));
 			}
 
 			try {

@@ -11,7 +11,7 @@
 	<description>Servlet to extract Appointments/Contacts/Journal Entries/Sticky Notes/Tasks from MS Outlook PST Files</description>
 
 	<context-param>
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-name>jakarta.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
 
@@ -21,12 +21,12 @@
 	</context-param>
 
 	<context-param>
-		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-name>jakarta.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
 
 	<context-param>
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-name>jakarta.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>client</param-value>
 	</context-param>
 
@@ -50,4 +50,5 @@
 		<listener-class>org.apache.webbeans.servlet.WebBeansConfigurationListener</listener-class>
 	</listener>
 	${myfaces-tomcat-specific-content-end} -->
+
 </web-app>

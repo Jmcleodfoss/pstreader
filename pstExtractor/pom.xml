@@ -16,12 +16,12 @@
 
 	<properties>
 		<cargo.version>1.10.9</cargo.version>
-		<jetty.version>9.4.51.v20230217</jetty.version>
+		<jetty.version>11.0.15</jetty.version>
 		<logback.version>1.2.12</logback.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
-		<mojarra.version>2.3.19</mojarra.version>
-		<slf4j.version>1.7.36</slf4j.version>
-		<tobago.version>4.6.0</tobago.version>
+		<mojarra.version>4.0.3</mojarra.version>
+		<slf4j.version>2.0.7</slf4j.version>
+		<tobago.version>6.0.0-SNAPSHOT</tobago.version>
 	</properties>
 
 	<dependencies>
@@ -29,6 +29,7 @@
 			<groupId>io.github.jmcleodfoss</groupId>
 			<artifactId>localebean</artifactId>
 			<version>${project.version}</version>
+			<classifier>jakarta</classifier>
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmcleodfoss</groupId>
@@ -37,35 +38,28 @@
 		</dependency>
 		<dependency>
 			<!-- This resolves:
-				javax.servlet.http.Part
+				jakarta.servlet.http.Part
 			-->
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
 			<!-- TomEE 8.0.14 provides servlet-api.kar -->
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- This resolves
+				jakarta.inject.Inject
+				jakarta.inject.Named
+			-->
+			<groupId>jakarta.inject</groupId>
+			<artifactId>jakarta.inject-api</artifactId>
+			<version>2.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>jakarta.faces</artifactId>
 			<version>${mojarra.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- This resolves
-				javax.inject.Inject
-				javax.inject.Named
-			-->
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.javax-inject</artifactId>
-			<version>1_3</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<!-- This resolves java.context.NormalScope -->
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<version>2.0.SP1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -112,9 +106,9 @@
 							<value>./src/main/resources/logback.xml</value>
 						</systemProperty>
 					</systemProperties>
-					<webAppConfig>
+					<webApp>
 						<overrideDescriptor>src/main/jetty/${jetty.web.override}</overrideDescriptor>
-					</webAppConfig>
+					</webApp>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -141,14 +135,14 @@
 							<version>1.1.2-SNAPSHOT</version>
 						</additionalDependency>
 						<additionalDependency>
-							<groupId>javax.enterprise</groupId>
-							<artifactId>cdi-api</artifactId>
-							<version>2.0.SP1</version>
+							<groupId>jakarta.enterprise</groupId>
+							<artifactId>jakarta.enterprise.cdi-api</artifactId>
+							<version>4.0.1</version>
 						</additionalDependency>
 						<additionalDependency>
-							<groupId>javax.inject</groupId>
-							<artifactId>javax.inject</artifactId>
-							<version>1</version>
+							<groupId>jakarta.inject</groupId>
+							<artifactId>jakarta.inject-api</artifactId>
+							<version>2.0.1</version>
 						</additionalDependency>
 						<additionalDependency>
 							<groupId>org.glassfish</groupId>
@@ -166,7 +160,7 @@
 			<id>mojarra</id>
 			<properties>
 				<jetty.web.override>override-web-mojarra.xml</jetty.web.override>
-				<weld.version>3.1.9.Final</weld.version>
+				<weld.version>4.0.0.Final</weld.version>
 			</properties>
 			<build>
 				<plugins>
@@ -181,10 +175,21 @@
 									<goal>war</goal>
 								</goals>
 								<configuration>
-									<classifier>mojarra</classifier>
+									<classifier>mojarra-jakarta</classifier>
 								</configuration>
 							</execution>
 						</executions>
+						<configuration>
+							<webResources>
+								<resource>
+									<filtering>true</filtering>
+									<directory>src/main/webapp/</directory>
+									<includes>
+										<include>**/web.xml</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
@@ -194,6 +199,7 @@
 					<artifactId>jakarta.faces</artifactId>
 					<version>${mojarra.version}</version>
 				</dependency>
+
 				<dependency>
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-api</artifactId>
@@ -204,14 +210,21 @@
 					<artifactId>slf4j-simple</artifactId>
 					<version>${slf4j.version}</version>
 				</dependency>
+
 				<dependency>
-					<!-- This pulls in jakarta.inject:jakarta.inject-api 1.0 which resolves
-						javax.inject.Inject
-						javax.inject.Named
-					-->
 					<groupId>org.jboss.weld.servlet</groupId>
 					<artifactId>weld-servlet-core</artifactId>
 					<version>${weld.version}</version>
+				</dependency>
+
+				<dependency>
+					<!-- This resolves
+						jakarta.inject.Inject
+						jakarta.inject.Named
+					-->
+					<groupId>jakarta.inject</groupId>
+					<artifactId>jakarta.inject-api</artifactId>
+					<version>2.0.1</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -220,7 +233,7 @@
 			<id>myfaces</id>
 			<properties>
 				<jetty.web.override>override-web-myfaces.xml</jetty.web.override>
-				<myfaces.version>2.3.10</myfaces.version>
+				<myfaces.version>4.0.1</myfaces.version>
 				<openwebbeans.version>2.0.27</openwebbeans.version>
 			</properties>
 			<build>
@@ -236,7 +249,7 @@
 									<goal>war</goal>
 								</goals>
 								<configuration>
-										<classifier>myfaces</classifier>
+									<classifier>myfaces-jakarta</classifier>
 								</configuration>
 							</execution>
 						</executions>
@@ -269,41 +282,87 @@
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-impl</artifactId>
 					<version>${openwebbeans.version}</version>
+					<classifier>jakarta</classifier>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-spi</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-spi</artifactId>
 					<version>${openwebbeans.version}</version>
+					<classifier>jakarta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-el22</artifactId>
 					<version>${openwebbeans.version}</version>
+					<classifier>jakarta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-jsf</artifactId>
 					<version>${openwebbeans.version}</version>
+					<classifier>jakarta</classifier>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-impl</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-web</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.tomcat</groupId>
+							<artifactId>tomcat-servlet-api</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-web</artifactId>
 					<version>${openwebbeans.version}</version>
+					<classifier>jakarta</classifier>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-el22</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-impl</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-spi</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.geronimo.specs</groupId>
 					<artifactId>geronimo-jcdi_2.0_spec</artifactId>
 					<version>1.3</version>
+					<classifier>jakarta</classifier>
 				</dependency>
 				<dependency>
+					<!-- This resolves
+						jakarta.inject.Inject
+						jakarta.inject.Named
+					-->
 					<groupId>org.apache.geronimo.specs</groupId>
 					<artifactId>geronimo-atinject_1.0_spec</artifactId>
 					<version>1.2</version>
+					<classifier>jakarta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.geronimo.specs</groupId>
 					<artifactId>geronimo-interceptor_1.2_spec</artifactId>
 					<version>1.2</version>
+					<classifier>jakarta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.slf4j</groupId>
@@ -330,6 +389,21 @@
 					<groupId>org.apache.openwebbeans</groupId>
 					<artifactId>openwebbeans-tomcat7</artifactId>
 					<version>${openwebbeans.version}</version>
+					<classifier>jakarta</classifier>
+					<exclusions>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-impl</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-api</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.openwebbeans</groupId>
+							<artifactId>openwebbeans-web</artifactId>
+						</exclusion>
+					</exclusions>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -344,16 +418,16 @@
 						<version>${cargo.version}</version>
 						<configuration>
 							<container>
-								<containerId>tomee8x</containerId>
+								<containerId>tomee9x</containerId>
 								<zipUrlInstaller>
-									<url>http://archive.apache.org/dist/tomee/tomee-8.0.9/apache-tomee-8.0.9-plume.zip</url>
+									<url>http://archive.apache.org/dist/tomee/tomee-9.0.0/apache-tomee-9.0.0-plume.zip</url>
 								</zipUrlInstaller>
 								<output>${project.build.directory}/tomee8/container.log</output>
 								<append>false</append>
-								<log>${project.build.directory}/tomee8/cargo.log</log>
+								<log>${project.build.directory}/tomee9/cargo.log</log>
 							</container>
 							<configuration>
-								<home>${project.build.directory}/tomee8/container</home>
+								<home>${project.build.directory}/tomee9/container</home>
 							</configuration>
 						</configuration>
 					</plugin>
@@ -371,16 +445,21 @@
 						<version>${cargo.version}</version>
 						<configuration>
 							<container>
-								<containerId>tomcat9x</containerId>
+								<containerId>tomcat10x</containerId>
 								<zipUrlInstaller>
-									<url>http://archive.apache.org/dist/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.zip</url>
+									<url>http://archive.apache.org/dist/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.zip</url>
 								</zipUrlInstaller>
-								<output>${project.build.directory}/tomcat-9/container.log</output>
+								<output>${project.build.directory}/tomcat-10/container.log</output>
 								<append>false</append>
-								<log>${project.build.directory}/tomcat-9/cargo.log</log>
+								<log>${project.build.directory}/tomcat-10/cargo.log</log>
 							</container>
 							<configuration>
-								<home>${project.build.directory}/tomcat-9/container</home>
+								<home>${project.build.directory}/tomcat-10/container</home>
+								<properties>
+									<cargo.jvmargs>
+										--add-opens java.base/java.lang=ALL-UNNAMED
+									</cargo.jvmargs>
+								</properties>
 							</configuration>
 						</configuration>
 					</plugin>
