@@ -15,13 +15,13 @@
 	</parent>
 
 	<properties>
-		<mojarra.version>2.3.19</mojarra.version>
-		<tobago.version>4.6.0</tobago.version>
+		<cargo.version>1.10.9</cargo.version>
 		<jetty.version>9.4.51.v20230217</jetty.version>
 		<logback.version>1.2.12</logback.version>
-		<cargo.version>1.10.9</cargo.version>
 		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+		<mojarra.version>2.3.19</mojarra.version>
 		<slf4j.version>1.7.36</slf4j.version>
+		<tobago.version>4.6.0</tobago.version>
 	</properties>
 
 	<dependencies>
@@ -219,9 +219,9 @@
 		<profile>
 			<id>myfaces</id>
 			<properties>
+				<jetty.web.override>override-web-myfaces.xml</jetty.web.override>
 				<myfaces.version>2.3.10</myfaces.version>
 				<openwebbeans.version>2.0.27</openwebbeans.version>
-				<jetty.web.override>override-web-myfaces.xml</jetty.web.override>
 			</properties>
 			<build>
 				<plugins>
